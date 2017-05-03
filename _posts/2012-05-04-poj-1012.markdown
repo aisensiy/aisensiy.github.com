@@ -1,0 +1,121 @@
+---
+author: aisensiy
+comments: true
+date: 2012-05-04 07:00:22+00:00
+layout: post
+slug: poj-1012
+title: POJ 1012
+wordpress_id: 278
+categories:
+- acm
+tags:
+- Joseph
+- 约瑟夫问题
+---
+
+又有一阵子不来写报告了，惭愧惭愧。现在赶紧补上。
+
+首先是经典的约瑟夫问题的解法
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <cstring>
+
+using namespace std;
+
+/*
+ *
+ * 典型的约瑟夫问题
+ * 约瑟夫问题是个有名的问题：N个人围成一圈，从第一个开
+ * 始报数，第M个将被杀掉，最后剩下一个，其余人都将被杀掉。
+ * 例如N=6，M=5，被杀掉的人的序号为5，4，6，2，3。最后剩下1号。
+ *
+ * 这里采用一个递归解题 我们按照序号从0开始 m-1个人退出
+ * 假定第一个数到m-1的人退出后，那么将从下一个人重新计数
+ * 我们假定这新的一轮开始的那个人序号为0，那么在这一轮
+ * 的m-1个人退出。
+ * 那么，反过来，如果我们知道了第i+1轮退出的人在i轮一定是j，
+ * 我们可以通过 (j+m)%n 得知其在上一轮的位置
+ *
+ * @author: aisensiy(http://weibo.com/alistapart)
+ */
+int jos(int n, int m) {
+    if(n==1) return 0;
+    else return (jos(n-1, m) + m) % n;
+}
+int main()
+{
+    int n, m;
+    cin>>n>>m;
+    cout<<jos(n, m)<<endl;
+    return 0;
+}
+[/code]
+
+然后poj 1012 是约瑟夫问题的一个变种，题目在这里[poj 1012](http://poj.org/problem?id=1012)
+
+[code lang="cpp"]
+#include <iostream>
+#include <vector>
+#include <cstring>
+/*
+ * http://poj.org/problem?id=1012
+ *
+ * 约瑟夫问题的变种，采用完全的模拟会超时
+ * 这里用到的一些技巧在下面的注释中会解答
+ * 感谢mabaochang同学让我明白了本题最核心
+ * 的trick.
+ *
+ * @author: aisensiy(http://weibo.com/alistapart)
+ */
+using namespace std;
+
+int result[14];
+int killed[14];
+int next(int cur, int n) {
+    while(1) {
+        cur = (cur + 1) % n;
+        if(!killed[cur]) {
+            return cur;
+        }
+    }
+}
+bool work(int n, int m) {
+    memset(killed, 0, sizeof(killed));
+    int cur = 0, dead = 0;
+    int count = n;
+    while(1) {
+        // 这里差不多就是最核心的trick了正常的约瑟夫问题这样的方式是不
+        // 能获取正确的killed的人的位置的，但是由于本题要求是后k个人
+        // 先被killed，那么前k个人的位置是不应该被移动的（一旦移动了则说
+        // 明这时的m不满足条件，会break），并且只要满足每次killed人在k之
+        // 后就行了，也不需要知道更具体的位置，采用这个公式就可以达到目的了
+        cur = (cur + m - 1) % count;
+        if(cur < n/2 && dead < n/2) return false;
+        if(dead >= n/2) {
+            return true;
+        }
+        killed[cur] = 1;
+        dead++;
+        count--;
+    }
+}
+int main() {
+    int j;
+    // 由于一共只有这么十几个数据，那么为了避免在线的重复计算
+    // 直接把所有结果算出来放到数组里就行了
+    for(int i=1; i<=14; i++) {
+        for(j=i+1; 1; j++)
+            if(work(2 * i, j)) break;
+        result[i-1] = j;
+    }
+
+    cin>>j;
+    while(j) {
+        cout<<result[j-1]<<endl;
+        cin>>j;
+    }
+    return 0;
+}
+```

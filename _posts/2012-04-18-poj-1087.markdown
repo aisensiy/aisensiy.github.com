@@ -1,0 +1,153 @@
+---
+author: aisensiy
+comments: true
+date: 2012-04-18 14:45:52+00:00
+layout: post
+slug: poj-1087
+title: POJ 1087
+wordpress_id: 214
+categories:
+- acm
+---
+
+```cpp
+#include <cstdio>
+#include <iostream>
+#include <string>
+#include <map>
+#include <cstring>
+/*
+ * 题目: A Plug for UNIX | POJ 1087
+ * http://poj.org/problem?id=1087
+ *
+ * 核心是最大流算法
+ * 不过我倒是觉得更重要的是如何构造这个图
+ *
+ * @author: aisensiy(http://weibo.com/alistapart)
+ */
+using namespace std;
+
+#define LIM 600
+#define INF 100000
+
+int graph[LIM][LIM]; 		//二维数组的图结构
+int q[LIM];					//广度遍历所有需要的队列
+int front, rear;			//队列的头尾
+int r[LIM][LIM];			//残留网络
+
+int pre[LIM];				//追朔广度遍历结果的前驱数组
+
+map<string, int> id;		//用于生成字符串映射正数
+
+int n, m, k;
+int order = 2;				//初始ID
+int s = 0, t = 1;
+
+/**
+ * <h2>关于构建最大流的图</h2>
+ * 在算法导论里面有讲，这种多源点多汇点的网络问题，都可以
+ * 为其添加一个超级源点与超级汇点来解决。
+ * 那么如何构建这个图使之转化为通解的最大流问题就成了这个
+ * 题的重点。
+ *
+ * 首先按照题意可知，设备算是源点，而插口算是汇点。
+ * 那么需要在设备之前添加超级源点s，在插口之后添加超级汇点
+ * t。
+ *
+ * 由于插口的数量是有限的，那么插口到超级汇点的容量c(u, t)应
+ * 当等于插口的个数，counter(u) = 1。
+ * 这个个数我们可以在输入的时候计算出来。
+ * 超级源点与设备之间的容量c(s, v)可以为构建这种方法的默认值INF。
+ *
+ * <h2>关于如何把字符串转换成图中的节点</h2>
+ * 这是我一开始很头疼的事情。
+ * 在网上找了一些这道题的解析，受益匪浅。
+ * http://blog.csdn.net/ChinaCzy/article/details/5713749
+ * 这个我觉得非常不错。
+ * 作者用一个map<string, int>为输入的字符串指定一个id就像是数据库里面
+ * 设定为自增的主键一样。非常不错的想法。
+ */
+
+void create_graph() {
+	int i;
+	memset(graph, 0, sizeof(graph));
+	string plug, device, adaptor;
+
+	cin>>n;
+	for(i=0; i<n; i++) {
+		cin>>plug;
+		id[plug] = order++;
+		graph[id[plug]][t] = 1;
+	}
+
+	cin>>m;
+	for(i=0; i<m; i++) {
+		cin>>device>>plug;
+		if(!id[plug]) id[plug] = order++;
+		id[device] = order++;
+		graph[s][id[device]] = INF;
+		graph[id[device]][id[plug]] = 1;
+	}
+
+	// 建立适配器插口与接口的关系，由于适配器是无限多的
+	// 设定capacity = INF
+	cin>>k;
+	for(i=0; i<k; i++) {
+		cin>>adaptor>>plug;
+		if(!id[adaptor]) id[adaptor] = order++;
+		if(!id[plug]) id[plug] = order++;
+
+		graph[id[adaptor]][id[plug]] = INF;
+	}
+
+	memcpy(r, graph, sizeof(graph));
+}
+
+// 广度遍历
+bool bfs(int s, int t, int n) {
+	int front = rear = 0;
+	int u, v;
+	memset(pre, -1, sizeof(pre));
+	q[rear++] = s;
+	while(rear > front) {
+		u = q[front++];
+		for(v=0; v<n; v++) {
+			if(pre[v] == -1 && r[u][v] > 0) {
+				pre[v] = u;
+				q[rear++] = v;
+				if(v == t) return true;
+			}
+		}
+	}
+	return false;
+}
+
+// 最大流算法
+int max_flow(int s, int t, int n) {
+	int max = 0, inc, u, v;
+
+	while(true) {
+		if(!bfs(s, t, n)) break;
+
+		inc = INF;
+		for(v=t; v!=s; v=u) {
+			u = pre[v];
+			if(r[u][v] < inc) inc = r[u][v];
+		}
+		for(v=t; v!=s; v=u) {
+			u = pre[v];
+			r[u][v] -= inc;
+			r[v][u] += inc;
+		}
+		max += inc;
+	}
+
+	return max;
+}
+
+int main() {
+	create_graph();
+	int max = max_flow(s, t, order);
+	cout<<m - max<<endl;
+}
+```
