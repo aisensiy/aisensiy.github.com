@@ -22,15 +22,15 @@ MyBatis 提供了一个 `starter` 用于和 Spring Boot 的集成。`build.gradl
 
 ```groovy
 buildscript {
-	ext {
-		springBootVersion = '1.5.3.RELEASE'
-	}
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
+    ext {
+        springBootVersion = '1.5.3.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
 }
 
 apply plugin: 'java'
@@ -41,18 +41,18 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 
 dependencies {
-	compile('org.flywaydb:flyway-core')
-	compile('org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.0')
-	compile('org.springframework.boot:spring-boot-starter-web')
-	runtime('com.h2database:h2')
-	compileOnly('org.projectlombok:lombok')
-	testCompile('org.springframework.boot:spring-boot-starter-test')
-	testCompile('org.mybatis.spring.boot:mybatis-spring-boot-starter-test:1.3.0')
+    compile('org.flywaydb:flyway-core')
+    compile('org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.0')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    runtime('com.h2database:h2')
+    compileOnly('org.projectlombok:lombok')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('org.mybatis.spring.boot:mybatis-spring-boot-starter-test:1.3.0')
 }
 ```
 
