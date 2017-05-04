@@ -14,7 +14,7 @@ tags:
 
 距离上一篇有关这本书的读书笔记已经有相当长的时间了（大约有两年）。两年过去了，我由一个宿舍换到了另外一个宿舍，还是在过着自己相对封闭的学习生活，虽然感觉不是最优状态，但是起码还不错吧。
 
-这次写读书笔记的时候，其实整本书都已经看完了。这次是托豆瓣阅读的福，我可以在 touch 上面看完了中文版。可能是由于我一直对译本有歧视，虽然看的很快，但是不会视书中文字如真理，还会带着怀疑去翻阅原著，不过事实证明，这本书的翻译还是很不错的，看起来整体来说也比较的顺畅。<!-- more -->
+这次写读书笔记的时候，其实整本书都已经看完了。这次是托豆瓣阅读的福，我可以在 touch 上面看完了中文版。可能是由于我一直对译本有歧视，虽然看的很快，但是不会视书中文字如真理，还会带着怀疑去翻阅原著，不过事实证明，这本书的翻译还是很不错的，看起来整体来说也比较的顺畅。
 
 
 ## 沟通的成本
@@ -29,14 +29,13 @@ tags:
 沟通是为了更好的工作，不能舍本逐末，让沟通花费了工作的时间。站着开会差不多就是为了让大家觉得不自在，赶紧开完走人，避免浪费时间。
 
 
-> To help keep the meeting focused, everyone should limit their contribu-
-tion to answering these three questions:
+> To help keep the meeting focused, everyone should limit their contribution to answering these three questions:
 
-• What did I achieve yesterday?
+>• What did I achieve yesterday?
 • What am I planning to do today?
 • What’s in my way?
 
-Each participant is given only a short amount of time to talk (about two minutes). You may want to have a timer to help those of us who have the tendency to ramble. **If you want to discuss something in greater detail, then get together with the appropriate people after the stand-up meeting **(it’s OK to say, “I need to talk to Fred and Wilma about the database” during the meeting; just don’t start going into the details).
+> Each participant is given only a short amount of time to talk (about two minutes). You may want to have a timer to help those of us who have the tendency to ramble. **If you want to discuss something in greater detail, then get together with the appropriate people after the stand-up meeting **(it’s OK to say, “I need to talk to Fred and Wilma about the database” during the meeting; just don’t start going into the details).
 
 
 花些时间彼此了解进度一直遇到的难题，如果会上恰好有人在你越到的问题方面有研究那太好了，你可以在会后请教他可以快速的解决问题。注意，这里要强调把那些具体而细节的东西在会后单独搞定，拖累不相干认识开会是很多会议无聊的关键所在。
