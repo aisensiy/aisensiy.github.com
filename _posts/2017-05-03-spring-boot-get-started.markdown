@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "spring boot get started"
+title:      "Spring Boot Getting Started"
 date:       2017-05-03
 author:     "Eisen"
 tags:       [java, spring-boot, jersey, web]
