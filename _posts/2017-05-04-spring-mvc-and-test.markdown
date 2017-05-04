@@ -14,7 +14,7 @@ tags:       [java, spring-boot, spring-mvc, web, test]
 
 >**注意** 这里所展示的测试的例子是对 RESTful API 的测试，众所周知，在前后端分离的今天，我们很少在 Spring MVC 中做模板的渲染了，我们主要处理的是 JSON 数据：我们的输入不是传统的表单数据而是 JSON，我们的输出不再是 HTML 而是 JSON。
 
-测试的重要性在 ThoughtWorks 是老生常谈了，但实际上并不是所有的团队都会在写代码的同时写测试，所以在看到大量的 Spring Boot 的文章和代码的时候居然很难找到一个完整的、包含着测试的项目，真是恐怖。不过做了一些 search 之后我发现 Spring Boot 目前的测试真的是非常的简单，和 Jersey 比的话那真是好的太多了。一个基本的、纯粹的 Spring MVC 的测试长如下的样子，这里涉及多个例子，我会一点点做介绍。
+测试的重要性在 ThoughtWorks 是老生常谈了，但实际上并不是所有的团队都会在写代码的同时写测试，在看到大量的 Spring Boot 的文章和代码的时候居然很难找到一个完整的、包含着测试的项目，真是恐怖。不过做了一些 search 之后我发现 Spring Boot 目前的测试真的是非常的简单，和 Jersey 比的话那真是好的太多了。一个基本的、纯粹的 Spring MVC 的测试长如下的样子，这里涉及多个例子，我会一点点做介绍。
 
 ```java
 @RunWith(SpringRunner.class) // [1]
