@@ -3,7 +3,7 @@ markdown: kramdown
 kramdown:
   input: GFM                            # use Github Flavored Markdown !important
 
-highlighter:      pygments
+highlighter:      rouge
 
 # Permalinks
 permalink:        pretty
@@ -13,7 +13,7 @@ title:            'Eisen Blog'
 tagline:          'Blog On Jekyll'
 description:      ''
 url:              https://aisensiy.github.io
-baseurl:          https://aisensiy.github.io
+baseurl:          ''
 
 author:
   name:           'Eisen Xu'
