@@ -21,7 +21,8 @@ author:
 
 paginate:         5
 
-gems: [jekyll-paginate]
+gems: 
+  - jekyll-paginate
 
 # Custom vars
 version:          2.1.0
