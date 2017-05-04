@@ -3,8 +3,8 @@ author: aisensiy
 comments: true
 date: 2012-04-20 17:54:25+00:00
 layout: post
-slug: '%e6%8f%90%e5%8f%96%e9%a1%b5%e9%9d%a2%e4%b8%8a%e5%9b%be%e7%89%87%e7%9a%84bookmarklet'
-title: 提取页面上图片的bookmarklet
+slug: 'picture-bookmarklet'
+title: 提取页面上图片的 bookmarklet
 wordpress_id: 217
 categories:
 - 关注web
@@ -17,17 +17,13 @@ tags:
 
 不多说，这个bookmarklet([](http://en.wikipedia.org/wiki/Bookmarklet))就是用来抽取当前页面上指定大小的图片的工具。点击这个bookmarklet之后，就可以生成一个只有图片的页面，如下图所示。
 
-
-
-[![](http://aisensiy-wordpress.stor.sinaapp.com/uploads/2012/04/QQ截图20120421005008.png)](http://aisensiy-wordpress.stor.sinaapp.com/uploads/2012/04/QQ截图20120421005008.png)
-
+![](/img/in-post/picture-bookmarklet/picture-bookmarklet.png)
 
 
 那么如果我ctrl+s保存[网页，全部]，当前页面的图片就会随着页面保存到本地了。
 
 
 代码放在这里
-
 
 ```js
 void (function() {

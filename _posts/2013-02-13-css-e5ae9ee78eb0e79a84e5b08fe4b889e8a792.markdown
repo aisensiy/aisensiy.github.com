@@ -16,11 +16,7 @@ tags:
 
 昨天在做一个类似与 weibo 上评论的东西，在点击评论按钮后会显示评论框。而这个评论框在它的右上角会有一个小三角与评论按钮相呼应。
 
-[![](http://aisensiy-wordpress.stor.sinaapp.com/uploads/2013/02/Screenshot-from-2013-02-13-161039.png)](http://aisensiy-wordpress.stor.sinaapp.com/uploads/2013/02/Screenshot-from-2013-02-13-161039.png)
-
 之前在一本书里面见过，（这本书似乎是台湾人写的，当时觉得它讲的特别相近，不过有些年头了，都忘记它叫什么了，刚才在豆瓣上用 CSS 的关键词找了下，也没找到。），是采用 0 宽度， 0 高度用厚边框挤压出来的三角形。就是说，当对一个 0 空间的元素给予一个很厚的边框的时候，那么四个方向(top left right bottom)的边框会相互挤压，变成三角形！那么，对三个方向的边框给予透明 transparent，而给予另一个方向的边框一个可见色，那三角形就大功告成了！<!-- more -->
-
-[![](http://aisensiy-wordpress.stor.sinaapp.com/uploads/2013/02/Screenshot-from-2013-02-13-163153.png)](http://aisensiy-wordpress.stor.sinaapp.com/uploads/2013/02/Screenshot-from-2013-02-13-163153.png)
 
 代码：[JS Bin](http://jsbin.com/opahum/5/edit)
 
@@ -59,8 +55,6 @@ tags:
 
 不过这里有个问题，可以看的出来，在微博里面，人家的那个小三角是有边框的！
 
-[![](http://aisensiy-wordpress.stor.sinaapp.com/uploads/2013/02/Screenshot-from-2013-02-13-163254.png)](http://aisensiy-wordpress.stor.sinaapp.com/uploads/2013/02/Screenshot-from-2013-02-13-163254.png)
-
 加上边框，就瞎了吧。这里，在 bootstrap popover 的代码来看到了它的神方法：用两个小三角叠加出边框的效果！一个三角为边框颜色，另一个三角为背景颜色覆盖在上面。且第二个三角的位置稍微向下，一方面可以显示出三角形的边框，另一方面可以覆盖三角下面矩形的边框部分。
 
 代码：[JS Bin](http://jsbin.com/opahum/4/edit)
@@ -98,7 +92,5 @@ tags:
 }
 ```
 
-
-[![](http://aisensiy-wordpress.stor.sinaapp.com/uploads/2013/02/Screenshot-from-2013-02-13-164945.png)](http://aisensiy-wordpress.stor.sinaapp.com/uploads/2013/02/Screenshot-from-2013-02-13-164945.png)
 
 最后附上一个用 CSS 做小三角的网站 [http://apps.eky.hk/css-triangle-generator/](http://apps.eky.hk/css-triangle-generator/)

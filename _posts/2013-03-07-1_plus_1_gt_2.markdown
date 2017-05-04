@@ -3,7 +3,6 @@ author: aisensiy
 comments: true
 date: 2013-03-07 08:46:10+00:00
 layout: post
-slug: '%e8%af%bb%e4%b9%a6%e7%ac%94%e8%ae%b0practices-of-an-agile-developer-2-1-1-%e8%a6%81%e5%a4%a7%e4%ba%8e-2'
 title: '读书笔记|Practices of an Agile Developer 2: 1 + 1 要大于 2'
 wordpress_id: 421
 categories:
