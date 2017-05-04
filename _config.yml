@@ -19,7 +19,7 @@ author:
   name:           'Eisen Xu'
   url:            https://github.com/aisensiy
 
-paginate:         10
+paginate:         5
 
 gems: [jekyll-paginate]
 

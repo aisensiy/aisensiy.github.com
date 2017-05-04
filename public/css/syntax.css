@@ -1,4 +1,5 @@
 pre.highlight { background-color: #272822; }
+.highlight code { color: #f8f8f2 } /* Default code */
 .highlight .hll { background-color: #272822; }
 .highlight .c { color: #75715e } /* Comment */
 .highlight .err { color: #960050; background-color: #1e0010 } /* Error */
