@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "spring boot getting started"
+title:      "spring boot get started"
 date:       2017-05-03
 author:     "Eisen"
 tags:       [java, spring-boot, jersey, web]
@@ -29,20 +29,20 @@ tags:       [java, spring-boot, jersey, web]
 @Path("users") // [1]
 public class UsersApi {
 
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<User> getUsers(@Context UserRepository users) {
-	    return users.getAll();
-	}
-	
-	@GET
-	@Path("{userId}")
-	public String getOneUserById(@PathParam("userId") String userId, 
-	                             @Context UserRepository userRepository) {
-		return userRepository.getUserById(userId)
-					.map(UserApi::new)   // [2]
-					.orElseThrow(() -> new UserNotFoundException()); // [3]
-	}
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<User> getUsers(@Context UserRepository users) {
+        return users.getAll();
+    }
+    
+    @GET
+    @Path("{userId}")
+    public String getOneUserById(@PathParam("userId") String userId, 
+                                 @Context UserRepository userRepository) {
+        return userRepository.getUserById(userId)
+                            .map(UserApi::new)   // [2] 
+                            .orElseThrow(() -> new UserNotFoundException()); // [3]
+    }
 }
 
 //UserApi.java
@@ -80,17 +80,17 @@ public class UserPostsApi.java {
 
 //UserPostApi.java
 public class UserPostApi.java {
-	private Post post;
-	
-	public UserPostApi(Post post) {
-	  	this.post = post;
-	}
-	 
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public Post getPost() {
-	    return post;
-	}
+    private Post post;
+    
+    public UserPostApi(Post post) {
+        this.post = post;
+    }
+     
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Post getPost() {
+        return post;
+    }
 }
 ```
 
@@ -125,38 +125,38 @@ public class UsersApi {
 @RestController
 @RequestMapping("/users/{userId}")
 public class UserApi {
-	@Autowired
-	private UserRepository userRepository;
-	
-	@RequestMapping(method = GET)
-	return User getUser(@PathVariable("userId") String userId) {
-		return userRepository.getUserById(userId)
-					.map(user -> user)
-					.orElseThrow(() -> new UserNotFoundException());
-	}
+    @Autowired
+    private UserRepository userRepository;
+    
+    @RequestMapping(method = GET)
+    return User getUser(@PathVariable("userId") String userId) {
+        return userRepository.getUserById(userId)
+                    .map(user -> user)
+                    .orElseThrow(() -> new UserNotFoundException());
+    }
 }
 
 // UserPostsApi.java
 @RestController
 @RequestMapping("/users/{userId}/posts")
 public class UserPostsApi {
-	@Autowired
-	private UserRepository userRepository;
-	
-	@Autowired
-	private PostRepository postRepository;
-	
-	@RequestMapping("/{postId}", method = GET)
-	return Post getPost(@PathVariable("userId") String userId,
-	                    @PathVariable("postId") String postId) {
-		if (!userRepository.getUserById(userId).isPresent()) {
-			throw new UserNotFoundException();
-		}
-		return postRepository
+    @Autowired
+    private UserRepository userRepository;
+    
+    @Autowired
+    private PostRepository postRepository;
+    
+    @RequestMapping("/{postId}", method = GET)
+    return Post getPost(@PathVariable("userId") String userId,
+                        @PathVariable("postId") String postId) {
+        if (!userRepository.getUserById(userId).isPresent()) {
+            throw new UserNotFoundException();
+        }
+        return postRepository
                 .findById(postId)
                     .map(post -> post)
                     .orElseThrow(() -> new PostNotFoundException();
-	}
+    }
 }
 ```
 
@@ -212,8 +212,8 @@ public class UsersApiTest {
         userRepository = mock(UserRepository.class);
         // 只对 UsersApi 进行测试
         MockMvc mockMvc = MockMvcBuilders
-    						.standaloneSetup(new UsersApi(userRepository))
-    						.setControllerAdvice(new CustomizeExceptionHandler()).build(); 
+                            .standaloneSetup(new UsersApi(userRepository))
+                            .setControllerAdvice(new CustomizeExceptionHandler()).build(); 
         RestAssuredMockMvc.mockMvc(mockMvc);
     }
 
