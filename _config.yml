@@ -13,7 +13,7 @@ title:            'Eisen Blog'
 tagline:          'Blog On Jekyll'
 description:      ''
 url:              https://aisensiy.github.io
-baseurl:          ''
+baseurl:          /
 
 author:
   name:           'Eisen Xu'
