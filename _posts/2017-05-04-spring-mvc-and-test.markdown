@@ -12,7 +12,7 @@ tags:       [java, spring-boot, spring-mvc, web, test]
 
 其次，Spring 官网提供了太多的 Getting Started 比如[这个](https://spring.io/guides/gs/rest-service/)或者是 Hello World 的示例。这些示例真的是太太太简单了，完全没办法作为学习的材料（再次强调，能不能看看人家 Rails 官方的 Guide 呀），而去其他地方搜索的内容又大多是过时（因为版本更迭快呀）的内容。所以我这里也希望尽量覆盖更全的场景，使得这里的内容可以作为实际开发中的参考。
 
->**注意** 这里所展示的测试的例子是对 RESTful API 的测试，众所周知，在前后端分离的今天，我们很少在 Spring MVC 中做模板的渲染了，我们主要处理的是 JSON 数据：我们的输入不是传统的表单数据而是 JSON，我们的输出不再是 HTML 而是 JSON。
+>**注意** 这里所展示的测试的例子是对 RESTful API 的测试，在前后端分离，构建微服务的今天，我们在 Spring MVC 中做模板渲染的情况越来越少了了，我们主要处理的是 JSON 数据：我们的输入不是传统的表单数据而是 JSON，我们的输出不再是 HTML 而是 JSON。
 
 测试的重要性在 ThoughtWorks 是老生常谈了，但实际上并不是所有的团队都会在写代码的同时写测试，在看到大量的 Spring Boot 的文章和代码的时候居然很难找到一个完整的、包含着测试的项目，真是恐怖。不过做了一些 search 之后我发现 Spring Boot 目前的测试真的是非常的简单，和 Jersey 比的话那真是好的太多了。一个基本的、纯粹的 Spring MVC 的测试长如下的样子，这里涉及多个例子，我会一点点做介绍。
 
