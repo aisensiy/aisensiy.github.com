@@ -6,7 +6,7 @@ author:     "Eisen"
 tags:       [css, react]
 ---
 
-这么久以来，各种各样的框架视图让 web 组件化。到目前为止，react 基本做到了这一点：用一个自定义标签的方式组织 html 在一起。
+这么久以来，各种各样的框架试图让 web 组件化。到目前为止，react 基本做到了这一点：用一个自定义标签的方式组织 html 在一起。
 
 ```html
 <Wrapper>
@@ -18,7 +18,7 @@ tags:       [css, react]
 
 上面的这种写法在传统的 web 开发中真是不敢想象，然而在 react 中的确实现了。如果你使用 `create-react-app` 这样的脚手架工具，你可以快速的搭建起来这样的体系。然而，即便是这样子，web 组件化依然有一个点没有解决：如何将样式和组件绑定在一起。当然，试图解决这个问题的工具有很多，也有很多人不认为这是一个问题。我在这里试图解释一些观点，并阐述为什么我觉得用 `styled-components` 可以在一定程度上解决一系列问题。
 
-## 包含 css 书写的最佳方式
+## 写 css 的最佳方式
 
 目前，react 阵营对写 css 这个问题有两个阵营。一个阵营表示 css 应当和 js 写在一起，而另一个阵营则认为 css 原本是可以和 js 分离的。我们在这里做一个简单的例子。
 
@@ -48,7 +48,7 @@ const StyledDiv = (props) => {
 
 ```
 
-```
+```javascript
 import "./StyledDiv.css";
 
 const StyledDiv = (props) => {
