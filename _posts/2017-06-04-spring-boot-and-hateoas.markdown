@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "在 Spring Book 中使用 HATEOAS"
+title:      "在 Spring Boot 中使用 HATEOAS"
 date:       2017-06-04 10:00:00 +08:00
 author:     "Eisen"
 tags:       [java, spring-boot, spring-mvc, hateoas]
