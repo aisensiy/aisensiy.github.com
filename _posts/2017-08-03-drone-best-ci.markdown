@@ -225,11 +225,11 @@ pipeline:
 
 ## 相关资料
 
-* [drone.io](http://drone.io)
-* [drone installation](http://docs.drone.io/installation/)
+* [drone 官网](http://drone.io)
+* [drone 安装指南](http://docs.drone.io/installation/)
 * [create-react-app](https://github.com/facebookincubator/create-react-app)
 * [drone basic usage](http://docs.drone.io/getting-started/)
-* [drone docker plugin](http://plugins.drone.io/)
-* [drone cache plugin](http://plugins.drone.io/drillster/drone-volume-cache/)
-* [drone deployments](http://docs.drone.io/deployments/)
+* [drone docker 插件](http://plugins.drone.io/)
+* [drone cache 插件](http://plugins.drone.io/drillster/drone-volume-cache/)
+* [drone 部署](http://docs.drone.io/deployments/)
 * [缓存](http://plugins.drone.io/drillster/drone-volume-cache/)
