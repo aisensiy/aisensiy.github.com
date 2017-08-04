@@ -10,7 +10,7 @@ tags:       [docker, ci/cd]
 
 ## 本地安装
 
-![](https://github.com/drone/brand/blob/master/screenshots/screenshot_build_success.png)
+![](https://github.com/drone/brand/raw/master/screenshots/screenshot_build_success.png)
 
 可以看到 drone 的界面非常的简洁，和其他 ci 一样它通过和 github gitlab 或者是 gogs 这样的 git repository 链接并绑定 web hook 在用户提交新的 commit 的时候出发 ci 的执行。drone 作为一个开源的 ci 其支持 docker 方式的安装，非常的简单：
 
