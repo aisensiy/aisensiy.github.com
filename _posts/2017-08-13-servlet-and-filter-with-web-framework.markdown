@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "有关 servlet 和 filter 的基础支持"
+title:      "有关 servlet 和 filter 的基础知识"
 date:       2017-08-04 19:03:00 +08:00
 author:     "Eisen"
 tags:       [java, servlet, filter, spring]
