@@ -102,7 +102,7 @@ public ArticleDataList findRecentArticles(String tag, String author, String favo
 
 在 DDD 中 Repository 主要负责数据的持久化：它的任务非常的简单：要么是将内存中的 aggregate 储到数据库中，要么是从数据库中将指定 id 的实体从数据库中重新在内存中构建起来。它实际上是不负责那种复杂的查询业务的，比如获取被喜爱最多的 50 篇文章。更多的内容可以看[这篇文章]({% post_url 2016-04-20-some-tips-for-ddd %})。
 
-CQRS 全称 Command Query Responsibility Segregation，强调一个系统的读模型和写模型是分离的。其中 DDD 所实现的是读模型，保证了业务的实现以及数据的一致性。而读模型则纯粹是利用底层数据库的优势将用户需要的数据拼装起来，完全不涉及到实体。这样的好处在于我们可以完全实现界面所需要的数据模型和真正的业务模型的独立演进：对于查询业务，我们在 `application/data` 下提供了单独的 `Data Transfer Object`。
+CQRS 全称 Command Query Responsibility Segregation，强调一个系统的读模型和写模型是分离的。其中 DDD 所实现的是读模型，保证了业务的实现以及数据的一致性。而读模型则纯粹是利用底层数据库的优势将用户需要的数据拼装起来，完全不涉及到实体。**这样的好处在于我们可以完全实现界面所需要的数据模型和真正的业务模型的独立演进，不会因为一个界面上数据展示的变化而导致本身的业务模型出现变更**。当然，这里所谓的界面就是我们的 json API 规格。对于查询业务，我们在 `application/data` 下提供了单独的 `Data Transfer Object`。
 
 ```java
 @Data
