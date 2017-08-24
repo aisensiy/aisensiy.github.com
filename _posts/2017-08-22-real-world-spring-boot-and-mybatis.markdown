@@ -14,9 +14,8 @@ tags:       [java, spring, mybatis, realworld]
 
 本篇对项目做一个整体的介绍，后续会有一些细节的介绍。文章中会涉及到很多 DDD 相关的概念，想要更多的了解建议看看最下面相关材料中的链接。
 
-## 整体介绍
 
-### 项目功能
+## 项目功能
 
 [conduit](https://demo.realworld.io/#/) 是 realworld 要实现的一个博客系统。具备一下的功能：
 
@@ -29,7 +28,7 @@ tags:       [java, spring, mybatis, realworld]
 
 这是一个前后端分离的项目，其提供了后端 api 的[规范](https://github.com/gothinkster/realworld/tree/master/api)。这里，我们不评论其 API 设计的好坏，要完全遵循其设计并实现它。当然，对于不同的语言和框架实现都有其 API 设计的偏好，既然这里定死了一种规范，那么在实现的过程中难免会有一些 tricky 的地方需要我们去克服。
 
-### 目录结构
+## 目录结构
 
 如标题所述，这里我提供了一个 spring boot + spring mvc + mybatis 的实现。其大概的结构如下:
 
@@ -50,7 +49,7 @@ tags:       [java, spring, mybatis, realworld]
 4. `core` 中定义的大量接口在 `infrastructure` 包含了其具体的实现，比如 data mapper 的实现，具体的密码加密的实现等
 5. 其他则是一些整体的配置类，如主类 `RealworldApplication` 数据库配置类 `MyBatisConfig` 等
 
-### 六边形架构
+## 六边形架构
 
 [六边形架构](http://alistair.cockburn.us/Hexagonal+architecture) 其实不是一个什么新的架构体系，它只是强调说系统不应该强调前端和后端，因为这样会给人造成后端数据库可以和业务逻辑揉在一起的感觉（事实上很多项目也确实这样，大量的存储过程中包含着业务的炉逻辑，业务和数据库紧密的结合在了一起）；而更应该强调内部和外部：内部是我的业务逻辑，而外部与外界沟通的基础设施，比如具体的数据库存储，比如 restful 的 api，再比如 html 的视图。
 
