@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Spring Boot ConfigurationProperties 与 Value"
+title:      "Spring Boot @ConfigurationProperties 与 @Value"
 date:       2017-08-31 14:27:00 +08:00
 author:     "Eisen"
 tags:       [java, spring, spring-boot, configuration]
