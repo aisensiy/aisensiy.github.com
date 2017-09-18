@@ -321,7 +321,7 @@ public class Resource<T> {
 
 	...
 
-	@JsonUnwrapped
+    @JsonUnwrapped
     public T getContent() {
         return content;
     }
