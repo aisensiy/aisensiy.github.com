@@ -109,7 +109,7 @@ public class User {
 
     spring.jackson.property-naming-strategy=CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES
 
-对于 `CamelExample` 这样的类，就会匹配如下的 json 文件：
+对于 `CamelExample` 这样的类
 
 ```java
 public class CamelExample {
@@ -124,6 +124,8 @@ public class CamelExample {
     }
 }
 ```
+
+就会匹配如下的 json 文件：
 
 ```json
 {
@@ -297,15 +299,15 @@ public class Resource<T> {
 
 ```json
 {
-	"content": {
-    	"property1": "xxx",
-        "property2": "xxx",
-        ...
-    },
-    "links": {
-    	"self": "xxx",
-        ...
-    }
+  "content": {
+    "property1": "xxx",
+    "property2": "xxx",
+    ...
+  },
+  "links": {
+    "self": "xxx",
+    ...
+  }
 }
 ```
 
