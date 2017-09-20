@@ -10,9 +10,10 @@ tags:       [java, spring-boot, spring-mvc, web, test, mybatis]
 
 在 Martin Fowler 的[企业应用架构模式](https://book.douban.com/subject/4826290/)中介绍了四种关系数据库处理的模式。对于比较复杂的应用，比较常见的就是 *active record* 模式和 *data mapper* 模式。*active record* 正如 `rails` 的 `activerecord` 将面向业务的领域模型与数据实现绑定起来，Hibernate 和 JPA 就是采用的这种模式，通过标注可以将一个领域对象映射到数据库表中。而 *data mapper* 则强调领域模型和关系型数据库（当然，实际上也可以处理 noSQL 的）的数据结构是有差异的，需要一个 mapping 处理两者的差异，不能将两个东西融合成一个，这就是 MyBatis 所提供的能力。虽然如今的 Spring Data 已经非常的强大了，通过简单的接口声明就能够创建一个可以完成 `CRUD` 的 `Repository`，通过在对象之间建立关联关系就能处理更复杂的联表查询。但是这样子依然不能解决一系列的问题：
 
-1. 数据模型与领域模型的绑定：我还是需要把一个领域对象通过注解直接映射到数据对象，但是有的时候我的领域对象是一个聚合根（Aggregate Root），它包含一系列实体（Entity）和值对象（Value Object），这简单的注解做不到呀
-2. 无法实现读写分离，正如我在 [some tips for ddd]({% post_url 2016-04-20-some-tips-for-ddd %}) 中所说的，DDD 关注的是一个写模型。然而 JPA 实际上并没有考虑到这一点，大量的关联关系就是一个其把读写放在一起的佐证。
-3. 和 rails 的 `activerecord` 相比，它还是不够好用...说的挺让人伤心的，但是的确如此，努力了这么多年，就是做了一个 `activerecord` 的弱化版。那些快速的、用于忽悠的 `CRUD` 能和 rails 的脚手架比么...而且之前也提过，这种玩具代码毫无意义，我们需要的是可以处理复杂应用的情况，不然为啥不用 rails？
+1. 数据模型与领域模型的绑定：我还是需要把一个领域对象通过注解直接映射到数据对象，但是有的时候我的领域对象是一个聚合根（Aggregate Root），它包含一系列实体（Entity）和值对象（Value Object），这简单的注解做不到呀，我还是需要耗费很多的力气去做 `convertor`，那么使用 JPA 的优势就不再明显了。
+2. 实现读写分离难度大，正如我在 [some tips for ddd]({% post_url 2016-04-20-some-tips-for-ddd %}) 中所说的，**DDD 关注的是一个写模型，关注领域的构建以及模型内数据的一致性**。然而 JPA 实际上并没有考虑到这一点，它默认的实现是希望有一个统一的模型，不考虑读写模型的区别，而在这个基础上对其做读写的分离其难度是大于灵活性更强的 MyBatis 的。
+3. 通常在采用 rest api 进行数据展示的 GET 方法中所提供的数据是读模型中的数据，会使用大量的多表 join 以及参数的直接或间接映射，其实采用 jpa 的注解进行包裹反而显得不方便了。我不认为 spring data 提供的那种查询可以很好的处理，至少在我参与的稍微复杂的项目中，内嵌在 JpaRepository 中的 `@Query` 注解和 `sql` 语句随处可见。
+4. 和 rails 的 `activerecord` 相比，它还是不够好用...说的挺让人伤心的，但是的确如此，努力了这么多年，就是做了一个 `activerecord` 的弱化版。那些快速的、用于忽悠的 `CRUD` 样例到目前为止，能和 rails 的脚手架比么...而且之前也提过，这种玩具代码毫无意义，我们需要的是可以处理复杂应用的情况，不然为啥不用 rails？
 
 另外，不论是 DDD 的书籍，还是 [Applying UML and Patterns](https://book.douban.com/subject/1440149/) 或者是 Spring 的开山鼻祖 Rod Johnson 的 [expert one-on-one J2EE Development without EJB](https://book.douban.com/subject/1436131/) 都在强调能够很好的实施面向对象的体系才是好的体系。MyBatis 做为一个 Data Mapper 的实现模式，完全的独立与业务对象，加上它 `type handler` `discriminator` 的这些机制，可以很好的支持灵活的数据转换方式以及对象的多态机制。绝对是复杂业务系统的不二之选。
 
