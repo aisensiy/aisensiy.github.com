@@ -8,6 +8,8 @@ tags:       [java, spring, spring-boot, feign, hystrix]
 
 不论是否采用微服务的架构，我们都有将自己的服务与其他的服务集成的需求。比如我这里有一个需求就是在系统中创建一个项目的时候通过其所提供的 GitHub 项目的地址获取其默认的 `README.md` 文件内容作为项目的描述。再比如现在很多的项目都将其**用户管理系统**作为一个独立的系统，当我自己的系统需要用户认证的时候需要从**用户系统**特定的接口获取用户信息。这篇文章就介绍如何使用 Feign，Hystrix 这些 spring cloud 所使用的依赖与其他服务做集成，当然，为了更好的保证服务的可靠性，我这里还展示了通过 wiremock 建立了一系列测试保证我们可以覆盖各种特殊的情况。
 
+项目代码在 [GitHub](https://github.com/aisensiy/demo-for-feign-and-hystrix)。
+
 # 声明式 http 客户端 Feign
 
 Feign 是一个声明式的 Http 客户端。其优势自然是它的"声明式"：可以更清晰更简单的对其他服务进行请求。虽然目前 Feign 类库已经放在了 OpenFeign 这个 Github 账号之下，但是鉴于更多的人是将其作为 spring cloud 的一环一起使用的，所以这里我所使用的代码也都是引入的 spring cloud 的 `org.springframework.cloud:spring-cloud-starter-feign` 而不是其 `io.github.openfeign:feign-core` 的独立依赖。
