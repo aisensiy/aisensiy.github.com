@@ -24,7 +24,9 @@ tags:       [java, spring, mybatis, realworld]
 3. 用户可以对文章添加评论、点赞
 4. 用户可以关注别的用户，关注的用户的文章会展示在用户的 feed 中
 
-![](/img/in-post/realworld-get-started/conduit.png)
+
+![](http://o8p12ybem.bkt.clouddn.com/15090236378256.jpg?imageView2/2/w/1200/q/75%7Cimageslim)
+
 
 这是一个前后端分离的项目，其提供了后端 api 的[规范](https://github.com/gothinkster/realworld/tree/master/api)。这里，我们不评论其 API 设计的好坏，要完全遵循其设计并实现它。当然，对于不同的语言和框架实现都有其 API 设计的偏好，既然这里定死了一种规范，那么在实现的过程中难免会有一些 tricky 的地方需要我们去克服。
 
@@ -53,7 +55,7 @@ tags:       [java, spring, mybatis, realworld]
 
 [六边形架构](http://alistair.cockburn.us/Hexagonal+architecture) 其实不是一个什么新的架构体系，它只是强调说系统不应该强调前端和后端，因为这样会给人造成后端数据库可以和业务逻辑揉在一起的感觉（事实上很多项目也确实这样，大量的存储过程中包含着业务的炉逻辑，业务和数据库紧密的结合在了一起）；而更应该强调内部和外部：内部是我的业务逻辑，而外部与外界沟通的基础设施，比如具体的数据库存储，比如 restful 的 api，再比如 html 的视图。
 
-![](/img/in-post/realworld-get-started/hexagonal.png)
+![](http://o8p12ybem.bkt.clouddn.com/15090236589859.jpg?imageView2/2/w/1200/q/75%7Cimageslim)
 
 通过这样的思考方式，我们可以认为 mysql 数据库实现仅仅是众多数据库实现中的一个而已，我们可以在不同的环境中轻易的替换掉它，尤其是为对业务的测试提供了可能：我们可以采用内存数据库或者 mock 轻松的实现业务测试。
 
@@ -63,7 +65,8 @@ tags:       [java, spring, mybatis, realworld]
 
 ```java
 @RequestMapping(path = "/users", method = POST)
-public ResponseEntity createUser(@Valid @RequestBody RegisterParam registerParam, BindingResult bindingResult) {
+public ResponseEntity createUser(@Valid @RequestBody RegisterParam registerParam,
+                                 BindingResult bindingResult) {
     checkInput(registerParam, bindingResult);
 
     User user = new User(
@@ -74,15 +77,24 @@ public ResponseEntity createUser(@Valid @RequestBody RegisterParam registerParam
         defaultImage);
     userRepository.save(user);
     UserData userData = userQueryService.findById(user.getId()).get();
-    return ResponseEntity.status(201).body(userResponse(new UserWithToken(userData, jwtService.toToken(user))));
+    return ResponseEntity.status(201).body(
+                userResponse(new UserWithToken(userData,
+                                               jwtService.toToken(user))));
 }
 ```
 
 在 application 层创建一个 `findRecentArticles` 的服务，用于处理相对比较复杂的查询：
 
 ```java
-public ArticleDataList findRecentArticles(String tag, String author, String favoritedBy, Page page, User currentUser) {
-    List<String> articleIds = articleReadService.queryArticles(tag, author, favoritedBy, page);
+public ArticleDataList findRecentArticles(String tag, 
+                                          String author, 
+                                          String favoritedBy, 
+                                          Page page, 
+                                          User currentUser) {
+    List<String> articleIds = articleReadService.queryArticles(tag, 
+                                                               author, 
+                                                               favoritedBy, 
+                                                               page);
     int articleCount = articleReadService.countArticle(tag, author, favoritedBy);
     if (articleIds.size() == 0) {
         return new ArticleDataList(new ArrayList<>(), articleCount);
@@ -154,3 +166,5 @@ public class Article {
 2. [CQRS](https://martinfowler.com/bliki/CQRS.html)
 3. [DDD Repository](https://aisensiy.github.io/2016/05/17/ddd-repository/)
 4. [Some tips about DDD](https://aisensiy.github.io/2016/04/20/some-tips-for-ddd/)
+
+

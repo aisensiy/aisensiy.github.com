@@ -17,7 +17,7 @@ tags:
 
 不多说，这个bookmarklet([](http://en.wikipedia.org/wiki/Bookmarklet))就是用来抽取当前页面上指定大小的图片的工具。点击这个bookmarklet之后，就可以生成一个只有图片的页面，如下图所示。
 
-![](/img/in-post/picture-bookmarklet/picture-bookmarklet.png)
+![](http://o8p12ybem.bkt.clouddn.com/15090265324436.jpg?imageView2/2/w/1200/q/75%7Cimageslim)
 
 
 那么如果我ctrl+s保存[网页，全部]，当前页面的图片就会随着页面保存到本地了。
@@ -83,3 +83,5 @@ void (function() {
 		document.write(container);
 })();
 ```
+
+

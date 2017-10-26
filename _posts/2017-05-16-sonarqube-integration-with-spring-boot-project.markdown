@@ -10,7 +10,7 @@ tags:       [java, spring-boot, spring-mvc, sonarQube, ci/cd]
 
 sonarQube 自己说自己用于做 continuous code quality， 从它所生成的默认的报告来看，主要包含了如下几个部分：
 
-![](/img/in-post/sonarqube/single-project-view.png)
+![](http://o8p12ybem.bkt.clouddn.com/15090218556057.jpg?imageView2/2/w/1200/q/75%7Cimageslim)
 
 不过打开一看会发现其实 `Bugs & Vulnerabilities` 和 `Code Smells` 基本上就是 lint 所做的事情，比如代码风格不符合 java 的规约呀，在使用 `Optional` 之前判断其是否 `isPresent` 呀等等，不过人家本来就是做静态检查的也无可厚非。
 
@@ -52,7 +52,8 @@ plugins {
 
 不过这个时候你会发现并没有测试覆盖率的数据。
 
-![](/img/in-post/sonarqube/first-project-view.png)
+![](http://o8p12ybem.bkt.clouddn.com/15090218765170.jpg?imageView2/2/w/1200/q/75%7Cimageslim)
+
 
 这是因为 sonarqube 自己不做测试覆盖的处理，它依赖于其他的测试覆盖工具。比如这里我们使用 [jacoco](http://www.eclemma.org/jacoco/)。
 
@@ -64,7 +65,8 @@ apply plugin 'jacoco'
 
 然后 `./gradlew clean test jacoco sonar` 再去 http://localhost:9000 查看就有相应的数据了。
 
-![](/img/in-post/sonarqube/second-project-view.png)
+![](http://o8p12ybem.bkt.clouddn.com/15090219075726.jpg?imageView2/2/w/1200/q/75%7Cimageslim)
+
 
 ### 和 ci 集成
 
@@ -75,3 +77,4 @@ apply plugin 'jacoco'
     ./gradlew sonar -Dsonar.host.url=http://sonar.mycompany.com -Dsonar.verbose=true
 
 最后附上测试[项目地址](https://github.com/aisensiy/springboot-get-started)。
+
