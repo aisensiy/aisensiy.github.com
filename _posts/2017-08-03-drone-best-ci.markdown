@@ -10,7 +10,7 @@ tags:       [docker, ci/cd]
 
 ## 本地安装
 
-![](https://github.com/drone/brand/raw/master/screenshots/screenshot_build_success.png)
+![](http://o8p12ybem.bkt.clouddn.com/15096926244457.jpg?imageView2/2/w/1200/q/75%7Cimageslim)
 
 可以看到 drone 的界面非常的简洁，和其他 ci 一样它通过和 github gitlab 或者是 gogs 这样的 git repository 链接并绑定 web hook 在用户提交新的 commit 的时候出发 ci 的执行。drone 作为一个开源的 ci 其支持 docker 方式的安装，非常的简单：
 
@@ -233,3 +233,5 @@ pipeline:
 * [drone cache 插件](http://plugins.drone.io/drillster/drone-volume-cache/)
 * [drone 部署](http://docs.drone.io/deployments/)
 * [缓存](http://plugins.drone.io/drillster/drone-volume-cache/)
+
+

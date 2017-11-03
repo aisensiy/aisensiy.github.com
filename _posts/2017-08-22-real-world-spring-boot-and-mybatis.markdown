@@ -106,8 +106,6 @@ public ArticleDataList findRecentArticles(String tag,
 }
 ```
 
-
-
 **注意** 这里之所以没有为创建数据的用例在 application 中创建 service 纯粹是因为它们比较简单，在面向复杂的场景时是可以提供的。
 
 ## CQRS
