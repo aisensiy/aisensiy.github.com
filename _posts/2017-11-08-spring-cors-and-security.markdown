@@ -90,3 +90,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 这里提供一个处理 CORS 的 [GitHub 项目](https://github.com/gothinkster/spring-boot-realworld-example-app)，这也是我发现这个问题的出处。
 
+## Expose Header vs Allow Header
+
+很多 POST 请求会返回 status code 201，并且包含一个 Response Header `Location` 指向新创建的资源的地址。在 CORS 请求时，如果没有设置 Access-Control-Expose-Headers 会导致 Ajax 请求无法获取 `Location` 这样的 Response Header，详细信息可以在 [developer.mozilla.org](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS#Access-Control-Expose-Headers) 看到：
+
+> 在跨域访问时，XMLHttpRequest对象的getResponseHeader()方法只能拿到一些最基本的响应头，Cache-Control、Content-Language、Content-Type、Expires、Last-Modified、Pragma，如果要访问其他头，则需要服务器设置本响应头。Access-Control-Expose-Headers 头让服务器把允许浏览器访问的头放入白名单。
+
+因此，为了使得 `Location` 字段可以被访问，需要进行额外的设置：
+
+```java
+@Bean
+CorsConfigurationSource corsConfigurationSource() {
+	CorsConfiguration configuration = new CorsConfiguration();
+	configuration.setAllowedOrigins(Arrays.asList("https://example.com"));
+	configuration.setAllowedMethods(Arrays.asList("GET","POST"));
+	configuration.addExposedHeader("Location"); // 暴露 Location header
+	UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+	source.registerCorsConfiguration("/**", configuration);
+	return source;
+}
+```
+
