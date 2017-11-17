@@ -6,14 +6,11 @@ author:     "Eisen"
 tags:       [java, spring, mybatis, realworld]
 ---
 
-[Real World](https://github.com/gothinkster/realworld) 是由 [thinkster](https://thinkster.io/) 这样一个在线编程教育机构发起的一个前后端分离的项目规范。用以展示并作为教材教大家用 react、angular 等不同的前端框架或者 rails、django、spring boot 等不同的后端框架实现同一个项目时的实践是什么样子的。这个主意非常的好，它让大家对技术的讨论有了一个共同的主题，在采用不同的技术栈以及设计思路解决这个共同的问题的时候我们可以更确切的看到不同的方案之间的优劣，从而更切实的（而不是零散的代码和想象）了解不同框架、语言、设计思路在实现一个项目时的差异，从而帮助我们更好的选择项目的解决方案。
+[Real World](https://github.com/gothinkster/realworld) 是由 [thinkster](https://thinkster.io/) 这样一个在线编程教育机构发起的一个前后端分离的项目规范。用以展示并作为教材教大家用 react、angular 等不同的前端框架或者 rails、django、spring boot 等不同的后端框架实现同一个项目时的实践是什么样子的。我觉得这个主意非常的好，它让大家对技术的讨论有了一个共同的主题，在采用不同的技术栈以及设计思路解决这个共同的问题的时候我们可以更确切的看到不同的方案之间的优劣，从而更切实的（而不是零散的代码和想象）了解不同框架、语言、设计思路在实现一个项目时的差异，从而帮助我们更好的选择项目的解决方案。当然，从单个技术栈来看，它提供了一个做出完整项目需要都需要哪些具体的知识点，可以当做某一个技术栈的入门小项目来学习和借鉴。
 
 虽然这个项目叫做 real world，相比 todomvc 这样的 hello world 确实复杂了不少，但是很显然它的复杂度还仅仅是一个人几个小时就能完成的水平，当然不能全面的反映出一个框架的水平，仅做参考。
 
-这里我想出一个系列的文章，首先介绍我自己 spring boot + spring mvc + mybatis 的后端实现方案，然后再将其和其他的框架做一个对比，看看不同的方案之间的优势和短板。
-
-本篇对项目做一个整体的介绍，后续会有一些细节的介绍。文章中会涉及到很多 DDD 相关的概念，想要更多的了解建议看看最下面相关材料中的链接。
-
+本篇对项目做一个整体的介绍，后续会有一些细节的介绍。文章中会涉及到一些 DDD（领域驱动设计） 相关的概念，想要更多的了解建议看看最下面相关材料中的链接。
 
 ## 项目功能
 
@@ -24,9 +21,7 @@ tags:       [java, spring, mybatis, realworld]
 3. 用户可以对文章添加评论、点赞
 4. 用户可以关注别的用户，关注的用户的文章会展示在用户的 feed 中
 
-
 ![](http://o8p12ybem.bkt.clouddn.com/15090236378256.jpg?imageView2/2/w/1200/q/75%7Cimageslim)
-
 
 这是一个前后端分离的项目，其提供了后端 api 的[规范](https://github.com/gothinkster/realworld/tree/master/api)。这里，我们不评论其 API 设计的好坏，要完全遵循其设计并实现它。当然，对于不同的语言和框架实现都有其 API 设计的偏好，既然这里定死了一种规范，那么在实现的过程中难免会有一些 tricky 的地方需要我们去克服。
 
@@ -53,7 +48,7 @@ tags:       [java, spring, mybatis, realworld]
 
 ## 六边形架构
 
-[六边形架构](http://alistair.cockburn.us/Hexagonal+architecture) 其实不是一个什么新的架构体系，它只是强调说系统不应该强调前端和后端，因为这样会给人造成后端数据库可以和业务逻辑揉在一起的感觉（事实上很多项目也确实这样，大量的存储过程中包含着业务的炉逻辑，业务和数据库紧密的结合在了一起）；而更应该强调内部和外部：内部是我的业务逻辑，而外部与外界沟通的基础设施，比如具体的数据库存储，比如 restful 的 api，再比如 html 的视图。
+[六边形架构](http://alistair.cockburn.us/Hexagonal+architecture) 或者说是 [洋葱架构](https://www.infoq.com/news/2014/10/ddd-onion-architecture) 其实不是一个什么新东西，因为**分层架构**会导致其最底层的实现是数据库，而之前很多的业务逻辑和数据库是揉在一起的（事实上很多项目也确实这样，大量的存储过程中包含着业务的逻辑，业务和数据库紧密的结合在了一起）；但实际上，一个应用最核心的东西应该是**业务逻辑**，而业务逻辑是不应该和技术细节有强关联的，数据库实现和视图层一样，是某种技术细节，不应该和将其与业务逻辑绑定，所以应该用应该强调内部和外部：内部是我的业务逻辑，而外部与外界沟通的基础设施和技术细节，比如具体的数据库存储，比如 restful 的 api，再比如 html 的视图。
 
 ![](http://o8p12ybem.bkt.clouddn.com/15090236589859.jpg?imageView2/2/w/1200/q/75%7Cimageslim)
 
@@ -157,6 +152,8 @@ public class Article {
 ```
 
 很显然，这里 Article 中并不包含 Author 的概念，因为它们并不属于一个聚合，Article 只能保存另外一个聚合的 Id (userId)。
+
+具体的代码见 [GitHub](https://github.com/gothinkster/spring-boot-realworld-example-app) 欢迎 star、fork、报 bug、提供 PR。
 
 ## 相关资料
 
