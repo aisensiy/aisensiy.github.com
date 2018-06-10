@@ -1,4 +1,11 @@
-# 用 kubeadm 部署 aws 环境下的 kubernetes
+---
+layout:     post
+title:      "用 kubeadm 部署 aws 环境下的 kubernetes"
+date:       2018-04-24 22:48:22 +08:00
+author:     "Eisen"
+tags:       [docker, devops, kubernetes]
+---
+
 
 最近一个多月开始折腾在 **国内** 环境部署 kubernetes 集群。是的，确实这还是一个工作内容，和直接在什么 aws googlecloud 或者是 rancher 2.0 直接点点就能创建有一个集群不一样。之所以还要付诸这样的精力去做这件事有两个原因：
 

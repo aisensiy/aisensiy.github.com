@@ -1,4 +1,11 @@
-# 国内环境下更好的 docker 镜像获取
+---
+layout:     post
+title:      "国内环境下更好的 docker 镜像获取"
+date:       2018-06-10 23:48:22 +08:00
+author:     "Eisen"
+tags:       [docker, devops]
+---
+
 
 最近欠了好多的 blog，是在是有点忙，周末也被各种事情缠身。今天趁周日的最后半个小时抓紧记录下来一些调研的成果。
 

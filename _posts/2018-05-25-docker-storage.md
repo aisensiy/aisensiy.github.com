@@ -1,4 +1,11 @@
-# docker 存储
+---
+layout:     post
+title:      "docker 存储"
+date:       2018-05-25 11:48:22 +08:00
+author:     "Eisen"
+tags:       [docker, devops]
+---
+
 
 由于自己接触 docker 的时候和现在的 docker 不少的 api 已经有所变化，还是需要更新一下自己的知识。这篇文章大部分源自 docker 的官方文档，然后还有部分自己添油加醋。
 
