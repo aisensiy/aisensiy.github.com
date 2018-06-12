@@ -29,7 +29,7 @@ aws 环境下的 k8s 是指 k8s 集成了部分 aws 的服务方便集群的使�
 
 k8s 现在已经相当庞大，大的跟个操作系统似的。但是很遗憾其文档的成熟度还处于初级阶段，我甚至找不到 `cloud-provider` 配置的一些细节，唯一可靠的文档似乎就是代码，但是一不小心打开一个三四千行的 golang 文件我也是一脸迷茫...最后在一个诡异的 github issue 里面找到了一个 googledoc 解释了 `cloud-provider=aws` 的一些细节。
 
-### 1. 为 EC2 添加 IAM 权限
+### 为 EC2 添加 IAM 权限
 
 为了让 k8s 可以操纵 aws 的资源需要为 ec2 添加权限：
 
@@ -84,11 +84,11 @@ k8s 现在已经相当庞大，大的跟个操作系统似的。但是很遗憾�
 }
 ```
 
-### 2. 为 ec2 机器添加标签
+### 为 ec2 机器添加标签
 
 为了识别具体哪些 ec2 是集群的一部分需要为每个 ec2 添加一个 `KubernetesCluster` 的 tag。
 
-### 3. 更新 kubelet config
+### 更新 kubelet config
 
 为了支持 cloud-provider 首先需要在 kubelet 的配置里做相应修改，为 `/etc/systemd/system/kubelet.service.d/10-kubeadm.conf` 添加 `KUBELET_EXTRA_ARGS`:
 
@@ -97,7 +97,7 @@ k8s 现在已经相当庞大，大的跟个操作系统似的。但是很遗憾�
 Environment="KUBELET_EXTRA_ARGS=--cloud-provider=aws
 ```
 
-### 4. 更新 kubeadm 配置
+### 更新 kubeadm 配置
 
 ```yaml
 apiVersion: kubeadm.k8s.io/v1alpha1
@@ -110,7 +110,7 @@ apiServerCertSANs:
 - <public-hostname>
 ```
 
-### 5. 更新 hostname
+### 更新 hostname
 
 首先先要说明一下，aws 的机器默认的 hostname 是和其 internal dns hostname 不同。默认的是这个样子：
 
