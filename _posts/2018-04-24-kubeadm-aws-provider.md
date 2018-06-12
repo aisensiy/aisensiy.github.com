@@ -94,10 +94,8 @@ k8s 现在已经相当庞大，大的跟个操作系统似的。但是很遗憾�
 
 ```
 [Service]
-Environment="KUBELET_EXTRA_ARGS=--cloud-provider=aws --hostname-override=<internal-host-name>
+Environment="KUBELET_EXTRA_ARGS=--cloud-provider=aws
 ```
-
-其中 `<internal-host-name>` 是通过 `curl http://169.254.169.254/latest/meta-data/local-hostname` 获取的名字。
 
 ### 4. 更新 kubeadm 配置
 
@@ -105,7 +103,6 @@ Environment="KUBELET_EXTRA_ARGS=--cloud-provider=aws --hostname-override=<intern
 apiVersion: kubeadm.k8s.io/v1alpha1
 kind: MasterConfiguration
 cloudProvider: aws
-hostName: <internal-host-name>
 api:
   advertiseAddress: <internal-ip-address>
 apiServerCertSANs:
@@ -113,11 +110,32 @@ apiServerCertSANs:
 - <public-hostname>
 ```
 
+### 5. 更新 hostname
+
+首先先要说明一下，aws 的机器默认的 hostname 是和其 internal dns hostname 不同。默认的是这个样子：
+
+    ip-xx-xx-xx-xx
+
+而 internal hostname 则是 
+
+    ip-xx-xx-xx-xx.<region>.compute.internal
+    
+之类的东西。而 aws kubernetes 需要通过这个 internal dns hostname 去定位 node 所以需要将 hostname 更改成这个。
+
+先前可以通过 `--hostname-override`` 参数覆盖默认的 aws hostname，但是最近似乎不行了，不如直接修改 hostname 一劳永逸。
+
+```
+curl http://169.254.169.254/latest/meta-data/local-hostname > /etc/hostname
+```
+
+然后重启机器使得更新起效。
+
 ## 相关资料
 
 1. [aws cloud provider](https://docs.google.com/document/d/17d4qinC_HnIwrK0GHnRlD1FKkTNdN__VO4TH9-EzbIY/edit#)
 2. [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/)
 3. [kubeadm init](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-init/)
+4. [Kubernetes on AWS](https://medium.com/jane-ai-engineering-blog/kubernetes-on-aws-6281e3a830fe)
 
 
 
