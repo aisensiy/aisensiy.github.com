@@ -110,6 +110,11 @@ apiServerCertSANs:
 - <public-hostname>
 ```
 
+在用 kubeadm 创建集群时采用命令即可
+
+    kubeadm init --config=init-config.yaml
+
+
 ### 更新 hostname
 
 首先先要说明一下，aws 的机器默认的 hostname 是和其 internal dns hostname 不同。默认的是这个样子：
@@ -129,6 +134,21 @@ curl http://169.254.169.254/latest/meta-data/local-hostname > /etc/hostname
 ```
 
 然后重启机器使得更新起效。
+
+## 注意
+
+如果一开始配置坏了需要重新配置那一定要 kubeadm reset 哦：
+
+```
+kubeadm reset
+ifconfig cni0 down
+ip link delete cni0
+ifconfig flannel.1 down
+ip link delete flannel.1
+rm -rf /var/lib/cni/
+```
+
+因为我自己安装的 flannel 其他的要看情况修改哦。
 
 ## 相关资料
 
