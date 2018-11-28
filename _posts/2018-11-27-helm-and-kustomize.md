@@ -39,7 +39,7 @@ tags:       [docker, devops, kubernetes]
 
 在这个时候我想起来了在之前 github trending 看到的另外一个用户做 kubernetes 配置的工具 kustomize。简单的说，它就是一个简化 kubernetes yaml 编写的工具。它提供了两个重要的功能恰好满足了我的需求。
 
-### 1. 继承和 patch
+### 继承和 patch
 
 kustomize 可以设置如下的层次：
 
@@ -80,7 +80,7 @@ resources:
 
 ![](/img/in-post/15433357106030.jpg)
 
-### 2. edit 命令
+### edit 命令
 
 kustomize 提供了一个命令行方法对镜像 tag 进行修改：
 
@@ -99,11 +99,11 @@ kustomize edit set imagetag xxx:$NEWTAG
 
 ## kustomize 额外加分项
 
-### 1. 轻量级
+### 轻量级
 
 相对 helm，kustomize 依然保留了对 `kubectl apply -f` 命令的支持，仅仅作为一个命令行工具；不像 helm 还需要在 k8s 里面部署一个 tiller 可谓是非常的轻量级了。
 
-### 2. 对 secret 和 configmap 的支持
+### 对 secret 和 configmap 的支持
 
 分别举例说明：
 
