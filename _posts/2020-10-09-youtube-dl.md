@@ -87,7 +87,7 @@ zh-Hans  vtt, ttml, srv3, srv2, srv1
 en       vtt, ttml, srv3, srv2, srv1
 ```
 
-可以看到人工提交的字幕有 `zh-Hans` 不过其提供的字幕格式（vtt, ttml, srv3, srv2, srv1）很不常见的样子。在 bilibili 是需要提交 `srt` 格式的字幕。这里 `youtube-dl` 也给考虑到了，其 `    --convert-subs` 参数支持 `srt|ass|vtt|lrc` 这些字幕格式的转换：
+可以看到人工提交的字幕有 `zh-Hans` 不过其提供的字幕格式（vtt, ttml, srv3, srv2, srv1）很不常见的样子。在 bilibili 是需要提交 `srt` 格式的字幕。这里 `youtube-dl` 也给考虑到了，其 `    --convert-subs` 参数支持 `srt ass vtt lrc` 这些字幕格式的转换：
 
 ```
 youtube-dl https://www.youtube.com/watch\?v\=_QUEXsHfsA0\&t\=4s --merge-output-format mp4 --write-sub --sub-lang zh-Hans --sub-format vtt --convert-subs srt
