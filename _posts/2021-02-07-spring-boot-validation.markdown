@@ -6,7 +6,7 @@ author:     "Eisen"
 tags:       [spring, springboot, validation, web]
 ---
 
-之前在 [当前的校验异常处理]({% post_url 2020-11-22-spring-boot-current-status%}) 提到了目前校验和异常处理的一些问题。最近找到了一些看起来更专业化的方案。这里首先对几种模式做一些罗列。文中大量的内容都是从 [naturalprogrammer](https://www.naturalprogrammer.com/) 学习到的，后文真是也会再去引用里面的内容。
+之前在 [当前的校验异常处理]({% post_url 2020-11-22-spring-boot-current-status%}) 提到了目前校验和异常处理的一些问题。最近找到了一些看起来更专业化的方案。这里首先对几种模式做一些罗列。文中大量的内容都是从 [naturalprogrammer](https://www.naturalprogrammer.com/) 学习到的，后文也会再去引用里面的内容。
 
 有关预定义的 Bean Validation 注解（`@Email`, `@NotBlank` 之类的）就不再赘述了。
 
