@@ -1,6 +1,6 @@
 name: aisensiy-blog
 static_sites:
-- build_command: bundle exec jekyll build -d ./public
+- build_command: bundle exec jekyll build -d ./_site
   environment_slug: jekyll
   github:
     branch: main
