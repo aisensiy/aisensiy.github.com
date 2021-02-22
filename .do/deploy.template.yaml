@@ -1,0 +1,9 @@
+spec:
+  name: aisensiy-blog
+  static_sites:
+  - build_command: bundle exec jekyll build -d ./public
+    environment_slug: jekyll
+    git:
+      branch: main
+      repo_clone_url: https://github.com/aisensiy/aisensiy.github.com/.git
+    name: aisensiy-blog
