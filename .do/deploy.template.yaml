@@ -5,5 +5,5 @@ spec:
     environment_slug: jekyll
     git:
       branch: main
-      repo_clone_url: https://github.com/aisensiy/aisensiy.github.com/.git
+      repo_clone_url: https://github.com/aisensiy/aisensiy.github.com.git
     name: aisensiy-blog

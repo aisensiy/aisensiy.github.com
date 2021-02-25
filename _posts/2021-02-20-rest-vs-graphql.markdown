@@ -59,7 +59,8 @@ GET /books
 
 1. 也有类似于 [jsonapi](https://jsonapi.org/) 的东西出现，但不算公认的标准，也没有形成什么很好的支持
 2. 没有大厂支持，依靠社区进展比较缓慢，OpenAPI 的众多工具都有奇奇怪怪的小问题
-3. 没有考虑 HATEOAS 的弊端，这里我直接意译 [A REST View of GraphQL](https://hasura.io/blog/rest-view-of-graphql/) 的观点，讲的太好了：
+3. 对 websocket 没有很好的支持
+4. 没有考虑 HATEOAS 的弊端，这里我直接意译 [A REST View of GraphQL](https://hasura.io/blog/rest-view-of-graphql/) 的观点，讲的太好了：
 
   > HATEOAS 在用户是最终用户的时候比较有意义，可以支持用户像是在浏览器里面做探索，每个页面有链接指引用户。即使页面发生了变化，只要链接都在就能够支持用户。
 
@@ -77,6 +78,7 @@ GET /books
    2. Apollo 这样做前后端继承框架开发的公司，在前后端都做的不错
    3. 对微服务的支持，[Apollo Federation](https://www.apollographql.com/docs/federation/federation-spec/) 
    4. [schema-registry](https://github.com/pipedrive/graphql-schema-registry) 甚至有这种 schema 变更追溯的东西，REST 这边想都不敢想
+4. 有 `subscription` 的概念，将长链接的情况也考虑在内了
 
 
 整体来说，我觉得 GraphQL 是一个工具更健全，规范更完善，生命力更持久的体系。却是克服了 rest 中的一些问题，后面会开始尝试用 GraphQL 对原有 API 做一层封装看看效果。
