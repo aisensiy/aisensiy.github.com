@@ -188,6 +188,28 @@ class Hello {
 
 ![](https://images-1300693298.cos.ap-beijing.myqcloud.com/20210208185553.png)
 
+在上面的报错信息可以看到一个细节：报错信息无法下达到具体一个字段，而是落在了 `hello.` 这个对象上。如果我们希望校验信息是落在具体的 `hello.value` 上可以有如下的修改：
+
+```java
+@Component
+class ConfirmValueValidator implements ConstraintValidator<ConfirmValue, Hello> {
+  @Override
+  public boolean isValid(Hello value, ConstraintValidatorContext context) {
+    boolean isValid = value.getConfirmValue() == value.getValue();
+    if (!isValid) {
+      context.disableDefaultConstraintViolation();
+      context
+        .buildConstraintViolationWithTemplate( "{my.custom.template}" )
+        .addPropertyNode("value").addConstraintViolation();
+    }
+    return isValid;
+  }
+}
+```
+
+`ConstraintValidatorContext` 允许我们设置具体如何覆盖默认的报错行为，以便展示我们想要的报错内容。这部分内容在 [6.2.1. Custom property paths](https://docs.jboss.org/hibernate/stable/validator/reference/en-US/html_single/#example-custom-error) 找到的。
+
+
 ### Validator 中的依赖注入
 
 最后，Validator 是可以像其他类一样做依赖注入的：
