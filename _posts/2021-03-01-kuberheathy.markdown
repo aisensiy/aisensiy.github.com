@@ -117,7 +117,7 @@ curl --location --request POST $KH_REPORTING_URL \
 
 下面是执行的样子，可以看到这个任务就像是 crd 设置的那个样子，每 6 个小时跑一次。
 
-![openbayes healthcheck 的执行记录](2021-03-01-14-07-25.png)
+![openbayes healthcheck 的执行记录](/img/in-post/kuberhealthy/2021-03-01-14-07-25.png)
 
 ## 与 prometheus / grafana 集成
 
@@ -205,7 +205,7 @@ curl --location --request POST $KH_REPORTING_URL \
 
 然后就可以在 grafana 那边去设置具体的展示了，这里我有一个比较简单的：
 
-![grafana 的示例](2021-03-01-14-13-46.png)
+![grafana 的示例](/img/in-post/kuberhealthy/2021-03-01-14-13-46.png)
 
 具体的集成文档见[K8s-KPIs-with-Kuberhealthy.md](https://github.com/Comcast/kuberhealthy/blob/master/docs/K8s-KPIs-with-Kuberhealthy.md)。
 
