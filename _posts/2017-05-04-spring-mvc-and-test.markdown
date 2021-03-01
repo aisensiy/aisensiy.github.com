@@ -3,7 +3,7 @@ layout:     post
 title:      "在 Spring Boot 1.5.3 中进行 Spring MVC 测试"
 date:       2017-05-04 14:00:00 +08:00
 author:     "Eisen"
-tags:       [java, spring-boot, spring-mvc, web, test]
+tags:       [java, springboot, spring-mvc, web, test]
 ---
 
 [上一篇文章]({% post_url 2017-05-03-spring-boot-get-started %}) 介绍了我从 Jersey 切换到 Spring Boot 的一些原因，虽然伴随着一些无奈，但是还是对 Spring Boot 充满了信心。但是在学习的过程中我也发现了一些问题。

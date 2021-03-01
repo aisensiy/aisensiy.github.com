@@ -3,7 +3,7 @@ layout:     post
 title:      "在用 Spring MVC 构建 RESTful API 时进行验证和异常处理"
 date:       2017-05-07 02:00:00 +08:00
 author:     "Eisen"
-tags:       [java, spring-boot, spring-mvc, web, validation]
+tags:       [java, springboot, spring-mvc, web, validation]
 ---
 
 这一部分介绍一下我发现的在 Spring MVC 下进行输入处理以及验证信息反馈方面的一些思路。完整的示例代码见 [GitHub](https://github.com/aisensiy/demo-for-springmvc-and-mybatis)。

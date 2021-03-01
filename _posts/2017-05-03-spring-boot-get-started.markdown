@@ -3,7 +3,7 @@ layout:     post
 title:      "Spring Boot Getting Started"
 date:       2017-05-03
 author:     "Eisen"
-tags:       [java, spring-boot, jersey, web]
+tags:       [java, springboot, jersey, web]
 ---
 
 前一阵子去了联想的项目去做性能调优，顺便也正儿八经的接触了一下 spring boot 的体系（当然也使用了很多 spring cloud 的内容，这个以后再讲）。这里简单的对比一下它和我之前主要使用的 jersey 体系，讲一下我看到的它们两者之间的差异以及 spring boot 相比 jersey 的一些优势和个别的不足。

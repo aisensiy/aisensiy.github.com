@@ -3,7 +3,7 @@ layout:     post
 title:      "Jackson 在 Spring Boot 中的使用小结 2"
 date:       2017-09-19 14:33:00 +08:00
 author:     "Eisen"
-tags:       [java, spring, spring-boot, jackson, json]
+tags:       [java, spring, springboot, jackson, json]
 ---
 
 [上一篇]({% post_url 2017-09-18-jackson-practices %})介绍了三个用于 jackson 自定义序列化的场景。这一篇继续介绍其他一些实践。同样，所有的代码都可以在[GitHub](https://github.com/aisensiy/demo-for-jackson)找到。

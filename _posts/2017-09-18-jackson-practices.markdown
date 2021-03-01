@@ -3,7 +3,7 @@ layout:     post
 title:      "Jackson 在 Spring Boot 中的使用小结 1"
 date:       2017-09-18 17:59:00 +08:00
 author:     "Eisen"
-tags:       [java, spring, spring-boot, jackson, json]
+tags:       [java, spring, springboot, jackson, json]
 ---
 
 Json 数据格式由于其和 js 的亲密性等原因，目前算是比较主流的数据传输格式。Spring Boot 也默认集成了 jackson 用于 `application/json` 格式的序列化与反序列化，在写这种 restful json api 的时候势必会需要使用其 api（尤其是它所支持的注解）对输入输出的数据进行各种各样的修改和加工。这里总结了一些常见到的场景、应对的方法并提供了一些额外的学习资料，写着写着发现内容还有点点多，先完成了序列化中的三个情况，后面的博客再补充。

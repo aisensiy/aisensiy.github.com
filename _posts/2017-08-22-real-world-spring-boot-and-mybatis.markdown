@@ -3,7 +3,7 @@ layout:     post
 title:      "Spring Boot + Spring MVC + MyBatis 版本的 Real World 实现"
 date:       2017-08-22 14:02:00 +08:00
 author:     "Eisen"
-tags:       [java, spring, mybatis, realworld]
+tags:       [java, spring, springboot, mybatis, realworld]
 ---
 
 [Real World](https://github.com/gothinkster/realworld) 是由 [thinkster](https://thinkster.io/) 这样一个在线编程教育机构发起的一个前后端分离的项目规范。用以展示并作为教材教大家用 react、angular 等不同的前端框架或者 rails、django、spring boot 等不同的后端框架实现同一个项目时的实践是什么样子的。我觉得这个主意非常的好，它让大家对技术的讨论有了一个共同的主题，在采用不同的技术栈以及设计思路解决这个共同的问题的时候我们可以更确切的看到不同的方案之间的优劣，从而更切实的（而不是零散的代码和想象）了解不同框架、语言、设计思路在实现一个项目时的差异，从而帮助我们更好的选择项目的解决方案。当然，从单个技术栈来看，它提供了一个做出完整项目需要都需要哪些具体的知识点，可以当做某一个技术栈的入门小项目来学习和借鉴。

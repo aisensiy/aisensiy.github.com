@@ -3,7 +3,7 @@ layout:     post
 title:      "将 sonarQube 和 gradle spring boot 项目集成"
 date:       2017-05-16 14:00:00 +08:00
 author:     "Eisen"
-tags:       [java, spring-boot, spring-mvc, sonarQube, ci/cd]
+tags:       [java, springboot, spring-mvc, sonarQube, ci/cd]
 ---
 
 在联想的项目接触了一下 [sonarQube](https://www.sonarqube.org/) 整体来说还是有很多可圈可点之处的，碰巧最近有一个相关产品的选择试用的调研，就尝试了一下下。

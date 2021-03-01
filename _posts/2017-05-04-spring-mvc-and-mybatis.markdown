@@ -3,7 +3,7 @@ layout:     post
 title:      "把 Spring Boot 1.5.3 与 MyBatis 集成"
 date:       2017-05-04 19:00:00 +08:00
 author:     "Eisen"
-tags:       [java, spring-boot, spring-mvc, web, test, mybatis]
+tags:       [java, springboot, spring-mvc, web, test, mybatis]
 ---
 
 # 为什么选择 MyBatis

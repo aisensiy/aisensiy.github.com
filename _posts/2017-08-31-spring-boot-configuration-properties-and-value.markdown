@@ -3,7 +3,7 @@ layout:     post
 title:      "Spring Boot @ConfigurationProperties 与 @Value"
 date:       2017-08-31 14:27:00 +08:00
 author:     "Eisen"
-tags:       [java, spring, spring-boot, configuration]
+tags:       [java, spring, springboot, configuration]
 ---
 
 `@ConfigurationProperties` 和 `@Value` 都是 Spring 提供的用于从配置文件注入配置信息的方式。很显然，`@Value` 比较适用于配置比较少的场景，而 `@ConfigurationProperties` 则更适用于有很多配置的情况。之前写项目的时候从来都没有使用过 `@ConfigurationProperties` 几乎每次都是使用 `@Value`。这次遇到了一个比较适合它的场景，在使用的时候还真遇到了一些令人讨厌的小问题，导致开发速度受到了一定的影响。这里记录下来他们之间的使用方式和可能出现的坑，加深一下印象。
