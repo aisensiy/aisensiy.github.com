@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Kuberhealth 一个还不错的健康检查 operator"
+title:      "Kuberhealthy 一个还不错的健康检查 operator"
 date:       2021-03-01 12:36:00 +08:00
 author:     "Eisen"
 tags:       [kubernetes, devops]
