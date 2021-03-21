@@ -6,7 +6,7 @@ author:     "Eisen"
 tags:       [web, graphql]
 ---
 
-GraphQL 之前已经夸了不少了，见 [REST vs GraphQL]({% post_url 2012-02-20-rest-vs-graphql %})，确实在**标准化**方面远超 REST 了，这也是我想要切换到 GraphQL 的一大原因。不过 GraphQL 甚至连分页也提了一个标准，挺有意思的，看了看他们的 [GraphQL Cursor Connections Specification](https://relay.dev/graphql/connections.htm) ，想做一些自己理解的记录。
+GraphQL 之前已经夸了不少了，见 [REST vs GraphQL]({% post_url 2021-02-20-rest-vs-graphql %})，确实在**标准化**方面远超 REST 了，这也是我想要切换到 GraphQL 的一大原因。不过 GraphQL 甚至连分页也提了一个标准，挺有意思的，看了看他们的 [GraphQL Cursor Connections Specification](https://relay.dev/graphql/connections.htm) ，想做一些自己理解的记录。
 
 这样标准化的好处就是可以让前端也有一个类似的组件去处理分页，让这部分的工作就直接通过这个公共组件给覆盖了。想象一下，如果有更多的东西可以以这种方式形成标准，那相当于不少工作也就可以复用了呢？
 
