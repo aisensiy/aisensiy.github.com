@@ -6,7 +6,7 @@ author:     "Eisen"
 tags:       [web]
 ---
 
-看了一篇博客 [A Manifesto for Preserving Content on the Web](A Manifesto for Preserving Content on the Web) 介绍了如何设计 web 可以让你的信息更好的被存储下来，感觉很受启发，在这里对这篇文章的观点做一个介绍，也回顾一下自己这么多年来遇到的类似的问题，并且结合目前的技术栈说说自己的一些想法。
+看了一篇博客 [A Manifesto for Preserving Content on the Web](https://jeffhuang.com/designed_to_last/) 介绍了如何设计 web 可以让你的信息更好的被存储下来，感觉很受启发，在这里对这篇文章的观点做一个介绍，也回顾一下自己这么多年来遇到的类似的问题，并且结合目前的技术栈说说自己的一些想法。
 
 ## 什么导致了 web 内容不能长久
 
