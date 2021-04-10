@@ -33,3 +33,5 @@ github:
 plugins: 
   - jekyll-seo-tag
   - jekyll-paginate
+
+google_analytics: UA-31932181-2
