@@ -225,4 +225,4 @@ public class JwtTokenVerifier extends OncePerRequestFilter {
 感觉最有用的就是这里的视频呢...
 
 1. [How Spring Security Authentication works - Java Brains](https://www.youtube.com/watch?v=caCJAJC41Rk)
-1. [Spring Security | FULL COURSE](https://www.youtube.com/watch?v=her_7pa0vrg)
+1. [Spring Security - FULL COURSE](https://www.youtube.com/watch?v=her_7pa0vrg)
