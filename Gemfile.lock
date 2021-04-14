@@ -75,9 +75,10 @@ GEM
 
 PLATFORMS
   x86_64-darwin-19
+  x86_64-linux
 
 DEPENDENCIES
-  jekyll (~> 4.0.0)
+  jekyll (~> 4.00)
   jekyll-feed (~> 0.12)
   jekyll-paginate
   minima (~> 2.5)
@@ -85,6 +86,9 @@ DEPENDENCIES
   tzinfo-data
   wdm (~> 0.1.1)
   webrick
+
+RUBY VERSION
+   ruby 3.0.0p0
 
 BUNDLED WITH
    2.2.3
