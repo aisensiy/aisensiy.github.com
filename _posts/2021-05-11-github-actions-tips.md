@@ -16,7 +16,7 @@ github actions 配合 github 自身的 api 可以玩出很多花样，把很多�
 
 首先，我们通常都需要在打 tag 的时候搞出来一个发布。github actions 可以在 push tag 的时候触发相应的流程，实现这个功能。
 
-![](2021-05-15-12-58-38.png)
+![](/img/in-post/github-actions-tips/2021-05-15-12-58-38.png)
 
 ```yaml
 name: Java CI
@@ -137,7 +137,7 @@ github action 确实通过和 api 的集成帮我们生了不少事情，但是�
 
 github action 这种模式其实本身是有点危险的：相当于把大量的用户代码在自己的系统里去跑，并且还有非常复杂的沟通与集成的工作。可能因为各种自身或者[用户的问题](https://www.infoq.cn/article/6bipjclk9anzvda4uecm)，服务确实有 down 过那么几次。
 
-![](2021-05-16-11-00-21.png)
+![](/img/in-post/github-actions-tips/2021-05-16-11-00-21.png)
 
 ### 不太完善的封装
 
