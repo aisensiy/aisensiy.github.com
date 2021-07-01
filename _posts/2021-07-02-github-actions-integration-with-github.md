@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Github Actions 与 Github 自身 API 做集成做周报"
+title:      "Github Actions 与 Github 自身 API 集成生成周报"
 date:       2021-07-02 00:33:00 +08:00
 author:     "Eisen"
 tags:       [github, ci/cd, pipelineascode]
