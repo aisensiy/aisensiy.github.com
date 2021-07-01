@@ -6,6 +6,10 @@ author:     "Eisen"
 tags:       [github, ci/cd, pipelineascode]
 ---
 
+## 2021 年 7 月更新
+
+> 随着最近又更深入的使用了 Github Actions 对其又有了一些新的认识。这里对原来的一些些观点做一些补充。
+
 再之前的一篇 [文章]({% post_url 2020-07-18-github-actions %}) 对 github actions 做了一些简单的介绍，距离上次记录已经超过半年的时间了，在这段时间我们逐渐将大部分的 circleci 执行的 ci/cd 内容挪动到 github actions 了。这里在对目前的一些使用体会做一个记录。
 
 ## Good part
@@ -142,4 +146,10 @@ github action 这种模式其实本身是有点危险的：相当于把大量的
 ### 不太完善的封装
 
 其次就是我们一直吐槽的 action 的写法问题了：很多 action 是那种不通过 docker 封装的版本，这势必会引入依赖不全的问题。尤其是对于我们这种 self-hosted 的用户，经常会出现因为依赖不齐全而导致 ci 挂掉。
+
+> **更新** 目前并没有很系统的去了解撰写 github action 的方法，最近接触到的是 [JS Action](https://docs.github.com/en/actions/creating-actions/about-actions#javascript-actions) 的流程。其文档也提到
+> 
+>  "To ensure your JavaScript actions are compatible with all GitHub-hosted runners (Ubuntu, Windows, and macOS), the packaged JavaScript code you write should be pure JavaScript and not rely on other binaries. JavaScript actions run directly on the runner and use binaries that already exist in the virtual environment."
+> 
+> 也就是说其平台兼容性是建立在你自己的 nodejs 依赖是可以跨平台的前提下的。
 
