@@ -1,0 +1,30 @@
+---
+author: aisensiy
+comments: true
+date: 2011-06-02 09:07:48+00:00
+layout: post
+slug: '%e5%9c%a8%e4%b8%80%e4%b8%aamysql%e6%95%b4%e5%9e%8b%e5%ad%97%e6%ae%b5%e6%8f%92%e5%85%a5%e5%ad%97%e7%ac%a6%e4%b8%b2%e6%95%b0%e6%8d%ae%e6%89%80%e5%bc%95%e5%8f%91%e7%9a%84%e9%97%ae%e9%a2%98'
+title: 在一个mysql整型字段插入字符串数据所引发的问题
+wordpress_id: 132
+categories:
+- 未分类
+tags:
+- mysql
+---
+
+前几天意外之中遇到一个怪异的问题。由于我自己安装了双系统，win7+ubuntu，并且两个系统里面都有mysql。我困惑的发现同样格式的table，同样的插入语句在linux下就插入成功，可是在win7下就失败...
+
+下面是linux下运行的结果
+
+[](http://www.aisensiy.com/wp-content/uploads/2011/06/Screenshot.png)[](http://www.aisensiy.com/wp-content/uploads/2011/06/Screenshot1.png)[![](http://www.aisensiy.com/wp-content/uploads/2011/06/Screenshot2.png)](http://www.aisensiy.com/wp-content/uploads/2011/06/Screenshot2.png)
+对一个int字段插入一个空字符串 '' 居然成功了！可是在win7下却死活不能插入成功。仔细看来，发现在linux mysql下执行这个插入动作之后会出现一个warning。
+
+` mysql> show warnings;
+| Warning | 1366 | Incorrect integer value: '' for column 'value' at row 1 |
+1 row in set (0.00 sec)`
+
+这和win7下的插入失败的error内容完全相符！
+
+我跑去stackoverflow查了一下，最终发现了这个诡异的问题的根源，mysql配置的默认值的问题...
+
+这里是stackoverflow里有关这个问题的链接，讲的还是很详细的：[Why can you insert characters into a MySQL int field?](http://stackoverflow.com/questions/2262196/why-can-you-insert-characters-into-a-mysql-int-field)

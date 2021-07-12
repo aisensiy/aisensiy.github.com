@@ -21,11 +21,11 @@ export default function BlogPage({ data }) {
 }
 
 export const pageQuery = graphql`
-  query QueryFirstBlogPages {
+  query QueryBlogPages($limit: Int! = 5, $skip: Int! = 0) {
     blogs: allMarkdownRemark(
       sort: { fields: frontmatter___date, order: DESC }
-      limit: 5
-      skip: 0
+      limit: $limit
+      skip: $skip
     ) {
       nodes {
         id
@@ -39,9 +39,9 @@ export const pageQuery = graphql`
         }
       }
       pageInfo {
-        pageCount
         hasPreviousPage
         currentPage
+        pageCount
       }
     }
   }
