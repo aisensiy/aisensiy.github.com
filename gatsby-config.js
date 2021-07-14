@@ -106,5 +106,6 @@ module.exports = {
     },
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-postcss`
   ],
 };
