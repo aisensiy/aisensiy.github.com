@@ -1,6 +1,7 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
 import Blog from "../components/Blog";
+import Base from "../layouts/base";
 
 export default function BlogPage({ data }) {
   const { nodes: blogs, pageInfo } = data.blogs
@@ -10,13 +11,15 @@ export default function BlogPage({ data }) {
   const { pageCount, hasPreviousPage, currentPage } = pageInfo
   const hasNextPage = currentPage < pageCount
   return (
-    <div>
-      {pages}
+    <Base>
       <div>
-        {hasPreviousPage && <Link to={`/page/${currentPage - 1}`}>Previous</Link>}
-        {hasNextPage && <Link to={`/page/${currentPage + 1}`}>Next</Link>}
+        {pages}
+        <div className="flex justify-center mt-8">
+          {hasPreviousPage && <Link to={`/page/${currentPage - 1}`} className="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid">Previous</Link>}
+          {hasNextPage && <Link to={`/page/${currentPage + 1}`} className="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid">Next</Link>}
+        </div>
       </div>
-    </div>
+    </Base>
   )
 }
 

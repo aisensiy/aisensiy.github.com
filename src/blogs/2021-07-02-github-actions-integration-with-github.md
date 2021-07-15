@@ -29,9 +29,9 @@ tags:       [github, ci/cd, pipelineascode]
 
 首先，我集成的是 Github 的 GraphQL API 主要用到了以下几个接口：
 
-### 1. 获取组织内的 repositories
+#### 1. 获取组织内的 repositories
 
-```gql
+```graphql
 query Repositories($username: String!, $cursor: String) {
   organization(login: $username) {
     repositories(
@@ -55,9 +55,9 @@ query Repositories($username: String!, $cursor: String) {
 }
 ```
 
-### 2. 获取 repository 下的 commits
+#### 2. 获取 repository 下的 commits
 
-```gql
+```graphql
 query Commits($owner: String!, $name: String!, $cursor: String) {
   repository(owner: $owner, name: $name) {
     defaultBranchRef {
@@ -93,9 +93,9 @@ query Commits($owner: String!, $name: String!, $cursor: String) {
 ```
 
 
-### 3. 获取 issue
+#### 3. 获取 issue
 
-```gql
+```graphql
 query Issue($owner: String!, $name: String!, $number: Int!) {
   repository(owner: $owner, name: $name) {
     issue(number: $number) {
@@ -236,7 +236,7 @@ jobs:
 
 然后，这里在完成统计后（就是 generate report 这个步骤）将所有的数据做成了 artifact 保存了下来，方便后续的数据的追溯。
 
-![Artifact 可以直接下载下来](/img/in-post/github-statistics/2021-07-02-01-25-25.png)
+![Artifact 可以直接下载下来](../img/in-post/github-statistics/2021-07-02-01-25-25.png)
 
 最后，通过一个 create-issue-from-file 的 github action 将 report 的内容创建成一个 issue 展示出来，展示出来就是上文的截图的效果了。
 

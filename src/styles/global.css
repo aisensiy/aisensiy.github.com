@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .main h1 {
+        @apply text-4xl font-extrabold tracking-tight my-4 text-gray-800;
+    }
+    .blog-post-content h2 {
+        @apply text-3xl font-extrabold tracking-tight my-3 text-gray-800;
+    }
+    .blog-post-content h3 {
+        @apply text-2xl font-extrabold tracking-tight my-3 text-gray-800;
+    }
+    .blog-post-content h4 {
+        @apply text-xl font-extrabold tracking-tight my-3 text-gray-800;
+    }
+    .blog-post-content ul, .blog-post-content ol {
+        @apply mb-4;
+    }
+    .blog-post-content ul li {
+        @apply list-disc list-inside;
+    }
+    .blog-post-content ol li {
+        @apply list-decimal list-inside;
+    }
+    .blog-post-content a {
+        @apply text-blue-600 hover:underline;
+    }
+    .main p {
+        @apply mb-4;
+    }
+}

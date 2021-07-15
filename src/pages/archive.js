@@ -1,27 +1,30 @@
 import { graphql, Link } from "gatsby";
 import React from "react";
+import Base from "../layouts/base";
 
 export default function Archive({ data }) {
   const groupByYearResult = groupByYear(data.allMarkdownRemark.nodes);
 
   return (
-    <div>
-      <h1>Archive</h1>
-      {groupByYearResult.map(({ key, value }) => (
-        <div key={key}>
-          <h2>{key}</h2>
-          <YearItems blogs={value} />
-        </div>
-      ))}
-    </div>
+    <Base>
+      <div>
+        <h1 className="text-4xl font-extrabold tracking-tight my-4 text-gray-800">Archive</h1>
+        {groupByYearResult.map(({ key, value }) => (
+          <div key={key}>
+            <h2 className="text-3xl font-bold tracking-tight my-4 text-gray-800">{key}</h2>
+            <YearItems blogs={value} />
+          </div>
+        ))}
+      </div>
+    </Base>
   );
 }
 
 function YearItems({ blogs }) {
   return (
-    <ul>
+    <ul className="space-y-1">
       {blogs.map((blog) => (
-        <li key={blog.id}>
+        <li className="list-disc list-inside" key={blog.id}>
           <Link to={blog.fields.slug}>
             {blog.frontmatter.date} - {blog.frontmatter.title}
           </Link>
@@ -38,7 +41,8 @@ export const query = graphql`
         id
         frontmatter {
           title
-          date(formatString: "YYYY MMMM-DD")
+          date(formatString: "MMMM-DD")
+          year: date(formatString: "YYYY")
         }
         fields {
           slug
