@@ -4,30 +4,54 @@
 
 @layer components {
     .main h1 {
-        @apply text-4xl font-extrabold tracking-tight my-4 text-gray-800;
+        @apply text-3xl md:text-4xl font-extrabold tracking-tight my-4 text-gray-800;
+    }
+    .main :not(pre) > code {
+        @apply font-mono bg-gray-200 text-gray-500 px-1 mx-1;
     }
     .blog-post-content h2 {
-        @apply text-3xl font-extrabold tracking-tight my-3 text-gray-800;
+        @apply text-2xl md:text-3xl font-extrabold tracking-tight my-3 text-gray-800 overflow-auto;
     }
     .blog-post-content h3 {
-        @apply text-2xl font-extrabold tracking-tight my-3 text-gray-800;
+        @apply text-xl md:text-2xl font-extrabold tracking-tight my-3 text-gray-800 overflow-auto;
     }
     .blog-post-content h4 {
-        @apply text-xl font-extrabold tracking-tight my-3 text-gray-800;
+        @apply md:text-xl font-extrabold tracking-tight my-3 text-gray-800 overflow-auto;
     }
-    .blog-post-content ul, .blog-post-content ol {
-        @apply mb-4;
+    .blog-post-content a.anchor {
+        fill: "red";
     }
-    .blog-post-content ul li {
-        @apply list-disc list-inside;
+    .main ul, .main ol {
+        @apply mb-4 ml-4;
     }
-    .blog-post-content ol li {
+    .main ul {
+        @apply list-disc;
+    }
+    .main ol {
         @apply list-decimal list-inside;
     }
-    .blog-post-content a {
+    .main a {
         @apply text-blue-600 hover:underline;
+    }
+    .main img {
+        @apply border border-gray-200 rounded-xl shadow-lg;
+    }
+    .main blockquote {
+        @apply border-l-4 border-gray-300 pl-6;
     }
     .main p {
         @apply mb-4;
+    }
+    .table-of-content {
+        @apply border border-gray-500 bg-blue-100 my-4 p-4 inline-block overflow-auto;
+    }
+    .table-of-content ul {
+        @apply mb-0;
+    }
+    .table-of-content h2 {
+        @apply text-xl font-semibold tracking-tight my-3 text-gray-800;
+    }
+    .table-of-content p {
+        @apply m-0 inline;
     }
 }

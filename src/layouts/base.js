@@ -19,7 +19,7 @@ export default function Base({ children }) {
                     <footer className="text-gray-400">© {year}. All rights reserved.</footer>
                 </div>
             </div>
-            <div className="md:ml-80 p-8 main">
+            <div className="md:ml-80 p-8 md:max-w-6xl main">
                 {children}
             </div>
         </div>

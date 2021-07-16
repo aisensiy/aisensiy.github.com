@@ -10,9 +10,8 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     );
 
     // create a new slug concatenating everything
-    const slug = `/${date.replace(/\-/g, "/")}/${title}/`
-    createNodeField({ node, name: `slug`, value: slug })
-    createNodeField({ node, name: `slug_without_date`, value: title })
+    createNodeField({ node, name: `slug`, value: `/${date.replace(/\-/g, "/")}/${title}/` })
+    createNodeField({ node, name: `slug_without_date`, value: `/${title}` })
   }
 }
 
