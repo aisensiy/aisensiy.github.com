@@ -1,0 +1,738 @@
+<!DOCTYPE html><html><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.ef146435d2ba23f76dde.css" data-identity="gatsby-global-css">code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#f8f8f2;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;text-align:left;text-shadow:0 1px rgba(0,0,0,.3);white-space:pre;word-break:normal;word-spacing:normal}pre[class*=language-]{border-radius:.3em;margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#272822}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#8292a2}.token.punctuation{color:#f8f8f2}.token.namespace{opacity:.7}.token.constant,.token.deleted,.token.property,.token.symbol,.token.tag{color:#f92672}.token.boolean,.token.number{color:#ae81ff}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#a6e22e}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url,.token.variable{color:#f8f8f2}.token.atrule,.token.attr-value,.token.class-name,.token.function{color:#e6db74}.token.keyword{color:#66d9ef}.token.important,.token.regex{color:#fd971f}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}
+
+/*! tailwindcss v2.2.4 | MIT License | https://tailwindcss.com */
+
+/*! modern-normalize v1.1.0 | MIT License | https://github.com/sindresorhus/modern-normalize */html{-webkit-text-size-adjust:100%;line-height:1.15;-moz-tab-size:4;-o-tab-size:4;tab-size:4}body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;margin:0}hr{color:inherit;height:0}abbr[title]{-webkit-text-decoration:underline dotted;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{border-color:inherit;text-indent:0}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,select{text-transform:none}button{-webkit-appearance:button}legend{padding:0}progress{vertical-align:baseline}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}button{background-color:transparent;background-image:none}fieldset,ol,ul{margin:0;padding:0}ol,ul{list-style:none}html{font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5}body{font-family:inherit;line-height:inherit}*,:after,:before{border:0 solid;box-sizing:border-box}hr{border-top-width:1px}img{border-style:solid}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{color:#9ca3af;opacity:1}input:-ms-input-placeholder,textarea:-ms-input-placeholder{color:#9ca3af;opacity:1}input::placeholder,textarea::placeholder{color:#9ca3af;opacity:1}[role=button],button{cursor:pointer}table{border-collapse:collapse}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}button,input,optgroup,select,textarea{color:inherit;line-height:inherit;padding:0}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{height:auto;max-width:100%}*,:after,:before{--tw-border-opacity:1;border-color:rgba(229,231,235,var(--tw-border-opacity))}.main h1{--tw-text-opacity:1;color:rgba(31,41,55,var(--tw-text-opacity));font-size:1.875rem;font-weight:800;letter-spacing:-.025em;line-height:2.25rem;margin-bottom:1rem;margin-top:1rem}@media (min-width:768px){.main h1{font-size:2.25rem;line-height:2.5rem}}.main :not(pre)>code{--tw-bg-opacity:1;--tw-text-opacity:1;background-color:rgba(229,231,235,var(--tw-bg-opacity));color:rgba(107,114,128,var(--tw-text-opacity));font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;margin-left:.25rem;margin-right:.25rem;padding-left:.25rem;padding-right:.25rem}.blog-post-content h2{--tw-text-opacity:1;color:rgba(31,41,55,var(--tw-text-opacity));font-size:1.5rem;font-weight:800;letter-spacing:-.025em;line-height:2rem;margin-bottom:.75rem;margin-top:.75rem;overflow:auto}@media (min-width:768px){.blog-post-content h2{font-size:1.875rem;line-height:2.25rem}}.blog-post-content h3{--tw-text-opacity:1;color:rgba(31,41,55,var(--tw-text-opacity));font-size:1.25rem;font-weight:800;letter-spacing:-.025em;line-height:1.75rem;margin-bottom:.75rem;margin-top:.75rem;overflow:auto}@media (min-width:768px){.blog-post-content h3{font-size:1.5rem;line-height:2rem}}.blog-post-content h4{--tw-text-opacity:1;color:rgba(31,41,55,var(--tw-text-opacity));font-weight:800;letter-spacing:-.025em;margin-bottom:.75rem;margin-top:.75rem;overflow:auto}@media (min-width:768px){.blog-post-content h4{font-size:1.25rem;line-height:1.75rem}}.blog-post-content a.anchor{fill:"red"}.main ol,.main ul{margin-bottom:1rem;margin-left:1rem}.main ul{list-style-type:disc}.main ol{list-style-position:inside;list-style-type:decimal}.main a{--tw-text-opacity:1;color:rgba(37,99,235,var(--tw-text-opacity))}.main a:hover{text-decoration:underline}.main img{--tw-border-opacity:1;--tw-shadow:0 10px 15px -3px rgba(0,0,0,0.1),0 4px 6px -2px rgba(0,0,0,0.05);border-color:rgba(229,231,235,var(--tw-border-opacity));border-radius:.75rem;border-width:1px;box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.main blockquote{--tw-border-opacity:1;border-color:rgba(209,213,219,var(--tw-border-opacity));border-left-width:4px;padding-left:1.5rem}.main p,.table-of-content{margin-bottom:1rem}.table-of-content{--tw-border-opacity:1;--tw-bg-opacity:1;background-color:rgba(219,234,254,var(--tw-bg-opacity));border-color:rgba(107,114,128,var(--tw-border-opacity));border-width:1px;display:inline-block;margin-top:1rem;overflow:auto;padding:1rem}.table-of-content ul{margin-bottom:0}.table-of-content h2{--tw-text-opacity:1;color:rgba(31,41,55,var(--tw-text-opacity));font-size:1.25rem;font-weight:600;letter-spacing:-.025em;line-height:1.75rem;margin-bottom:.75rem;margin-top:.75rem}.table-of-content p{display:inline;margin:0}.bottom-0{bottom:0}.m-0{margin:0}.mx-4{margin-left:1rem;margin-right:1rem}.mx-12{margin-left:3rem;margin-right:3rem}.my-3{margin-bottom:.75rem;margin-top:.75rem}.my-4{margin-bottom:1rem;margin-top:1rem}.mt-8{margin-top:2rem}.mb-4{margin-bottom:1rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.table{display:table}.w-32{width:8rem}@-webkit-keyframes spin{to{transform:rotate(1turn)}}@keyframes spin{to{transform:rotate(1turn)}}@-webkit-keyframes ping{75%,to{opacity:0;transform:scale(2)}}@keyframes ping{75%,to{opacity:0;transform:scale(2)}}@-webkit-keyframes pulse{50%{opacity:.5}}@keyframes pulse{50%{opacity:.5}}@-webkit-keyframes bounce{0%,to{-webkit-animation-timing-function:cubic-bezier(.8,0,1,1);animation-timing-function:cubic-bezier(.8,0,1,1);transform:translateY(-25%)}50%{-webkit-animation-timing-function:cubic-bezier(0,0,.2,1);animation-timing-function:cubic-bezier(0,0,.2,1);transform:none}}@keyframes bounce{0%,to{-webkit-animation-timing-function:cubic-bezier(.8,0,1,1);animation-timing-function:cubic-bezier(.8,0,1,1);transform:translateY(-25%)}50%{-webkit-animation-timing-function:cubic-bezier(0,0,.2,1);animation-timing-function:cubic-bezier(0,0,.2,1);transform:none}}.list-inside{list-style-position:inside}.list-disc{list-style-type:disc}.list-decimal{list-style-type:decimal}.flex-row{flex-direction:row}.justify-center{justify-content:center}.space-y-1>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-bottom:calc(.25rem*var(--tw-space-y-reverse));margin-top:calc(.25rem*(1 - var(--tw-space-y-reverse)))}.space-y-8>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-bottom:calc(2rem*var(--tw-space-y-reverse));margin-top:calc(2rem*(1 - var(--tw-space-y-reverse)))}.rounded-xl{border-radius:.75rem}.border{border-width:1px}.border-l-4{border-left-width:4px}.border-solid{border-style:solid}.border-gray-200{--tw-border-opacity:1;border-color:rgba(229,231,235,var(--tw-border-opacity))}.border-gray-300{--tw-border-opacity:1;border-color:rgba(209,213,219,var(--tw-border-opacity))}.border-gray-500{--tw-border-opacity:1;border-color:rgba(107,114,128,var(--tw-border-opacity))}.border-gray-800{--tw-border-opacity:1;border-color:rgba(31,41,55,var(--tw-border-opacity))}.bg-gray-200{--tw-bg-opacity:1;background-color:rgba(229,231,235,var(--tw-bg-opacity))}.bg-gray-900{--tw-bg-opacity:1;background-color:rgba(17,24,39,var(--tw-bg-opacity))}.bg-blue-100{--tw-bg-opacity:1;background-color:rgba(219,234,254,var(--tw-bg-opacity))}.p-4{padding:1rem}.p-8{padding:2rem}.px-1{padding-left:.25rem;padding-right:.25rem}.px-4{padding-left:1rem;padding-right:1rem}.py-1{padding-bottom:.25rem;padding-top:.25rem}.py-12{padding-bottom:3rem;padding-top:3rem}.text-center{text-align:center}.font-serif{font-family:ui-serif,Georgia,Cambria,Times New Roman,Times,serif}.font-mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-6xl{font-size:3.75rem;line-height:1}.font-semibold{font-weight:600}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-black{font-weight:900}.leading-7{line-height:1.75rem}.tracking-tight{letter-spacing:-.025em}.text-white{--tw-text-opacity:1;color:rgba(255,255,255,var(--tw-text-opacity))}.text-gray-400{--tw-text-opacity:1;color:rgba(156,163,175,var(--tw-text-opacity))}.text-gray-500{--tw-text-opacity:1;color:rgba(107,114,128,var(--tw-text-opacity))}.text-gray-600{--tw-text-opacity:1;color:rgba(75,85,99,var(--tw-text-opacity))}.text-gray-800{--tw-text-opacity:1;color:rgba(31,41,55,var(--tw-text-opacity))}.text-blue-600{--tw-text-opacity:1;color:rgba(37,99,235,var(--tw-text-opacity))}.hover\:underline:hover{text-decoration:underline}*,:after,:before{--tw-shadow:0 0 #0000;--tw-ring-inset:var(--tw-empty,/*!*/ /*!*/);--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000}@media (min-width:768px){.md\:fixed{position:fixed}.md\:absolute{position:absolute}.md\:ml-80{margin-left:20rem}.md\:h-full{height:100%}.md\:w-80{width:20rem}.md\:max-w-6xl{max-width:72rem}.md\:text-left{text-align:left}.md\:text-xl{font-size:1.25rem;line-height:1.75rem}.md\:text-2xl{font-size:1.5rem;line-height:2rem}.md\:text-3xl{font-size:1.875rem;line-height:2.25rem}.md\:text-4xl{font-size:2.25rem;line-height:2.5rem}}</style><meta name="generator" content="Gatsby 3.9.1"/><style type="text/css">
+    .custom-class.before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      padding-right: 4px;
+    }
+    .custom-class.after {
+      display: inline-block;
+      padding-left: 4px;
+    }
+    h1 .custom-class svg,
+    h2 .custom-class svg,
+    h3 .custom-class svg,
+    h4 .custom-class svg,
+    h5 .custom-class svg,
+    h6 .custom-class svg {
+      visibility: hidden;
+    }
+    h1:hover .custom-class svg,
+    h2:hover .custom-class svg,
+    h3:hover .custom-class svg,
+    h4:hover .custom-class svg,
+    h5:hover .custom-class svg,
+    h6:hover .custom-class svg,
+    h1 .custom-class:focus svg,
+    h2 .custom-class:focus svg,
+    h3 .custom-class:focus svg,
+    h4 .custom-class:focus svg,
+    h5 .custom-class:focus svg,
+    h6 .custom-class:focus svg {
+      visibility: visible;
+    }
+  </style><script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var hash = window.decodeURI(location.hash.replace('#', ''))
+      if (hash !== '') {
+        var element = document.getElementById(hash)
+        if (element) {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          var clientTop = document.documentElement.clientTop || document.body.clientTop || 0
+          var offset = element.getBoundingClientRect().top + scrollTop - clientTop
+          // Wait for the browser to finish rendering before scrolling.
+          setTimeout((function() {
+            window.scrollTo(0, offset - 100)
+          }), 0)
+        }
+      }
+    })
+  </script><link as="script" rel="preload" href="/webpack-runtime-740a463c9caefa5269e5.js"/><link as="script" rel="preload" href="/framework-e728256d7a1d703d32c2.js"/><link as="script" rel="preload" href="/app-a41e84ae11689d8fb1bd.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-b12ffcc8090f5af651fa.js"/><link as="fetch" rel="preload" href="/page-data/page/12/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2021<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-8 md:max-w-6xl main"><div><div><h1 class="text-4xl font-extrabold tracking-tight my-4 text-gray-800"><a href="/redux-with-react">Redux with react</a></h1><h2 class="text-gray-600 mb-4">2016 May-12</h2><div class="blog-post-content"><p>沿着上一部分 <a href="/redux-get-started">Get Started Redux</a>，在利用 <code class="language-text">redux</code> 构建了 <code class="language-text">store</code> <code class="language-text">reducer</code> 之后，现在需要给应用提供个 <code class="language-text">view</code> 了。我们用当下最流行的 <code class="language-text">react</code>。</p>
+<h2 id="prepare-package-for-react-with-redux" style="position:relative;">prepare package for react with redux<a href="#prepare-package-for-react-with-redux" aria-label="prepare package for react with redux permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>安装 <code class="language-text">react</code></p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">$ npm install --save react react-dom react-redux</code></pre></div>
+<p>其中 <code class="language-text">react</code> <code class="language-text">react-dom</code> 是 <code class="language-text">react</code> 的原生包，<code class="language-text">react-redux</code> 提供了一些方便的方法用来将 <code class="language-text">redux</code> 和 <code class="language-text">react</code> 一起使用。后面的代码示例会着重讲解。</p>
+<p>添加 <code class="language-text">babel</code> 对 <code class="language-text">jsx</code> 的支持。</p>
+<p><code class="language-text">jsx</code> 是 <code class="language-text">react</code> 支持的一种特殊的语法，这种语法用于将 <code class="language-text">html</code> 写到 <code class="language-text">js</code> 中，例如</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>p<span class="token operator">></span>
+      Click <span class="token punctuation">{</span>value<span class="token punctuation">}</span> times<span class="token punctuation">.</span>
+      <span class="token punctuation">{</span> <span class="token string">' '</span> <span class="token punctuation">}</span>
+      <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span>onIncrement<span class="token punctuation">}</span><span class="token operator">></span><span class="token operator">+</span><span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+      <span class="token punctuation">{</span> <span class="token string">' '</span> <span class="token punctuation">}</span>
+      <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span>onDecrement<span class="token punctuation">}</span><span class="token operator">></span><span class="token operator">-</span><span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">></span>
+<span class="token punctuation">)</span></code></pre></div>
+<p>目前可以认为 <code class="language-text">jsx</code> 是写 <code class="language-text">react</code> 的标配，那么就需要在 <code class="language-text">babel</code> 中添加一个新的 <code class="language-text">react</code> 翻译器。</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">$ npm install --save-dev babel-preset-react</code></pre></div>
+<p>然后修改 <code class="language-text">.babelrc</code></p>
+<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"presets"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"es2015"</span><span class="token punctuation">,</span> <span class="token string">"react"</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>这样，我们就可以开始写 <code class="language-text">react</code> 了。</p>
+<h2 id="Presentational-and-Container-Components" style="position:relative;">Presentational and Container Components<a href="#Presentational-and-Container-Components" aria-label="Presentational and Container Components permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>在 <code class="language-text">redux</code> 的官方文档 <a href="http://redux.js.org/docs/basics/UsageWithReact.html">Use With React</a> 解释了一种 <code class="language-text">redux</code> 和 <code class="language-text">react</code> 结合的模式：将 <code class="language-text">react</code> 的组件分为两种，一种是不与 <code class="language-text">redux</code> 交互的 <code class="language-text">presentational</code> 组件，它是一种通用的组件，任何提供给它所需要的 <code class="language-text">func</code> 或者是 <code class="language-text">prop</code> 的框架都可以使用它。另一种是 <code class="language-text">container</code> 组件，是和 <code class="language-text">redux</code> 的 <code class="language-text">action</code> 以及 <code class="language-text">store</code> 绑定的组件。通常都是会先写一个 <code class="language-text">presentational</code> 组件，然后再创建一个 <code class="language-text">container</code> 组件对 <code class="language-text">presentational</code> 组件进行包装后使用。后面的 <em>full example</em> 展示了 <code class="language-text">Counter</code> 与 <code class="language-text">Visible Counter</code> 两个不同类型的组件。当然在<a href="http://redux.js.org/docs/basics/UsageWithReact.html">官方</a>也提供了非常好的例子。</p>
+<h2 id="full-example" style="position:relative;">full example<a href="#full-example" aria-label="full example permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>首先展示一下目录结构</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">.
+├── actions
+│   └── index.js
+├── components
+│   ├── App.js
+│   └── Counter.js
+├── containers
+│   └── VisibleCounter.js
+├── dist
+│   ├── bundle.js
+│   ├── index.html
+│   └── styles.css
+├── entry.js
+├── package.json
+├── reducers
+│   └── counter.js
+├── styles
+│   ├── index.scss
+│   └── theme.scss
+├── test
+│   └── reducers
+│       └── counter.spec.js
+└── webpack.config.js</code></pre></div>
+<p>相对于之前的目录结构多了两个目录 <code class="language-text">containers</code> <code class="language-text">components</code> 分别对应了 <code class="language-text">container</code> 和 <code class="language-text">presentational</code> 的组件。</p>
+<p>首先我们定义一个 <code class="language-text">presentational</code> 的组件 <code class="language-text">Counter</code></p>
+<p><code class="language-text">components/Counter.js</code>:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> Component<span class="token punctuation">,</span> PropTypes <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Counter</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> value<span class="token punctuation">,</span> onIncrement<span class="token punctuation">,</span> onDecrement <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+        <span class="token operator">&lt;</span>p<span class="token operator">></span>
+          Click <span class="token punctuation">{</span>value<span class="token punctuation">}</span> times<span class="token punctuation">.</span>
+          <span class="token punctuation">{</span> <span class="token string">' '</span> <span class="token punctuation">}</span>
+          <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span>onIncrement<span class="token punctuation">}</span><span class="token operator">></span><span class="token operator">+</span><span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+          <span class="token punctuation">{</span> <span class="token string">' '</span> <span class="token punctuation">}</span>
+          <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span>onDecrement<span class="token punctuation">}</span><span class="token operator">></span><span class="token operator">-</span><span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">></span>
+    <span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+Counter<span class="token punctuation">.</span>PropTypes <span class="token operator">=</span> <span class="token punctuation">{</span>
+  value<span class="token operator">:</span> PropTypes<span class="token punctuation">.</span>number<span class="token punctuation">.</span>isRequired<span class="token punctuation">,</span>
+  onIncrement<span class="token operator">:</span> PropTypes<span class="token punctuation">.</span>func<span class="token punctuation">.</span>isRequired<span class="token punctuation">,</span>
+  onDecrement<span class="token operator">:</span> PropTypes<span class="token punctuation">.</span>func<span class="token punctuation">.</span>isRequired
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> Counter<span class="token punctuation">;</span></code></pre></div>
+<p>注意 <code class="language-text">PropTypes</code> 有点像是一个函数的参数说明，它明确的定义了在使用这个组件时需要提供什么样子的东西，<code class="language-text">react</code> 官方建议一定要对每一个组件都明确的定义这样的参数说明，它也起到了文档的作用，方便与其他人协作。这里我们需要三个东西：</p>
+<ol>
+<li><code class="language-text">value</code> 当前的计数</li>
+<li><code class="language-text">onIncrement</code> 当点击 <code class="language-text">+</code> 时的动作</li>
+<li><code class="language-text">onDecrement</code> 当点击 <code class="language-text">-</code> 时的动作</li>
+</ol>
+<p>然后对 <code class="language-text">Counter</code> 进行包装</p>
+<p><code class="language-text">containers/VisibleCounter.js</code>:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> connect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-redux'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> Counter <span class="token keyword">from</span> <span class="token string">"../components/Counter"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> increment<span class="token punctuation">,</span> decrement <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'../actions/index'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">mapStatToProps</span><span class="token punctuation">(</span><span class="token parameter">state</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    value<span class="token operator">:</span> state
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">mapDispatchToProps</span><span class="token punctuation">(</span><span class="token parameter">dispatch</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    <span class="token function-variable function">onIncrement</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token function">increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function-variable function">onDecrement</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token function">decrement</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> VisibleCounter <span class="token operator">=</span> <span class="token function">connect</span><span class="token punctuation">(</span>
+    mapStatToProps<span class="token punctuation">,</span>
+    mapDispatchToProps
+<span class="token punctuation">)</span><span class="token punctuation">(</span>Counter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> VisibleCounter<span class="token punctuation">;</span></code></pre></div>
+<p>这里用到了一个 <code class="language-text">react-redux</code> 提供的方法 <code class="language-text">connect</code> 它和下文提到的 <code class="language-text">Provider</code> 配合使用，用于为 <code class="language-text">react</code> 传递全局的 <code class="language-text">store</code>。<code class="language-text">connect</code> 需要两个函数 <code class="language-text">mapStatToProps</code> 与 <code class="language-text">mapDispatchToProps</code> 分别将 <code class="language-text">store</code> 里的属性和 <code class="language-text">store</code> 的 <code class="language-text">dispatch</code> 动作传递给 <code class="language-text">presentational</code> 组件。上面的代码就分别将 <code class="language-text">store</code> 的 <code class="language-text">state</code> 对应给组件的 <code class="language-text">value</code> 属性，将两个 <code class="language-text">action</code> 的 <code class="language-text">dispatch</code> 对应到 <code class="language-text">onIncrement</code> 与 <code class="language-text">onDecrement</code>。</p>
+<p>然后还有一个 <code class="language-text">App</code> 组件，用于包装 <code class="language-text">VisibleCounter</code>，它没有任何依赖的属性。</p>
+<p><code class="language-text">components/App.js</code>:</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">import React, { Component } from 'react';
+import VisibleCounter from '../containers/VisibleCounter';
+
+class App extends Component {
+  render() {
+    return (
+        &lt;div>
+          &lt;VisibleCounter />
+        &lt;/div>
+    )
+  }
+}
+
+export default App;</code></pre></div>
+<p>最后我们修改 <code class="language-text">entry.js</code> 将 <code class="language-text">store</code> 与我们的视图绑定起来。</p>
+<p><code class="language-text">entry.js</code>:</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">require('./styles/index.scss');
+
+import React from "react";
+import ReactDOM from 'react-dom';
+import counter from './reducers/counter';
+import { Provider } from 'react-redux';
+import App from './components/App';
+import { createStore } from 'redux';
+
+const store = createStore(counter);
+const rootEl = document.querySelector("#root");
+
+function render() {
+  ReactDOM.render(
+      &lt;Provider store={store}>
+        &lt;App />
+      &lt;/Provider>,
+      rootEl
+  )
+}
+
+render();
+store.subscribe(render);</code></pre></div>
+<p>这里就用到了 <code class="language-text">Provider</code> 方法，将 <code class="language-text">store</code> 传递给 <code class="language-text">App</code>，然后用 <code class="language-text">ReactDOM</code> 在页面上生成 <code class="language-text">react</code> 组件。</p>
+<h2 id="参考" style="position:relative;">参考<a href="#%E5%8F%82%E8%80%83" aria-label="参考 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ol>
+<li><a href="http://redux.js.org">redux</a></li>
+<li><a href="https://github.com/reactjs/redux/tree/master/examples/counter">redux counter example</a></li>
+<li><a href="http://redux.js.org/docs/basics/UsageWithReact.html">use with react</a></li>
+<li><a href="https://babeljs.io/docs/usage/babelrc/">babelrc</a></li>
+</ol></div></div><div><h1 class="text-4xl font-extrabold tracking-tight my-4 text-gray-800"><a href="/redux-with-react-router">Redux with react router</a></h1><h2 class="text-gray-600 mb-4">2016 May-12</h2><div class="blog-post-content"><p>沿着上一部分 <a href="/redux-with-react">Redux With React</a>，在利用 <code class="language-text">redux</code> 与 <code class="language-text">react</code> 构建了单个视图的 WebApp，这部分介绍 <code class="language-text">redux</code> 与 <code class="language-text">react-router</code> 结合实现多个视图的 WebApp，代码也是在上一部分的基础上做修改。</p>
+<h2 id="prepare-package-for-react-router" style="position:relative;">prepare package for react-router<a href="#prepare-package-for-react-router" aria-label="prepare package for react router permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p><code class="language-text">react-router</code> 提供了 <code class="language-text">react</code> 的路由机制，除了这个库之外还有另外一个库 <code class="language-text">react-router-redux</code> 用官方文档的话来说，首先 <code class="language-text">redux</code> 可以和 <code class="language-text">react-router</code> 两个一起使用就可以解决路由的问题，但是如果考虑到一些辅助的功能（例如和 Redux DevTool 等一起使用），就很有必要使用 <code class="language-text">react-router-redux</code> 了。而且其实两者的结合非常的简单，我这里就先把它加上了。</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">$ npm install --save react-router react-router-redux</code></pre></div>
+<h2 id="更新代码支持-Router" style="position:relative;">更新代码支持 Router<a href="#%E6%9B%B4%E6%96%B0%E4%BB%A3%E7%A0%81%E6%94%AF%E6%8C%81-Router" aria-label="更新代码支持 Router permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>在不改变之前单个 <code class="language-text">VisibleCounter</code> 的视图的前提下引入 <code class="language-text">router</code>。首先看一下代码的目录结构。</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">.
+├── actions
+│   └── index.js
+├── components
+│   ├── App.js
+│   └── Counter.js
+├── containers
+│   └── VisibleCounter.js ++
+├── dist
+│   ├── bundle.js
+│   ├── index.html
+│   └── styles.css
+├── entry.js ++
+├── package.json
+├── reducers
+│   ├── counter.js
+│   └── index.js ++
+├── routes.js ++
+├── styles
+│   ├── index.scss
+│   └── theme.scss
+└── webpack.config.js</code></pre></div>
+<p>其中新添加或者是有修改的文件都用 <code class="language-text">++</code> 做了标记，可以看到作为 components(presentational) 在引入其他的组件的时候并没有收到影响，而 containers 则会因为 <code class="language-text">store</code> 的变化而变化。</p>
+<p>为了支持 <code class="language-text">router</code> 需要做这么几件事情：</p>
+<ol>
+<li>
+<p>用 <code class="language-text">react-router</code> 提供的 <code class="language-text">Route</code> 标签声明路由结构
+这里就是一个路由 <code class="language-text">/</code> 对应组件 <code class="language-text">App</code>，而 <code class="language-text">App</code> 里面包含一个 <code class="language-text">VisibleCounter</code></p>
+<p><code class="language-text">routes.js</code>:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+ <span class="token keyword">import</span> <span class="token punctuation">{</span> Route <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-router'</span><span class="token punctuation">;</span>
+ <span class="token keyword">import</span> App <span class="token keyword">from</span> <span class="token string">'./components/App'</span><span class="token punctuation">;</span>
+ 
+ <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">(</span>
+     <span class="token operator">&lt;</span>Route path<span class="token operator">=</span><span class="token string">"/"</span> component<span class="token operator">=</span><span class="token punctuation">{</span>App<span class="token punctuation">}</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>Route<span class="token operator">></span>
+ <span class="token punctuation">)</span></code></pre></div>
+</li>
+<li>
+<p>在原有的 <code class="language-text">reducer</code> 中添加 <code class="language-text">react-router-redux</code> 所提供的路由的 <code class="language-text">reducer</code>，这里通过 <code class="language-text">redux</code> 所提供的 <code class="language-text">combineReducers</code> 实现。</p>
+<p><code class="language-text">reducers/index.js</code>:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> counter <span class="token keyword">from</span> <span class="token string">'./counter'</span><span class="token punctuation">;</span>
+ <span class="token keyword">import</span> <span class="token punctuation">{</span> routerReducer <span class="token keyword">as</span> routing <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-router-redux'</span><span class="token punctuation">;</span>
+ <span class="token keyword">import</span> <span class="token punctuation">{</span> combineReducers <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux'</span><span class="token punctuation">;</span>
+ 
+ <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">combineReducers</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+   counter<span class="token punctuation">,</span>
+   routing
+ <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>由于 <code class="language-text">reducer</code> 做了调整，那么在 <code class="language-text">VisibleCounter</code> 与 <code class="language-text">store</code> 链接时也会有改变，在下面的代码中我用 <code class="language-text">++</code> 标识修改的部分</p>
+<p><code class="language-text">containers/VisibleCounter.js</code>:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> connect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-redux'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> Counter <span class="token keyword">from</span> <span class="token string">"../components/Counter"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> increment<span class="token punctuation">,</span> decrement <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'../actions/index'</span><span class="token punctuation">;</span>
+ 
+ <span class="token keyword">function</span> <span class="token function">mapStatToProps</span><span class="token punctuation">(</span><span class="token parameter">state</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">return</span> <span class="token punctuation">{</span>
+     value<span class="token operator">:</span> state<span class="token punctuation">.</span>counter <span class="token comment">//++</span>
+   <span class="token punctuation">}</span>
+ <span class="token punctuation">}</span>
+ 	
+ <span class="token keyword">function</span> <span class="token function">mapDispatchToProps</span><span class="token punctuation">(</span><span class="token parameter">dispatch</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">return</span> <span class="token punctuation">{</span>
+     <span class="token function-variable function">onIncrement</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+       <span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token function">increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+     <span class="token punctuation">}</span><span class="token punctuation">,</span>
+     <span class="token function-variable function">onDecrement</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+       <span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token function">decrement</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+     <span class="token punctuation">}</span>
+   <span class="token punctuation">}</span>
+ <span class="token punctuation">}</span>
+ 	
+ <span class="token keyword">const</span> VisibleCounter <span class="token operator">=</span> <span class="token function">connect</span><span class="token punctuation">(</span>
+     mapStatToProps<span class="token punctuation">,</span>
+     mapDispatchToProps
+ <span class="token punctuation">)</span><span class="token punctuation">(</span>Counter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 	
+ <span class="token keyword">export</span> <span class="token keyword">default</span> VisibleCounter<span class="token punctuation">;</span></code></pre></div>
+</li>
+<li>
+<p>修改入口，用 <code class="language-text">react-router</code> 所提供的 <code class="language-text">&lt;Router></code> 标签包装整个应用，并以属性的方式传递路由结构(<code class="language-text">routes</code>)和所需要的浏览器历史(<code class="language-text">history</code>)支持（<code class="language-text">hash</code> 或者是 <code class="language-text">browser</code>）</p>
+<p><code class="language-text">entry.js</code>:</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text"> require('./styles/index.scss');
+
+ import React from "react";
+ import ReactDOM from 'react-dom';
+ import { Provider } from 'react-redux';
+ import { hashHistory, Router } from 'react-router';
+ import { syncHistoryWithStore } from 'react-router-redux';
+ import { createStore } from 'redux';
+ 
+ import reducer from './reducers/index';
+ import routes from './routes';
+ 
+ const store = createStore(reducer);
+ const history = syncHistoryWithStore(hashHistory, store);
+ const rootEl = document.querySelector("#root");
+ 
+ function render() {
+   ReactDOM.render(
+       &lt;Provider store={store}>
+         &lt;Router routes={routes} history={history}/>
+       &lt;/Provider>,
+       rootEl
+   )
+ }
+ 
+ render();
+ store.subscribe(render);</code></pre></div>
+</li>
+</ol>
+<h2 id="添加一个新的视图" style="position:relative;">添加一个新的视图<a href="#%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%E8%A7%86%E5%9B%BE" aria-label="添加一个新的视图 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>现在添加一个新的视图 <code class="language-text">About</code></p>
+<p><code class="language-text">containers/About.js</code>:</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">import React, { Component, PropTypes } from 'react';
+
+class About extends Component {
+  render() {
+    return (
+        &lt;p>
+          This is about page.
+        &lt;/p>
+    )
+  }
+}
+
+export default About;</code></pre></div>
+<p>拆分 <code class="language-text">App</code> 和 <code class="language-text">VisibleCounter</code> 使得 <code class="language-text">App</code> 作为支持所有子视图的框架</p>
+<p><code class="language-text">containres/App.js</code>:</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">import React, { Component } from 'react';
+
+class App extends Component {
+  render() {
+    const { children } = this.props.children;
+    return (
+        &lt;div>
+          { children }
+        &lt;/div>
+    )
+  }
+}
+
+export default App;</code></pre></div>
+<p>更新路由，添加 <code class="language-text">/</code> 下的两个子路由 <code class="language-text">counter</code> 和 <code class="language-text">about</code></p>
+<p><code class="language-text">routes.js</code>:</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">import React from 'react';
+import { Route, IndexRoute } from 'react-router';
+import App from './components/App';
+import VisibleCounter from './containers/VisibleCounter';
+import About from './components/About';
+
+export default (
+    &lt;Route path="/" component={App}>
+      &lt;IndexRoute component={VisibleCounter}/>
+      &lt;Route path="/counter" component={VisibleCounter}/>
+      &lt;Route path="/about" component={About}/>
+    &lt;/Route>
+)</code></pre></div>
+<p>其中 <code class="language-text">IndexRoute</code> 表明 <code class="language-text">VisibleCounter</code> 为在 <code class="language-text">/</code> 时的默认路由。</p>
+<p>在执行 <code class="language-text">npm start</code> 之后看看 <code class="language-text">http://localhost:8080/</code> 是不是计数器？<code class="language-text">http://localhost:8080/#/about</code> 是不是我们的 <code class="language-text">About</code> 页面？</p>
+<h2 id="其他内容" style="position:relative;">其他内容<a href="#%E5%85%B6%E4%BB%96%E5%86%85%E5%AE%B9" aria-label="其他内容 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>这里讲解了基本的路由的构建，当然路由还不仅仅有这些内容啦，还有 <code class="language-text">&lt;Link></code> <code class="language-text">pushState</code> 等等内容，其中 <code class="language-text">&lt;Link></code> 的内容可以到 <a href="https://github.com/reactjs/react-router-tutorial">https://github.com/reactjs/react-router-tutorial</a>
+来看，然后其他部分在以后遇到的时候再解释。</p>
+<h2 id="参考" style="position:relative;">参考<a href="#%E5%8F%82%E8%80%83" aria-label="参考 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ol>
+<li><a href="https://github.com/reactjs/react-router-redux">react-router-redux</a></li>
+<li><a href="https://github.com/reactjs/react-router">react-router</a></li>
+<li><a href="https://github.com/reactjs/react-router-tutorial">react-router-tutorial</a></li>
+</ol></div></div><div><h1 class="text-4xl font-extrabold tracking-tight my-4 text-gray-800"><a href="/redux-get-started">Redux get started</a></h1><h2 class="text-gray-600 mb-4">2016 May-10</h2><div class="blog-post-content"><h2 id="what-is-redux" style="position:relative;">what is redux<a href="#what-is-redux" aria-label="what is redux permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p><code class="language-text">redux</code> 是一个目前比较流行的前端框架，它和 <code class="language-text">react</code> 配合使用，作为 <code class="language-text">react</code> 的 数据层。它继承了 <code class="language-text">flux</code> 的思想，构建一个 <code class="language-text">store</code> 保存前端所有的 <code class="language-text">state</code>，但是目前这样的模式也逐渐出现了一些争议，尤其是当一个项目变得比较庞大的时候，在一个 <code class="language-text">store</code> 里面存储单个页面相关的数据并没有非常大的意义，这部分我以后再说。</p>
+<p><code class="language-text">redux</code> 的几个关键概念 <code class="language-text">action</code> <code class="language-text">reducer</code> <code class="language-text">store</code> 在 <a href="http://redux.js.org">http://redux.js.org</a> 都有详细的介绍，尤其是在官网推荐的教学视频介绍了 <code class="language-text">reduex</code> 的一些实现细节，对理解 <code class="language-text">redux</code> 是如何工作的有很大的帮助，强烈推荐观看</p>
+<h2 id="a-simple-redux-example" style="position:relative;">a simple redux example<a href="#a-simple-redux-example" aria-label="a simple redux example permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>首先安装 <code class="language-text">redux</code></p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">$ npm install --save redux</code></pre></div>
+<p>然后我们构建一个简单的目录结构</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">.
+├── actions
+├── dist
+│   ├── bundle.js
+│   ├── index.html
+│   └── styles.css
+├── entry.js
+├── package.json
+├── reducers
+├── styles
+│   ├── index.scss
+│   └── theme.scss
+└── webpack.config.js</code></pre></div>
+<p>两个新的文件夹 <code class="language-text">actions</code> 和 <code class="language-text">reducers</code> 分别用于存放 <code class="language-text">action</code> 和 <code class="language-text">reducer</code>。然后我们实现一下 <code class="language-text">redux</code> 官网没有视图的 <code class="language-text">counter</code> 的例子，具体代码如下，其中 <code class="language-text">actions</code> 用于定义应用所支持的动作，有点像是 <code class="language-text">request</code>，然后 <code class="language-text">reducer</code> 定义依据动作的处理，有点像是 <code class="language-text">controller</code> 中对应的一个个的方法。</p>
+<p><code class="language-text">actions/index.js</code>:</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">export const increment = () => {
+  return {
+    type: "INCREMENT"
+  }
+}
+
+export const decrement = () => {
+  return {
+    type: "DECREMENT"
+  }
+}</code></pre></div>
+<p><code class="language-text">reducers/counter.js</code>:</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">export default (state=0, action) => {
+  switch (action.type) {
+    case 'INCREMENT':
+      return state + 1;
+      break;
+    case 'DECREMENT':
+      return state - 1;
+      break;
+    default:
+      return 0;
+  }
+}</code></pre></div>
+<p><code class="language-text">entry.js</code>:</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">require('./styles/index.scss');
+
+import counter from './reducers/counter';
+import { increment, decrement } from './actions/index';
+import { createStore } from 'redux';
+
+let store = createStore(counter);
+
+console.log(store.getState());
+
+let unsubscribe = store.subscribe(() => console.log(store.getState()));
+
+store.dispatch(increment());
+store.dispatch(increment());
+store.dispatch(decrement());
+store.dispatch(decrement());
+
+unsubscribe();</code></pre></div>
+<h2 id="add-test-for-reducer" style="position:relative;">add test for reducer<a href="#add-test-for-reducer" aria-label="add test for reducer permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>前端越来越复杂，相应的测试也是必不可少的了。我们目前的应用比较简单，最复杂的就是 <code class="language-text">reducers</code> 所以给 <code class="language-text">reducers</code> 添加一些测试。我们这里使用 <code class="language-text">mocha</code> 作为测试框架。<code class="language-text">redux</code> 官网提供了如何写测试的<a href="http://redux.js.org/docs/recipes/WritingTests.html">文档</a></p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">$ npm install --save-dev mocha expect</code></pre></div>
+<p>其中 <code class="language-text">expect</code> 是一个支持比较 fancy 的 <code class="language-text">assert</code> 语法的库。</p>
+<p>为了和 <code class="language-text">babel</code> 一起使用需要另外一个东西 <code class="language-text">babel-register</code></p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">$ npm install --save-dev babel-register</code></pre></div>
+<p>添加一个 <code class="language-text">test</code> 目录</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">$ mkdir test</code></pre></div>
+<p>添加 <code class="language-text">reducer</code> 的测试 <code class="language-text">test/reducers/counter.spec.js</code>:</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">import expect from 'expect';
+import counter from '../../reducers/counter';
+
+describe('counter', () => {
+  it('should get init state 0', () => {
+    expect(counter(undefined, {})).toBe(0);
+  });
+  it('should increase state', () => {
+    expect(counter(1, { type: 'INCREMENT' })).toBe(2);
+  });
+  it('should decrease state', () => {
+    expect(counter(1, { type: 'DECREMENT' })).toBe(0);
+  });
+  it('should stay same with unknown action', () => {
+    expect(counter(1, { type: 'NO_ACTION' })).toBe(1);
+  });
+});</code></pre></div>
+<p>是不是觉得全天下的 <code class="language-text">spec</code> 都一样？</p>
+<p>然后我们执行 <code class="language-text">mocha --compilers js:babel-register --recursive</code> 跑测试。</p>
+<p>是不是报错了？因为我们没有 <code class="language-text">.babelrc</code> 文件。因为之前我觉得这是一个隐式声明，不如在 <code class="language-text">webpack.config.js</code> 显式声明好。但是没办法，其他地方也要用，改回去好了。</p>
+<p><code class="language-text">.babelrc</code>:</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">{
+  "presets": ["es2015"]
+}</code></pre></div>
+<p><code class="language-text">webpack.config.js</code>:</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">var path = require("path");
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+module.exports = {
+  entry: [
+    './entry'
+  ],
+  output: {
+    path: path.join(__dirname, "dist"),
+    filename: "bundle.js"
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "babel-loader"
+      },
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader", "sass-loader")
+      }
+    ]
+  },
+  plugins: [
+    new ExtractTextPlugin("styles.css")
+  ]
+};</code></pre></div>
+<p>和 <code class="language-text">npm start</code> 类似，我们可以写一个 <code class="language-text">npm test</code> 把那一堆命令移过去。</p>
+<p><code class="language-text">package.json</code>:</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">{
+  "name": "test-redux",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "redux": "^3.5.2",
+    "webpack": "^1.13.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.8.0",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.6.0",
+    "css-loader": "^0.23.1",
+    "expect": "^1.20.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "mocha": "^2.4.5",
+    "node-sass": "^3.7.0",
+    "sass-loader": "^3.2.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.0"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --inline --hot --content-base dist/",
+    "test": "mocha --compilers js:babel-register --recursive"
+  },
+  "author": "",
+  "license": "ISC"
+}</code></pre></div>
+<p>现在再跑一下 <code class="language-text">npm test</code> 就和刚才一样的结果。</p>
+<h2 id="参考" style="position:relative;">参考<a href="#%E5%8F%82%E8%80%83" aria-label="参考 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ol>
+<li><a href="http://redux.js.org">redux</a></li>
+<li><a href="https://github.com/reactjs/redux/tree/master/examples/counter">redux counter example</a></li>
+<li><a href="http://redux.js.org/docs/recipes/WritingTests.html">redux writing tests</a></li>
+<li><a href="https://babeljs.io/docs/usage/babelrc/">babelrc</a></li>
+</ol></div></div><div><h1 class="text-4xl font-extrabold tracking-tight my-4 text-gray-800"><a href="/webpack-loader">Webpack Loader</a></h1><h2 class="text-gray-600 mb-4">2016 May-09</h2><div class="blog-post-content"><h2 id="loader-是做什么的" style="position:relative;">loader 是做什么的<a href="#loader-%E6%98%AF%E5%81%9A%E4%BB%80%E4%B9%88%E7%9A%84" aria-label="loader 是做什么的 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<blockquote>
+<p>Loaders allow you to preprocess files as you require() or “load” them. Loaders are kind of like “tasks” are in other build tools, and provide a powerful way to handle frontend build steps. Loaders can transform files from a different language like, CoffeeScript to JavaScript, or inline images as data URLs. Loaders even allow you to do things like require() css files right in your JavaScript!</p>
+</blockquote>
+<p><code class="language-text">webpack</code> 本身并不能处理乱起八糟的语言，什么 <code class="language-text">css</code> <code class="language-text">scss</code> <code class="language-text">es6</code> <code class="language-text">jsx</code> 都不可以。<code class="language-text">loader</code> 就是一个额外的 <code class="language-text">preprocessor</code> 用于将其他语言翻译成 <code class="language-text">js</code> 然后再让 <code class="language-text">webpack</code> 去打包处理。那么目前我们需要处理的<em>其他语言</em>主要就是 <code class="language-text">scss</code> <code class="language-text">es6</code> <code class="language-text">jsx</code> 这几个。</p>
+<h2 id="在-webpack-的项目中使用-babel" style="position:relative;">在 webpack 的项目中使用 babel<a href="#%E5%9C%A8-webpack-%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8-babel" aria-label="在 webpack 的项目中使用 babel permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p><code class="language-text">babel</code> 是目前比较主流的 <code class="language-text">es6</code> to <code class="language-text">js</code> 的编译器，通过简单的包装就有了在 <code class="language-text">webpack</code> 中将 <code class="language-text">es6</code> 转换成 <code class="language-text">js</code> 的 <code class="language-text">babel-loader</code>。<code class="language-text">babel</code> 目前支持 <code class="language-text">es2015</code> (ECMAScript 2015 is the newest version of the ECMAScript standard)，采用 <code class="language-text">webpack</code> + <code class="language-text">babel</code> 的模式，我们就可以直接写 <code class="language-text">es2015</code> 的 js 脚本。</p>
+<h2 id="一个例子" style="position:relative;">一个例子<a href="#%E4%B8%80%E4%B8%AA%E4%BE%8B%E5%AD%90" aria-label="一个例子 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>首先自然是安装 <code class="language-text">babel-loader</code> 了。</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">npm install --save-dev babel-loader babel-core</code></pre></div>
+<p>需要说明的是 <code class="language-text">babel 6.x</code> 将其可以翻译的语言做了拆分，目前还没有支持默认的翻译器，需要我们在 <code class="language-text">package.json</code> 中显示的安装所需要的翻译器。</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">npm install babel-preset-es2015 --save-dev</code></pre></div>
+<p>这里就是显示的说明我需要 <code class="language-text">es2015</code> 的翻译器，<strong>不过这个情况貌似在以后的版本会做调整</strong>。</p>
+<p>然后需要在 <code class="language-text">webpack.config.js</code> 提供一个 <code class="language-text">loader</code> 的声明，说明什么样子的文件需要使用 <code class="language-text">babel-loader</code> 这个 <code class="language-text">loader</code> 做处理。</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">var path = require("path");
+
+module.exports = {
+  entry: [
+    './entry'
+  ],
+  output: {
+    path: path.join(__dirname, "dist"),
+    filename: "bundle.js"
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "babel-loader",
+        query: {
+          presets: ['es2015']
+        }
+      }
+    ]
+  }
+};</code></pre></div>
+<p>可以看到在 <code class="language-text">webpack.config.js</code> 中多了一个 <code class="language-text">module.loaders</code>，通过 <code class="language-text">test</code> 匹配末尾为 <code class="language-text">.js</code> 的文件，并且忽略 <code class="language-text">node_modules</code> 文件夹下的所有文件。当然，我们也可以加上 <code class="language-text">include</code> 强调只处理某个文件夹下的文件。然后 <code class="language-text">query</code> 这部分是 <code class="language-text">babel-loader</code> 所需要的一个声明，指定需要什么具体的翻译器对这些文件做处理。在 <code class="language-text">babel</code> 官方文档 <a href="https://babeljs.io/docs/setup/#installation">https://babeljs.io/docs/setup/#installation</a> 中有另外一种申明翻译器的方法：将 <code class="language-text">query</code> 写在一个单独的 <code class="language-text">.babelrc</code> 文件下，我个人觉得这样让配置过于分散了，还是采用了直接在 <code class="language-text">webpack.config.js</code> 声明的办法。</p>
+<p>然后，我们将上一部分的 <code class="language-text">module1</code> <code class="language-text">module2</code> 用 <code class="language-text">es2015</code> 的语法方式写出来。</p>
+<p>module1.js:</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">export default () => {
+  console.log("module1");
+}</code></pre></div>
+<p>module2.js:</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">export default () => {
+  console.log("module2");
+}</code></pre></div>
+<p>entry.js:</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">import m1 from './module1'
+import m2 from './module2'
+
+m1();
+m2();</code></pre></div>
+<h2 id="参考" style="position:relative;">参考<a href="#%E5%8F%82%E8%80%83" aria-label="参考 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ol>
+<li><a href="https://babeljs.io/docs/setup/#installation">Using babel</a></li>
+<li><a href="https://webpack.github.io/docs/loaders.html">Webpack loaders</a></li>
+</ol></div></div><div><h1 class="text-4xl font-extrabold tracking-tight my-4 text-gray-800"><a href="/webpack-scss-loader">Webpack Scss Loader</a></h1><h2 class="text-gray-600 mb-4">2016 May-09</h2><div class="blog-post-content"><h2 id="Add-css-in-webpack" style="position:relative;">Add css in webpack<a href="#Add-css-in-webpack" aria-label="Add css in webpack permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>前面介绍了 <code class="language-text">webpack</code> 的 <code class="language-text">loader</code> 也提及了它是用来将各种语言转换成 js 的翻译器。但是有一个特殊的情况，就是有一个 <code class="language-text">style-loader</code> 和 <code class="language-text">css-loader</code>，他们并不是 <code class="language-text">js</code> 但是最终可以以 <code class="language-text">text</code> 的形式放到我们打包的那个文件 <code class="language-text">bundle.js</code> 中去，并且这里是将两个 <code class="language-text">loader</code> 一起使用，有点像是 <code class="language-text">filter &amp; pipeline</code> 的模式。虽然这里的 <code class="language-text">style-loader</code> 并不知道为什么要单独分出来，听起来好像是 <code class="language-text">html</code> 的 style 还可以有除了 <code class="language-text">css</code> 之外的东西，不明觉厉。</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">css file  | css-loader | style-loader > bundle.js</code></pre></div>
+<p>当然，我们现在都不怎么写纯粹的 <code class="language-text">css</code> 了，都是采用 <code class="language-text">less</code> 或者是 <code class="language-text">sass</code> 写了之后再翻译成 <code class="language-text">css</code>，<code class="language-text">webpack</code> 也支持 <code class="language-text">sass-loader</code> 这样的东西，最终的流程是这样子的：</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">sass file | sass-loader | css-loader | style-loader > bundle.js</code></pre></div>
+<h2 id="一个例子" style="position:relative;">一个例子<a href="#%E4%B8%80%E4%B8%AA%E4%BE%8B%E5%AD%90" aria-label="一个例子 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>首先安装 <code class="language-text">sass-loader</code> 以及其所依赖的 <code class="language-text">sass</code> to <code class="language-text">css</code> 的翻译器 <code class="language-text">node-sass</code></p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">$ npm install --save-dev sass-loader node-sass</code></pre></div>
+<p>然后安装 <code class="language-text">style-loader</code> 以及 <code class="language-text">css-loader</code></p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">$ npm install --save-dev style-loader css-loader</code></pre></div>
+<p>和配置 <code class="language-text">es2015</code> 类似，在 <code class="language-text">webpack.config.js</code> 中添加 <code class="language-text">loader</code></p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">var path = require("path");
+
+module.exports = {
+  entry: [
+    './entry'
+  ],
+  output: {
+    path: path.join(__dirname, "dist"),
+    filename: "bundle.js"
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "babel-loader",
+        query: {
+          presets: ['es2015']
+        }
+      },
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        loader: "style!css!sass"
+      }
+    ]
+  }
+};</code></pre></div>
+<p>这里的 <code class="language-text">loader</code> 是一个 <code class="language-text">pipeline</code> 的感觉，和 <code class="language-text">es2015</code> 的有些不一样。多个 <code class="language-text">loader</code> 以 <code class="language-text">!</code> 分隔，并且顺序是倒序的。</p>
+<p>然后我们添加一个 <code class="language-text">styles</code> 的目录，并且添加两个 <code class="language-text">scss</code> 文件</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">.
+├── dist
+│   ├── bundle.js
+│   └── index.html
+├── entry.js
+├── module1.js
+├── module2.js
+├── package.json
+├── styles
+│   ├── index.scss
+│   └── theme.scss
+└── webpack.config.js</code></pre></div>
+<p><code class="language-text">index.scss</code>:</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">@import './theme.scss';</code></pre></div>
+<p><code class="language-text">theme.scss</code>:</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">body {
+  background-color: yellow;
+}</code></pre></div>
+<p>这里只用了一个 <code class="language-text">@import</code> 的 <code class="language-text">scss</code> 语法，不过这样也应该足够验证 <code class="language-text">scss</code> 了。</p>
+<p>最后，在 <code class="language-text">entry.js</code> 中添加对 <code class="language-text">index.scss</code> 的引用。</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">import m1 from './module1'
+import m2 from './module2'
+
+require('./styles/index.scss')
+
+m1();
+m2();</code></pre></div>
+<p>对的，不要怀疑，就是在 <code class="language-text">js</code> 里面引入了 <code class="language-text">scss</code>，<code class="language-text">npm start</code> 一下，看看是不是 <code class="language-text">body</code> 的背景色变了。</p>
+<h2 id="拆分-css-和-js" style="position:relative;">拆分 css 和 js<a href="#%E6%8B%86%E5%88%86-css-%E5%92%8C-js" aria-label="拆分 css 和 js permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>不过 <code class="language-text">css</code> 和 <code class="language-text">js</code> 放在一起总觉得怪怪的，可不可以拆分出来？当然可以了，这里需要一个额外的 <code class="language-text">webpack</code> 插件。<code class="language-text">plugin</code> 有点像是 <code class="language-text">webpack</code> 的 <code class="language-text">postprocessor</code> 是在 <code class="language-text">webpack</code> 打包之后进行进一步处理的工具。这里我们用到了 <a href="https://github.com/webpack/extract-text-webpack-plugin">extract-text-webpack-plugin</a> 把 <code class="language-text">css</code> 拆分出来放到一个单独的文件中。</p>
+<p>首先安装</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">npm install --save-dev extract-text-webpack-plugin</code></pre></div>
+<p>然后修改 <code class="language-text">webpack.config.js</code> 注册这个插件</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">var path = require("path");
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+module.exports = {
+  entry: [
+    './entry'
+  ],
+  output: {
+    path: path.join(__dirname, "dist"),
+    filename: "bundle.js"
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "babel-loader",
+        query: {
+          presets: ['es2015']
+        }
+      },
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader", "sass-loader")
+      }
+    ]
+  },
+  plugins: [
+    new ExtractTextPlugin("styles.css")
+  ]
+};</code></pre></div>
+<p>注意，我们的 <code class="language-text">loader</code> 这部分也会采用 <code class="language-text">ExtractTextPlugin</code> 进行重写</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">loader: ExtractTextPlugin.extract("style-loader", "css-loader", "sass-loader")</code></pre></div>
+<p>然后 <code class="language-text">plugin</code> 这部分说明我们最终要将 <code class="language-text">css</code> 文件保存为 <code class="language-text">styles.css</code>，这里要说明的是 <code class="language-text">styles.css</code> 文件是要遵循 <code class="language-text">webpack.config.js</code> 文件中的 <code class="language-text">output</code> 路径的，也就是说它会保存到 <code class="language-text">dist/styles.css</code>。我们修改一下 <code class="language-text">index.html</code>，引入这个文件</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">&lt;html>
+&lt;head>
+  &lt;meta charset="UTF-8">
+  &lt;title>Document&lt;/title>
+  &lt;link rel="stylesheet" href="styles.css" type="text/css" media="screen" title="no title" charset="utf-8">
+&lt;/head>
+&lt;body>
+  &lt;script type="text/javascript" src="bundle.js">&lt;/script>
+&lt;/body>
+&lt;/html></code></pre></div>
+<p>执行 <code class="language-text">webpack</code> 看看是不是在 <code class="language-text">dist</code> 下多了一个 <code class="language-text">styles.css</code>。</p>
+<h2 id="参考" style="position:relative;">参考<a href="#%E5%8F%82%E8%80%83" aria-label="参考 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ol>
+<li><a href="http://webpack.github.io/docs/tutorials/getting-started/">webpack get started</a></li>
+<li><a href="https://webpack.github.io/docs/loaders.html#loader-order">webpack loader order</a></li>
+<li><a href="https://github.com/webpack/docs/wiki/list-of-plugins">webpack plugins</a></li>
+<li><a href="https://github.com/webpack/extract-text-webpack-plugin">extract-text-webpack-plugin</a></li>
+</ol></div></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/11">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/13">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/page/12";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-f53e78942ac2ddb4ecf0.js"],"app":["/app-a41e84ae11689d8fb1bd.js"],"component---src-pages-404-js":["/component---src-pages-404-js-66993b9f94f8c62f0827.js"],"component---src-pages-about-js":["/component---src-pages-about-js-6bc175747f9032e0ad2c.js"],"component---src-pages-archive-js":["/component---src-pages-archive-js-eee45a6e83732c56546a.js"],"component---src-pages-index-js":["/component---src-pages-index-js-ff1e3d65c7896de76df4.js"],"component---src-templates-blog-js":["/component---src-templates-blog-js-eab5dfdd85f22c0fa7c8.js"],"component---src-templates-blogs-js":["/component---src-templates-blogs-js-b12ffcc8090f5af651fa.js"]};/*]]>*/</script><script src="/polyfill-f53e78942ac2ddb4ecf0.js" nomodule=""></script><script src="/component---src-templates-blogs-js-b12ffcc8090f5af651fa.js" async=""></script><script src="/app-a41e84ae11689d8fb1bd.js" async=""></script><script src="/framework-e728256d7a1d703d32c2.js" async=""></script><script src="/webpack-runtime-740a463c9caefa5269e5.js" async=""></script></body></html>
