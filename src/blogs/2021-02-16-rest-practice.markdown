@@ -135,7 +135,7 @@ POST /plans
 
 API 越写越多，接口越来越复杂，前端调用的时候总要有个文档说说到底每个 API 都返回了啥吧，那么就要用 OpenAPI 了。
 
-![petstore 的 openapi 3.0 样例](/img/in-post/rest-practice/2021-02-17-13-51-09.png)
+![petstore 的 openapi 3.0 样例](../img/in-post/rest-practice/2021-02-17-13-51-09.png)
 
 OpenAPI 是一套标准，定义了如何用 json schema （的变种）去定义一套 REST API 的接口的。然后围绕这个标准产生了一系列的工具，这一系列的工具的组合一定程度上解决了我们 REST 开发中的诸多痛点。
 
@@ -145,7 +145,7 @@ openapi 就是个 yaml 而且其官方提供的 [swagger editor](https://editor.
 
 然后其实随着 api 的规模的增大，单个 yaml 已经承受不了了。最后分化出了多个 yaml 文档，并对 redoc 提供的 html 做了些许魔改形成了下面的这个样子：
 
-![openbayes api 文档的样子](/img/in-post/rest-practice/2021-02-17-13-57-18.gif)
+![openbayes api 文档的样子](../img/in-post/rest-practice/2021-02-17-13-57-18.gif)
 
 可以看到按照边界分成了 6 个 yaml 然后 openapi 支持每个之间做了相互的数据引用。
 
@@ -185,7 +185,7 @@ public void should_get_a_workspace_with_one_dataset_binding() {
 
 最后，也是最重要的一环，为了让 openapi 有灵魂，一定是给前端把它的调用做封装，而不是让前端同学按照文档自己去写调用接口。这里用了 `openapi-generator-cli` 可以生成众多语言的 sdk，甚至支持 typescript 的 sdk。
 
-![typescript sdk 的截图](/img/in-post/rest-practice/2021-02-17-14-39-31.png)
+![typescript sdk 的截图](../img/in-post/rest-practice/2021-02-17-14-39-31.png)
 
 ## HATEOAS
 
