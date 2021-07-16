@@ -9,17 +9,17 @@
     .main :not(pre) > code {
         @apply font-mono bg-gray-200 text-gray-500 px-1 mx-1;
     }
+    .main {
+        @apply break-words;
+    }
     .blog-post-content h2 {
-        @apply text-2xl md:text-3xl font-extrabold tracking-tight my-3 text-gray-800 overflow-auto;
+        @apply text-2xl md:text-3xl font-extrabold tracking-tight my-3 text-gray-800;
     }
     .blog-post-content h3 {
-        @apply text-xl md:text-2xl font-extrabold tracking-tight my-3 text-gray-800 overflow-auto;
+        @apply text-xl md:text-2xl font-extrabold tracking-tight my-3 text-gray-800;
     }
     .blog-post-content h4 {
-        @apply md:text-xl font-extrabold tracking-tight my-3 text-gray-800 overflow-auto;
-    }
-    .blog-post-content a.anchor {
-        fill: "red";
+        @apply md:text-xl font-extrabold tracking-tight my-3 text-gray-800;
     }
     .main ul, .main ol {
         @apply mb-4 ml-4;
