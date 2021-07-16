@@ -1,8 +1,7 @@
 spec:
   name: aisensiy-blog
   static_sites:
-  - build_command: bundle exec jekyll build -d ./_site
-    environment_slug: jekyll
+  - environment_slug: gatsby
     git:
       branch: main
       repo_clone_url: https://github.com/aisensiy/aisensiy.github.com.git

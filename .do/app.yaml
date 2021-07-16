@@ -1,9 +1,8 @@
 name: aisensiy-blog
 static_sites:
-- build_command: bundle exec jekyll build -d ./_site
-  environment_slug: jekyll
+- environment_slug: gatsby
   github:
     branch: main
     deploy_on_push: true
-    repo: aiseensiy/aisensiy.github.com
+    repo: https://github.com/aisensiy/aisensiy.github.com.git
   name: aisensiy-blog
