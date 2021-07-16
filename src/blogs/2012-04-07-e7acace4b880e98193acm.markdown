@@ -1,0 +1,93 @@
+---
+author: aisensiy
+comments: true
+date: 2012-04-07 04:24:13+00:00
+layout: post
+slug: '%e7%ac%ac%e4%b8%80%e9%81%93acm'
+title: 第一道ACM
+wordpress_id: 195
+categories:
+- acm
+---
+
+一直都对C/C++有抵触心理，嫌麻烦。不过由于如果想要做相关的训练，就必须依赖于这个平台。于是昨天就重新回顾了一下C++的语法，不求精通，只求可以写出来能AC的程序... 下面就是我写的第一道AC的题了。
+
+1001
+
+```cpp
+
+#include
+#include
+#include
+#include
+/*
+ * 题目: 计算一个大数的n次方 结果要求是绝对精确值
+ * http://poj.org/problem?id=1001
+ *
+ * 我也没有看其他高人的算法 而是凭自己的想法做出来的
+ * 核心就是用字符串模拟了小学教的乘法 还有 加法运算
+ *
+ * @author: aisensiy(http://weibo.com/alistapart)
+ */
+using namespace std;
+string multi(string a, string b);
+int main() {
+  string num, res;
+  int n;
+  while(cin>>num>>n) {
+    res = "1";
+    //通过乘法计算出n次方
+    for(int i=0; i      res = multi(res, num);
+    }
+
+    //目前的结果忽略了所有的小数点
+    //需要做进一步处理
+    string new_res;
+    int zero, i, flag = 0;
+    //首先删除前面多余的零
+    for(i=0; i= res.size()) { new_res += '.'; flag = 1; }
+    for(int i = 0, j = res.size(), tail = res.size(); i < tail; --j) {      if(zero == j && !flag) new_res += '.';      else if(zero > res.size()) { new_res += '0'; --zero; }
+      else { new_res += res[i++]; }
+    }
+    if(zero != 0) {
+      for(i = new_res.size() - 1; i >= 0 && new_res[i] == '0'; i--);
+      new_res = new_res.substr(0, new_res[i] == '.' ? i : i + 1);
+    }
+    cout<= 0; --i) {
+    if(b[i] == '.') { b_i = i; continue; }
+    int borrow = 0;
+    string v;
+    for(int j = a.size() - 1; j >= 0; --j) {
+      if(a[j] == '.') { a_i = j; continue; }
+      int cur = (a[j] - '0') * (b[i] - '0') + borrow;
+      v += (cur % 10) + '0';
+      borrow = cur / 10;
+    }
+    if(borrow) v += '0' + borrow;
+    string z(zero, '0');
+    v = z + v;
+    reverse(v.begin(), v.end());
+    res = add(res, v);
+    zero++;
+  }
+  return res;
+}
+
+/**
+ * 两个数的加法
+ * 同样忽略了小数点
+ */
+string add(string a, string b) {
+  string v;
+  int borrow = 0;
+  for(int i = a.size() - 1, j = b.size() - 1; i >= 0 || j >= 0; --i, --j) {
+    int cur = (i >= 0 ? a[i] - '0' : 0) + (j >= 0 ? b[j] - '0' : 0) + borrow;
+    v += '0' + cur % 10;
+    borrow = cur / 10;
+  }
+  if(borrow) v += '0' + borrow;
+  reverse(v.begin(), v.end());
+  return v;
+}
+
+```

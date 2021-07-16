@@ -1,0 +1,87 @@
+---
+author: aisensiy
+comments: true
+date: 2012-04-20 17:54:25+00:00
+layout: post
+slug: 'picture-bookmarklet'
+title: 提取页面上图片的 bookmarklet
+wordpress_id: 217
+categories:
+- 关注web
+- 我的项目
+tags:
+- bookmarklet
+- javascript
+- linkedin
+---
+
+不多说，这个bookmarklet([](http://en.wikipedia.org/wiki/Bookmarklet))就是用来抽取当前页面上指定大小的图片的工具。点击这个bookmarklet之后，就可以生成一个只有图片的页面，如下图所示。
+
+![](http://o8p12ybem.bkt.clouddn.com/15090265324436.jpg?imageView2/2/w/1200/q/75%7Cimageslim)
+
+
+那么如果我ctrl+s保存[网页，全部]，当前页面的图片就会随着页面保存到本地了。
+
+
+代码放在这里
+
+```js
+void (function() {
+	var minWidth = parseInt(prompt("请输入最小宽度，默认为200"), 10) || 200;
+	var minHeight = parseInt(prompt("请输入最小高度，默认为200"), 10) || 200;
+	var imgs = [];
+	var common = minWidth;
+
+	function format(str, param) {
+		return str.replace(/#{(\w+)}/gi, function(all, one) {
+			return param[one.toLowerCase()];
+		});
+	}
+
+	var tmp = Array.prototype.slice
+			  .call(document.getElementsByTagName("img"));
+	var inputs = document.getElementsByTagName('input');
+	for(var i = 0, n = inputs.length; i < n; i++) {
+		if(inputs[i].getAttribute('type') &&
+		   inputs[i].getAttribute('type').toLowerCase() == 'image')
+			tmp.push(inputs[i]);
+	}
+
+	for(var i = 0, n = tmp.length; i < n; i++) {
+		if(tmp[i].tagName.toLowerCase() == 'input'
+		   && (!tmp[i].getAttribute('type') ||
+		   tmp[i].getAttribute('type')
+		   && tmp[i].getAttribute('type') != 'image'))
+			break;
+		var src    = tmp[i].getAttribute('src'),
+			box    = tmp[i].getBoundingClientRect(),
+			width  = tmp[i].getAttribute('width') ||
+					 (box.width || box.right - box.left),
+			height = tmp[i].getAttribute('height') ||
+					 (box.height || box.bottom - box.top);
+		if(src && (src.indexOf('.jpg') || src.indexOf('.png'))
+		   && width >= minWidth && height >= minHeight) {
+
+			tmp[i].setAttribute('data-src', src);
+			tmp[i].setAttribute('data-height', height);
+			tmp[i].setAttribute('data-width', width);
+			imgs.push(tmp[i]);
+		}
+	}
+	var container = '';
+	for(var i = 0, n = imgs.length; i < n; i++) {
+		container += format('<img src="#{src}"  />', {
+			'src'    : imgs[i].getAttribute('data-src'),
+			'height' : imgs[i].getAttribute('data-height') * common /
+					   imgs[i].getAttribute('data-width'),
+			'width'  : common
+		});
+	}
+	if(/firefox/i.test(navigator.userAgent))
+		window.open('javascript: \'' + container + '\'');
+	else
+		document.write(container);
+})();
+```
+
+
