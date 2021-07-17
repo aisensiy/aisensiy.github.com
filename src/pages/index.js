@@ -27,7 +27,7 @@ export const pageQuery = graphql`
   query QueryFirstBlogPages {
     blogs: allMarkdownRemark(
       sort: { fields: frontmatter___date, order: DESC }
-      limit: 5
+      limit: 3
       skip: 0
     ) {
       nodes {
