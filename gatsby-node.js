@@ -65,10 +65,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     });
   })
   const { totalCount } = result.data.allMarkdownRemark.pageInfo
-  const perPage = 5
+  const perPage = 3
   const totalPage = totalCount % perPage == 0 ? parseInt(totalCount / perPage) : (parseInt(totalCount / perPage) + 1)
   for (let i = 1; i <= totalPage; i++) {
-    let skip = (i - 1) * 5
+    let skip = (i - 1) * perPage
     console.log(`create page/${i}`)
     createPage({
       path: `/page/${i}`,
