@@ -52,7 +52,7 @@
         }
       }
     })
-  </script><link as="script" rel="preload" href="/webpack-runtime-249ef0c1aceb28c8ac72.js"/><link as="script" rel="preload" href="/framework-e728256d7a1d703d32c2.js"/><link as="script" rel="preload" href="/app-3588e9691100af5659d9.js"/><link as="script" rel="preload" href="/component---src-templates-blog-js-8584aaf113e5c2a5c191.js"/><link as="fetch" rel="preload" href="/page-data/2021/02/16/rest-practice/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2021<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><h1 class="text-4xl font-extrabold tracking-tight my-4 text-gray-800">REST 的一些实践心得</h1><h2 class="text-gray-600 mb-4">February 16, 2021</h2><div class="table-of-content"><h2>Table of Contents</h2><div><ul>
+  </script><link as="script" rel="preload" href="/webpack-runtime-249ef0c1aceb28c8ac72.js"/><link as="script" rel="preload" href="/framework-e728256d7a1d703d32c2.js"/><link as="script" rel="preload" href="/app-eb8519696561bcbc840c.js"/><link as="script" rel="preload" href="/component---src-templates-blog-js-8584aaf113e5c2a5c191.js"/><link as="fetch" rel="preload" href="/page-data/2021/02/16/rest-practice/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2021<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><h1 class="text-4xl font-extrabold tracking-tight my-4 text-gray-800">REST 的一些实践心得</h1><h2 class="text-gray-600 mb-4">February 16, 2021</h2><div class="table-of-content"><h2>Table of Contents</h2><div><ul>
 <li>
 <p><a href="#tldr">TL;DR</a></p>
 </li>
@@ -171,7 +171,8 @@
 <p>这部分我觉得就有点额外发挥的意思了，甚至会画蛇添足。将 API 调用 SDK 化可以极大程度上减少这种额外工作的必要。</p>
 <h2 id="openapi-标准化" style="position:relative;">OpenAPI 标准化<a href="#openapi-%E6%A0%87%E5%87%86%E5%8C%96" aria-label="openapi 标准化 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <p>API 越写越多，接口越来越复杂，前端调用的时候总要有个文档说说到底每个 API 都返回了啥吧，那么就要用 OpenAPI 了。</p>
-<p><span
+<p><figure class="gatsby-resp-image-figure" style="">
+    <span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
     >
@@ -202,7 +203,9 @@
         decoding="async"
       />
   </a>
-    </span></p>
+    </span>
+    <figcaption class="gatsby-resp-image-figcaption">petstore 的 openapi 3.0 样例</figcaption>
+  </figure></p>
 <p>OpenAPI 是一套标准，定义了如何用 json schema （的变种）去定义一套 REST API 的接口的。然后围绕这个标准产生了一系列的工具，这一系列的工具的组合一定程度上解决了我们 REST 开发中的诸多痛点。</p>
 <h3 id="redoc-用于生成文档" style="position:relative;"><a href="https://github.com/Redocly/redoc">redoc</a> 用于生成文档<a href="#redoc-%E7%94%A8%E4%BA%8E%E7%94%9F%E6%88%90%E6%96%87%E6%A1%A3" aria-label="redoc 用于生成文档 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
 <p>openapi 就是个 yaml 而且其官方提供的 <a href="https://editor.swagger.io">swagger editor</a> 在这个 yaml 比较大的时候会很卡。干脆就用 intellij 去编辑了，但是我总是知道自己的语法写没写对吧。这个时候我就直接用 redoc 这个东西去渲染结果了，<strong>如果展示的对就是正确的了</strong>。</p>
@@ -233,7 +236,8 @@
 <p>其中 <code class="language-text">api.json</code> 就是利用 <code class="language-text">openapi2schema</code> 将 openapi 转换为 <code class="language-text">jsonschema</code> 的结果了。baeldung 有篇 <a href="https://www.baeldung.com/rest-assured-json-schema">文章</a> 介绍了如何使用 rest assured 的 json schema validator。</p>
 <h3 id="openapi-generator-cli-生成前端-sdk" style="position:relative;"><a href="https://github.com/OpenAPITools/openapi-generator-cli">openapi-generator-cli</a> 生成前端 sdk<a href="#openapi-generator-cli-%E7%94%9F%E6%88%90%E5%89%8D%E7%AB%AF-sdk" aria-label="openapi generator cli 生成前端 sdk permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
 <p>最后，也是最重要的一环，为了让 openapi 有灵魂，一定是给前端把它的调用做封装，而不是让前端同学按照文档自己去写调用接口。这里用了 <code class="language-text">openapi-generator-cli</code> 可以生成众多语言的 sdk，甚至支持 typescript 的 sdk。</p>
-<p><span
+<p><figure class="gatsby-resp-image-figure" style="">
+    <span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 397px; "
     >
@@ -261,7 +265,9 @@
         decoding="async"
       />
   </a>
-    </span></p>
+    </span>
+    <figcaption class="gatsby-resp-image-figcaption">typescript sdk 的截图</figcaption>
+  </figure></p>
 <h2 id="hateoas" style="position:relative;">HATEOAS<a href="#hateoas" aria-label="hateoas permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <p>这部分在 <a href="/spring-boot-and-hateoas">在 Spring Boot 中使用 HATEOAS</a> 介绍过了。简单的说就是两部分：</p>
 <ul>
@@ -292,4 +298,4 @@
 
         gtag('config', 'UA-31932181-2', {"send_page_view":false});
       }
-      </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/2021/02/16/rest-practice/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-f53e78942ac2ddb4ecf0.js"],"app":["/app-3588e9691100af5659d9.js"],"component---src-pages-404-js":["/component---src-pages-404-js-66993b9f94f8c62f0827.js"],"component---src-pages-about-js":["/component---src-pages-about-js-08f868100f45f6fa7f4a.js"],"component---src-pages-archive-js":["/component---src-pages-archive-js-6f4194b64c9f2aea9d16.js"],"component---src-pages-index-js":["/component---src-pages-index-js-27a14a6666e932854dfc.js"],"component---src-templates-blog-js":["/component---src-templates-blog-js-8584aaf113e5c2a5c191.js"],"component---src-templates-blogs-js":["/component---src-templates-blogs-js-4995d0944825796984cb.js"]};/*]]>*/</script><script src="/polyfill-f53e78942ac2ddb4ecf0.js" nomodule=""></script><script src="/component---src-templates-blog-js-8584aaf113e5c2a5c191.js" async=""></script><script src="/app-3588e9691100af5659d9.js" async=""></script><script src="/framework-e728256d7a1d703d32c2.js" async=""></script><script src="/webpack-runtime-249ef0c1aceb28c8ac72.js" async=""></script></body></html>
+      </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/2021/02/16/rest-practice/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-f53e78942ac2ddb4ecf0.js"],"app":["/app-eb8519696561bcbc840c.js"],"component---src-pages-404-js":["/component---src-pages-404-js-66993b9f94f8c62f0827.js"],"component---src-pages-about-js":["/component---src-pages-about-js-08f868100f45f6fa7f4a.js"],"component---src-pages-archive-js":["/component---src-pages-archive-js-6f4194b64c9f2aea9d16.js"],"component---src-pages-index-js":["/component---src-pages-index-js-27a14a6666e932854dfc.js"],"component---src-templates-blog-js":["/component---src-templates-blog-js-8584aaf113e5c2a5c191.js"],"component---src-templates-blogs-js":["/component---src-templates-blogs-js-4995d0944825796984cb.js"]};/*]]>*/</script><script src="/polyfill-f53e78942ac2ddb4ecf0.js" nomodule=""></script><script src="/component---src-templates-blog-js-8584aaf113e5c2a5c191.js" async=""></script><script src="/app-eb8519696561bcbc840c.js" async=""></script><script src="/framework-e728256d7a1d703d32c2.js" async=""></script><script src="/webpack-runtime-249ef0c1aceb28c8ac72.js" async=""></script></body></html>

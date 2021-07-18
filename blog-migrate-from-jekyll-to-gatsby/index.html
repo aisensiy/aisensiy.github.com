@@ -1,0 +1,527 @@
+<!DOCTYPE html><html><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.7665ee681b2a464cd92f.css" data-identity="gatsby-global-css">code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#f8f8f2;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;text-align:left;text-shadow:0 1px rgba(0,0,0,.3);white-space:pre;word-break:normal;word-spacing:normal}pre[class*=language-]{border-radius:.3em;margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#272822}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#8292a2}.token.punctuation{color:#f8f8f2}.token.namespace{opacity:.7}.token.constant,.token.deleted,.token.property,.token.symbol,.token.tag{color:#f92672}.token.boolean,.token.number{color:#ae81ff}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#a6e22e}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url,.token.variable{color:#f8f8f2}.token.atrule,.token.attr-value,.token.class-name,.token.function{color:#e6db74}.token.keyword{color:#66d9ef}.token.important,.token.regex{color:#fd971f}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}
+
+/*! tailwindcss v2.2.4 | MIT License | https://tailwindcss.com */
+
+/*! modern-normalize v1.1.0 | MIT License | https://github.com/sindresorhus/modern-normalize */html{-webkit-text-size-adjust:100%;line-height:1.15;-moz-tab-size:4;-o-tab-size:4;tab-size:4}body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;margin:0}hr{color:inherit;height:0}abbr[title]{-webkit-text-decoration:underline dotted;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{border-color:inherit;text-indent:0}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,select{text-transform:none}button{-webkit-appearance:button}legend{padding:0}progress{vertical-align:baseline}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}button{background-color:transparent;background-image:none}fieldset,ol,ul{margin:0;padding:0}ol,ul{list-style:none}html{font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5}body{font-family:inherit;line-height:inherit}*,:after,:before{border:0 solid;box-sizing:border-box}hr{border-top-width:1px}img{border-style:solid}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{color:#9ca3af;opacity:1}input:-ms-input-placeholder,textarea:-ms-input-placeholder{color:#9ca3af;opacity:1}input::placeholder,textarea::placeholder{color:#9ca3af;opacity:1}[role=button],button{cursor:pointer}table{border-collapse:collapse}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}button,input,optgroup,select,textarea{color:inherit;line-height:inherit;padding:0}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{height:auto;max-width:100%}*,:after,:before{--tw-border-opacity:1;border-color:rgba(229,231,235,var(--tw-border-opacity))}.main h1{--tw-text-opacity:1;color:rgba(31,41,55,var(--tw-text-opacity));font-size:1.875rem;font-weight:800;letter-spacing:-.025em;line-height:2.25rem;margin-bottom:1rem;margin-top:1rem}@media (min-width:768px){.main h1{font-size:2.25rem;line-height:2.5rem}}.main :not(pre)>code{--tw-bg-opacity:1;--tw-text-opacity:1;background-color:rgba(229,231,235,var(--tw-bg-opacity));color:rgba(107,114,128,var(--tw-text-opacity));font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;margin-left:.25rem;margin-right:.25rem;padding-left:.25rem;padding-right:.25rem}.main{overflow-wrap:break-word}.blog-post-content h2{--tw-text-opacity:1;color:rgba(31,41,55,var(--tw-text-opacity));font-size:1.5rem;font-weight:800;letter-spacing:-.025em;line-height:2rem;margin-bottom:.75rem;margin-top:.75rem}@media (min-width:768px){.blog-post-content h2{font-size:1.875rem;line-height:2.25rem}}.blog-post-content h3{--tw-text-opacity:1;color:rgba(31,41,55,var(--tw-text-opacity));font-size:1.25rem;font-weight:800;letter-spacing:-.025em;line-height:1.75rem;margin-bottom:.75rem;margin-top:.75rem}@media (min-width:768px){.blog-post-content h3{font-size:1.5rem;line-height:2rem}}.blog-post-content h4{--tw-text-opacity:1;color:rgba(31,41,55,var(--tw-text-opacity));font-weight:800;letter-spacing:-.025em;margin-bottom:.75rem;margin-top:.75rem}@media (min-width:768px){.blog-post-content h4{font-size:1.25rem;line-height:1.75rem}}.main ol,.main ul{margin-bottom:1rem;margin-left:1rem}.main ul{list-style-type:disc}.main ol{list-style-position:inside;list-style-type:decimal}.main a{--tw-text-opacity:1;color:rgba(37,99,235,var(--tw-text-opacity))}.main a:hover{text-decoration:underline}.main img{--tw-border-opacity:1;--tw-shadow:0 10px 15px -3px rgba(0,0,0,0.1),0 4px 6px -2px rgba(0,0,0,0.05);border-color:rgba(229,231,235,var(--tw-border-opacity));border-radius:.75rem;border-width:1px;box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.main blockquote{--tw-border-opacity:1;border-color:rgba(209,213,219,var(--tw-border-opacity));border-left-width:4px;padding-left:1.5rem}.main p,.table-of-content{margin-bottom:1rem}.table-of-content{--tw-border-opacity:1;--tw-bg-opacity:1;background-color:rgba(219,234,254,var(--tw-bg-opacity));border-color:rgba(107,114,128,var(--tw-border-opacity));border-width:1px;display:inline-block;margin-top:1rem;overflow:auto;padding:1rem}.table-of-content ul{margin-bottom:0}.table-of-content h2{--tw-text-opacity:1;color:rgba(31,41,55,var(--tw-text-opacity));font-size:1.25rem;font-weight:600;letter-spacing:-.025em;line-height:1.75rem;margin-bottom:.75rem;margin-top:.75rem}.table-of-content p{display:inline;margin:0}.bottom-0{bottom:0}.m-0{margin:0}.mx-4{margin-left:1rem;margin-right:1rem}.mx-12{margin-left:3rem;margin-right:3rem}.my-3{margin-bottom:.75rem;margin-top:.75rem}.my-4{margin-bottom:1rem;margin-top:1rem}.mt-8{margin-top:2rem}.mb-4{margin-bottom:1rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.table{display:table}.w-32{width:8rem}@-webkit-keyframes spin{to{transform:rotate(1turn)}}@keyframes spin{to{transform:rotate(1turn)}}@-webkit-keyframes ping{75%,to{opacity:0;transform:scale(2)}}@keyframes ping{75%,to{opacity:0;transform:scale(2)}}@-webkit-keyframes pulse{50%{opacity:.5}}@keyframes pulse{50%{opacity:.5}}@-webkit-keyframes bounce{0%,to{-webkit-animation-timing-function:cubic-bezier(.8,0,1,1);animation-timing-function:cubic-bezier(.8,0,1,1);transform:translateY(-25%)}50%{-webkit-animation-timing-function:cubic-bezier(0,0,.2,1);animation-timing-function:cubic-bezier(0,0,.2,1);transform:none}}@keyframes bounce{0%,to{-webkit-animation-timing-function:cubic-bezier(.8,0,1,1);animation-timing-function:cubic-bezier(.8,0,1,1);transform:translateY(-25%)}50%{-webkit-animation-timing-function:cubic-bezier(0,0,.2,1);animation-timing-function:cubic-bezier(0,0,.2,1);transform:none}}.list-inside{list-style-position:inside}.list-disc{list-style-type:disc}.list-decimal{list-style-type:decimal}.flex-row{flex-direction:row}.justify-center{justify-content:center}.space-y-1>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-bottom:calc(.25rem*var(--tw-space-y-reverse));margin-top:calc(.25rem*(1 - var(--tw-space-y-reverse)))}.space-y-8>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-bottom:calc(2rem*var(--tw-space-y-reverse));margin-top:calc(2rem*(1 - var(--tw-space-y-reverse)))}.rounded-xl{border-radius:.75rem}.border{border-width:1px}.border-l-4{border-left-width:4px}.border-solid{border-style:solid}.border-gray-200{--tw-border-opacity:1;border-color:rgba(229,231,235,var(--tw-border-opacity))}.border-gray-300{--tw-border-opacity:1;border-color:rgba(209,213,219,var(--tw-border-opacity))}.border-gray-500{--tw-border-opacity:1;border-color:rgba(107,114,128,var(--tw-border-opacity))}.border-gray-800{--tw-border-opacity:1;border-color:rgba(31,41,55,var(--tw-border-opacity))}.bg-gray-200{--tw-bg-opacity:1;background-color:rgba(229,231,235,var(--tw-bg-opacity))}.bg-gray-900{--tw-bg-opacity:1;background-color:rgba(17,24,39,var(--tw-bg-opacity))}.bg-blue-100{--tw-bg-opacity:1;background-color:rgba(219,234,254,var(--tw-bg-opacity))}.p-4{padding:1rem}.px-1{padding-left:.25rem;padding-right:.25rem}.px-4{padding-left:1rem;padding-right:1rem}.py-1{padding-bottom:.25rem;padding-top:.25rem}.py-12{padding-bottom:3rem;padding-top:3rem}.text-center{text-align:center}.font-serif{font-family:ui-serif,Georgia,Cambria,Times New Roman,Times,serif}.font-mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-6xl{font-size:3.75rem;line-height:1}.font-semibold{font-weight:600}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-black{font-weight:900}.leading-7{line-height:1.75rem}.tracking-tight{letter-spacing:-.025em}.text-white{--tw-text-opacity:1;color:rgba(255,255,255,var(--tw-text-opacity))}.text-gray-400{--tw-text-opacity:1;color:rgba(156,163,175,var(--tw-text-opacity))}.text-gray-500{--tw-text-opacity:1;color:rgba(107,114,128,var(--tw-text-opacity))}.text-gray-600{--tw-text-opacity:1;color:rgba(75,85,99,var(--tw-text-opacity))}.text-gray-800{--tw-text-opacity:1;color:rgba(31,41,55,var(--tw-text-opacity))}.text-blue-600{--tw-text-opacity:1;color:rgba(37,99,235,var(--tw-text-opacity))}.hover\:underline:hover{text-decoration:underline}*,:after,:before{--tw-shadow:0 0 #0000;--tw-ring-inset:var(--tw-empty,/*!*/ /*!*/);--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000}@media (min-width:768px){.md\:fixed{position:fixed}.md\:absolute{position:absolute}.md\:ml-80{margin-left:20rem}.md\:h-full{height:100%}.md\:w-80{width:20rem}.md\:max-w-6xl{max-width:72rem}.md\:p-8{padding:2rem}.md\:text-left{text-align:left}.md\:text-xl{font-size:1.25rem;line-height:1.75rem}.md\:text-2xl{font-size:1.5rem;line-height:2rem}.md\:text-3xl{font-size:1.875rem;line-height:2.25rem}.md\:text-4xl{font-size:2.25rem;line-height:2.5rem}}</style><meta name="generator" content="Gatsby 3.9.1"/><link rel="preconnect dns-prefetch" href="https://www.google-analytics.com"/><style type="text/css">
+    .custom-class.before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      padding-right: 4px;
+    }
+    .custom-class.after {
+      display: inline-block;
+      padding-left: 4px;
+    }
+    h1 .custom-class svg,
+    h2 .custom-class svg,
+    h3 .custom-class svg,
+    h4 .custom-class svg,
+    h5 .custom-class svg,
+    h6 .custom-class svg {
+      visibility: hidden;
+    }
+    h1:hover .custom-class svg,
+    h2:hover .custom-class svg,
+    h3:hover .custom-class svg,
+    h4:hover .custom-class svg,
+    h5:hover .custom-class svg,
+    h6:hover .custom-class svg,
+    h1 .custom-class:focus svg,
+    h2 .custom-class:focus svg,
+    h3 .custom-class:focus svg,
+    h4 .custom-class:focus svg,
+    h5 .custom-class:focus svg,
+    h6 .custom-class:focus svg {
+      visibility: visible;
+    }
+  </style><script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var hash = window.decodeURI(location.hash.replace('#', ''))
+      if (hash !== '') {
+        var element = document.getElementById(hash)
+        if (element) {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          var clientTop = document.documentElement.clientTop || document.body.clientTop || 0
+          var offset = element.getBoundingClientRect().top + scrollTop - clientTop
+          // Wait for the browser to finish rendering before scrolling.
+          setTimeout((function() {
+            window.scrollTo(0, offset - 100)
+          }), 0)
+        }
+      }
+    })
+  </script><link as="script" rel="preload" href="/webpack-runtime-249ef0c1aceb28c8ac72.js"/><link as="script" rel="preload" href="/framework-e728256d7a1d703d32c2.js"/><link as="script" rel="preload" href="/app-eb8519696561bcbc840c.js"/><link as="script" rel="preload" href="/component---src-templates-blog-js-8584aaf113e5c2a5c191.js"/><link as="fetch" rel="preload" href="/page-data/blog-migrate-from-jekyll-to-gatsby/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2021<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><h1 class="text-4xl font-extrabold tracking-tight my-4 text-gray-800">把博客从 jekyll 迁移到 gatsby</h1><h2 class="text-gray-600 mb-4">July 17, 2021</h2><div class="table-of-content"><h2>Table of Contents</h2><div><ul>
+<li>
+<p><a href="#gatsby-%E7%9A%84%E6%80%9D%E8%B7%AF">Gatsby 的思路</a></p>
+</li>
+<li>
+<p><a href="#%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B">快速开始</a></p>
+</li>
+<li>
+<p><a href="#markdown-%E6%96%87%E4%BB%B6%E7%9A%84%E6%95%B4%E4%BD%93%E8%BF%81%E7%A7%BB">markdown 文件的整体迁移</a></p>
+</li>
+<li>
+<p><a href="#%E7%94%9F%E6%88%90%E8%B7%AF%E7%94%B1">生成路由</a></p>
+<ul>
+<li>
+<p><a href="#%E5%9B%BA%E5%AE%9A%E8%B7%AF%E7%94%B1">固定路由</a></p>
+</li>
+<li>
+<p><a href="#%E4%BB%8E%E6%96%87%E4%BB%B6%E7%94%9F%E6%88%90-slug-%E5%B9%B6%E4%BD%BF%E7%94%A8-react-%E6%A8%A1%E6%9D%BF%E7%94%9F%E6%88%90-blog-%E9%A1%B5%E9%9D%A2">从文件生成 slug 并使用 react 模板生成 blog 页面</a></p>
+<ul>
+<li><a href="#1-%E5%87%86%E5%A4%87%E5%8D%95%E4%B8%AA-blog-%E7%9A%84%E6%A8%A1%E6%9D%BF%E9%A1%B5%E9%9D%A2">1. 准备单个 blog 的模板页面</a></li>
+<li><a href="#2-%E5%9C%A8-gatsby-nodejs-%E4%B8%AD%E5%88%9B%E5%BB%BA%E9%A1%B5%E9%9D%A2">2. 在 gatsby-node.js 中创建页面</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="#%E5%A4%84%E7%90%86-blog-%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE">处理 blog 中的代码高亮</a></p>
+</li>
+<li>
+<p><a href="#%E4%BC%98%E5%8C%96-blog-%E4%B8%AD%E7%9A%84-image">优化 blog 中的 image</a></p>
+</li>
+<li>
+<p><a href="#%E5%9C%A8-github-pages-%E9%83%A8%E7%BD%B2">在 github pages 部署</a></p>
+</li>
+<li>
+<p><a href="#%E5%B0%8F%E7%BB%93">小结</a></p>
+</li>
+<li>
+<p><a href="#%E7%9B%B8%E5%85%B3%E8%B5%84%E6%BA%90">相关资源</a></p>
+</li>
+</ul></div></div><div class="blog-post-content"><p>考虑到自己的前端技能有一阵子没有更新了，同时看到刘老师用 <a href="https://docusaurus.io">docusaurus</a> 把 openbayes docs 切换之后的顺滑体验，于是就打算了解和折腾了一下和 docusaurus 技术栈类似但适用范围大大增加的 <a href="https://www.gatsbyjs.org/">gatsby</a>。这里先那自己的小博客开刀，把原来的 jekyll 技术栈切换过来。</p>
+<p>本来打算一小步一小步走过来，先不要管太多的细节，可结果依然是给自己加了码，甚至同时体验了 tailwindcss 的部分。这里还是会分开几篇做介绍吧。首先是介绍把 jekyll 迁移到 gatsby 的部分。</p>
+<p>以及这里不会介绍如下内容：</p>
+<ol>
+<li>gatsby 的安装</li>
+<li>graphql 的知识</li>
+</ol>
+<h2 id="gatsby-的思路" style="position:relative;">Gatsby 的思路<a href="#gatsby-%E7%9A%84%E6%80%9D%E8%B7%AF" aria-label="gatsby 的思路 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>虽然 gatsby 官方把 static 划掉了加上了 dynamic，但从我粗浅的体验来看，它依然是一个 static site generator。只是在具体生成的路由上玩出了不少的花，后续也会做介绍。</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 772px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/e153ee034e6e26509318a47a5247d08b/940c5/2021-07-17-20-10-00.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 38.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAA7DAAAOwwHHb6hkAAABU0lEQVQY06WRXU+CYACF/fmu1l3mR2lt6SL83CTNUqA2Qfw2hFJQVF58RTAFtGU6aNhV1z73z9nZOR7nCDxNDOJhSR2sVWnTykEOn1OIvFS2BEE8YLlatc4wDE1TJEkSJK4rZis/ZfHZl/njyrBv0Shgi3OptaIQmYxI1D0YtpbxNHJ6doLEY+HIVfQ2mkymEDQ2bOvco9nM6J9g68qG+g14E/DmuLOCgjUT1z1qMe6sNHFbxxRd2C+mBoZhXJdjWbbC0LVm5amUFweCK1fTSv5c7OLzSgI0c7BTUJkkKN/JUDQ/yno9DXtdMXTt8wcvUBT1er1+fyAYCBWfi64M3k2ZNQRmwb9qULAaGFQHa8AbjSwEvDHtm5M3S25vtInlOI5t/x9s1F42slMmASoJwJFa6VLiDi2qKeXlZlTwDZgUqGXAqL1yHHu32/9hH2I8x1z1C8gfodvGHSbEAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="2021 07 17 20 10 00"
+        title="2021 07 17 20 10 00"
+        src="/static/e153ee034e6e26509318a47a5247d08b/940c5/2021-07-17-20-10-00.png"
+        srcset="/static/e153ee034e6e26509318a47a5247d08b/772e8/2021-07-17-20-10-00.png 200w,
+/static/e153ee034e6e26509318a47a5247d08b/e17e5/2021-07-17-20-10-00.png 400w,
+/static/e153ee034e6e26509318a47a5247d08b/940c5/2021-07-17-20-10-00.png 772w"
+        sizes="(max-width: 772px) 100vw, 772px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<p>把 gatsby 的思路拆分为以下几个部分：</p>
+<ol>
+<li>gatsby 使用的模板引擎是 react（jekyll 用的就是 ruby 的 erb），相比于其他的后端模板引擎，使用 react 相当于前端功能全开了，确实甩其他的模板引擎几条街。</li>
+<li>当然它自然也有自己的一套静态路由的生成体系。以及最近出现的动态路由可能就是他们说自己的 dynamic 的点？在我看来，这部分似乎没有特别多的新意，毕竟路由也是很多后端服务器一定会有的东西。唯一我看到的新意在于通过一个 php 式的文件结构去定义了路由，似乎是一种把路由的使用门槛降低的好办法，next.js 也使用了类似的方式。</li>
+<li>最后，它有一个 graphql data layer（好像有一些文章成为 data mesh）它可以通过一系列插件将各种各样的数据源做集成，并暴露出 graphql 的接口给处于 <code class="language-text">develop mode</code> 的 gatsby server ，用来填充模板的数据。这部分内容不单单是说我可以集成多个数据源这么简单，其数据层甚至可以对每个数据源做增强，以达到非常多复杂的功能。在后面有关插件的部分我也会做一些介绍。</li>
+</ol>
+<p><figure class="gatsby-resp-image-figure" style="">
+    <span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/1b825b58bb44d2080bfd119800d2a2d5/5df5d/data-layer.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 64%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsTAAALEwEAmpwYAAABzElEQVQozz1Sy3LbMAzU//9Ye8s1mSZOmjaRKtsSXyDxZoeyEwwPxM4sd7HEhGJrwh14Dvixt4RSSc+ZQhUU24DniEvESyFSzyhzxDliQUWxCUjer+3P1p6X/LKWSyZAOa35nLCgLKG9/Bv42wUyylb4aU6PnzEAAenUuwNACEGYVdjdeu8i0hr2o5hZmHvvZkbEwtS7m7mqTu4+L+vL6xsxqxpALQC995QzEvXer/uuqgWgAIiIe/fezd3MBtnd1Tw1Liix0nyNsfGe655ranwOOTWeryEA5iapMqC4u7lPd29qKMOwf7WnC/y+1o+9LZE+A97wfmgC6e0+DRujOpAUlNQ4VkqNt9y2jBFoLy0AHTjnNmQLytC9KReo121HpDHMgbaGrSEiIZGo5gKq6l/VDzlVG+T1fHl8eo4xDSvuhEhHVKoqIsOqWq3NzL68D/Y9MJHxKosi63UPsVRzZzVACjEhq7mLWky5NWSx75puz3T3Y7Hw1xJDZRJrrOeEvy+lkpAooM6hva45o4haH+b79J1wRn1ays/TdloLq5PaHPHhPeQmrBaAH97jj9P2d2/m9+yn7zHUxm+P9dKR5e24dxI7Jrwzju5O+Q8cUvLI8mjQAQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="graphql data layer"
+        title="graphql data layer"
+        src="/static/1b825b58bb44d2080bfd119800d2a2d5/5a190/data-layer.png"
+        srcset="/static/1b825b58bb44d2080bfd119800d2a2d5/772e8/data-layer.png 200w,
+/static/1b825b58bb44d2080bfd119800d2a2d5/e17e5/data-layer.png 400w,
+/static/1b825b58bb44d2080bfd119800d2a2d5/5a190/data-layer.png 800w,
+/static/1b825b58bb44d2080bfd119800d2a2d5/c1b63/data-layer.png 1200w,
+/static/1b825b58bb44d2080bfd119800d2a2d5/5df5d/data-layer.png 1572w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span>
+    <figcaption class="gatsby-resp-image-figcaption">graphql data layer</figcaption>
+  </figure></p>
+<h2 id="快速开始" style="position:relative;">快速开始<a href="#%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B" aria-label="快速开始 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>有了上面的介绍，然后我简单 google 了下，发现和我一样把 jekyll 切到 gatsby 的人不在少数。官方网站里也有适配 markdown 作为数据源的相关资源。这里先罗列下从 jekyll 到 gatsby 迁移的几个必须的步骤，并在下文一一介绍。</p>
+<ol>
+<li>markdown 文件的整体迁移</li>
+<li>生成路由</li>
+<li>处理 blog 中的代码高亮</li>
+<li>优化 blog 中的 image</li>
+<li>部署</li>
+</ol>
+<h2 id="markdown-文件的整体迁移" style="position:relative;">markdown 文件的整体迁移<a href="#markdown-%E6%96%87%E4%BB%B6%E7%9A%84%E6%95%B4%E4%BD%93%E8%BF%81%E7%A7%BB" aria-label="markdown 文件的整体迁移 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>jekyll 的时代假设其静态页面生成的数据源一定是文件，但这种假设在 2021 年看起来是被打破了。从 gatsby 的官方数据源插件来看，其中大量的数据源是 headless cms，比如 contentful 比如 wordpress。这个思路在国内似乎没有被很好的传播开来，以及对我来说从从 jekyll 迁移过来也就一定是文件。</p>
+<p>这里我用到了两个插件：</p>
+<ol>
+<li><code class="language-text">gatsby-source-filesystem</code> 将特定目录作为数据源添加到 gatsby 的数据层</li>
+<li><code class="language-text">gatsby-transformer-remark</code> 使用 <a href="https://remark.js.org/">remark</a> 将 <code class="language-text">markdown</code> 文件解析为 html 并且它有强大的扩展功能实现 markdown 里面特定的解析功能</li>
+</ol>
+<p>gatsby 所有的插件都需要单独安装并在 <code class="language-text">gatsby-config.js</code> 做配置，这里就罗列下上述两个插件的基本配置：</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  siteMetadata<span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      resolve<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">gatsby-transformer-remark</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+      options<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Plugins configs 这里后续做扩展，支持语法高亮、图片优化</span>
+        plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      resolve<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">gatsby-source-filesystem</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+      options<span class="token operator">:</span> <span class="token punctuation">{</span>
+        name<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">blogs</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+        path<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>__dirname<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/src/blogs/</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div>
+<p><code class="language-text">gatsby-source-filesystem</code> 的配置我把 markdown 文件全部放到了 <code class="language-text">src/blogs</code> 目录下，在 <code class="language-text">yarn run start</code> 之后，通过 <code class="language-text">http://localhost:8000/__graphql</code> 构建如下 graphql 语句获取对应的文件内容：</p>
+<div class="gatsby-highlight" data-language="graphql"><pre class="language-graphql"><code class="language-graphql"><span class="token punctuation">{</span>
+  <span class="token property-query">allFile</span><span class="token punctuation">(</span><span class="token attr-name">filter</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token attr-name">sourceInstanceName</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token attr-name">eq</span><span class="token punctuation">:</span> <span class="token string">"blogs"</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token object">nodes</span> <span class="token punctuation">{</span>
+      <span class="token property">relativePath</span>
+      <span class="token property">extension</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>可以看到对应的结果如下所示：</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/903572f815ccd4e832fc819eed8580f7/9b379/2021-07-18-14-20-38.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 62.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABRklEQVQoz42R247cIBBE/f//mEykWZtLYzf0DewxbGTnJVI2mj2qR44oVU8fz495Xrz3MQa4CSEkAB+8cy6tX7O4sLg4ad33epzHebRzt9deX+dxvup+9lNEMiCRmFX9K6JWW4sAk9i+AFk9Rh/9HL2P0cc4+xjDzFakOSJpFWsm1axa27W2drwW56be+/1yfP6DFKZngkdwPxw+Ez2BY5aNeC2WJYQ4fan9QdW48JpygkwbyUZKqkW0iOlVfvr8P8rKyCliRKYiiqysWi7f7K2sxkhrRPBbAeSIqtVas7Zbbe9lKZIgu0vODNnsNu+8k0UFCQJ6v+Ww8Zw4Fc1yhfS9zFu5agcsMbPHa7N7MBX7xs8bp4DBY/HIy8rrJQvJd2obb7RChpgLZIlZ8j04qb4/VWGaE/wK7qfHRyiPQMvK/p79rv0buuHtxVAbKOgAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="2021 07 18 14 20 38"
+        title="2021 07 18 14 20 38"
+        src="/static/903572f815ccd4e832fc819eed8580f7/5a190/2021-07-18-14-20-38.png"
+        srcset="/static/903572f815ccd4e832fc819eed8580f7/772e8/2021-07-18-14-20-38.png 200w,
+/static/903572f815ccd4e832fc819eed8580f7/e17e5/2021-07-18-14-20-38.png 400w,
+/static/903572f815ccd4e832fc819eed8580f7/5a190/2021-07-18-14-20-38.png 800w,
+/static/903572f815ccd4e832fc819eed8580f7/9b379/2021-07-18-14-20-38.png 951w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<p>不过直接使用这个似乎也做不了什么，在获取了这个数据之后我们需要自己写代码去解析每个文件的内容。幸好有 <code class="language-text">gatsby-transformer-remark</code> 它会帮助我们做这个事情，并提供另外一个 graphql 的接口方便我们直接获取 markdown 的内容：</p>
+<div class="gatsby-highlight" data-language="graphql"><pre class="language-graphql"><code class="language-graphql"><span class="token keyword">query</span> <span class="token punctuation">{</span>
+  <span class="token object">allMarkdownRemark</span> <span class="token punctuation">{</span>
+    <span class="token object">nodes</span> <span class="token punctuation">{</span>
+      <span class="token property">id</span>
+      <span class="token property">html</span>
+      <span class="token object">frontmatter</span> <span class="token punctuation">{</span>
+        <span class="token property">title</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/766fff3e9096e10adfe8fb7d7c67d123/d7abb/2021-07-18-14-26-08.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 58.00000000000001%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAIAAADtbgqsAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABYklEQVQoz4WRi27qMBBE8/+fVhVuAyRAq6rk4UdC7F3b6zgUEioT3UpVSzsarSzLRzsjJ0VRcMZkI2Uzq5VStm0jhOCcq//qvrrmUogmsWjJD304jeM4TdM8ZxERdoCWLHnyve/Dp0MYlFIJ+UGhv4zj9aumaepDOGpTNVpp68j3YQjh1IchHt7fHVFyuYxg++F0vn6TJ0/aHhuN5dG8NlYox5XlylQdKescJefz5XpH1IJOS7MXsGW4ZZjVsKkxZ3pRYM4jPE3TD9ztzjUATyWkFSwLzFl0xnBdweLgSuW8vwPPsbXFV4k7jjsWZ87gXwHLUj8eSIDrf4WpM7CuzbPALTd7gRnTiwOsYhBXdH9sphbi01WFOTM5w7nwstCLQ+xMv3cWGtLK7PiNr3FdY1rhJoY3O3Ef/oy9Zbi5Lc8YrMq481lAVpsX+RfcIGQ17jmkZcwfv6qCtNIPb/bt6Dx9AFzAp7PaF+fLAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="2021 07 18 14 26 08"
+        title="2021 07 18 14 26 08"
+        src="/static/766fff3e9096e10adfe8fb7d7c67d123/5a190/2021-07-18-14-26-08.png"
+        srcset="/static/766fff3e9096e10adfe8fb7d7c67d123/772e8/2021-07-18-14-26-08.png 200w,
+/static/766fff3e9096e10adfe8fb7d7c67d123/e17e5/2021-07-18-14-26-08.png 400w,
+/static/766fff3e9096e10adfe8fb7d7c67d123/5a190/2021-07-18-14-26-08.png 800w,
+/static/766fff3e9096e10adfe8fb7d7c67d123/d7abb/2021-07-18-14-26-08.png 959w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<p>gatsby 提供的 graphiql 界面增加了 <a href="https://github.com/OneGraph/graphiql-explorer">graphql-explorer</a> 用起来似乎更方便了一些。看着所提供的 graphql schema 如果具备基本的 graphql 知识，就应该明白如何从这个数据中间层获取想要的 markdown 数据了。</p>
+<h2 id="生成路由" style="position:relative;">生成路由<a href="#%E7%94%9F%E6%88%90%E8%B7%AF%E7%94%B1" aria-label="生成路由 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<h3 id="固定路由" style="position:relative;">固定路由<a href="#%E5%9B%BA%E5%AE%9A%E8%B7%AF%E7%94%B1" aria-label="固定路由 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>有了数据源之后，下一步就是构建博客的基本的路由结构了：</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">/ -- 首页，展示最新的 N 篇博客
+/about -- 关于，一个独立的页面
+/page/{page-number} -- 做分页，每页固定数量的博客，当然提供翻页功能
+/{slug} -- 每篇博客的语义 url 用来展示每篇独立的博客
+/archive -- 所有博客的总览页面，罗列了所有的博客标题</code></pre></div>
+<p>上文提了，gatsby 为了简化路由，为 <code class="language-text">/src/pages</code> 每个文件和带文件夹的层级的文件都提供对应的目录。比如 <code class="language-text">src/pages/about.js</code> 的内容就对应了 <code class="language-text">/about</code> 路由。也就是说对于固定路由来说，直接给个对应文件并且按照 gatsby 的规约，用 graphql 获取数据做渲染就好了。这里我展示下 <code class="language-text">/archive</code> 的代码做个说明：</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">Archive</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> data <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> groupByYearResult <span class="token operator">=</span> <span class="token function">groupByYear</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span>allMarkdownRemark<span class="token punctuation">.</span>nodes<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>Base<span class="token operator">></span>
+      <span class="token operator">&lt;</span>div<span class="token operator">></span>
+        <span class="token operator">&lt;</span>h1 className<span class="token operator">=</span><span class="token string">"text-4xl font-extrabold tracking-tight my-4 text-gray-800"</span><span class="token operator">></span>Archive<span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span>
+        <span class="token punctuation">{</span>groupByYearResult<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> key<span class="token punctuation">,</span> value <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>
+          <span class="token operator">&lt;</span>div key<span class="token operator">=</span><span class="token punctuation">{</span>key<span class="token punctuation">}</span><span class="token operator">></span>
+            <span class="token operator">&lt;</span>h2 className<span class="token operator">=</span><span class="token string">"text-3xl font-bold tracking-tight my-4 text-gray-800"</span><span class="token operator">></span><span class="token punctuation">{</span>key<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>h2<span class="token operator">></span>
+            <span class="token operator">&lt;</span>YearItems blogs<span class="token operator">=</span><span class="token punctuation">{</span>value<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
+          <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+        <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>Base<span class="token operator">></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">YearItems</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> blogs <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>div<span class="token operator">></span>省略了<span class="token operator">...</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> query <span class="token operator">=</span> graphql<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+  query QueryBlogTitles {
+    allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }) {
+      nodes {
+        id
+        frontmatter {
+          title
+          date(formatString: "MMMM-DD")
+          year: date(formatString: "YYYY")
+        }
+        fields {
+          slug_without_date
+        }
+      }
+    }
+  }
+</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">groupByYear</span><span class="token punctuation">(</span><span class="token parameter">blogs</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 省略了...</span>
+<span class="token punctuation">}</span>
+</code></pre></div>
+<p>文件会分两个部分一部分是 react 的渲染，一部分是 graphql 数据的获取，非常简单明了。这里就不再赘述了。</p>
+<h3 id="从文件生成-slug-并使用-react-模板生成-blog-页面" style="position:relative;">从文件生成 slug 并使用 react 模板生成 blog 页面<a href="#%E4%BB%8E%E6%96%87%E4%BB%B6%E7%94%9F%E6%88%90-slug-%E5%B9%B6%E4%BD%BF%E7%94%A8-react-%E6%A8%A1%E6%9D%BF%E7%94%9F%E6%88%90-blog-%E9%A1%B5%E9%9D%A2" aria-label="从文件生成 slug 并使用 react 模板生成 blog 页面 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>相对于固定路由，动态路由不是指 <a href="/blog-migrate-from-jekyll-to-gatsby">/blog-migrate-from-jekyll-to-gatsby</a> 就是在用户请求的时候用 server 端临时拼装页面，而是说我可以在 gatsby 部署的时候动态的生成一系列的静态页面。这也是我觉得 gatsby 并不是 dynamic 的重要原因。</p>
+<p>上文提到了，既然我可以从 graphql 里面罗列一系列的 markdown 内容了，那我自然可以通过遍历的方式去生成一个个页面并对应上相应的路由。具体在 gatsby 做的时候需要这么做：</p>
+<h4 id="1-准备单个-blog-的模板页面" style="position:relative;">1. 准备单个 blog 的模板页面<a href="#1-%E5%87%86%E5%A4%87%E5%8D%95%E4%B8%AA-blog-%E7%9A%84%E6%A8%A1%E6%9D%BF%E9%A1%B5%E9%9D%A2" aria-label="1 准备单个 blog 的模板页面 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h4>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript">
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">BlogTemplate</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> data <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>Base<span class="token operator">></span>
+      <span class="token operator">&lt;</span>Blog data<span class="token operator">=</span><span class="token punctuation">{</span>data<span class="token punctuation">.</span>blog<span class="token punctuation">}</span><span class="token operator">/</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>Base<span class="token operator">></span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> pageQuery <span class="token operator">=</span> graphql<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+  query BlogPostQuery($id: String) {
+    blog: markdownRemark(id: { eq: $id }) {
+      id
+      html
+      tableOfContents
+      frontmatter {
+        title
+        date(formatString: "MMMM DD, YYYY")
+      }
+    }
+  }
+</span><span class="token template-punctuation string">`</span></span></code></pre></div>
+<p>这是 <code class="language-text">src/templates/blog.js</code> 文件的内容，可以看到，这里在 <code class="language-text">pageQuery</code>  里引入了参数 <code class="language-text">$id</code> 马上我们就介绍怎么用这个东西。</p>
+<h4 id="2-在-gatsby-nodejs-中创建页面" style="position:relative;">2. 在 gatsby-node.js 中创建页面<a href="#2-%E5%9C%A8-gatsby-nodejs-%E4%B8%AD%E5%88%9B%E5%BB%BA%E9%A1%B5%E9%9D%A2" aria-label="2 在 gatsby nodejs 中创建页面 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h4>
+<p>gatsby 在 build 的时候会执行 gatsby-node.js 文件，在这里可以调用 gatsby 的内部 api 做一系列小动作，以实现动态创建页面的目的。</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token punctuation">{</span> createFilePath <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"gatsby-source-filesystem"</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 1. 为 markdown 增加额外的字段 slug 和 slug_without_date</span>
+exports<span class="token punctuation">.</span><span class="token function-variable function">onCreateNode</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> node<span class="token punctuation">,</span> actions<span class="token punctuation">,</span> getNode <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> createNodeField <span class="token punctuation">}</span> <span class="token operator">=</span> actions
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>node<span class="token punctuation">.</span>internal<span class="token punctuation">.</span>type <span class="token operator">===</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">MarkdownRemark</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> filename <span class="token operator">=</span> <span class="token function">createFilePath</span><span class="token punctuation">(</span><span class="token punctuation">{</span> node<span class="token punctuation">,</span> getNode <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token comment">// get the date and title from the file name</span>
+    <span class="token keyword">const</span> <span class="token punctuation">[</span><span class="token punctuation">,</span> date<span class="token punctuation">,</span> title<span class="token punctuation">]</span> <span class="token operator">=</span> filename<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span>
+      <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^\/([\d]{4}-[\d]{2}-[\d]{2})-{1}(.+)\/$</span><span class="token regex-delimiter">/</span></span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// create a new slug concatenating everything</span>
+    <span class="token function">createNodeField</span><span class="token punctuation">(</span><span class="token punctuation">{</span> node<span class="token punctuation">,</span> name<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">slug</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>date<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\-</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">,</span> <span class="token string">"/"</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>title<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token template-punctuation string">`</span></span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token function">createNodeField</span><span class="token punctuation">(</span><span class="token punctuation">{</span> node<span class="token punctuation">,</span> name<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">slug_without_date</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>title<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 2. 获取所有的 markdown 数据</span>
+<span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"path"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+exports<span class="token punctuation">.</span><span class="token function-variable function">createPages</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> graphql<span class="token punctuation">,</span> actions<span class="token punctuation">,</span> reporter <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token comment">// Destructure the createPage function from the actions object</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> createPage <span class="token punctuation">}</span> <span class="token operator">=</span> actions
+  <span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">graphql</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+    {
+      allMarkdownRemark {
+        nodes {
+          id
+          fields {
+            slug
+            slug_without_date
+          }
+        }
+        pageInfo {
+          totalCount
+        }
+      }
+    }
+  </span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>result<span class="token punctuation">.</span>errors<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    reporter<span class="token punctuation">.</span><span class="token function">panicOnBuild</span><span class="token punctuation">(</span><span class="token string">'🚨  ERROR: Loading "createPages" query'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  
+  <span class="token keyword">const</span> posts <span class="token operator">=</span> result<span class="token punctuation">.</span>data<span class="token punctuation">.</span>allMarkdownRemark<span class="token punctuation">.</span>nodes<span class="token punctuation">;</span>
+  <span class="token comment">// 3. 调用 api createPage 创建</span>
+  posts<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">node<span class="token punctuation">,</span> index</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token function">createPage</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      path<span class="token operator">:</span> node<span class="token punctuation">.</span>fields<span class="token punctuation">.</span>slug<span class="token punctuation">,</span> <span class="token comment">// 这里是路由</span>
+      component<span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">./src/templates/blog.js</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment">// 这里是模板的位置</span>
+      context<span class="token operator">:</span> <span class="token punctuation">{</span> id<span class="token operator">:</span> node<span class="token punctuation">.</span>id <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token comment">// 这里是传递给模板的参数</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+    <span class="token function">createPage</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      path<span class="token operator">:</span> node<span class="token punctuation">.</span>fields<span class="token punctuation">.</span>slug_without_date<span class="token punctuation">,</span> <span class="token comment">// 生成另外一个路由</span>
+      component<span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">./src/templates/blog.js</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      context<span class="token operator">:</span> <span class="token punctuation">{</span> id<span class="token operator">:</span> node<span class="token punctuation">.</span>id <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>首先，这里通过 <code class="language-text">onCreateNode</code> 的 hook 通过文件名解析出来了 slug 比如文件名是 <code class="language-text">2021-07-17-blog-migrate-from-jekylly-to-gatsby.md</code> 那么就会解析出两个 slug：</p>
+<ul>
+<li>/2021/07/17/blog-migrate-from-jekylly-to-gatsby</li>
+<li>/blog-migrate-from-jekylly-to-gatsby</li>
+</ul>
+<p>然后通过 <code class="language-text">createNodeField</code> 把 slug 就再次塞回了 <code class="language-text">MarkdownRemark</code> 类型的 <code class="language-text">fields</code> 属性里。后面就可以通过 <code class="language-text">fields.slug</code> 使用了。</p>
+<p>之所有有 /2021/07/17/xxx 这样子的路由是因为之前 jekyll 就是这样子的路由，算是做一个兼容吧。</p>
+<p>到目前为止，blog 的主要功能算是建立好了。</p>
+<h2 id="处理-blog-中的代码高亮" style="position:relative;">处理 blog 中的代码高亮<a href="#%E5%A4%84%E7%90%86-blog-%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE" aria-label="处理 blog 中的代码高亮 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>remark 这个插件自己还有额外的插件，通过增加额外的 <a href="https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/">prismjs</a> 的支持就可以实现代码的高亮了。</p>
+<p>简单罗列下配置：</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token punctuation">{</span>
+      resolve<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">gatsby-transformer-remark</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+      options<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Plugins configs</span>
+        plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+          <span class="token punctuation">{</span>
+            resolve<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">gatsby-remark-prismjs</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+            options<span class="token operator">:</span> <span class="token punctuation">{</span>
+              aliases<span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token comment">// 这里仅仅是多了两个语言的 alias</span>
+                sh<span class="token operator">:</span> <span class="token string">"bash"</span><span class="token punctuation">,</span>
+                gql<span class="token operator">:</span> <span class="token string">"graphql"</span>
+              <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span></code></pre></div>
+<p>然后记得按照文档把 css 文件添加进来。</p>
+<h2 id="优化-blog-中的-image" style="position:relative;">优化 blog 中的 image<a href="#%E4%BC%98%E5%8C%96-blog-%E4%B8%AD%E7%9A%84-image" aria-label="优化 blog 中的 image permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>这部分算是 gatsby 相对于 jekyll 的另一个亮点吧，通过对 img 的 srcset 的支持，可以实现在不同宽度的页面上去加载不同宽度的图片。并且，这些不同宽度的图片全部由插件自动生成，基本上是开箱即用了。更多的信息去 <a href="https://www.gatsbyjs.com/plugins/gatsby-remark-images/?=image#gatsby-remark-images">gatsby remark images</a> 一看就晓得了。</p>
+<h2 id="在-github-pages-部署" style="position:relative;">在 github pages 部署<a href="#%E5%9C%A8-github-pages-%E9%83%A8%E7%BD%B2" aria-label="在 github pages 部署 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>这部分 gatsby 已经给准备好了，跟着 <a href="https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/how-gatsby-works-with-github-pages/">How Gatsby Works with GitHub Pages</a> 基本就能解决。唯一的不同在于我通过一个 github action 实现了自动部署（而不是每次都自己 yarn run deploy）：</p>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">name</span><span class="token punctuation">:</span> build<span class="token punctuation">-</span>and<span class="token punctuation">-</span>deploy
+
+<span class="token key atrule">on</span><span class="token punctuation">:</span>
+  <span class="token key atrule">push</span><span class="token punctuation">:</span>
+    <span class="token key atrule">branches</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">'**'</span>
+
+<span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+  <span class="token key atrule">build</span><span class="token punctuation">:</span>
+    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> Git Repo Sync
+    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v2
+    <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/setup<span class="token punctuation">-</span>node@v2
+      <span class="token key atrule">with</span><span class="token punctuation">:</span>
+        <span class="token key atrule">node-version</span><span class="token punctuation">:</span> <span class="token string">'14'</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> install deps
+      <span class="token key atrule">run</span><span class="token punctuation">:</span> yarn install <span class="token punctuation">-</span><span class="token punctuation">-</span>frozen<span class="token punctuation">-</span>lockfile
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> build
+      <span class="token key atrule">run</span><span class="token punctuation">:</span> yarn run build
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> deploy
+      <span class="token key atrule">uses</span><span class="token punctuation">:</span> peaceiris/actions<span class="token punctuation">-</span>gh<span class="token punctuation">-</span>pages@v3
+      <span class="token key atrule">with</span><span class="token punctuation">:</span>
+        <span class="token key atrule">github_token</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> secrets.GITHUB_TOKEN <span class="token punctuation">}</span><span class="token punctuation">}</span>
+        <span class="token key atrule">publish_branch</span><span class="token punctuation">:</span> main
+        <span class="token key atrule">publish_dir</span><span class="token punctuation">:</span> ./public</code></pre></div>
+<p>这里我的主分支是 master 然后采用 main 作为了发布分支，直接使用 action  <code class="language-text">actions-gh-pages</code> 把 public 目录提交到 main 就可以了。</p>
+<h2 id="小结" style="position:relative;">小结<a href="#%E5%B0%8F%E7%BB%93" aria-label="小结 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>gatsby 并不像 jekyll 那么开箱即用，但其功能相对来说确实强大不少。灵活性和扩展性确实不是一个数量级了。当然，这前提是你对前端的技术栈足够了解，不然可能就只能在 <a href="https://www.gatsbyjs.com/docs/starters/">gatsby starters</a> 找找有没有合适的东西了。</p>
+<p>后面还有一些工作要做的：</p>
+<ol>
+<li>样式...现在是 plain html 默认样式，只有代码块是花花绿绿的</li>
+<li>优化，标题，meta 应该还是需要花点点时间的</li>
+<li>首页，在路由的部分提及了，这部分在 jekyll 的时候是个分页，现在想要做类似的实现，应该不难</li>
+<li>tags 的展示和按照 tags 罗列文章，这也是之前 jekyll 的功能，也希望做成类似的样子</li>
+</ol>
+<h2 id="相关资源" style="position:relative;">相关资源<a href="#%E7%9B%B8%E5%85%B3%E8%B5%84%E6%BA%90" aria-label="相关资源 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>把几个用到但是没有提及的链接放到了这里。</p>
+<ul>
+<li><a href="https://deborah-digges.github.io/2020/09/16/Jekyll-to-Gatsby/">From Jekyll to Gatsby: 7 Simple Steps</a></li>
+<li><a href="https://www.gatsbyjs.com/docs/how-to/routing/adding-markdown-pages/">Adding Markdown Pages</a></li>
+<li><a href="https://www.gatsbyjs.com/docs/reference/routing/creating-routes/#using-gatsby-nodejs">Create routing</a></li>
+</ul></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
+      
+      
+      if(true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){window.dataLayer && window.dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-31932181-2', {"send_page_view":false});
+      }
+      </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/blog-migrate-from-jekyll-to-gatsby";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-f53e78942ac2ddb4ecf0.js"],"app":["/app-eb8519696561bcbc840c.js"],"component---src-pages-404-js":["/component---src-pages-404-js-66993b9f94f8c62f0827.js"],"component---src-pages-about-js":["/component---src-pages-about-js-08f868100f45f6fa7f4a.js"],"component---src-pages-archive-js":["/component---src-pages-archive-js-6f4194b64c9f2aea9d16.js"],"component---src-pages-index-js":["/component---src-pages-index-js-27a14a6666e932854dfc.js"],"component---src-templates-blog-js":["/component---src-templates-blog-js-8584aaf113e5c2a5c191.js"],"component---src-templates-blogs-js":["/component---src-templates-blogs-js-4995d0944825796984cb.js"]};/*]]>*/</script><script src="/polyfill-f53e78942ac2ddb4ecf0.js" nomodule=""></script><script src="/component---src-templates-blog-js-8584aaf113e5c2a5c191.js" async=""></script><script src="/app-eb8519696561bcbc840c.js" async=""></script><script src="/framework-e728256d7a1d703d32c2.js" async=""></script><script src="/webpack-runtime-249ef0c1aceb28c8ac72.js" async=""></script></body></html>

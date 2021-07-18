@@ -52,7 +52,133 @@
         }
       }
     })
-  </script><link as="script" rel="preload" href="/webpack-runtime-249ef0c1aceb28c8ac72.js"/><link as="script" rel="preload" href="/framework-e728256d7a1d703d32c2.js"/><link as="script" rel="preload" href="/app-3588e9691100af5659d9.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-4995d0944825796984cb.js"/><link as="fetch" rel="preload" href="/page-data/page/6/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2021<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div><h1 class="text-4xl font-extrabold tracking-tight my-4 text-gray-800"><a href="/lxcfs-in-kubernetes">在 Kubernetes 中使用最新的 LXCFS</a></h1><h2 class="text-gray-600 mb-4">2020 September-21</h2><div class="blog-post-content"><p>在 k8s 中启动的 pod 下的 container 虽然在资源上做了隔离，但是这种隔离对用户通常是不可见的，具体的表现就是使用 <code class="language-text">top</code> <code class="language-text">cat /proc/cpuinfo</code> 或者 <code class="language-text">free -m</code> 等这样的命令的时候看到的依然是宿主机的资源。这种行为在 openbayes 这种为外部用户分配资源的场景会有很强的迷惑性，用户不知道自己到底有多少资源，因为从里面看到的资源和在外面的声明的是不一样的。为了达到容器内外的一致性，我们引入了 lxcfs。</p>
+  </script><link as="script" rel="preload" href="/webpack-runtime-249ef0c1aceb28c8ac72.js"/><link as="script" rel="preload" href="/framework-e728256d7a1d703d32c2.js"/><link as="script" rel="preload" href="/app-eb8519696561bcbc840c.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-4995d0944825796984cb.js"/><link as="fetch" rel="preload" href="/page-data/page/6/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2021<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div><h1 class="text-4xl font-extrabold tracking-tight my-4 text-gray-800"><a href="/youtube-dl">youtube-dl 的一些实用技巧</a></h1><h2 class="text-gray-600 mb-4">2020 October-09</h2><div class="blog-post-content"><p>众所周知，在国内 youtube 是不能使用的，但 youtube 目前已经成为了一个视频 host 的存在了，其内容是非常丰富的，丰富到各种各样的学习资源也都放在这里。对个人来说，通过一些手段勉强还能看到一些内容，但如果想要投屏、或者分享，这就需要做一些搬运的工作了。目前来看 <a href="https://ytdl-org.github.io/youtube-dl/index.html">youtude-dl</a> 是最强的 youtube 资源下载工具，没有之一。这里结合场景记录一下最近使用它的一些技巧，方便后续查阅。</p>
+<p>目前来看，bilibili 的性质非常像 youtube 如果需要将一些资源投屏或者分享给其他人，比较简单的办法就是将 youtube 资源直接搬运到 bilibili。这种场景通常有以下需求：</p>
+<ol>
+<li>需要下载最好的画质</li>
+<li>需要考虑下载声音和视频，当然有些时候可能只下载声音就够了</li>
+<li>需要下载字幕</li>
+</ol>
+<p>下面以一个 fastai 的搬运为例，来看看怎么用 youtube-dl 实现上述功能。</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/0ee6475a1d56423e2785612337ec870b/f0293/2020-10-09-23-37-08.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 55.49999999999999%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABYlAAAWJQFJUiTwAAACj0lEQVQoz32S60/SURzG+QO6bbW15rJl84KSXHKZNqBQuygipF0kU7NCTU2xi83UyizTgNQMo4vozMRLa0Brpoj6IqRMQev/+TR+WrMX9eLZ833OOfucZ2dHtDMxGXGRCUnFdSRXzCRerkN86RrSq7dQNXX8U5p7Vo7etaBusVDe0kRzcz1pynREW/ankNTai8I+ivzZOxS9LmQ9wxx2eimY+UG+b/W/OuVbpWFukcaPs4jVGkTb9h8g6Y4FhW0A2ZM3yC39SDtfk2Z3ofcsoPcEMHgCgm+cDet7eneA7A9f0Pl+EqXJRrQ1Amy2IrUNIrX0I7cNCJ72Ygz9x6/oPEG0ngV03qAw50bmDW7wBoVLTk+vEK05+Rto40ifi/SeIWRWpwBM7RvDOPmdypkQ5TMhSj4vUTa9jGkmxKXpZSrW1/K8QaFpgW+V3RuBmhejAjClaxC5dQ1Y/HmJqtkw1bMrVPrDVPnD1M6tUDq1hMkXEuCRlpGn+RvYZCXLMcYJxyjK3mEOWJ2k2kcpmlyk2h+meL1p3VyYan+Iwk/fyHEH1tp5g+S5NzTckigj4eZDZO0OpG12JG3PkbTZOdj9Fu3EPNqJOXLfz6N7Py/476wd96N1+ciJaGSKPPcXolRZiDbHJRFb2UDi7Q7Etx4hbniMuOYOyTWNqB90o2rtQnn/6R8JOfIHra/JdIyT2eciwz7CcaebXYdUiDbFxLO3tIb42hbia5qIq21BUlxJui4f9ZkiMo2lHLtQhqaw+E/OMpagbGxHbXOi7nyFqvMlGT1D7JClItoeE0ts3jn2nS4lWm9kj+E80YYiYs9eRHbFjNxkRmGqF3xN9SjK65GWX0dmMiM1mYVzyRU3SEhT8gvd2AyiwHV/2QAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="2020 10 09 23 37 08"
+        title="2020 10 09 23 37 08"
+        src="/static/0ee6475a1d56423e2785612337ec870b/5a190/2020-10-09-23-37-08.png"
+        srcset="/static/0ee6475a1d56423e2785612337ec870b/772e8/2020-10-09-23-37-08.png 200w,
+/static/0ee6475a1d56423e2785612337ec870b/e17e5/2020-10-09-23-37-08.png 400w,
+/static/0ee6475a1d56423e2785612337ec870b/5a190/2020-10-09-23-37-08.png 800w,
+/static/0ee6475a1d56423e2785612337ec870b/c1b63/2020-10-09-23-37-08.png 1200w,
+/static/0ee6475a1d56423e2785612337ec870b/29007/2020-10-09-23-37-08.png 1600w,
+/static/0ee6475a1d56423e2785612337ec870b/f0293/2020-10-09-23-37-08.png 2250w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<p>这个是最新的 fastai 的视频讲解的第一节，其 url 为 <a href="https://www.youtube.com/watch?v=_QUEXsHfsA0&#x26;t=4s">https://www.youtube.com/watch?v=_QUEXsHfsA0&#x26;t=4s</a> 。</p>
+<p>如果有最简单的命令如下：</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">youtube-dl https://www.youtube.com/watch\?v\=_QUEXsHfsA0\&amp;t\=4s</code></pre></div>
+<p>其生成日志如下：</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">[youtube] _QUEXsHfsA0: Downloading webpage
+WARNING: Requested formats are incompatible for merge and will be merged into mkv.
+[download] Destination: Lesson 1 - Deep Learning for Coders (2020)-_QUEXsHfsA0.f137.mp4
+[download] 100% of 178.27MiB in 02:17
+[download] Destination: Lesson 1 - Deep Learning for Coders (2020)-_QUEXsHfsA0.f251.webm
+[download] 100% of 75.84MiB in 01:16
+[ffmpeg] Merging formats into "Lesson 1 - Deep Learning for Coders (2020)-_QUEXsHfsA0.mkv"
+Deleting original file Lesson 1 - Deep Learning for Coders (2020)-_QUEXsHfsA0.f137.mp4 (pass -k to keep)
+Deleting original file Lesson 1 - Deep Learning for Coders (2020)-_QUEXsHfsA0.f251.webm (pass -k to keep)</code></pre></div>
+<p>首先这样子生成的 <code class="language-text">.mkv</code> 格式文件找个播放器就可以用了。自己拷贝到自己的设备上也可以看了，并且其默认下载的就是最优画质，这个甚至 bilibili 上传也没什么问题。但是有两个小缺点：</p>
+<ol>
+<li>mkv 格式相对于 mp4 的兼容性会略差，也就是有些地方不一定可以播放，并且 bilbili 是更推荐上传 mp4 格式</li>
+<li>没有下载相应的字幕，算是个生肉</li>
+</ol>
+<p>下一步为了解决以上两个问题，可以做下述的变化。</p>
+<h2 id="修改输出格式" style="position:relative;">修改输出格式<a href="#%E4%BF%AE%E6%94%B9%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F" aria-label="修改输出格式 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>首先是更换输出文件格式：</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">youtube-dl https://www.youtube.com/watch\?v\=_QUEXsHfsA0\&amp;t\=4s --merge-output-format mp4</code></pre></div>
+<p>这样子输出的就是 <code class="language-text">.mp4</code> 格式了。</p>
+<h2 id="下载字幕" style="position:relative;">下载字幕<a href="#%E4%B8%8B%E8%BD%BD%E5%AD%97%E5%B9%95" aria-label="下载字幕 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>在下载字幕之前首先需要确认下该视频到底支持哪些语言的字幕：</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">youtube-dl https://www.youtube.com/watch\?v\=_QUEXsHfsA0\&amp;t\=4s --list-subs</code></pre></div>
+<p>会展示所有支持的字幕以及其格式，包括机器生成字幕以及人工提交字幕等内容：</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">[youtube] _QUEXsHfsA0: Downloading webpage
+[youtube] _QUEXsHfsA0: Looking for automatic captions
+Available automatic captions for _QUEXsHfsA0:
+Language formats
+my       vtt, ttml, srv3, srv2, srv1
+ca       vtt, ttml, srv3, srv2, srv1
+ceb      vtt, ttml, srv3, srv2, srv1
+zh-Hans  vtt, ttml, srv3, srv2, srv1
+zh-Hant  vtt, ttml, srv3, srv2, srv1
+co       vtt, ttml, srv3, srv2, srv1
+...
+Available subtitles for _QUEXsHfsA0:
+Language formats
+ar       vtt, ttml, srv3, srv2, srv1
+bg       vtt, ttml, srv3, srv2, srv1
+zh-Hans  vtt, ttml, srv3, srv2, srv1
+en       vtt, ttml, srv3, srv2, srv1</code></pre></div>
+<p>可以看到人工提交的字幕有 <code class="language-text">zh-Hans</code> 不过其提供的字幕格式（vtt, ttml, srv3, srv2, srv1）很不常见的样子。在 bilibili 是需要提交 <code class="language-text">srt</code> 格式的字幕。这里 <code class="language-text">youtube-dl</code> 也给考虑到了，其 <code class="language-text">    --convert-subs</code> 参数支持 <code class="language-text">srt ass vtt lrc</code> 这些字幕格式的转换：</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">youtube-dl https://www.youtube.com/watch\?v\=_QUEXsHfsA0\&amp;t\=4s --merge-output-format mp4 --write-sub --sub-lang zh-Hans --sub-format vtt --convert-subs srt</code></pre></div>
+<p>这样子对应的字幕以及格式转换也都搞定了：</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">[youtube] _QUEXsHfsA0: Downloading webpage
+[info] Writing video subtitles to: Lesson 1 - Deep Learning for Coders (2020)-_QUEXsHfsA0.zh-Hans.vtt
+[download] Lesson 1 - Deep Learning for Coders (2020)-_QUEXsHfsA0.mp4 has already been downloaded and merged
+[ffmpeg] Converting subtitles
+Deleting original file Lesson 1 - Deep Learning for Coders (2020)-_QUEXsHfsA0.zh-Hans.vtt (pass -k to keep)</code></pre></div>
+<h2 id="自定义下载格式" style="position:relative;">自定义下载格式<a href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%8B%E8%BD%BD%E6%A0%BC%E5%BC%8F" aria-label="自定义下载格式 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>如果需要自由选择下载视频的大小，可以按照以下方式操作：</p>
+<p>首先通过参数罗列支持的格式：</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">youtube-dl https://www.youtube.com/watch\?v\=_QUEXsHfsA0\&amp;t\=4s --list-formats</code></pre></div>
+<p>输出如下所示：</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">[youtube] _QUEXsHfsA0: Downloading webpage
+[info] Available formats for _QUEXsHfsA0:
+format code  extension  resolution note
+249          webm       audio only tiny   54k , opus @ 50k (48000Hz), 27.19MiB
+250          webm       audio only tiny   87k , opus @ 70k (48000Hz), 40.85MiB
+140          m4a        audio only tiny  134k , m4a_dash container, mp4a.40.2@128k (44100Hz), 76.42MiB
+251          webm       audio only tiny  164k , opus @160k (48000Hz), 75.84MiB
+160          mp4        256x144    144p   71k , avc1.4d400c, 30fps, video only, 8.53MiB
+278          webm       256x144    144p   87k , webm container, vp9, 30fps, video only, 19.13MiB
+242          webm       426x240    240p  171k , vp9, 30fps, video only, 29.85MiB
+133          mp4        426x240    240p  220k , avc1.4d4015, 30fps, video only, 15.86MiB
+243          webm       640x360    360p  406k , vp9, 30fps, video only, 58.88MiB
+134          mp4        640x360    360p  584k , avc1.4d401e, 30fps, video only, 28.04MiB
+244          webm       854x480    480p  766k , vp9, 30fps, video only, 96.62MiB
+135          mp4        854x480    480p 1157k , avc1.4d401f, 30fps, video only, 42.30MiB
+247          webm       1280x720   720p 1622k , vp9, 30fps, video only, 180.75MiB
+136          mp4        1280x720   720p 2102k , avc1.4d401f, 30fps, video only, 60.57MiB
+248          webm       1920x1080  1080p 3132k , vp9, 30fps, video only, 324.32MiB
+137          mp4        1920x1080  1080p 4356k , avc1.640028, 30fps, video only, 178.27MiB
+22           mp4        1280x720   720p  231k , avc1.64001F, 30fps, mp4a.40.2@192k (44100Hz)
+18           mp4        640x360    360p  297k , avc1.42001E, 30fps, mp4a.40.2@ 96k (44100Hz), 175.59MiB (best)</code></pre></div>
+<p>可以看到存在三种类型：</p>
+<ol>
+<li>audio only</li>
+<li>video only</li>
+<li>video + audio</li>
+</ol>
+<p>这个视频很显然其 <code class="language-text">video + audio</code> 的格式 22 和 18 都不是最优解。默认是选取了 251 和 137 （最好声音 + 最好画质）做了合并（也就是 <code class="language-text">--merge-output-format</code> 的作用）。如果需要其他组合可以通过命令 <code class="language-text">-f &lt;video>+&lt;audio></code> 形式：</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">youtube-dl https://www.youtube.com/watch\?v\=_QUEXsHfsA0\&amp;t\=4s -f 137+140 --merge-output-format mp4 --write-sub --sub-lang zh-Hans --sub-format vtt --convert-subs srt</code></pre></div></div></div><div><h1 class="text-4xl font-extrabold tracking-tight my-4 text-gray-800"><a href="/lxcfs-in-kubernetes">在 Kubernetes 中使用最新的 LXCFS</a></h1><h2 class="text-gray-600 mb-4">2020 September-21</h2><div class="blog-post-content"><p>在 k8s 中启动的 pod 下的 container 虽然在资源上做了隔离，但是这种隔离对用户通常是不可见的，具体的表现就是使用 <code class="language-text">top</code> <code class="language-text">cat /proc/cpuinfo</code> 或者 <code class="language-text">free -m</code> 等这样的命令的时候看到的依然是宿主机的资源。这种行为在 openbayes 这种为外部用户分配资源的场景会有很强的迷惑性，用户不知道自己到底有多少资源，因为从里面看到的资源和在外面的声明的是不一样的。为了达到容器内外的一致性，我们引入了 lxcfs。</p>
 <h2 id="工作原理" style="position:relative;">工作原理<a href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86" aria-label="工作原理 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <p>在 <a href="https://linuxcontainers.org/lxcfs/introduction/">lxcfs 官方</a>的定义里提到它是一个用户空间的文件系统。它主要提供了一系列文件可以覆盖 <code class="language-text">/proc</code> 用以覆盖系统的这些目录。也就是说，如果想要让容器里看到的资源是已经做了隔离之后的资源，其实就是将系统默认的一些文件通过 mount 的方式进行覆盖。当容器中进程读取相应文件内容时，lxcfs 会从容器对应的 cgroup 中读取正确的资源限制。</p>
 <h2 id="lxcfs-的方案调研" style="position:relative;">lxcfs 的方案调研<a href="#lxcfs-%E7%9A%84%E6%96%B9%E6%A1%88%E8%B0%83%E7%A0%94" aria-label="lxcfs 的方案调研 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
@@ -352,21 +478,7 @@ But for self-hosted runner, there are some comments:</p>
 </ul>
 </blockquote>
 <p>Thanks.</p>
-<p>总结起来就是你要是只有一个 self-hosted 的节点，那抱歉什么都是按顺序来。如果有多个节点，那么什么都好说。</p></div></div><div><h1 class="text-4xl font-extrabold tracking-tight my-4 text-gray-800"><a href="/nvidia-libnvidia-fatbinaryloader">记一次 nvidia docker 错误追查</a></h1><h2 class="text-gray-600 mb-4">2019 January-17</h2><div class="blog-post-content"><p>最近搞装机的事情很是烦躁，非常理解做运维的同学的辛苦了。尤其是当出现一些不知所云的错误的时候，真的是头都炸了。而且如果不能保持冷静还可能把原先做的工作因为一两个失误毁于一旦。</p>
-<p>从现在开始尝试频繁的记录在运维的过程中遇到的各种各样的错误。这次是记录 dgx1 上 <code class="language-text">nvidia-docker2</code> 异常，导致 <code class="language-text">nvidia-device-plugin</code> 无法启动。</p>
-<p>将 <code class="language-text">dgx1</code> 加入 <code class="language-text">kubernetes</code> 集群之后发现其 <code class="language-text">nvidia-device-plugin</code> 启动报错 <code class="language-text">RunContainerError</code>，<code class="language-text">k describe pod</code> 发现错误信息：</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">Error: failed to start container "nvidia-device-plugin-ctr": Error response from daemon: OCI runtime create failed: container_linux.go:348: starting container process caused "process_linux.go:402: container init caused \"process_linux.go:385: running prestart hook 0 caused \\\"error running hook: exit status 1, stdout: , stderr: exec command: [/usr/bin/nvidia-container-cli --load-kmods configure --ldconfig=@/sbin/ldconfig.real --device=all --utility --pid=11077 /var/lib/docker/overlay2/510a6de5ed82decf7421a392e5274b4fe47e8d0cd3610175c3550f1d26c91376/merged]\\\\nnvidia-container-cli: initialization error: driver error: failed to process request\\\\n\\\"\"": unknown</code></pre></div>
-<p>说是驱动有问题，第一个想到的就是因为将早先的 <code class="language-text">nvidia-384</code> 驱动更新到了 <code class="language-text">nvidia-410</code> 可能有问题，再重启之后没有作用，于是尝试通过 <code class="language-text">apt</code> 重新安装 <code class="language-text">nvidia-410</code>：</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">$ add-apt-repository ppa:graphics-drivers/ppa
-$ apt update
-$ apt install nvidia-410</code></pre></div>
-<p>重启后依然发现类似问题，再去搜索发现 <a href="https://zhuanlan.zhihu.com/p/37519492">https://zhuanlan.zhihu.com/p/37519492</a> 和我遇到的问题类似，通过命令 <code class="language-text">nvidia-container-cli -k -d /dev/tty info</code> 得到具体的报错：</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">E0117 08:51:20.843706 12905 driver.c:197] could not start driver service: load library failed: libnvidia-fatbinaryloader.so.384.145: cannot open shared object file: no such file or directory</code></pre></div>
-<p><code class="language-text">384</code> 这个驱动版本我明明已经删了，为什么还要找这个库呢？是不是因为新的 <code class="language-text">410</code> 安装的不全呢？再往后看，提到</p>
-<blockquote>
-<p>安装驱动的时候会自动安装这个libcuda1-384包的，估计是什么历史遗留问题，或者是purge 又install把包的依赖关系搞坏了，因此现在需要重新安装。</p>
-</blockquote>
-<p>立即想到我的 <code class="language-text">410</code> 是不是也没有安装 <code class="language-text">libcuda1-410</code> 呢？赶紧 <code class="language-text">apt search libcuda</code> 发现果然有这么个依赖，<code class="language-text">apt install libcuda1-410</code> 赶紧安装，再次跑 <code class="language-text">nvidia-container-cli -k -d /dev/tty info</code> 就一切正常了。</p></div></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/5">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/7">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
+<p>总结起来就是你要是只有一个 self-hosted 的节点，那抱歉什么都是按顺序来。如果有多个节点，那么什么都好说。</p></div></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/5">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/7">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       
       if(true) {
@@ -376,4 +488,4 @@ $ apt install nvidia-410</code></pre></div>
 
         gtag('config', 'UA-31932181-2', {"send_page_view":false});
       }
-      </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/page/6";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-f53e78942ac2ddb4ecf0.js"],"app":["/app-3588e9691100af5659d9.js"],"component---src-pages-404-js":["/component---src-pages-404-js-66993b9f94f8c62f0827.js"],"component---src-pages-about-js":["/component---src-pages-about-js-08f868100f45f6fa7f4a.js"],"component---src-pages-archive-js":["/component---src-pages-archive-js-6f4194b64c9f2aea9d16.js"],"component---src-pages-index-js":["/component---src-pages-index-js-27a14a6666e932854dfc.js"],"component---src-templates-blog-js":["/component---src-templates-blog-js-8584aaf113e5c2a5c191.js"],"component---src-templates-blogs-js":["/component---src-templates-blogs-js-4995d0944825796984cb.js"]};/*]]>*/</script><script src="/polyfill-f53e78942ac2ddb4ecf0.js" nomodule=""></script><script src="/component---src-templates-blogs-js-4995d0944825796984cb.js" async=""></script><script src="/app-3588e9691100af5659d9.js" async=""></script><script src="/framework-e728256d7a1d703d32c2.js" async=""></script><script src="/webpack-runtime-249ef0c1aceb28c8ac72.js" async=""></script></body></html>
+      </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/page/6";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-f53e78942ac2ddb4ecf0.js"],"app":["/app-eb8519696561bcbc840c.js"],"component---src-pages-404-js":["/component---src-pages-404-js-66993b9f94f8c62f0827.js"],"component---src-pages-about-js":["/component---src-pages-about-js-08f868100f45f6fa7f4a.js"],"component---src-pages-archive-js":["/component---src-pages-archive-js-6f4194b64c9f2aea9d16.js"],"component---src-pages-index-js":["/component---src-pages-index-js-27a14a6666e932854dfc.js"],"component---src-templates-blog-js":["/component---src-templates-blog-js-8584aaf113e5c2a5c191.js"],"component---src-templates-blogs-js":["/component---src-templates-blogs-js-4995d0944825796984cb.js"]};/*]]>*/</script><script src="/polyfill-f53e78942ac2ddb4ecf0.js" nomodule=""></script><script src="/component---src-templates-blogs-js-4995d0944825796984cb.js" async=""></script><script src="/app-eb8519696561bcbc840c.js" async=""></script><script src="/framework-e728256d7a1d703d32c2.js" async=""></script><script src="/webpack-runtime-249ef0c1aceb28c8ac72.js" async=""></script></body></html>

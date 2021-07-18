@@ -52,7 +52,7 @@
         }
       }
     })
-  </script><link as="script" rel="preload" href="/webpack-runtime-249ef0c1aceb28c8ac72.js"/><link as="script" rel="preload" href="/framework-e728256d7a1d703d32c2.js"/><link as="script" rel="preload" href="/app-3588e9691100af5659d9.js"/><link as="script" rel="preload" href="/component---src-templates-blog-js-8584aaf113e5c2a5c191.js"/><link as="fetch" rel="preload" href="/page-data/github-actions-integration-with-github/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2021<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><h1 class="text-4xl font-extrabold tracking-tight my-4 text-gray-800">Github Actions 与 Github 自身 API 集成生成周报</h1><h2 class="text-gray-600 mb-4">July 01, 2021</h2><div class="table-of-content"><h2>Table of Contents</h2><div><ul>
+  </script><link as="script" rel="preload" href="/webpack-runtime-249ef0c1aceb28c8ac72.js"/><link as="script" rel="preload" href="/framework-e728256d7a1d703d32c2.js"/><link as="script" rel="preload" href="/app-eb8519696561bcbc840c.js"/><link as="script" rel="preload" href="/component---src-templates-blog-js-8584aaf113e5c2a5c191.js"/><link as="fetch" rel="preload" href="/page-data/github-actions-integration-with-github/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2021<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><h1 class="text-4xl font-extrabold tracking-tight my-4 text-gray-800">Github Actions 与 Github 自身 API 集成生成周报</h1><h2 class="text-gray-600 mb-4">July 01, 2021</h2><div class="table-of-content"><h2>Table of Contents</h2><div><ul>
 <li>
 <p><a href="#%E4%B8%BA%E5%95%A5%E8%A6%81%E8%87%AA%E5%B7%B1%E5%81%9A%E7%BB%9F%E8%AE%A1">为啥要自己做统计</a></p>
 </li>
@@ -335,7 +335,8 @@
   </a>
     </span></p>
 <p>然后，这里在完成统计后（就是 generate report 这个步骤）将所有的数据做成了 artifact 保存了下来，方便后续的数据的追溯。</p>
-<p><span
+<p><figure class="gatsby-resp-image-figure" style="">
+    <span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
     >
@@ -365,7 +366,9 @@
         decoding="async"
       />
   </a>
-    </span></p>
+    </span>
+    <figcaption class="gatsby-resp-image-figcaption">Artifact 可以直接下载下来</figcaption>
+  </figure></p>
 <p>最后，通过一个 create-issue-from-file 的 github action 将 report 的内容创建成一个 issue 展示出来，展示出来就是上文的截图的效果了。</p>
 <blockquote>
 <p>这里我为了避免每次执行都创建重复性的内容还特意把原来的 action 做了修改，提交了 PR <a href="https://github.com/aisensiy/create-issue-from-file">https://github.com/aisensiy/create-issue-from-file</a> 。</p>
@@ -385,4 +388,4 @@
 
         gtag('config', 'UA-31932181-2', {"send_page_view":false});
       }
-      </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/github-actions-integration-with-github";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-f53e78942ac2ddb4ecf0.js"],"app":["/app-3588e9691100af5659d9.js"],"component---src-pages-404-js":["/component---src-pages-404-js-66993b9f94f8c62f0827.js"],"component---src-pages-about-js":["/component---src-pages-about-js-08f868100f45f6fa7f4a.js"],"component---src-pages-archive-js":["/component---src-pages-archive-js-6f4194b64c9f2aea9d16.js"],"component---src-pages-index-js":["/component---src-pages-index-js-27a14a6666e932854dfc.js"],"component---src-templates-blog-js":["/component---src-templates-blog-js-8584aaf113e5c2a5c191.js"],"component---src-templates-blogs-js":["/component---src-templates-blogs-js-4995d0944825796984cb.js"]};/*]]>*/</script><script src="/polyfill-f53e78942ac2ddb4ecf0.js" nomodule=""></script><script src="/component---src-templates-blog-js-8584aaf113e5c2a5c191.js" async=""></script><script src="/app-3588e9691100af5659d9.js" async=""></script><script src="/framework-e728256d7a1d703d32c2.js" async=""></script><script src="/webpack-runtime-249ef0c1aceb28c8ac72.js" async=""></script></body></html>
+      </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/github-actions-integration-with-github";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-f53e78942ac2ddb4ecf0.js"],"app":["/app-eb8519696561bcbc840c.js"],"component---src-pages-404-js":["/component---src-pages-404-js-66993b9f94f8c62f0827.js"],"component---src-pages-about-js":["/component---src-pages-about-js-08f868100f45f6fa7f4a.js"],"component---src-pages-archive-js":["/component---src-pages-archive-js-6f4194b64c9f2aea9d16.js"],"component---src-pages-index-js":["/component---src-pages-index-js-27a14a6666e932854dfc.js"],"component---src-templates-blog-js":["/component---src-templates-blog-js-8584aaf113e5c2a5c191.js"],"component---src-templates-blogs-js":["/component---src-templates-blogs-js-4995d0944825796984cb.js"]};/*]]>*/</script><script src="/polyfill-f53e78942ac2ddb4ecf0.js" nomodule=""></script><script src="/component---src-templates-blog-js-8584aaf113e5c2a5c191.js" async=""></script><script src="/app-eb8519696561bcbc840c.js" async=""></script><script src="/framework-e728256d7a1d703d32c2.js" async=""></script><script src="/webpack-runtime-249ef0c1aceb28c8ac72.js" async=""></script></body></html>
