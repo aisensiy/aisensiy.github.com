@@ -1,9 +1,11 @@
 import React from "react";
 import Base from "../layouts/base";
+import { Helmet } from 'react-helmet'
 
 export default function Archive({ data }) {
   return (
     <Base>
+      <Helmet title="About" />
       <div>
         <h1 className="text-4xl font-extrabold tracking-tight my-4 text-gray-800">
           About

@@ -4,6 +4,7 @@ module.exports = {
     title: "aisensiy-s-blog",
   },
   plugins: [
+    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
