@@ -3,8 +3,17 @@
 @tailwind utilities;
 
 @layer components {
+    body {
+        @apply bg-white dark:bg-gray-700 transition duration-500;
+    }
+    .main .permalink {
+        @apply fill-current text-gray-800 dark:text-gray-200;
+    }
+    .main {
+        @apply text-gray-800 dark:text-gray-200;
+    }
     .main h1 {
-        @apply text-3xl md:text-4xl font-extrabold tracking-tight my-4 text-gray-800;
+        @apply text-3xl md:text-4xl font-extrabold tracking-tight my-4;
     }
     .main :not(pre) > code {
         @apply font-mono bg-gray-200 text-gray-500 px-1 mx-1;
@@ -13,13 +22,13 @@
         @apply break-words;
     }
     .blog-post-content h2 {
-        @apply text-2xl md:text-3xl font-extrabold tracking-tight my-3 text-gray-800;
+        @apply text-2xl md:text-3xl font-extrabold tracking-tight my-3 ;
     }
     .blog-post-content h3 {
-        @apply text-xl md:text-2xl font-extrabold tracking-tight my-3 text-gray-800;
+        @apply text-xl md:text-2xl font-extrabold tracking-tight my-3;
     }
     .blog-post-content h4 {
-        @apply md:text-xl font-extrabold tracking-tight my-3 text-gray-800;
+        @apply md:text-xl font-extrabold tracking-tight my-3;
     }
     .main ul, .main ol {
         @apply mb-4 ml-4;
@@ -31,7 +40,7 @@
         @apply list-decimal list-inside;
     }
     .main a {
-        @apply text-blue-600 hover:underline;
+        @apply text-blue-600 hover:underline dark:text-blue-400;
     }
     .main img {
         @apply border border-gray-200 rounded-xl shadow-lg;
@@ -49,7 +58,7 @@
         @apply mb-0;
     }
     .table-of-content h2 {
-        @apply text-xl font-semibold tracking-tight my-3 text-gray-800;
+        @apply text-xl font-semibold tracking-tight my-3
     }
     .table-of-content p {
         @apply m-0 inline;
