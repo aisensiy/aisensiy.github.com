@@ -6,32 +6,32 @@ author:     "Eisen"
 tags:       [github, gatsby, javascript, react, tailwindcss, ssg]
 ---
 
-考虑到自己的前端技能有一阵子没有更新了，同时看到刘老师用 [docusaurus](https://docusaurus.io) 把 openbayes docs 切换之后的顺滑体验，于是就打算了解和折腾了一下和 docusaurus 技术栈类似但适用范围大大增加的 [gatsby](https://www.gatsbyjs.org/)。这里先那自己的小博客开刀，把原来的 jekyll 技术栈切换过来。
+考虑到自己的前端技能有一阵子没有更新了，同时看到刘老师用 [docusaurus](https://docusaurus.io) 把 openbayes docs 切换之后访问速度和使用体验都提升了不少，于是也想自己尝试一下 [gatsby](https://www.gatsbyjs.org/)（与 docusaurus 技术栈类似但适用范围又大大增加）。这里先拿自己的小博客开刀，把原来的 jekyll 技术栈切换过来。
 
-本来打算一小步一小步走过来，先不要管太多的细节，可结果依然是给自己加了码，甚至同时体验了 tailwindcss 的部分。这里还是会分开几篇做介绍吧。首先是介绍把 jekyll 迁移到 gatsby 的部分。
+本来打算一小步一小步迁移过来并做比较细致的记录，结果一不小心步子迈的有点大，甚至把 tailwindcss 的部分也一口气引入到了技术栈之中。不过考虑到篇幅，这里还是会分多篇文章做介绍。首先是介绍把 jekyll 迁移到 gatsby 的部分。
 
-以及这里不会介绍如下内容：
+另，以下部分是相对比较容易通过搜索获取到的内容，对应的官方网站都有非常详尽的介绍，这里就不再赘述。
 
-1. gatsby 的安装
+1. gatsby 的基本安装
 2. graphql 的知识
 
 ## Gatsby 的思路
 
-虽然 gatsby 官方把 static 划掉了加上了 dynamic，但从我粗浅的体验来看，它依然是一个 static site generator。只是在具体生成的路由上玩出了不少的花，后续也会做介绍。
+虽然 gatsby 官方把 static 划掉了加上了 dynamic，但以我目前的了解，它依然是一个 static site generator，只是在生成的路由的方面有了 *动态* 的感觉。
 
 ![](2021-07-17-20-10-00.png)
 
-把 gatsby 的思路拆分为以下几个部分：
+翻看 gatsby 官方的信息后，这里为 gatsby 总结出如下几个特点：
 
-1. gatsby 使用的模板引擎是 react（jekyll 用的就是 ruby 的 erb），相比于其他的后端模板引擎，使用 react 相当于前端功能全开了，确实甩其他的模板引擎几条街。
-2. 当然它自然也有自己的一套静态路由的生成体系。以及最近出现的动态路由可能就是他们说自己的 dynamic 的点？在我看来，这部分似乎没有特别多的新意，毕竟路由也是很多后端服务器一定会有的东西。唯一我看到的新意在于通过一个 php 式的文件结构去定义了路由，似乎是一种把路由的使用门槛降低的好办法，next.js 也使用了类似的方式。
-3. 最后，它有一个 graphql data layer（好像有一些文章成为 data mesh）它可以通过一系列插件将各种各样的数据源做集成，并暴露出 graphql 的接口给处于 `develop mode` 的 gatsby server ，用来填充模板的数据。这部分内容不单单是说我可以集成多个数据源这么简单，其数据层甚至可以对每个数据源做增强，以达到非常多复杂的功能。在后面有关插件的部分我也会做一些介绍。
+1. gatsby 使用的模板引擎为 react（jekyll 用的就是 ruby 的 erb），相比于其他的后端模板引擎，它本身就是前端框架，使用 react 相当于具备了创建完整前端技术栈的能力。
+2. gatsby 也有自己的一套静态路由，以及最近也有了 *动态* 路由。这部分似乎没有特别多的新意，毕竟路由原本就是传统后端框架的必要组成部分。但是 gatsby 的动态路由是通过带参数形式的文件名实现的（当然还有个更灵活的方式： [gatsby-node.js](https://www.gatsbyjs.com/docs/how-to/routing/creating-routes/#using-gatsby-nodejs)），这个思路感觉像是在原有的静态路由的延申，这似乎是一种把路由的使用门槛降低的好办法，还有另外一个框架 next.js 也使用了类似的方式。
+3. gatsby 的 graphql data layer 可以通过一系列插件将多种形式的数据源以 graphql 的形式提供给处于 `develop mode` 的 gatsby server ，并很方便的填充到模板中。同时，数据源还可以使用插件做数据的扩展（添加字段，修改字段），在后面有关插件的部分我也会做一些介绍。
 
 ![graphql data layer](data-layer.png)
 
 ## 快速开始
 
-有了上面的介绍，然后我简单 google 了下，发现和我一样把 jekyll 切到 gatsby 的人不在少数。官方网站里也有适配 markdown 作为数据源的相关资源。这里先罗列下从 jekyll 到 gatsby 迁移的几个必须的步骤，并在下文一一介绍。
+在开始操作之前我自然是 google 了一番，发现想要把 jekyll 切到 gatsby 的人不在少数。并且官方网站里也有适配 markdown 作为数据源的内容。这里先罗列下从 jekyll 到 gatsby 迁移的几个必须步骤，并在下文一一介绍。
 
 1. markdown 文件的整体迁移
 1. 生成路由
@@ -41,14 +41,14 @@ tags:       [github, gatsby, javascript, react, tailwindcss, ssg]
 
 ## markdown 文件的整体迁移
 
-jekyll 的时代假设其静态页面生成的数据源一定是文件，但这种假设在 2021 年看起来是被打破了。从 gatsby 的官方数据源插件来看，其中大量的数据源是 headless cms，比如 contentful 比如 wordpress。这个思路在国内似乎没有被很好的传播开来，以及对我来说从从 jekyll 迁移过来也就一定是文件。
+jekyll 出现的那个时代没有想现在这样如此多的外部数据源可以选择，其静态页面生成的数据源一定是文件。但 2021 年情况发生了变化，从 gatsby 的官方数据源插件来看，其中大量的数据源是 headless cms（比如 contentful 比如 wordpress），不过对我来说从 jekyll 迁移，我关心的也就是文件数据源。
 
-这里我用到了两个插件：
+这里用到了两个插件：
 
 1. `gatsby-source-filesystem` 将特定目录作为数据源添加到 gatsby 的数据层
-2. `gatsby-transformer-remark` 使用 [remark](https://remark.js.org/) 将 `markdown` 文件解析为 html 并且它有强大的扩展功能实现 markdown 里面特定的解析功能
+2. `gatsby-transformer-remark` 使用 [remark](https://remark.js.org/) 将 `markdown` 文件解析为 html 并为 markdown 提供了很多有用的字段（比如 frontmatter，比如目录）
 
-gatsby 所有的插件都需要单独安装并在 `gatsby-config.js` 做配置，这里就罗列下上述两个插件的基本配置：
+gatsby 所有的插件都需要单独安装并在 `gatsby-config.js` 做配置，这里展示下上述两个插件的基本配置：
 
 ```javascript
 module.exports = {
@@ -74,7 +74,7 @@ module.exports = {
 };
 ```
 
-`gatsby-source-filesystem` 的配置我把 markdown 文件全部放到了 `src/blogs` 目录下，在 `yarn run start` 之后，通过 `http://localhost:8000/__graphql` 构建如下 graphql 语句获取对应的文件内容：
+在 `gatsby-source-filesystem` 的配置部分可以看到，markdown 文件被放到了 `src/blogs` 目录下。在执行命令 `yarn run start` 之后，通过 `http://localhost:8000/__graphql` 构建如下 graphql 语句就能够获取到文件的信息了：
 
 ```graphql
 {
@@ -91,7 +91,7 @@ module.exports = {
 
 ![](2021-07-18-14-20-38.png)
 
-不过直接使用这个似乎也做不了什么，在获取了这个数据之后我们需要自己写代码去解析每个文件的内容。幸好有 `gatsby-transformer-remark` 它会帮助我们做这个事情，并提供另外一个 graphql 的接口方便我们直接获取 markdown 的内容：
+不过直接使用这个似乎数据也做不了什么，还需要 `gatsby-transformer-remark` 将 markdown 做解析，对应的数据通过另外一个 graphql 的接口获取：
 
 ```graphql
 query {
@@ -109,13 +109,13 @@ query {
 
 ![](2021-07-18-14-26-08.png)
 
-gatsby 提供的 graphiql 界面增加了 [graphql-explorer](https://github.com/OneGraph/graphiql-explorer) 用起来似乎更方便了一些。看着所提供的 graphql schema 如果具备基本的 graphql 知识，就应该明白如何从这个数据中间层获取想要的 markdown 数据了。
+顺便说一下 gatsby 提供的 graphiql 增加了 [graphql-explorer](https://github.com/OneGraph/graphiql-explorer) 可以通过点击的方式快速的拼接 graphql 语句。
 
 ## 生成路由
 
 ### 固定路由
 
-有了数据源之后，下一步就是构建博客的基本的路由结构了：
+有了数据源，下一步就是构建博客的基本的路由结构：
 
 ```
 / -- 首页，展示最新的 N 篇博客
@@ -125,7 +125,7 @@ gatsby 提供的 graphiql 界面增加了 [graphql-explorer](https://github.com/
 /archive -- 所有博客的总览页面，罗列了所有的博客标题
 ```
 
-上文提了，gatsby 为了简化路由，为 `/src/pages` 每个文件和带文件夹的层级的文件都提供对应的目录。比如 `src/pages/about.js` 的内容就对应了 `/about` 路由。也就是说对于固定路由来说，直接给个对应文件并且按照 gatsby 的规约，用 graphql 获取数据做渲染就好了。这里我展示下 `/archive` 的代码做个说明：
+上文提了，gatsby 为了简化路由，为 `/src/pages` 目录下每个文件都提供了对应的 url 路径。比如 `src/pages/about.js` 的内容就对应了 `/about` 路由，再比如 `src/pages/projects/main.js` 对对应了 `/projects/main` 路由。也就是说对于固定路由来说，直接给个对应文件并且按 gatsby 的规约用 graphql 获取数据做渲染就好了。这里我以 `/archive` 的代码举个例子：
 
 ```javascript
 export default function Archive({ data }) {
@@ -176,13 +176,13 @@ function groupByYear(blogs) {
 
 ```
 
-文件会分两个部分一部分是 react 的渲染，一部分是 graphql 数据的获取，非常简单明了。这里就不再赘述了。
+文件可以分为两个部分，一部分是 react 的模板，一部分是 graphql 数据的获取，简单明了，这里就不再赘述了。
 
 ### 从文件生成 slug 并使用 react 模板生成 blog 页面
 
-相对于固定路由，动态路由不是指 [/blog-migrate-from-jekyll-to-gatsby](/blog-migrate-from-jekyll-to-gatsby) 就是在用户请求的时候用 server 端临时拼装页面，而是说我可以在 gatsby 部署的时候动态的生成一系列的静态页面。这也是我觉得 gatsby 并不是 dynamic 的重要原因。
+相对于固定路由，动态路由不是说像 [/blog-migrate-from-jekyll-to-gatsby](/blog-migrate-from-jekyll-to-gatsby) 这样的页面是在用户请求的时候用 server 端临时拼装页面，而是指在 gatsby 部署的时候动态的生成一系列的静态页面。上文提到了，既然我可以从 graphql 里面罗列一系列的 markdown 内容了，那我自然可以通过遍历的方式去生成一个个页面并提供各自的路由。
 
-上文提到了，既然我可以从 graphql 里面罗列一系列的 markdown 内容了，那我自然可以通过遍历的方式去生成一个个页面并对应上相应的路由。具体在 gatsby 做的时候需要这么做：
+具体在 gatsby 做的时候需要这么做：
 
 #### 1. 准备单个 blog 的模板页面
 
@@ -211,11 +211,11 @@ export const pageQuery = graphql`
 `
 ```
 
-这是 `src/templates/blog.js` 文件的内容，可以看到，这里在 `pageQuery`  里引入了参数 `$id` 马上我们就介绍怎么用这个东西。
+这是 `src/templates/blog.js` 文件的内容，可以看到，在 `pageQuery` 引入了参数 `$id`，这部分在下文会介绍怎么填充这个字段。
 
 #### 2. 在 gatsby-node.js 中创建页面
 
-gatsby 在 build 的时候会执行 gatsby-node.js 文件，在这里可以调用 gatsby 的内部 api 做一系列小动作，以实现动态创建页面的目的。
+gatsby 在 build 的时候会执行 gatsby-node.js 文件，这个文件中可以调用 gatsby 的内部 api 以实现动态创建页面的目的。
 
 ```javascript
 const { createFilePath } = require("gatsby-source-filesystem")
@@ -279,20 +279,20 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 }
 ```
 
-首先，这里通过 `onCreateNode` 的 hook 通过文件名解析出来了 slug 比如文件名是 `2021-07-17-blog-migrate-from-jekylly-to-gatsby.md` 那么就会解析出两个 slug：
+首先，通过 `onCreateNode` 的 hook 通过文件名解析出来了 slug。举个例子，文件名是 `2021-07-17-blog-migrate-from-jekylly-to-gatsby.md` 那么就会解析出两个 slug：
 
 - /2021/07/17/blog-migrate-from-jekylly-to-gatsby
 - /blog-migrate-from-jekylly-to-gatsby
 
-然后通过 `createNodeField` 把 slug 就再次塞回了 `MarkdownRemark` 类型的 `fields` 属性里。后面就可以通过 `fields.slug` 使用了。
+之后通过 `createNodeField` 方法把 slug 再次塞回 `MarkdownRemark` 类型的 `fields` 属性里，后面就可以通过 `fields.slug` 访问这些属性了。
 
-之所有有 /2021/07/17/xxx 这样子的路由是因为之前 jekyll 就是这样子的路由，算是做一个兼容吧。
+之所以创建 /2021/07/17/xxx 的路由（而不仅仅有 /xxx 的路由）是因为这时 jekyll 的默认路由样式，算是做一个兼容保证原来的链接不会失效。
 
 到目前为止，blog 的主要功能算是建立好了。
 
 ## 处理 blog 中的代码高亮
 
-remark 这个插件自己还有额外的插件，通过增加额外的 [prismjs](https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/) 的支持就可以实现代码的高亮了。
+remark 这个插件自己也可以使用插件，使用 [prismjs](https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/) 就可以实现代码的高亮了。
 
 简单罗列下配置：
 
@@ -316,15 +316,15 @@ remark 这个插件自己还有额外的插件，通过增加额外的 [prismjs]
     },
 ```
 
-然后记得按照文档把 css 文件添加进来。
+最后记得按照文档把 css 文件添加进来。
 
 ## 优化 blog 中的 image
 
-这部分算是 gatsby 相对于 jekyll 的另一个亮点吧，通过对 img 的 srcset 的支持，可以实现在不同宽度的页面上去加载不同宽度的图片。并且，这些不同宽度的图片全部由插件自动生成，基本上是开箱即用了。更多的信息去 [gatsby remark images](https://www.gatsbyjs.com/plugins/gatsby-remark-images/?=image#gatsby-remark-images) 一看就晓得了。
+这部分工作也算是 gatsby 的一个亮点。这个插件通过对 img 的 srcset 的支持可以实现在不同宽度的页面上去加载不同宽度的图片。并且这些不同宽度的图片也都由插件自动生成，称得上是开箱即用了。更多的信息去 [gatsby remark images](https://www.gatsbyjs.com/plugins/gatsby-remark-images/?=image#gatsby-remark-images) 一看就晓得了。
 
 ## 在 github pages 部署
 
-这部分 gatsby 已经给准备好了，跟着 [How Gatsby Works with GitHub Pages](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/how-gatsby-works-with-github-pages/) 基本就能解决。唯一的不同在于我通过一个 github action 实现了自动部署（而不是每次都自己 yarn run deploy）：
+这部分 gatsby 已经给准备好了，跟着 [How Gatsby Works with GitHub Pages](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/how-gatsby-works-with-github-pages/) 基本就能解决。最后通过一个 github action 实现了自动部署（而不是每次都自己 yarn run deploy）：
 
 ```yaml
 name: build-and-deploy
@@ -355,22 +355,25 @@ jobs:
         publish_dir: ./public
 ```
 
-这里我的主分支是 master 然后采用 main 作为了发布分支，直接使用 action  `actions-gh-pages` 把 public 目录提交到 main 就可以了。
+这里我的主分支是 master 并采用 main 作为了发布分支，直接使用 action  `actions-gh-pages` 把 public 目录提交到 main 就可以了。
 
 ## 小结
 
-gatsby 并不像 jekyll 那么开箱即用，但其功能相对来说确实强大不少。灵活性和扩展性确实不是一个数量级了。当然，这前提是你对前端的技术栈足够了解，不然可能就只能在 [gatsby starters](https://www.gatsbyjs.com/docs/starters/) 找找有没有合适的东西了。
+gatsby 并不像 jekyll 那么开箱即用，但其功能确实强大不少，灵活性和扩展性不是一个数量级的了。不过这也要求使用者对前端的技术栈足够了解。
 
-后面还有一些工作要做的：
+另一方面，gatsby 把 graphql 作为默认的数据查询语言，对于熟悉 graphql 的人来说自然是非常便利，但也一定程度上提升了使用门槛。
 
-1. 样式...现在是 plain html 默认样式，只有代码块是花花绿绿的
-2. 优化，标题，meta 应该还是需要花点点时间的
-3. 首页，在路由的部分提及了，这部分在 jekyll 的时候是个分页，现在想要做类似的实现，应该不难
+
+## 后续工作
+
+1. 增加样式，目前是 plain html，只有代码块是花花绿绿的
+2. SEO 优化
+3. 首页，这部分在 jekyll 的时候是个分页，现在想要做类似的实现
 4. tags 的展示和按照 tags 罗列文章，这也是之前 jekyll 的功能，也希望做成类似的样子
 
 ## 相关资源
 
-把几个用到但是没有提及的链接放到了这里。
+把几个用到但是没有提及的链接放到这里：
 
 - [From Jekyll to Gatsby: 7 Simple Steps](https://deborah-digges.github.io/2020/09/16/Jekyll-to-Gatsby/)
 - [Adding Markdown Pages](https://www.gatsbyjs.com/docs/how-to/routing/adding-markdown-pages/)
