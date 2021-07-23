@@ -7,7 +7,7 @@ export default function Archive({ data }) {
     <Base>
       <Helmet title="About" />
       <div>
-        <h1 className="text-4xl font-extrabold tracking-tight my-4 text-gray-800">
+        <h1>
           About
         </h1>
         <p>

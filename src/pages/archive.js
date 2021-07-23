@@ -10,10 +10,10 @@ export default function Archive({ data }) {
     <Base>
       <Helmet title="Archive" />
       <div>
-        <h1 className="text-4xl font-extrabold tracking-tight my-4 text-gray-800">Archive</h1>
+        <h1>Archive</h1>
         {groupByYearResult.map(({ key, value }) => (
           <div key={key}>
-            <h2 className="text-3xl font-bold tracking-tight my-4 text-gray-800">{key}</h2>
+            <h2 className="text-2xl font-bold tracking-tight my-4">{key}</h2>
             <YearItems blogs={value} />
           </div>
         ))}
