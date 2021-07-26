@@ -73,7 +73,7 @@
 </ul>
 </li>
 </ul></div></div><div class="blog-post-content"><p>之前在 <a href="/spring-boot-current-status">当前的校验异常处理</a> 提到了目前校验和异常处理的一些问题。最近找到了一些看起来更专业化的方案。这里首先对几种模式做一些罗列。文中大量的内容都是从 <a href="https://www.naturalprogrammer.com/">naturalprogrammer</a> 学习到的，后文也会再去引用里面的内容。</p>
-<p>有关预定义的 Bean Validation 注解（<code class="language-text">@Email</code>, <code class="language-text">@NotBlank</code> 之类的）就不再赘述了。</p>
+<p>有关预定义的 Bean Validation 注解（<code class="language-text">@Email</code>, <code class="language-text">@NotBlank</code> 之类的）就不再赘述。</p>
 <h2 id="bean-validation-的异常处理时机" style="position:relative;">Bean Validation 的异常处理时机<a href="#bean-validation-%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E6%97%B6%E6%9C%BA" aria-label="bean validation 的异常处理时机 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <p>在 Spring Controller 中的方法里，标记有 <code class="language-text">@Valid</code> 注解的字段会触发 Bean Validation。在 <a href="/spring-boot-exception-handler">spring boot 异常处理</a> 也讲了，如果出现校验报错，会抛出异常 <code class="language-text">MethodArgumentNotValidException</code>。</p>
 <div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@SpringBootApplication</span>
@@ -160,7 +160,40 @@
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>可以看到 <code class="language-text">@Name</code> 上面首先包含了两个预定义的校验注解 <code class="language-text">@NotBlank</code> 和 <code class="language-text">@Size</code> 然后引入一个自定义的 <code class="language-text">NameValidator</code> 校验所注册的名字是否为我们的保留字段，如果是就报错。</p>
-<p><img src="https://images-1300693298.cos.ap-beijing.myqcloud.com/20210208184451.png" alt="name validation"></p>
+<p><figure class="gatsby-resp-image-figure" style="">
+    <span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/f0a3331d0390c2de51cce895d158413c/2bef9/2021-07-26-15-27-53.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 100%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAABYlAAAWJQFJUiTwAAAD/klEQVQ4y52U3W/bZBTG3ZULbpAQICTKNvhjEFwhQLsATUOCC8RNVSFtmoB1AobG98TabXRdt6ntqnVd00ojjVrSrmmTNEvSfLlZnbVrunw5TprESew4TezX74Pswrp01ZB4pHPh9z366T0+zznM+vp6WywWY/x+/8uCIEzk8/mpfD7/Zz6ftwqCYOV53rq5uWkJBoMnOzs7n7fb7QzHce2CIDCKojAjIyNMixKJRFs8HjeAh2VZRr1eh6IoZtRqNUiSBFEUkUwmEQ6HnTab7YVIJMLE4/H2SqXCAGAsFssuMJvNtqXTaSYcDh9sNps1QgglhGiaphFVVUmz2SR1RdFEsdRMpVJIp9PBsdGRlzJ8luG42HMlscJkMhmmv79/B5jL5dp4nmdYlj1ECKkDAKWUYlfmx3ZDRUmsqhqhKJcrq6tc7DW7fZaJxR60G79MFMVW4MrKyhNA0OZ2HXKlhHIxB7HA03x6g/Kbq0jHV9WHaxxCoVB8cGjoTYdjgQkGgweSyaTBehpIqW4yfbYruPXzUdiuHMfkwLeYGb9M52asdNruQP/Zz1W/ZwHsyv3U+NjoG/Pz84zH42nLZrNPl2wA8xKld30bGJ+NwrJUwJhfxZBHR98CobeDoMO9X2EjFmpWpRo2Nh7e1DTNaM4Bt9u9C4xE2EOaWbIOa6hO/3DoGPYCN7w6bgc0TAYbsHhruBNo0OmJAco/uq9rOlAui6nFxcUXA4GA6ZiWF+4AKSKPFGrx1TDmKuKaLYXfhldw8lc3vvxpEsdP/YCurk4aiYTMximKIoXD4Y5EIsHwPN8KVDXNbIrDE6fvHruOd4704K0PfsexL0Zx+pwVp8+exy3bEnqvTqCn7yrVCIGmafJyINCRSqUYQRD2ANUdYDAUo+9/1I3rd8JwrdcQLTRxd5nFtMMJj2sO1/ou4NLFS1SSZcMSst/v7zC8bLD2tU2tvk39qSrc7APMLodh97H4uvsMvvumG91dn+DEZx/il+9P0UJhy0iXvffuPRuo6Tq1O90Y7DuPqYkb8C/74fP5cPFCDz49+h4+PvI2zp05QRuNBnRdl5eX/+OFmqZSRZKwV1VJxs3Byxjo/RHp5KbZFE1VZZZlnw00jL0X1jqNeDyhhJD9gfvNcqFQgLEQqtWquYUymQwqlYoJ13XdzNkXaGwLlmUPEkJqBk/Xdc3I9Xq9ZGpqing8HjIzM0NYliUcxxHj7p8cwzaVFuDW1pY5g9Fo9PDesnK5nPmiYrGIWCyGeDxu7sUnpeu6Ho1GXzeqNFjM2tqaubFdLterpVJpThRFtyiKTiMkSXJWq1UzFEVxlstl8+zfe1EUl4rF4l8ul+sVjuNMFrNHB/5nPNbfYWetNkTMZfIAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="name validation"
+        title="name validation"
+        src="/static/f0a3331d0390c2de51cce895d158413c/5a190/2021-07-26-15-27-53.png"
+        srcset="/static/f0a3331d0390c2de51cce895d158413c/772e8/2021-07-26-15-27-53.png 200w,
+/static/f0a3331d0390c2de51cce895d158413c/e17e5/2021-07-26-15-27-53.png 400w,
+/static/f0a3331d0390c2de51cce895d158413c/5a190/2021-07-26-15-27-53.png 800w,
+/static/f0a3331d0390c2de51cce895d158413c/2bef9/2021-07-26-15-27-53.png 1024w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span>
+    <figcaption class="gatsby-resp-image-figcaption">name validation</figcaption>
+  </figure></p>
 <p>然后这里有一个没有解决的细节：</p>
 <div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java">  <span class="token annotation punctuation">@Override</span>
   <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isValid</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">,</span> <span class="token class-name">ConstraintValidatorContext</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -216,7 +249,37 @@
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>报错信息如下：</p>
-<p><img src="https://images-1300693298.cos.ap-beijing.myqcloud.com/20210208185553.png" alt=""></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/f0a3331d0390c2de51cce895d158413c/2bef9/2021-07-26-15-27-20.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 100%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAABYlAAAWJQFJUiTwAAAD/klEQVQ4y52U3W/bZBTG3ZULbpAQICTKNvhjEFwhQLsATUOCC8RNVSFtmoB1AobG98TabXRdt6ntqnVd00ojjVrSrmmTNEvSfLlZnbVrunw5TprESew4TezX74Pswrp01ZB4pHPh9z366T0+zznM+vp6WywWY/x+/8uCIEzk8/mpfD7/Zz6ftwqCYOV53rq5uWkJBoMnOzs7n7fb7QzHce2CIDCKojAjIyNMixKJRFs8HjeAh2VZRr1eh6IoZtRqNUiSBFEUkUwmEQ6HnTab7YVIJMLE4/H2SqXCAGAsFssuMJvNtqXTaSYcDh9sNps1QgglhGiaphFVVUmz2SR1RdFEsdRMpVJIp9PBsdGRlzJ8luG42HMlscJkMhmmv79/B5jL5dp4nmdYlj1ECKkDAKWUYlfmx3ZDRUmsqhqhKJcrq6tc7DW7fZaJxR60G79MFMVW4MrKyhNA0OZ2HXKlhHIxB7HA03x6g/Kbq0jHV9WHaxxCoVB8cGjoTYdjgQkGgweSyaTBehpIqW4yfbYruPXzUdiuHMfkwLeYGb9M52asdNruQP/Zz1W/ZwHsyv3U+NjoG/Pz84zH42nLZrNPl2wA8xKld30bGJ+NwrJUwJhfxZBHR98CobeDoMO9X2EjFmpWpRo2Nh7e1DTNaM4Bt9u9C4xE2EOaWbIOa6hO/3DoGPYCN7w6bgc0TAYbsHhruBNo0OmJAco/uq9rOlAui6nFxcUXA4GA6ZiWF+4AKSKPFGrx1TDmKuKaLYXfhldw8lc3vvxpEsdP/YCurk4aiYTMximKIoXD4Y5EIsHwPN8KVDXNbIrDE6fvHruOd4704K0PfsexL0Zx+pwVp8+exy3bEnqvTqCn7yrVCIGmafJyINCRSqUYQRD2ANUdYDAUo+9/1I3rd8JwrdcQLTRxd5nFtMMJj2sO1/ou4NLFS1SSZcMSst/v7zC8bLD2tU2tvk39qSrc7APMLodh97H4uvsMvvumG91dn+DEZx/il+9P0UJhy0iXvffuPRuo6Tq1O90Y7DuPqYkb8C/74fP5cPFCDz49+h4+PvI2zp05QRuNBnRdl5eX/+OFmqZSRZKwV1VJxs3Byxjo/RHp5KbZFE1VZZZlnw00jL0X1jqNeDyhhJD9gfvNcqFQgLEQqtWquYUymQwqlYoJ13XdzNkXaGwLlmUPEkJqBk/Xdc3I9Xq9ZGpqing8HjIzM0NYliUcxxHj7p8cwzaVFuDW1pY5g9Fo9PDesnK5nPmiYrGIWCyGeDxu7sUnpeu6Ho1GXzeqNFjM2tqaubFdLterpVJpThRFtyiKTiMkSXJWq1UzFEVxlstl8+zfe1EUl4rF4l8ul+sVjuNMFrNHB/5nPNbfYWetNkTMZfIAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="2021 07 26 15 27 20"
+        title="2021 07 26 15 27 20"
+        src="/static/f0a3331d0390c2de51cce895d158413c/5a190/2021-07-26-15-27-20.png"
+        srcset="/static/f0a3331d0390c2de51cce895d158413c/772e8/2021-07-26-15-27-20.png 200w,
+/static/f0a3331d0390c2de51cce895d158413c/e17e5/2021-07-26-15-27-20.png 400w,
+/static/f0a3331d0390c2de51cce895d158413c/5a190/2021-07-26-15-27-20.png 800w,
+/static/f0a3331d0390c2de51cce895d158413c/2bef9/2021-07-26-15-27-20.png 1024w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
 <p>在上面的报错信息可以看到一个细节：报错信息无法下达到具体一个字段，而是落在了 <code class="language-text">hello.</code> 这个对象上。如果我们希望校验信息是落在具体的 <code class="language-text">hello.value</code> 上可以有如下的修改：</p>
 <div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
 <span class="token keyword">class</span> <span class="token class-name">ConfirmValueValidator</span> <span class="token keyword">implements</span> <span class="token class-name">ConstraintValidator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">ConfirmValue</span><span class="token punctuation">,</span> <span class="token class-name">Hello</span><span class="token punctuation">></span></span> <span class="token punctuation">{</span>
@@ -277,9 +340,69 @@ validation<span class="token punctuation">.</span>name<span class="token punctua
 <span class="token comment">// ValidationMessages_zh_CN.properties</span>
 validation<span class="token punctuation">.</span>name<span class="token punctuation">.</span><span class="token keyword">default</span><span class="token operator">=</span>错误的名字格式</code></pre></div>
 <p>发个请求试试看，报错信息已经成了中文：</p>
-<p><img src="https://images-1300693298.cos.ap-beijing.myqcloud.com/20210208194218.png" alt=""></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/f0a3331d0390c2de51cce895d158413c/2bef9/2021-07-26-15-26-49.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 100%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAABYlAAAWJQFJUiTwAAAD/klEQVQ4y52U3W/bZBTG3ZULbpAQICTKNvhjEFwhQLsATUOCC8RNVSFtmoB1AobG98TabXRdt6ntqnVd00ojjVrSrmmTNEvSfLlZnbVrunw5TprESew4TezX74Pswrp01ZB4pHPh9z366T0+zznM+vp6WywWY/x+/8uCIEzk8/mpfD7/Zz6ftwqCYOV53rq5uWkJBoMnOzs7n7fb7QzHce2CIDCKojAjIyNMixKJRFs8HjeAh2VZRr1eh6IoZtRqNUiSBFEUkUwmEQ6HnTab7YVIJMLE4/H2SqXCAGAsFssuMJvNtqXTaSYcDh9sNps1QgglhGiaphFVVUmz2SR1RdFEsdRMpVJIp9PBsdGRlzJ8luG42HMlscJkMhmmv79/B5jL5dp4nmdYlj1ECKkDAKWUYlfmx3ZDRUmsqhqhKJcrq6tc7DW7fZaJxR60G79MFMVW4MrKyhNA0OZ2HXKlhHIxB7HA03x6g/Kbq0jHV9WHaxxCoVB8cGjoTYdjgQkGgweSyaTBehpIqW4yfbYruPXzUdiuHMfkwLeYGb9M52asdNruQP/Zz1W/ZwHsyv3U+NjoG/Pz84zH42nLZrNPl2wA8xKld30bGJ+NwrJUwJhfxZBHR98CobeDoMO9X2EjFmpWpRo2Nh7e1DTNaM4Bt9u9C4xE2EOaWbIOa6hO/3DoGPYCN7w6bgc0TAYbsHhruBNo0OmJAco/uq9rOlAui6nFxcUXA4GA6ZiWF+4AKSKPFGrx1TDmKuKaLYXfhldw8lc3vvxpEsdP/YCurk4aiYTMximKIoXD4Y5EIsHwPN8KVDXNbIrDE6fvHruOd4704K0PfsexL0Zx+pwVp8+exy3bEnqvTqCn7yrVCIGmafJyINCRSqUYQRD2ANUdYDAUo+9/1I3rd8JwrdcQLTRxd5nFtMMJj2sO1/ou4NLFS1SSZcMSst/v7zC8bLD2tU2tvk39qSrc7APMLodh97H4uvsMvvumG91dn+DEZx/il+9P0UJhy0iXvffuPRuo6Tq1O90Y7DuPqYkb8C/74fP5cPFCDz49+h4+PvI2zp05QRuNBnRdl5eX/+OFmqZSRZKwV1VJxs3Byxjo/RHp5KbZFE1VZZZlnw00jL0X1jqNeDyhhJD9gfvNcqFQgLEQqtWquYUymQwqlYoJ13XdzNkXaGwLlmUPEkJqBk/Xdc3I9Xq9ZGpqing8HjIzM0NYliUcxxHj7p8cwzaVFuDW1pY5g9Fo9PDesnK5nPmiYrGIWCyGeDxu7sUnpeu6Ho1GXzeqNFjM2tqaubFdLterpVJpThRFtyiKTiMkSXJWq1UzFEVxlstl8+zfe1EUl4rF4l8ul+sVjuNMFrNHB/5nPNbfYWetNkTMZfIAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="2021 07 26 15 26 49"
+        title="2021 07 26 15 26 49"
+        src="/static/f0a3331d0390c2de51cce895d158413c/5a190/2021-07-26-15-26-49.png"
+        srcset="/static/f0a3331d0390c2de51cce895d158413c/772e8/2021-07-26-15-26-49.png 200w,
+/static/f0a3331d0390c2de51cce895d158413c/e17e5/2021-07-26-15-26-49.png 400w,
+/static/f0a3331d0390c2de51cce895d158413c/5a190/2021-07-26-15-26-49.png 800w,
+/static/f0a3331d0390c2de51cce895d158413c/2bef9/2021-07-26-15-26-49.png 1024w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
 <p>当然，如果强行给一个 <code class="language-text">Accept-Language: en</code> 的 http 头就可以返回对应的英文信息：</p>
-<p><img src="https://images-1300693298.cos.ap-beijing.myqcloud.com/20210208194626.png" alt=""></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/f0a3331d0390c2de51cce895d158413c/2bef9/2021-07-26-15-26-14.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 100%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAABYlAAAWJQFJUiTwAAAD/klEQVQ4y52U3W/bZBTG3ZULbpAQICTKNvhjEFwhQLsATUOCC8RNVSFtmoB1AobG98TabXRdt6ntqnVd00ojjVrSrmmTNEvSfLlZnbVrunw5TprESew4TezX74Pswrp01ZB4pHPh9z366T0+zznM+vp6WywWY/x+/8uCIEzk8/mpfD7/Zz6ftwqCYOV53rq5uWkJBoMnOzs7n7fb7QzHce2CIDCKojAjIyNMixKJRFs8HjeAh2VZRr1eh6IoZtRqNUiSBFEUkUwmEQ6HnTab7YVIJMLE4/H2SqXCAGAsFssuMJvNtqXTaSYcDh9sNps1QgglhGiaphFVVUmz2SR1RdFEsdRMpVJIp9PBsdGRlzJ8luG42HMlscJkMhmmv79/B5jL5dp4nmdYlj1ECKkDAKWUYlfmx3ZDRUmsqhqhKJcrq6tc7DW7fZaJxR60G79MFMVW4MrKyhNA0OZ2HXKlhHIxB7HA03x6g/Kbq0jHV9WHaxxCoVB8cGjoTYdjgQkGgweSyaTBehpIqW4yfbYruPXzUdiuHMfkwLeYGb9M52asdNruQP/Zz1W/ZwHsyv3U+NjoG/Pz84zH42nLZrNPl2wA8xKld30bGJ+NwrJUwJhfxZBHR98CobeDoMO9X2EjFmpWpRo2Nh7e1DTNaM4Bt9u9C4xE2EOaWbIOa6hO/3DoGPYCN7w6bgc0TAYbsHhruBNo0OmJAco/uq9rOlAui6nFxcUXA4GA6ZiWF+4AKSKPFGrx1TDmKuKaLYXfhldw8lc3vvxpEsdP/YCurk4aiYTMximKIoXD4Y5EIsHwPN8KVDXNbIrDE6fvHruOd4704K0PfsexL0Zx+pwVp8+exy3bEnqvTqCn7yrVCIGmafJyINCRSqUYQRD2ANUdYDAUo+9/1I3rd8JwrdcQLTRxd5nFtMMJj2sO1/ou4NLFS1SSZcMSst/v7zC8bLD2tU2tvk39qSrc7APMLodh97H4uvsMvvumG91dn+DEZx/il+9P0UJhy0iXvffuPRuo6Tq1O90Y7DuPqYkb8C/74fP5cPFCDz49+h4+PvI2zp05QRuNBnRdl5eX/+OFmqZSRZKwV1VJxs3Byxjo/RHp5KbZFE1VZZZlnw00jL0X1jqNeDyhhJD9gfvNcqFQgLEQqtWquYUymQwqlYoJ13XdzNkXaGwLlmUPEkJqBk/Xdc3I9Xq9ZGpqing8HjIzM0NYliUcxxHj7p8cwzaVFuDW1pY5g9Fo9PDesnK5nPmiYrGIWCyGeDxu7sUnpeu6Ho1GXzeqNFjM2tqaubFdLterpVJpThRFtyiKTiMkSXJWq1UzFEVxlstl8+zfe1EUl4rF4l8ul+sVjuNMFrNHB/5nPNbfYWetNkTMZfIAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="2021 07 26 15 26 14"
+        title="2021 07 26 15 26 14"
+        src="/static/f0a3331d0390c2de51cce895d158413c/5a190/2021-07-26-15-26-14.png"
+        srcset="/static/f0a3331d0390c2de51cce895d158413c/772e8/2021-07-26-15-26-14.png 200w,
+/static/f0a3331d0390c2de51cce895d158413c/e17e5/2021-07-26-15-26-14.png 400w,
+/static/f0a3331d0390c2de51cce895d158413c/5a190/2021-07-26-15-26-14.png 800w,
+/static/f0a3331d0390c2de51cce895d158413c/2bef9/2021-07-26-15-26-14.png 1024w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
 <p>然后，再介绍下 message 中两种可以传递的参数：</p>
 <ol>
 <li>注解中的参数可以直接用 <code class="language-text">{xx}</code> 的形式传递，例如对于 <code class="language-text">@Size</code> 注解有两个参数 <code class="language-text">min</code> 和 <code class="language-text">max</code> 可以将 message 写成以下的样子：</li>
@@ -298,9 +421,71 @@ validation<span class="token punctuation">.</span>confirm<span class="token oper
 <p><strong>注意</strong> 这里遇到一个小坑，如果这里的 <code class="language-text">validatedValue</code> 所在的 <code class="language-text">Class</code> 不是 <code class="language-text">public</code> 的，那么反射会出问题，导致解析失败。目前我测试的就是必须要把上文中 <code class="language-text">Hello.class</code> 移动到一个独立的文件并且标记为 <code class="language-text">public</code> 才可以工作。</p>
 </blockquote>
 <h3 id="中文处理" style="position:relative;">中文处理<a href="#%E4%B8%AD%E6%96%87%E5%A4%84%E7%90%86" aria-label="中文处理 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>既然用到了 <code class="language-text">.properties</code> 文件自然就遇到了这个 java 中臭名昭著的编码问题了：中文显示乱码了。这里找了个<a href="https://my.oschina.net/LevelCoder/blog/1625594">解决方案</a>，解决了。幸好是 Intellij ?</p>
+<p>既然用到了 <code class="language-text">.properties</code> 文件自然就遇到了这个 java 中臭名昭著的编码问题了：中文显示乱码了。这里按照如下对 Intellj 做配置的修改可以解决问题。</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/b756b28b6fcfe776e6e96f321cff311c/45662/2021-07-26-15-23-56.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 51%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAAAsTAAALEwEAmpwYAAABjUlEQVQoz3WSiYrbQBBE9f//kkAgnxAIbAjJZnN4LXsleQ4dcx+S7PioMBOvWXuTgcfQ1UNRTU/REIIN4+iFgtQWdV2jLEsQQqGUgtYaUsqMMSaTtP9R/FrVWKwbcGEwmICu7yGFgPceIQRM05SZ5xkxxivtlnEcUdB2QENbaD9CGIftboeX53Q6XTgcDtjv91fabb/4WjJ8vF/iRyOwoArzdvfK6LlOZonj8XjRXt5JL959avDmwwJv7xq8/8IQpu3Vo0vSrJ0517cnG25Yh8dVBaFdHnm3+/0q4enidM0/R34iLR6fNujTQpTHMAg0TQNCCDjnaNsWhHEsCceatlizDiXhIN0Ac7PhtLCiph0eFmXecq89OG9RVRUopdDGwBkNojzumMd3JvHAFD5TjZWKmGOA9yEbJXwyTAm//VyCS5sNhZToui4zCAEXIrS1aLUDkwa9DRhchPERMSajmElfaowRhVAaSlsYF6Dt37+XmtbanFBbl0dLSRMxeEwxIJ5TOecQvAMdDO4rhT/F4fsPa+rhrQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="2021 07 26 15 23 56"
+        title="2021 07 26 15 23 56"
+        src="/static/b756b28b6fcfe776e6e96f321cff311c/5a190/2021-07-26-15-23-56.png"
+        srcset="/static/b756b28b6fcfe776e6e96f321cff311c/772e8/2021-07-26-15-23-56.png 200w,
+/static/b756b28b6fcfe776e6e96f321cff311c/e17e5/2021-07-26-15-23-56.png 400w,
+/static/b756b28b6fcfe776e6e96f321cff311c/5a190/2021-07-26-15-23-56.png 800w,
+/static/b756b28b6fcfe776e6e96f321cff311c/c1b63/2021-07-26-15-23-56.png 1200w,
+/static/b756b28b6fcfe776e6e96f321cff311c/45662/2021-07-26-15-23-56.png 1410w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
 <p>顺便提一句，Intellij 里面的 <a href="https://www.jetbrains.com/help/idea/resource-bundle.html">Resource bundles</a> 也挺好用的。</p>
-<p><img src="https://images-1300693298.cos.ap-beijing.myqcloud.com/20210208212752.png" alt=""></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/f0a3331d0390c2de51cce895d158413c/2bef9/2021-07-26-15-25-52.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 100%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAABYlAAAWJQFJUiTwAAAD/klEQVQ4y52U3W/bZBTG3ZULbpAQICTKNvhjEFwhQLsATUOCC8RNVSFtmoB1AobG98TabXRdt6ntqnVd00ojjVrSrmmTNEvSfLlZnbVrunw5TprESew4TezX74Pswrp01ZB4pHPh9z366T0+zznM+vp6WywWY/x+/8uCIEzk8/mpfD7/Zz6ftwqCYOV53rq5uWkJBoMnOzs7n7fb7QzHce2CIDCKojAjIyNMixKJRFs8HjeAh2VZRr1eh6IoZtRqNUiSBFEUkUwmEQ6HnTab7YVIJMLE4/H2SqXCAGAsFssuMJvNtqXTaSYcDh9sNps1QgglhGiaphFVVUmz2SR1RdFEsdRMpVJIp9PBsdGRlzJ8luG42HMlscJkMhmmv79/B5jL5dp4nmdYlj1ECKkDAKWUYlfmx3ZDRUmsqhqhKJcrq6tc7DW7fZaJxR60G79MFMVW4MrKyhNA0OZ2HXKlhHIxB7HA03x6g/Kbq0jHV9WHaxxCoVB8cGjoTYdjgQkGgweSyaTBehpIqW4yfbYruPXzUdiuHMfkwLeYGb9M52asdNruQP/Zz1W/ZwHsyv3U+NjoG/Pz84zH42nLZrNPl2wA8xKld30bGJ+NwrJUwJhfxZBHR98CobeDoMO9X2EjFmpWpRo2Nh7e1DTNaM4Bt9u9C4xE2EOaWbIOa6hO/3DoGPYCN7w6bgc0TAYbsHhruBNo0OmJAco/uq9rOlAui6nFxcUXA4GA6ZiWF+4AKSKPFGrx1TDmKuKaLYXfhldw8lc3vvxpEsdP/YCurk4aiYTMximKIoXD4Y5EIsHwPN8KVDXNbIrDE6fvHruOd4704K0PfsexL0Zx+pwVp8+exy3bEnqvTqCn7yrVCIGmafJyINCRSqUYQRD2ANUdYDAUo+9/1I3rd8JwrdcQLTRxd5nFtMMJj2sO1/ou4NLFS1SSZcMSst/v7zC8bLD2tU2tvk39qSrc7APMLodh97H4uvsMvvumG91dn+DEZx/il+9P0UJhy0iXvffuPRuo6Tq1O90Y7DuPqYkb8C/74fP5cPFCDz49+h4+PvI2zp05QRuNBnRdl5eX/+OFmqZSRZKwV1VJxs3Byxjo/RHp5KbZFE1VZZZlnw00jL0X1jqNeDyhhJD9gfvNcqFQgLEQqtWquYUymQwqlYoJ13XdzNkXaGwLlmUPEkJqBk/Xdc3I9Xq9ZGpqing8HjIzM0NYliUcxxHj7p8cwzaVFuDW1pY5g9Fo9PDesnK5nPmiYrGIWCyGeDxu7sUnpeu6Ho1GXzeqNFjM2tqaubFdLterpVJpThRFtyiKTiMkSXJWq1UzFEVxlstl8+zfe1EUl4rF4l8ul+sVjuNMFrNHB/5nPNbfYWetNkTMZfIAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="2021 07 26 15 25 52"
+        title="2021 07 26 15 25 52"
+        src="/static/f0a3331d0390c2de51cce895d158413c/5a190/2021-07-26-15-25-52.png"
+        srcset="/static/f0a3331d0390c2de51cce895d158413c/772e8/2021-07-26-15-25-52.png 200w,
+/static/f0a3331d0390c2de51cce895d158413c/e17e5/2021-07-26-15-25-52.png 400w,
+/static/f0a3331d0390c2de51cce895d158413c/5a190/2021-07-26-15-25-52.png 800w,
+/static/f0a3331d0390c2de51cce895d158413c/2bef9/2021-07-26-15-25-52.png 1024w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
 <p>这部分介绍就到这里了，后文会继续介绍如何建立自定义 exception handler 体系以捕捉各种层级的报错并统一返回格式了。</p></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       
