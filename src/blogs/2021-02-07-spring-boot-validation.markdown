@@ -8,7 +8,7 @@ tags:       [spring, springboot, validation, web]
 
 之前在 [当前的校验异常处理](/spring-boot-current-status) 提到了目前校验和异常处理的一些问题。最近找到了一些看起来更专业化的方案。这里首先对几种模式做一些罗列。文中大量的内容都是从 [naturalprogrammer](https://www.naturalprogrammer.com/) 学习到的，后文也会再去引用里面的内容。
 
-有关预定义的 Bean Validation 注解（`@Email`, `@NotBlank` 之类的）就不再赘述了。
+有关预定义的 Bean Validation 注解（`@Email`, `@NotBlank` 之类的）就不再赘述。
 
 ## Bean Validation 的异常处理时机
 
@@ -113,7 +113,7 @@ class NameValidator implements ConstraintValidator<Name, String> {
 
 可以看到 `@Name` 上面首先包含了两个预定义的校验注解 `@NotBlank` 和 `@Size` 然后引入一个自定义的 `NameValidator` 校验所注册的名字是否为我们的保留字段，如果是就报错。
 
-![name validation](https://images-1300693298.cos.ap-beijing.myqcloud.com/20210208184451.png)
+![name validation](2021-07-26-15-27-53.png)
 
 然后这里有一个没有解决的细节：
 
@@ -186,7 +186,7 @@ class Hello {
 
 报错信息如下：
 
-![](https://images-1300693298.cos.ap-beijing.myqcloud.com/20210208185553.png)
+![](2021-07-26-15-27-20.png)
 
 在上面的报错信息可以看到一个细节：报错信息无法下达到具体一个字段，而是落在了 `hello.` 这个对象上。如果我们希望校验信息是落在具体的 `hello.value` 上可以有如下的修改：
 
@@ -273,11 +273,11 @@ validation.name.default=错误的名字格式
 
 发个请求试试看，报错信息已经成了中文：
 
-![](https://images-1300693298.cos.ap-beijing.myqcloud.com/20210208194218.png)
+![](2021-07-26-15-26-49.png)
 
 当然，如果强行给一个 `Accept-Language: en` 的 http 头就可以返回对应的英文信息：
 
-![](https://images-1300693298.cos.ap-beijing.myqcloud.com/20210208194626.png)
+![](2021-07-26-15-26-14.png)
 
 然后，再介绍下 message 中两种可以传递的参数：
 
@@ -304,10 +304,12 @@ validation.confirm=value not equal: ${validatedValue.value} != ${validatedValue.
 
 ### 中文处理
 
-既然用到了 `.properties` 文件自然就遇到了这个 java 中臭名昭著的编码问题了：中文显示乱码了。这里找了个[解决方案](https://my.oschina.net/LevelCoder/blog/1625594)，解决了。幸好是 Intellij ?
+既然用到了 `.properties` 文件自然就遇到了这个 java 中臭名昭著的编码问题了：中文显示乱码了。这里按照如下对 Intellj 做配置的修改可以解决问题。
+
+![](2021-07-26-15-23-56.png)
 
 顺便提一句，Intellij 里面的 [Resource bundles](https://www.jetbrains.com/help/idea/resource-bundle.html) 也挺好用的。
 
-![](https://images-1300693298.cos.ap-beijing.myqcloud.com/20210208212752.png)
+![](2021-07-26-15-25-52.png)
 
 这部分介绍就到这里了，后文会继续介绍如何建立自定义 exception handler 体系以捕捉各种层级的报错并统一返回格式了。
