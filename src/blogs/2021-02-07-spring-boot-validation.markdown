@@ -113,7 +113,7 @@ class NameValidator implements ConstraintValidator<Name, String> {
 
 可以看到 `@Name` 上面首先包含了两个预定义的校验注解 `@NotBlank` 和 `@Size` 然后引入一个自定义的 `NameValidator` 校验所注册的名字是否为我们的保留字段，如果是就报错。
 
-![name validation](2021-07-26-15-27-53.png)
+![name validation](20210208184451.png)
 
 然后这里有一个没有解决的细节：
 
@@ -186,7 +186,7 @@ class Hello {
 
 报错信息如下：
 
-![](2021-07-26-15-27-20.png)
+![](20210208185553.png)
 
 在上面的报错信息可以看到一个细节：报错信息无法下达到具体一个字段，而是落在了 `hello.` 这个对象上。如果我们希望校验信息是落在具体的 `hello.value` 上可以有如下的修改：
 
@@ -273,11 +273,11 @@ validation.name.default=错误的名字格式
 
 发个请求试试看，报错信息已经成了中文：
 
-![](2021-07-26-15-26-49.png)
+![](20210208194218.png)
 
 当然，如果强行给一个 `Accept-Language: en` 的 http 头就可以返回对应的英文信息：
 
-![](2021-07-26-15-26-14.png)
+![](20210208194626.png)
 
 然后，再介绍下 message 中两种可以传递的参数：
 
@@ -310,6 +310,6 @@ validation.confirm=value not equal: ${validatedValue.value} != ${validatedValue.
 
 顺便提一句，Intellij 里面的 [Resource bundles](https://www.jetbrains.com/help/idea/resource-bundle.html) 也挺好用的。
 
-![](2021-07-26-15-25-52.png)
+![](20210208212752.png)
 
 这部分介绍就到这里了，后文会继续介绍如何建立自定义 exception handler 体系以捕捉各种层级的报错并统一返回格式了。
