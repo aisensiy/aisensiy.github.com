@@ -1,0 +1,140 @@
+---
+layout:     post
+title:      "初始 tailwindcss"
+date:       2021-07-27 19:54:00 +08:00
+author:     "Eisen"
+tags:       [css, tailwindcss, react]
+---
+
+在 [上一篇文章](/blog-migrate-from-jekyll-to-gatsby) 中提到了已经在自己的新博客中集成了 tailwindcss 这篇对这个思路不太一样的 css 框架做一些介绍。
+
+## 核心思想
+
+用过 bootstrap 的人都晓得，bootstrap 提供了如下内容：
+
+1. 一套默认的样式，比如 `h1` 长什么样 `button.btn` 长什么样
+2. 一套布局系统，默认 12 列，实现各种宽度组合
+3. 一套通用组件库，比如面包屑，比如下拉菜单
+
+和 bootstrap 体系几乎一样的东西还很多，比如当年雅虎的 [purecss](https://purecss.io/start/)。
+
+相比于 bootstrap 这种被大家所广泛认知的 css 框架，tailwindcss 有如下差别：
+
+- 没有默认样式，单有一套 reset 样式，将所有的东西设置为一样的大小，比如 `h1` `h2` `p` 的字号、颜色都一样
+- **所有的** css 样式完全通过一系列工具类（utility classes）组合实现，比如一个 `button` 可以这么实现：
+  ```
+  <div class="rounded-md shadow">
+    <a href="#" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
+      Get started
+    </a>
+  </div>
+  ```
+
+  结果如下：
+
+  ![](2021-07-27-20-05-13.png)
+
+- 默认没有提供通用组建库，不过这部分我认为更多还是一个商业上的考虑
+
+其中第二条算是 tailwindcss 最大的特色了，虽然 bootstrap 也包含很多工具类，单 bootstrap 的工具类并不是可以解决所有问题的，它仅仅是一个辅助措施。但在 tailwindcss 工具类就是实现 html 布局的全部。工具类一应俱全，包含网格、排版、变换、响应式设计等等。
+
+全部通过类组合样式看起来有点丑陋，并且它似乎严重违反了 html 语义化的原则。不过 tailwindcss 的作者撰写了[一篇文章](https://adamwathan.me/css-utility-classes-and-separation-of-concerns/)对这部分困惑做了很详尽的说明。我非常推荐直接阅读原文同时阅读文中引用的另外一篇文章：[About HTML semantics and front-end architecture](http://nicolasgallagher.com/about-html-semantics-front-end-architecture/)。这里我把我理解的一些重要观点放在这里，这也是我非常认可 tailwindcss 并开始使用的原因。
+
+- 语义实际上是让 css 依赖 html 在 html 结构需要扩展的时候，css 必须随之变化，最终并没有省什么事
+- 一个名为 `author` 的 `class` 真的有意义么？从实际角度出发 `class` 是给 `css` 用的，`css` 关心的是样式，所以做起吗你的 `class` 应该是 `media-card` 这样子更合理
+- 进一步讲，语义化是让 css 依赖 html 而其实可以反过来，让 html 依赖 css 从文章 [About HTML semantics and front-end architecture](http://nicolasgallagher.com/about-html-semantics-front-end-architecture/) 获得灵感，确定反过来才能有最佳实践：
+
+  > When you choose to author HTML and CSS in a way that seeks to reduce the amount of time you spend writing and editing CSS, it involves accepting that you must instead spend more time changing HTML classes on elements if you want to change their styles. This turns out to be fairly practical, both for front-end and back-end developers – anyone can rearrange pre-built “lego blocks”; it turns out that no one can perform CSS-alchemy.
+
+- 相对于 bootstrap 更细粒度的工具类给了用户更大的自由度，可以完全脱离手写 css 而构建复杂的样式
+- 之所以反对手写 css 是因为它会带来大量的碎片化样式，通过 tailwindcss 可以避免样式的泛滥（比如有太多种字号大小）
+
+## 入门资料
+
+能够快速上手 tailwindcss 的另一个原因是它官网的视频教程做的太好了。请把 [Tailwind CSS: From Zero to Production](https://www.youtube.com/playlist?list=PL5f_mz_zU5eXWYDXHUDOLBE0scnuJofO0) 这个系列一口气全部看完，你基本就可以掌握 tailwindcss 的基本用法了。
+
+看了之后你大概可以收获这些内容：
+
+1. tailwindcss 类的命名规律，你就不会太害怕自己记不住了
+2. 配合使用的一些列工具是什么，比如 vscode 插件
+3. tailwindcss 怎么做响应式设计
+4. 怎么扩展 tailwindcss
+5. 怎么使用 purgecss 对 css 文件进行压缩
+
+## 目前的博客是如何使用 tailwindcss 的
+
+博客的情况其实反而有点不太适合 tailwindcss 的场景，因为博客里面的 markdown 是需要从外部注入样式的，而不是像 tailwindcss 推荐的那样去对每个元素添加工具类。官方也有一篇视频 [Styling Markdown and CMS Content with Tailwind CSS](https://www.youtube.com/watch?v=J0Wy359NJPM) 介绍如何处理，不过我目前是直接使用 `@apply` 并使用 `.main` 这样的范围限定类处理的。
+
+```css
+@layer components {
+    body {
+        @apply bg-white dark:bg-gray-700 transition duration-500;
+    }
+    .main .permalink {
+        @apply fill-current text-gray-800 dark:text-gray-200;
+    }
+    .main {
+        @apply text-gray-800 dark:text-gray-200;
+    }
+    .main h1 {
+        @apply text-3xl md:text-4xl font-extrabold tracking-tight my-4;
+    }
+    .main h2 {
+        @apply mb-4 text-gray-600 dark:text-gray-300;
+    }
+    .main :not(pre) > code {
+        @apply font-mono bg-gray-200 text-gray-500 px-1 mx-1;
+    }
+    .main {
+        @apply break-words;
+    }
+    .blog-post-content h2 {
+        @apply text-2xl md:text-3xl font-extrabold tracking-tight my-3;
+    }
+    .blog-post-content h3 {
+        @apply text-xl md:text-2xl font-extrabold tracking-tight my-3;
+    }
+    .blog-post-content h4 {
+        @apply md:text-xl font-extrabold tracking-tight my-3;
+    }
+    .main ul, .main ol {
+        @apply mb-4 ml-4;
+    }
+    .main ul {
+        @apply list-disc;
+    }
+    .main ol {
+        @apply list-decimal list-inside;
+    }
+    .main a {
+        @apply text-blue-600 hover:underline dark:text-blue-400;
+    }
+    .main img {
+        @apply border border-gray-200 rounded-xl shadow-lg;
+    }
+    .main blockquote {
+        @apply border-l-4 border-gray-300 pl-6;
+    }
+    .main p {
+        @apply mb-4;
+    }
+    .table-of-content {
+        @apply border border-blue-500 dark:border-blue-800 bg-blue-200 my-4 p-4 inline-block overflow-auto dark:bg-blue-500;
+    }
+    .main .table-of-content a {
+        @apply text-gray-800 dark:text-gray-200;
+    }
+    .table-of-content ul {
+        @apply mb-0;
+    }
+    .table-of-content h2 {
+        @apply text-xl font-semibold tracking-tight my-3;
+    }
+    .table-of-content p {
+        @apply m-0 inline;
+    }
+}
+```
+
+
+
