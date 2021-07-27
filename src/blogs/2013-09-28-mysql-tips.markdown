@@ -63,7 +63,7 @@ sys.setdefaultencoding('utf-8')
 
 这样会避免很多问题。
 
-然后 [HOWTO UNICODE](http://docs.python.org/2/howto/unicode.html) 对于编码问题讲的非常的透彻。
+然后 [HOWTO UNICODE](https://docs.python.org/2/howto/unicode.html) 对于编码问题讲的非常的透彻。
 
 
 
@@ -117,7 +117,7 @@ net_read_timeout        = 30
 net_write_timeout       = 30
 ```
 
-这里的时间单位都是秒，我查了一下资料，有对这些参数的具体解释，在[这里](http://www.taobaodba.com/html/433_mysql_timeout_analyze.html)
+这里的时间单位都是秒，我查了一下资料，有对这些参数的具体解释，在[这里](https://www.taobaodba.com/html/433_mysql_timeout_analyze.html)
 
 `connect_timeout` 在很多地方都存在，就是连接 mysql 时候的超时时间。应该不是这个。
 `wait_timeout` 在连接建立之后 mysql 等待一个连接有动作的时间。也就是说如果连接在这个时间之内没有动作就会断开连接了。

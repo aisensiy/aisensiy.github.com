@@ -16,7 +16,7 @@ tags:
 
 最近一直在折腾 sublime text2 这款编辑器，终于是用顺起来了。这里写篇 blog 记下如何快速的配置好一个易用的 sublime text，并分享一些技巧和资源。
 
-以前有用过 vim ，用过 vim 的人都知道，这，是神奇，难以替代。但是要知道，不是每个人都可以驾驭神器的，而且神器也是有适用场景的。比如在 linux 环境下，配合 terminal 的一些命令使用 vim 真的是酣畅淋漓。但是换了 windows 就没有那么顺了。那么，可否有一个替代品呢，当然有很多，但是 sublime text2 作为 editor 里面的新宠当然有它的过人之处。我今天就主要写一下我使用 sublime 的经验。不过，有篇文章 [Sublime Text 2 Tips and Tricks](http://net.tutsplus.com/tutorials/tools-and-tips/sublime-text-2-tips-and-tricks/) 已经算是 sublime 的 get started 了，我想，如果你没有用过 sublime 还是先看那篇比较好，这里会跟多的讲到配置的选择以及插件的推荐。<!-- more -->
+以前有用过 vim ，用过 vim 的人都知道，这，是神奇，难以替代。但是要知道，不是每个人都可以驾驭神器的，而且神器也是有适用场景的。比如在 linux 环境下，配合 terminal 的一些命令使用 vim 真的是酣畅淋漓。但是换了 windows 就没有那么顺了。那么，可否有一个替代品呢，当然有很多，但是 sublime text2 作为 editor 里面的新宠当然有它的过人之处。我今天就主要写一下我使用 sublime 的经验。不过，有篇文章 [Sublime Text 2 Tips and Tricks](https://net.tutsplus.com/tutorials/tools-and-tips/sublime-text-2-tips-and-tricks/) 已经算是 sublime 的 get started 了，我想，如果你没有用过 sublime 还是先看那篇比较好，这里会跟多的讲到配置的选择以及插件的推荐。<!-- more -->
 
 
 ## 使用 sublime text2 给个理由先
@@ -57,13 +57,13 @@ sublime 有自己的 config 文件，我们可以设定一些喜好，让它更�
 
 对，就是这么简单，这样差不多就够了。这个配置会兼容 vim 模式，按下 esc 就会回到 vim 的普通模式了哦。虽然 sublime 下支持的 vim 的功能比较有限，但是用惯了 vim 的同学应该还是会比较亲切的。这个配置我做了一个 gist 在 [https://gist.github.com/3617664](https://gist.github.com/3617664)。
 
-然后这里要说一点，对于每种编程语言，其实都可以有一个新的配置文件来覆盖默认的配置的。点击 Preferences - Browse Packages 就会看到各种语言的收藏夹。在相应的文件夹下，新建并编辑 *.sublime-settings 文件即可。这里 [http://stackoverflow.com/questions/9712113/can-i-set-tab-with-to-2-spaces-in-ruby-and-4-spaces-in-javascript-with-sublime-t](http://stackoverflow.com/questions/9712113/can-i-set-tab-with-to-2-spaces-in-ruby-and-4-spaces-in-javascript-with-sublime-t) 有介绍哦。
+然后这里要说一点，对于每种编程语言，其实都可以有一个新的配置文件来覆盖默认的配置的。点击 Preferences - Browse Packages 就会看到各种语言的收藏夹。在相应的文件夹下，新建并编辑 *.sublime-settings 文件即可。这里 [https://stackoverflow.com/questions/9712113/can-i-set-tab-with-to-2-spaces-in-ruby-and-4-spaces-in-javascript-with-sublime-t](https://stackoverflow.com/questions/9712113/can-i-set-tab-with-to-2-spaces-in-ruby-and-4-spaces-in-javascript-with-sublime-t) 有介绍哦。
 
 
 ### Package Control
 
 
-sublime 有个 package control 可以让你像 apt-get 那样轻松的安装文件。具体安装这个 package controll 移步这里 ===> [http://wbond.net/sublime_packages/package_control/installation](http://wbond.net/sublime_packages/package_control/installation)。安装了这个东西之后，就可以很爽的安装各种插件了啊！！！！下面就列几个我觉得很给力的插件吧！
+sublime 有个 package control 可以让你像 apt-get 那样轻松的安装文件。具体安装这个 package controll 移步这里 ===> [https://wbond.net/sublime_packages/package_control/installation](https://wbond.net/sublime_packages/package_control/installation)。安装了这个东西之后，就可以很爽的安装各种插件了啊！！！！下面就列几个我觉得很给力的插件吧！
 
 * [HTMLPrettify](https://github.com/victorporof/Sublime-HTMLPrettify) 用来格式化 html css 的
 * [DOCBlockr](https://github.com/spadgos/sublime-jsdocs) 更方便的写注释 

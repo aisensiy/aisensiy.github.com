@@ -41,4 +41,4 @@ tags:       [docker, wercker, pipeline, ci, cd]
 	
 ## 参考
 
-[wercker](http://wercker.com)
+[wercker](https://wercker.com)

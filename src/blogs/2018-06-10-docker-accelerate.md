@@ -45,8 +45,6 @@ $ sudo pkill -SIGHUP dockerd
 
 [daocloud](https://daocloud.io) 作为一个做 caas 的公司为国内提供了号称免费的 mirror 构建服务。登录控制台就可以看到如图所示的位置的加速器按钮了，点进去就有相应的脚本了。
 
-![](http://o8p12ybem.bkt.clouddn.com/2018-06-10-15286448939789.jpg)
-
 **注意** 虽然人家是好意给了一个 shell 脚本帮助修改 /etc/docker/daemon.json 的配置，然而**如果你的 docker 不止有一个 runtime**，比如你像我这样需要跑 nvidia docker 的 runtime，那么这个脚本会把你的配置搞砸...建议直接想我这样手动配置：
 
 ```json
@@ -78,8 +76,6 @@ $ sudo pkill -SIGHUP dockerd
 3. 把新镜像推送到 docker.io `docker push <username>/image:tag`
 
 当然你可以写一个脚本，把自己用得着的镜像一个个 push 到 docker.io 中。甚至有人会写一些类似于 webhook 的东西，当 gcr.io 一些特定项目的镜像更新后会自动触发相应的流程自动托运新的镜像。不过不论如何这样的坏处显而易见：这是一个体力活，虽然有一些加速的脚本但是我依然需要更新脚本，管理 webhook...我先前已经用这个方法搞了一堆这样的镜像了...都是眼泪...
-
-![](http://o8p12ybem.bkt.clouddn.com/2018-06-10-15286462771058.jpg)
 
 google 一下发现这种方式在用 kubeadam 安装 kubernetes 的场景被很多人采用了。
 

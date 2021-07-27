@@ -12,11 +12,7 @@ categories:
 
 又写了一道水题，按照顺序写的。不知道能不能坚持下去。
 
-
-
-
-[1002](http://poj.org/problem?id=1002)
-
+[1002](https://poj.org/problem?id=1002)
 
 ```cpp
 
@@ -27,13 +23,13 @@ categories:
 #include <algorithm>
 #include <cstdio>
 /* 
- * http://poj.org/problem?id=1002
+ * https://poj.org/problem?id=1002
  * 
  * 题简单的没什么可说的 重点是更快的输入处理能力
  * AC的耗时很长，肯定有优化的余地，我只是个菜鸟，
  * 仅供参考
  *
- * @author: aisensiy(http://weibo.com/alistapart)
+ * @author: aisensiy(https://weibo.com/alistapart)
  */
 using namespace std;
 // 这是A-Z与数字的映射表

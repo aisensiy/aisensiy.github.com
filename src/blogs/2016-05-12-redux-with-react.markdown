@@ -48,7 +48,7 @@ return (
 
 ## Presentational and Container Components
 
-在 `redux` 的官方文档 [Use With React](http://redux.js.org/docs/basics/UsageWithReact.html) 解释了一种 `redux` 和 `react` 结合的模式：将 `react` 的组件分为两种，一种是不与 `redux` 交互的 `presentational` 组件，它是一种通用的组件，任何提供给它所需要的 `func` 或者是 `prop` 的框架都可以使用它。另一种是 `container` 组件，是和 `redux` 的 `action` 以及 `store` 绑定的组件。通常都是会先写一个 `presentational` 组件，然后再创建一个 `container` 组件对 `presentational` 组件进行包装后使用。后面的 *full example* 展示了 `Counter` 与 `Visible Counter` 两个不同类型的组件。当然在[官方](http://redux.js.org/docs/basics/UsageWithReact.html)也提供了非常好的例子。
+在 `redux` 的官方文档 [Use With React](https://redux.js.org/docs/basics/UsageWithReact.html) 解释了一种 `redux` 和 `react` 结合的模式：将 `react` 的组件分为两种，一种是不与 `redux` 交互的 `presentational` 组件，它是一种通用的组件，任何提供给它所需要的 `func` 或者是 `prop` 的框架都可以使用它。另一种是 `container` 组件，是和 `redux` 的 `action` 以及 `store` 绑定的组件。通常都是会先写一个 `presentational` 组件，然后再创建一个 `container` 组件对 `presentational` 组件进行包装后使用。后面的 *full example* 展示了 `Counter` 与 `Visible Counter` 两个不同类型的组件。当然在[官方](https://redux.js.org/docs/basics/UsageWithReact.html)也提供了非常好的例子。
 
 ## full example
 
@@ -211,8 +211,8 @@ store.subscribe(render);
 
 ## 参考
 
-1. [redux](http://redux.js.org)
+1. [redux](https://redux.js.org)
 2. [redux counter example](https://github.com/reactjs/redux/tree/master/examples/counter)
-3. [use with react](http://redux.js.org/docs/basics/UsageWithReact.html)
+3. [use with react](https://redux.js.org/docs/basics/UsageWithReact.html)
 4. [babelrc](https://babeljs.io/docs/usage/babelrc/)
 

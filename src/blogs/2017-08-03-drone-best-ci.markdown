@@ -10,7 +10,7 @@ tags:       [docker, ci/cd]
 
 ## 本地安装
 
-![](http://o8p12ybem.bkt.clouddn.com/15096926244457.jpg?imageView2/2/w/1200/q/75%7Cimageslim)
+![](https://o8p12ybem.bkt.clouddn.com/15096926244457.jpg?imageView2/2/w/1200/q/75%7Cimageslim)
 
 可以看到 drone 的界面非常的简洁，和其他 ci 一样它通过和 github gitlab 或者是 gogs 这样的 git repository 链接并绑定 web hook 在用户提交新的 commit 的时候出发 ci 的执行。drone 作为一个开源的 ci 其支持 docker 方式的安装，非常的简单：
 
@@ -80,9 +80,9 @@ pipeline:
 
 还是在看上面的那个例子，第一个阶段我们在 `node:6.10.2-alpine` 下构建了一个单页应用。然后，我们采用了 `plugins/docker` 镜像构建并发布了我们的镜像到 `hub.docker.com`。而这里的 `plugins/docker` 就是 `drone` 为我们提供的一个插件了。
 
-虽说是一个插件，但实际上用起来就和其他的 `image` 一样，这个插件的功能就是帮我们利用项目中的 `Dockerfile` 构建一个新的 docker image 并提交。除此之外还有一些其他的官方插件可供使用，详情在[这里](http://plugins.drone.io/)。
+虽说是一个插件，但实际上用起来就和其他的 `image` 一样，这个插件的功能就是帮我们利用项目中的 `Dockerfile` 构建一个新的 docker image 并提交。除此之外还有一些其他的官方插件可供使用，详情在[这里](https://plugins.drone.io/)。
 
-当然，自己做一个插件也是非常简单的，在插件被执行的时候，当前目录就是项目的根目录，然后 drone 会暴露一系列的[环境变量](http://docs.drone.io/environment-reference/)给用户使用，我们可以采用之前的步骤所产生的数据或者环境变量中的内容实现一个特定功能的插件。
+当然，自己做一个插件也是非常简单的，在插件被执行的时候，当前目录就是项目的根目录，然后 drone 会暴露一系列的[环境变量](https://docs.drone.io/environment-reference/)给用户使用，我们可以采用之前的步骤所产生的数据或者环境变量中的内容实现一个特定功能的插件。
 
 ### 支持 backing service
 
@@ -217,7 +217,7 @@ pipeline:
       - /tmp/cache:/cache
 ```
 
-第一阶段 `restore-cache` 将 `/tmp/cache` 下该项目的缓存拷贝到 `./node_modules`。第三阶段将 `./node_modules` 的内容拷贝会 `/tmp/cache` 详细的内容见[缓存](http://plugins.drone.io/drillster/drone-volume-cache/)。
+第一阶段 `restore-cache` 将 `/tmp/cache` 下该项目的缓存拷贝到 `./node_modules`。第三阶段将 `./node_modules` 的内容拷贝会 `/tmp/cache` 详细的内容见[缓存](https://plugins.drone.io/drillster/drone-volume-cache/)。
 
 ## 当前的状态
 
@@ -225,13 +225,13 @@ pipeline:
 
 ## 相关资料
 
-* [drone 官网](http://drone.io)
-* [drone 安装指南](http://docs.drone.io/installation/)
+* [drone 官网](https://drone.io)
+* [drone 安装指南](https://docs.drone.io/installation/)
 * [create-react-app](https://github.com/facebookincubator/create-react-app)
-* [drone basic usage](http://docs.drone.io/getting-started/)
-* [drone docker 插件](http://plugins.drone.io/)
-* [drone cache 插件](http://plugins.drone.io/drillster/drone-volume-cache/)
-* [drone 部署](http://docs.drone.io/deployments/)
-* [缓存](http://plugins.drone.io/drillster/drone-volume-cache/)
+* [drone basic usage](https://docs.drone.io/getting-started/)
+* [drone docker 插件](https://plugins.drone.io/)
+* [drone cache 插件](https://plugins.drone.io/drillster/drone-volume-cache/)
+* [drone 部署](https://docs.drone.io/deployments/)
+* [缓存](https://plugins.drone.io/drillster/drone-volume-cache/)
 
 

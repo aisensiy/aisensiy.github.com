@@ -10,21 +10,21 @@ tags:       [java, springboot, spring-mvc, sonarQube, ci/cd]
 
 sonarQube 自己说自己用于做 continuous code quality， 从它所生成的默认的报告来看，主要包含了如下几个部分：
 
-![](http://o8p12ybem.bkt.clouddn.com/15090218556057.jpg?imageView2/2/w/1200/q/75%7Cimageslim)
+![](2021-07-27-13-34-04.png)
 
 不过打开一看会发现其实 `Bugs & Vulnerabilities` 和 `Code Smells` 基本上就是 lint 所做的事情，比如代码风格不符合 java 的规约呀，在使用 `Optional` 之前判断其是否 `isPresent` 呀等等，不过人家本来就是做静态检查的也无可厚非。
 
 `Code Smells` 这个名字实在是太唬人了，在 [重构](https://book.douban.com/subject/4262627/) 里定义设计的好坏在于有没有代码的坏味道，如果 sonarqube 有能力甄别所有的代码坏味道的话，那还怕神马低质量代码呢。不过起码 sonarqube 有能力甄别一部分低级的代码坏味道，比如过长的方法参数：
 
->Constructor has 9 parameters, which is greater than 7 authorized. 
+> Constructor has 9 parameters, which is greater than 7 authorized. 
 
 再比如重复的代码呀
 
->1 duplicated blocks of code must be removed.
+> 1 duplicated blocks of code must be removed.
 
 甚至是提醒我们哪个方法所在的位置不合适
 
->Move this method into "Builder"
+> Move this method into "Builder"
 
 这么看来其功能还是可圈可点的，而且我所使用的还仅仅是最基本的配置，没有做任何的自定义。
 
@@ -52,10 +52,7 @@ plugins {
 
 不过这个时候你会发现并没有测试覆盖率的数据。
 
-![](http://o8p12ybem.bkt.clouddn.com/15090218765170.jpg?imageView2/2/w/1200/q/75%7Cimageslim)
-
-
-这是因为 sonarqube 自己不做测试覆盖的处理，它依赖于其他的测试覆盖工具。比如这里我们使用 [jacoco](http://www.eclemma.org/jacoco/)。
+这是因为 sonarqube 自己不做测试覆盖的处理，它依赖于其他的测试覆盖工具。比如这里我们使用 [jacoco](https://www.eclemma.org/jacoco/)。
 
 在 `build.gradle` 中添加 `jacoco`:
 
@@ -64,9 +61,6 @@ apply plugin 'jacoco'
 ```
 
 然后 `./gradlew clean test jacoco sonar` 再去 http://localhost:9000 查看就有相应的数据了。
-
-![](http://o8p12ybem.bkt.clouddn.com/15090219075726.jpg?imageView2/2/w/1200/q/75%7Cimageslim)
-
 
 ### 和 ci 集成
 

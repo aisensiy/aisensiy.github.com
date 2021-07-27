@@ -360,6 +360,6 @@ userResource = new Resource<>(user, link);
 
 ## 相关资料
 
-* [Jackson Annotation Examples](http://www.baeldung.com/jackson-annotations)
+* [Jackson Annotation Examples](https://www.baeldung.com/jackson-annotations)
 * [Jackson Annotation document](https://github.com/FasterXML/jackson-annotations)
 * [spring hateoas](https://github.com/spring-projects/spring-hateoas/)

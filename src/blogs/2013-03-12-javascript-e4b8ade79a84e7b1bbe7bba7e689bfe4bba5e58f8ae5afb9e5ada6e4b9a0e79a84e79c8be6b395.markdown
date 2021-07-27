@@ -13,7 +13,7 @@ tags:
 - javascript
 ---
 
-其实这部分我觉得最好的实践就是 coffeescript 的代码。coffee 自带了类继承。那么，解析成 js 后其代码就一目了然了。不过我还是自己练习了一下。解释都在注释里，废话不多说了。coffee 关于 extend 的部分在 [http://coffeescript.org/<!-- more -->](http://coffeescript.org/)
+其实这部分我觉得最好的实践就是 coffeescript 的代码。coffee 自带了类继承。那么，解析成 js 后其代码就一目了然了。不过我还是自己练习了一下。解释都在注释里，废话不多说了。coffee 关于 extend 的部分在 [https://coffeescript.org/](https://coffeescript.org/)
 
 ```js
 var __hasProp = {}.hasOwnProperty;

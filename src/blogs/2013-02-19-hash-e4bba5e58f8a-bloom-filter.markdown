@@ -359,8 +359,8 @@ int bloom_find(const char *str, Bloom* bloom) {
 
 这种算法类的东西，我描述起来很是拙急啊。感觉说的不够明白 o_o。这里给点参考吧。
 
-* [10个经典的字符串hash函数的C代码实现](http://blog.csdn.net/jcwkyl/article/details/4088436) 这个 EFLHash 应该是有点问题，仔细看～
-* [Bloom Filter](http://en.wikipedia.org/wiki/Bloom_filter)
+* [10个经典的字符串hash函数的C代码实现](https://blog.csdn.net/jcwkyl/article/details/4088436) 这个 EFLHash 应该是有点问题，仔细看～
+* [Bloom Filter](https://en.wikipedia.org/wiki/Bloom_filter)
 * 数学之美，布隆过滤器
 
 

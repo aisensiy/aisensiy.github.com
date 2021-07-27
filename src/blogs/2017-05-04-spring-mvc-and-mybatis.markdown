@@ -157,7 +157,7 @@ public class MyBatisRepositoryTest {
 }
 ```
 
-详细内容见 [mybatis-spring-boot-test-autoconfigure](http://www.mybatis.org/spring-boot-starter/mybatis-spring-boot-test-autoconfigure/)
+详细内容见 [mybatis-spring-boot-test-autoconfigure](https://www.mybatis.org/spring-boot-starter/mybatis-spring-boot-test-autoconfigure/)
 
 # 其他
 

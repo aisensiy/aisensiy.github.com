@@ -6,7 +6,7 @@ author:     "Eisen"
 tags:       [java, springboot, spring-mvc, hateoas]
 ---
 
-HATEOAS, Hypermedia as the Engine of Application State, 可以被简单的理解为为 REST API 中的 Resource 提供必要的链接，对，就像是 HTML 页面上的链接。我们在访问一个 web 站点的时候从来没有说要看一个说明文档并在其中找到我们所需要的资源的 URI，而是通过一个入口页面（当然，搜索引擎也提供了入口）所包含的链接，一步一步找到我们想要的内容。HATEOAS 是 REST 架构风格重要的组成部分，然而对于现在的诸多 REST 接口中却并没有它的身影。它被 [Richardson Maturity Model](http://martinfowler.com/articles/richardsonMaturityModel.html) 定义为 REST 的最终形态。
+HATEOAS, Hypermedia as the Engine of Application State, 可以被简单的理解为为 REST API 中的 Resource 提供必要的链接，对，就像是 HTML 页面上的链接。我们在访问一个 web 站点的时候从来没有说要看一个说明文档并在其中找到我们所需要的资源的 URI，而是通过一个入口页面（当然，搜索引擎也提供了入口）所包含的链接，一步一步找到我们想要的内容。HATEOAS 是 REST 架构风格重要的组成部分，然而对于现在的诸多 REST 接口中却并没有它的身影。它被 [Richardson Maturity Model](https://martinfowler.com/articles/richardsonMaturityModel.html) 定义为 REST 的最终形态。
 
 ## HATEOAS 的优势
 
@@ -281,4 +281,4 @@ public ResponseEntity<?> all() {
 * [Passive View](https://martinfowler.com/eaaDev/PassiveScreen.html)
 * [Understanding HATEOAS](https://spring.io/understanding/HATEOAS)
 * [Building a Hypermedia-Driven RESTful Web Service](https://spring.io/guides/gs/rest-hateoas/)
-* [The Benefits of Hypermedia APIs](http://olivergierke.de/2016/04/benefits-of-hypermedia/)
+* [The Benefits of Hypermedia APIs](https://olivergierke.de/2016/04/benefits-of-hypermedia/)

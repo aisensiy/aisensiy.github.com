@@ -166,7 +166,7 @@ public class UserPostsApi {
 
 首先，Jersey 自成体系，想要和其他框架结合会产生一定的工程摩擦。Spring mvc 和 spring core 自然是很好的集成了的，但是 jersey 中自己的那个 hk2 依赖注入框架和 spring 就不能那么好的相处了。使用的时候只能将其全部换成 spring 的依赖注入方式。同时 spring mvc 有一个 mock mvc 测试体系，它大大加速的测试的速度，然而它仅仅支持 spring mvc。并且到目前为止，我都没有找到任何一个很好的测试 jersey 的方式，其自身的测试框架在 spring 体系下的结合实例我就没见到过，而其他 mock 的支持也没走通过。
 
-另一方面，spring 体系中 spring mvc 虽然在我看起来还是有很多的缺点，但是它遵循的是大量 web 框架的模式，比如 django 的 [url dispatcher](https://docs.djangoproject.com/en/1.11/topics/http/urls/) 比如 rails 的 [routes](http://guides.rubyonrails.org/routing.html) 都是类似的 url 映射模式。Spring MVC 同样是沿着 web 的发展趋势一路走来，作为一个历史悠久的框架自然也继承了大多数 web MVC 的特点，也应该会被更多的人所接受，实在是无可厚非。所以，我不知道我自己坚持使用 jersey 是不是会给项目中其他成员带来伤害。
+另一方面，spring 体系中 spring mvc 虽然在我看起来还是有很多的缺点，但是它遵循的是大量 web 框架的模式，比如 django 的 [url dispatcher](https://docs.djangoproject.com/en/1.11/topics/http/urls/) 比如 rails 的 [routes](https://guides.rubyonrails.org/routing.html) 都是类似的 url 映射模式。Spring MVC 同样是沿着 web 的发展趋势一路走来，作为一个历史悠久的框架自然也继承了大多数 web MVC 的特点，也应该会被更多的人所接受，实在是无可厚非。所以，我不知道我自己坚持使用 jersey 是不是会给项目中其他成员带来伤害。
 
 
 如下所示，jersey 的测试需要将整个 server 启动，采用 `RANDOM_PORT` 的方式进行测试。
@@ -238,5 +238,5 @@ public class UsersApiTest {
 * [Jersey Test Framework](https://jersey.java.net/documentation/latest/test-framework.html)
 * [Jersey Resources and Sub-Resources](https://jersey.java.net/documentation/latest/jaxrs-resources.html)
 * [Django url dispatcher](https://docs.djangoproject.com/en/1.11/topics/http/urls/)
-* [Rails routes](http://guides.rubyonrails.org/routing.html)
+* [Rails routes](https://guides.rubyonrails.org/routing.html)
 * [HK2](https://hk2.java.net/)

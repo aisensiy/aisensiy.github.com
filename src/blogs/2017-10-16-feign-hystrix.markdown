@@ -59,7 +59,7 @@ Feign 本身是可以支持很多套语法的，在 spring cloud 下默认使用
 
 # 用 wiremock 测试 Feign Client
 
-在有了 `GitHubService` 之后，如果想要对其进行测试就需要一种 mock 服务端请求的方式。这里我们采用 [WireMock](http://wiremock.org/) 来实现。
+在有了 `GitHubService` 之后，如果想要对其进行测试就需要一种 mock 服务端请求的方式。这里我们采用 [WireMock](https://wiremock.org/) 来实现。
 
 首先在 `build.gradle` 引入依赖：
 
@@ -340,5 +340,5 @@ Percentage of the requests served within a certain time (ms)
 
 1. [Open Feign](https://github.com/OpenFeign/feign)
 2. [Hystrix](https://github.com/Netflix/Hystrix/wiki)
-3. [WireMock Stub](http://wiremock.org/docs/stubbing/)
+3. [WireMock Stub](https://wiremock.org/docs/stubbing/)
 4. [Talk: Hystrix – managing failures in distributed systems](https://www.youtube.com/watch?v=-gL-nO2cqwU)

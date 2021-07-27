@@ -14,7 +14,7 @@ tags:
 
 最近有一个诡异的需求，需要做一个多对多的图关系。情况是这样的，有一堆本来是扁平关系的标签，现在需要给他们组织出来层级关系了。那么一个 tag 就会有很多的 父节点 以及 子节点。那么，简单来看，其实就是一个自身元素的多对多关系了。
 
-通常的，针对两个 model 的多对多关系是这样的。[link here](http://guides.rubyonrails.org/association_basics.html#the-has-and-belongs-to-many-association)
+通常的，针对两个 model 的多对多关系是这样的。[link here](https://guides.rubyonrails.org/association_basics.html#the-has-and-belongs-to-many-association)
 
 ```ruby
 class Physician < ActiveRecord::Base
@@ -33,7 +33,7 @@ class Patient < ActiveRecord::Base
 end
 ```
 
-而对于通常的，对于自身做树级关系的 model 如下: [link here](http://guides.rubyonrails.org/association_basics.html#self-joins)
+而对于通常的，对于自身做树级关系的 model 如下: [link here](https://guides.rubyonrails.org/association_basics.html#self-joins)
 
 ```ruby
 class Employee < ActiveRecord::Base

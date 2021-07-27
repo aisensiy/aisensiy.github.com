@@ -17,7 +17,7 @@ tags:
 
 以前一直没有好好的看过相关的只是，只是一知半解，之前在百度的时候知道 iframe 中的东西如果 domain 与 iframe 外的不一致，那么就不能用 js 去操作里面的对象。window.open 新开的东西也同样无法操作。但是具体的策略如何就说不清楚了，最近看看了这方面的东西，总结一下。
 
-这部分的知识主要源自于 MDN W3 以及另外一篇不错的文章 [Same Origin Policy Part 1: No Peeking](http://blogs.msdn.com/b/ieinternals/archive/2009/08/28/explaining-same-origin-policy-part-1-deny-read.aspx)。<!-- more -->
+这部分的知识主要源自于 MDN W3 以及另外一篇不错的文章 [Same Origin Policy Part 1: No Peeking](https://blogs.msdn.com/b/ieinternals/archive/2009/08/28/explaining-same-origin-policy-part-1-deny-read.aspx)。<!-- more -->
 
 首先介绍一下两个名词
 
@@ -89,7 +89,7 @@ jsonp 是只把你请求的资源做成一个可执行的资源，把读转化�
 
 ## 一个不靠谱的方式： 修改 domain
 
-刚刚看到一个大神的文章，[http://ruby-china.org/topics/7598](http://ruby-china.org/topics/7598)
+刚刚看到一个大神的文章，[https://ruby-china.org/topics/7598](https://ruby-china.org/topics/7598)
 
 
 > 这里需要说明的一点是，设置document.domain这种跨子域通讯的方式，不是说子域与子域之间可以发送AJAX请求，而是利用子域与子域的iframe之间可以传送数据这一特性完成跨域通讯。
@@ -116,7 +116,7 @@ document.domain = 'company.com';
 
 表示任何域的请求都是可以被接受的。而
 
-    Access-Control-Allow-Origin:http://example.com
+    Access-Control-Allow-Origin:https://example.com
 
 
 表明只有从 example.com 的请求是被允许的。
@@ -128,7 +128,7 @@ var http = require('http');
 http.createServer(function(req, res) {
 	res.writeHead(200, {
         'ContentType': 'text/plain',
-        'Access-Control-Allow-Origin': 'http://localhost:3000'});
+        'Access-Control-Allow-Origin': 'https://localhost:3000'});
 	res.end('Hello node\n');
 }).listen(8000);
 
@@ -149,26 +149,26 @@ xhr.onreadystatechange = function() {
   }
 };
 
-xhr.open('GET', 'http://localhost:8000/');
+xhr.open('GET', 'https://localhost:8000/');
 ```
 
 结果如下
 
-[![](http://aisensiy-wordpress.stor.sinaapp.com/uploads/2013/03/one.png)](http://aisensiy-wordpress.stor.sinaapp.com/uploads/2013/03/one.png)
+[![](https://aisensiy-wordpress.stor.sinaapp.com/uploads/2013/03/one.png)](https://aisensiy-wordpress.stor.sinaapp.com/uploads/2013/03/one.png)
 
 修改请求页面的端口到 3000，再次发送请求
 
-[![](http://aisensiy-wordpress.stor.sinaapp.com/uploads/2013/03/two.png)](http://aisensiy-wordpress.stor.sinaapp.com/uploads/2013/03/two.png)
+[![](https://aisensiy-wordpress.stor.sinaapp.com/uploads/2013/03/two.png)](https://aisensiy-wordpress.stor.sinaapp.com/uploads/2013/03/two.png)
 
 请求被接受了。这种跨域的问题通常会在 做前后端分离的系统的时候用得到。比如 我所有的面向后端的请求全部集中在域 api.domain.com 而我的前端页面都在域 web.domain.com 下，那么在 server 端通过简单的添加允许的域就可以解决这个问题。
 
-这里在补充一句，如果是需要允许多个域名的访问应该怎么做呢？我搜了下，发现一个 [access-control-allow-origin-multiple-origin-domains](http://stackoverflow.com/questions/1653308/access-control-allow-origin-multiple-origin-domains) 说明了这个问题：如果是多个域名的话，就需要server自己处理，如果发现请求在允许的列表中，就在 http 响应头中 Access-Control-Allow-Origin 字段设为这个域。
+这里在补充一句，如果是需要允许多个域名的访问应该怎么做呢？我搜了下，发现一个 [access-control-allow-origin-multiple-origin-domains](https://stackoverflow.com/questions/1653308/access-control-allow-origin-multiple-origin-domains) 说明了这个问题：如果是多个域名的话，就需要server自己处理，如果发现请求在允许的列表中，就在 http 响应头中 Access-Control-Allow-Origin 字段设为这个域。
 
 
 ## 相关资源
 
 * [Same-origin policy](https://developer.mozilla.org/en-US/docs/JavaScript/Same_origin_policy_for_JavaScript?redirectlocale=en-US&redirectslug=Same_origin_policy_for_JavaScript)
-* [Same Origin Policy Part 1: No Peeking](http://blogs.msdn.com/b/ieinternals/archive/2009/08/28/explaining-same-origin-policy-part-1-deny-read.aspx)
-* [JSONP](http://zh.wikipedia.org/wiki/JSONP)
+* [Same Origin Policy Part 1: No Peeking](https://blogs.msdn.com/b/ieinternals/archive/2009/08/28/explaining-same-origin-policy-part-1-deny-read.aspx)
+* [JSONP](https://zh.wikipedia.org/wiki/JSONP)
 * [HTTP access control (CORS)](https://developer.mozilla.org/en-US/docs/HTTP/Access_control_CORS)
-* [Cross-Origin Resource Sharing](http://www.w3.org/TR/cors/#access-control-allow-origin-response-header)
+* [Cross-Origin Resource Sharing](https://www.w3.org/TR/cors/#access-control-allow-origin-response-header)

@@ -134,6 +134,6 @@ http.createServer((req, res) => {
 
 # 参考
 
-1. [Object Spread Operator](http://babeljs.io/docs/plugins/transform-object-rest-spread/)
+1. [Object Spread Operator](https://babeljs.io/docs/plugins/transform-object-rest-spread/)
 2. [nodemon](https://github.com/remy/nodemon)
 3. [Using ES6 and beyond with Node.js - node Video Tutorial](https://egghead.io/lessons/node-js-using-es6-and-beyond-with-node-js)

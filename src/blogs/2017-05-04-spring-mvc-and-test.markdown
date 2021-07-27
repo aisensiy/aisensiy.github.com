@@ -101,7 +101,7 @@ public class UsersApiTest {
 
 1. 老版本的 `SpringJUnit4ClassRunner` 被替换为更容易阅读的 `SpringRunner`，在 stackoverflow 中会找到大量的 `SpringJUnit4ClassRunner` 对我这种刚接触的人来说真是带来了很多的困惑。另外，我们在这里并没有使用一个 `SpringBootTest` 的注解，SpringBootTest 是只有需要一个比较完整的 Spring Boot 环境的时候（比如需要做集成测试，启动 `EmbeddedWebApplicationContext` 的时候）需要。而我们这里仅仅通过单元测试就可以完成任务了，这样的好处是可以大大提升测试的速度。
 2. `MockMvcBuilders` 是 Spring MVC 提供的一个 mock 环境，使我们可以不启动 HTTP server 就能进行测试。这里我们通过 `standaloneSetup` 的方法创建我们要测试的 `UsersApi` 并且通过 `setControllerAdvice` 添加错误处理的机制。有关 `ControllerAdvice` 做异常处理的内容我们会在后面的文章中介绍。
-3. 我们在 `build.gradle` 引入了 [rest assured](http://rest-assured.io/) 的两个包用于 json 的测试，我们通过这个语句将所创建的 mock mvc 提供给 rest assured。
+3. 我们在 `build.gradle` 引入了 [rest assured](https://rest-assured.io/) 的两个包用于 json 的测试，我们通过这个语句将所创建的 mock mvc 提供给 rest assured。
 4. 使用了 rest assured 的测试可读性大大的增强了，这里就是检查了请求所获取的 `status code`，实际的项目中可能需要做更详细的 json 内容的测试
 5. `body("fieldErrors[0].field", equalTo("username"))` 这种直接读取 json path 的测试方式相对将 json 转化成 map 再一点点的读取字段来说真是方便的太多，有关这种测试的其他内容详见 [rest assured 官方文档](https://github.com/rest-assured/rest-assured/wiki/Usage)
 6. 这里是一个包含动态 url 的例子，其使用方式和在 Spring MVC 中使用 `PathVariable` 类似

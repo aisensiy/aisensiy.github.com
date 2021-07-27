@@ -44,7 +44,7 @@ tags:
 ## 番茄工作法
 
 
-后来，就是番茄工作发了。之前我也有写过一篇 [blog 最近用番茄工作法的感想](http://1.aisensiy.sinaapp.com/%E6%9C%80%E8%BF%91%E7%94%A8%E7%95%AA%E8%8C%84%E5%B7%A5%E4%BD%9C%E6%B3%95%E7%9A%84%E6%84%9F%E6%83%B3/)。在一开始使用的时候感觉自己真的是可以做更多的事情了。可是，慢慢发现，这个东西也让我越来越痛苦：一个我本来以为可以很快搞定的事情居然花费了两倍甚至是三倍的番茄…我又产生了一种不忍直视的感觉。而且，番茄真的让我很压抑，每个25分钟感觉就像是在冲刺 deadline。可每次完成之后发现刚刚休息一会儿就又要开始了。在最巅峰的状态我一天做了17个番茄，但最近几乎就不在做了。平均一天也就两三个番茄的样子。
+后来，就是番茄工作发了。之前我也有写过一篇 [blog 最近用番茄工作法的感想](https://1.aisensiy.sinaapp.com/%E6%9C%80%E8%BF%91%E7%94%A8%E7%95%AA%E8%8C%84%E5%B7%A5%E4%BD%9C%E6%B3%95%E7%9A%84%E6%84%9F%E6%83%B3/)。在一开始使用的时候感觉自己真的是可以做更多的事情了。可是，慢慢发现，这个东西也让我越来越痛苦：一个我本来以为可以很快搞定的事情居然花费了两倍甚至是三倍的番茄…我又产生了一种不忍直视的感觉。而且，番茄真的让我很压抑，每个25分钟感觉就像是在冲刺 deadline。可每次完成之后发现刚刚休息一会儿就又要开始了。在最巅峰的状态我一天做了17个番茄，但最近几乎就不在做了。平均一天也就两三个番茄的样子。
 
 
 ## 那么
@@ -75,9 +75,9 @@ tags:
 
 ## 附录
 
-* 时间管理的真相 [http://www.douban.com/note/274227047/](http://www.douban.com/note/274227047/)
+* 时间管理的真相 [https://www.douban.com/note/274227047/](https://www.douban.com/note/274227047/)
 * GTD [https://zh.wikipedia.org/wiki/GTD](https://zh.wikipedia.org/wiki/GTD)
-* 时间追朔的工具 [http://www.manictime.com/](http://www.manictime.com/)
+* 时间追朔的工具 [https://www.manictime.com/](https://www.manictime.com/)
 * 番茄工作法 [https://pomotodo.com/](https://pomotodo.com/)
 
 

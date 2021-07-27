@@ -49,7 +49,7 @@ attrs = FactoryGirl.attributes_for(:user)
 stub = FactoryGirl.build_stubbed(:user)
 ```
 
-build create attributes_for 都比较容易理解，而最后这个 build_stubbed 就诡异了。我 search 了一下，发现了 thoughtbot 自己写的一篇文章 [Use Factory Girl’s build_stubbed for a Faster Test Suite](http://robots.thoughtbot.com/post/22670085288/use-factory-girls-build-stubbed-for-a-faster-test)，文章中提到
+build create attributes_for 都比较容易理解，而最后这个 build_stubbed 就诡异了。我 search 了一下，发现了 thoughtbot 自己写的一篇文章 [Use Factory Girl’s build_stubbed for a Faster Test Suite](https://robots.thoughtbot.com/post/22670085288/use-factory-girls-build-stubbed-for-a-faster-test)，文章中提到
 
 
 > build_stubbed is the younger, more hip sibling to build; it instantiates and assigns attributes just like build, but that’s where the similarities end. It makes objects look look like they’ve been persisted, creates associations with the build_stubbed strategy (whereas build still uses create), and stubs out a handful of methods that interact with the database and raises if you call them. This leads to much faster tests and reduces your test dependency on a database.
@@ -98,7 +98,7 @@ FactoryGirl.generate :email
 
 如果用 python 的模式来解释 sequence 像是一个生成器，而 generate 像是一个迭代器，这样配合实用可以生成无限多的 email 了。
 
-上面的例子是 官方 readme 给出的。而我则把 sequence 与 faker 一起使用，就可每次生成随机的内容了。这部分内容在 rails tutorial 里面也有提及（[sample microposts](http://ruby.railstutorial.org/chapters/user-microposts#sec-sample_microposts)）。我的做法比较类似。
+上面的例子是 官方 readme 给出的。而我则把 sequence 与 faker 一起使用，就可每次生成随机的内容了。这部分内容在 rails tutorial 里面也有提及（[sample microposts](https://ruby.railstutorial.org/chapters/user-microposts#sec-sample_microposts)）。我的做法比较类似。
 
 ```ruby
 FactoryGirl.define do
@@ -115,7 +115,7 @@ FactoryGirl.define do
 end
 ```
 
-faker 确实是个很方便的东西，而且没有什么难度，想要看具体的用法，直接来看 [docs](http://faker.rubyforge.org/rdoc/) 就好了。
+faker 确实是个很方便的东西，而且没有什么难度，想要看具体的用法，直接来看 [docs](https://faker.rubyforge.org/rdoc/) 就好了。
 
 最后，我结合这些，做了一个类似于 rails tutorials 里面的 populate task 的东西，用于生成初始数据。
 

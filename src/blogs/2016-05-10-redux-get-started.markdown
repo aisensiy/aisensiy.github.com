@@ -10,7 +10,7 @@ tags:       [webpack, js, flux, redux]
 
 `redux` 是一个目前比较流行的前端框架，它和 `react` 配合使用，作为 `react` 的 数据层。它继承了 `flux` 的思想，构建一个 `store` 保存前端所有的 `state`，但是目前这样的模式也逐渐出现了一些争议，尤其是当一个项目变得比较庞大的时候，在一个 `store` 里面存储单个页面相关的数据并没有非常大的意义，这部分我以后再说。
 
-`redux` 的几个关键概念 `action` `reducer` `store` 在 <http://redux.js.org> 都有详细的介绍，尤其是在官网推荐的教学视频介绍了 `reduex` 的一些实现细节，对理解 `redux` 是如何工作的有很大的帮助，强烈推荐观看
+`redux` 的几个关键概念 `action` `reducer` `store` 在 <https://redux.js.org> 都有详细的介绍，尤其是在官网推荐的教学视频介绍了 `reduex` 的一些实现细节，对理解 `redux` 是如何工作的有很大的帮助，强烈推荐观看
 
 ## a simple redux example
 
@@ -96,7 +96,7 @@ unsubscribe();
 
 ## add test for reducer
 
-前端越来越复杂，相应的测试也是必不可少的了。我们目前的应用比较简单，最复杂的就是 `reducers` 所以给 `reducers` 添加一些测试。我们这里使用 `mocha` 作为测试框架。`redux` 官网提供了如何写测试的[文档](http://redux.js.org/docs/recipes/WritingTests.html)
+前端越来越复杂，相应的测试也是必不可少的了。我们目前的应用比较简单，最复杂的就是 `reducers` 所以给 `reducers` 添加一些测试。我们这里使用 `mocha` 作为测试框架。`redux` 官网提供了如何写测试的[文档](https://redux.js.org/docs/recipes/WritingTests.html)
 
     $ npm install --save-dev mocha expect
 
@@ -219,8 +219,8 @@ module.exports = {
 
 ## 参考
 
-1. [redux](http://redux.js.org)
+1. [redux](https://redux.js.org)
 2. [redux counter example](https://github.com/reactjs/redux/tree/master/examples/counter)
-3. [redux writing tests](http://redux.js.org/docs/recipes/WritingTests.html)
+3. [redux writing tests](https://redux.js.org/docs/recipes/WritingTests.html)
 4. [babelrc](https://babeljs.io/docs/usage/babelrc/)
 

@@ -176,7 +176,7 @@ module.exports = {
 
 ## 参考
 
-1. [webpack get started](http://webpack.github.io/docs/tutorials/getting-started/)
+1. [webpack get started](https://webpack.github.io/docs/tutorials/getting-started/)
 2. [webpack loader order](https://webpack.github.io/docs/loaders.html#loader-order)
 3. [webpack plugins](https://github.com/webpack/docs/wiki/list-of-plugins)
 4. [extract-text-webpack-plugin](https://github.com/webpack/extract-text-webpack-plugin)

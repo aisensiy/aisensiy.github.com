@@ -73,7 +73,7 @@ Why is that? If you're the best on the team, you have little incentive to contin
 
 ## 注解以及书单
 
-1. [程序员修炼之道](http://book.douban.com/subject/1152111/)
-2. [Practices of An Agile Developer](http://book.douban.com/subject/1767907/)
+1. [程序员修炼之道](https://book.douban.com/subject/1152111/)
+2. [Practices of An Agile Developer](https://book.douban.com/subject/1767907/)
 
 

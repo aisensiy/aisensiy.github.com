@@ -21,8 +21,6 @@ tags:       [java, spring, springboot, mybatis, realworld]
 3. 用户可以对文章添加评论、点赞
 4. 用户可以关注别的用户，关注的用户的文章会展示在用户的 feed 中
 
-![](http://o8p12ybem.bkt.clouddn.com/15090236378256.jpg?imageView2/2/w/1200/q/75%7Cimageslim)
-
 这是一个前后端分离的项目，其提供了后端 api 的[规范](https://github.com/gothinkster/realworld/tree/master/api)。这里，我们不评论其 API 设计的好坏，要完全遵循其设计并实现它。当然，对于不同的语言和框架实现都有其 API 设计的偏好，既然这里定死了一种规范，那么在实现的过程中难免会有一些 tricky 的地方需要我们去克服。
 
 ## 目录结构
@@ -48,9 +46,7 @@ tags:       [java, spring, springboot, mybatis, realworld]
 
 ## 六边形架构
 
-[六边形架构](http://alistair.cockburn.us/Hexagonal+architecture) 或者说是 [洋葱架构](https://www.infoq.com/news/2014/10/ddd-onion-architecture) 其实不是一个什么新东西，因为**分层架构**会导致其最底层的实现是数据库，而之前很多的业务逻辑和数据库是揉在一起的（事实上很多项目也确实这样，大量的存储过程中包含着业务的逻辑，业务和数据库紧密的结合在了一起）；但实际上，一个应用最核心的东西应该是**业务逻辑**，而业务逻辑是不应该和技术细节有强关联的，数据库实现和视图层一样，是某种技术细节，不应该和将其与业务逻辑绑定，所以应该用应该强调内部和外部：内部是我的业务逻辑，而外部与外界沟通的基础设施和技术细节，比如具体的数据库存储，比如 restful 的 api，再比如 html 的视图。
-
-![](http://o8p12ybem.bkt.clouddn.com/15090236589859.jpg?imageView2/2/w/1200/q/75%7Cimageslim)
+[六边形架构](https://alistair.cockburn.us/Hexagonal+architecture) 或者说是 [洋葱架构](https://www.infoq.com/news/2014/10/ddd-onion-architecture) 其实不是一个什么新东西，因为**分层架构**会导致其最底层的实现是数据库，而之前很多的业务逻辑和数据库是揉在一起的（事实上很多项目也确实这样，大量的存储过程中包含着业务的逻辑，业务和数据库紧密的结合在了一起）；但实际上，一个应用最核心的东西应该是**业务逻辑**，而业务逻辑是不应该和技术细节有强关联的，数据库实现和视图层一样，是某种技术细节，不应该和将其与业务逻辑绑定，所以应该用应该强调内部和外部：内部是我的业务逻辑，而外部与外界沟通的基础设施和技术细节，比如具体的数据库存储，比如 restful 的 api，再比如 html 的视图。
 
 通过这样的思考方式，我们可以认为 mysql 数据库实现仅仅是众多数据库实现中的一个而已，我们可以在不同的环境中轻易的替换掉它，尤其是为对业务的测试提供了可能：我们可以采用内存数据库或者 mock 轻松的实现业务测试。
 

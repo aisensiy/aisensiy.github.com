@@ -38,7 +38,7 @@ using namespace std;
  * 那么，反过来，如果我们知道了第i+1轮退出的人在i轮一定是j，
  * 我们可以通过 (j+m)%n 得知其在上一轮的位置
  *
- * @author: aisensiy(http://weibo.com/alistapart)
+ * @author: aisensiy(https://weibo.com/alistapart)
  */
 int jos(int n, int m) {
     if(n==1) return 0;
@@ -53,21 +53,21 @@ int main()
 }
 [/code]
 
-然后poj 1012 是约瑟夫问题的一个变种，题目在这里[poj 1012](http://poj.org/problem?id=1012)
+然后poj 1012 是约瑟夫问题的一个变种，题目在这里[poj 1012](https://poj.org/problem?id=1012)
 
 [code lang="cpp"]
 #include <iostream>
 #include <vector>
 #include <cstring>
 /*
- * http://poj.org/problem?id=1012
+ * https://poj.org/problem?id=1012
  *
  * 约瑟夫问题的变种，采用完全的模拟会超时
  * 这里用到的一些技巧在下面的注释中会解答
  * 感谢mabaochang同学让我明白了本题最核心
  * 的trick.
  *
- * @author: aisensiy(http://weibo.com/alistapart)
+ * @author: aisensiy(https://weibo.com/alistapart)
  */
 using namespace std;
 

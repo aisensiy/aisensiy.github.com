@@ -56,9 +56,7 @@ tags:       [spring, springboot]
 
 ## CORS with Spring Security
 
-Spring Security 本身是通过 Filter 实现的，如果没有对其单独做 CORS 的处理，在 Web Security 报错 401 的时候是不会返回相应的 CORS 的字段的。这会导致命名应该出现的 401 错误成为了一个无法进行跨域的错误，导致前端程序无法正常的处理 401 相应：
-
-![](http://o8p12ybem.bkt.clouddn.com/15101476021097.jpg?imageView2/2/w/1200/q/75%7Cimageslim)
+Spring Security 本身是通过 Filter 实现的，如果没有对其单独做 CORS 的处理，在 Web Security 报错 401 的时候是不会返回相应的 CORS 的字段的。这会导致命名应该出现的 401 错误成为了一个无法进行跨域的错误，导致前端程序无法正常的处理 401 相应。21
 
 为了解决这个问题，自然是需要添加 [Spring Security 支持的 CORS 代码](https://docs.spring.io/spring-security/site/docs/current/reference/html/cors.html)：
 

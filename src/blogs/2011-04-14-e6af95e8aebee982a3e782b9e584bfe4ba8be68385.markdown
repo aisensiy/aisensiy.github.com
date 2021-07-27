@@ -27,7 +27,7 @@ categories:
 
 构建自动学习是最近工作的主题，随着中英的测试成功后，这个也告一段落了。AIML的Specification中有说标签可以执行代码的。可PyAIML做的太槽了，<system>只能运行shell代码，而且是1行！So I hava to do it by myself....
 
-我想尽各种办法让python可以运行下的python代码，在这里遇到了诸多的难题。首先，如何让python代码可以在运行时嵌入到python当前环境中呢？这里，伟大的stackoverflow拯救了我，我找到了[how to input python code in run time and execute it ?](http://stackoverflow.com/questions/3981357/how-to-input-python-code-in-run-time-and-execute-it), oh shit, i suddenly can not type Chinese in ubuntu now, what a shit os, it is better to be a server!!!! 好吧，我来到了我可爱的windows，一切继续吧。execfile可以把一个临时文件的代码相当于嵌入到当前的环境中。但是python是以indent为格式进行代码解析的。但是我们可爱的AIML默认把string 之间的 's+' 给删除掉了，我首先做的就是为system设置xml:space = "preserve"。然后，我写了一个算法可以格式化这些内容。之后就是无尽的debug了，比如全局变量和局部变量的问题呀，比如execfile无法嵌入import声明呀，比如中文字符问题呀。一坨一坨的，纠结了很久。这里就提一提我最后遇到的一个bug吧。
+我想尽各种办法让python可以运行下的python代码，在这里遇到了诸多的难题。首先，如何让python代码可以在运行时嵌入到python当前环境中呢？这里，伟大的stackoverflow拯救了我，我找到了[how to input python code in run time and execute it ?](https://stackoverflow.com/questions/3981357/how-to-input-python-code-in-run-time-and-execute-it), oh shit, i suddenly can not type Chinese in ubuntu now, what a shit os, it is better to be a server!!!! 好吧，我来到了我可爱的windows，一切继续吧。execfile可以把一个临时文件的代码相当于嵌入到当前的环境中。但是python是以indent为格式进行代码解析的。但是我们可爱的AIML默认把string 之间的 's+' 给删除掉了，我首先做的就是为system设置xml:space = "preserve"。然后，我写了一个算法可以格式化这些内容。之后就是无尽的debug了，比如全局变量和局部变量的问题呀，比如execfile无法嵌入import声明呀，比如中文字符问题呀。一坨一坨的，纠结了很久。这里就提一提我最后遇到的一个bug吧。
 
 ```
 file = codecs.open(filename, 'r+', encoding='utf8')

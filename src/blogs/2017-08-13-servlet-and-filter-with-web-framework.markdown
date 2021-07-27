@@ -65,12 +65,9 @@ public class TestServlet extends HttpServlet {
 
 有的时候你需要一种机制来控制那些涵盖了多个 servlet 映射的请求，比如追踪每一次请求的执行时间，或者对一系列路径的访问做限制。java 有一个 Filter 的组件用于完成这样的工作。
 
-![](http://o8p12ybem.bkt.clouddn.com/15090235377078.jpg?imageView2/2/w/1200/q/75%7Cimageslim)
-
-
 它在将 request 传递给 servlet 前以及从 servlet 返回 response 后分别进行一系列的处理。并且 servlet 前后可以包含多个 filter。
 
-![](http://o8p12ybem.bkt.clouddn.com/15090235507175.jpg?imageView2/2/w/1200/q/75%7Cimageslim)
+![](2021-07-27-13-14-47.png)
 
 一个 filter 的例子如下：
 
@@ -111,7 +108,7 @@ public class MyFilter implements Filter { // 1
 
 前面提到过，java web 的各种框架都是建立在 servlet 体系之上的，SpringMVC 也不例外。和 structs 等老牌的 web 框架类似，它也提供了一个 `DispatcherServlet` 作为 Front Controller 来拦截所有的请求，并通过自己的请求分发机制将请求分发到 SpringMVC 下实际的 controller 之中。
 
-![](http://o8p12ybem.bkt.clouddn.com/15090235645088.jpg?imageView2/2/w/1200/q/75%7Cimageslim)
+![](2021-07-27-13-14-00.png)
 
 
 ```xml
@@ -153,7 +150,7 @@ spring security web 都是基于 servlet filter 建立起来的。其使用的�
 ## 相关资料
 
 1. [SpringMVC](https://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html)
-2. Head First Servlets and JSP
+2. [Head First Servlets and JSP](https://www.oreilly.com/library/view/head-first-servlets/9780596516680/)
 3. [Spring Security: Web Application Security](https://docs.spring.io/spring-security/site/docs/current/reference/htmlsingle/#web-app-security)
 
 

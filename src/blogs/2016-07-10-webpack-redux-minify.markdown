@@ -168,9 +168,9 @@ gzip_types      text/plain application/xml text/css text/html application/javasc
 ## 参考
 
 1. [webpack optimization](https://webpack.github.io/docs/optimization.html)
-2. [Optimizing React + ES6 + Webpack Production Build](http://moduscreate.com/optimizing-react-es6-webpack-production-build/)
-3. [date-format-without-moment](http://stackoverflow.com/questions/17093796/date-formatting-with-without-moment-js)
-4. [passing-environment-dependent-variables-in-webpack](http://stackoverflow.com/questions/30030031/passing-environment-dependent-variables-in-webpack)
-5. [nginx gzip](http://nginx.org/en/docs/http/ngx_http_gzip_module.html)
+2. [Optimizing React + ES6 + Webpack Production Build](https://moduscreate.com/optimizing-react-es6-webpack-production-build/)
+3. [date-format-without-moment](https://stackoverflow.com/questions/17093796/date-formatting-with-without-moment-js)
+4. [passing-environment-dependent-variables-in-webpack](https://stackoverflow.com/questions/30030031/passing-environment-dependent-variables-in-webpack)
+5. [nginx gzip](https://nginx.org/en/docs/http/ngx_http_gzip_module.html)
 
 

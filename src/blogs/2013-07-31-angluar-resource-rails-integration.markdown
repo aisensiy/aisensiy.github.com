@@ -107,7 +107,7 @@ top2_posts GET    /posts/top2(.:format)      posts#top2
 
 好，有了这些之后，我们就可以用 `angular-resource` 构建一个 `Post` 的 module 来处理 restful 的请求啦。
 
-首先 ngResource 的文档在这里 [http://docs.angularjs.org/api/ngResource.$resource](http://docs.angularjs.org/api/ngResource.$resource) 虽然大家都吐槽 angular 的文档很糟糕，但是没有别的办法，这个就是最官方的出处了。而且起码我觉得这篇讲的还算说的过去。
+首先 ngResource 的文档在这里 [https://docs.angularjs.org/api/ngResource.$resource](https://docs.angularjs.org/api/ngResource.$resource) 虽然大家都吐槽 angular 的文档很糟糕，但是没有别的办法，这个就是最官方的出处了。而且起码我觉得这篇讲的还算说的过去。
 
 ```js
 App = angular.module 'App', ['ngResource']
@@ -150,6 +150,6 @@ App.controller 'IndexController', ($scope, Post) ->
 
 虽然这里还没有涉及嵌套的情况，但是整体来说应该是类似的。
 
-顺便说一句，项目用到了一个 gem `bower-rails` 把 bower 整合进来。可以更简单的安装 各种 css js 资源。[http://pete-hamilton.co.uk/2013/07/13/angularjs-and-rails-with-bower/](http://pete-hamilton.co.uk/2013/07/13/angularjs-and-rails-with-bower/) 的讲解推荐一看。
+顺便说一句，项目用到了一个 gem `bower-rails` 把 bower 整合进来。可以更简单的安装 各种 css js 资源。[https://pete-hamilton.co.uk/2013/07/13/angularjs-and-rails-with-bower/](https://pete-hamilton.co.uk/2013/07/13/angularjs-and-rails-with-bower/) 的讲解推荐一看。
 
 再多说一句，前面有一篇讲述 webapps 的文章，这篇其实和它也有一点关系。目前我比较看好 angularjs 希望用它作为 webapp 的开发框架。

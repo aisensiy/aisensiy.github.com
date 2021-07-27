@@ -181,7 +181,7 @@ public enum OrderStatus {
 
 `@JsonCreator` 有点像是 MyBatis 做映射的时候那个 `<constructor>` 它可以让你直接使用一个构造函数或者是静态工厂方法来构建这个对象，可以在这里做一些额外的初始化或者是默认值选定的工作，有了它在反序列化的时候就不需要那个很讨厌的默认的无参数构造函数了。
 
-当然枚举的处理还有一些更诡异的方式，[这里](http://www.baeldung.com/jackson-serialize-enums)有讲解，我就不再赘述了。
+当然枚举的处理还有一些更诡异的方式，[这里](https://www.baeldung.com/jackson-serialize-enums)有讲解，我就不再赘述了。
 
 ## 对多态的支持
 
@@ -396,8 +396,8 @@ BeanWithCustomAnnotation bean
 
 ## 相关资料
 
-* [Jackson Annotation Examples](http://www.baeldung.com/jackson-annotations)
+* [Jackson Annotation Examples](https://www.baeldung.com/jackson-annotations)
 * [Jackson Annotation document](https://github.com/FasterXML/jackson-annotations)
-* [How To Serialize Enums as JSON Objects with Jackson](http://www.baeldung.com/jackson-serialize-enums)
+* [How To Serialize Enums as JSON Objects with Jackson](https://www.baeldung.com/jackson-serialize-enums)
 * [spring restbucks](https://github.com/olivergierke/spring-restbucks)
 * [mixin code](https://github.com/gothinkster/spring-boot-realworld-example-app/blob/master/src/main/java/io/spring/JacksonCustomizations.java)

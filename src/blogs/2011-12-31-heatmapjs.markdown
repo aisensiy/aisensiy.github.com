@@ -4,7 +4,7 @@ comments: true
 date: 2011-12-31 04:50:26+00:00
 layout: post
 slug: heatmapjs
-title: 一个用canvas画热力图的利器 heatmap.js
+title: 一个用 canvas 画热力图的利器 heatmap.js
 wordpress_id: 174
 categories:
 - 关注web
@@ -15,19 +15,19 @@ tags:
 
 最近做的一个东西，需要以热力图的形式去展示数据。于是就想找一找热力图的算法。找到了很多生成热力图的工具，它们的算法几乎是一致的，都是首先用alpha透明度方式画发散的圆在页面上，然后利用一个调色板，把对应的透明度改成相应的颜色即可。
 
-一个很不错的中文的算法介绍在这里 [浅谈Heatmap](http://huoding.com/2011/01/04/39)
+一个很不错的中文的算法介绍在这里 [浅谈Heatmap](https://huoding.com/2011/01/04/39)
 
-一个英文的在这里 [How to Make Heat Map](http://blog.corunet.com/how-to-make-heat-maps/)
+一个英文的在这里 [How to Make Heat Map](https://blog.corunet.com/how-to-make-heat-maps/)
 
-虽说我本来打算的是找到算法自己去实现一下的，但是一不小心我发现万能的google在搜索记录里面给了我一个 [heatmap.js](http://www.patrick-wied.at/static/heatmapjs/) 的链接。我好奇的点进去发现这就是我所需要实现的东西...
+虽说我本来打算的是找到算法自己去实现一下的，但是一不小心我发现万能的google在搜索记录里面给了我一个 [heatmap.js](https://www.patrick-wied.at/static/heatmapjs/) 的链接。我好奇的点进去发现这就是我所需要实现的东西...
 
-[![](http://aisensiy-wordpress.stor.sinaapp.com/uploads/2011/12/heatmap-1024x537.png)](http://aisensiy-wordpress.stor.sinaapp.com/uploads/2011/12/heatmap.png)
+> 图丢了
 
 heatmap.js可以使用canvas画出来一张漂亮的heatmap。更重要的是它支持数据的动态添加。比如，上图的演示就是一个利用mousemove事件生成heatmap的例子。它会自动的刷新canvas，实时显示鼠标运动的heatmap。
 
 打开heatmap.js发现里面的代码并不多，但是真的很精悍。
 
-页面代码请点击这里[[heatmap.js](https://github.com/pa7/heatmap.js/blob/master/heatmap.js)]，下面我做一个code的分析吧，看了那么久了，写下来一方面是自己加深记忆，另一方面就是可以更好的理清思路吧。[[写就是为了更好的思考](http://mindhacks.cn/2009/02/09/writing-is-better-thinking/)]么。
+页面代码请点击这里[[heatmap.js](https://github.com/pa7/heatmap.js/blob/master/heatmap.js)]，下面我做一个code的分析吧，看了那么久了，写下来一方面是自己加深记忆，另一方面就是可以更好的理清思路吧。[[写就是为了更好的思考](https://mindhacks.cn/2009/02/09/writing-is-better-thinking/)]么。
 
 code中包含两个主要的对象，store heatmap。store是heatmap的数据部分，算是model吧。而heatmap则是真正绘制图像的对象。heatmap部分可以被配置，可以自定义很多的内容，尤其是配色也是可以配置的，那么我们除了做出来正真的heatmap的效果之外还可以做出来各种各样不错的效果的。
 
@@ -129,7 +129,7 @@ rgr.addColorStop(1, 'rgba(0,0,0,0)');
 
 利用当前点的count除以最大的count获取的结果做为alpha值。然后做一个RadialGradient画出来这个图就可以了。那么由于多个相近的点aphla效果的叠加就可以获取想要的效果了。这里就是canvas的nb之处了，看别的语言实现都是采用将一个这样的png图片画到画板上，但是canvas就可以直接实现这个效果。
 
-[![](http://aisensiy-wordpress.stor.sinaapp.com/uploads/2011/12/src_Tempest_plot.png)](http://aisensiy-wordpress.stor.sinaapp.com/uploads/2011/12/src_Tempest_plot.png)
+> 图丢了
 
 有了这幅aphla版本的heatmap 我们利用一个配送版做着色就大功告成了。
 

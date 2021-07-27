@@ -103,7 +103,7 @@ const Summary = styled.div`
 
 ## 兼容现在已有的 react components 和 css 框架
 
-`styled-components` 采用的 css-module 的模式有另外一个好处就是可以很好的与其他的主题库进行兼容。因为大部分的 css 框架或者 css 主题都是以 className 的方式进行样式处理的，额外的 className 和主题的 className 并不会有太大的冲突。你可以认为这是一个应当使用全局 css 的地方（所以我并不赞成用 styled-components 里面的 theming 接口去做这件事）。相对于以 object 的方式写 style 的 material-ui 真是好太多了，看看 material-ui 讲述如何进行[样式自定义](http://www.material-ui.com/#/customization/styles)就知道这并不是一个很成熟的想：
+`styled-components` 采用的 css-module 的模式有另外一个好处就是可以很好的与其他的主题库进行兼容。因为大部分的 css 框架或者 css 主题都是以 className 的方式进行样式处理的，额外的 className 和主题的 className 并不会有太大的冲突。你可以认为这是一个应当使用全局 css 的地方（所以我并不赞成用 styled-components 里面的 theming 接口去做这件事）。相对于以 object 的方式写 style 的 material-ui 真是好太多了，看看 material-ui 讲述如何进行[样式自定义](https://www.material-ui.com/#/customization/styles)就知道这并不是一个很成熟的想：
 
 1. css 内嵌到组建里影响了组件自身结构的表现
 2. inline style 意味着最高的优先级，其无法和其他的主题库配合
@@ -135,8 +135,8 @@ const StyledDiv = styled(Row)`
 
 ## 相关资料
 
-1. [scss](http://sass-lang.com/)
+1. [scss](https://sass-lang.com/)
 2. [js in css](https://github.com/MicheleBertoli/css-in-js)
 3. [styled components](https://www.styled-components.com)
 4. [auto-prefix](https://github.com/postcss/autoprefixer)
-5. [material-ui](http://www.material-ui.com/)
+5. [material-ui](https://www.material-ui.com/)

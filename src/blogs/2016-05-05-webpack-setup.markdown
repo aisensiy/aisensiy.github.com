@@ -130,5 +130,5 @@ npm install -S webpack-dev-server
 
 ## 一些参考
 
-1. webpack.config.js [http://webpack.github.io/docs/configuration.html](http://webpack.github.io/docs/configuration.html)
-2. webpack dev server [http://webpack.github.io/docs/webpack-dev-server.html](http://webpack.github.io/docs/webpack-dev-server.html)
+1. webpack.config.js [https:://webpack.github.io/docs/configuration.html](http://webpack.github.io/docs/configuration.html)
+2. webpack dev server [https:://webpack.github.io/docs/webpack-dev-server.html](http://webpack.github.io/docs/webpack-dev-server.html)

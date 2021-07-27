@@ -22,8 +22,6 @@ tags:       [react, javascript]
 
 在我看来 `prettier` 就是这么一个 "类官方格式" 了。不过目前它还只是支持 `js` 体系下的格式化，其他语言由于这样那样的问题还要再等等。
 
-![](http://o8p12ybem.bkt.clouddn.com/15197990961653.jpg?imageView2/2/w/1200/q/75%7Cimageslim)
-
 大家对有个公认的格式这件事还是非常认可的，项目出现一年，Github star 破 2.1w，并且像 facebook 这样的大公司已经在内部逐渐铺开使用了。
 
 ## 集成
@@ -107,6 +105,6 @@ class Badges extends React.Component {
 2. [Husky](https://github.com/typicode/husky)
 3. [Using Prettier and husky to make your commits safe.](https://medium.com/@bartwijnants/using-prettier-and-husky-to-make-your-commits-save-2960f55cd351)
 4. [git-hooks](https://git-scm.com/docs/githooks)
-5. [The Commit Stage](http://www.informit.com/articles/article.aspx?p=1621865&seqNum=4)
+5. [The Commit Stage](https://www.informit.com/articles/article.aspx?p=1621865&seqNum=4)
 6. [Formats Go programs](https://golang.org/cmd/gofmt/)
 

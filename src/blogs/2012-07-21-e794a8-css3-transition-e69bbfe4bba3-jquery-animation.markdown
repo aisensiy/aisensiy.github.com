@@ -16,9 +16,9 @@ tags:
 
 css3 的 transition 真的是个非常好用的东西，但是之前一直有一个疑惑就是比如我让一个元素通过修改`opacity`作出渐隐的效果，但是opacity变化成为0了之后要怎么办？我需要一个callback把它从dom中删除，但是css哪里来的callback。一直都有这么一个疑惑，但是自己从来没有去用心的解决过这个问题，于是这个想法就一直搁置在那里[1]。
 
-最近实习遇到一下工作就是作一个photo的弹出展示的功能，功能类似于[lightbox](http://fancybox.net/)。但是由于项目的需求，不能添加非常庞大的额外的类库，需要手写个简化版本。在完成了基本的功能之后，我想要给这个控件添加一个`fadeIn` `fadeOut`的效果。按照通常的情景，我就直接上jQuery了，但是这次不行，要自己去作[2]。于是我就想到了用css作这个工作了，这样是最简单的办法了。
+最近实习遇到一下工作就是作一个photo的弹出展示的功能，功能类似于[lightbox](https://fancybox.net/)。但是由于项目的需求，不能添加非常庞大的额外的类库，需要手写个简化版本。在完成了基本的功能之后，我想要给这个控件添加一个`fadeIn` `fadeOut`的效果。按照通常的情景，我就直接上jQuery了，但是这次不行，要自己去作[2]。于是我就想到了用css作这个工作了，这样是最简单的办法了。
 
-查了一下资料，其实还是挺好实现的。[http://www.greywyvern.com/?post=337#](http://www.greywyvern.com/?post=337#)对这个技术有非常详细的讲解[3]。我就把主要的东西再讲解一下吧。
+查了一下资料，其实还是挺好实现的。[https://www.greywyvern.com/?post=337#](https://www.greywyvern.com/?post=337#)对这个技术有非常详细的讲解[3]。我就把主要的东西再讲解一下吧。
 
 首先上代码
 
@@ -55,7 +55,7 @@ part one 中，定义了元素的`transition`以及最终的`opacity`样式。�
 
 
 part two 中，通过修改`delay`的时间实现了visibility在active时立即显示的效果。那么，这里我们可以看到，实现这样的动作需要加标志 active。
-最后，上[demo](http://3.jsbin.com/igeyid/11)[4]。
+最后，上[demo](https://3.jsbin.com/igeyid/11)[4]。
 
 其实有了[3]所说的东西，其实不需要我在这里累述的。但是其实我是来写感言的，以下才是本文的主题。
 

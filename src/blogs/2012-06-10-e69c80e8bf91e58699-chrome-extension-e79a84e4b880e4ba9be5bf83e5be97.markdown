@@ -15,7 +15,7 @@ tags:
 
 有幸找到一个可以专门写 chrome extension 的工作，非常开心，可以专心的写 chrome extension 了。看了一些别人的 chrome extension 自己也有了一些新的体会，写在这里，留个未来的自己。
 
-最近在做的这个扩展是 [mei.fm](http://mei.fm) 的一键收藏扩展。整体来说，这个扩展的功能并不是非常复杂。但是，再简单也是有一定工作量的。而且，程序是为变化而生的，最初的架构体系做的比较顺手对以后的工作也是有好处的。
+最近在做的这个扩展是 [mei.fm](https://mei.fm) 的一键收藏扩展。整体来说，这个扩展的功能并不是非常复杂。但是，再简单也是有一定工作量的。而且，程序是为变化而生的，最初的架构体系做的比较顺手对以后的工作也是有好处的。
 
 
 
@@ -35,13 +35,11 @@ chrome.extension.onRequest.addListener(function(any request, MessageSender sende
 
 
 
-详见[http://code.google.com/chrome/extensions/tabs.html](http://code.google.com/chrome/extensions/tabs.html) 以及 [http://code.google.com/chrome/extensions/extension.html](http://code.google.com/chrome/extensions/extension.html)
+详见[https://code.google.com/chrome/extensions/tabs.html](https://code.google.com/chrome/extensions/tabs.html) 以及 [https://code.google.com/chrome/extensions/extension.html](https://code.google.com/chrome/extensions/extension.html)
 
 这样做的好处就是可以更好的组织自己的代码，让 content page 以及 popup 去专注于页面的展示，而把逻辑以及ajax的东西集中在bg去做。比如，在pocket中会用到一个content script 用来显示保存的状态。它每次动作对bg发送请求，让bg把链接保存到pocket，然后它根据bg返回的信息，进行相应的信息提示的工作。
 
-[![](http://aisensiy-wordpress.stor.sinaapp.com/uploads/2012/06/QQ截图20120610190805-1024x268.png)](http://aisensiy-wordpress.stor.sinaapp.com/uploads/2012/06/QQ截图20120610190805.png)
-
-
+> 图丢了
 
 ## 实践
 

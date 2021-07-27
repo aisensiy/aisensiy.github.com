@@ -8,7 +8,7 @@ tags:       [java, graphql, springboot, mybatis, realworld]
 
 在很久之前的一篇 [文章](/real-world-spring-boot-and-mybatis) 介绍了我做的一个 [RealWorld 的 SpringBoot + MyBatis](https://github.com/gothinkster/spring-boot-realworld-example-app) 的实现。这个项目我也一直在维护，一方面是因为这是一个很好的 demo 项目，可以很好的体现一些设计思路 [文章](/real-world-spring-boot-and-mybatis) 也都说了不再重复。另一方面，我觉得也是一个新人练手不错的选择，可以让大家可以通过这个项目来入门。
 
-最近在做 GraphQL 的调研和测试，我第一个想到的就是把这个项目添加上 GraphQL 的接口，一方面可以熟悉 GraphQL 的体系，另一方面也是个很好的机会去验证下是不是 REST 层是按照 [六边形架构](http://alistair.cockburn.us/Hexagonal+architecture) 或者说是 [洋葱架构](https://www.infoq.com/news/2014/10/ddd-onion-architecture) 那样子做成的是薄薄的一层，可以轻易的被替换掉。
+最近在做 GraphQL 的调研和测试，我第一个想到的就是把这个项目添加上 GraphQL 的接口，一方面可以熟悉 GraphQL 的体系，另一方面也是个很好的机会去验证下是不是 REST 层是按照 [六边形架构](https://alistair.cockburn.us/Hexagonal+architecture) 或者说是 [洋葱架构](https://www.infoq.com/news/2014/10/ddd-onion-architecture) 那样子做成的是薄薄的一层，可以轻易的被替换掉。
 
 ## 对 api 层与 application 层做重构
 
