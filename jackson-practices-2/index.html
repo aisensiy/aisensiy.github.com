@@ -207,7 +207,7 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p><code class="language-text">@JsonCreator</code> 有点像是 MyBatis 做映射的时候那个 <code class="language-text">&lt;constructor></code> 它可以让你直接使用一个构造函数或者是静态工厂方法来构建这个对象，可以在这里做一些额外的初始化或者是默认值选定的工作，有了它在反序列化的时候就不需要那个很讨厌的默认的无参数构造函数了。</p>
-<p>当然枚举的处理还有一些更诡异的方式，<a href="http://www.baeldung.com/jackson-serialize-enums">这里</a>有讲解，我就不再赘述了。</p>
+<p>当然枚举的处理还有一些更诡异的方式，<a href="https://www.baeldung.com/jackson-serialize-enums">这里</a>有讲解，我就不再赘述了。</p>
 <h2 id="对多态的支持" style="position:relative;">对多态的支持<a href="#%E5%AF%B9%E5%A4%9A%E6%80%81%E7%9A%84%E6%94%AF%E6%8C%81" aria-label="对多态的支持 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <p>在 DDD 中有领域事件（domain event）的概念，有时候我们需要将这些事件保存下来。由于每一个事件的结构是千差万别的，不论是存储在关系型数据库还是 nosql 数据库，在将其序列化保存的时候我们需要保留其原有的类型信息以便在反序列化的时候将其解析为之前的类型。jackson 对这种多态有很好的支持。</p>
 <div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@JsonTypeInfo</span><span class="token punctuation">(</span>
@@ -361,9 +361,9 @@
 <span class="token punctuation">}</span></code></pre></div>
 <h2 id="相关资料" style="position:relative;">相关资料<a href="#%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99" aria-label="相关资料 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <ul>
-<li><a href="http://www.baeldung.com/jackson-annotations">Jackson Annotation Examples</a></li>
+<li><a href="https://www.baeldung.com/jackson-annotations">Jackson Annotation Examples</a></li>
 <li><a href="https://github.com/FasterXML/jackson-annotations">Jackson Annotation document</a></li>
-<li><a href="http://www.baeldung.com/jackson-serialize-enums">How To Serialize Enums as JSON Objects with Jackson</a></li>
+<li><a href="https://www.baeldung.com/jackson-serialize-enums">How To Serialize Enums as JSON Objects with Jackson</a></li>
 <li><a href="https://github.com/olivergierke/spring-restbucks">spring restbucks</a></li>
 <li><a href="https://github.com/gothinkster/spring-boot-realworld-example-app/blob/master/src/main/java/io/spring/JacksonCustomizations.java">mixin code</a></li>
 </ul></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>

@@ -129,7 +129,7 @@ top2_posts GET    /posts/top2(.:format)      posts#top2
            PUT    /posts/:id(.:format)       posts#update
            DELETE /posts/:id(.:format)       posts#destroy</code></pre></div>
 <p>好，有了这些之后，我们就可以用 <code class="language-text">angular-resource</code> 构建一个 <code class="language-text">Post</code> 的 module 来处理 restful 的请求啦。</p>
-<p>首先 ngResource 的文档在这里 <a href="http://docs.angularjs.org/api/ngResource.$resource">http://docs.angularjs.org/api/ngResource.$resource</a> 虽然大家都吐槽 angular 的文档很糟糕，但是没有别的办法，这个就是最官方的出处了。而且起码我觉得这篇讲的还算说的过去。</p>
+<p>首先 ngResource 的文档在这里 <a href="https://docs.angularjs.org/api/ngResource.$resource">https://docs.angularjs.org/api/ngResource.$resource</a> 虽然大家都吐槽 angular 的文档很糟糕，但是没有别的办法，这个就是最官方的出处了。而且起码我觉得这篇讲的还算说的过去。</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">App <span class="token operator">=</span> angular<span class="token punctuation">.</span>module <span class="token string">'App'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'ngResource'</span><span class="token punctuation">]</span>
 
 App<span class="token punctuation">.</span>factory <span class="token string">'Post'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>$resource<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span>
@@ -154,7 +154,7 @@ App<span class="token punctuation">.</span>factory <span class="token string">'P
   $scope.posts = Post.top2()</code></pre></div>
 <hr>
 <p>虽然这里还没有涉及嵌套的情况，但是整体来说应该是类似的。</p>
-<p>顺便说一句，项目用到了一个 gem <code class="language-text">bower-rails</code> 把 bower 整合进来。可以更简单的安装 各种 css js 资源。<a href="http://pete-hamilton.co.uk/2013/07/13/angularjs-and-rails-with-bower/">http://pete-hamilton.co.uk/2013/07/13/angularjs-and-rails-with-bower/</a> 的讲解推荐一看。</p>
+<p>顺便说一句，项目用到了一个 gem <code class="language-text">bower-rails</code> 把 bower 整合进来。可以更简单的安装 各种 css js 资源。<a href="https://pete-hamilton.co.uk/2013/07/13/angularjs-and-rails-with-bower/">https://pete-hamilton.co.uk/2013/07/13/angularjs-and-rails-with-bower/</a> 的讲解推荐一看。</p>
 <p>再多说一句，前面有一篇讲述 webapps 的文章，这篇其实和它也有一点关系。目前我比较看好 angularjs 希望用它作为 webapp 的开发框架。</p></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       

@@ -81,7 +81,7 @@
 </li>
 </ul></div></div><div class="blog-post-content"><p>大概是一年前发现了这样一个叫做 Drone 的开源 ci，在逐渐的尝试过程中发现它的功能非常的强大，其 pipeline as code + docker + backing service 支持的体系基本和我理想中的 ci 一模一样...这里就介绍一下我看到的 drone 的一些非常出彩的地方以及日常使用时一些非常有用的使用方式。</p>
 <h2 id="本地安装" style="position:relative;">本地安装<a href="#%E6%9C%AC%E5%9C%B0%E5%AE%89%E8%A3%85" aria-label="本地安装 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p><img src="http://o8p12ybem.bkt.clouddn.com/15096926244457.jpg?imageView2/2/w/1200/q/75%7Cimageslim" alt=""></p>
+<p><img src="https://o8p12ybem.bkt.clouddn.com/15096926244457.jpg?imageView2/2/w/1200/q/75%7Cimageslim" alt=""></p>
 <p>可以看到 drone 的界面非常的简洁，和其他 ci 一样它通过和 github gitlab 或者是 gogs 这样的 git repository 链接并绑定 web hook 在用户提交新的 commit 的时候出发 ci 的执行。drone 作为一个开源的 ci 其支持 docker 方式的安装，非常的简单：</p>
 <div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'2'</span>
 
@@ -134,8 +134,8 @@
 <p>上面的 yaml 中每个阶段都有一个 <code class="language-text">image</code> 的字段，这个 <code class="language-text">image</code> 就是指一个 docker image 也就是说 drone 下每一个阶段都是在一个你所指定的 docker container 下执行的。这样当然就集成了 docker 所引入的一系列的好处：环境隔离、标准化镜像。并且，它是后面插件扩展以及 backing service 可以被轻而易举的实现的基础。</p>
 <h3 id="简单易用的插件扩展" style="position:relative;">简单易用的插件扩展<a href="#%E7%AE%80%E5%8D%95%E6%98%93%E7%94%A8%E7%9A%84%E6%8F%92%E4%BB%B6%E6%89%A9%E5%B1%95" aria-label="简单易用的插件扩展 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
 <p>还是在看上面的那个例子，第一个阶段我们在 <code class="language-text">node:6.10.2-alpine</code> 下构建了一个单页应用。然后，我们采用了 <code class="language-text">plugins/docker</code> 镜像构建并发布了我们的镜像到 <code class="language-text">hub.docker.com</code>。而这里的 <code class="language-text">plugins/docker</code> 就是 <code class="language-text">drone</code> 为我们提供的一个插件了。</p>
-<p>虽说是一个插件，但实际上用起来就和其他的 <code class="language-text">image</code> 一样，这个插件的功能就是帮我们利用项目中的 <code class="language-text">Dockerfile</code> 构建一个新的 docker image 并提交。除此之外还有一些其他的官方插件可供使用，详情在<a href="http://plugins.drone.io/">这里</a>。</p>
-<p>当然，自己做一个插件也是非常简单的，在插件被执行的时候，当前目录就是项目的根目录，然后 drone 会暴露一系列的<a href="http://docs.drone.io/environment-reference/">环境变量</a>给用户使用，我们可以采用之前的步骤所产生的数据或者环境变量中的内容实现一个特定功能的插件。</p>
+<p>虽说是一个插件，但实际上用起来就和其他的 <code class="language-text">image</code> 一样，这个插件的功能就是帮我们利用项目中的 <code class="language-text">Dockerfile</code> 构建一个新的 docker image 并提交。除此之外还有一些其他的官方插件可供使用，详情在<a href="https://plugins.drone.io/">这里</a>。</p>
+<p>当然，自己做一个插件也是非常简单的，在插件被执行的时候，当前目录就是项目的根目录，然后 drone 会暴露一系列的<a href="https://docs.drone.io/environment-reference/">环境变量</a>给用户使用，我们可以采用之前的步骤所产生的数据或者环境变量中的内容实现一个特定功能的插件。</p>
 <h3 id="支持-backing-service" style="position:relative;">支持 backing service<a href="#%E6%94%AF%E6%8C%81-backing-service" aria-label="支持 backing service permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
 <p>我们跑 ci 的时候难免会有一些外部的依赖，比如跑单元测试的时候可能会用到外部的数据库。比如跑前端界面测试的时候我们会需要 selenium。drone 对这种场景提供了支持。</p>
 <div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">pipeline</span><span class="token punctuation">:</span>
@@ -241,19 +241,19 @@
       <span class="token punctuation">-</span> ./node_modules
     <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
       <span class="token punctuation">-</span> /tmp/cache<span class="token punctuation">:</span>/cache</code></pre></div>
-<p>第一阶段 <code class="language-text">restore-cache</code> 将 <code class="language-text">/tmp/cache</code> 下该项目的缓存拷贝到 <code class="language-text">./node_modules</code>。第三阶段将 <code class="language-text">./node_modules</code> 的内容拷贝会 <code class="language-text">/tmp/cache</code> 详细的内容见<a href="http://plugins.drone.io/drillster/drone-volume-cache/">缓存</a>。</p>
+<p>第一阶段 <code class="language-text">restore-cache</code> 将 <code class="language-text">/tmp/cache</code> 下该项目的缓存拷贝到 <code class="language-text">./node_modules</code>。第三阶段将 <code class="language-text">./node_modules</code> 的内容拷贝会 <code class="language-text">/tmp/cache</code> 详细的内容见<a href="https://plugins.drone.io/drillster/drone-volume-cache/">缓存</a>。</p>
 <h2 id="当前的状态" style="position:relative;">当前的状态<a href="#%E5%BD%93%E5%89%8D%E7%9A%84%E7%8A%B6%E6%80%81" aria-label="当前的状态 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <p>目前 drone 刚刚开始了商业化之路，并且在疯狂的更新中，整体社区非常的活跃 star 也已经过万了，非常期待它未来的发展。</p>
 <h2 id="相关资料" style="position:relative;">相关资料<a href="#%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99" aria-label="相关资料 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <ul>
-<li><a href="http://drone.io">drone 官网</a></li>
-<li><a href="http://docs.drone.io/installation/">drone 安装指南</a></li>
+<li><a href="https://drone.io">drone 官网</a></li>
+<li><a href="https://docs.drone.io/installation/">drone 安装指南</a></li>
 <li><a href="https://github.com/facebookincubator/create-react-app">create-react-app</a></li>
-<li><a href="http://docs.drone.io/getting-started/">drone basic usage</a></li>
-<li><a href="http://plugins.drone.io/">drone docker 插件</a></li>
-<li><a href="http://plugins.drone.io/drillster/drone-volume-cache/">drone cache 插件</a></li>
-<li><a href="http://docs.drone.io/deployments/">drone 部署</a></li>
-<li><a href="http://plugins.drone.io/drillster/drone-volume-cache/">缓存</a></li>
+<li><a href="https://docs.drone.io/getting-started/">drone basic usage</a></li>
+<li><a href="https://plugins.drone.io/">drone docker 插件</a></li>
+<li><a href="https://plugins.drone.io/drillster/drone-volume-cache/">drone cache 插件</a></li>
+<li><a href="https://docs.drone.io/deployments/">drone 部署</a></li>
+<li><a href="https://plugins.drone.io/drillster/drone-volume-cache/">缓存</a></li>
 </ul></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       

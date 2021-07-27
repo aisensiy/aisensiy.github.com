@@ -68,7 +68,7 @@
 <p><a href="#%E6%84%9F%E6%83%B3">感想</a></p>
 </li>
 </ul></div></div><div class="blog-post-content"><p>有幸找到一个可以专门写 chrome extension 的工作，非常开心，可以专心的写 chrome extension 了。看了一些别人的 chrome extension 自己也有了一些新的体会，写在这里，留个未来的自己。</p>
-<p>最近在做的这个扩展是 <a href="http://mei.fm">mei.fm</a> 的一键收藏扩展。整体来说，这个扩展的功能并不是非常复杂。但是，再简单也是有一定工作量的。而且，程序是为变化而生的，最初的架构体系做的比较顺手对以后的工作也是有好处的。</p>
+<p>最近在做的这个扩展是 <a href="https://mei.fm">mei.fm</a> 的一键收藏扩展。整体来说，这个扩展的功能并不是非常复杂。但是，再简单也是有一定工作量的。而且，程序是为变化而生的，最初的架构体系做的比较顺手对以后的工作也是有好处的。</p>
 <h2 id="调研" style="position:relative;">调研<a href="#%E8%B0%83%E7%A0%94" aria-label="调研 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <p>首先，我做了一些调研的工作。重点查看了 evernote clipper 以及 pocket 两个类似的产品。看了他们之后才知道做一个这样的插件没有表象那么简单。尤其是读了 pocket extension 的源码确实是给我了不少的启发。</p>
 <p>pocket 里面有一个很不错的结构就是让 background page 作为处理事务的中枢。让 content page 以及 popup 的所有请求利用 chrome extension 所提供的 sendRequest 的 api 发送给 background 去处理，然后 bg 将处理的结果以 callback 的形式发送回去。</p>
@@ -76,9 +76,11 @@
 </blockquote>
 <p>chrome.extension.sendRequest(string extensionId, any request, function responseCallback)</p>
 <p>chrome.extension.onRequest.addListener(function(any request, MessageSender sender, function sendResponse) {...});</p>
-<p>详见<a href="http://code.google.com/chrome/extensions/tabs.html">http://code.google.com/chrome/extensions/tabs.html</a> 以及 <a href="http://code.google.com/chrome/extensions/extension.html">http://code.google.com/chrome/extensions/extension.html</a></p>
+<p>详见<a href="https://code.google.com/chrome/extensions/tabs.html">https://code.google.com/chrome/extensions/tabs.html</a> 以及 <a href="https://code.google.com/chrome/extensions/extension.html">https://code.google.com/chrome/extensions/extension.html</a></p>
 <p>这样做的好处就是可以更好的组织自己的代码，让 content page 以及 popup 去专注于页面的展示，而把逻辑以及ajax的东西集中在bg去做。比如，在pocket中会用到一个content script 用来显示保存的状态。它每次动作对bg发送请求，让bg把链接保存到pocket，然后它根据bg返回的信息，进行相应的信息提示的工作。</p>
-<p><a href="http://aisensiy-wordpress.stor.sinaapp.com/uploads/2012/06/QQ%E6%88%AA%E5%9B%BE20120610190805.png"><img src="http://aisensiy-wordpress.stor.sinaapp.com/uploads/2012/06/QQ%E6%88%AA%E5%9B%BE20120610190805-1024x268.png" alt=""></a></p>
+<blockquote>
+<p>图丢了</p>
+</blockquote>
 <h2 id="实践" style="position:relative;">实践<a href="#%E5%AE%9E%E8%B7%B5" aria-label="实践 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <h3 id="代码的组织" style="position:relative;">代码的组织<a href="#%E4%BB%A3%E7%A0%81%E7%9A%84%E7%BB%84%E7%BB%87" aria-label="代码的组织 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
 <p>我很仔细的看了 pocket 的代码组织并非常的认同它的组织方式，那么我就直接采取了它的结构。把与 mei.fm 请求相关的方法单独做一个命名空间，api。然后所有其他页面的逻辑请求都通过 sendRequest 的方式发送给 bg.js 来处理。但是，chrome extension 的 onRequest 监听器不监听自己页面的 request 事件，那么我只好对 bg 页面的处理单独做了处理（这个很让人伤心）。</p>

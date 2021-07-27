@@ -104,8 +104,7 @@
 <p>If you are using Spring Security, make sure to enable CORS at Spring Security level as well to allow it to leverage the configuration defined at Spring MVC level.</p>
 </blockquote>
 <h2 id="cors-with-spring-security" style="position:relative;">CORS with Spring Security<a href="#cors-with-spring-security" aria-label="cors with spring security permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>Spring Security 本身是通过 Filter 实现的，如果没有对其单独做 CORS 的处理，在 Web Security 报错 401 的时候是不会返回相应的 CORS 的字段的。这会导致命名应该出现的 401 错误成为了一个无法进行跨域的错误，导致前端程序无法正常的处理 401 相应：</p>
-<p><img src="http://o8p12ybem.bkt.clouddn.com/15101476021097.jpg?imageView2/2/w/1200/q/75%7Cimageslim" alt=""></p>
+<p>Spring Security 本身是通过 Filter 实现的，如果没有对其单独做 CORS 的处理，在 Web Security 报错 401 的时候是不会返回相应的 CORS 的字段的。这会导致命名应该出现的 401 错误成为了一个无法进行跨域的错误，导致前端程序无法正常的处理 401 相应。21</p>
 <p>为了解决这个问题，自然是需要添加 <a href="https://docs.spring.io/spring-security/site/docs/current/reference/html/cors.html">Spring Security 支持的 CORS 代码</a>：</p>
 <div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@EnableWebSecurity</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">WebSecurityConfig</span> <span class="token keyword">extends</span> <span class="token class-name">WebSecurityConfigurerAdapter</span> <span class="token punctuation">{</span>

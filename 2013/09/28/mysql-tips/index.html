@@ -108,7 +108,7 @@
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">reload(sys)
 sys.setdefaultencoding('utf-8')</code></pre></div>
 <p>这样会避免很多问题。</p>
-<p>然后 <a href="http://docs.python.org/2/howto/unicode.html">HOWTO UNICODE</a> 对于编码问题讲的非常的透彻。</p>
+<p>然后 <a href="https://docs.python.org/2/howto/unicode.html">HOWTO UNICODE</a> 对于编码问题讲的非常的透彻。</p>
 <h3 id="python-mysqldb" style="position:relative;">python MySQLdb<a href="#python-mysqldb" aria-label="python mysqldb permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
 <p>MySQLdb 的一个 connection 是不支持多线程的。要想支持多线程，需要对每一个线程建立 connection。</p>
 <h2 id="connect-mysql-from-remote" style="position:relative;">connect mysql from remote<a href="#connect-mysql-from-remote" aria-label="connect mysql from remote permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
@@ -132,7 +132,7 @@ sys.setdefaultencoding('utf-8')</code></pre></div>
 wait_timeout            = 180
 net_read_timeout        = 30
 net_write_timeout       = 30</code></pre></div>
-<p>这里的时间单位都是秒，我查了一下资料，有对这些参数的具体解释，在<a href="http://www.taobaodba.com/html/433_mysql_timeout_analyze.html">这里</a></p>
+<p>这里的时间单位都是秒，我查了一下资料，有对这些参数的具体解释，在<a href="https://www.taobaodba.com/html/433_mysql_timeout_analyze.html">这里</a></p>
 <p><code class="language-text">connect_timeout</code> 在很多地方都存在，就是连接 mysql 时候的超时时间。应该不是这个。
 <code class="language-text">wait_timeout</code> 在连接建立之后 mysql 等待一个连接有动作的时间。也就是说如果连接在这个时间之内没有动作就会断开连接了。</p>
 <p>即使连接没有处于sleep状态，即客户端忙于计算或者存储数据，MySQL也选择了有条件的等待。在数据包的分发过程中，客户端可能来不及响应（发送、接收、或者处理数据包太慢）。为了保证连接不被浪费在无尽的等待中，MySQL也会选择有条件（net_read_timeout和net_write_timeout）地主动断开连接。</p>

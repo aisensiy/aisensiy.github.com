@@ -69,7 +69,6 @@
 <li>用户可以对文章添加评论、点赞</li>
 <li>用户可以关注别的用户，关注的用户的文章会展示在用户的 feed 中</li>
 </ol>
-<p><img src="http://o8p12ybem.bkt.clouddn.com/15090236378256.jpg?imageView2/2/w/1200/q/75%7Cimageslim" alt=""></p>
 <p>这是一个前后端分离的项目，其提供了后端 api 的<a href="https://github.com/gothinkster/realworld/tree/master/api">规范</a>。这里，我们不评论其 API 设计的好坏，要完全遵循其设计并实现它。当然，对于不同的语言和框架实现都有其 API 设计的偏好，既然这里定死了一种规范，那么在实现的过程中难免会有一些 tricky 的地方需要我们去克服。</p>
 <h2 id="目录结构" style="position:relative;">目录结构<a href="#%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84" aria-label="目录结构 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <p>如标题所述，这里我提供了一个 spring boot + spring mvc + mybatis 的实现。其大概的结构如下:</p>
@@ -89,8 +88,7 @@
 <li>其他则是一些整体的配置类，如主类 <code class="language-text">RealworldApplication</code> 数据库配置类 <code class="language-text">MyBatisConfig</code> 等</li>
 </ol>
 <h2 id="六边形架构" style="position:relative;">六边形架构<a href="#%E5%85%AD%E8%BE%B9%E5%BD%A2%E6%9E%B6%E6%9E%84" aria-label="六边形架构 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p><a href="http://alistair.cockburn.us/Hexagonal+architecture">六边形架构</a> 或者说是 <a href="https://www.infoq.com/news/2014/10/ddd-onion-architecture">洋葱架构</a> 其实不是一个什么新东西，因为<strong>分层架构</strong>会导致其最底层的实现是数据库，而之前很多的业务逻辑和数据库是揉在一起的（事实上很多项目也确实这样，大量的存储过程中包含着业务的逻辑，业务和数据库紧密的结合在了一起）；但实际上，一个应用最核心的东西应该是<strong>业务逻辑</strong>，而业务逻辑是不应该和技术细节有强关联的，数据库实现和视图层一样，是某种技术细节，不应该和将其与业务逻辑绑定，所以应该用应该强调内部和外部：内部是我的业务逻辑，而外部与外界沟通的基础设施和技术细节，比如具体的数据库存储，比如 restful 的 api，再比如 html 的视图。</p>
-<p><img src="http://o8p12ybem.bkt.clouddn.com/15090236589859.jpg?imageView2/2/w/1200/q/75%7Cimageslim" alt=""></p>
+<p><a href="https://alistair.cockburn.us/Hexagonal+architecture">六边形架构</a> 或者说是 <a href="https://www.infoq.com/news/2014/10/ddd-onion-architecture">洋葱架构</a> 其实不是一个什么新东西，因为<strong>分层架构</strong>会导致其最底层的实现是数据库，而之前很多的业务逻辑和数据库是揉在一起的（事实上很多项目也确实这样，大量的存储过程中包含着业务的逻辑，业务和数据库紧密的结合在了一起）；但实际上，一个应用最核心的东西应该是<strong>业务逻辑</strong>，而业务逻辑是不应该和技术细节有强关联的，数据库实现和视图层一样，是某种技术细节，不应该和将其与业务逻辑绑定，所以应该用应该强调内部和外部：内部是我的业务逻辑，而外部与外界沟通的基础设施和技术细节，比如具体的数据库存储，比如 restful 的 api，再比如 html 的视图。</p>
 <p>通过这样的思考方式，我们可以认为 mysql 数据库实现仅仅是众多数据库实现中的一个而已，我们可以在不同的环境中轻易的替换掉它，尤其是为对业务的测试提供了可能：我们可以采用内存数据库或者 mock 轻松的实现业务测试。</p>
 <p>我所实现的这个 realworld 项目也基本遵循这个架构，首先在 <code class="language-text">core</code> 中定义了我们的业务实体 <code class="language-text">User</code> <code class="language-text">Article</code> 已经各种 <code class="language-text">Repository</code> 的接口。他们定义了这个项目核心实体的关系以及交互行为。其中具体的 Repository 的实现以及 web 接口的实现都与它无关。对于比较简单的数据创建等行为我们直接在 web 层中处理了，而相对比较麻烦的查询业务我们按照用例在 application 中提供。</p>
 <p>在 api 层直接创建用户：</p>

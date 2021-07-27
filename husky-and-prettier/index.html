@@ -65,7 +65,6 @@
 <p>多少年来开发者在使用 tab 还是 space 的问题上真是花费了不少的时间，美剧硅谷里主角还因为 tab 和别人闹了一集，可见大家对代码格式化的重视程度-_-。记得我在上一个项目里看到有小哥把我的代码强行刷成他满意的格式的 commit 也非常不满。仅仅修改格式的 commit 是毫无必要的，它没有对软件本身的行为做任何的修改，而夹带了修改格式的 commit 更是令人抓狂的，给 review 的同学也带来了不小的负担（在一坨提交里仔仔细细看了半天发现神马也没变！！尼玛！！）。</p>
 <p><code class="language-text">golang</code> 取了个巧，语言自带官方格式，你们终于不吵了吧。虽然会有时候看 <code class="language-text">golang</code> 的格式化结果略微有点麻烦（就是 struct 对 json type 的制表符对齐的要求），但是也没有哪里是让人无法忍受的丑。如果其他的语言也以类似的方式制定一个官方格式是不是就会将此事平息下去呢。当然，我们可以在制定这个官方格式的时候吵架，只要官方格式不会三天两头的更新那在实际项目中为这种不必要的分歧导致浪费大把时间了。</p>
 <p>在我看来 <code class="language-text">prettier</code> 就是这么一个 "类官方格式" 了。不过目前它还只是支持 <code class="language-text">js</code> 体系下的格式化，其他语言由于这样那样的问题还要再等等。</p>
-<p><img src="http://o8p12ybem.bkt.clouddn.com/15197990961653.jpg?imageView2/2/w/1200/q/75%7Cimageslim" alt=""></p>
 <p>大家对有个公认的格式这件事还是非常认可的，项目出现一年，Github star 破 2.1w，并且像 facebook 这样的大公司已经在内部逐渐铺开使用了。</p>
 <h2 id="集成" style="position:relative;">集成<a href="#%E9%9B%86%E6%88%90" aria-label="集成 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <p>最后，通过 husky 为 <code class="language-text">prettier</code> 在 <code class="language-text">pre-commit</code> 加个钩子，这体验就更完美了：不论你家的格式是什么样子，只要你想提交，就必须格式化成 <code class="language-text">prettier</code> 要求的样子，这样就没有那种因为格式变动出现的无聊的 <code class="language-text">diff</code> 了。集成的流程基本是以下这个样子：</p>
@@ -133,7 +132,7 @@
 <li><a href="https://github.com/typicode/husky">Husky</a></li>
 <li><a href="https://medium.com/@bartwijnants/using-prettier-and-husky-to-make-your-commits-save-2960f55cd351">Using Prettier and husky to make your commits safe.</a></li>
 <li><a href="https://git-scm.com/docs/githooks">git-hooks</a></li>
-<li><a href="http://www.informit.com/articles/article.aspx?p=1621865&#x26;seqNum=4">The Commit Stage</a></li>
+<li><a href="https://www.informit.com/articles/article.aspx?p=1621865&#x26;seqNum=4">The Commit Stage</a></li>
 <li><a href="https://golang.org/cmd/gofmt/">Formats Go programs</a></li>
 </ol></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       

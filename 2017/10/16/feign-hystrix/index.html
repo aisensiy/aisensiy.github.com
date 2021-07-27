@@ -104,7 +104,7 @@ dependencies <span class="token punctuation">{</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>Feign 本身是可以支持很多套语法的，在 spring cloud 下默认使用的 SpringMVC 的方式。</p>
 <h1 id="用-wiremock-测试-feign-client" style="position:relative;">用 wiremock 测试 Feign Client<a href="#%E7%94%A8-wiremock-%E6%B5%8B%E8%AF%95-feign-client" aria-label="用 wiremock 测试 feign client permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h1>
-<p>在有了 <code class="language-text">GitHubService</code> 之后，如果想要对其进行测试就需要一种 mock 服务端请求的方式。这里我们采用 <a href="http://wiremock.org/">WireMock</a> 来实现。</p>
+<p>在有了 <code class="language-text">GitHubService</code> 之后，如果想要对其进行测试就需要一种 mock 服务端请求的方式。这里我们采用 <a href="https://wiremock.org/">WireMock</a> 来实现。</p>
 <p>首先在 <code class="language-text">build.gradle</code> 引入依赖：</p>
 <div class="gatsby-highlight" data-language="groovy"><pre class="language-groovy"><code class="language-groovy"><span class="token punctuation">...</span>
 
@@ -321,7 +321,7 @@ Percentage of the requests served within a certain <span class="token function">
 <ol>
 <li><a href="https://github.com/OpenFeign/feign">Open Feign</a></li>
 <li><a href="https://github.com/Netflix/Hystrix/wiki">Hystrix</a></li>
-<li><a href="http://wiremock.org/docs/stubbing/">WireMock Stub</a></li>
+<li><a href="https://wiremock.org/docs/stubbing/">WireMock Stub</a></li>
 <li><a href="https://www.youtube.com/watch?v=-gL-nO2cqwU">Talk: Hystrix – managing failures in distributed systems</a></li>
 </ol></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       

@@ -52,7 +52,51 @@
         }
       }
     })
-  </script><link as="script" rel="preload" href="/webpack-runtime-2855cafaad6fd1ef06ee.js"/><link as="script" rel="preload" href="/framework-e728256d7a1d703d32c2.js"/><link as="script" rel="preload" href="/app-7decc5285b369d37659c.js"/><link as="script" rel="preload" href="/75ce8a9e25edca21eb9c1a1dab0250d3ee550bef-e9b300a9f21137291b3a.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-49c4c7b7e8475895eb83.js"/><link as="fetch" rel="preload" href="/page-data/page/5/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2021<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div><h1><a href="/spring-boot-exception-handler">spring boot 异常处理</a></h1><h2>2020 December-07</h2><div class="blog-post-content"><p>最近相对比较系统的看了 spring mvc / spring boot 有关异常处理的内容。这里做一个总结。相关的代码放到了 <a href="https://github.com/aisensiy/springboot-exception-tutorial">springboot exception tutorial</a>。</p>
+  </script><link as="script" rel="preload" href="/webpack-runtime-2855cafaad6fd1ef06ee.js"/><link as="script" rel="preload" href="/framework-e728256d7a1d703d32c2.js"/><link as="script" rel="preload" href="/app-7decc5285b369d37659c.js"/><link as="script" rel="preload" href="/75ce8a9e25edca21eb9c1a1dab0250d3ee550bef-e9b300a9f21137291b3a.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-49c4c7b7e8475895eb83.js"/><link as="fetch" rel="preload" href="/page-data/page/5/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2021<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div><h1><a href="/pytorch-tensors">pytorch tensors</a></h1><h2>2021 January-18</h2><div class="blog-post-content"><p>最近在都 Deep Learning with Pytorch 这本书，目前为止感觉还是不错。尤其是它里面的手绘风插图，真的是印象深刻，好感顿生。</p>
+<p><img src="https://images-1300693298.cos.ap-beijing.myqcloud.com/%7B7AD75AC9-FD58-48DE-977A-7AD6503FED3A%7D.png" alt=""></p>
+<p>第三章介绍了 tensor 的数据结构，感觉讲的挺好的，做一个笔记，加深下印象。</p>
+<h2 id="本质" style="position:relative;">本质<a href="#%E6%9C%AC%E8%B4%A8" aria-label="本质 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>首先，tensor 感觉就和 numpy array 非常非常像，简单的讲就是多维矩阵。但是和 python 的 list 相比，tensor / numpy array 是被分配的连续内存空间。</p>
+<p><img src="https://images-1300693298.cos.ap-beijing.myqcloud.com/%7B8F87E9BF-4E5C-4128-9066-5610D2CB4326%7D.png" alt=""></p>
+<h2 id="数据类型" style="position:relative;">数据类型<a href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" aria-label="数据类型 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>通过 <code class="language-text">dtype</code> 参数可以指定 tensor 的数据类型。其名字和 numpy 里面的类型几乎一致：</p>
+<ul>
+<li>torch.float32 / torch.float</li>
+<li>torch.float64 / torch.double</li>
+<li>torch.float16 / torch.half</li>
+<li>torch.int8</li>
+<li>torch.unint8</li>
+<li>torch.int16 / torch.short</li>
+<li>torch.int32 / torch.int</li>
+<li>torch.int64 / torch.long</li>
+<li>torch.bool</li>
+</ul>
+<p>默认都是用 float 类型，double 也不会增加什么好处。然后 tensor 可以作为其他 tensor 的索引，但是必须是 long 类型。<code class="language-text">torch.tensor([2, 2])</code> 会给类型为 long 。需要注意的是 numpy 默认的浮点类型是 float64，而 tensor 默认的是 float32：</p>
+<p><img src="https://images-1300693298.cos.ap-beijing.myqcloud.com/%7B495D4F3D-FC9C-4F62-A9BA-25413B7B6A02%7D.png" alt=""></p>
+<h2 id="storage" style="position:relative;">Storage<a href="#storage" aria-label="storage permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>每一个 tensor 的真是数据是由 <code class="language-text">torch.Storage</code> 来维护的，它本质上就是一段连续的内存空间而已。Tensor 仅仅是为 storage 提供了 offset 和 stride 之后的视图而已。</p>
+<p><img src="https://images-1300693298.cos.ap-beijing.myqcloud.com/%7B4F5DC8FC-E908-408E-88C3-6FC09B95AF5E%7D.png" alt=""></p>
+<p>对于不同的 tensor 虽然它的 shape 不一样，但也可能指向了同一个的 storage。通过 tensor.storage() 可以直接访问它的内容：</p>
+<p><img src="https://images-1300693298.cos.ap-beijing.myqcloud.com/%7BFD54249D-DCFA-4437-905D-13F548279E5F%7D.png" alt=""></p>
+<p>不论 tensor 本身维度如何，其下的 storage 永远是一个一维数组。当然，修改 storage 的数据后，其 tensor 的数据也一定会发生变化。</p>
+<h2 id="size-offset-stride" style="position:relative;">size offset stride<a href="#size-offset-stride" aria-label="size offset stride permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ul>
+<li>offset 是 tensor 在 storage 的位置</li>
+<li>size 是当前 tensor 的维度</li>
+<li>stride 是这个 tensor 各个维度 +1 所需要跨越的 storage 索引个数</li>
+</ul>
+<p><img src="https://images-1300693298.cos.ap-beijing.myqcloud.com/%7B919B7731-CC39-45B5-897A-3A46180412C4%7D.png" alt=""></p>
+<p>那么当 tensor 本身发生了 transpose 之后，其实就是 size stride 发生了变化，其 storage 并没有变化的。</p>
+<h2 id="device-属性" style="position:relative;">device 属性<a href="#device-%E5%B1%9E%E6%80%A7" aria-label="device 属性 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>tensor 创建时可以指定其属于什么设备：</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">points_gpu = torch.tensor([[4.0, 1.0], [5.0, 3.0], [2.0, 1.0]], device='cuda')</code></pre></div>
+<p>默认是 cpu。</p>
+<p>当然也可以把 cpu 的 tensor 拷贝到 gpu：</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">points_gpu = points.to(device='cuda')</code></pre></div>
+<h2 id="和-numpy-相互转换" style="position:relative;">和 numpy 相互转换<a href="#%E5%92%8C-numpy-%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2" aria-label="和 numpy 相互转换 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>只要都在主内存里，numpy array 和 tensor 之间的转换是非常高效的。那么这个好处就是可以享受 numpy 生态的各种类库。</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">points = torch.from_numpy(points_np)
+points_np = points.numpy()</code></pre></div></div></div><div><h1><a href="/spring-boot-exception-handler">spring boot 异常处理</a></h1><h2>2020 December-07</h2><div class="blog-post-content"><p>最近相对比较系统的看了 spring mvc / spring boot 有关异常处理的内容。这里做一个总结。相关的代码放到了 <a href="https://github.com/aisensiy/springboot-exception-tutorial">springboot exception tutorial</a>。</p>
 <p>之前确实没有比较系统的看 springmvc / springboot 有关异常处理的内容，这里直接记录一些我觉得比较有意义的知识片段以及具体的实践代码。</p>
 <h2 id="spring-mvc-的异常处理逻辑" style="position:relative;">spring mvc 的异常处理逻辑<a href="#spring-mvc-%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E9%80%BB%E8%BE%91" aria-label="spring mvc 的异常处理逻辑 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@SpringBootApplication</span>
@@ -336,96 +380,7 @@ class MyCustomErrorAttributes extends DefaultErrorAttributes {
 <li>梳理目前 spring exception 的方式</li>
 <li>提出适合当前项目的最佳实践</li>
 <li>对目前的校验做改进，提出校验方面的最佳实践</li>
-</ol></div></div><div><h1><a href="/mysql-operator">将 MySQL 通过 presslabs/mysql-operator 部署到 k8s 内部</a></h1><h2>2020 October-19</h2><div class="blog-post-content"><p>目前 openbayes 的几乎所有组件都部署在 k8s 内部，但 mysql 作为核心的数据存储节点对其要求都蛮高的，对于目前的业务场景，其要求主要包含以下几点：</p>
-<ol>
-<li>需要持久化存储，一旦数据丢失问题非常严重</li>
-<li>对性能有要求，不然会拖垮依赖它的一切服务</li>
-<li>需要一些额外的备份机制，可以快速的从一个备份做恢复</li>
-<li>需要对应的监控体系</li>
-<li>mysql 需要可以比较容易的通过各种客户端访问，方便不同的角色对数据做分析或者做 debug</li>
-<li>*在规模比较大的时候可能会做读写分离</li>
-</ol>
-<p>之所以希望将 mysql 部署到 k8s 内主要还是希望达到以下目的：</p>
-<ol>
-<li>减少外部依赖，支持更广泛部署场景；目前对于一些环境是使用了云服务商所提供的数据库（aws / ucloud），然而并不是所有的情况都能这么做。</li>
-<li>统一部署模式，降低部署门槛；对于无法使用云服务商的数据库的场景，通常需要独立在某一台机器上安装 mysql 但这个部署模式与 k8s 是分离的，相当于多了一部分手工部署的工作量，而且手动部署也很难满足以上的几点要求的，自动化越少，部署门槛就会越高。</li>
-</ol>
-<p>下面介绍 presslabs/mysql-operator 如何满足这些要求，实现在一些环境中成功使用 k8s 内的 mysql 的。</p>
-<h2 id="基本介绍" style="position:relative;">基本介绍<a href="#%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D" aria-label="基本介绍 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>在使用云服务商的数据库的时候我就在想，如果能有一套 k8s 的 operator 能够支持快速部署 / 数据库配置 / 周期性备份 / prometheus 指标暴露也不是难事呀，在做了简单的搜索后还真的发现了这么个东西 <a href="https://github.com/presslabs/mysql-operator">presslabs/mysql-operator</a> ，满足了说所提及的这一切：</p>
-<ol>
-<li>内置了 mysql 部署配置，简单修改配置可以实现将 mysql 的存储放置在 hostPath 或者指定的 storageClass 解决了持久化存储的问题</li>
-<li>既然可以指定具体部署的存储，那么也能指定 mysql 部署的节点，性能的问题基本得到解决</li>
-<li>内置 extraBackup 支持手动或者 cronjob 周期性备份数据库到指定的对象存储</li>
-<li>部署起来的 mysql 自带 exporter 可以直接和 prometheus 对接，然后把数据通过 grafana 展示，监控 / 告警也就有了</li>
-<li>通过配置额外的 nodePort 类型的 Service 可以将 mysql 服务暴露出来，外部访问的问题就解决了</li>
-<li>这个 operator 本身就支持读写分离，不过我并没测试</li>
-</ol>
-<p><a href="https://github.com/presslabs/mysql-operator/blob/master/charts/mysql-operator/values.yaml">https://github.com/presslabs/mysql-operator/blob/master/charts/mysql-operator/values.yaml</a> 这是 helm charts 的 values.yaml 把这个文件下载到本地，按照具体环境做一定修改后执行以下命令即可部署 operator 了：</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text"># 这里用的是 helm3 
-helm repo add presslabs https://presslabs.github.io/charts
-helm install mysql presslabs/mysql-operator \
-    -f values.yaml \
-    -n infra --create-namespace</code></pre></div>
-<p>其中 <code class="language-text">values.yaml</code> 需要修改的部分主要就是两部分：</p>
-<ol>
-<li>镜像位置（image sidecarImage orchestrator.image），国内部署速度不太行，建议自行拉到访问比较好的国内节点</li>
-<li>存储，默认 <code class="language-text">persistence.enabled: false</code> 可以按照自己的情况做修改，这里只支持 <code class="language-text">storageClass</code> 的方式</li>
-</ol>
-<p>部署好之后才是第一步，即成功部署了 <code class="language-text">operator</code> 本身，下面就是具体部署一个 <code class="language-text">mysql</code> 了，在 <a href="https://github.com/presslabs/mysql-operator/tree/master/examples">https://github.com/presslabs/mysql-operator/tree/master/examples</a> 有一个例子，可以看到 mysql 被定义为了一个叫做 <code class="language-text">MysqlCluster</code> 的 CRD。主要需要修改的部分有以下：</p>
-<ol>
-<li><code class="language-text">secretName</code> 见 <a href="https://github.com/presslabs/mysql-operator/blob/master/examples/example-cluster-secret.yaml">https://github.com/presslabs/mysql-operator/blob/master/examples/example-cluster-secret.yaml</a> 指初始化的一些数据，如 root 密码，数据库名称，用户名，用户密码</li>
-<li><code class="language-text">image</code> / <code class="language-text">mysqlVersion</code> mysql 的镜像，同样推荐修改为国内的镜像，具体版本也依照实际情况</li>
-<li><code class="language-text">backupSchedule</code> 如果设置则是需要周期性备份，数据会按照该配置定期备份到指定的对象存储中，当然 <code class="language-text">backupSecretName</code> 也需要配置正确才能使用</li>
-<li><code class="language-text">mysqlConf</code> 对应 mysql.cnf 中的字段，依据自己需求配置</li>
-<li><code class="language-text">volumeSpec</code> 数据持久化方式，和上文中 <code class="language-text">operator</code> 的类似，但是更灵活，支持 hostPath</li>
-<li><code class="language-text">initFileExtraSQL</code> 感觉这个 MysqlCluster 是希望用户每个数据库建立一个独立的资源，但是 openbayes 这里有一些附属数据库如果分开放置感觉有点没必要，所以这里就采用这个机制同时初始化了其他的数据库</li>
-</ol>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">  initFileExtraSQL:
-    - "CREATE DATABASE IF NOT EXISTS `&lt;otherdb>`"
-    - "DROP USER IF EXISTS &lt;otheruser>@'%'"
-    - "CREATE USER &lt;otheruser>@'%' IDENTIFIED BY '&lt;PASSOWRD>'"
-    - "GRANT ALL PRIVILEGES ON &lt;otherdb>.* TO &lt;otheruser>@'%'"
-    - "FLUSH PRIVILEGES"</code></pre></div>
-<p>注意这里有个奇怪的写法是需要先去 <code class="language-text">DROP USER</code>... 至于为啥我并不知道，我只知道不这么做就是会报错...</p>
-<h2 id="备份--恢复" style="position:relative;">备份 / 恢复<a href="#%E5%A4%87%E4%BB%BD--%E6%81%A2%E5%A4%8D" aria-label="备份  恢复 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>如上文所述，这个 <code class="language-text">MysqlCluster</code> 支持自动的备份，当然也支持主动的备份，具体的文档在<a href="https://www.presslabs.com/docs/mysql-operator/backups/">这里</a>。</p>
-<p>既然支持备份也支持恢复，具体的文档在<a href="https://www.presslabs.com/docs/mysql-operator/cluster-recover/">这里</a>。</p>
-<p>这些步骤我都测试过了，确认可以走的通的。以及这个备份的功能已经非常体贴了：</p>
-<ol>
-<li>支持手动备份通过 cron 控制</li>
-<li>支持保存最近的 N 个版本</li>
-<li>恢复只需要在初始 mysql 时填写 s3 路径即可</li>
-</ol>
-<p>在备份到 s3 不成功可以看看具体的报错信息，它具体备份采用的是 rclone 这个工具。不成功基本就是两个方向：</p>
-<ol>
-<li>s3 设置有问题，上传直接挂了</li>
-<li>你所使用的对象存储可能不是 rclone 会完全支持的，这种情况比较少见，但是我确实踩到了，具体来讲就是 ucloud 之前缺乏某些操作的支持，但是目前已经支持了呢</li>
-</ol>
-<h2 id="监控" style="position:relative;">监控<a href="#%E7%9B%91%E6%8E%A7" aria-label="监控 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p><img src="../img/in-post/youtube-dl/2020-10-19-18-34-53.png" alt=""></p>
-<p>如上图所示，这是我直接将 <a href="https://grafana.com/grafana/dashboards/7362">https://grafana.com/grafana/dashboards/7362</a> 这个仪表盘导入所看到的效果。</p>
-<h2 id="外部访问" style="position:relative;">外部访问<a href="#%E5%A4%96%E9%83%A8%E8%AE%BF%E9%97%AE" aria-label="外部访问 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>增加一个额外的 NodePort 即可：</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">apiVersion: v1
-kind: Service
-metadata:
-  name: local-openbayes-mysql-nodeport-master
-spec:
-  ports:
-  - name: mysql
-    port: 3306
-    protocol: TCP
-    targetPort: 3306
-    nodePort: 30016
-  selector:
-    app.kubernetes.io/managed-by: mysql.presslabs.org
-    app.kubernetes.io/name: mysql
-    mysql.presslabs.org/cluster: &lt;local-openbayes>
-    role: master
-  type: NodePort</code></pre></div>
-<h2 id="独立-io" style="position:relative;">独立 io<a href="#%E7%8B%AC%E7%AB%8B-io" aria-label="独立 io permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>在使用的过程中遇到一个特殊的情况，mysql 如果和其他的服务共用一个 storageClass 可能会出现 io 抢占的情况，导致 mysql 的延迟非常巨大。目前 k8s 还没有一个很好的办法解决这个问题。唯一想到的就是为 mysql 分配一套单独的 storageClass （比如 <a href="https://github.com/rancher/local-path-provisioner">local storage path</a> 的方案）。</p></div></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/4">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/6">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
+</ol></div></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/4">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/6">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       
       if(true) {
