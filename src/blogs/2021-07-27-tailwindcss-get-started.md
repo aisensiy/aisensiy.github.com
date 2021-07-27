@@ -6,7 +6,7 @@ author:     "Eisen"
 tags:       [css, tailwindcss, react]
 ---
 
-在 [上一篇文章](/blog-migrate-from-jekyll-to-gatsby) 中提到了已经在自己的新博客中集成了 tailwindcss 这篇对这个思路不太一样的 css 框架做一些介绍。
+在 [上一篇文章](/blog-migrate-from-jekyll-to-gatsby) 中提到了已经在自己的新博客中集成了 tailwindcss 。这篇对这个思路不太一样的 css 框架做一些介绍。
 
 ## 核心思想
 
@@ -36,22 +36,26 @@ tags:       [css, tailwindcss, react]
 
 - 默认没有提供通用组建库，不过这部分我认为更多还是一个商业上的考虑
 
-其中第二条算是 tailwindcss 最大的特色了，虽然 bootstrap 也包含很多工具类，单 bootstrap 的工具类并不是可以解决所有问题的，它仅仅是一个辅助措施。但在 tailwindcss 工具类就是实现 html 布局的全部。工具类一应俱全，包含网格、排版、变换、响应式设计等等。
+其中第二条算是 tailwindcss 最大的特色了，虽然 bootstrap 也包含很多工具类，但 bootstrap 的工具类并不是可以解决所有问题的，仅仅是一个辅助措施。而在 tailwindcss， 工具类就是实现 html 完整样式的最小单元。
 
-全部通过类组合样式看起来有点丑陋，并且它似乎严重违反了 html 语义化的原则。不过 tailwindcss 的作者撰写了[一篇文章](https://adamwathan.me/css-utility-classes-and-separation-of-concerns/)对这部分困惑做了很详尽的说明。我非常推荐直接阅读原文同时阅读文中引用的另外一篇文章：[About HTML semantics and front-end architecture](http://nicolasgallagher.com/about-html-semantics-front-end-architecture/)。这里我把我理解的一些重要观点放在这里，这也是我非常认可 tailwindcss 并开始使用的原因。
+全部通过类组合类拼凑样式看起来有点丑陋，以及它违反了 html 语义化的原则。不过 tailwindcss 的作者撰写了 [一篇文章](https://adamwathan.me/css-utility-classes-and-separation-of-concerns/) 对这部分困惑做了很详尽的说明。我非常推荐直接阅读原文并阅读文中引用的另外一篇文章：[About HTML semantics and front-end architecture](http://nicolasgallagher.com/about-html-semantics-front-end-architecture/)。这里我把我理解的一些重要观点放在这里，这也是我认可 tailwindcss 并开始使用的原因。
 
-- 语义实际上是让 css 依赖 html 在 html 结构需要扩展的时候，css 必须随之变化，最终并没有省什么事
-- 一个名为 `author` 的 `class` 真的有意义么？从实际角度出发 `class` 是给 `css` 用的，`css` 关心的是样式，所以做起吗你的 `class` 应该是 `media-card` 这样子更合理
-- 进一步讲，语义化是让 css 依赖 html 而其实可以反过来，让 html 依赖 css 从文章 [About HTML semantics and front-end architecture](http://nicolasgallagher.com/about-html-semantics-front-end-architecture/) 获得灵感，确定反过来才能有最佳实践：
+- 语义实际上是让 css 依赖 html。在 html 结构需要扩展的时候，css 必须随之变化，而 html 确实经常变化，所以并没有省什么事
+- 原本的语义化思路有点问题，一个名为 `author` 的 `class` 真的有意义么？从实际角度出发， `class` 是给 `css` 用的而 `css` 关心的是样式，所以 `class` 改成 `media-card` 更合理，也就是说语义化面向的应该是 css 而不是 html 里的内容
+- 语义化是让 css 依赖 html 那么可不可以反过来，让 html 依赖 css？从文章 [About HTML semantics and front-end architecture](http://nicolasgallagher.com/about-html-semantics-front-end-architecture/) 获得灵感，确定反过来反而更有效：
 
   > When you choose to author HTML and CSS in a way that seeks to reduce the amount of time you spend writing and editing CSS, it involves accepting that you must instead spend more time changing HTML classes on elements if you want to change their styles. This turns out to be fairly practical, both for front-end and back-end developers – anyone can rearrange pre-built “lego blocks”; it turns out that no one can perform CSS-alchemy.
 
-- 相对于 bootstrap 更细粒度的工具类给了用户更大的自由度，可以完全脱离手写 css 而构建复杂的样式
-- 之所以反对手写 css 是因为它会带来大量的碎片化样式，通过 tailwindcss 可以避免样式的泛滥（比如有太多种字号大小）
+  这里简单翻译一下：
+
+  > 如果你试图找到一种方法来减少花费在 css 上的时间，那么你就必然会花费更多时间在 html 上。不过这种结果是更易于实施的：不论是前端工程师或是后端工程师，都更易于修改这些预定义的 "乐高积木"，但没人是 CSS 炼金术师（轻松驾驭编辑 CSS 代码）。
+
+- 相对于 bootstrap 更细粒度的工具类给了用户更大的自由度，可以完全脱离手写 css 而构建复杂的样式，不必再为扩展基本样式而担忧了
+- 之所以反对手写 css （inline style 或者类似于 styled component）是因为它会带来大量的碎片化样式，通过 tailwindcss 可以避免样式的泛滥（比如有太多种字号大小）
 
 ## 入门资料
 
-能够快速上手 tailwindcss 的另一个原因是它官网的视频教程做的太好了。请把 [Tailwind CSS: From Zero to Production](https://www.youtube.com/playlist?list=PL5f_mz_zU5eXWYDXHUDOLBE0scnuJofO0) 这个系列一口气全部看完，你基本就可以掌握 tailwindcss 的基本用法了。
+tailwindcss 的 youtube 频道里视频教程做的太好了。请把 [Tailwind CSS: From Zero to Production](https://www.youtube.com/playlist?list=PL5f_mz_zU5eXWYDXHUDOLBE0scnuJofO0) 这个系列一口气全部看完，你就可以掌握 tailwindcss 的基本用法了。
 
 看了之后你大概可以收获这些内容：
 
@@ -136,5 +140,13 @@ tags:       [css, tailwindcss, react]
 }
 ```
 
+可以看到，响应式的支持和 dark mode 的支持都在里面了。
 
+## 小结
 
+我认为它在两个方面的工作是非常有意义的：
+
+1. 将 html 和 css 的依赖反转是正确的。事实上由于业务的变化，展示信息的变化，html 的变化速度是很快的，每次让 css 被动变更确实会导致额外的工作量。中立的细粒度的 css 一定程度上会有所帮助
+2. 直接在 class 上增增减减就能实现排版从认知上确实让人觉得容易了，而且有了 `STATE VARIANTS` （就是 `focus:` `hover:` `md:` 这样的前缀工具类）确实让 css 的工作变得更集中更清楚了，比一个独立的文件以及松散的排布要好
+
+tailwindcss 似乎在尝试将 css 乐高化以进一步降低前端工程师的门槛。但我觉得这个乐高依然是有门槛的，如果你甚至不晓得 `flex` `display` `position` `float` 这些基本的概念，那么你依然没办法去使用这些工具类。
