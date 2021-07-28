@@ -20,38 +20,43 @@ tags:       [css, tailwindcss, react]
 
 相比于 bootstrap 这种被大家所广泛认知的 css 框架，tailwindcss 有如下差别：
 
-- 没有默认样式，单有一套 reset 样式，将所有的东西设置为一样的大小，比如 `h1` `h2` `p` 的字号、颜色都一样
-- **所有的** css 样式完全通过一系列工具类（utility classes）组合实现，比如一个 `button` 可以这么实现：
-  ```
-  <div class="rounded-md shadow">
-    <a href="#" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
-      Get started
-    </a>
-  </div>
-  ```
+1. 没有默认样式，单有一套 reset 样式，将所有的东西设置为一样的大小，比如 `h1` `h2` `p` 的字号、颜色都一样
+2. **所有的** css 样式完全通过一系列工具类（utility classes）组合实现，比如一个 `button` 可以这么实现：
+  
+    ```html
+    <div class="rounded-md shadow">
+      <a href="#" class="w-full flex items-center justify-center
+                          px-8 py-3 border border-transparent
+                          text-base font-medium rounded-md 
+                          text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg
+                          md:px-10">
+        Get started
+      </a>
+    </div>
+    ```
 
-  结果如下：
+    结果如下：
 
-  ![](2021-07-27-20-05-13.png)
+    ![](2021-07-27-20-05-13.png)
 
-- 默认没有提供通用组建库，不过这部分我认为更多还是一个商业上的考虑
+3. 默认没有提供通用组建库，不过这部分我认为更多还是一个商业上的考虑
 
 其中第二条算是 tailwindcss 最大的特色了，虽然 bootstrap 也包含很多工具类，但 bootstrap 的工具类并不是可以解决所有问题的，仅仅是一个辅助措施。而在 tailwindcss， 工具类就是实现 html 完整样式的最小单元。
 
 全部通过类组合类拼凑样式看起来有点丑陋，以及它违反了 html 语义化的原则。不过 tailwindcss 的作者撰写了 [一篇文章](https://adamwathan.me/css-utility-classes-and-separation-of-concerns/) 对这部分困惑做了很详尽的说明。我非常推荐直接阅读原文并阅读文中引用的另外一篇文章：[About HTML semantics and front-end architecture](http://nicolasgallagher.com/about-html-semantics-front-end-architecture/)。这里我把我理解的一些重要观点放在这里，这也是我认可 tailwindcss 并开始使用的原因。
 
-- 语义实际上是让 css 依赖 html。在 html 结构需要扩展的时候，css 必须随之变化，而 html 确实经常变化，所以并没有省什么事
-- 原本的语义化思路有点问题，一个名为 `author` 的 `class` 真的有意义么？从实际角度出发， `class` 是给 `css` 用的而 `css` 关心的是样式，所以 `class` 改成 `media-card` 更合理，也就是说语义化面向的应该是 css 而不是 html 里的内容
-- 语义化是让 css 依赖 html 那么可不可以反过来，让 html 依赖 css？从文章 [About HTML semantics and front-end architecture](http://nicolasgallagher.com/about-html-semantics-front-end-architecture/) 获得灵感，确定反过来反而更有效：
+1. 语义实际上是让 css 依赖 html。在 html 结构需要扩展的时候，css 必须随之变化，而 html 确实经常变化，所以并没有省什么事
+2. 原本的语义化思路有点问题，一个名为 `author` 的 `class` 真的有意义么？从实际角度出发， `class` 是给 `css` 用的而 `css` 关心的是样式，所以 `class` 改成 `media-card` 更合理，也就是说语义化面向的应该是 css 而不是 html 里的内容
+3. 语义化是让 css 依赖 html 那么可不可以反过来，让 html 依赖 css？从文章 [About HTML semantics and front-end architecture](http://nicolasgallagher.com/about-html-semantics-front-end-architecture/) 获得灵感，确定反过来反而更有效：
 
-  > When you choose to author HTML and CSS in a way that seeks to reduce the amount of time you spend writing and editing CSS, it involves accepting that you must instead spend more time changing HTML classes on elements if you want to change their styles. This turns out to be fairly practical, both for front-end and back-end developers – anyone can rearrange pre-built “lego blocks”; it turns out that no one can perform CSS-alchemy.
+    > When you choose to author HTML and CSS in a way that seeks to reduce the amount of time you spend writing and editing CSS, it involves accepting that you must instead spend more time changing HTML classes on elements if you want to change their styles. This turns out to be fairly practical, both for front-end and back-end developers – anyone can rearrange pre-built “lego blocks”; it turns out that no one can perform CSS-alchemy.
 
-  这里简单翻译一下：
+    这里简单翻译一下：
 
-  > 如果你试图找到一种方法来减少花费在 css 上的时间，那么你就必然会花费更多时间在 html 上。不过这种结果是更易于实施的：不论是前端工程师或是后端工程师，都更易于修改这些预定义的 "乐高积木"，但没人是 CSS 炼金术师（轻松驾驭编辑 CSS 代码）。
+    > 如果你试图找到一种方法来减少花费在 css 上的时间，那么你就必然会花费更多时间在 html 上。不过这种结果是更易于实施的：不论是前端工程师或是后端工程师，都更易于修改这些预定义的 "乐高积木"，但没人是 CSS 炼金术师（轻松驾驭编辑 CSS 代码）。
 
-- 相对于 bootstrap 更细粒度的工具类给了用户更大的自由度，可以完全脱离手写 css 而构建复杂的样式，不必再为扩展基本样式而担忧了
-- 之所以反对手写 css （inline style 或者类似于 styled component）是因为它会带来大量的碎片化样式，通过 tailwindcss 可以避免样式的泛滥（比如有太多种字号大小）
+4. 相对于 bootstrap 更细粒度的工具类给了用户更大的自由度，可以完全脱离手写 css 而构建复杂的样式，不必再为扩展基本样式而担忧了
+5. 之所以反对手写 css （inline style 或者类似于 styled component）是因为它会带来大量的碎片化样式，通过 tailwindcss 可以避免样式的泛滥（比如有太多种字号大小）
 
 ## 入门资料
 
@@ -67,9 +72,15 @@ tailwindcss 的 youtube 频道里视频教程做的太好了。请把 [Tailwind 
 
 ## 目前的博客是如何使用 tailwindcss 的
 
-博客的情况其实反而有点不太适合 tailwindcss 的场景，因为博客里面的 markdown 是需要从外部注入样式的，而不是像 tailwindcss 推荐的那样去对每个元素添加工具类。官方也有一篇视频 [Styling Markdown and CMS Content with Tailwind CSS](https://www.youtube.com/watch?v=J0Wy359NJPM) 介绍如何处理，不过我目前是直接使用 `@apply` 并使用 `.main` 这样的范围限定类处理的。
+博客的情况其实反而有点不太适合 tailwindcss 的场景，因为博客里面的 markdown 是需要从外部注入样式的，而不是像 tailwindcss 推荐的那样去对每个元素添加工具类。官方也有一篇视频 [Styling Markdown and CMS Content with Tailwind CSS](https://www.youtube.com/watch?v=J0Wy359NJPM) 介绍如何处理，这里我使用了官方的方式并且按照 [Use TailwindCSS Typography with Dark Mode Styles](https://sergiodxa.com/articles/use-tailwindcss-typography-with-dark-mode-styles) 增加了 dark mode 的支持。
+
+然后就是在 `global.css` 多了些修修补补的支持：
 
 ```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @layer components {
     body {
         @apply bg-white dark:bg-gray-700 transition duration-500;
@@ -86,56 +97,8 @@ tailwindcss 的 youtube 频道里视频教程做的太好了。请把 [Tailwind 
     .main h2 {
         @apply mb-4 text-gray-600 dark:text-gray-300;
     }
-    .main :not(pre) > code {
-        @apply font-mono bg-gray-200 text-gray-500 px-1 mx-1;
-    }
     .main {
         @apply break-words;
-    }
-    .blog-post-content h2 {
-        @apply text-2xl md:text-3xl font-extrabold tracking-tight my-3;
-    }
-    .blog-post-content h3 {
-        @apply text-xl md:text-2xl font-extrabold tracking-tight my-3;
-    }
-    .blog-post-content h4 {
-        @apply md:text-xl font-extrabold tracking-tight my-3;
-    }
-    .main ul, .main ol {
-        @apply mb-4 ml-4;
-    }
-    .main ul {
-        @apply list-disc;
-    }
-    .main ol {
-        @apply list-decimal list-inside;
-    }
-    .main a {
-        @apply text-blue-600 hover:underline dark:text-blue-400;
-    }
-    .main img {
-        @apply border border-gray-200 rounded-xl shadow-lg;
-    }
-    .main blockquote {
-        @apply border-l-4 border-gray-300 pl-6;
-    }
-    .main p {
-        @apply mb-4;
-    }
-    .table-of-content {
-        @apply border border-blue-500 dark:border-blue-800 bg-blue-200 my-4 p-4 inline-block overflow-auto dark:bg-blue-500;
-    }
-    .main .table-of-content a {
-        @apply text-gray-800 dark:text-gray-200;
-    }
-    .table-of-content ul {
-        @apply mb-0;
-    }
-    .table-of-content h2 {
-        @apply text-xl font-semibold tracking-tight my-3;
-    }
-    .table-of-content p {
-        @apply m-0 inline;
     }
 }
 ```

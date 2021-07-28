@@ -18,47 +18,23 @@
     .main h2 {
         @apply mb-4 text-gray-600 dark:text-gray-300;
     }
-    .main :not(pre) > code {
-        @apply font-mono bg-gray-200 text-gray-500 px-1 mx-1;
-    }
     .main {
         @apply break-words;
     }
-    .blog-post-content h2 {
-        @apply text-2xl md:text-3xl font-extrabold tracking-tight my-3;
-    }
-    .blog-post-content h3 {
-        @apply text-xl md:text-2xl font-extrabold tracking-tight my-3;
-    }
-    .blog-post-content h4 {
-        @apply md:text-xl font-extrabold tracking-tight my-3;
-    }
-    .main ul, .main ol {
+    .table-of-content ul, .table-of-content ol {
         @apply mb-4 ml-4;
     }
-    .main ul {
+    .table-of-content ul {
         @apply list-disc;
     }
-    .main ol {
+    .table-of-content ol {
         @apply list-decimal list-inside;
-    }
-    .main a {
-        @apply text-blue-600 hover:underline dark:text-blue-400;
-    }
-    .main img {
-        @apply border border-gray-200 rounded-xl shadow-lg;
-    }
-    .main blockquote {
-        @apply border-l-4 border-gray-300 pl-6;
-    }
-    .main p {
-        @apply mb-4;
     }
     .table-of-content {
         @apply border border-blue-500 dark:border-blue-800 bg-blue-200 my-4 p-4 inline-block overflow-auto dark:bg-blue-500;
     }
-    .main .table-of-content a {
-        @apply text-gray-800 dark:text-gray-200;
+    .table-of-content a {
+        @apply text-gray-800 dark:text-gray-200 hover:underline;
     }
     .table-of-content ul {
         @apply mb-0;
@@ -68,5 +44,5 @@
     }
     .table-of-content p {
         @apply m-0 inline;
-    }
+    } 
 }
