@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "初始 tailwindcss"
+title:      "初识 tailwindcss"
 date:       2021-07-27 19:54:00 +08:00
 author:     "Eisen"
 tags:       [css, tailwindcss, react]
