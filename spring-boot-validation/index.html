@@ -72,10 +72,10 @@
 <li><a href="#%E4%B8%AD%E6%96%87%E5%A4%84%E7%90%86">中文处理</a></li>
 </ul>
 </li>
-</ul></div></div><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>之前在 <a href="/spring-boot-current-status">当前的校验异常处理</a> 提到了目前校验和异常处理的一些问题。最近找到了一些看起来更专业化的方案。这里首先对几种模式做一些罗列。文中大量的内容都是从 <a href="https://www.naturalprogrammer.com/">naturalprogrammer</a> 学习到的，后文也会再去引用里面的内容。</p>
-<p>有关预定义的 Bean Validation 注解（<code>@Email</code>, <code>@NotBlank</code> 之类的）就不再赘述。</p>
+</ul></div></div><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>之前在 <a href="/spring-boot-current-status">当前的校验异常处理</a> 提到了目前校验和异常处理的一些问题。最近找到了一些看起来更专业化的方案，这里对这几种校验方案做罗列。文中大量的内容都是从 <a href="https://www.naturalprogrammer.com/">naturalprogrammer</a> 学习到，后文应该还会再去引用里面的内容。</p>
+<p>有关预定义的 Bean Validation 注解（<code>@Email</code>, <code>@NotBlank</code> 等）就不再赘述。</p>
 <h2 id="bean-validation-的异常处理时机" style="position:relative;">Bean Validation 的异常处理时机<a href="#bean-validation-%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E6%97%B6%E6%9C%BA" aria-label="bean validation 的异常处理时机 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>在 Spring Controller 中的方法里，标记有 <code>@Valid</code> 注解的字段会触发 Bean Validation。在 <a href="/spring-boot-exception-handler">spring boot 异常处理</a> 也讲了，如果出现校验报错，会抛出异常 <code>MethodArgumentNotValidException</code>。</p>
+<p>在 Spring Controller 中的方法里，标记有 <code>@Valid</code> 注解的字段会触发 Bean Validation。在 <a href="/spring-boot-exception-handler">spring boot 异常处理</a> 也介绍了，如果出现校验报错，会抛出异常 <code>MethodArgumentNotValidException</code>。</p>
 <div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@SpringBootApplication</span>
 <span class="token annotation punctuation">@RestController</span>
 <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span>
@@ -134,7 +134,7 @@
 <p>如上述代码所示，在 <code>HelloService</code> 上添加注解 <code>Validated</code> 并给其参数 <code>Hello</code> 增加注解 <code>@Valid</code> 在该参数传递时也会触发校验逻辑。如果报错就抛出异常 <code>ConstraintViolationException</code>。</p>
 <h2 id="bean-validation-自定义注解" style="position:relative;">Bean Validation 自定义注解<a href="#bean-validation-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3" aria-label="bean validation 自定义注解 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <h3 id="包含自定义校验" style="position:relative;">包含自定义校验<a href="#%E5%8C%85%E5%90%AB%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A0%A1%E9%AA%8C" aria-label="包含自定义校验 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>除了预定义的注解之外，我们可以创建自定义的注解以及对应的校验，下面就直接给出这么一个例子（直接依葫芦画瓢而来）：</p>
+<p>除了预定义的注解外，还可以创建自定义注解并提供相应的校验逻辑，下面就直接给出这么一个例子：</p>
 <div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@NotBlank</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token annotation punctuation">@Size</span><span class="token punctuation">(</span>min<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">,</span> max<span class="token operator">=</span><span class="token number">255</span><span class="token punctuation">)</span>
 <span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span><span class="token class-name">RetentionPolicy</span><span class="token punctuation">.</span>RUNTIME<span class="token punctuation">)</span>
@@ -159,7 +159,7 @@
     <span class="token keyword">return</span> name <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>RESERVED_NAMES<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span>name<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
-<p>可以看到 <code>@Name</code> 上面首先包含了两个预定义的校验注解 <code>@NotBlank</code> 和 <code>@Size</code> 然后引入一个自定义的 <code>NameValidator</code> 校验所注册的名字是否为我们的保留字段，如果是就报错。</p>
+<p>可以看到 <code>@Name</code> 上面首先包含了两个预定义的校验注解 <code>@NotBlank</code> 和 <code>@Size</code> 然后引入一个自定义的 <code>NameValidator</code> 用于校验所名字是否为保留字段，如果是就报错。</p>
 <p><figure class="gatsby-resp-image-figure" style="">
     <span
       class="gatsby-resp-image-wrapper"
@@ -193,7 +193,7 @@
     </span>
     <figcaption class="gatsby-resp-image-figcaption">name validation</figcaption>
   </figure></p>
-<p>然后这里有一个没有解决的细节：</p>
+<p>这里有一个没有解决的细节：</p>
 <div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java">  <span class="token annotation punctuation">@Override</span>
   <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isValid</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">,</span> <span class="token class-name">ConstraintValidatorContext</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">// 虽然明明有额外的 @NotBlank 字段，但是依然不能保证这里传递的 name 是非空，</span>
@@ -211,7 +211,7 @@
   <span class="token class-name">Class</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">groups</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
   <span class="token class-name">Class</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">payload</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre></div>
-<p>这样的好处自然就是把一些公共的校验逻辑抽取出来作为一个标准，方便理解，当然也方便复用。</p>
+<p>这样的好处是可以把一些公共的校验逻辑抽取出来作为一个整体，方便理解和复用。</p>
 <h3 id="跨字段校验" style="position:relative;">跨字段校验<a href="#%E8%B7%A8%E5%AD%97%E6%AE%B5%E6%A0%A1%E9%AA%8C" aria-label="跨字段校验 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
 <p>上面提到的是单个字段的校验，如果涉及到多个字段一起的校验，就需要用到类级别的标注了：</p>
 <div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span><span class="token class-name">RetentionPolicy</span><span class="token punctuation">.</span>RUNTIME<span class="token punctuation">)</span>
@@ -278,7 +278,7 @@
       />
   </a>
     </span></p>
-<p>在上面的报错信息可以看到一个细节：报错信息无法下达到具体一个字段，而是落在了 <code>hello.</code> 这个对象上。如果我们希望校验信息是落在具体的 <code>hello.value</code> 上可以有如下的修改：</p>
+<p>在上面的报错信息可以看到一个细节，报错信息无法下达到具体一个字段，而是落在了 <code>hello</code> 这个对象上。如果我们希望校验信息是落在具体的 <code>hello.value</code> 上可以有如下的修改：</p>
 <div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
 <span class="token keyword">class</span> <span class="token class-name">ConfirmValueValidator</span> <span class="token keyword">implements</span> <span class="token class-name">ConstraintValidator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">ConfirmValue</span><span class="token punctuation">,</span> <span class="token class-name">Hello</span><span class="token punctuation">></span></span> <span class="token punctuation">{</span>
   <span class="token annotation punctuation">@Override</span>
@@ -293,7 +293,7 @@
     <span class="token keyword">return</span> isValid<span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
-<p><code>ConstraintValidatorContext</code> 允许我们设置具体如何覆盖默认的报错行为，以便展示我们想要的报错内容。这部分内容在 <a href="https://docs.jboss.org/hibernate/stable/validator/reference/en-US/html_single/#example-custom-error">6.2.1. Custom property paths</a> 找到的。</p>
+<p><code>ConstraintValidatorContext</code> 允许设置具体如何覆盖默认的报错行为，以便展示想要的报错内容。这部分内容在 <a href="https://docs.jboss.org/hibernate/stable/validator/reference/en-US/html_single/#example-custom-error">6.2.1. Custom property paths</a> 有详尽的介绍。</p>
 <h3 id="validator-中的依赖注入" style="position:relative;">Validator 中的依赖注入<a href="#validator-%E4%B8%AD%E7%9A%84%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5" aria-label="validator 中的依赖注入 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
 <p>最后，Validator 是可以像其他类一样做依赖注入的：</p>
 <div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java">
@@ -320,9 +320,9 @@
     <span class="token keyword">return</span> email<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"a@b.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
-<p>也就是说，然后与数据库通讯的东西也是可以做校验的，仅仅是把与数据链接的对象注入就可以使用了。</p>
+<p>也就是说，与数据库通讯的东西也是可以做校验的，把与数据链接相关的对象注入就可以使用了。</p>
 <h2 id="error-message-的处理" style="position:relative;">Error Message 的处理<a href="#error-message-%E7%9A%84%E5%A4%84%E7%90%86" aria-label="error message 的处理 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>另外 validation 的报错信息也是需要做自定义的。这里给一个我觉得还不错的方案。不过没有深究一些细节，仅仅是 work 而已。</p>
+<p>另外 validation 的报错信息也是需要做自定义的。这里给一个还不错的方案，不过没有深究一些细节。</p>
 <h3 id="国际化" style="position:relative;">国际化<a href="#%E5%9B%BD%E9%99%85%E5%8C%96" aria-label="国际化 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
 <p>首先，error message 是按照国际化的思路处理的：给一个 <code>ValidationMessages_&#x3C;LANG>.properties</code> 文件。然后在注解的 <code>message</code> 字段通过 <code>{&#x3C;KEY_NAME>}</code> 的方式给传递过来，这里给一些例子看就明白：</p>
 <p>首先修改前面的 <code>@Name</code> 注解里面的 <code>message</code>:</p>
@@ -399,7 +399,7 @@ validation<span class="token punctuation">.</span>name<span class="token punctua
       />
   </a>
     </span></p>
-<p>然后，再介绍下 message 中两种可以传递的参数：</p>
+<p>再介绍下 message 中两种可以传递的参数：</p>
 <ol>
 <li>注解中的参数可以直接用 <code>{xx}</code> 的形式传递，例如对于 <code>@Size</code> 注解有两个参数 <code>min</code> 和 <code>max</code> 可以将 message 写成以下的样子：</li>
 </ol>
@@ -408,16 +408,18 @@ validation.name.size=name long shound between {min} and {max}
 
 // ValidationMessages_zh_CN.properties
 validation.name.size=名字的长度要在 {min} 和 {max} 之间</code></pre></div>
-<p>然后还有一个 <code>${}</code> 可以做特殊的表达式解析，具体的文章可以看 <a href="https://www.baeldung.com/spring-validation-message-interpolation">Spring Validation Message Interpolation</a>。最常用的自然是 <code>${validatedValue}</code> 其中 <code>validatedValue</code> 就是用户的输入。这个规则甚至是在 <code>Class Level Contraint</code> 也是工作的：</p>
+<ol start="2">
+<li>还有一个 <code>${}</code> 可以做特殊的表达式解析，具体的文章可以看 <a href="https://www.baeldung.com/spring-validation-message-interpolation">Spring Validation Message Interpolation</a>。最常用的是 <code>${validatedValue}</code>， <code>validatedValue</code> 是用户的输入。这个规则甚至是在类级别的校验注解里也是工作的：</li>
+</ol>
 <div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token comment">// ValidationMessages_en.properties</span>
 validation<span class="token punctuation">.</span>name<span class="token punctuation">.</span><span class="token keyword">default</span><span class="token operator">=</span><span class="token class-name">Invalid</span> name
 validation<span class="token punctuation">.</span>name<span class="token punctuation">.</span>size<span class="token operator">=</span>name <span class="token keyword">long</span> shound between <span class="token punctuation">{</span>min<span class="token punctuation">}</span> and <span class="token punctuation">{</span>max<span class="token punctuation">}</span>
 validation<span class="token punctuation">.</span>confirm<span class="token operator">=</span>value not equal<span class="token operator">:</span> $<span class="token punctuation">{</span>validatedValue<span class="token punctuation">.</span>value<span class="token punctuation">}</span> <span class="token operator">!=</span> $<span class="token punctuation">{</span>validatedValue<span class="token punctuation">.</span>confirmValue<span class="token punctuation">}</span></code></pre></div>
 <blockquote>
-<p><strong>注意</strong> 这里遇到一个小坑，如果这里的 <code>validatedValue</code> 所在的 <code>Class</code> 不是 <code>public</code> 的，那么反射会出问题，导致解析失败。目前我测试的就是必须要把上文中 <code>Hello.class</code> 移动到一个独立的文件并且标记为 <code>public</code> 才可以工作。</p>
+<p><strong>注意</strong> 这里遇到一个小坑，如果 <code>validatedValue</code> 所在的类不是 <code>public</code> 的，那么反射会出问题，导致解析失败。目前我测试的就是必须要把上文中 <code>Hello.class</code> 移动到一个独立的文件并且标记为 <code>public</code> 才可以工作。</p>
 </blockquote>
 <h3 id="中文处理" style="position:relative;">中文处理<a href="#%E4%B8%AD%E6%96%87%E5%A4%84%E7%90%86" aria-label="中文处理 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>既然用到了 <code>.properties</code> 文件自然就遇到了这个 java 中臭名昭著的编码问题了：中文显示乱码了。这里按照如下对 Intellj 做配置的修改可以解决问题。</p>
+<p>既然用到了 <code>.properties</code> 文件自然就遇到了这个 java 中臭名昭著的编码问题，中文显示乱码。这里按照如下对 Intellj 的配置做修改可以解决问题。</p>
 <p><span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
@@ -450,7 +452,7 @@ validation<span class="token punctuation">.</span>confirm<span class="token oper
       />
   </a>
     </span></p>
-<p>顺便提一句，Intellij 里面的 <a href="https://www.jetbrains.com/help/idea/resource-bundle.html">Resource bundles</a> 也挺好用的。</p>
+<p>顺便提一句，Intellij 里面的 <a href="https://www.jetbrains.com/help/idea/resource-bundle.html">Resource bundles</a> 也挺好用的：</p>
 <p><span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
@@ -483,7 +485,7 @@ validation<span class="token punctuation">.</span>confirm<span class="token oper
       />
   </a>
     </span></p>
-<p>这部分介绍就到这里了，后文会继续介绍如何建立自定义 exception handler 体系以捕捉各种层级的报错并统一返回格式了。</p></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
+<p>这部分介绍就到这里了，后文会继续介绍如何建立自定义 exception handler 体系以捕捉各种层级的报错并统一返回格式。</p></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       
       if(true) {
