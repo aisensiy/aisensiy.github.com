@@ -6,13 +6,13 @@ author:     "Eisen"
 tags:       [spring, springboot, validation, web]
 ---
 
-之前在 [当前的校验异常处理](/spring-boot-current-status) 提到了目前校验和异常处理的一些问题。最近找到了一些看起来更专业化的方案。这里首先对几种模式做一些罗列。文中大量的内容都是从 [naturalprogrammer](https://www.naturalprogrammer.com/) 学习到的，后文也会再去引用里面的内容。
+之前在 [当前的校验异常处理](/spring-boot-current-status) 提到了目前校验和异常处理的一些问题。最近找到了一些看起来更专业化的方案，这里对这几种校验方案做罗列。文中大量的内容都是从 [naturalprogrammer](https://www.naturalprogrammer.com/) 学习到，后文应该还会再去引用里面的内容。
 
-有关预定义的 Bean Validation 注解（`@Email`, `@NotBlank` 之类的）就不再赘述。
+有关预定义的 Bean Validation 注解（`@Email`, `@NotBlank` 等）就不再赘述。
 
 ## Bean Validation 的异常处理时机
 
-在 Spring Controller 中的方法里，标记有 `@Valid` 注解的字段会触发 Bean Validation。在 [spring boot 异常处理](/spring-boot-exception-handler) 也讲了，如果出现校验报错，会抛出异常 `MethodArgumentNotValidException`。
+在 Spring Controller 中的方法里，标记有 `@Valid` 注解的字段会触发 Bean Validation。在 [spring boot 异常处理](/spring-boot-exception-handler) 也介绍了，如果出现校验报错，会抛出异常 `MethodArgumentNotValidException`。
 
 ```java
 @SpringBootApplication
@@ -82,7 +82,7 @@ class HelloService {
 
 ### 包含自定义校验
 
-除了预定义的注解之外，我们可以创建自定义的注解以及对应的校验，下面就直接给出这么一个例子（直接依葫芦画瓢而来）：
+除了预定义的注解外，还可以创建自定义注解并提供相应的校验逻辑，下面就直接给出这么一个例子：
 
 ```java
 @NotBlank()
@@ -111,11 +111,11 @@ class NameValidator implements ConstraintValidator<Name, String> {
 }
 ```
 
-可以看到 `@Name` 上面首先包含了两个预定义的校验注解 `@NotBlank` 和 `@Size` 然后引入一个自定义的 `NameValidator` 校验所注册的名字是否为我们的保留字段，如果是就报错。
+可以看到 `@Name` 上面首先包含了两个预定义的校验注解 `@NotBlank` 和 `@Size` 然后引入一个自定义的 `NameValidator` 用于校验所名字是否为保留字段，如果是就报错。
 
 ![name validation](20210208184451.png)
 
-然后这里有一个没有解决的细节：
+这里有一个没有解决的细节：
 
 ```java
   @Override
@@ -142,7 +142,7 @@ public @interface Name {
 }
 ```
 
-这样的好处自然就是把一些公共的校验逻辑抽取出来作为一个标准，方便理解，当然也方便复用。
+这样的好处是可以把一些公共的校验逻辑抽取出来作为一个整体，方便理解和复用。
 
 ### 跨字段校验
 
@@ -188,7 +188,7 @@ class Hello {
 
 ![](20210208185553.png)
 
-在上面的报错信息可以看到一个细节：报错信息无法下达到具体一个字段，而是落在了 `hello.` 这个对象上。如果我们希望校验信息是落在具体的 `hello.value` 上可以有如下的修改：
+在上面的报错信息可以看到一个细节，报错信息无法下达到具体一个字段，而是落在了 `hello` 这个对象上。如果我们希望校验信息是落在具体的 `hello.value` 上可以有如下的修改：
 
 ```java
 @Component
@@ -207,7 +207,7 @@ class ConfirmValueValidator implements ConstraintValidator<ConfirmValue, Hello> 
 }
 ```
 
-`ConstraintValidatorContext` 允许我们设置具体如何覆盖默认的报错行为，以便展示我们想要的报错内容。这部分内容在 [6.2.1. Custom property paths](https://docs.jboss.org/hibernate/stable/validator/reference/en-US/html_single/#example-custom-error) 找到的。
+`ConstraintValidatorContext` 允许设置具体如何覆盖默认的报错行为，以便展示想要的报错内容。这部分内容在 [6.2.1. Custom property paths](https://docs.jboss.org/hibernate/stable/validator/reference/en-US/html_single/#example-custom-error) 有详尽的介绍。
 
 
 ### Validator 中的依赖注入
@@ -241,11 +241,11 @@ class EmailService {
 }
 ```
 
-也就是说，然后与数据库通讯的东西也是可以做校验的，仅仅是把与数据链接的对象注入就可以使用了。
+也就是说，与数据库通讯的东西也是可以做校验的，把与数据链接相关的对象注入就可以使用了。
 
 ## Error Message 的处理
 
-另外 validation 的报错信息也是需要做自定义的。这里给一个我觉得还不错的方案。不过没有深究一些细节，仅仅是 work 而已。
+另外 validation 的报错信息也是需要做自定义的。这里给一个还不错的方案，不过没有深究一些细节。
 
 ### 国际化
 
@@ -279,37 +279,37 @@ validation.name.default=错误的名字格式
 
 ![](20210208194626.png)
 
-然后，再介绍下 message 中两种可以传递的参数：
+再介绍下 message 中两种可以传递的参数：
 
 1. 注解中的参数可以直接用 `{xx}` 的形式传递，例如对于 `@Size` 注解有两个参数 `min` 和 `max` 可以将 message 写成以下的样子：
 
-```
-// ValidationMessages_en.properties
-validation.name.size=name long shound between {min} and {max}
+  ```
+  // ValidationMessages_en.properties
+  validation.name.size=name long shound between {min} and {max}
 
-// ValidationMessages_zh_CN.properties
-validation.name.size=名字的长度要在 {min} 和 {max} 之间
-```
+  // ValidationMessages_zh_CN.properties
+  validation.name.size=名字的长度要在 {min} 和 {max} 之间
+  ```
 
-然后还有一个 `${}` 可以做特殊的表达式解析，具体的文章可以看 [Spring Validation Message Interpolation](https://www.baeldung.com/spring-validation-message-interpolation)。最常用的自然是 `${validatedValue}` 其中 `validatedValue` 就是用户的输入。这个规则甚至是在 `Class Level Contraint` 也是工作的：
+2. 还有一个 `${}` 可以做特殊的表达式解析，具体的文章可以看 [Spring Validation Message Interpolation](https://www.baeldung.com/spring-validation-message-interpolation)。最常用的是 `${validatedValue}`， `validatedValue` 是用户的输入。这个规则甚至是在类级别的校验注解里也是工作的：
 
-```java
-// ValidationMessages_en.properties
-validation.name.default=Invalid name
-validation.name.size=name long shound between {min} and {max}
-validation.confirm=value not equal: ${validatedValue.value} != ${validatedValue.confirmValue}
-```
+  ```java
+  // ValidationMessages_en.properties
+  validation.name.default=Invalid name
+  validation.name.size=name long shound between {min} and {max}
+  validation.confirm=value not equal: ${validatedValue.value} != ${validatedValue.confirmValue}
+  ```
 
-> **注意** 这里遇到一个小坑，如果这里的 `validatedValue` 所在的 `Class` 不是 `public` 的，那么反射会出问题，导致解析失败。目前我测试的就是必须要把上文中 `Hello.class` 移动到一个独立的文件并且标记为 `public` 才可以工作。
+> **注意** 这里遇到一个小坑，如果 `validatedValue` 所在的类不是 `public` 的，那么反射会出问题，导致解析失败。目前我测试的就是必须要把上文中 `Hello.class` 移动到一个独立的文件并且标记为 `public` 才可以工作。
 
 ### 中文处理
 
-既然用到了 `.properties` 文件自然就遇到了这个 java 中臭名昭著的编码问题了：中文显示乱码了。这里按照如下对 Intellj 做配置的修改可以解决问题。
+既然用到了 `.properties` 文件自然就遇到了这个 java 中臭名昭著的编码问题，中文显示乱码。这里按照如下对 Intellj 的配置做修改可以解决问题。
 
 ![](2021-07-26-15-23-56.png)
 
-顺便提一句，Intellij 里面的 [Resource bundles](https://www.jetbrains.com/help/idea/resource-bundle.html) 也挺好用的。
+顺便提一句，Intellij 里面的 [Resource bundles](https://www.jetbrains.com/help/idea/resource-bundle.html) 也挺好用的：
 
 ![](20210208212752.png)
 
-这部分介绍就到这里了，后文会继续介绍如何建立自定义 exception handler 体系以捕捉各种层级的报错并统一返回格式了。
+这部分介绍就到这里了，后文会继续介绍如何建立自定义 exception handler 体系以捕捉各种层级的报错并统一返回格式。
