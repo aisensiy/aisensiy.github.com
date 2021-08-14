@@ -1,11 +1,11 @@
 import React from "react";
 import Base from "../layouts/base";
-import { Helmet } from 'react-helmet'
+import Seo from "../components/seo";
 
 export default function Archive({ data }) {
   return (
     <Base>
-      <Helmet title="About" />
+      <Seo title="About" />
       <div>
         <h1>
           About

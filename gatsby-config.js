@@ -1,7 +1,11 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: "https://www.yourdomain.tld",
-    title: "aisensiy-s-blog",
+    description: "来自 Eisen 的开发日志",
+    url: "https://blog.aisensiy.me",
+    title: "eisen-s-blog",
+    titleTemplate: "%s · eisen blog",
+    twitterUsername: 'eisenxu1727',
+    image: '/icon.jpg'
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -127,6 +131,18 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/img/`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Eisen Blog`,
+        short_name: `Eisen Blog`,
+        start_url: `/`,
+        background_color: `#f7f0eb`,
+        theme_color: `#a2466c`,
+        display: `standalone`,
+        icon: `static/icon.jpg`,
       },
     },
     `gatsby-plugin-catch-links`,

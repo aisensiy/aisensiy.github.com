@@ -45,4 +45,7 @@
     .table-of-content p {
         @apply m-0 inline;
     } 
+    .gatsby-highlight-code-line {
+        @apply bg-gray-700 !important;
+    }
 }

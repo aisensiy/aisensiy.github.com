@@ -2,7 +2,7 @@ import React from "react";
 import { graphql, Link } from "gatsby"
 import Blog from "../components/Blog"
 import Base from "../layouts/base"
-import { Helmet } from 'react-helmet'
+import Seo from "../components/seo"
 
 export default function BlogPage({ data }) {
   const { nodes: blogs, pageInfo } = data.blogs
@@ -13,7 +13,7 @@ export default function BlogPage({ data }) {
   const hasNextPage = currentPage < pageCount
   return (
     <Base>
-      <Helmet title={data.site.siteMetadata.title} />
+      <Seo />
       <div>
         {pages}
         <div className="flex justify-center mt-8">

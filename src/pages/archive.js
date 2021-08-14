@@ -1,14 +1,14 @@
 import { graphql, Link } from "gatsby";
 import React from "react";
 import Base from "../layouts/base";
-import { Helmet } from 'react-helmet'
+import Seo from "../components/seo";
 
 export default function Archive({ data }) {
   const groupByYearResult = groupByYear(data.allMarkdownRemark.nodes);
 
   return (
     <Base>
-      <Helmet title="Archive" />
+      <Seo title="Archive" />
       <div>
         <h1>Archive</h1>
         {groupByYearResult.map(({ key, value }) => (
