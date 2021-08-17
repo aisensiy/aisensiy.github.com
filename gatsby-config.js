@@ -133,18 +133,6 @@ module.exports = {
         path: `${__dirname}/src/img/`,
       },
     },
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `Eisen Blog`,
-        short_name: `Eisen Blog`,
-        start_url: `/`,
-        background_color: `#f7f0eb`,
-        theme_color: `#a2466c`,
-        display: `standalone`,
-        icon: `static/icon.jpg`,
-      },
-    },
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-postcss`

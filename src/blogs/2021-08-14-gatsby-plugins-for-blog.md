@@ -160,22 +160,3 @@ export const pageQuery = graphql`
   }
 `
 ```
-
-## favicon
-
-通过插件 [`gatsby-plugin-manifest`](https://www.gatsbyjs.com/plugins/gatsby-plugin-manifest/) 可以自动生成 favicon。配置如下：
-
-```javascript
-{
-    resolve: `gatsby-plugin-manifest`,
-    options: {
-        name: `Eisen Blog`,
-        short_name: `Eisen Blog`,
-        start_url: `/`,
-        background_color: `#f7f0eb`,
-        theme_color: `#a2466c`,
-        display: `standalone`,
-        icon: `static/favicon.jpg`,
-    },
-},
-```
