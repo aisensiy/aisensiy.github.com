@@ -26,10 +26,10 @@ tags:       [ddd, java, cqrs]
 CQRS 是由 greg young 提出的，他有一篇名为 [CQRS Documents by Greg Young](https://cqrs.files.wordpress.com/2010/11/cqrs_documents.pdf) 的资料比较详尽的探讨了 CQRS 和 event-sourcing 到底要解决什么样子的问题。开篇提出在我们所构建的系统不再是 CRUD 之后，可以引入 `Command` 的概念，描述 `Task Based User Interface`。而在处理这些 `Command` 的时候，会发现读和写流程处理会有非常大的区别，并且如果采用同一套 Domain Object 会引入如下问题：
 
 1. Large numbers of read methods on repositories often also including paging or sorting
-information.
-2. Getters exposing the internal state of domain objects in order to build DTOs.
-3. Use of prefetch paths on the read use cases as they require more data to be loaded by the ORM.
-4. Loading of multiple aggregates to build a DTO causes non-optimal querying to the data model. Alternatively aggregate boundaries can be confused because of the DTO building operations
+information. 在 Repository 中有大量的读操作需要包含分页 / 排序相关的功能。
+2. Getters exposing the internal state of domain objects in order to build DTOs. 为了组装 `DTO` 不得不暴露很多 `Domain Object` 的内部状态。
+3. Use of prefetch paths on the read use cases as they require more data to be loaded by the ORM. 由于读模型需要更多的数据，所以需要在 ORM 中组织额外的数据加载。
+4. Loading of multiple aggregates to build a DTO causes non-optimal querying to the data model. Alternatively aggregate boundaries can be confused because of the DTO building operations. 在组装 `DTO` 时，为了获取多个聚合会容易出现低效的查询语句。另外，组装聚合的边界也会因为 `DTO` 的组装而被打破。
 
 可以看到要解决的痛点和我之前的理解没有什么偏差。
 
