@@ -82,12 +82,11 @@
 <p>首先就是我最近看的一些内容。看了很多内容，包括 Martin Folwer 的一些链接，感觉最终将的比较清楚的还是 greg young 的内容。</p>
 <p>CQRS 是由 greg young 提出的，他有一篇名为 <a href="https://cqrs.files.wordpress.com/2010/11/cqrs_documents.pdf">CQRS Documents by Greg Young</a> 的资料比较详尽的探讨了 CQRS 和 event-sourcing 到底要解决什么样子的问题。开篇提出在我们所构建的系统不再是 CRUD 之后，可以引入 <code>Command</code> 的概念，描述 <code>Task Based User Interface</code>。而在处理这些 <code>Command</code> 的时候，会发现读和写流程处理会有非常大的区别，并且如果采用同一套 Domain Object 会引入如下问题：</p>
 <ol>
-<li>Large numbers of read methods on repositories often also including paging or sorting</li>
+<li>Large numbers of read methods on repositories often also including paging or sorting information. 在 Repository 中有大量的读操作需要包含分页 / 排序相关的功能。</li>
+<li>Getters exposing the internal state of domain objects in order to build DTOs. 为了组装 <code>DTO</code> 不得不暴露很多 <code>Domain Object</code> 的内部状态。</li>
+<li>Use of prefetch paths on the read use cases as they require more data to be loaded by the ORM. 由于读模型需要更多的数据，所以需要在 ORM 中组织额外的数据加载。</li>
+<li>Loading of multiple aggregates to build a DTO causes non-optimal querying to the data model. Alternatively aggregate boundaries can be confused because of the DTO building operations. 在组装 <code>DTO</code> 时，为了获取多个聚合会容易出现低效的查询语句。另外，组装聚合的边界也会因为 <code>DTO</code> 的组装而被打破。</li>
 </ol>
-<p>information. 在 Repository 中有大量的读操作需要包含分页 / 排序相关的功能。
-2. Getters exposing the internal state of domain objects in order to build DTOs. 为了组装 <code>DTO</code> 不得不暴露很多 <code>Domain Object</code> 的内部状态。
-3. Use of prefetch paths on the read use cases as they require more data to be loaded by the ORM. 由于读模型需要更多的数据，所以需要在 ORM 中组织额外的数据加载。
-4. Loading of multiple aggregates to build a DTO causes non-optimal querying to the data model. Alternatively aggregate boundaries can be confused because of the DTO building operations. 在组装 <code>DTO</code> 时，为了获取多个聚合会容易出现低效的查询语句。另外，组装聚合的边界也会因为 <code>DTO</code> 的组装而被打破。</p>
 <p>可以看到要解决的痛点和我之前的理解没有什么偏差。</p>
 <p>通过分别对读写构建独立的流程可以很好的缓解以上问题：</p>
 <p><figure class="gatsby-resp-image-figure" style="">
