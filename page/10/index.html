@@ -52,7 +52,62 @@
         }
       }
     })
-  </script><link as="script" rel="preload" href="/webpack-runtime-4c5d987e132f409a2a52.js"/><link as="script" rel="preload" href="/framework-e728256d7a1d703d32c2.js"/><link as="script" rel="preload" href="/app-7decc5285b369d37659c.js"/><link as="script" rel="preload" href="/75ce8a9e25edca21eb9c1a1dab0250d3ee550bef-e9b300a9f21137291b3a.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-9fd36e13ebfed646ca18.js"/><link as="fetch" rel="preload" href="/page-data/page/10/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2021<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div><h1><a href="/kubeadm-aws-provider">用 kubeadm 部署 aws 环境下的 kubernetes</a></h1><h2>2018 April-24</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>最近一个多月开始折腾在 <strong>国内</strong> 环境部署 kubernetes 集群。是的，确实这还是一个工作内容，和直接在什么 aws googlecloud 或者是 rancher 2.0 直接点点就能创建有一个集群不一样。之所以还要付诸这样的精力去做这件事有两个原因：</p>
+  </script><link as="script" rel="preload" href="/webpack-runtime-4c5d987e132f409a2a52.js"/><link as="script" rel="preload" href="/framework-e728256d7a1d703d32c2.js"/><link as="script" rel="preload" href="/app-7decc5285b369d37659c.js"/><link as="script" rel="preload" href="/75ce8a9e25edca21eb9c1a1dab0250d3ee550bef-e9b300a9f21137291b3a.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-9fd36e13ebfed646ca18.js"/><link as="fetch" rel="preload" href="/page-data/page/10/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2021<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div><h1><a href="/docker-storage">docker 存储</a></h1><h2>2018 May-25</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>由于自己接触 docker 的时候和现在的 docker 不少的 api 已经有所变化，还是需要更新一下自己的知识。这篇文章大部分源自 docker 的官方文档，然后还有部分自己添油加醋。</p>
+<p>在 docker 中所有的文件是存储在容器的 <code>writable container layer</code>。存在以下的问题：</p>
+<ul>
+<li>容器里的数据不好拿出来</li>
+<li>在容器里写依赖于 <code>storage driver</code> 采用了 <code>union filesystem</code> 效率低下</li>
+</ul>
+<p>然而 docker 提供了可以直接往 host 机器写内容的方式：</p>
+<ol>
+<li>volumes</li>
+<li>bind mounts</li>
+<li>tmpfs</li>
+</ol>
+<p>采用这些方式，即使容器关了甚至删除了数据依然不会丢失。</p>
+<h2 id="选择适合的数据绑定方式" style="position:relative;">选择适合的数据绑定方式<a href="#%E9%80%89%E6%8B%A9%E9%80%82%E5%90%88%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E6%96%B9%E5%BC%8F" aria-label="选择适合的数据绑定方式 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>首先不论是采用哪种方式，在容器里看起来都是一样的。</p>
+<ul>
+<li>Volume 将数据存储在 host 但是其实是由 docker 管理的 <code>/var/lib/docker/volumes</code> 非 docker 无法使用</li>
+<li>Bind mounts 是可以将数据随意存储在任意 host system 文件系统中，任何非 docker 应用也有权利对其进行使用</li>
+<li>tmpfs mounts 将文件存储在内存中</li>
+</ul>
+<h2 id="更多详情" style="position:relative;">更多详情<a href="#%E6%9B%B4%E5%A4%9A%E8%AF%A6%E6%83%85" aria-label="更多详情 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<h3 id="volume" style="position:relative;">Volume<a href="#volume" aria-label="volume permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>Volume 可以通过 <code>docker volume create</code> 显式创建，当然 docker 也可以在运行的时候创建 volume（比如在 <code>Dockerfile</code> 里面有 <code>VOLUME</code> 语法时如果没有没有显式绑定 volume 那么就会默认创建一个新的 volume）。</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">docker volume create data
+docker run -v data:/data ...</code></pre></div>
+<p><strong>注意</strong> <code>docker volume inspect xxx</code> 会得到如下的结果：</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">[
+    {
+        "CreatedAt": "2018-05-22T07:53:58Z",
+        "Driver": "local",
+        "Labels": null,
+        "Mountpoint": "/var/lib/docker/volumes/test/_data",
+        "Name": "test",
+        "Options": {},
+        "Scope": "local"
+    }
+]</code></pre></div>
+<p>其存储的位置为 <code>/var/lib/docker/volumes/test/_data</code> 但是在 Mac OS 下你会发现根本没有这个目录，那是因为 Mac 下的 docker 还是以 linux 虚拟机的形式运行的，你所看到的是其虚拟机下的目录而不是 Mac 下的目录。</p>
+<h3 id="bind-mounts" style="position:relative;">Bind mounts<a href="#bind-mounts" aria-label="bind mounts permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>其功能相对 volume 比较有限。但是其好处是可以绑定任意的外部目录给 docker，尤其是在做一些外部数据共享给 docker 的时候非常适合。</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">docker run -v /tmp/data:/data:ro ...</code></pre></div>
+<h3 id="tmpfs" style="position:relative;">Tmpfs<a href="#tmpfs" aria-label="tmpfs permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>我自己是没有直接使用过。基本就是用于沙盒环境吧。</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">docker run --tmpfs /data ...</code></pre></div>
+<h2 id="注意" style="position:relative;">注意<a href="#%E6%B3%A8%E6%84%8F" aria-label="注意 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>两个特殊的场景：</p>
+<ol>
+<li>如果你 mount 一个 empty volume 到一个 container 中已经存在的文件夹，那么 container 会将容器目录中的内容拷贝到这个空的 volume 里面</li>
+<li>如果你使用 bind mount 或者一个非空的 volume 绑定到容器中某一个目录，那么目录里面的东西就会隐藏而只能看到 bind mount 或者 volume 里面的内容。注意，原有的内容不是被删除了而仅仅是被隐藏了</li>
+</ol>
+<h2 id="相关文献" style="position:relative;">相关文献<a href="#%E7%9B%B8%E5%85%B3%E6%96%87%E7%8C%AE" aria-label="相关文献 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ol>
+<li><a href="https://docs.docker.com/storage/volumes/">Docker Volumes</a></li>
+<li><a href="https://docs.docker.com/storage/bind-mounts/">Use bind mounts</a></li>
+<li><a href="https://docs.docker.com/storage/volumes/">Use Volumes</a></li>
+</ol></div></div><div><h1><a href="/kubeadm-aws-provider">用 kubeadm 部署 aws 环境下的 kubernetes</a></h1><h2>2018 April-24</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>最近一个多月开始折腾在 <strong>国内</strong> 环境部署 kubernetes 集群。是的，确实这还是一个工作内容，和直接在什么 aws googlecloud 或者是 rancher 2.0 直接点点就能创建有一个集群不一样。之所以还要付诸这样的精力去做这件事有两个原因：</p>
 <ol>
 <li>kubernetes 默认部署安装依赖于很多 google 的域名，而因为特殊的国内网络环境，那些自动执行创建集群的工具默认都是不适用的，我不得不把 kubernetes 集群部署搞得一清二楚才能明白具体哪里去 hack 那些被 block 的资源</li>
 <li>我们有自己搭建 bare metal 集群的需求，而那些可以随便点点就能构建集群的方式都是支持公有云的方案</li>
@@ -203,84 +258,7 @@ host_key_checking = False</code></pre></div>
 <h2 id="7-ad-hoc-command" style="position:relative;">7. Ad-hoc command<a href="#7-ad-hoc-command" aria-label="7 ad hoc command permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <p>有的时候发现原有的 ansible playbook 有瑕疵需要重新更改参数什么的，这个时候如果更新了 ansible playbook 再重新跑一遍实在不方便。这个时候就需要这种 ad-hoc command。</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">ansible cpu-worker -i inventory -m copy -a <span class="token string">'src=/etc/hosts dest=/tmp/hosts'</span> -u ubuntu --private-key<span class="token operator">=</span>xxx</code></pre></div>
-<p>如上所示，和 <code>ansible-playbook</code> 一致 <code>-i</code> 后面是 inventory，<code>-u</code> 后面是 username，然后具体使用的 module 在 <code>-m</code> 后面提供，额外的参数用 <code>-a</code> 后面提供。</p></div></div><div><h1><a href="/husky-and-prettier">用 husky 和 prettier 保证团队代码格式一致性</a></h1><h2>2018 February-28</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>好久没有写博客，久到在刚想到写一篇博客的时候要打开哪个编辑器都楞了一下。今天介绍一下两个小工具 <code>husky</code>（对，哈士奇，2哈）和 <code>prettier</code>。我认为他们的出现减轻了软件开发流程中一些痛点。</p>
-<h2 id="husky-为-git-commit-增加钩子" style="position:relative;">husky 为 git commit 增加钩子<a href="#husky-%E4%B8%BA-git-commit-%E5%A2%9E%E5%8A%A0%E9%92%A9%E5%AD%90" aria-label="husky 为 git commit 增加钩子 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>在之前的工作中，我们尝试通过在 git 的 <code>pre-receive</code> 阶段嵌入一系列的 ci 流程处理代码以提供给开发者们 "just push" 的开发流程（当然这个想法是完完全全源自  heroku 的）。这个流程将原先的 "push -> wait for verify -> new correct commit -> repush" 的流程转变为 "push -> fail -> correct -> repush"：如果没有在 "pre-receive" 阶段设置门禁的话，坏的提交会被同步到中心仓库后在进行检测；而设置门禁之后坏的 commit 会被拒绝在本地，本地只能将 ci 可以通过的代码提交到中心仓库。但是将所有东西都通过 push 验证很显然是慢了一些：这就像表单的前端验证和后端验证一样，虽然后端验证永远必不可少但是它增加了服务器的负担并且延长了反馈周期。</p>
-<p>这时候 <code>husky</code> 就要派上用场了。<code>husky</code> 其实就是一个为 <code>git</code> 客户端增加 hook 的工具。将其安装到所在仓库的过程中它会自动在 <code>.git/</code> 目录下增加相应的钩子实现在 <code>pre-commit</code> 阶段就执行一系列流程保证每一个 commit 的正确性。部分在 cd <code>commit stage</code> 执行的命令可以挪动到本地执行，比如 lint 检查、比如单元测试。当然，<code>pre-commit</code> 阶段执行的命令当然要保证其速度不要太慢，每次 commit 都等很久也不是什么好的体验。</p>
-<h2 id="prettier-保证每个团队代码格式一致性" style="position:relative;">prettier 保证每个团队代码格式一致性<a href="#prettier-%E4%BF%9D%E8%AF%81%E6%AF%8F%E4%B8%AA%E5%9B%A2%E9%98%9F%E4%BB%A3%E7%A0%81%E6%A0%BC%E5%BC%8F%E4%B8%80%E8%87%B4%E6%80%A7" aria-label="prettier 保证每个团队代码格式一致性 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>多少年来开发者在使用 tab 还是 space 的问题上真是花费了不少的时间，美剧硅谷里主角还因为 tab 和别人闹了一集，可见大家对代码格式化的重视程度-_-。记得我在上一个项目里看到有小哥把我的代码强行刷成他满意的格式的 commit 也非常不满。仅仅修改格式的 commit 是毫无必要的，它没有对软件本身的行为做任何的修改，而夹带了修改格式的 commit 更是令人抓狂的，给 review 的同学也带来了不小的负担（在一坨提交里仔仔细细看了半天发现神马也没变！！尼玛！！）。</p>
-<p><code>golang</code> 取了个巧，语言自带官方格式，你们终于不吵了吧。虽然会有时候看 <code>golang</code> 的格式化结果略微有点麻烦（就是 struct 对 json type 的制表符对齐的要求），但是也没有哪里是让人无法忍受的丑。如果其他的语言也以类似的方式制定一个官方格式是不是就会将此事平息下去呢。当然，我们可以在制定这个官方格式的时候吵架，只要官方格式不会三天两头的更新那在实际项目中为这种不必要的分歧导致浪费大把时间了。</p>
-<p>在我看来 <code>prettier</code> 就是这么一个 "类官方格式" 了。不过目前它还只是支持 <code>js</code> 体系下的格式化，其他语言由于这样那样的问题还要再等等。</p>
-<p>大家对有个公认的格式这件事还是非常认可的，项目出现一年，Github star 破 2.1w，并且像 facebook 这样的大公司已经在内部逐渐铺开使用了。</p>
-<h2 id="集成" style="position:relative;">集成<a href="#%E9%9B%86%E6%88%90" aria-label="集成 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>最后，通过 husky 为 <code>prettier</code> 在 <code>pre-commit</code> 加个钩子，这体验就更完美了：不论你家的格式是什么样子，只要你想提交，就必须格式化成 <code>prettier</code> 要求的样子，这样就没有那种因为格式变动出现的无聊的 <code>diff</code> 了。集成的流程基本是以下这个样子：</p>
-<ol>
-<li>
-<p>添加 prettier 依赖</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">yarn</span> <span class="token function">add</span> prettier --dev --exact</code></pre></div>
-</li>
-<li>
-<p>测试格式化是否工作</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">yarn</span> prettier -- --write src/index.js</code></pre></div>
-</li>
-<li>
-<p>在 commit 时执行 prettier</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">yarn</span> <span class="token function">add</span> pretty-quick husky --dev</code></pre></div>
-<p>修改  <code>package.json</code> 添加 pre-commit 钩子</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token punctuation">{</span>
-  <span class="token string">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token string">"precommit"</span><span class="token operator">:</span> <span class="token string">"pretty-quick --staged"</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre></div>
-</li>
-</ol>
-<p>其实官方文档也有，但是官方文档可耻的写错了...第二步命令少了 <code>--</code> 的命令。</p>
-<p>最后的最后，放一段 <code>prettier</code> 格式化的 <code>react</code> 代码，我还是对其默认的格式非常满意的。</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">Badges</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
-  <span class="token function">componentDidMount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">let</span> <span class="token punctuation">{</span> user<span class="token punctuation">,</span> loadBadges <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">;</span>
-    <span class="token function">loadBadges</span><span class="token punctuation">(</span>user<span class="token punctuation">.</span>username<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">let</span> <span class="token punctuation">{</span> badges <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token punctuation">(</span>
-      <span class="token operator">&lt;</span>div style<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> marginTop<span class="token operator">:</span> <span class="token string">"50px"</span> <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">></span>
-        <span class="token operator">&lt;</span>h1<span class="token operator">></span>已经获得的成就<span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span>
-
-        <span class="token operator">&lt;</span>Row
-          gutter<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">16</span><span class="token punctuation">}</span>
-          type<span class="token operator">=</span><span class="token string">"flex"</span>
-          justify<span class="token operator">=</span><span class="token string">"center"</span>
-          align<span class="token operator">=</span><span class="token string">"top"</span>
-          style<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> marginTop<span class="token operator">:</span> <span class="token string">"20px"</span><span class="token punctuation">,</span> paddingBottom<span class="token operator">:</span> <span class="token string">"10px"</span> <span class="token punctuation">}</span><span class="token punctuation">}</span>
-        <span class="token operator">></span>
-          <span class="token punctuation">{</span>badges<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">badge</span> <span class="token operator">=></span> <span class="token punctuation">(</span>
-            <span class="token operator">&lt;</span>Col
-              lg<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">6</span><span class="token punctuation">}</span>
-              md<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">6</span><span class="token punctuation">}</span>
-              sm<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">8</span><span class="token punctuation">}</span>
-              xs<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">12</span><span class="token punctuation">}</span>
-              style<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> marginBottom<span class="token operator">:</span> <span class="token string">"1em"</span> <span class="token punctuation">}</span><span class="token punctuation">}</span>
-              key<span class="token operator">=</span><span class="token punctuation">{</span>badge<span class="token punctuation">.</span>project<span class="token punctuation">.</span>id<span class="token punctuation">}</span>
-            <span class="token operator">></span>
-              <span class="token operator">&lt;</span>ProjectBadge badge<span class="token operator">=</span><span class="token punctuation">{</span>badge<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
-            <span class="token operator">&lt;</span><span class="token operator">/</span>Col<span class="token operator">></span>
-          <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
-        <span class="token operator">&lt;</span><span class="token operator">/</span>Row<span class="token operator">></span>
-      <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
-    <span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre></div>
-<h2 id="相关资料" style="position:relative;">相关资料<a href="#%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99" aria-label="相关资料 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<ol>
-<li><a href="https://prettier.io/">Prettier</a></li>
-<li><a href="https://github.com/typicode/husky">Husky</a></li>
-<li><a href="https://medium.com/@bartwijnants/using-prettier-and-husky-to-make-your-commits-save-2960f55cd351">Using Prettier and husky to make your commits safe.</a></li>
-<li><a href="https://git-scm.com/docs/githooks">git-hooks</a></li>
-<li><a href="https://www.informit.com/articles/article.aspx?p=1621865&#x26;seqNum=4">The Commit Stage</a></li>
-<li><a href="https://golang.org/cmd/gofmt/">Formats Go programs</a></li>
-</ol></div></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/9">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/11">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
+<p>如上所示，和 <code>ansible-playbook</code> 一致 <code>-i</code> 后面是 inventory，<code>-u</code> 后面是 username，然后具体使用的 module 在 <code>-m</code> 后面提供，额外的参数用 <code>-a</code> 后面提供。</p></div></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/9">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/11">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       
       if(true) {
