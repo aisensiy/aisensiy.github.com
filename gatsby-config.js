@@ -27,7 +27,7 @@ module.exports = {
         gfm: true,
         // Plugins configs
         plugins: [
-          { 
+          {
             resolve: `gatsby-remark-autolink-headers`,
             options: {
               offsetY: `100`,
@@ -135,6 +135,12 @@ module.exports = {
     },
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-postcss`
+    `gatsby-plugin-postcss`,
+    {
+      resolve: `gatsby-plugin-plausible`,
+      options: {
+        domain: `aisensiy.me`
+      },
+    },
   ],
 };
