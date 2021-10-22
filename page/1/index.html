@@ -55,8 +55,8 @@
   </script><link rel="preconnect" href="https://plausible.io"/><script async="" defer="" data-domain="aisensiy.me" src="https://plausible.io/js/plausible.js"></script><script>
           window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) };
           
-          </script><link as="script" rel="preload" href="/webpack-runtime-4c5d987e132f409a2a52.js"/><link as="script" rel="preload" href="/framework-e728256d7a1d703d32c2.js"/><link as="script" rel="preload" href="/app-017b258692d84823a7c8.js"/><link as="script" rel="preload" href="/75ce8a9e25edca21eb9c1a1dab0250d3ee550bef-e9b300a9f21137291b3a.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-9fd36e13ebfed646ca18.js"/><link as="fetch" rel="preload" href="/page-data/page/1/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2021<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div><h1><a href="/graphql-test-tools">GraphQL 测试工具梳理</a></h1><h2>2021 October-21</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><h2 id="目前-postman-在我们团队的使用情况" style="position:relative;">目前 POSTMAN 在我们团队的使用情况<a href="#%E7%9B%AE%E5%89%8D-postman-%E5%9C%A8%E6%88%91%E4%BB%AC%E5%9B%A2%E9%98%9F%E7%9A%84%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5" aria-label="目前 postman 在我们团队的使用情况 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>这部分工作主要是对标之前在 REST 场景下使用 POSTMAN 测试的工作。在 REST 的场景下，POSTMAN 是一个很好的工具，简单介绍下我们使用到的一些功能：</p>
+          </script><link as="script" rel="preload" href="/webpack-runtime-4c5d987e132f409a2a52.js"/><link as="script" rel="preload" href="/framework-e728256d7a1d703d32c2.js"/><link as="script" rel="preload" href="/app-017b258692d84823a7c8.js"/><link as="script" rel="preload" href="/75ce8a9e25edca21eb9c1a1dab0250d3ee550bef-e9b300a9f21137291b3a.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-9fd36e13ebfed646ca18.js"/><link as="fetch" rel="preload" href="/page-data/page/1/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2021<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div><h1><a href="/graphql-test-tools">GraphQL 测试工具梳理</a></h1><h2>2021 October-21</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><h2 id="目前-postman-在我们团队的使用情况" style="position:relative;">目前 Postman 在我们团队的使用情况<a href="#%E7%9B%AE%E5%89%8D-postman-%E5%9C%A8%E6%88%91%E4%BB%AC%E5%9B%A2%E9%98%9F%E7%9A%84%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5" aria-label="目前 postman 在我们团队的使用情况 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>这部分工作主要是对标之前在 REST 场景下使用 Postman 测试的工作。在 REST 的场景下，Postman 是一个很好的工具，简单介绍下我们使用到的一些功能：</p>
 <ol>
 <li>Collections 可以将一系列的 Request 聚合在一起很好的规整起来，当需要测试某个接口的问题时，搜索 Collection 执行具体的 Request 即可。</li>
 <li>Environments 维护一系列变量，点击切换可以测试不同的环境。</li>
@@ -94,7 +94,7 @@
     <figcaption class="gatsby-resp-image-figcaption">Environments</figcaption>
   </figure></p>
 <ol start="3">
-<li>Tests 虽然可以做测试，但实际上就是在跑完一个 Request 之后可以执行一段 js 脚本，这个脚本不一定都是测试的内容，比如我可以在 login 之后把 Response 中返回的 token 存储为一个 Postman 的 Variable，然后在后面的请求中使用这个 Variable 避免重复登录。</li>
+<li>Tests 虽然可以做测试，但实际上就是在跑完一个 request 之后可以执行一段 JS 脚本，这个脚本不一定都是测试的内容，比如我可以在 login 之后把 response 中返回的 token 存储为一个 Postman 的 variable，然后在后面的请求中使用这个 variable 避免重复登录。</li>
 </ol>
 <p><figure class="gatsby-resp-image-figure" style="">
     <span
@@ -134,10 +134,10 @@
 <li>Monitors 这部分用的不是很多，主要是确定几个环境的服务没什么问题。</li>
 </ol>
 <p>在这个视频 <a href="https://www.youtube.com/watch?v=VywxIQ2ZXw4">Postman Beginner's Course - API Testing</a> 中介绍了很多 Postman 的功能，很有帮助。</p>
-<h2 id="对比-postman-和-graphiql-以及-apollo-studio-的功能" style="position:relative;">对比 POSTMAN 和 GraphiQL 以及 Apollo Studio 的功能<a href="#%E5%AF%B9%E6%AF%94-postman-%E5%92%8C-graphiql-%E4%BB%A5%E5%8F%8A-apollo-studio-%E7%9A%84%E5%8A%9F%E8%83%BD" aria-label="对比 postman 和 graphiql 以及 apollo studio 的功能 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>不过很遗憾 Postman 在 GraphQL 场景的支持似乎不是很积极，目前仅仅做了简单的支持。但考虑到上文中 POSTMAN 的那些功能在 GraphQL 下依然有不可替代的使用价值，这里我先罗列在 GraphQL 下几个我们关心的功能在几个工具里的支持情况。</p>
+<h2 id="对比-postman-和-graphiql-以及-apollo-studio-的功能" style="position:relative;">对比 Postman 和 GraphiQL 以及 Apollo Studio 的功能<a href="#%E5%AF%B9%E6%AF%94-postman-%E5%92%8C-graphiql-%E4%BB%A5%E5%8F%8A-apollo-studio-%E7%9A%84%E5%8A%9F%E8%83%BD" aria-label="对比 postman 和 graphiql 以及 apollo studio 的功能 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>不过很遗憾 Postman 在 GraphQL 场景的支持似乎不是很积极，目前仅仅做了简单的支持。但考虑到上文中 Postman 的那些功能在 GraphQL 下依然有不可替代的使用价值，这里我先罗列在 GraphQL 下几个我们关心的功能在几个工具里的支持情况。</p>
 <h3 id="请求页面的自动补全" style="position:relative;">请求页面的自动补全<a href="#%E8%AF%B7%E6%B1%82%E9%A1%B5%E9%9D%A2%E7%9A%84%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8" aria-label="请求页面的自动补全 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>如果说 REST API 是散装弱类型 API 那么 GraphQL 就是强类型的 API 了，提交的内容必须要和 schema 兼容。在 GraphiQL （对，多了个 i）这样的工具里，你可以在右侧看到目前的 schema 并且在写 GQL 的时候可以自动提示，可以很方面的查询自己想要的字段和类型。</p>
+<p>如果说 REST API 是散装弱类型 API 那么 GraphQL 就是强类型的 API 了，提交的内容必须要和 schema 兼容。在 GraphiQL（对，多了个 i）这样的工具里，你可以在右侧看到目前的 schema 并且在写 GQL 的时候可以自动提示，可以很方面的查询自己想要的字段和类型。</p>
 <p><figure class="gatsby-resp-image-figure" style="">
     <span
       class="gatsby-resp-image-wrapper"
@@ -209,7 +209,7 @@
     <figcaption class="gatsby-resp-image-figcaption">左侧搜索具体的操作后可以直接勾选属性拼接查询 Query</figcaption>
   </figure></p>
 <p>如果你在 GraphQL 里提供了字段或者方法的注释，Apollo Studio 或者是 GraphiQL 也都会在这些页面给你展示出来。</p>
-<p>Postman 目前就只有自动补全，注意这个自动补全的意思是你必须先写点什么，然后我给你不足后面的内容，如果你什么都没写，那不好意思，我也什么不会给你提供的，没有文档，没有提示...</p>
+<p>Postman 目前就只有自动补全，注意这个自动补全的意思是你必须先写点什么，然后我给你不足后面的内容，如果你什么都没写，那不好意思，我也什么不会给你提供的，没有文档，没有提示…</p>
 <p><figure class="gatsby-resp-image-figure" style="">
     <span
       class="gatsby-resp-image-wrapper"
@@ -228,8 +228,8 @@
   ></span>
   <img
         class="gatsby-resp-image-image"
-        alt="Postman graphql 请求"
-        title="Postman graphql 请求"
+        alt="Postman GraphQL 请求"
+        title="Postman GraphQL 请求"
         src="/static/3a555326282a630a1f6a9fe4bce63328/5a190/2021-10-21-19-18-02.png"
         srcset="/static/3a555326282a630a1f6a9fe4bce63328/772e8/2021-10-21-19-18-02.png 200w,
 /static/3a555326282a630a1f6a9fe4bce63328/e17e5/2021-10-21-19-18-02.png 400w,
@@ -242,13 +242,13 @@
       />
   </a>
     </span>
-    <figcaption class="gatsby-resp-image-figcaption">Postman graphql 请求</figcaption>
+    <figcaption class="gatsby-resp-image-figcaption">Postman GraphQL 请求</figcaption>
   </figure></p>
-<h3 id="schema-更新手段" style="position:relative;">schema 更新手段<a href="#schema-%E6%9B%B4%E6%96%B0%E6%89%8B%E6%AE%B5" aria-label="schema 更新手段 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>既然是强类型的 schema 那么 schema 的更新就很重要了。我们所使用的 GraphiQL 目前是 dgs framework 自己带的，是通过 graphql 的 instropection 获取的，自然就是最新的了。不过这种功能只能在开发环境使用，在生产环境肯定是需要把这个功能关掉的，不然别人随随便便就拿到了你全部的 schema 感觉有点不对劲。GraphiQL 应该也是有那种主动提供 schema 做独立部署的方式的吧，主要是目前 dev 环境开放我们也能接受就没有做更多的调研了。</p>
-<p>Apollo Studio 提供了一个名为 rover 的工具，可以有多种方式将 schema 提交给 Apollo。可以通过 CI/CD 流程去自动化这个过程，后面会提到。</p>
-<p>Postman 和 Apollo Studio 的方式类似，只是它没有自己的工具，需要通过 Postman 自身的 API 去拼接请求，并且 API 中各种 ID 的查找显得略微晦涩了，麻烦一些，但也能走通。不过在尝试的过程中发现 Postman 中的 GraphQL schema 对 graphql 的扩展语法并不支持，无法识别像 <code>extend</code> 这样的关键词，因此不支持那种把 schema 拆分成多个文件通过 <code>cat</code> 到一起提交的简单方式。</p>
-<h3 id="schema-变更日志" style="position:relative;">schema 变更日志<a href="#schema-%E5%8F%98%E6%9B%B4%E6%97%A5%E5%BF%97" aria-label="schema 变更日志 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<h3 id="schema-更新手段" style="position:relative;">Schema 更新手段<a href="#schema-%E6%9B%B4%E6%96%B0%E6%89%8B%E6%AE%B5" aria-label="schema 更新手段 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>既然是强类型的 schema 那么 schema 的更新就很重要了。我们所使用的 GraphiQL 目前是 DGS framework 自己带的，是通过 GraphQL 的 instropection 获取的，自然就是最新的了。不过这种功能只能在开发环境使用，在生产环境肯定是需要把这个功能关掉的，不然别人随随便便就拿到了你全部的 schema 感觉有点不对劲。GraphiQL 应该也是有那种主动提供 schema 做独立部署的方式的吧，主要是目前 dev 环境开放我们也能接受就没有做更多的调研了。</p>
+<p>Apollo Studio 提供了一个名为 Rover 的工具，可以有多种方式将 schema 提交给 Apollo。可以通过 CI/CD 流程去自动化这个过程，后面会提到。</p>
+<p>Postman 和 Apollo Studio 的方式类似，只是它没有自己的工具，需要通过 Postman 自身的 API 去拼接请求，并且 API 中各种 ID 的查找显得略微晦涩了，麻烦一些，但也能走通。不过在尝试的过程中发现 Postman 中的 GraphQL schema 对 GraphQL 的扩展语法并不支持，无法识别像 <code>extend</code> 这样的关键词，因此不支持那种把 schema 拆分成多个文件通过 <code>cat</code> 到一起提交的简单方式。</p>
+<h3 id="schema-变更日志" style="position:relative;">Schema 变更日志<a href="#schema-%E5%8F%98%E6%9B%B4%E6%97%A5%E5%BF%97" aria-label="schema 变更日志 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
 <p>这部分算是 Apollo 的特色了，满分。并且找不到完美的替代方案，我找到的一个开源方案仅仅是支持 schema 以文本形式的 diff 而已，并没有做 schema 解析后的对比。</p>
 <p><span
       class="gatsby-resp-image-wrapper"
@@ -282,12 +282,12 @@
   </a>
     </span></p>
 <p>Postman 就别想了。</p>
-<p>还有另外一个工具 <a href="https://github.com/graphql/graphql-playground">graphql playground</a> 虽然很好用，apollo server 也做了集成，但未来的发展比较模糊，应该会考虑和 GraphiQL 这个项目做合并，就不讲了。</p>
+<p>还有另外一个工具 <a href="https://github.com/graphql/graphql-playground">GraphQL Playground</a> 虽然很好用，Apollo Server 也做了集成，但未来的发展比较模糊，应该会考虑和 GraphiQL 这个项目做合并，就不讲了。</p>
 <h2 id="目前的方案" style="position:relative;">目前的方案<a href="#%E7%9B%AE%E5%89%8D%E7%9A%84%E6%96%B9%E6%A1%88" aria-label="目前的方案 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>综上所述 postman 在 graphql 的支持只有 schema 以及针对 schema 的自动补全（写 graphql 的那个框框甚至连格式化都没有）。但我依然觉得 Collections Environments Tests 这些功能无法被其他平台替代。因此就只好同时使用 Apollo Studio 和 postman</p>
+<p>综上所述 Postman 在 GraphQL 的支持只有 schema 以及针对 schema 的自动补全（写 GraphQL 的那个框框甚至连格式化都没有）。但我依然觉得 Collections Environments Tests 这些功能无法被其他平台替代。因此就只好同时使用 Apollo Studio 和 Postman</p>
 <ol>
-<li>Apollo Studio 使用其 Explorer 和 Schema ChangeLog 的功能，每次在 Explorer 写好了 Query 之后就粘贴到 postman 里，创建一个对应的 Request，方便未来重用。当然，也可以补充一些测试脚本。</li>
-<li>通过 Github Action 将最新的 schema 更新到 Apollo Studio 和 postman 中，以下是用到的 Workflow</li>
+<li>Apollo Studio 使用其 Explorer 和 Schema ChangeLog 的功能，每次在 Explorer 写好了 Query 之后就粘贴到 Postman 里，创建一个对应的 Request，方便未来重用。当然，也可以补充一些测试脚本。</li>
+<li>通过 Github Action 将最新的 schema 更新到 Apollo Studio 和 Postman 中，以下是用到的 workflow：</li>
 </ol>
 <div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">name</span><span class="token punctuation">:</span> GraphQL workflow
 
@@ -324,18 +324,18 @@
           <span class="token key atrule">postman-api-version</span><span class="token punctuation">:</span> <span class="token string">"xx"</span>
           <span class="token key atrule">postman-api-schema-id</span><span class="token punctuation">:</span> <span class="token string">"xxx"</span>
           <span class="token key atrule">schema-filepath</span><span class="token punctuation">:</span> ./schema.graphql</code></pre></div>
-<p>针对这个 workflow 我真对注释的 4 个点做一些解释：</p>
+<p>针对这个 workflow 我针对注释的 4 个点做一些解释：</p>
 <ol>
-<li>我们用到了 rover 这个工具，按照其<a href="https://www.apollographql.com/docs/rover/ci-cd/#github-actions">文档</a>进行安装</li>
+<li>我们用到了 Rover 这个工具，按照其<a href="https://www.apollographql.com/docs/rover/ci-cd/#github-actions">文档</a>进行安装</li>
 <li>对于 Apollo Studio 我们可以把所有的 schema <code>cat</code> 一起后提交</li>
-<li>而正如上文所述，对于 postman 只能提交一个格式比较标准的 schema 这里就直接用了 rover 的 <code>introspect</code> 功能，不过更好的办法应该是用脚本正则化 schema 然后提交</li>
-<li>postman 的 api 没有很方便的提交方式，就之后做了一个简单的 github actions 功能，把 schema 更新到 postman 中。</li>
+<li>而正如上文所述，对于 Postman 只能提交一个格式比较标准的 schema 这里就直接用了 Rover 的 <code>introspect</code> 功能，不过更好的办法应该是用脚本正则化 schema 然后提交</li>
+<li>Postman 的 API 没有很方便的提交方式，就之后做了一个简单的 Github Actions 功能，把 schema 更新到 Postman 中。</li>
 </ol>
 <h2 id="进一步的工作" style="position:relative;">进一步的工作<a href="#%E8%BF%9B%E4%B8%80%E6%AD%A5%E7%9A%84%E5%B7%A5%E4%BD%9C" aria-label="进一步的工作 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <ol>
-<li>尝试有没有其他工具直接输出一个标准的、合并了的 schema 提交给 postman 和  apollo studio</li>
-<li>postman 似乎也可以和 github 集成将 Collections 持久化到 Github 的一个仓库里</li>
-<li>在 CI 里更新 schema 其实并不是最佳的时机，因为这个时候环境实际上还没有做部署，所以应该考虑如何让 CI 直接控制 CD 流程，保证环境中的 schema 和 postman / apollo studio 中的 schema 同步</li>
+<li>尝试有没有其他工具直接输出一个标准的、合并了的 schema 提交给 Postman 和 Apollo Studio</li>
+<li>Postman 似乎也可以和 GitHub 集成将 Collections 持久化到 GitHub 的一个仓库里</li>
+<li>在 CI 里更新 schema 其实并不是最佳的时机，因为这个时候环境实际上还没有做部署，所以应该考虑如何让 CI 直接控制 CD 流程，保证环境中的 schema 和 Postman / Apollo Studio 中的 schema 同步</li>
 </ol></div></div><div><h1><a href="/ddd-and-cqrs-updated">对 CQRS 和 DDD 的一些新的讨论</a></h1><h2>2021 October-18</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>在 <a href="/some-tips-for-ddd">some tips for ddd</a> 里讲明白了 DDD 是针对 <code>写模型</code> 的，而对于 <code>读模型</code> 则可以通过一层薄薄的 <code>Query Service</code> 直接从数据库拼装 <code>DTO</code> 实现，这样子的好处是：</p>
 <ol>
 <li>遵守了 DDD 中 <code>aggregate</code> 的访问原则 / 持久化原则，不会因为一个「展示包含用户头像的文章列表」而被轻易的破坏</li>
