@@ -87,7 +87,7 @@ helm install mysql presslabs/mysql-operator \
 
 ## 监控
 
-![](../img/in-post/youtube-dl/2020-10-19-18-34-53.png)
+![](../img/in-post/mysql-operator/2020-10-19-18-34-53.png)
 
 如上图所示，这是我直接将 https://grafana.com/grafana/dashboards/7362 这个仪表盘导入所看到的效果。
 
