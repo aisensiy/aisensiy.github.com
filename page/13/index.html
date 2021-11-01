@@ -55,7 +55,297 @@
   </script><link rel="preconnect" href="https://plausible.io"/><script async="" defer="" data-domain="aisensiy.me" src="https://plausible.io/js/plausible.js"></script><script>
           window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) };
           
-          </script><link as="script" rel="preload" href="/webpack-runtime-4c5d987e132f409a2a52.js"/><link as="script" rel="preload" href="/framework-e728256d7a1d703d32c2.js"/><link as="script" rel="preload" href="/app-017b258692d84823a7c8.js"/><link as="script" rel="preload" href="/75ce8a9e25edca21eb9c1a1dab0250d3ee550bef-e9b300a9f21137291b3a.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-9fd36e13ebfed646ca18.js"/><link as="fetch" rel="preload" href="/page-data/page/13/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2021<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div><h1><a href="/jackson-practices">Jackson 在 Spring Boot 中的使用小结 1</a></h1><h2>2017 September-18</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>Json 数据格式由于其和 js 的亲密性等原因，目前算是比较主流的数据传输格式。Spring Boot 也默认集成了 jackson 用于 <code>application/json</code> 格式的序列化与反序列化，在写这种 restful json api 的时候势必会需要使用其 api（尤其是它所支持的注解）对输入输出的数据进行各种各样的修改和加工。这里总结了一些常见到的场景、应对的方法并提供了一些额外的学习资料，写着写着发现内容还有点点多，先完成了序列化中的三个情况，后面的博客再补充。</p>
+          </script><link as="script" rel="preload" href="/webpack-runtime-4c5d987e132f409a2a52.js"/><link as="script" rel="preload" href="/framework-e728256d7a1d703d32c2.js"/><link as="script" rel="preload" href="/app-017b258692d84823a7c8.js"/><link as="script" rel="preload" href="/75ce8a9e25edca21eb9c1a1dab0250d3ee550bef-e9b300a9f21137291b3a.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-9fd36e13ebfed646ca18.js"/><link as="fetch" rel="preload" href="/page-data/page/13/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2021<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div><h1><a href="/jackson-practices-2">Jackson 在 Spring Boot 中的使用小结 2</a></h1><h2>2017 September-19</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p><a href="/jackson-practices">上一篇</a>介绍了三个用于 jackson 自定义序列化的场景。这一篇继续介绍其他一些实践。同样，所有的代码都可以在<a href="https://github.com/aisensiy/demo-for-jackson">GitHub</a>找到。</p>
+<h2 id="清理输入数据的外层包装（unwrap）" style="position:relative;">清理输入数据的外层包装（unwrap）<a href="#%E6%B8%85%E7%90%86%E8%BE%93%E5%85%A5%E6%95%B0%E6%8D%AE%E7%9A%84%E5%A4%96%E5%B1%82%E5%8C%85%E8%A3%85%EF%BC%88unwrap%EF%BC%89" aria-label="清理输入数据的外层包装（unwrap） permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>json api 不单单是数据的输出格式为 json 通常数据的输入（POST 或者 PUT 的 request body）也是 json 格式。很多情况下会需要默认将输入的 json 数据以一个父级对象包裹。例如在 <a href="https://github.com/gothinkster/realworld/tree/master/api">realworld</a> 项目的 api 规范中在创建一个 <code>article</code> 时，其输入的数据格式为：</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token punctuation">{</span>
+  <span class="token string">"article"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"title"</span><span class="token operator">:</span> <span class="token string">"How to train your dragon"</span><span class="token punctuation">,</span>
+    <span class="token string">"description"</span><span class="token operator">:</span> <span class="token string">"Ever wonder how?"</span><span class="token punctuation">,</span>
+    <span class="token string">"body"</span><span class="token operator">:</span> <span class="token string">"You have to believe"</span><span class="token punctuation">,</span>
+    <span class="token string">"tagList"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"reactjs"</span><span class="token punctuation">,</span> <span class="token string">"angularjs"</span><span class="token punctuation">,</span> <span class="token string">"dragons"</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>其真正的数据被 <code>article</code> 这个属性包裹起来了。而在实际使用的时候，如果每次都要去自行解包这个层次实在是不够优雅。好在 jackson 可以通过配置自动帮我们 unwrap 这里的对象，只需要在 <code>application.(yml|properties)</code> 增加一个配置：</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">spring.jackson.deserialization.unwrap-root-value=true</code></pre></div>
+<p>比如我有一个这样的输入格式：</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">{
+  "wrap": {
+    "name": "name"
+  }
+}</code></pre></div>
+<p>为了对其自动解包，我们对要解析的对象提供相应的 <code>@JsonRootName</code> 即可:</p>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@JsonRootName</span><span class="token punctuation">(</span><span class="token string">"wrap"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">WrapJson</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">WrapJson</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> name<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">WrapJson</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p><strong>但是，要注意这个配置是全局有效的，意味着一旦设置了之后所有的解析都会尝试将数据解包，即使没有提供 <code>@JsonRootName</code> 的注解，其依然会尝试使用类名称等方式去解包。因此，除了这个测试使用 <code>spring.jackson.deserialization.unwrap-root-value</code> 外默认关闭它</strong>。</p>
+<h2 id="处理枚举类型" style="position:relative;">处理枚举类型<a href="#%E5%A4%84%E7%90%86%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8B" aria-label="处理枚举类型 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>在 java 为了展示的方便，我们通常是需要将枚举按照字符串来处理的，jackson 默认也是这么做的。</p>
+<p><code>OrderStatus</code>:</p>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">enum</span> <span class="token class-name">OrderStatus</span> <span class="token punctuation">{</span>
+    UNPAID<span class="token punctuation">,</span> PREPARING<span class="token punctuation">,</span> COMPLETED<span class="token punctuation">,</span> CANCELED
+<span class="token punctuation">}</span></code></pre></div>
+<p><code>OrderWithStatus</code>:</p>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">OrderWithStatus</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name">OrderStatus</span> status<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> id<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">OrderWithStatus</span><span class="token punctuation">(</span><span class="token class-name">OrderStatus</span> status<span class="token punctuation">,</span> <span class="token class-name">String</span> id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>status <span class="token operator">=</span> status<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>id <span class="token operator">=</span> id<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">OrderWithStatus</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">OrderStatus</span> <span class="token function">getStatus</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> status<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> id<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span>
+
+<span class="token class-name">OrderWithStatus</span> order <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">OrderWithStatus</span><span class="token punctuation">(</span><span class="token class-name">OrderStatus</span><span class="token punctuation">.</span>UNPAID<span class="token punctuation">,</span> <span class="token string">"123"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>对于 <code>order</code> 来说，其默认的序列化为：</p>
+<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"id"</span><span class="token operator">:</span> <span class="token string">"123"</span><span class="token punctuation">,</span>
+  <span class="token property">"status"</span><span class="token operator">:</span> <span class="token string">"UNPAID"</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>当然对其进行反序列化也是会成功的，这是处理枚举最简单的情况了，不过 jackson 还支持自定义的序列化与反序列化，比如如果我们需要将原有的枚举变成小写：</p>
+<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"id"</span><span class="token operator">:</span> <span class="token string">"123"</span><span class="token punctuation">,</span>
+  <span class="token property">"status"</span><span class="token operator">:</span> <span class="token string">"unpaid"</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>我们可以写自定义的 serializer 和 deserializer:</p>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@JsonSerialize</span><span class="token punctuation">(</span>using <span class="token operator">=</span> <span class="token class-name">OrderStatusSerializer</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@JsonDeserialize</span><span class="token punctuation">(</span>using <span class="token operator">=</span> <span class="token class-name">OrderStatusDeserializer</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">enum</span> <span class="token class-name">OrderStatus</span> <span class="token punctuation">{</span>
+    UNPAID<span class="token punctuation">,</span> PREPARING<span class="token punctuation">,</span> COMPLETED<span class="token punctuation">,</span> CANCELED<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">OrderStatusSerializer</span> <span class="token keyword">extends</span> <span class="token class-name">StdSerializer</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">OrderStatus</span><span class="token punctuation">></span></span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token class-name">OrderStatusSerializer</span><span class="token punctuation">(</span><span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">OrderStatus</span><span class="token punctuation">></span></span> t<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">OrderStatusSerializer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token class-name">OrderStatus</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">serialize</span><span class="token punctuation">(</span><span class="token class-name">OrderStatus</span> value<span class="token punctuation">,</span> <span class="token class-name">JsonGenerator</span> gen<span class="token punctuation">,</span> <span class="token class-name">SerializerProvider</span> provider<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">{</span>
+        gen<span class="token punctuation">.</span><span class="token function">writeString</span><span class="token punctuation">(</span>value<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">OrderStatusDeserializer</span> <span class="token keyword">extends</span> <span class="token class-name">StdDeserializer</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">OrderStatus</span><span class="token punctuation">></span></span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token class-name">OrderStatusDeserializer</span><span class="token punctuation">(</span><span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span></span> vc<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>vc<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">OrderStatusDeserializer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token class-name">OrderStatus</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">OrderStatus</span> <span class="token function">deserialize</span><span class="token punctuation">(</span><span class="token class-name">JsonParser</span> p<span class="token punctuation">,</span> <span class="token class-name">DeserializationContext</span> ctxt<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span><span class="token punctuation">,</span> <span class="token class-name">JsonProcessingException</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token class-name">OrderStatus</span><span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span><span class="token function">getText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>处理使用自定义的反序列化外或者我们也可以提供一个包含 <code>@JsonCreator</code> 标注的构造函数进行自定义的反序列化，并用上一篇提到的 <code>@JsonValue</code> 进行序列化：</p>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">enum</span> <span class="token class-name">OrderStatus</span> <span class="token punctuation">{</span>
+    UNPAID<span class="token punctuation">,</span> PREPARING<span class="token punctuation">,</span> COMPLETED<span class="token punctuation">,</span> CANCELED<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@JsonCreator</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">OrderStatus</span> <span class="token function">fromValue</span><span class="token punctuation">(</span><span class="token annotation punctuation">@JsonProperty</span><span class="token punctuation">(</span><span class="token string">"status"</span><span class="token punctuation">)</span> <span class="token class-name">String</span> value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">valueOf</span><span class="token punctuation">(</span>value<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@JsonValue</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">ofValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p><code>@JsonCreator</code> 有点像是 MyBatis 做映射的时候那个 <code>&#x3C;constructor></code> 它可以让你直接使用一个构造函数或者是静态工厂方法来构建这个对象，可以在这里做一些额外的初始化或者是默认值选定的工作，有了它在反序列化的时候就不需要那个很讨厌的默认的无参数构造函数了。</p>
+<p>当然枚举的处理还有一些更诡异的方式，<a href="https://www.baeldung.com/jackson-serialize-enums">这里</a>有讲解，我就不再赘述了。</p>
+<h2 id="对多态的支持" style="position:relative;">对多态的支持<a href="#%E5%AF%B9%E5%A4%9A%E6%80%81%E7%9A%84%E6%94%AF%E6%8C%81" aria-label="对多态的支持 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>在 DDD 中有领域事件（domain event）的概念，有时候我们需要将这些事件保存下来。由于每一个事件的结构是千差万别的，不论是存储在关系型数据库还是 nosql 数据库，在将其序列化保存的时候我们需要保留其原有的类型信息以便在反序列化的时候将其解析为之前的类型。jackson 对这种多态有很好的支持。</p>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@JsonTypeInfo</span><span class="token punctuation">(</span>
+    use <span class="token operator">=</span> <span class="token class-name">JsonTypeInfo<span class="token punctuation">.</span>Id</span><span class="token punctuation">.</span>NAME<span class="token punctuation">,</span>
+    include <span class="token operator">=</span> <span class="token class-name">JsonTypeInfo<span class="token punctuation">.</span>As</span><span class="token punctuation">.</span>PROPERTY<span class="token punctuation">,</span>
+    property <span class="token operator">=</span> <span class="token string">"type"</span>
+<span class="token punctuation">)</span>
+<span class="token annotation punctuation">@JsonSubTypes</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@JsonSubTypes.Type</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token class-name">UserCreatedEvent</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> name <span class="token operator">=</span> <span class="token string">"user_created"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token annotation punctuation">@JsonSubTypes.Type</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token class-name">ArticleCreatedEvent</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> name <span class="token operator">=</span> <span class="token string">"article_created"</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">Event</span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span>
+
+<span class="token annotation punctuation">@JsonTypeName</span><span class="token punctuation">(</span><span class="token string">"user_created"</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">UserCreatedEvent</span> <span class="token keyword">extends</span> <span class="token class-name">Event</span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span>
+
+<span class="token annotation punctuation">@JsonTypeName</span><span class="token punctuation">(</span><span class="token string">"article_created"</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">ArticleCreatedEvent</span> <span class="token keyword">extends</span> <span class="token class-name">Event</span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>其中 <code>@JsonTypeInfo</code> 定义类型信息以什么方式保留在 json 数据中，这里就是采用了 <code>type</code> 的属性。<code>@JsonSubTypes</code> 定义了一系列子类与类型的映射关系。最后 <code>@JsonTypeName</code> 为每一个子类型定义了其名称，与 <code>@JsonSubTypes</code> 相对应。</p>
+<p>那么对于 <code>UserCreatedEvent</code> 和 <code>ArticleCreatedEvent</code> 类型，其解析的 json 如下：</p>
+<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"user_created"</span>
+<span class="token punctuation">}</span></code></pre></div>
+<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"article_created"</span>
+<span class="token punctuation">}</span></code></pre></div>
+<h2 id="使用-mixin" style="position:relative;">使用 mixin<a href="#%E4%BD%BF%E7%94%A8-mixin" aria-label="使用 mixin permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>这是我非常喜欢的一个功能，第一次见到是在 <a href="https://github.com/olivergierke/spring-restbucks">spring restbucks</a> 的例子里。它有点像是 ruby 里面的 mixin 的概念，就是在不修改已知类代码、甚至是不添加任何注释的前提下为其提供 jackson 序列化的一些设定。在两种场景下比较适用 mixin:</p>
+<ol>
+<li>你需要对一个外部库的类进行自定义的序列化和反序列化</li>
+<li>你希望自己的业务代码不包含一丝丝技术细节：写代码的时候很希望自己创建的业务类是 POJO，一个不需要继承自特定对象甚至是不需要特定技术注解的类，它强调的是一个业务信息而不是一个技术信息</li>
+</ol>
+<p>这里就提供一个解析 <code>joda time</code> 的 mixin 的示例，它提供了一个 <code>DateTimeSerializer</code> 将 <code>joda.DateTime</code> 解析为 ISO 的格式。代码见<a href="https://github.com/gothinkster/spring-boot-realworld-example-app/blob/master/src/main/java/io/spring/JacksonCustomizations.java">这里</a>。</p>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JacksonCustomizations</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> <span class="token class-name">Module</span> <span class="token function">realWorldModules</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">RealWorldModules</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">RealWorldModules</span> <span class="token keyword">extends</span> <span class="token class-name">SimpleModule</span> <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token class-name">RealWorldModules</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">addSerializer</span><span class="token punctuation">(</span><span class="token class-name">DateTime</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">DateTimeSerializer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">DateTimeSerializer</span> <span class="token keyword">extends</span> <span class="token class-name">StdSerializer</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">DateTime</span><span class="token punctuation">></span></span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">protected</span> <span class="token class-name">DateTimeSerializer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token class-name">DateTime</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">serialize</span><span class="token punctuation">(</span><span class="token class-name">DateTime</span> value<span class="token punctuation">,</span> <span class="token class-name">JsonGenerator</span> gen<span class="token punctuation">,</span> <span class="token class-name">SerializerProvider</span> provider<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>value <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                gen<span class="token punctuation">.</span><span class="token function">writeNull</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                gen<span class="token punctuation">.</span><span class="token function">writeString</span><span class="token punctuation">(</span><span class="token class-name">ISODateTimeFormat</span><span class="token punctuation">.</span><span class="token function">dateTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">withZoneUTC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span></code></pre></div>
+<h2 id="其他" style="position:relative;">其他<a href="#%E5%85%B6%E4%BB%96" aria-label="其他 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<h3 id="jsonpropertyorder" style="position:relative;">@JsonPropertyOrder<a href="#jsonpropertyorder" aria-label="jsonpropertyorder permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@JsonPropertyOrder</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token string">"id"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyBean</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> id<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>按照其指定的顺序解析为：</p>
+<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"My bean"</span><span class="token punctuation">,</span>
+    <span class="token property">"id"</span><span class="token operator">:</span><span class="token number">1</span>
+<span class="token punctuation">}</span></code></pre></div>
+<h3 id="展示空数据的策略" style="position:relative;">展示空数据的策略<a href="#%E5%B1%95%E7%A4%BA%E7%A9%BA%E6%95%B0%E6%8D%AE%E7%9A%84%E7%AD%96%E7%95%A5" aria-label="展示空数据的策略 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>有这么一个对象:</p>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token class-name">User</span> user <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">User</span><span class="token punctuation">(</span><span class="token string">"123"</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token string">"xu"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>我们希望其任何为空的数据都不再显示，即其序列化结果为：</p>
+<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"id"</span><span class="token operator">:</span> <span class="token string">"123"</span><span class="token punctuation">,</span>
+  <span class="token property">"last_name"</span><span class="token operator">:</span> <span class="token string">"xu"</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>而不是</p>
+<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"id"</span><span class="token operator">:</span> <span class="token string">"123"</span><span class="token punctuation">,</span>
+  <span class="token property">"first_name"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+  <span class="token property">"last_name"</span><span class="token operator">:</span> <span class="token string">"xu"</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>当然，遇到 <code>null</code> 的时候也不希望出现这样的结果：</p>
+<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"id"</span><span class="token operator">:</span> <span class="token string">"123"</span><span class="token punctuation">,</span>
+  <span class="token property">"first_name"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+  <span class="token property">"last_name"</span><span class="token operator">:</span> <span class="token string">"xu"</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>为了达到这个效果我们可以为 <code>User.java</code> 提供 <code>@JsonInclude(JsonInclude.Include.NON_EMPTY)</code> 注解：</p>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@JsonInclude</span><span class="token punctuation">(</span><span class="token class-name">JsonInclude<span class="token punctuation">.</span>Include</span><span class="token punctuation">.</span>NON_EMPTY<span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> id<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@JsonProperty</span><span class="token punctuation">(</span><span class="token string">"first_name"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> firstName<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@JsonProperty</span><span class="token punctuation">(</span><span class="token string">"last_name"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> lastName<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">User</span><span class="token punctuation">(</span><span class="token class-name">String</span> id<span class="token punctuation">,</span> <span class="token class-name">String</span> firstName<span class="token punctuation">,</span> <span class="token class-name">String</span> lastName<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>id <span class="token operator">=</span> id<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>firstName <span class="token operator">=</span> firstName<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>lastName <span class="token operator">=</span> lastName<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> id<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getFirstName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> firstName<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getLastName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> lastName<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>除了 <code>NON_EMPTY</code> 还有很多其他的配置可以使用。</p>
+<p>如果希望这个策略在我们的整个应用中都起效（而不是单个类）我们可以在 <code>application.properties | application.yml</code> 做配置：</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">spring.jackson.default-property-inclusion=non_empty</code></pre></div>
+<h3 id="自定义标注" style="position:relative;">自定义标注<a href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A0%87%E6%B3%A8" aria-label="自定义标注 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>如果一个注解的组合频繁出现在我们的项目中，我们可以通过 <code>@JacksonAnnotationsInside</code> 将其打包使用：</p>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span><span class="token class-name">RetentionPolicy</span><span class="token punctuation">.</span>RUNTIME<span class="token punctuation">)</span>
+<span class="token annotation punctuation">@JacksonAnnotationsInside</span>
+<span class="token annotation punctuation">@JsonInclude</span><span class="token punctuation">(</span><span class="token class-name">Include</span><span class="token punctuation">.</span>NON_NULL<span class="token punctuation">)</span>
+<span class="token annotation punctuation">@JsonPropertyOrder</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token string">"id"</span><span class="token punctuation">,</span> <span class="token string">"dateCreated"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token annotation punctuation">@interface</span> <span class="token class-name">CustomAnnotation</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token annotation punctuation">@CustomAnnotation</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BeanWithCustomAnnotation</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> id<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token class-name">Date</span> dateCreated<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token class-name">BeanWithCustomAnnotation</span> bean 
+      <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BeanWithCustomAnnotation</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">"My bean"</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>对于对象 <code>bean</code> 来说，其解析结果为</p>
+<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"My bean"</span><span class="token punctuation">,</span>
+    <span class="token property">"id"</span><span class="token operator">:</span><span class="token number">1</span>
+<span class="token punctuation">}</span></code></pre></div>
+<h2 id="相关资料" style="position:relative;">相关资料<a href="#%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99" aria-label="相关资料 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ul>
+<li><a href="https://www.baeldung.com/jackson-annotations">Jackson Annotation Examples</a></li>
+<li><a href="https://github.com/FasterXML/jackson-annotations">Jackson Annotation document</a></li>
+<li><a href="https://www.baeldung.com/jackson-serialize-enums">How To Serialize Enums as JSON Objects with Jackson</a></li>
+<li><a href="https://github.com/olivergierke/spring-restbucks">spring restbucks</a></li>
+<li><a href="https://github.com/gothinkster/spring-boot-realworld-example-app/blob/master/src/main/java/io/spring/JacksonCustomizations.java">mixin code</a></li>
+</ul></div></div><div><h1><a href="/jackson-practices">Jackson 在 Spring Boot 中的使用小结 1</a></h1><h2>2017 September-18</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>Json 数据格式由于其和 js 的亲密性等原因，目前算是比较主流的数据传输格式。Spring Boot 也默认集成了 jackson 用于 <code>application/json</code> 格式的序列化与反序列化，在写这种 restful json api 的时候势必会需要使用其 api（尤其是它所支持的注解）对输入输出的数据进行各种各样的修改和加工。这里总结了一些常见到的场景、应对的方法并提供了一些额外的学习资料，写着写着发现内容还有点点多，先完成了序列化中的三个情况，后面的博客再补充。</p>
 <p>所有的代码可以在<a href="https://github.com/aisensiy/demo-for-jackson">GitHub</a>找到。</p>
 <h2 id="样例的形式" style="position:relative;">样例的形式<a href="#%E6%A0%B7%E4%BE%8B%E7%9A%84%E5%BD%A2%E5%BC%8F" aria-label="样例的形式 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <p>和之前的博客类似，这次也是单独创建了一个用于演示的项目，然后通过测试的形式展示项目。在演示 jackson 时，为了方便测试，我们都将提供一个期望的 json 文件进行比对：</p>
@@ -430,123 +720,7 @@ userResource <span class="token operator">=</span> <span class="token keyword">n
 <li><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html#boot-features-external-config-relaxed-binding">relaxed binding</a></li>
 <li><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html#boot-features-external-config-vs-value">@ConfigurationProperties vs. @Value</a></li>
 <li><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html">Configuration</a></li>
-</ul></div></div><div><h1><a href="/real-world-spring-boot-and-mybatis">Spring Boot + Spring MVC + MyBatis 版本的 Real World 实现</a></h1><h2>2017 August-22</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p><a href="https://github.com/gothinkster/realworld">Real World</a> 是由 <a href="https://thinkster.io/">thinkster</a> 这样一个在线编程教育机构发起的一个前后端分离的项目规范。用以展示并作为教材教大家用 react、angular 等不同的前端框架或者 rails、django、spring boot 等不同的后端框架实现同一个项目时的实践是什么样子的。我觉得这个主意非常的好，它让大家对技术的讨论有了一个共同的主题，在采用不同的技术栈以及设计思路解决这个共同的问题的时候我们可以更确切的看到不同的方案之间的优劣，从而更切实的（而不是零散的代码和想象）了解不同框架、语言、设计思路在实现一个项目时的差异，从而帮助我们更好的选择项目的解决方案。当然，从单个技术栈来看，它提供了一个做出完整项目需要都需要哪些具体的知识点，可以当做某一个技术栈的入门小项目来学习和借鉴。</p>
-<p>虽然这个项目叫做 real world，相比 todomvc 这样的 hello world 确实复杂了不少，但是很显然它的复杂度还仅仅是一个人几个小时就能完成的水平，当然不能全面的反映出一个框架的水平，仅做参考。</p>
-<p>本篇对项目做一个整体的介绍，后续会有一些细节的介绍。文章中会涉及到一些 DDD（领域驱动设计） 相关的概念，想要更多的了解建议看看最下面相关材料中的链接。</p>
-<h2 id="项目功能" style="position:relative;">项目功能<a href="#%E9%A1%B9%E7%9B%AE%E5%8A%9F%E8%83%BD" aria-label="项目功能 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p><a href="https://demo.realworld.io/#/">conduit</a> 是 realworld 要实现的一个博客系统。具备一下的功能：</p>
-<ol>
-<li>用户的注册和登录</li>
-<li>用户可以发表、编辑文章</li>
-<li>用户可以对文章添加评论、点赞</li>
-<li>用户可以关注别的用户，关注的用户的文章会展示在用户的 feed 中</li>
-</ol>
-<p>这是一个前后端分离的项目，其提供了后端 api 的<a href="https://github.com/gothinkster/realworld/tree/master/api">规范</a>。这里，我们不评论其 API 设计的好坏，要完全遵循其设计并实现它。当然，对于不同的语言和框架实现都有其 API 设计的偏好，既然这里定死了一种规范，那么在实现的过程中难免会有一些 tricky 的地方需要我们去克服。</p>
-<h2 id="目录结构" style="position:relative;">目录结构<a href="#%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84" aria-label="目录结构 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>如标题所述，这里我提供了一个 spring boot + spring mvc + mybatis 的实现。其大概的结构如下:</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">.
-├── JacksonCustomizations.java
-├── MyBatisConfig.java
-├── RealworldApplication.java
-├── api
-├── application
-├── core
-└── infrastructure</code></pre></div>
-<ol>
-<li><code>api</code> 是 web 层，实现了和 spring mvc 的 web 接口</li>
-<li><code>core</code> 是业务层，包含了最关键的业务实体和领域服务以及其各个实体之间的交互</li>
-<li><code>application</code> 是对外的服务层，由于这个项目本身的业务并不复杂，这里处理的基本都是各种信息的查询</li>
-<li><code>core</code> 中定义的大量接口在 <code>infrastructure</code> 包含了其具体的实现，比如 data mapper 的实现，具体的密码加密的实现等</li>
-<li>其他则是一些整体的配置类，如主类 <code>RealworldApplication</code> 数据库配置类 <code>MyBatisConfig</code> 等</li>
-</ol>
-<h2 id="六边形架构" style="position:relative;">六边形架构<a href="#%E5%85%AD%E8%BE%B9%E5%BD%A2%E6%9E%B6%E6%9E%84" aria-label="六边形架构 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p><a href="https://alistair.cockburn.us/Hexagonal+architecture">六边形架构</a> 或者说是 <a href="https://www.infoq.com/news/2014/10/ddd-onion-architecture">洋葱架构</a> 其实不是一个什么新东西，因为<strong>分层架构</strong>会导致其最底层的实现是数据库，而之前很多的业务逻辑和数据库是揉在一起的（事实上很多项目也确实这样，大量的存储过程中包含着业务的逻辑，业务和数据库紧密的结合在了一起）；但实际上，一个应用最核心的东西应该是<strong>业务逻辑</strong>，而业务逻辑是不应该和技术细节有强关联的，数据库实现和视图层一样，是某种技术细节，不应该和将其与业务逻辑绑定，所以应该用应该强调内部和外部：内部是我的业务逻辑，而外部与外界沟通的基础设施和技术细节，比如具体的数据库存储，比如 restful 的 api，再比如 html 的视图。</p>
-<p>通过这样的思考方式，我们可以认为 mysql 数据库实现仅仅是众多数据库实现中的一个而已，我们可以在不同的环境中轻易的替换掉它，尤其是为对业务的测试提供了可能：我们可以采用内存数据库或者 mock 轻松的实现业务测试。</p>
-<p>我所实现的这个 realworld 项目也基本遵循这个架构，首先在 <code>core</code> 中定义了我们的业务实体 <code>User</code> <code>Article</code> 已经各种 <code>Repository</code> 的接口。他们定义了这个项目核心实体的关系以及交互行为。其中具体的 Repository 的实现以及 web 接口的实现都与它无关。对于比较简单的数据创建等行为我们直接在 web 层中处理了，而相对比较麻烦的查询业务我们按照用例在 application 中提供。</p>
-<p>在 api 层直接创建用户：</p>
-<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>path <span class="token operator">=</span> <span class="token string">"/users"</span><span class="token punctuation">,</span> method <span class="token operator">=</span> POST<span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token class-name">ResponseEntity</span> <span class="token function">createUser</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Valid</span> <span class="token annotation punctuation">@RequestBody</span> <span class="token class-name">RegisterParam</span> registerParam<span class="token punctuation">,</span>
-                                 <span class="token class-name">BindingResult</span> bindingResult<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token function">checkInput</span><span class="token punctuation">(</span>registerParam<span class="token punctuation">,</span> bindingResult<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token class-name">User</span> user <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">User</span><span class="token punctuation">(</span>
-        registerParam<span class="token punctuation">.</span><span class="token function">getEmail</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-        registerParam<span class="token punctuation">.</span><span class="token function">getUsername</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-        encryptService<span class="token punctuation">.</span><span class="token function">encrypt</span><span class="token punctuation">(</span>registerParam<span class="token punctuation">.</span><span class="token function">getPassword</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-        <span class="token string">""</span><span class="token punctuation">,</span>
-        defaultImage<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    userRepository<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token class-name">UserData</span> userData <span class="token operator">=</span> userQueryService<span class="token punctuation">.</span><span class="token function">findById</span><span class="token punctuation">(</span>user<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token class-name">ResponseEntity</span><span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">201</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">body</span><span class="token punctuation">(</span>
-                <span class="token function">userResponse</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">UserWithToken</span><span class="token punctuation">(</span>userData<span class="token punctuation">,</span>
-                                               jwtService<span class="token punctuation">.</span><span class="token function">toToken</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p>在 application 层创建一个 <code>findRecentArticles</code> 的服务，用于处理相对比较复杂的查询：</p>
-<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token class-name">ArticleDataList</span> <span class="token function">findRecentArticles</span><span class="token punctuation">(</span><span class="token class-name">String</span> tag<span class="token punctuation">,</span> 
-                                          <span class="token class-name">String</span> author<span class="token punctuation">,</span> 
-                                          <span class="token class-name">String</span> favoritedBy<span class="token punctuation">,</span> 
-                                          <span class="token class-name">Page</span> page<span class="token punctuation">,</span> 
-                                          <span class="token class-name">User</span> currentUser<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> articleIds <span class="token operator">=</span> articleReadService<span class="token punctuation">.</span><span class="token function">queryArticles</span><span class="token punctuation">(</span>tag<span class="token punctuation">,</span> 
-                                                               author<span class="token punctuation">,</span> 
-                                                               favoritedBy<span class="token punctuation">,</span> 
-                                                               page<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">int</span> articleCount <span class="token operator">=</span> articleReadService<span class="token punctuation">.</span><span class="token function">countArticle</span><span class="token punctuation">(</span>tag<span class="token punctuation">,</span> author<span class="token punctuation">,</span> favoritedBy<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>articleIds<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ArticleDataList</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> articleCount<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-        <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">ArticleData</span><span class="token punctuation">></span></span> articles <span class="token operator">=</span> articleReadService<span class="token punctuation">.</span><span class="token function">findArticles</span><span class="token punctuation">(</span>articleIds<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">fillExtraInfo</span><span class="token punctuation">(</span>articles<span class="token punctuation">,</span> currentUser<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ArticleDataList</span><span class="token punctuation">(</span>articles<span class="token punctuation">,</span> articleCount<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p><strong>注意</strong> 这里之所以没有为创建数据的用例在 application 中创建 service 纯粹是因为它们比较简单，在面向复杂的场景时是可以提供的。</p>
-<h2 id="cqrs" style="position:relative;">CQRS<a href="#cqrs" aria-label="cqrs permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>在 DDD 中 Repository 主要负责数据的持久化：它的任务非常的简单：要么是将内存中的 aggregate 储到数据库中，要么是从数据库中将指定 id 的实体从数据库中重新在内存中构建起来。它实际上是不负责那种复杂的查询业务的，比如获取被喜爱最多的 50 篇文章。更多的内容可以看<a href="/some-tips-for-ddd">这篇文章</a>。</p>
-<p>CQRS 全称 Command Query Responsibility Segregation，强调一个系统的读模型和写模型是分离的。其中 DDD 所实现的是读模型，保证了业务的实现以及数据的一致性。而读模型则纯粹是利用底层数据库的优势将用户需要的数据拼装起来，完全不涉及到实体。<strong>这样的好处在于我们可以完全实现界面所需要的数据模型和真正的业务模型的独立演进，不会因为一个界面上数据展示的变化而导致本身的业务模型出现变更</strong>。当然，这里所谓的界面就是我们的 json API 规格。对于查询业务，我们在 <code>application/data</code> 下提供了单独的 <code>Data Transfer Object</code>。</p>
-<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Data</span>
-<span class="token annotation punctuation">@NoArgsConstructor</span>
-<span class="token annotation punctuation">@AllArgsConstructor</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ArticleData</span> <span class="token punctuation">{</span>
-    <span class="token keyword">private</span> <span class="token class-name">String</span> id<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token class-name">String</span> slug<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token class-name">String</span> title<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token class-name">String</span> description<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token class-name">String</span> body<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token keyword">boolean</span> favorited<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token keyword">int</span> favoritesCount<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token class-name">DateTime</span> createdAt<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token class-name">DateTime</span> updatedAt<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> tagList<span class="token punctuation">;</span>
-    <span class="token annotation punctuation">@JsonProperty</span><span class="token punctuation">(</span><span class="token string">"author"</span><span class="token punctuation">)</span>
-    <span class="token keyword">private</span> <span class="token class-name">ProfileData</span> profileData<span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p>可以看到 <code>ArticleData</code> 就是 <code>DTO</code> 或者说是 <code>Presentation Model</code> 它和 API 文档中对数据的格式要求完全对齐而不考虑 Article 和 Author 到底应不应当属于一个聚合。</p>
-<p>而下面则是在 core 下的实体：</p>
-<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Getter</span>
-<span class="token annotation punctuation">@NoArgsConstructor</span>
-<span class="token annotation punctuation">@EqualsAndHashCode</span><span class="token punctuation">(</span>of <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"id"</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Article</span> <span class="token punctuation">{</span>
-    <span class="token keyword">private</span> <span class="token class-name">String</span> userId<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token class-name">String</span> id<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token class-name">String</span> slug<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token class-name">String</span> title<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token class-name">String</span> description<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token class-name">String</span> body<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Tag</span><span class="token punctuation">></span></span> tags<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token class-name">DateTime</span> createdAt<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token class-name">DateTime</span> updatedAt<span class="token punctuation">;</span>
-	<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p>很显然，这里 Article 中并不包含 Author 的概念，因为它们并不属于一个聚合，Article 只能保存另外一个聚合的 Id (userId)。</p>
-<p>具体的代码见 <a href="https://github.com/gothinkster/spring-boot-realworld-example-app">GitHub</a> 欢迎 star、fork、报 bug、提供 PR。</p>
-<h2 id="相关资料" style="position:relative;">相关资料<a href="#%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99" aria-label="相关资料 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<ol>
-<li><a href="https://github.com/gothinkster/realworld">Real World</a></li>
-<li><a href="https://martinfowler.com/bliki/CQRS.html">CQRS</a></li>
-<li><a href="https://aisensiy.github.io/2016/05/17/ddd-repository/">DDD Repository</a></li>
-<li><a href="https://aisensiy.github.io/2016/04/20/some-tips-for-ddd/">Some tips about DDD</a></li>
-</ol></div></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/12">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/14">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
+</ul></div></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/12">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/14">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       
       if(true) {
