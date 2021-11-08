@@ -55,7 +55,45 @@
   </script><link rel="preconnect" href="https://plausible.io"/><script async="" defer="" data-domain="aisensiy.me" src="https://plausible.io/js/plausible.js"></script><script>
           window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) };
           
-          </script><link as="script" rel="preload" href="/webpack-runtime-4c5d987e132f409a2a52.js"/><link as="script" rel="preload" href="/framework-e728256d7a1d703d32c2.js"/><link as="script" rel="preload" href="/app-017b258692d84823a7c8.js"/><link as="script" rel="preload" href="/75ce8a9e25edca21eb9c1a1dab0250d3ee550bef-e9b300a9f21137291b3a.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-9fd36e13ebfed646ca18.js"/><link as="fetch" rel="preload" href="/page-data/page/10/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2021<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div><h1><a href="/docker-accelerate">国内环境下更好的 docker 镜像获取</a></h1><h2>2018 June-10</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>最近欠了好多的 blog，是在是有点忙，周末也被各种事情缠身。今天趁周日的最后半个小时抓紧记录下来一些调研的成果。</p>
+          </script><link as="script" rel="preload" href="/webpack-runtime-4c5d987e132f409a2a52.js"/><link as="script" rel="preload" href="/framework-e728256d7a1d703d32c2.js"/><link as="script" rel="preload" href="/app-017b258692d84823a7c8.js"/><link as="script" rel="preload" href="/75ce8a9e25edca21eb9c1a1dab0250d3ee550bef-e9b300a9f21137291b3a.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-9fd36e13ebfed646ca18.js"/><link as="fetch" rel="preload" href="/page-data/page/10/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2021<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div><h1><a href="/use-ss-proxy-in-ubuntu">在 ubuntu server 下使用代理</a></h1><h2>2018 June-10</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>我们在自己的办公电脑上需要一些方式访问 google.com 等一些网站。在使用 ubuntu server 的时候同样也需要安装一些被 block 的依赖，因此对于很多 server 也需要做类似的配置。这里记录一下自己配置的过程。</p>
+<h2 id="前提条件" style="position:relative;">前提条件<a href="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6" aria-label="前提条件 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>首先，这里所有的配置是建立在我已经有了一个 ss 的 server 的前提之下。</p>
+<h2 id="1-安装-libev-版本" style="position:relative;">1. 安装 libev 版本<a href="#1-%E5%AE%89%E8%A3%85-libev-%E7%89%88%E6%9C%AC" aria-label="1 安装 libev 版本 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> add-apt-repository ppa:max-c-lv/shadowsocks-libev -y
+<span class="token function">sudo</span> <span class="token function">apt-get</span> update
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> shadowsocks-libev -y</code></pre></div>
+<h2 id="2-配置-client" style="position:relative;">2. 配置 client<a href="#2-%E9%85%8D%E7%BD%AE-client" aria-label="2 配置 client permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>修改 <code>/etc/shadowsocks-libev/config.json</code></p>
+<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"server"</span><span class="token operator">:</span> <span class="token string">"{{ ssserver }}"</span><span class="token punctuation">,</span>
+    <span class="token property">"server_port"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">{</span> ssserver_port <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"local_address"</span><span class="token operator">:</span> <span class="token string">"127.0.0.1"</span><span class="token punctuation">,</span>
+    <span class="token property">"local_port"</span><span class="token operator">:</span> <span class="token number">1080</span><span class="token punctuation">,</span>
+    <span class="token property">"password"</span><span class="token operator">:</span> <span class="token string">"{{ ssserver_password }}"</span><span class="token punctuation">,</span>
+    <span class="token property">"timeout"</span><span class="token operator">:</span> <span class="token number">600</span><span class="token punctuation">,</span>
+    <span class="token property">"method"</span><span class="token operator">:</span><span class="token string">"{{ ssserver_method }}"</span><span class="token punctuation">,</span>
+    <span class="token property">"fast_open"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>重启服务</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">systemctl daemon-reload
+systemctl restart shadowsocks-libev-local@config
+systemctl <span class="token builtin class-name">enable</span> shadowsocks-libev-local@config</code></pre></div>
+<p>至此，本地已经有了 sock5 的代理：localhost:1080。然而系统使用的代理大多是 http_proxy 我们需要另外一个工具 <a href="https://github.com/jech/polipo">polipo</a>。</p>
+<h2 id="3-配置-http-https-代理" style="position:relative;">3. 配置 http https 代理<a href="#3-%E9%85%8D%E7%BD%AE-http-https-%E4%BB%A3%E7%90%86" aria-label="3 配置 http https 代理 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>polipo 可以把 socks5 代理转化为 http 代理用。首先安装 polipo</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">sudo apt-get install polipo -y</code></pre></div>
+<p>然后修改配置文件 <code>/etc/polipo/config</code></p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">socksParentProxy = "localhost:1080"
+socksProxyType = socks5</code></pre></div>
+<p>重启服务</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">systemctl <span class="token builtin class-name">enable</span> polipo
+systemctl restart polipo</code></pre></div>
+<p>然后可以在命令行下试试看了：</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">http_proxy=http://localhost:8123 curl www.google.com</code></pre></div>
+<h2 id="参考" style="position:relative;">参考<a href="#%E5%8F%82%E8%80%83" aria-label="参考 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ol>
+<li><a href="https://blog.yourtion.com/ubuntu-server-add-shadowsocks-proxy.html">UbuntuServer配置ShadowSocks代理</a></li>
+</ol></div></div><div><h1><a href="/docker-accelerate">国内环境下更好的 docker 镜像获取</a></h1><h2>2018 June-10</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>最近欠了好多的 blog，是在是有点忙，周末也被各种事情缠身。今天趁周日的最后半个小时抓紧记录下来一些调研的成果。</p>
 <p>国内的网络环境大家都知道，一方面是不稳定的宽带，另一方面就是对一些国外网站访问的不可靠。今天集中记录一下自己在 docker 镜像处理方面的一些小技巧。</p>
 <h2 id="加速-docker-pull" style="position:relative;">加速 docker pull<a href="#%E5%8A%A0%E9%80%9F-docker-pull" aria-label="加速 docker pull permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <p>Docker 本身提供了一个叫做 <a href="https://docs.docker.com/registry/recipes/mirror/">docker registry mirror</a> 的东西，就是为了减少重复的镜像下载所产生的额外带宽，在国内访问 docker 官方 image 极其缓慢的场景下这种需求尤为凸显。如果不设置相应的 mirror 国内服务器下载镜像真是举步维艰。</p>
@@ -166,108 +204,6 @@ docker run -v data:/data ...</code></pre></div>
 <li><a href="https://docs.docker.com/storage/volumes/">Docker Volumes</a></li>
 <li><a href="https://docs.docker.com/storage/bind-mounts/">Use bind mounts</a></li>
 <li><a href="https://docs.docker.com/storage/volumes/">Use Volumes</a></li>
-</ol></div></div><div><h1><a href="/kubeadm-aws-provider">用 kubeadm 部署 aws 环境下的 kubernetes</a></h1><h2>2018 April-24</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>最近一个多月开始折腾在 <strong>国内</strong> 环境部署 kubernetes 集群。是的，确实这还是一个工作内容，和直接在什么 aws googlecloud 或者是 rancher 2.0 直接点点就能创建有一个集群不一样。之所以还要付诸这样的精力去做这件事有两个原因：</p>
-<ol>
-<li>kubernetes 默认部署安装依赖于很多 google 的域名，而因为特殊的国内网络环境，那些自动执行创建集群的工具默认都是不适用的，我不得不把 kubernetes 集群部署搞得一清二楚才能明白具体哪里去 hack 那些被 block 的资源</li>
-<li>我们有自己搭建 bare metal 集群的需求，而那些可以随便点点就能构建集群的方式都是支持公有云的方案</li>
-</ol>
-<p>不过因为我刚刚搞定了 aws 环境下 kubernetes 的部署，趁热打铁我就先记录一下这一部分。</p>
-<h2 id="aws-环境下-kubernetes-的特殊性" style="position:relative;">aws 环境下 kubernetes 的特殊性<a href="#aws-%E7%8E%AF%E5%A2%83%E4%B8%8B-kubernetes-%E7%9A%84%E7%89%B9%E6%AE%8A%E6%80%A7" aria-label="aws 环境下 kubernetes 的特殊性 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>k8s 有一个 <code>cloud-provider</code> 的概念，其目的是通过和一些公有云的服务集成以达到更好的功能。</p>
-<p>aws 环境下的 k8s 是指 k8s 集成了部分 aws 的服务方便集群的使用。到目前为止，我所知道的包含如下内容：</p>
-<ol>
-<li>ebs 做 persistent volume</li>
-<li>通过 elb 为 <code>LoadBalancer</code> 类型的 service 绑定一个外部域名可以直接通过域名去访问</li>
-</ol>
-<p>而这篇文章则是重点介绍如何让 k8s 去支持这些特性，当然会缺少 kubeadm 一些信息，会在另外一篇介绍。</p>
-<h2 id="配置" style="position:relative;">配置<a href="#%E9%85%8D%E7%BD%AE" aria-label="配置 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>k8s 现在已经相当庞大，大的跟个操作系统似的。但是很遗憾其文档的成熟度还处于初级阶段，我甚至找不到 <code>cloud-provider</code> 配置的一些细节，唯一可靠的文档似乎就是代码，但是一不小心打开一个三四千行的 golang 文件我也是一脸迷茫...最后在一个诡异的 github issue 里面找到了一个 googledoc 解释了 <code>cloud-provider=aws</code> 的一些细节。</p>
-<h3 id="为-ec2-添加-iam-权限" style="position:relative;">为 EC2 添加 IAM 权限<a href="#%E4%B8%BA-ec2-%E6%B7%BB%E5%8A%A0-iam-%E6%9D%83%E9%99%90" aria-label="为 ec2 添加 iam 权限 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>为了让 k8s 可以操纵 aws 的资源需要为 ec2 添加权限：</p>
-<h4 id="for-master" style="position:relative;">for master<a href="#for-master" aria-label="for master permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h4>
-<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token punctuation">{</span>
-	<span class="token key atrule">"Version"</span><span class="token punctuation">:</span> <span class="token string">"2012-10-17"</span><span class="token punctuation">,</span>
-	<span class="token key atrule">"Statement"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
-		<span class="token punctuation">{</span>
-			<span class="token key atrule">"Effect"</span><span class="token punctuation">:</span> <span class="token string">"Allow"</span><span class="token punctuation">,</span>
-			<span class="token key atrule">"Action"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
-				<span class="token string">"ec2:*"</span><span class="token punctuation">,</span>
-				<span class="token string">"elasticloadbalancing:*"</span><span class="token punctuation">,</span>
-				<span class="token string">"ecr:GetAuthorizationToken"</span><span class="token punctuation">,</span>
-				<span class="token string">"ecr:BatchCheckLayerAvailability"</span><span class="token punctuation">,</span>
-				<span class="token string">"ecr:GetDownloadUrlForLayer"</span><span class="token punctuation">,</span>
-				<span class="token string">"ecr:GetRepositoryPolicy"</span><span class="token punctuation">,</span>
-				<span class="token string">"ecr:DescribeRepositories"</span><span class="token punctuation">,</span>
-				<span class="token string">"ecr:ListImages"</span><span class="token punctuation">,</span>
-				<span class="token string">"ecr:BatchGetImage"</span><span class="token punctuation">,</span>
-				<span class="token string">"autoscaling:DescribeAutoScalingGroups"</span><span class="token punctuation">,</span>
-				<span class="token string">"autoscaling:UpdateAutoScalingGroup"</span>
-			<span class="token punctuation">]</span><span class="token punctuation">,</span>
-			<span class="token key atrule">"Resource"</span><span class="token punctuation">:</span> <span class="token string">"*"</span>
-		<span class="token punctuation">}</span>
-	<span class="token punctuation">]</span>
-<span class="token punctuation">}</span></code></pre></div>
-<h4 id="for-worker" style="position:relative;">for worker<a href="#for-worker" aria-label="for worker permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h4>
-<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token punctuation">{</span>
-	<span class="token key atrule">"Version"</span><span class="token punctuation">:</span> <span class="token string">"2012-10-17"</span><span class="token punctuation">,</span>
-	<span class="token key atrule">"Statement"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
-		<span class="token punctuation">{</span>
-			<span class="token key atrule">"Effect"</span><span class="token punctuation">:</span> <span class="token string">"Allow"</span><span class="token punctuation">,</span>
-			<span class="token key atrule">"Action"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
-				<span class="token string">"ec2:Describe*"</span><span class="token punctuation">,</span>
-				<span class="token string">"ecr:GetAuthorizationToken"</span><span class="token punctuation">,</span>
-				<span class="token string">"ecr:BatchCheckLayerAvailability"</span><span class="token punctuation">,</span>
-				<span class="token string">"ecr:GetDownloadUrlForLayer"</span><span class="token punctuation">,</span>
-				<span class="token string">"ecr:GetRepositoryPolicy"</span><span class="token punctuation">,</span>
-				<span class="token string">"ecr:DescribeRepositories"</span><span class="token punctuation">,</span>
-				<span class="token string">"ecr:ListImages"</span><span class="token punctuation">,</span>
-				<span class="token string">"ecr:BatchGetImage"</span>
-			<span class="token punctuation">]</span><span class="token punctuation">,</span>
-			<span class="token key atrule">"Resource"</span><span class="token punctuation">:</span> <span class="token string">"*"</span>
-		<span class="token punctuation">}</span>
-	<span class="token punctuation">]</span>
-<span class="token punctuation">}</span></code></pre></div>
-<h3 id="为-ec2-机器添加标签" style="position:relative;">为 ec2 机器添加标签<a href="#%E4%B8%BA-ec2-%E6%9C%BA%E5%99%A8%E6%B7%BB%E5%8A%A0%E6%A0%87%E7%AD%BE" aria-label="为 ec2 机器添加标签 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>为了识别具体哪些 ec2 是集群的一部分需要为每个 ec2 添加一个 <code>KubernetesCluster</code> 的 tag。</p>
-<h3 id="更新-kubelet-config" style="position:relative;">更新 kubelet config<a href="#%E6%9B%B4%E6%96%B0-kubelet-config" aria-label="更新 kubelet config permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>为了支持 cloud-provider 首先需要在 kubelet 的配置里做相应修改，为 <code>/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</code> 添加 <code>KUBELET_EXTRA_ARGS</code>:</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">[Service]
-Environment="KUBELET_EXTRA_ARGS=--cloud-provider=aws</code></pre></div>
-<h3 id="更新-kubeadm-配置" style="position:relative;">更新 kubeadm 配置<a href="#%E6%9B%B4%E6%96%B0-kubeadm-%E9%85%8D%E7%BD%AE" aria-label="更新 kubeadm 配置 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> kubeadm.k8s.io/v1alpha1
-<span class="token key atrule">kind</span><span class="token punctuation">:</span> MasterConfiguration
-<span class="token key atrule">cloudProvider</span><span class="token punctuation">:</span> aws
-<span class="token key atrule">api</span><span class="token punctuation">:</span>
-  <span class="token key atrule">advertiseAddress</span><span class="token punctuation">:</span> &lt;internal<span class="token punctuation">-</span>ip<span class="token punctuation">-</span>address<span class="token punctuation">></span>
-<span class="token key atrule">apiServerCertSANs</span><span class="token punctuation">:</span>
-<span class="token punctuation">-</span> &lt;public<span class="token punctuation">-</span>ip<span class="token punctuation">-</span>address<span class="token punctuation">></span>
-<span class="token punctuation">-</span> &lt;public<span class="token punctuation">-</span>hostname<span class="token punctuation">></span></code></pre></div>
-<p>在用 kubeadm 创建集群时采用命令即可</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">kubeadm init --config=init-config.yaml</code></pre></div>
-<h3 id="更新-hostname" style="position:relative;">更新 hostname<a href="#%E6%9B%B4%E6%96%B0-hostname" aria-label="更新 hostname permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>首先先要说明一下，aws 的机器默认的 hostname 是和其 internal dns hostname 不同。默认的是这个样子：</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">ip-xx-xx-xx-xx</code></pre></div>
-<p>而 internal hostname 则是</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">ip-xx-xx-xx-xx.&lt;region>.compute.internal</code></pre></div>
-<p>之类的东西。而 aws kubernetes 需要通过这个 internal dns hostname 去定位 node 所以需要将 hostname 更改成这个。</p>
-<p>先前可以通过 `--hostname-override`` 参数覆盖默认的 aws hostname，但是最近似乎不行了，不如直接修改 hostname 一劳永逸。</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">curl http://169.254.169.254/latest/meta-data/local-hostname > /etc/hostname</code></pre></div>
-<p>然后重启机器使得更新起效。</p>
-<h2 id="注意" style="position:relative;">注意<a href="#%E6%B3%A8%E6%84%8F" aria-label="注意 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>如果一开始配置坏了需要重新配置那一定要 kubeadm reset 哦：</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">kubeadm reset
-ifconfig cni0 down
-ip link delete cni0
-ifconfig flannel.1 down
-ip link delete flannel.1
-rm -rf /var/lib/cni/</code></pre></div>
-<p>因为我自己安装的 flannel 其他的要看情况修改哦。</p>
-<h2 id="相关资料" style="position:relative;">相关资料<a href="#%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99" aria-label="相关资料 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<ol>
-<li><a href="https://docs.google.com/document/d/17d4qinC_HnIwrK0GHnRlD1FKkTNdN__VO4TH9-EzbIY/edit#">aws cloud provider</a></li>
-<li><a href="https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/">kubeadm</a></li>
-<li><a href="https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-init/">kubeadm init</a></li>
-<li><a href="https://medium.com/jane-ai-engineering-blog/kubernetes-on-aws-6281e3a830fe">Kubernetes on AWS</a></li>
 </ol></div></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/9">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/11">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       

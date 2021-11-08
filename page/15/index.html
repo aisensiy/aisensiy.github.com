@@ -55,7 +55,182 @@
   </script><link rel="preconnect" href="https://plausible.io"/><script async="" defer="" data-domain="aisensiy.me" src="https://plausible.io/js/plausible.js"></script><script>
           window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) };
           
-          </script><link as="script" rel="preload" href="/webpack-runtime-4c5d987e132f409a2a52.js"/><link as="script" rel="preload" href="/framework-e728256d7a1d703d32c2.js"/><link as="script" rel="preload" href="/app-017b258692d84823a7c8.js"/><link as="script" rel="preload" href="/75ce8a9e25edca21eb9c1a1dab0250d3ee550bef-e9b300a9f21137291b3a.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-9fd36e13ebfed646ca18.js"/><link as="fetch" rel="preload" href="/page-data/page/15/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2021<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div><h1><a href="/openid-connect-and-uaa">OpenID connect 与用户管理/用户权限系统</a></h1><h2>2017 July-31</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>几乎所有的系统里面都需要<strong>用户</strong>的概念。那么随之而来的就是一些各个系统都需要但是有非常类似的功能，比如登录、注册、账号密码重置、邮箱确认、修改基本信息...每个系统都要做一遍是不是很麻烦？有没有解决方案减少这些重复劳动？这部分功能我们可以成为账户系统。</p>
+          </script><link as="script" rel="preload" href="/webpack-runtime-4c5d987e132f409a2a52.js"/><link as="script" rel="preload" href="/framework-e728256d7a1d703d32c2.js"/><link as="script" rel="preload" href="/app-017b258692d84823a7c8.js"/><link as="script" rel="preload" href="/75ce8a9e25edca21eb9c1a1dab0250d3ee550bef-e9b300a9f21137291b3a.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-9fd36e13ebfed646ca18.js"/><link as="fetch" rel="preload" href="/page-data/page/15/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2021<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div><h1><a href="/drone-best-ci">Drone 一个原生支持 docker 的 CI</a></h1><h2>2017 August-04</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>大概是一年前发现了这样一个叫做 Drone 的开源 ci，在逐渐的尝试过程中发现它的功能非常的强大，其 pipeline as code + docker + backing service 支持的体系基本和我理想中的 ci 一模一样...这里就介绍一下我看到的 drone 的一些非常出彩的地方以及日常使用时一些非常有用的使用方式。</p>
+<h2 id="本地安装" style="position:relative;">本地安装<a href="#%E6%9C%AC%E5%9C%B0%E5%AE%89%E8%A3%85" aria-label="本地安装 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p><img src="https://o8p12ybem.bkt.clouddn.com/15096926244457.jpg?imageView2/2/w/1200/q/75%7Cimageslim" alt=""></p>
+<p>可以看到 drone 的界面非常的简洁，和其他 ci 一样它通过和 github gitlab 或者是 gogs 这样的 git repository 链接并绑定 web hook 在用户提交新的 commit 的时候出发 ci 的执行。drone 作为一个开源的 ci 其支持 docker 方式的安装，非常的简单：</p>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'2'</span>
+
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">drone-server</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> drone/drone<span class="token punctuation">:</span><span class="token number">0.7</span>
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 80<span class="token punctuation">:</span><span class="token number">8000</span>
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> /var/lib/drone<span class="token punctuation">:</span>/var/lib/drone/
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> DRONE_OPEN=true
+      <span class="token punctuation">-</span> DRONE_HOST=$<span class="token punctuation">{</span>DRONE_HOST<span class="token punctuation">}</span>
+      <span class="token punctuation">-</span> DRONE_GITHUB=true
+      <span class="token punctuation">-</span> DRONE_GITHUB_CLIENT=$<span class="token punctuation">{</span>DRONE_GITHUB_CLIENT<span class="token punctuation">}</span>
+      <span class="token punctuation">-</span> DRONE_GITHUB_SECRET=$<span class="token punctuation">{</span>DRONE_GITHUB_SECRET<span class="token punctuation">}</span>
+      <span class="token punctuation">-</span> DRONE_SECRET=$<span class="token punctuation">{</span>DRONE_SECRET<span class="token punctuation">}</span>
+
+  <span class="token key atrule">drone-agent</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> drone/drone<span class="token punctuation">:</span><span class="token number">0.7</span>
+    <span class="token key atrule">command</span><span class="token punctuation">:</span> agent
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> drone<span class="token punctuation">-</span>server
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> /var/run/docker.sock<span class="token punctuation">:</span>/var/run/docker.sock
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> DRONE_SERVER=ws<span class="token punctuation">:</span>//drone<span class="token punctuation">-</span>server<span class="token punctuation">:</span>8000/ws/broker
+      <span class="token punctuation">-</span> DRONE_SECRET=$<span class="token punctuation">{</span>DRONE_SECRET<span class="token punctuation">}</span></code></pre></div>
+<p>通过这样的 docker-compose 文件就可以在本地启动一个 droner server 和一个 drone-agent（其概念和 gocd 类似）。</p>
+<h2 id="drone-的亮点" style="position:relative;">drone 的亮点<a href="#drone-%E7%9A%84%E4%BA%AE%E7%82%B9" aria-label="drone 的亮点 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<h3 id="pipeline-as-code" style="position:relative;">pipeline as code<a href="#pipeline-as-code" aria-label="pipeline as code permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>首先 drone 支持 pipeline as code 其通过一个简单的 yaml 文件就包含了一个项目 ci 的所有内容了（当然，到底简不简单要看你构建流程的复杂程度以及你对项目的封装程度）。举一个例子：</p>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">pipeline</span><span class="token punctuation">:</span>
+  <span class="token key atrule">build</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> node<span class="token punctuation">:</span>6.10.2<span class="token punctuation">-</span>alpine
+    <span class="token key atrule">commands</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> yarn install
+      <span class="token punctuation">-</span> yarn run build
+  <span class="token key atrule">publish</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> plugins/docker
+    <span class="token key atrule">repo</span><span class="token punctuation">:</span> eisenxu/realtopper<span class="token punctuation">-</span>app
+    <span class="token key atrule">secrets</span><span class="token punctuation">:</span> <span class="token punctuation">[</span> docker_username<span class="token punctuation">,</span> docker_password <span class="token punctuation">]</span>
+    <span class="token key atrule">tags</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> latest
+      <span class="token punctuation">-</span> $<span class="token punctuation">{</span>DRONE_COMMIT_SHA<span class="token punctuation">:</span>0<span class="token punctuation">:</span><span class="token number">8</span><span class="token punctuation">}</span></code></pre></div>
+<p>这是一个采用 <code>create-react-app</code> 创建的一个前端单页应用项目。这里定义了 <code>build</code> 和 <code>publish</code> 两个阶段。第一个阶段 <code>yarn install</code> 和 <code>yarn run build</code> 分别下载依赖和编译但也应用。第二阶段 <code>publish</code> 采用项目中的 <code>Dockerfile</code> 构建一个 docker image 并发布到 <code>hub.docker.com</code>，具体两个步骤如何进行的细节我们在后面会慢慢介绍。</p>
+<h3 id="原生支持-docker" style="position:relative;">原生支持 docker<a href="#%E5%8E%9F%E7%94%9F%E6%94%AF%E6%8C%81-docker" aria-label="原生支持 docker permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>上面的 yaml 中每个阶段都有一个 <code>image</code> 的字段，这个 <code>image</code> 就是指一个 docker image 也就是说 drone 下每一个阶段都是在一个你所指定的 docker container 下执行的。这样当然就集成了 docker 所引入的一系列的好处：环境隔离、标准化镜像。并且，它是后面插件扩展以及 backing service 可以被轻而易举的实现的基础。</p>
+<h3 id="简单易用的插件扩展" style="position:relative;">简单易用的插件扩展<a href="#%E7%AE%80%E5%8D%95%E6%98%93%E7%94%A8%E7%9A%84%E6%8F%92%E4%BB%B6%E6%89%A9%E5%B1%95" aria-label="简单易用的插件扩展 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>还是在看上面的那个例子，第一个阶段我们在 <code>node:6.10.2-alpine</code> 下构建了一个单页应用。然后，我们采用了 <code>plugins/docker</code> 镜像构建并发布了我们的镜像到 <code>hub.docker.com</code>。而这里的 <code>plugins/docker</code> 就是 <code>drone</code> 为我们提供的一个插件了。</p>
+<p>虽说是一个插件，但实际上用起来就和其他的 <code>image</code> 一样，这个插件的功能就是帮我们利用项目中的 <code>Dockerfile</code> 构建一个新的 docker image 并提交。除此之外还有一些其他的官方插件可供使用，详情在<a href="https://plugins.drone.io/">这里</a>。</p>
+<p>当然，自己做一个插件也是非常简单的，在插件被执行的时候，当前目录就是项目的根目录，然后 drone 会暴露一系列的<a href="https://docs.drone.io/environment-reference/">环境变量</a>给用户使用，我们可以采用之前的步骤所产生的数据或者环境变量中的内容实现一个特定功能的插件。</p>
+<h3 id="支持-backing-service" style="position:relative;">支持 backing service<a href="#%E6%94%AF%E6%8C%81-backing-service" aria-label="支持 backing service permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>我们跑 ci 的时候难免会有一些外部的依赖，比如跑单元测试的时候可能会用到外部的数据库。比如跑前端界面测试的时候我们会需要 selenium。drone 对这种场景提供了支持。</p>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">pipeline</span><span class="token punctuation">:</span>
+  <span class="token key atrule">test</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> golang
+    <span class="token key atrule">commands</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> go get
+      <span class="token punctuation">-</span> go test
+
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">database</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> postgres
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> POSTGRES_USER=postgres
+      <span class="token punctuation">-</span> POSTGRES_DB=test</code></pre></div>
+<p>这是官方所提供的一个数据库的例子。通过定义一个 <code>services</code> 字段，我们可以提供一个或者多个外部服务。</p>
+<h2 id="最佳实践" style="position:relative;">最佳实践<a href="#%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5" aria-label="最佳实践 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<h3 id="对-docker-image-的验收测试" style="position:relative;">对 docker image 的验收测试<a href="#%E5%AF%B9-docker-image-%E7%9A%84%E9%AA%8C%E6%94%B6%E6%B5%8B%E8%AF%95" aria-label="对 docker image 的验收测试 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>我们采用 docker 容器进行部署的时候通常是在 docker 容器中跑单元测试然后打包镜像并推到 registry。但是这样的流程并不能保证我们打包好的镜像是工作的，可能我们的 Dockerfile 写的有问题导致服务没办法被使用。所以，其实还可以最这种最终构件好的镜像做一个验收测试。</p>
+<p>backing service 的机制可以让我们这么做：</p>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">pipeline</span><span class="token punctuation">:</span>
+
+  <span class="token key atrule">build</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> node<span class="token punctuation">:</span>6.10.2<span class="token punctuation">-</span>alpine
+    <span class="token key atrule">commands</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> npm build
+
+  <span class="token key atrule">publish_for_test</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> plugins/docker
+    <span class="token key atrule">repo</span><span class="token punctuation">:</span> test/bar
+    <span class="token key atrule">tags</span><span class="token punctuation">:</span> <span class="token punctuation">[</span> 1.0.0<span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> latest <span class="token punctuation">]</span>
+
+  <span class="token key atrule">run_server</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> test/bar<span class="token punctuation">:</span>latest
+    <span class="token key atrule">detach</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  
+  <span class="token key atrule">verify</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> blueimp/chromedriver
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> VNC_ENABLED=true
+      <span class="token punctuation">-</span> EXPOSE_X11=true
+    <span class="token key atrule">commands</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> nightwatch
+
+  <span class="token key atrule">publish</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> plugins/docker
+    <span class="token key atrule">repo</span><span class="token punctuation">:</span> production/bar
+    <span class="token key atrule">tags</span><span class="token punctuation">:</span> <span class="token punctuation">[</span> 1.0.0<span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> latest <span class="token punctuation">]</span></code></pre></div>
+<ol>
+<li>首先，我们在 <code>publish_for_test</code> 中构建一个 <code>test/bar:latest</code> 的镜像。</li>
+<li>然后我们采用 <code>detach</code> 的字段表明我们在这里把我们刚刚创建好的镜像运行起来。</li>
+<li>在 <code>verify</code> 阶段，我们采用 <code>nightwatch</code> 对已经运行起来的 <code>test/bar:latest</code> 服务执行验收测试，也就是说，这时候我们把刚刚创建的应用当做我们的 <code>backing service</code>。</li>
+<li>如果测试通过了，我们再构建一个新的镜像并 push 到生产环境 registry</li>
+</ol>
+<p>当然，这里的 <code>publish_for_test</code> 其实最好的办法是只构建镜像而不提交镜像，然后在本地启动这个镜像。不过这种使用本地镜像的方式并没有使用过，而且也没有那种只构建不提交或者只提交已经存在的镜像的插件，以后可以自己进一步做一些优化。</p>
+<h3 id="用-drone-部署多个阶段的环境" style="position:relative;">用 drone 部署多个阶段的环境<a href="#%E7%94%A8-drone-%E9%83%A8%E7%BD%B2%E5%A4%9A%E4%B8%AA%E9%98%B6%E6%AE%B5%E7%9A%84%E7%8E%AF%E5%A2%83" aria-label="用 drone 部署多个阶段的环境 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>虽然 drone 没有 GoCD 里的 deployment pipeline 的概念，但是它可以通过指定特殊的 <code>deployment</code> 的事件实现手动激活的多环境部署。</p>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">pipeline</span><span class="token punctuation">:</span>
+  <span class="token key atrule">build</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> golang
+    <span class="token key atrule">commands</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> go build
+      <span class="token punctuation">-</span> go test
+
+  <span class="token key atrule">publish</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> plugins/docker
+    <span class="token key atrule">registry</span><span class="token punctuation">:</span> registry.heroku.com
+    <span class="token key atrule">repo</span><span class="token punctuation">:</span> registry.heroku.com/my<span class="token punctuation">-</span>staging<span class="token punctuation">-</span>app/web
+    <span class="token key atrule">when</span><span class="token punctuation">:</span>
+<span class="token key atrule">+     event</span><span class="token punctuation">:</span> deployment
+<span class="token key atrule">+     environment</span><span class="token punctuation">:</span> staging
+
+  <span class="token key atrule">publish_to_prod</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> plugins/docker
+    <span class="token key atrule">registry</span><span class="token punctuation">:</span> registry.heroku.com
+    <span class="token key atrule">repo</span><span class="token punctuation">:</span> registry.heroku.com/my<span class="token punctuation">-</span>production<span class="token punctuation">-</span>app/web
+    <span class="token key atrule">when</span><span class="token punctuation">:</span>
+<span class="token key atrule">+     event</span><span class="token punctuation">:</span> deployment
+<span class="token key atrule">+     environment</span><span class="token punctuation">:</span> production</code></pre></div>
+<p>可以看到通过指定 <code>event</code> 和 <code>environment</code> 可以指定两个不同的环境：staging 和 production。然后，通过 drone 所提供的命令行可以实现手工部署到不同的环境。</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">drone deploy octocat/hello-world <span class="token number">24</span> staging</code></pre></div>
+<p>这里是将构建 <code>24</code> 号部署到 staging 环境。</p>
+<h3 id="使用插件为构建增加缓存" style="position:relative;">使用插件为构建增加缓存<a href="#%E4%BD%BF%E7%94%A8%E6%8F%92%E4%BB%B6%E4%B8%BA%E6%9E%84%E5%BB%BA%E5%A2%9E%E5%8A%A0%E7%BC%93%E5%AD%98" aria-label="使用插件为构建增加缓存 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>每次构建都从远端获取依赖真是非常费流量费时间，最好可以不要重复下载。drone 就以插件的方式支持了这样的功能。</p>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">pipeline</span><span class="token punctuation">:</span>
+  <span class="token key atrule">restore-cache</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> drillster/drone<span class="token punctuation">-</span>volume<span class="token punctuation">-</span>cache
+    <span class="token key atrule">restore</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+    <span class="token key atrule">mount</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> ./node_modules
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> /tmp/cache<span class="token punctuation">:</span>/cache
+
+  <span class="token key atrule">build</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> node
+    <span class="token key atrule">commands</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> npm install
+
+  <span class="token key atrule">rebuild-cache</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> drillster/drone<span class="token punctuation">-</span>volume<span class="token punctuation">-</span>cache
+    <span class="token key atrule">rebuild</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+    <span class="token key atrule">mount</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> ./node_modules
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> /tmp/cache<span class="token punctuation">:</span>/cache</code></pre></div>
+<p>第一阶段 <code>restore-cache</code> 将 <code>/tmp/cache</code> 下该项目的缓存拷贝到 <code>./node_modules</code>。第三阶段将 <code>./node_modules</code> 的内容拷贝会 <code>/tmp/cache</code> 详细的内容见<a href="https://plugins.drone.io/drillster/drone-volume-cache/">缓存</a>。</p>
+<h2 id="当前的状态" style="position:relative;">当前的状态<a href="#%E5%BD%93%E5%89%8D%E7%9A%84%E7%8A%B6%E6%80%81" aria-label="当前的状态 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>目前 drone 刚刚开始了商业化之路，并且在疯狂的更新中，整体社区非常的活跃 star 也已经过万了，非常期待它未来的发展。</p>
+<h2 id="相关资料" style="position:relative;">相关资料<a href="#%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99" aria-label="相关资料 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ul>
+<li><a href="https://drone.io">drone 官网</a></li>
+<li><a href="https://docs.drone.io/installation/">drone 安装指南</a></li>
+<li><a href="https://github.com/facebookincubator/create-react-app">create-react-app</a></li>
+<li><a href="https://docs.drone.io/getting-started/">drone basic usage</a></li>
+<li><a href="https://plugins.drone.io/">drone docker 插件</a></li>
+<li><a href="https://plugins.drone.io/drillster/drone-volume-cache/">drone cache 插件</a></li>
+<li><a href="https://docs.drone.io/deployments/">drone 部署</a></li>
+<li><a href="https://plugins.drone.io/drillster/drone-volume-cache/">缓存</a></li>
+</ul></div></div><div><h1><a href="/openid-connect-and-uaa">OpenID connect 与用户管理/用户权限系统</a></h1><h2>2017 July-31</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>几乎所有的系统里面都需要<strong>用户</strong>的概念。那么随之而来的就是一些各个系统都需要但是有非常类似的功能，比如登录、注册、账号密码重置、邮箱确认、修改基本信息...每个系统都要做一遍是不是很麻烦？有没有解决方案减少这些重复劳动？这部分功能我们可以成为账户系统。</p>
 <p>另一方面，用户可以是内部用户或者是管理员，也可以是一般的服务使用者，每个用户由于其角色以及其自己创建的资源的私密性，系统需要提供相应的机制管理用户的访问权限，然而目前的微服务架构中多个系统之间如何传递这种用户的信息并执行相应的权限管理呢？处理这部分的系统我们可以成为认证系统。</p>
 <p>可以看到，账号系统和认证系统是相互依赖的，用户系统和认证系统基本是要一起做的。（有些诡异的开源产品仅仅做了认证的工作虽然那部分工作做的很出色，但是依然是不完整的。）这里讨论一下有关这两个主题的一些内容，以及目前一些可以使用的解决方案。</p>
 <h2 id="openid-connect-作为认证系统的标准协议" style="position:relative;">OpenID connect 作为认证系统的标准协议<a href="#openid-connect-%E4%BD%9C%E4%B8%BA%E8%AE%A4%E8%AF%81%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%A0%87%E5%87%86%E5%8D%8F%E8%AE%AE" aria-label="openid connect 作为认证系统的标准协议 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
@@ -271,109 +446,6 @@ $ docker run -e <span class="token assign-left variable">CONFIG_VARS</span><span
 <li><a href="https://github.com/mars/create-react-app-buildpack#user-content-compile-time-vs-runtime">compile-time-vs-runtime</a></li>
 <li><a href="https://www.npmjs.com/package/serve">serve</a></li>
 <li><a href="https://github.com/SocialEngine/docker-nginx-spa">SocialEngine/docker-nginx-spa</a></li>
-</ol></div></div><div><h1><a href="/styled-components">用 styled-components 在 react 中编写 css</a></h1><h2>2017 July-02</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>这么久以来，各种各样的框架试图让 web 组件化。到目前为止，react 基本做到了这一点：用一个自定义标签的方式组织 html 在一起。</p>
-<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Wrapper</span><span class="token punctuation">></span></span>
-	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Header</span> <span class="token punctuation">/></span></span>
-	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ProductList</span> <span class="token punctuation">/></span></span>
-	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Footer</span> <span class="token punctuation">/></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Wrapper</span><span class="token punctuation">></span></span></code></pre></div>
-<p>上面的这种写法在传统的 web 开发中真是不敢想象，然而在 react 中的确实现了。如果你使用 <code>create-react-app</code> 这样的脚手架工具，你可以快速的搭建起来这样的体系。然而，即便是这样子，web 组件化依然有一个点没有解决：如何将样式和组件绑定在一起。当然，试图解决这个问题的工具有很多，也有很多人不认为这是一个问题。我在这里试图解释一些观点，并阐述为什么我觉得用 <code>styled-components</code> 可以在一定程度上解决一系列问题。</p>
-<h2 id="写-css-的最佳方式" style="position:relative;">写 css 的最佳方式<a href="#%E5%86%99-css-%E7%9A%84%E6%9C%80%E4%BD%B3%E6%96%B9%E5%BC%8F" aria-label="写 css 的最佳方式 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>目前，react 阵营对写 css 这个问题有两个阵营。一个阵营表示 css 应当和 js 写在一起，而另一个阵营则认为 css 原本是可以和 js 分离的。我们在这里做一个简单的例子。</p>
-<p>首先是 css in js 的例子：</p>
-<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> style <span class="token operator">=</span> <span class="token punctuation">{</span>
-	margin<span class="token operator">:</span> <span class="token string">"1em 2em"</span><span class="token punctuation">,</span>
-	color<span class="token operator">:</span> <span class="token string">"gray"</span><span class="token punctuation">,</span>
-	background<span class="token operator">-</span>color<span class="token operator">:</span> <span class="token string">"white"</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-
-<span class="token keyword">const</span> <span class="token function-variable function">StyledDiv</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-	<span class="token keyword">return</span> <span class="token operator">&lt;</span>div style<span class="token operator">=</span><span class="token punctuation">{</span>style<span class="token punctuation">}</span><span class="token operator">></span><span class="token constant">A</span> test<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div>
-<p>而 css 和 js 分离就很简单了：</p>
-<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css">
-<span class="token selector">.styled-div</span> <span class="token punctuation">{</span>
-	<span class="token property">margin</span><span class="token punctuation">:</span> 1em 2em<span class="token punctuation">;</span>
-	<span class="token property">color</span><span class="token punctuation">:</span> gray<span class="token punctuation">;</span>
-	<span class="token property">background-color</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span>	
-<span class="token punctuation">}</span>
-</code></pre></div>
-<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">import</span> <span class="token string">"./StyledDiv.css"</span><span class="token punctuation">;</span>
-
-<span class="token keyword">const</span> <span class="token function-variable function">StyledDiv</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-	<span class="token keyword">return</span> <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">"styled-div"</span><span class="token operator">></span><span class="token constant">A</span> test<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div>
-<p>当然，这里展示的 css in js 只是一种非常原始的方式：用 object 直接将 style 注入到组件中。这样做的好处有两个：</p>
-<ol>
-<li>css 不在是全局的了，style 的生命周期与生命范围终于和 component 一致了，那么因为全局变量导致的可怕的为何灾难缓解了</li>
-<li>在组件内对样式的操纵可以直接进行，无需通过 className 处理，当然也避免了创建全局的 className 了</li>
-</ol>
-<p>可以看到，这里基本上就是以解决 css 的全局性为出发点的。</p>
-<p>而 css 和 js 的分离当然也有其天然的优势：</p>
-<ol>
-<li>可以用 css 的方式写 css，css 选择器随便用</li>
-<li>我还可以加各种 preprocessor 和 post processor，比如写 scss 比如加 auto-prefix</li>
-</ol>
-<p>对我来说，用 object 的方式去写 css 体验实在是太差了。而且作为 <code>css</code> 的 <code>cascade</code>，如果不能用多级的选择器去定位 css 而是在一层层的 html 元素中添加样式简直就是噩梦。我不觉得这样的可维护水平比全局 css 要高...所以我觉得如果能把两者的优势结合在一起，就应该是一个可以被更多人介绍的方式：</p>
-<ol>
-<li>用 css 的语法写 css</li>
-<li>能创建局部 className</li>
-<li>支持 preprocessor 和 postprocessor</li>
-</ol>
-<p>那么在这里就不得不提另外一个有意思的东西：<a href="https://github.com/css-modules/css-modules">css-modules</a>。它的主要思想是通过为 css 生成随机的类名称的方式来建立一种局部类命名的方式。</p>
-<p><a href="https://www.styled-components.com"><code>styled-components</code></a> 基本上集成了这个工作，并在此基础上基本实现了以上的三点要求。</p>
-<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> Summary <span class="token operator">=</span> styled<span class="token punctuation">.</span>div<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
-  margin-top: 2em;
-  text-align: right;
-
-  .price {
-    color: #ff0036;
-    font-size: 1.2em;
-  }
-
-  &amp;> * {
-    display: inline-block;
-    margin-left: 1em;
-  }
-</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span></code></pre></div>
-<ol>
-<li><code>Summary</code> 的 css 是以 css 的方式编写的，支持多层次的定义</li>
-<li><code>styled-components</code> 会把上面定义的 css 以一个特别的 className 的方式注入到元素上，实现了局部类定义</li>
-<li><code>styled-components</code> 支持了基本的类似于 scss 的嵌套语法（还支持 extend 语法，这里并没有展示），并且内嵌了 <code>autoprefix</code> 的模块</li>
-</ol>
-<p>我最近开始在一个项目上使用它，整体来说还是感觉不错。</p>
-<h2 id="兼容现在已有的-react-components-和-css-框架" style="position:relative;">兼容现在已有的 react components 和 css 框架<a href="#%E5%85%BC%E5%AE%B9%E7%8E%B0%E5%9C%A8%E5%B7%B2%E6%9C%89%E7%9A%84-react-components-%E5%92%8C-css-%E6%A1%86%E6%9E%B6" aria-label="兼容现在已有的 react components 和 css 框架 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p><code>styled-components</code> 采用的 css-module 的模式有另外一个好处就是可以很好的与其他的主题库进行兼容。因为大部分的 css 框架或者 css 主题都是以 className 的方式进行样式处理的，额外的 className 和主题的 className 并不会有太大的冲突。你可以认为这是一个应当使用全局 css 的地方（所以我并不赞成用 styled-components 里面的 theming 接口去做这件事）。相对于以 object 的方式写 style 的 material-ui 真是好太多了，看看 material-ui 讲述如何进行<a href="https://www.material-ui.com/#/customization/styles">样式自定义</a>就知道这并不是一个很成熟的想：</p>
-<ol>
-<li>css 内嵌到组建里影响了组件自身结构的表现</li>
-<li>inline style 意味着最高的优先级，其无法和其他的主题库配合</li>
-</ol>
-<p><code>styled-components</code> 的语法同样支持对一个 React 组件进行扩展：</p>
-<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> StyledDiv <span class="token operator">=</span> <span class="token function">styled</span><span class="token punctuation">(</span>Row<span class="token punctuation">)</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
-  position: relative;
-  height: 100%;
-  .image img {
-    width: 100%;
-  }
-  .content {
-    min-height: 30em;
-    overflow: auto;
-  }
-  .content h2 {
-    font-size: 1.8em;
-    color: black;
-    margin-bottom: 1em;
-  }
-</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span></code></pre></div>
-<p>这里我把 <a href="https://ant.design">ant design</a> 做为我默认的样式库，在其基础上我对其一些元素做了增强。两者可以很好的在一起使用。</p>
-<p>这里符一个 <a href="https://github.com/aisensiy/pet-store-front-end">github 项目</a> 里面包含了很多使用 <code>styled-components</code> 的例子。</p>
-<h2 id="相关资料" style="position:relative;">相关资料<a href="#%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99" aria-label="相关资料 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<ol>
-<li><a href="https://sass-lang.com/">scss</a></li>
-<li><a href="https://github.com/MicheleBertoli/css-in-js">js in css</a></li>
-<li><a href="https://www.styled-components.com">styled components</a></li>
-<li><a href="https://github.com/postcss/autoprefixer">auto-prefix</a></li>
-<li><a href="https://www.material-ui.com/">material-ui</a></li>
 </ol></div></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/14">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/16">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       
