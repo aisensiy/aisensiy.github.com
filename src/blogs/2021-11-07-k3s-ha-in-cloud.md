@@ -28,7 +28,27 @@ tags:       [rancher, k3s, kubernetes, devops]
 
 ![](2021-11-08-00-36-51.png)
 
-这里另外一个值得一提的是 ucloud 的内网 ulb 是需要在每台 master 做额外的设置的，参见[官方文档](https://docs.ucloud.cn/ulb/guide/realserver/editrealserver)。
+这里另外一个值得一提的是 ucloud 的内网 ulb 是需要在每台 master 做额外的设置的，参见[官方文档](https://docs.ucloud.cn/ulb/guide/realserver/editrealserver)：
+
+1. 需要在每台机器下增加文件 `/etc/netplan/lo-cloud-init.yaml`，其中 `$VIP` 为 ulb 的内网 IP
+
+```yaml
+network:
+    ethernets:
+        lo:
+            addresses:
+            - $VIP/32
+```
+
+2. 执行命令 `sudo netplan apply`
+
+通过命令 `ip a` 可以看到 `lo` 的网卡已经增加了 `$VIP`。
+
+由于我目前安装的 k3s 没用其内置的 `containerd` 而是用了 `docker` 所以需要为每台机器首先安装：
+
+```sh
+sudo apt update && sudo install docker.io -y
+```
 
 ## 安装过程
 
@@ -55,13 +75,13 @@ curl -sfL http://rancher-mirror.cnrancher.com/k3s/k3s-install.sh | \
 ```yaml
 write-kubeconfig-mode: "0644"
 tls-san:
-- 10.60.210.147
-- 10.60.172.234
-- 10.60.227.248
-- 10.60.82.205
-- 117.50.162.155
-- 117.50.172.65
-- 117.50.172.104
+- 10.60.210.147     # ulb ip
+- 10.60.172.234     # master0
+- 10.60.227.248     # master1
+- 10.60.82.205      # master 2
+- 117.50.162.155    # master0 external ip
+- 117.50.172.65     # master1 external ip
+- 117.50.172.104    # master2 external ip
 docker: true
 cluster-init: true
 token: VNVIyKGNPtSKTfhi
@@ -87,15 +107,15 @@ curl -sfL http://rancher-mirror.cnrancher.com/k3s/k3s-install.sh | \
 ```yaml
 write-kubeconfig-mode: "0644"
 tls-san:
-- 10.60.210.147
-- 10.60.172.234
-- 10.60.227.248
-- 10.60.82.205
-- 117.50.162.155
-- 117.50.172.65
-- 117.50.172.104
+- 10.60.210.147     # ulb ip
+- 10.60.172.234     # master0
+- 10.60.227.248     # master1
+- 10.60.82.205      # master 2
+- 117.50.162.155    # master0 external ip
+- 117.50.172.65     # master1 external ip
+- 117.50.172.104    # master2 external ip
 docker: true
-server: https://10.60.172.234:6443
+server: https://10.60.172.234:6443 # master0 kubernetes api server address
 token: VNVIyKGNPtSKTfhi
 disable: servicelb
 ```
@@ -120,6 +140,8 @@ curl -sfL http://rancher-mirror.cnrancher.com/k3s/k3s-install.sh | \
 rancher cn 的团队也做了个 [autok3s](https://docs.rancher.cn/docs/k3s/autok3s/_index) 在官网上就有介绍，不过看起来更新频率也不太高，并且 k3s 本身的安装成本真的很低了，所以就没去了解了。
 
 除了安装之外，其实集群后续的维护工作也是挺重要的，毕竟你不希望集群慢慢老去不得不兼容各种奇怪问题，后面希望记录如何升级，如何集群数据备份和恢复两部分内容。
+
+k3s 本身有一些局限性，比如它的 CNI 插件默认是 flannel 如果想要其他的就要自己去安装了，这个我并没有做更多的尝试了。
 
 ## 参考资料
 
