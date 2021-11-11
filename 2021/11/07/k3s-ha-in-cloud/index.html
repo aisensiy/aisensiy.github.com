@@ -165,7 +165,21 @@
       />
   </a>
     </span></p>
-<p>这里另外一个值得一提的是 ucloud 的内网 ulb 是需要在每台 master 做额外的设置的，参见<a href="https://docs.ucloud.cn/ulb/guide/realserver/editrealserver">官方文档</a>。</p>
+<p>这里另外一个值得一提的是 ucloud 的内网 ulb 是需要在每台 master 做额外的设置的，参见<a href="https://docs.ucloud.cn/ulb/guide/realserver/editrealserver">官方文档</a>：</p>
+<ol>
+<li>需要在每台机器下增加文件 <code>/etc/netplan/lo-cloud-init.yaml</code>，其中 <code>$VIP</code> 为 ulb 的内网 IP</li>
+</ol>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">network</span><span class="token punctuation">:</span>
+    <span class="token key atrule">ethernets</span><span class="token punctuation">:</span>
+        <span class="token key atrule">lo</span><span class="token punctuation">:</span>
+            <span class="token key atrule">addresses</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> $VIP/32</code></pre></div>
+<ol start="2">
+<li>执行命令 <code>sudo netplan apply</code></li>
+</ol>
+<p>通过命令 <code>ip a</code> 可以看到 <code>lo</code> 的网卡已经增加了 <code>$VIP</code>。</p>
+<p>由于我目前安装的 k3s 没用其内置的 <code>containerd</code> 而是用了 <code>docker</code> 所以需要为每台机器首先安装：</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> update <span class="token operator">&amp;&amp;</span> <span class="token function">sudo</span> <span class="token function">install</span> docker.io -y</code></pre></div>
 <h2 id="安装过程" style="position:relative;">安装过程<a href="#%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B" aria-label="安装过程 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <iframe src="//player.bilibili.com/player.html?aid=721551407&bvid=BV1WS4y1d775&cid=438565927&page=1" width="800" height="640" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 <p>整个过程是这样的：</p>
@@ -184,13 +198,13 @@
 <p>其中 <code>master0-config.yaml</code> 内容如下：</p>
 <div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">write-kubeconfig-mode</span><span class="token punctuation">:</span> <span class="token string">"0644"</span>
 <span class="token key atrule">tls-san</span><span class="token punctuation">:</span>
-<span class="token punctuation">-</span> 10.60.210.147
-<span class="token punctuation">-</span> 10.60.172.234
-<span class="token punctuation">-</span> 10.60.227.248
-<span class="token punctuation">-</span> 10.60.82.205
-<span class="token punctuation">-</span> 117.50.162.155
-<span class="token punctuation">-</span> 117.50.172.65
-<span class="token punctuation">-</span> 117.50.172.104
+<span class="token punctuation">-</span> 10.60.210.147     <span class="token comment"># ulb ip</span>
+<span class="token punctuation">-</span> 10.60.172.234     <span class="token comment"># master0</span>
+<span class="token punctuation">-</span> 10.60.227.248     <span class="token comment"># master1</span>
+<span class="token punctuation">-</span> 10.60.82.205      <span class="token comment"># master 2</span>
+<span class="token punctuation">-</span> 117.50.162.155    <span class="token comment"># master0 external ip</span>
+<span class="token punctuation">-</span> 117.50.172.65     <span class="token comment"># master1 external ip</span>
+<span class="token punctuation">-</span> 117.50.172.104    <span class="token comment"># master2 external ip</span>
 <span class="token key atrule">docker</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
 <span class="token key atrule">cluster-init</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
 <span class="token key atrule">token</span><span class="token punctuation">:</span> VNVIyKGNPtSKTfhi
@@ -208,15 +222,15 @@
 <p>其中 <code>master-others.config.yaml</code> 内容如下：</p>
 <div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">write-kubeconfig-mode</span><span class="token punctuation">:</span> <span class="token string">"0644"</span>
 <span class="token key atrule">tls-san</span><span class="token punctuation">:</span>
-<span class="token punctuation">-</span> 10.60.210.147
-<span class="token punctuation">-</span> 10.60.172.234
-<span class="token punctuation">-</span> 10.60.227.248
-<span class="token punctuation">-</span> 10.60.82.205
-<span class="token punctuation">-</span> 117.50.162.155
-<span class="token punctuation">-</span> 117.50.172.65
-<span class="token punctuation">-</span> 117.50.172.104
+<span class="token punctuation">-</span> 10.60.210.147     <span class="token comment"># ulb ip</span>
+<span class="token punctuation">-</span> 10.60.172.234     <span class="token comment"># master0</span>
+<span class="token punctuation">-</span> 10.60.227.248     <span class="token comment"># master1</span>
+<span class="token punctuation">-</span> 10.60.82.205      <span class="token comment"># master 2</span>
+<span class="token punctuation">-</span> 117.50.162.155    <span class="token comment"># master0 external ip</span>
+<span class="token punctuation">-</span> 117.50.172.65     <span class="token comment"># master1 external ip</span>
+<span class="token punctuation">-</span> 117.50.172.104    <span class="token comment"># master2 external ip</span>
 <span class="token key atrule">docker</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
-<span class="token key atrule">server</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//10.60.172.234<span class="token punctuation">:</span><span class="token number">6443</span>
+<span class="token key atrule">server</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//10.60.172.234<span class="token punctuation">:</span><span class="token number">6443</span> <span class="token comment"># master0 kubernetes api server address</span>
 <span class="token key atrule">token</span><span class="token punctuation">:</span> VNVIyKGNPtSKTfhi
 <span class="token key atrule">disable</span><span class="token punctuation">:</span> servicelb</code></pre></div>
 <p><strong>注意</strong> 两台 master 要陆续添加，必须等第一个结束了再去添加第二台。</p>
@@ -229,6 +243,7 @@
 <p>还有个安装工具 <a href="https://github.com/alexellis/k3sup">k3sup</a> 可以帮助快速安装集群，不过看起来更新的频率不高了，以及国内环境显然也不能直接用。</p>
 <p>rancher cn 的团队也做了个 <a href="https://docs.rancher.cn/docs/k3s/autok3s/_index">autok3s</a> 在官网上就有介绍，不过看起来更新频率也不太高，并且 k3s 本身的安装成本真的很低了，所以就没去了解了。</p>
 <p>除了安装之外，其实集群后续的维护工作也是挺重要的，毕竟你不希望集群慢慢老去不得不兼容各种奇怪问题，后面希望记录如何升级，如何集群数据备份和恢复两部分内容。</p>
+<p>k3s 本身有一些局限性，比如它的 CNI 插件默认是 flannel 如果想要其他的就要自己去安装了，这个我并没有做更多的尝试了。</p>
 <h2 id="参考资料" style="position:relative;">参考资料<a href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99" aria-label="参考资料 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <ol>
 <li><a href="https://docs.rancher.cn/docs/k3s/installation/install-options/_index">rancher k3s cn 的文档</a></li>
