@@ -49,6 +49,19 @@ module.exports = {
             },
           },
           {
+            resolve: `gatsby-remark-video`,
+            options: {
+              width: 1200,
+              height:'auto',
+              preload: `auto`,
+              muted: false,
+              autoplay: false,
+              playsinline: true,
+              controls: true,
+              loop: false,
+            },
+          },
+          {
             resolve: `gatsby-remark-prismjs`,
             options: {
               // Class prefix for <pre> tags containing syntax highlighting;
