@@ -55,7 +55,127 @@
   </script><link rel="preconnect" href="https://plausible.io"/><script async="" defer="" data-domain="aisensiy.me" src="https://plausible.io/js/plausible.js"></script><script>
           window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) };
           
-          </script><link as="script" rel="preload" href="/webpack-runtime-d97e025b97033c7e2335.js"/><link as="script" rel="preload" href="/framework-45ca7a0c983b0b7a000c.js"/><link as="script" rel="preload" href="/app-301092c0672bcce1568f.js"/><link as="script" rel="preload" href="/75ce8a9e25edca21eb9c1a1dab0250d3ee550bef-e9b300a9f21137291b3a.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-57b56258f6f79ef8dfb6.js"/><link as="fetch" rel="preload" href="/page-data/page/10/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2021<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div><h1><a href="/ingress-nginx-in-k8s">采用 ingress-nginx 将服务暴露到外部</a></h1><h2>2018 August-25</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>记录在采用 ingress-nginx 暴露内部服务的过程</p>
+          </script><link as="script" rel="preload" href="/webpack-runtime-d97e025b97033c7e2335.js"/><link as="script" rel="preload" href="/framework-45ca7a0c983b0b7a000c.js"/><link as="script" rel="preload" href="/app-301092c0672bcce1568f.js"/><link as="script" rel="preload" href="/75ce8a9e25edca21eb9c1a1dab0250d3ee550bef-e9b300a9f21137291b3a.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-57b56258f6f79ef8dfb6.js"/><link as="fetch" rel="preload" href="/page-data/page/10/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2021<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div><h1><a href="/helm-and-kustomize">Helm vs Kustomize 如何选择 kubernetes 应用部署工具</a></h1><h2>2018 November-27</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>记录为什么最终没有采用 helm 而是选择了 kustomize 作为 kubernetes 应用的部署工具。</p>
+<p>前一阵子参加了在上海举行的 KubeCon，听了很多 session 收获还是挺多。（此处应再有一篇 blog 做做总结，不过介于最近半年来的 blog 效率实在不敢立任何 flag。）尤其是 habor 项目以及 helm 项目的介绍戳中的我的痛点。虽然这些项目我都听说过，也知道他们是做什么的，一个做 registry，一个做 kubernetes 包管理。但是因为没人在旁边不停的说，所以优先级一直被自己排的很低，这也是参加这种会议的意义之一吧：让你和你正在关注的技术的同行在一起聊聊，稍微的点拨和帮助可能就会解开你对某个东西的疑惑或顾虑。helm 的出镜率实在太高了，再加上我们本身有很多项目需要以一种更好的方式去部署到 kubernets，所以回来之后就决定去尝试一下。</p>
+<h2 id="使用各种项目管理之前的情况" style="position:relative;">使用各种项目管理之前的情况<a href="#%E4%BD%BF%E7%94%A8%E5%90%84%E7%A7%8D%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E4%B9%8B%E5%89%8D%E7%9A%84%E6%83%85%E5%86%B5" aria-label="使用各种项目管理之前的情况 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>首先说说之前的痛点。我们虽然不是个大公司，可是这代码也是越敲越多，服务也是越做越全。零零总总也有十几个项目要管理了。然后我们同样有多套部署环境：内网环境，预生产环境，生产环境。那么针对每一个环境几乎都要有一套 kubernetes 的 yaml 文件，但是各个仅仅是稍有不同。</p>
+<p>然后我们自己的 ci 是将构建好的 docker 镜像放到 registry 里面。</p>
+<p>那么，每次更新的镜像之后就是通过人手工去部署一下，绝大多数情况就是修改一下镜像的 tag，但是由于每个环境的 yaml 略有区别，那么如果我需要在不同环境切换的时候就需要来回修改这些 yaml 文件，一不小心写错了就只能怪自己手残。然而这种部署方式虽然在 kubernetes 之下就是改改 yaml 就好了，但是依然感觉很是原始。</p>
+<h2 id="希望有什么改善" style="position:relative;">希望有什么改善<a href="#%E5%B8%8C%E6%9C%9B%E6%9C%89%E4%BB%80%E4%B9%88%E6%94%B9%E5%96%84" aria-label="希望有什么改善 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>仔细想想，自己的需求就是这么几个：</p>
+<ol>
+<li>有一个统一的模板可以管理一个项目的 kubernetes 部署结构</li>
+<li>有某种方式可以管理不同环境之间微小的差异</li>
+<li>每次更新基本就是修改镜像的标签然后部署，那么有没有什么简单的办法实现之，而不是让我每次都去修改 yaml 文件</li>
+</ol>
+<h2 id="针对-helm-的调研" style="position:relative;">针对 helm 的调研<a href="#%E9%92%88%E5%AF%B9-helm-%E7%9A%84%E8%B0%83%E7%A0%94" aria-label="针对 helm 的调研 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>既然都说 helm 是 kubernetes 的包管理工具，那么我就先去尝试了一下 helm。</p>
+<blockquote>
+<p>helm 诞生于一个名为 deis 的团队。早年在 mesos 大行其道之前有过自己的一个开源 paas 方案 deis，我当时在 tw 也做类似的事情，受其影响颇深。后来 kubernetes 崛起，deis 彻底放弃之前的项目，该做了一个基于 k8s 的 paas，并开源了 helm。然后 deis 团队最终被 ms 收购了并放弃了原来的 deis 项目。</p>
+</blockquote>
+<p>简单的看了看，helm 给我一种大而无当的感觉：它真的是一个做包管理工具的，复杂的 go template 体系以及需要单独存放的 charts 让我感觉其更适合对标 ubuntu 的 apt 或者 macos 的 brew。它更像是对外提供一个复杂的可以依据各种配置信息生成适合于不同环境的软件发布包，而不是用于我们这种轻量级的部署配置管理的。所以我就放弃使用 helm 了。</p>
+<h2 id="针对-kustomize-的调研" style="position:relative;">针对 kustomize 的调研<a href="#%E9%92%88%E5%AF%B9-kustomize-%E7%9A%84%E8%B0%83%E7%A0%94" aria-label="针对 kustomize 的调研 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>在这个时候我想起来了在之前 github trending 看到的另外一个用户做 kubernetes 配置的工具 kustomize。简单的说，它就是一个简化 kubernetes yaml 编写的工具。它提供了两个重要的功能恰好满足了我的需求。</p>
+<h3 id="继承和-patch" style="position:relative;">继承和 patch<a href="#%E7%BB%A7%E6%89%BF%E5%92%8C-patch" aria-label="继承和 patch permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>kustomize 可以设置如下的层次：</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">├── base
+│   ├── deployment.yaml
+│   ├── kustomization.yaml
+│   └── service.yaml
+└── overlays
+    └── stg
+        ├── ingress.yaml
+        └── kustomization.yaml</code></pre></div>
+<p>其中 base 里保存各个环境所公有的配置:</p>
+<p><code>base/kustomization.yaml:</code></p>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">resources</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> deployment.yaml
+<span class="token punctuation">-</span> service.yaml</code></pre></div>
+<p>然后在 overlays 中可以定义子环境：</p>
+<p><code>overlays/stg/kustomization.yaml:</code></p>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">bases</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> ../../base
+
+<span class="token key atrule">resources</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> ingress.yaml</code></pre></div>
+<p>可以看到 stg 下继承了 base 的配置，并且添加了 ingress.yaml 配置。同时，kustomize 不仅仅支持文件级别的 patch，还支持对一个文件某些字段的 patch 如下所示，<code>replica_count.yaml</code> 只包含了有关 <code>replicas</code> 的部分即可，在执行 <code>kustomize build</code> 之后就可以将这部分覆盖默认的配置。</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/b3e03c54b13220cf87dff2f608b54477/6a068/15433357106030.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 56.49999999999999%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAFwABAAMAAAAAAAAAAAAAAAAAAAECBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAclUEj//xAAUEAEAAAAAAAAAAAAAAAAAAAAg/9oACAEBAAEFAl//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAg/9oACAEBAAY/Al//xAAYEAACAwAAAAAAAAAAAAAAAAAAESAhMf/aAAgBAQABPyHC3H//2gAMAwEAAgADAAAAEDMP/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAGhAAAwEBAQEAAAAAAAAAAAAAAAERMSFBYf/aAAgBAQABPxB4kz1E4OK/EPrKxN0en//Z'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="15433357106030"
+        title="15433357106030"
+        src="/static/b3e03c54b13220cf87dff2f608b54477/4b190/15433357106030.jpg"
+        srcset="/static/b3e03c54b13220cf87dff2f608b54477/e07e9/15433357106030.jpg 200w,
+/static/b3e03c54b13220cf87dff2f608b54477/066f9/15433357106030.jpg 400w,
+/static/b3e03c54b13220cf87dff2f608b54477/4b190/15433357106030.jpg 800w,
+/static/b3e03c54b13220cf87dff2f608b54477/6a068/15433357106030.jpg 960w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<h3 id="edit-命令" style="position:relative;">edit 命令<a href="#edit-%E5%91%BD%E4%BB%A4" aria-label="edit 命令 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>kustomize 提供了一个命令行方法对镜像 tag 进行修改：</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">kustomize edit set imagetag xxx:94c269ec</code></pre></div>
+<p>如果图省事，可以这么做</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">export NEWTAG=94c269ec
+kustomize edit set imagetag xxx:$NEWTAG</code></pre></div>
+<p>那么每次都去 ctrl-r 修改这个 export 然后再  ctrl-r 找到第二条命令执行一下就好了。虽然它还是修改了 kustomization.yaml 但是我觉得比打开编辑器改要舒服一些。</p>
+<h2 id="kustomize-额外加分项" style="position:relative;">kustomize 额外加分项<a href="#kustomize-%E9%A2%9D%E5%A4%96%E5%8A%A0%E5%88%86%E9%A1%B9" aria-label="kustomize 额外加分项 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<h3 id="轻量级" style="position:relative;">轻量级<a href="#%E8%BD%BB%E9%87%8F%E7%BA%A7" aria-label="轻量级 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>相对 helm，kustomize 依然保留了对 <code>kubectl apply -f</code> 命令的支持，仅仅作为一个命令行工具；不像 helm 还需要在 k8s 里面部署一个 tiller 可谓是非常的轻量级了。</p>
+<h3 id="对-secret-和-configmap-的支持" style="position:relative;">对 secret 和 configmap 的支持<a href="#%E5%AF%B9-secret-%E5%92%8C-configmap-%E7%9A%84%E6%94%AF%E6%8C%81" aria-label="对 secret 和 configmap 的支持 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>分别举例说明：</p>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">bases</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> ../../base
+
+<span class="token key atrule">configMapGenerator</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">literals</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> STORAGE.DATASETUPLOADURL=https<span class="token punctuation">:</span>//xxx/files/datasets
+  <span class="token punctuation">-</span> STORAGE.CODEUPLOADURL=https<span class="token punctuation">:</span>//xxx/files/codes
+  <span class="token punctuation">-</span> LIVELOG_PREFIX=https<span class="token punctuation">:</span>//xxx/jobs
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> storage<span class="token punctuation">-</span>server
+
+<span class="token key atrule">resources</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> ingress.yaml
+
+<span class="token key atrule">imageTags</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> xxx
+  <span class="token key atrule">newTag</span><span class="token punctuation">:</span> dc12c4d7</code></pre></div>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">resources</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> deployment.yaml
+
+<span class="token key atrule">secretGenerator</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> notification<span class="token punctuation">-</span>service
+  <span class="token key atrule">commands</span><span class="token punctuation">:</span>
+    <span class="token key atrule">SHORT_MESSAGE_API_KEY</span><span class="token punctuation">:</span> <span class="token string">"bash -c 'echo -n $SHORT_MESSAGE_API_KEY'"</span>
+    <span class="token key atrule">MG_API_KEY</span><span class="token punctuation">:</span> <span class="token string">"bash -c 'echo -n $MG_API_KEY'"</span>
+  <span class="token key atrule">type</span><span class="token punctuation">:</span> Opaque
+
+<span class="token key atrule">generatorOptions</span><span class="token punctuation">:</span>
+  <span class="token key atrule">disableNameSuffixHash</span><span class="token punctuation">:</span> <span class="token boolean important">true</span></code></pre></div>
+<p><code>secretGenerator</code> 和 <code>configMapGenerator</code> 可以以更灵活的方式生成 configmap 和 secret，相对来说更方便吧。然后注意看我 <code>configMapGenerator</code> 的例子，<code>echo -n $xxx</code> 是会有问题的，一定要使用 <code>"bash -c 'echo -n $SHORT_MESSAGE_API_KEY'"</code> 的命令哦。</p>
+<h2 id="参考" style="position:relative;">参考<a href="#%E5%8F%82%E8%80%83" aria-label="参考 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ol>
+<li><a href="https://github.com/kubernetes-sigs/kustomize">kustomize</a></li>
+<li><a href="https://helm.sh/">helm</a></li>
+</ol></div></div><div><h1><a href="/ingress-nginx-in-k8s">采用 ingress-nginx 将服务暴露到外部</a></h1><h2>2018 August-25</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>记录在采用 ingress-nginx 暴露内部服务的过程</p>
 <h2 id="安装" style="position:relative;">安装<a href="#%E5%AE%89%E8%A3%85" aria-label="安装 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <p>ingress-nginx 是 ingress 的一个实现，目前它已经被放在 <code>kubernetes</code> 项目下面了，可见算是亲儿子了，可更新频率也非常高，再加上之前在别的环境用 nginx 的场景也很多，没想太多就觉得用它了。</p>
 <p>在我安装 ingress-nginx 的时候，其最新的版本是 <code>0.16.2</code>。首先遵循文档先安装 <a href="https://github.com/kubernetes/ingress-nginx/blob/nginx-0.16.2/deploy/mandatory.yaml"><code>mandatory.yaml</code></a>：</p>
@@ -188,63 +308,7 @@ systemctl restart polipo</code></pre></div>
 <h2 id="参考" style="position:relative;">参考<a href="#%E5%8F%82%E8%80%83" aria-label="参考 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <ol>
 <li><a href="https://blog.yourtion.com/ubuntu-server-add-shadowsocks-proxy.html">UbuntuServer配置ShadowSocks代理</a></li>
-</ol></div></div><div><h1><a href="/docker-accelerate">国内环境下更好的 docker 镜像获取</a></h1><h2>2018 June-10</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>最近欠了好多的 blog，是在是有点忙，周末也被各种事情缠身。今天趁周日的最后半个小时抓紧记录下来一些调研的成果。</p>
-<p>国内的网络环境大家都知道，一方面是不稳定的宽带，另一方面就是对一些国外网站访问的不可靠。今天集中记录一下自己在 docker 镜像处理方面的一些小技巧。</p>
-<h2 id="加速-docker-pull" style="position:relative;">加速 docker pull<a href="#%E5%8A%A0%E9%80%9F-docker-pull" aria-label="加速 docker pull permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>Docker 本身提供了一个叫做 <a href="https://docs.docker.com/registry/recipes/mirror/">docker registry mirror</a> 的东西，就是为了减少重复的镜像下载所产生的额外带宽，在国内访问 docker 官方 image 极其缓慢的场景下这种需求尤为凸显。如果不设置相应的 mirror 国内服务器下载镜像真是举步维艰。</p>
-<p>通过在 <code>/etc/dockeer/daemon.json</code> 做相应的配置就可以添加一个 registry mirror:</p>
-<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
-  <span class="token property">"registry-mirrors"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"&lt;your registry mirror url>"</span><span class="token punctuation">]</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p>配置之后需要重启 docker。</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">sudo</span> <span class="token function">pkill</span> -SIGHUP dockerd</code></pre></div>
-<h3 id="docker-cn" style="position:relative;">docker-cn<a href="#docker-cn" aria-label="docker cn permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p><a href="https://www.docker-cn.com/">Docker 中国</a> 估计是 docker 为了在中国开展业务搞的子公司吧？不应该是什么山寨网站吧。其提供了加速国内 docker pull 的镜像地址 <a href="https://registry.docker-cn.com%E3%80%82%E6%8C%89%E7%85%A7%E4%B8%8A%E8%BF%B0%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F%E9%85%8D%E7%BD%AE%E5%8D%B3%E5%8F%AF%E4%BD%BF%E7%94%A8%EF%BC%9A">https://registry.docker-cn.com。按照上述的配置方式配置即可使用：</a></p>
-<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
-  <span class="token property">"registry-mirrors"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"https://registry.docker-cn.com"</span><span class="token punctuation">]</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p>然而很遗憾，这个速度并不理想，以我目前所在的网络环境，下行速度 4MB/s 拉取 ubuntu 镜像的速度大概也就是 400KB/s ~ 500KB/s。</p>
-<h3 id="daocloud" style="position:relative;">daocloud<a href="#daocloud" aria-label="daocloud permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p><a href="https://daocloud.io">daocloud</a> 作为一个做 caas 的公司为国内提供了号称免费的 mirror 构建服务。登录控制台就可以看到如图所示的位置的加速器按钮了，点进去就有相应的脚本了。</p>
-<p><strong>注意</strong> 虽然人家是好意给了一个 shell 脚本帮助修改 /etc/docker/daemon.json 的配置，然而<strong>如果你的 docker 不止有一个 runtime</strong>，比如你像我这样需要跑 nvidia docker 的 runtime，那么这个脚本会把你的配置搞砸...建议直接想我这样手动配置：</p>
-<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
-    <span class="token property">"registry-mirrors"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"{{ docker_mirror }}"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-    <span class="token property">"runtimes"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-        <span class="token property">"nvidia"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-            <span class="token property">"path"</span><span class="token operator">:</span> <span class="token string">"/usr/bin/nvidia-container-runtime"</span><span class="token punctuation">,</span>
-            <span class="token property">"runtimeArgs"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p>其中将 <code>{{ docker_mirror }}</code> 替换成 daocloud 提供的 mirror 即可。</p>
-<p>配置之后重启 dockerd 感受下速度吧，同样的网络环境，基本是 2MB/s ~ 3MB/s。</p>
-<h2 id="拉取更难以获取的镜像" style="position:relative;">拉取更难以获取的镜像<a href="#%E6%8B%89%E5%8F%96%E6%9B%B4%E9%9A%BE%E4%BB%A5%E8%8E%B7%E5%8F%96%E7%9A%84%E9%95%9C%E5%83%8F" aria-label="拉取更难以获取的镜像 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>上述的 docker-cn 以及 daocloud 仅仅是支持官方 docker.io 镜像的加速，然而要知道当今世界 google 的 google cloud platform 做的是相当不错，google 旗下的 kubernetes 基本是当前 PaaS 的不二之选，其官方镜像域名 gcr.io 下有大量 docker.io 无法取代的重要资源。而这些资源早早的已成为了墙外之物。</p>
-<h3 id="做搬运工" style="position:relative;">做搬运工<a href="#%E5%81%9A%E6%90%AC%E8%BF%90%E5%B7%A5" aria-label="做搬运工 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>为了获取 gcr.io 域名下的镜像，我们可以在境外创建一个 vps 然后通过蚂蚁搬家的方式一点一点挪过来：</p>
-<ol>
-<li>把 gcr.io/image-name:tag pull 到 vps 上 <code>docker pull gcr.io/image-name:tage</code></li>
-<li>重新打标签到自己 docker.io 的账号下 <code>docker tag gcr.io/image:tag &#x3C;username>/image:tag</code></li>
-<li>把新镜像推送到 docker.io <code>docker push &#x3C;username>/image:tag</code></li>
-</ol>
-<p>当然你可以写一个脚本，把自己用得着的镜像一个个 push 到 docker.io 中。甚至有人会写一些类似于 webhook 的东西，当 gcr.io 一些特定项目的镜像更新后会自动触发相应的流程自动托运新的镜像。不过不论如何这样的坏处显而易见：这是一个体力活，虽然有一些加速的脚本但是我依然需要更新脚本，管理 webhook...我先前已经用这个方法搞了一堆这样的镜像了...都是眼泪...</p>
-<p>google 一下发现这种方式在用 kubeadam 安装 kubernetes 的场景被很多人采用了。</p>
-<h3 id="docker-proxy-配置" style="position:relative;">docker proxy 配置<a href="#docker-proxy-%E9%85%8D%E7%BD%AE" aria-label="docker proxy 配置 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>既然有了 vps 自然是可以直接搭建一个代理的，docker 本身是支持在 docker pull 使用代理的，那么配个代理不久解决问题了吗。具体怎么配置代理这里就不讲了，我只记录 docker 这边的配置：</p>
-<p>首先 <code>mkdir /etc/systemd/system/docker.service.d</code>。</p>
-<p>然后创建 <code>/etc/systemd/system/docker.service.d/http-proxy.conf</code>，添加内容如下：</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">[Service]
-Environment="HTTP_PROXY=http://user01:password@10.10.10.10:8080/"
-Environment="HTTPS_PROXY=https://user01:password@10.10.10.10:8080/"
-Environment="NO_PROXY=localhost,.docker.io,.docker.com,.daocloud.io"</code></pre></div>
-<p>当然要使用自己的 <code>HTTP_PROXY</code> 和 <code>HTTPS_PROXY</code>，然后把不想使用代理的域名添加到 <code>NO_PROXY</code>，尤其是使用的镜像域名和 docker.io 应该考虑在内。</p>
-<p>最后更新 systemctl 并重启服务</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ systemctl daemon-reload
-$ systemctl restart docker</code></pre></div>
-<p>之后可以用以下镜像测试一下：</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ docker pull k8s.gcr.io/kube-scheduler-amd64:v1.10.2</code></pre></div>
-<h4 id="注意" style="position:relative;">注意<a href="#%E6%B3%A8%E6%84%8F" aria-label="注意 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h4>
-<p>在查找有关 docker proxy 内容时会发现有两种搜索结果，一种是我上述讲的 docker pull 时采用代理的方法；另一种是<strong>如何在 docker container 中</strong>配置代理：<a href="https://docs.docker.com/network/proxy/">Configure Docker to use a proxy server</a> 这个迷惑性还是有的...不过第二种情况以后也可能会用得上。</p></div></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/9">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/11">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
+</ol></div></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/9">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/11">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       
       if(true) {
