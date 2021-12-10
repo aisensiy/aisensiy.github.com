@@ -55,7 +55,140 @@
   </script><link rel="preconnect" href="https://plausible.io"/><script async="" defer="" data-domain="aisensiy.me" src="https://plausible.io/js/plausible.js"></script><script>
           window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) };
           
-          </script><link as="script" rel="preload" href="/webpack-runtime-d97e025b97033c7e2335.js"/><link as="script" rel="preload" href="/framework-45ca7a0c983b0b7a000c.js"/><link as="script" rel="preload" href="/app-301092c0672bcce1568f.js"/><link as="script" rel="preload" href="/75ce8a9e25edca21eb9c1a1dab0250d3ee550bef-e9b300a9f21137291b3a.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-57b56258f6f79ef8dfb6.js"/><link as="fetch" rel="preload" href="/page-data/page/3/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2021<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div><h1><a href="/gatsby-plugins-for-blog">gatsby 一些插件的运用</a></h1><h2>2021 August-14</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p><a href="/blog-migrate-from-jekyll-to-gatsby">上一篇文章</a> 介绍了 gatsby 迁移 blog 的主要内容，针对 markdown 渲染、路由生成 gatsby 都做了足够多的工作可以快速构建这么一个博客系统。这一部分介绍通过额外的插件提升 blog 体验。</p>
+          </script><link as="script" rel="preload" href="/webpack-runtime-d97e025b97033c7e2335.js"/><link as="script" rel="preload" href="/framework-45ca7a0c983b0b7a000c.js"/><link as="script" rel="preload" href="/app-301092c0672bcce1568f.js"/><link as="script" rel="preload" href="/75ce8a9e25edca21eb9c1a1dab0250d3ee550bef-e9b300a9f21137291b3a.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-57b56258f6f79ef8dfb6.js"/><link as="fetch" rel="preload" href="/page-data/page/3/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2021<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div><h1><a href="/ddd-and-cqrs-updated">对 CQRS 和 DDD 的一些新的讨论</a></h1><h2>2021 October-18</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>在 <a href="/some-tips-for-ddd">some tips for ddd</a> 里讲明白了 DDD 是针对 <code>写模型</code> 的，而对于 <code>读模型</code> 则可以通过一层薄薄的 <code>Query Service</code> 直接从数据库拼装 <code>DTO</code> 实现，这样子的好处是：</p>
+<ol>
+<li>遵守了 DDD 中 <code>aggregate</code> 的访问原则 / 持久化原则，不会因为一个「展示包含用户头像的文章列表」而被轻易的破坏</li>
+<li>减少了在 <code>读模型</code> 里 <code>DTO</code> 从 DDD 的 <code>Repository</code> 里各种转换和拼接，也避免了在 <code>Repository</code> 里面提供分页之类的奇怪方法</li>
+</ol>
+<p>在一个简单的项目 <a href="/real-world-spring-boot-and-mybatis">Spring Boot + Spring MVC + MyBatis 版本的 Real World 实现</a> 里，这个思路也得到了充分的体现。并且在这个过程中没有遇到什么冲突的地方。</p>
+<p>不过最近一两年做的 openbayes 项目里，我发现 cqrs 的原则依然遇到了一些和 DDD 相冲突的地方，这里我</p>
+<ol>
+<li>首先记录一些最近补充学习的一些与该主题相关的资料，一方面确认之前的理解没有严重的偏差，另一方面引入一些相关的讨论</li>
+<li>然后结合具体的业务去描述遇到的问题</li>
+<li>至于能否解决后面再说...</li>
+</ol>
+<h2 id="有关-ddd--cqrs-的一些资料更新" style="position:relative;">有关 ddd / cqrs 的一些资料更新<a href="#%E6%9C%89%E5%85%B3-ddd--cqrs-%E7%9A%84%E4%B8%80%E4%BA%9B%E8%B5%84%E6%96%99%E6%9B%B4%E6%96%B0" aria-label="有关 ddd  cqrs 的一些资料更新 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>首先就是我最近看的一些内容。看了很多内容，包括 Martin Folwer 的一些链接，感觉最终将的比较清楚的还是 greg young 的内容。</p>
+<p>CQRS 是由 greg young 提出的，他有一篇名为 <a href="https://cqrs.files.wordpress.com/2010/11/cqrs_documents.pdf">CQRS Documents by Greg Young</a> 的资料比较详尽的探讨了 CQRS 和 event-sourcing 到底要解决什么样子的问题。开篇提出在我们所构建的系统不再是 CRUD 之后，可以引入 <code>Command</code> 的概念，描述 <code>Task Based User Interface</code>。而在处理这些 <code>Command</code> 的时候，会发现读和写流程处理会有非常大的区别，并且如果采用同一套 Domain Object 会引入如下问题：</p>
+<ol>
+<li>Large numbers of read methods on repositories often also including paging or sorting information. 在 Repository 中有大量的读操作需要包含分页 / 排序相关的功能。</li>
+<li>Getters exposing the internal state of domain objects in order to build DTOs. 为了组装 <code>DTO</code> 不得不暴露很多 <code>Domain Object</code> 的内部状态。</li>
+<li>Use of prefetch paths on the read use cases as they require more data to be loaded by the ORM. 由于读模型需要更多的数据，所以需要在 ORM 中组织额外的数据加载。</li>
+<li>Loading of multiple aggregates to build a DTO causes non-optimal querying to the data model. Alternatively aggregate boundaries can be confused because of the DTO building operations. 在组装 <code>DTO</code> 时，为了获取多个聚合会容易出现低效的查询语句。另外，组装聚合的边界也会因为 <code>DTO</code> 的组装而被打破。</li>
+</ol>
+<p>可以看到要解决的痛点和我之前的理解没有什么偏差。</p>
+<p>通过分别对读写构建独立的流程可以很好的缓解以上问题：</p>
+<p><figure class="gatsby-resp-image-figure" style="">
+    <span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 717px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/e9a9cc44447e8fcdd59bf9592cf1796a/0ad97/2021-10-18-15-24-35.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 75.99999999999999%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAAsTAAALEwEAmpwYAAADcklEQVQ4y1WT/U9aZxTH/bf2W39Yqkk7m21dmmwze++2NFmp2Uuj1pdVp02rtZpKtZkube22OufiRK2AL2BFBAEBC3i5eC0WpICiqIBw+SxcfJknOc998uT5fu/5nu95SvL5PHvb2+wmEkpm93fZiUUQPW4CKz4Ej5eVlx5WBT8rHg+S4CO8FiC3v0s6uaNgkltbZFIpClEiyzJbkQibGxvEw2G8ngBzZjdTMxZEr4/NdYl4UCIWlIhIIi6HG/20BavdhyhIJCIbxEMh9pPJIiH/i2Bsj/catVy4qVey5pGVP40Sz2Yl1KNenkyJ1PXbKP9Zz/l6LaqeeTK5/DG+oLaksORkWTmQwgku/aLlk1YDHzRN8uNDEz0aNx1DS9Q/XuDuoB2V+gXv1E3w7k0dl9sNJPfSClaWi8QKYSFy2SyB13HUw0t0DNr5bczFoGEFcT0O+exxFbHtFHZ/VMnI5t6p6o4Ji+w5zJ4QFbf11D9aoHPIwaVmHW2DS+RzBzzUuGj7y07XsJPuERfdI27U/zq5M2A7JpaPJBciupXkyYSXlqcW7hWAQw5lf3/IyQtnkMouA+W1Y1S0TFDR8lz5XmwYp/yGRmnVkeySI+0Of4TSKg2f3pnk245pvm6f5ErnNBfqx6nuM7EkRpl1b2ATosreGYhh98dYFKLsp7MnpsiHFYZiSUVSY7+Fxn4zNX1zXFMb+KptmkGDcNLDxD6+4CY24Q3znjAOf5RcTj7tsjLcqQPUI8t82W7ko1vTvN80ycWmKcob9NwecOB7Fedyu5FztVrO1+kordFytlrLW5UaGh5bDwk5kSwE45RVj1NWO0nZDT2lNXrertJy5qdRWv6wMW5Z5VztBGdrdApRecOU8sMv7hoYW1g7MaVA6A8lcK3GGZgRqO5boKnfyvVeMwMzfpxi9Fiuf32T55Y1hmb9XOmc4f4/S2jmA5iWQ/hfF40pSWWyfN46xce3tKjURj5s0dE76qL5qQXvq3hxRg9V6BaDdPztUObym3tGPmstGnjmh2G6R14WCQsNNXvCGF3raK0SIyYRh7BB67NFrN4wmYMsO7tp8rLMhEVSBj+dOWB5NYZTfMNqOIEYShDfSZ1+KQVA8+82KrvNfN9jpvKBiatqE991zVHVO49KPYdKbeJa4bzLpNy5/quZ7d30qbf8H75E802xZGRHAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Separated Data Models with CQRS"
+        title="Separated Data Models with CQRS"
+        src="/static/e9a9cc44447e8fcdd59bf9592cf1796a/0ad97/2021-10-18-15-24-35.png"
+        srcset="/static/e9a9cc44447e8fcdd59bf9592cf1796a/772e8/2021-10-18-15-24-35.png 200w,
+/static/e9a9cc44447e8fcdd59bf9592cf1796a/e17e5/2021-10-18-15-24-35.png 400w,
+/static/e9a9cc44447e8fcdd59bf9592cf1796a/0ad97/2021-10-18-15-24-35.png 717w"
+        sizes="(max-width: 717px) 100vw, 717px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span>
+    <figcaption class="gatsby-resp-image-figcaption">Separated Data Models with CQRS</figcaption>
+  </figure></p>
+<p>后续有关 event-sourcing 的内容就不再介绍了，我个人认为 event-sourcing 有关 data storage 的修改过于复杂，但其思想（比如采用反向的 Domain Event）确实已经被很好的采用了（openbayes 在子系统之间做数据同步也采用了类似的理念）。这部分以后单独讨论。</p>
+<p>另外我看到了大神的 <a href="https://time.geekbang.org/column/intro/100082101">如何落地业务建模</a> 虽然没有明确的指出 CQRS 的问题，但却在「跨越现实的障碍」章节提出了类似于</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">user.getSubscriptions().subList(from, from + pageSize)</code></pre></div>
+<p>的思路，描述的是一种统一的模型，而不是读写分离的模型。这的确是一个非常好的思路，通过依赖注入一个 <code>Query Service</code> 到具体的 <code>Domain Object</code> 可以很好的解决读写用例放在一起不协调的问题。这也让我开始重新思考 CQRS 是不是有一些问题。</p>
+<h2 id="cqrs-遇到的问题" style="position:relative;">CQRS 遇到的问题<a href="#cqrs-%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98" aria-label="cqrs 遇到的问题 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>首先，我觉得最大的问题就在于 CQRS 一定程度上让 <code>读模型</code> 成了二等公民。<code>写模型</code> 很重要，需要很仔细的遵循设计思路，而 <code>读模型</code> 就随便糊弄糊弄就完事了...</p>
+<p>然后，其实 <code>读模型</code> 很多时候也不是纯粹的获取 <code>DTO</code> 做拼接就完事了。在涉及到权限的时候，DTO 也需要依据当前用户对数据做裁剪并依据对应的权限以及当前对象的状态补充对应的权限属性。</p>
+<p>举一个例子，在 openbayes 里有一个 <code>Job</code> 的概念，它有自身的状态（<code>CREATED</code> <code>RUNNING</code> <code>CANCELLING</code> ...），并且对应着一个状态机。在 <code>GET /jobs/{jobid}</code> 时，不同的状态下会返回对应的 <code>links</code> 表明当前用户可以对该 <code>Job</code> 做什么样子的操作。比如处于 <code>RUNNING</code> 状态的 <code>Job</code> 对于有权限的用户应该有如下的 <code>links</code>:</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">{
+  ...
+  links: {
+    "stop": "&lt;link>",
+    "create-snapshot": "&lt;link>",
+    "open": "&lt;link>"
+  }
+}</code></pre></div>
+<p>这些 <code>links</code> 会为前端提供线索用于展示不同的交互 UI。</p>
+<p>也就是说，从数据库里拿出来的 <code>DTO</code> 依然需要走一轮业务支持才能使用，没有想象中的那么傻瓜。并且有关状态机的逻辑已经在对应的 <code>Domain Object</code> 中写了一遍了，但是在返回对应的 JSON 数据的 REST 层依然存在大量的代码用于处理这些内容。</p>
+<h2 id="可能的解决方案" style="position:relative;">可能的解决方案<a href="#%E5%8F%AF%E8%83%BD%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88" aria-label="可能的解决方案 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<h3 id="合并模型" style="position:relative;">合并模型<a href="#%E5%90%88%E5%B9%B6%E6%A8%A1%E5%9E%8B" aria-label="合并模型 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>第一个方案自然是不再做 CQRS 了，而应该统一模型，按照 <a href="https://time.geekbang.org/column/intro/100082101">如何落地业务建模</a> 的思路将两个模型的内容引入到同一个模型中去。不过这似乎是一个工作量不小的事情，很少有人会下定决心这么去做的，以及目前没有很健全的例子，需要先做小规模尝试，最终一定会花更多的时间...</p>
+<p>不过不得不说 GraphQL 的引入似乎是一个很好的契机。</p>
+<p>GraphQL 强调整个暴露的 API 是一张大图，而具体的属性的获取是一个渐进的过程。还是用 Real World 项目举例：</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">{
+  user(id: "eisenxu") {
+    articles {
+      id
+      title
+      content
+      comments {
+        id
+        content
+        author {
+          id
+          name
+        }
+      }
+    }
+  }
+}</code></pre></div>
+<p>这里是一个比较复杂的查询，获取了一个用户的文章列表以及每一篇文章的下的评论，以及每一篇评论的作者。对应的代码大概会是这个样子：</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">class ArticleDatafetcher {
+  public List&lt;Article> fetchArticles(User user) {
+    return user.getArticles();
+  }
+}
+
+class CommentDatafetcher {
+  public List&lt;Comment> fetchComments(Article article) {
+    return article.getComments();
+  }
+}
+
+class UserDatafetcher {
+  public User fetchUser(User user) {
+    return user;
+  }
+
+  public User fetchCommentAuthor(Comment comment) {
+    return comment.getAuthor();
+  }
+}</code></pre></div>
+<p>每一个 <code>Entity</code> 或者 <code>Entity</code> 集合属性的获取都会对应一个 <code>上文</code> 也就是它是从那里获取的：</p>
+<ul>
+<li>user(id: 'eisenxu'): <code>上文</code> 为默认的 <code>Query</code></li>
+<li>articles: <code>上文</code> 为 <code>user</code></li>
+<li>comments: <code>上文</code> 为 <code>article</code></li>
+<li>author: <code>上文</code> 为 <code>comment</code>（当然也会有 <code>上文</code> 为 <code>article</code> 的 <code>author</code>）</li>
+</ul>
+<p>如果同样是 REST 的接口，那么就需要把 <code>user</code> 和 <code>article</code> 全部返回，这样的话就需要把 <code>CommentDatafetcher</code> 和 <code>UserDatafetcher</code> 的工作全部放到 <code>QueryService</code> 中去。但是 GraphQL 则像是在按需获取：如果你要了 <code>comments</code> 就会调用 <code>CommentDatafetcher.fetchComments</code> 否则就不会执行。这样子就让上文中那种 <code>user.getSubscriptions().subList(from, from + pageSize)</code> 的方式变得更加的顺理成章了。</p>
+<h3 id="抽取公共逻辑" style="position:relative;">抽取公共逻辑<a href="#%E6%8A%BD%E5%8F%96%E5%85%AC%E5%85%B1%E9%80%BB%E8%BE%91" aria-label="抽取公共逻辑 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>刚好最近 ddd/cqrs 的 google group 也在讨论这个主题 <a href="https://groups.google.com/g/dddcqrs/c/d7aiKi6ha6g">Read model business logic duplication</a>。这里给出的方案也非常简单：</p>
+<ol>
+<li>如果这种权限展示逻辑只在 read model 里，那干脆就放 read model 好了，没什么大不了</li>
+<li>如果两边都出现了，那就抽取 Speicification 让两边共享</li>
+<li>对于一些场景，可以让 write model 直接去调用 read model 使用其内容</li>
+</ol>
+<p>打补丁自然是简单不少，不过总感觉不是那么舒服...这部分我也就只能写到这里了，虽然写的不多，可却是花了不少时间去想这坨东西...现在回看目前 openbayes 的代码还是有不少的问题，后续再继续理一理吧。</p></div></div><div><h1><a href="/gatsby-plugins-for-blog">gatsby 一些插件的运用</a></h1><h2>2021 August-14</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p><a href="/blog-migrate-from-jekyll-to-gatsby">上一篇文章</a> 介绍了 gatsby 迁移 blog 的主要内容，针对 markdown 渲染、路由生成 gatsby 都做了足够多的工作可以快速构建这么一个博客系统。这一部分介绍通过额外的插件提升 blog 体验。</p>
 <h2 id="目录--标题锚点" style="position:relative;">目录 &#x26; 标题锚点<a href="#%E7%9B%AE%E5%BD%95--%E6%A0%87%E9%A2%98%E9%94%9A%E7%82%B9" aria-label="目录  标题锚点 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <p>通过 remark 获取的 markdown 内容本身一个名为 <code>tableOfContents</code> 的部分，它已经从 markdown 中提取了标题并生成了目录。额外的工作就只剩下对目录的样式做一些修改，并且添加锚点链接。</p>
 <p><span
@@ -372,430 +505,7 @@
 <li>将 html 和 css 的依赖反转是正确的。事实上由于业务的变化，展示信息的变化，html 的变化速度是很快的，每次让 css 被动变更确实会导致额外的工作量。中立的细粒度的 css 一定程度上会有所帮助</li>
 <li>直接在 class 上增增减减就能实现排版从认知上确实让人觉得容易了，而且有了 <code>STATE VARIANTS</code> （就是 <code>focus:</code> <code>hover:</code> <code>md:</code> 这样的前缀工具类）确实让 css 的工作变得更集中更清楚了，比一个独立的文件以及松散的排布要好</li>
 </ol>
-<p>tailwindcss 似乎在尝试将 css 乐高化以进一步降低前端工程师的门槛。但我觉得这个乐高依然是有门槛的，如果你甚至不晓得 <code>flex</code> <code>display</code> <code>position</code> <code>float</code> 这些基本的概念，那么你依然没办法去使用这些工具类。</p></div></div><div><h1><a href="/blog-migrate-from-jekyll-to-gatsby">把博客从 jekyll 迁移到 gatsby</a></h1><h2>2021 July-17</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>考虑到自己的前端技能有一阵子没有更新了，同时看到刘老师用 <a href="https://docusaurus.io">docusaurus</a> 把 openbayes docs 切换之后访问速度和使用体验都提升了不少，于是也想自己尝试一下 <a href="https://www.gatsbyjs.org/">gatsby</a>（与 docusaurus 技术栈类似但适用范围又大大增加）。这里先拿自己的小博客开刀，把原来的 jekyll 技术栈切换过来。</p>
-<p>本来打算一小步一小步迁移过来并做比较细致的记录，结果一不小心步子迈的有点大，甚至把 tailwindcss 的部分也一口气引入到了技术栈之中。不过考虑到篇幅，这里还是会分多篇文章做介绍。首先是介绍把 jekyll 迁移到 gatsby 的部分。</p>
-<p>另，以下部分是相对比较容易通过搜索获取到的内容，对应的官方网站都有非常详尽的介绍，这里就不再赘述。</p>
-<ol>
-<li>gatsby 的基本安装</li>
-<li>graphql 的知识</li>
-</ol>
-<h2 id="gatsby-的思路" style="position:relative;">Gatsby 的思路<a href="#gatsby-%E7%9A%84%E6%80%9D%E8%B7%AF" aria-label="gatsby 的思路 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>虽然 gatsby 官方把 static 划掉了加上了 dynamic，但以我目前的了解，它依然是一个 static site generator，只是在生成的路由的方面有了 <em>动态</em> 的感觉。</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 772px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/e153ee034e6e26509318a47a5247d08b/940c5/2021-07-17-20-10-00.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 38.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAA7DAAAOwwHHb6hkAAABU0lEQVQY06WRXU+CYACF/fmu1l3mR2lt6SL83CTNUqA2Qfw2hFJQVF58RTAFtGU6aNhV1z73z9nZOR7nCDxNDOJhSR2sVWnTykEOn1OIvFS2BEE8YLlatc4wDE1TJEkSJK4rZis/ZfHZl/njyrBv0Shgi3OptaIQmYxI1D0YtpbxNHJ6doLEY+HIVfQ2mkymEDQ2bOvco9nM6J9g68qG+g14E/DmuLOCgjUT1z1qMe6sNHFbxxRd2C+mBoZhXJdjWbbC0LVm5amUFweCK1fTSv5c7OLzSgI0c7BTUJkkKN/JUDQ/yno9DXtdMXTt8wcvUBT1er1+fyAYCBWfi64M3k2ZNQRmwb9qULAaGFQHa8AbjSwEvDHtm5M3S25vtInlOI5t/x9s1F42slMmASoJwJFa6VLiDi2qKeXlZlTwDZgUqGXAqL1yHHu32/9hH2I8x1z1C8gfodvGHSbEAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="2021 07 17 20 10 00"
-        title="2021 07 17 20 10 00"
-        src="/static/e153ee034e6e26509318a47a5247d08b/940c5/2021-07-17-20-10-00.png"
-        srcset="/static/e153ee034e6e26509318a47a5247d08b/772e8/2021-07-17-20-10-00.png 200w,
-/static/e153ee034e6e26509318a47a5247d08b/e17e5/2021-07-17-20-10-00.png 400w,
-/static/e153ee034e6e26509318a47a5247d08b/940c5/2021-07-17-20-10-00.png 772w"
-        sizes="(max-width: 772px) 100vw, 772px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span></p>
-<p>翻看 gatsby 官方的信息后，这里为 gatsby 总结出如下几个特点：</p>
-<ol>
-<li>gatsby 使用的模板引擎为 react（jekyll 用的就是 ruby 的 erb），相比于其他的后端模板引擎，它本身就是前端框架，使用 react 相当于具备了创建完整前端技术栈的能力。</li>
-<li>gatsby 也有自己的一套静态路由，以及最近也有了 <em>动态</em> 路由。这部分似乎没有特别多的新意，毕竟路由原本就是传统后端框架的必要组成部分。但是 gatsby 的动态路由是通过带参数形式的文件名实现的（当然还有个更灵活的方式： <a href="https://www.gatsbyjs.com/docs/how-to/routing/creating-routes/#using-gatsby-nodejs">gatsby-node.js</a>），这个思路感觉像是在原有的静态路由的延申，这似乎是一种把路由的使用门槛降低的好办法，还有另外一个框架 next.js 也使用了类似的方式。</li>
-<li>gatsby 的 graphql data layer 可以通过一系列插件将多种形式的数据源以 graphql 的形式提供给处于 <code>develop mode</code> 的 gatsby server ，并很方便的填充到模板中。同时，数据源还可以使用插件做数据的扩展（添加字段，修改字段），在后面有关插件的部分我也会做一些介绍。</li>
-</ol>
-<p><figure class="gatsby-resp-image-figure" style="">
-    <span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/1b825b58bb44d2080bfd119800d2a2d5/5df5d/data-layer.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 64%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsTAAALEwEAmpwYAAABzElEQVQozz1Sy3LbMAzU//9Ye8s1mSZOmjaRKtsSXyDxZoeyEwwPxM4sd7HEhGJrwh14Dvixt4RSSc+ZQhUU24DniEvESyFSzyhzxDliQUWxCUjer+3P1p6X/LKWSyZAOa35nLCgLKG9/Bv42wUyylb4aU6PnzEAAenUuwNACEGYVdjdeu8i0hr2o5hZmHvvZkbEwtS7m7mqTu4+L+vL6xsxqxpALQC995QzEvXer/uuqgWgAIiIe/fezd3MBtnd1Tw1Liix0nyNsfGe655ranwOOTWeryEA5iapMqC4u7lPd29qKMOwf7WnC/y+1o+9LZE+A97wfmgC6e0+DRujOpAUlNQ4VkqNt9y2jBFoLy0AHTjnNmQLytC9KReo121HpDHMgbaGrSEiIZGo5gKq6l/VDzlVG+T1fHl8eo4xDSvuhEhHVKoqIsOqWq3NzL68D/Y9MJHxKosi63UPsVRzZzVACjEhq7mLWky5NWSx75puz3T3Y7Hw1xJDZRJrrOeEvy+lkpAooM6hva45o4haH+b79J1wRn1ays/TdloLq5PaHPHhPeQmrBaAH97jj9P2d2/m9+yn7zHUxm+P9dKR5e24dxI7Jrwzju5O+Q8cUvLI8mjQAQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="graphql data layer"
-        title="graphql data layer"
-        src="/static/1b825b58bb44d2080bfd119800d2a2d5/5a190/data-layer.png"
-        srcset="/static/1b825b58bb44d2080bfd119800d2a2d5/772e8/data-layer.png 200w,
-/static/1b825b58bb44d2080bfd119800d2a2d5/e17e5/data-layer.png 400w,
-/static/1b825b58bb44d2080bfd119800d2a2d5/5a190/data-layer.png 800w,
-/static/1b825b58bb44d2080bfd119800d2a2d5/c1b63/data-layer.png 1200w,
-/static/1b825b58bb44d2080bfd119800d2a2d5/5df5d/data-layer.png 1572w"
-        sizes="(max-width: 800px) 100vw, 800px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span>
-    <figcaption class="gatsby-resp-image-figcaption">graphql data layer</figcaption>
-  </figure></p>
-<h2 id="快速开始" style="position:relative;">快速开始<a href="#%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B" aria-label="快速开始 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>在开始操作之前我自然是 google 了一番，发现想要把 jekyll 切到 gatsby 的人不在少数。并且官方网站里也有适配 markdown 作为数据源的内容。这里先罗列下从 jekyll 到 gatsby 迁移的几个必须步骤，并在下文一一介绍。</p>
-<ol>
-<li>markdown 文件的整体迁移</li>
-<li>生成路由</li>
-<li>处理 blog 中的代码高亮</li>
-<li>优化 blog 中的 image</li>
-<li>部署</li>
-</ol>
-<h2 id="markdown-文件的整体迁移" style="position:relative;">markdown 文件的整体迁移<a href="#markdown-%E6%96%87%E4%BB%B6%E7%9A%84%E6%95%B4%E4%BD%93%E8%BF%81%E7%A7%BB" aria-label="markdown 文件的整体迁移 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>jekyll 出现的那个时代没有想现在这样如此多的外部数据源可以选择，其静态页面生成的数据源一定是文件。但 2021 年情况发生了变化，从 gatsby 的官方数据源插件来看，其中大量的数据源是 headless cms（比如 contentful 比如 wordpress），不过对我来说从 jekyll 迁移，我关心的也就是文件数据源。</p>
-<p>这里用到了两个插件：</p>
-<ol>
-<li><code>gatsby-source-filesystem</code> 将特定目录作为数据源添加到 gatsby 的数据层</li>
-<li><code>gatsby-transformer-remark</code> 使用 <a href="https://remark.js.org/">remark</a> 将 <code>markdown</code> 文件解析为 html 并为 markdown 提供了很多有用的字段（比如 frontmatter，比如目录）</li>
-</ol>
-<p>gatsby 所有的插件都需要单独安装并在 <code>gatsby-config.js</code> 做配置，这里展示下上述两个插件的基本配置：</p>
-<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  siteMetadata<span class="token operator">:</span> <span class="token punctuation">{</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
-    <span class="token punctuation">{</span>
-      resolve<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">gatsby-transformer-remark</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
-      options<span class="token operator">:</span> <span class="token punctuation">{</span>
-        <span class="token comment">// Plugins configs 这里后续做扩展，支持语法高亮、图片优化</span>
-        plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
-        <span class="token punctuation">]</span><span class="token punctuation">,</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">{</span>
-      resolve<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">gatsby-source-filesystem</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
-      options<span class="token operator">:</span> <span class="token punctuation">{</span>
-        name<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">blogs</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
-        path<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>__dirname<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/src/blogs/</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token punctuation">]</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div>
-<p>在 <code>gatsby-source-filesystem</code> 的配置部分可以看到，markdown 文件被放到了 <code>src/blogs</code> 目录下。在执行命令 <code>yarn run start</code> 之后，通过 <code>http://localhost:8000/__graphql</code> 构建如下 graphql 语句就能够获取到文件的信息了：</p>
-<div class="gatsby-highlight" data-language="graphql"><pre class="language-graphql"><code class="language-graphql"><span class="token punctuation">{</span>
-  <span class="token property-query">allFile</span><span class="token punctuation">(</span><span class="token attr-name">filter</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token attr-name">sourceInstanceName</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token attr-name">eq</span><span class="token punctuation">:</span> <span class="token string">"blogs"</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token object">nodes</span> <span class="token punctuation">{</span>
-      <span class="token property">relativePath</span>
-      <span class="token property">extension</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p>可以看到对应的结果如下所示：</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/903572f815ccd4e832fc819eed8580f7/9b379/2021-07-18-14-20-38.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 62.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABRklEQVQoz42R247cIBBE/f//mEykWZtLYzf0DewxbGTnJVI2mj2qR44oVU8fz495Xrz3MQa4CSEkAB+8cy6tX7O4sLg4ad33epzHebRzt9deX+dxvup+9lNEMiCRmFX9K6JWW4sAk9i+AFk9Rh/9HL2P0cc4+xjDzFakOSJpFWsm1axa27W2drwW56be+/1yfP6DFKZngkdwPxw+Ez2BY5aNeC2WJYQ4fan9QdW48JpygkwbyUZKqkW0iOlVfvr8P8rKyCliRKYiiqysWi7f7K2sxkhrRPBbAeSIqtVas7Zbbe9lKZIgu0vODNnsNu+8k0UFCQJ6v+Ww8Zw4Fc1yhfS9zFu5agcsMbPHa7N7MBX7xs8bp4DBY/HIy8rrJQvJd2obb7RChpgLZIlZ8j04qb4/VWGaE/wK7qfHRyiPQMvK/p79rv0buuHtxVAbKOgAAAAASUVORK5CYII='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="2021 07 18 14 20 38"
-        title="2021 07 18 14 20 38"
-        src="/static/903572f815ccd4e832fc819eed8580f7/5a190/2021-07-18-14-20-38.png"
-        srcset="/static/903572f815ccd4e832fc819eed8580f7/772e8/2021-07-18-14-20-38.png 200w,
-/static/903572f815ccd4e832fc819eed8580f7/e17e5/2021-07-18-14-20-38.png 400w,
-/static/903572f815ccd4e832fc819eed8580f7/5a190/2021-07-18-14-20-38.png 800w,
-/static/903572f815ccd4e832fc819eed8580f7/9b379/2021-07-18-14-20-38.png 951w"
-        sizes="(max-width: 800px) 100vw, 800px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span></p>
-<p>不过直接使用这个似乎数据也做不了什么，还需要 <code>gatsby-transformer-remark</code> 将 markdown 做解析，对应的数据通过另外一个 graphql 的接口获取：</p>
-<div class="gatsby-highlight" data-language="graphql"><pre class="language-graphql"><code class="language-graphql"><span class="token keyword">query</span> <span class="token punctuation">{</span>
-  <span class="token object">allMarkdownRemark</span> <span class="token punctuation">{</span>
-    <span class="token object">nodes</span> <span class="token punctuation">{</span>
-      <span class="token property">id</span>
-      <span class="token property">html</span>
-      <span class="token object">frontmatter</span> <span class="token punctuation">{</span>
-        <span class="token property">title</span>
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/766fff3e9096e10adfe8fb7d7c67d123/d7abb/2021-07-18-14-26-08.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 58.00000000000001%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAIAAADtbgqsAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABYklEQVQoz4WRi27qMBBE8/+fVhVuAyRAq6rk4UdC7F3b6zgUEioT3UpVSzsarSzLRzsjJ0VRcMZkI2Uzq5VStm0jhOCcq//qvrrmUogmsWjJD304jeM4TdM8ZxERdoCWLHnyve/Dp0MYlFIJ+UGhv4zj9aumaepDOGpTNVpp68j3YQjh1IchHt7fHVFyuYxg++F0vn6TJ0/aHhuN5dG8NlYox5XlylQdKescJefz5XpH1IJOS7MXsGW4ZZjVsKkxZ3pRYM4jPE3TD9ztzjUATyWkFSwLzFl0xnBdweLgSuW8vwPPsbXFV4k7jjsWZ87gXwHLUj8eSIDrf4WpM7CuzbPALTd7gRnTiwOsYhBXdH9sphbi01WFOTM5w7nwstCLQ+xMv3cWGtLK7PiNr3FdY1rhJoY3O3Ef/oy9Zbi5Lc8YrMq481lAVpsX+RfcIGQ17jmkZcwfv6qCtNIPb/bt6Dx9AFzAp7PaF+fLAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="2021 07 18 14 26 08"
-        title="2021 07 18 14 26 08"
-        src="/static/766fff3e9096e10adfe8fb7d7c67d123/5a190/2021-07-18-14-26-08.png"
-        srcset="/static/766fff3e9096e10adfe8fb7d7c67d123/772e8/2021-07-18-14-26-08.png 200w,
-/static/766fff3e9096e10adfe8fb7d7c67d123/e17e5/2021-07-18-14-26-08.png 400w,
-/static/766fff3e9096e10adfe8fb7d7c67d123/5a190/2021-07-18-14-26-08.png 800w,
-/static/766fff3e9096e10adfe8fb7d7c67d123/d7abb/2021-07-18-14-26-08.png 959w"
-        sizes="(max-width: 800px) 100vw, 800px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span></p>
-<p>顺便说一下 gatsby 提供的 graphiql 增加了 <a href="https://github.com/OneGraph/graphiql-explorer">graphql-explorer</a> 可以通过点击的方式快速的拼接 graphql 语句。</p>
-<h2 id="生成路由" style="position:relative;">生成路由<a href="#%E7%94%9F%E6%88%90%E8%B7%AF%E7%94%B1" aria-label="生成路由 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<h3 id="固定路由" style="position:relative;">固定路由<a href="#%E5%9B%BA%E5%AE%9A%E8%B7%AF%E7%94%B1" aria-label="固定路由 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>有了数据源，下一步就是构建博客的基本的路由结构：</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">/ -- 首页，展示最新的 N 篇博客
-/about -- 关于，一个独立的页面
-/page/{page-number} -- 做分页，每页固定数量的博客，当然提供翻页功能
-/{slug} -- 每篇博客的语义 url 用来展示每篇独立的博客
-/archive -- 所有博客的总览页面，罗列了所有的博客标题</code></pre></div>
-<p>上文提了，gatsby 为了简化路由，为 <code>/src/pages</code> 目录下每个文件都提供了对应的 url 路径。比如 <code>src/pages/about.js</code> 的内容就对应了 <code>/about</code> 路由，再比如 <code>src/pages/projects/main.js</code> 对对应了 <code>/projects/main</code> 路由。也就是说对于固定路由来说，直接给个对应文件并且按 gatsby 的规约用 graphql 获取数据做渲染就好了。这里我以 <code>/archive</code> 的代码举个例子：</p>
-<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">Archive</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> data <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> groupByYearResult <span class="token operator">=</span> <span class="token function">groupByYear</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span>allMarkdownRemark<span class="token punctuation">.</span>nodes<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token operator">&lt;</span>Base<span class="token operator">></span>
-      <span class="token operator">&lt;</span>div<span class="token operator">></span>
-        <span class="token operator">&lt;</span>h1 className<span class="token operator">=</span><span class="token string">"text-4xl font-extrabold tracking-tight my-4 text-gray-800"</span><span class="token operator">></span>Archive<span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span>
-        <span class="token punctuation">{</span>groupByYearResult<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> key<span class="token punctuation">,</span> value <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>
-          <span class="token operator">&lt;</span>div key<span class="token operator">=</span><span class="token punctuation">{</span>key<span class="token punctuation">}</span><span class="token operator">></span>
-            <span class="token operator">&lt;</span>h2 className<span class="token operator">=</span><span class="token string">"text-3xl font-bold tracking-tight my-4 text-gray-800"</span><span class="token operator">></span><span class="token punctuation">{</span>key<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>h2<span class="token operator">></span>
-            <span class="token operator">&lt;</span>YearItems blogs<span class="token operator">=</span><span class="token punctuation">{</span>value<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
-          <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
-        <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
-      <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
-    <span class="token operator">&lt;</span><span class="token operator">/</span>Base<span class="token operator">></span>
-  <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">function</span> <span class="token function">YearItems</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> blogs <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token operator">&lt;</span>div<span class="token operator">></span>省略了<span class="token operator">...</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
-  <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">export</span> <span class="token keyword">const</span> query <span class="token operator">=</span> graphql<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
-  query QueryBlogTitles {
-    allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }) {
-      nodes {
-        id
-        frontmatter {
-          title
-          date(formatString: "MMMM-DD")
-          year: date(formatString: "YYYY")
-        }
-        fields {
-          slug_without_date
-        }
-      }
-    }
-  }
-</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
-
-<span class="token keyword">function</span> <span class="token function">groupByYear</span><span class="token punctuation">(</span><span class="token parameter">blogs</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token comment">// 省略了...</span>
-<span class="token punctuation">}</span>
-</code></pre></div>
-<p>文件可以分为两个部分，一部分是 react 的模板，一部分是 graphql 数据的获取，简单明了，这里就不再赘述了。</p>
-<h3 id="从文件生成-slug-并使用-react-模板生成-blog-页面" style="position:relative;">从文件生成 slug 并使用 react 模板生成 blog 页面<a href="#%E4%BB%8E%E6%96%87%E4%BB%B6%E7%94%9F%E6%88%90-slug-%E5%B9%B6%E4%BD%BF%E7%94%A8-react-%E6%A8%A1%E6%9D%BF%E7%94%9F%E6%88%90-blog-%E9%A1%B5%E9%9D%A2" aria-label="从文件生成 slug 并使用 react 模板生成 blog 页面 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>相对于固定路由，动态路由不是说像 <a href="/blog-migrate-from-jekyll-to-gatsby">/blog-migrate-from-jekyll-to-gatsby</a> 这样的页面是在用户请求的时候用 server 端临时拼装页面，而是指在 gatsby 部署的时候动态的生成一系列的静态页面。上文提到了，既然我可以从 graphql 里面罗列一系列的 markdown 内容了，那我自然可以通过遍历的方式去生成一个个页面并提供各自的路由。</p>
-<p>具体在 gatsby 做的时候需要这么做：</p>
-<h4 id="1-准备单个-blog-的模板页面" style="position:relative;">1. 准备单个 blog 的模板页面<a href="#1-%E5%87%86%E5%A4%87%E5%8D%95%E4%B8%AA-blog-%E7%9A%84%E6%A8%A1%E6%9D%BF%E9%A1%B5%E9%9D%A2" aria-label="1 准备单个 blog 的模板页面 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h4>
-<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript">
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">BlogTemplate</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> data <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token operator">&lt;</span>Base<span class="token operator">></span>
-      <span class="token operator">&lt;</span>Blog data<span class="token operator">=</span><span class="token punctuation">{</span>data<span class="token punctuation">.</span>blog<span class="token punctuation">}</span><span class="token operator">/</span><span class="token operator">></span>
-    <span class="token operator">&lt;</span><span class="token operator">/</span>Base<span class="token operator">></span>
-  <span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">export</span> <span class="token keyword">const</span> pageQuery <span class="token operator">=</span> graphql<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
-  query BlogPostQuery($id: String) {
-    blog: markdownRemark(id: { eq: $id }) {
-      id
-      html
-      tableOfContents
-      frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
-      }
-    }
-  }
-</span><span class="token template-punctuation string">`</span></span></code></pre></div>
-<p>这是 <code>src/templates/blog.js</code> 文件的内容，可以看到，在 <code>pageQuery</code> 引入了参数 <code>$id</code>，这部分在下文会介绍怎么填充这个字段。</p>
-<h4 id="2-在-gatsby-nodejs-中创建页面" style="position:relative;">2. 在 gatsby-node.js 中创建页面<a href="#2-%E5%9C%A8-gatsby-nodejs-%E4%B8%AD%E5%88%9B%E5%BB%BA%E9%A1%B5%E9%9D%A2" aria-label="2 在 gatsby nodejs 中创建页面 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h4>
-<p>gatsby 在 build 的时候会执行 gatsby-node.js 文件，这个文件中可以调用 gatsby 的内部 api 以实现动态创建页面的目的。</p>
-<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token punctuation">{</span> createFilePath <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"gatsby-source-filesystem"</span><span class="token punctuation">)</span>
-
-<span class="token comment">// 1. 为 markdown 增加额外的字段 slug 和 slug_without_date</span>
-exports<span class="token punctuation">.</span><span class="token function-variable function">onCreateNode</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> node<span class="token punctuation">,</span> actions<span class="token punctuation">,</span> getNode <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> <span class="token punctuation">{</span> createNodeField <span class="token punctuation">}</span> <span class="token operator">=</span> actions
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>node<span class="token punctuation">.</span>internal<span class="token punctuation">.</span>type <span class="token operator">===</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">MarkdownRemark</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> filename <span class="token operator">=</span> <span class="token function">createFilePath</span><span class="token punctuation">(</span><span class="token punctuation">{</span> node<span class="token punctuation">,</span> getNode <span class="token punctuation">}</span><span class="token punctuation">)</span>
-    <span class="token comment">// get the date and title from the file name</span>
-    <span class="token keyword">const</span> <span class="token punctuation">[</span><span class="token punctuation">,</span> date<span class="token punctuation">,</span> title<span class="token punctuation">]</span> <span class="token operator">=</span> filename<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span>
-      <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^\/([\d]{4}-[\d]{2}-[\d]{2})-{1}(.+)\/$</span><span class="token regex-delimiter">/</span></span>
-    <span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token comment">// create a new slug concatenating everything</span>
-    <span class="token function">createNodeField</span><span class="token punctuation">(</span><span class="token punctuation">{</span> node<span class="token punctuation">,</span> name<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">slug</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>date<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\-</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">,</span> <span class="token string">"/"</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>title<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token template-punctuation string">`</span></span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
-    <span class="token function">createNodeField</span><span class="token punctuation">(</span><span class="token punctuation">{</span> node<span class="token punctuation">,</span> name<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">slug_without_date</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>title<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">// 2. 获取所有的 markdown 数据</span>
-<span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"path"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-exports<span class="token punctuation">.</span><span class="token function-variable function">createPages</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> graphql<span class="token punctuation">,</span> actions<span class="token punctuation">,</span> reporter <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token comment">// Destructure the createPage function from the actions object</span>
-  <span class="token keyword">const</span> <span class="token punctuation">{</span> createPage <span class="token punctuation">}</span> <span class="token operator">=</span> actions
-  <span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">graphql</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
-    {
-      allMarkdownRemark {
-        nodes {
-          id
-          fields {
-            slug
-            slug_without_date
-          }
-        }
-        pageInfo {
-          totalCount
-        }
-      }
-    }
-  </span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>result<span class="token punctuation">.</span>errors<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    reporter<span class="token punctuation">.</span><span class="token function">panicOnBuild</span><span class="token punctuation">(</span><span class="token string">'🚨  ERROR: Loading "createPages" query'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  
-  <span class="token keyword">const</span> posts <span class="token operator">=</span> result<span class="token punctuation">.</span>data<span class="token punctuation">.</span>allMarkdownRemark<span class="token punctuation">.</span>nodes<span class="token punctuation">;</span>
-  <span class="token comment">// 3. 调用 api createPage 创建</span>
-  posts<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">node<span class="token punctuation">,</span> index</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-    <span class="token function">createPage</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-      path<span class="token operator">:</span> node<span class="token punctuation">.</span>fields<span class="token punctuation">.</span>slug<span class="token punctuation">,</span> <span class="token comment">// 这里是路由</span>
-      component<span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">./src/templates/blog.js</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment">// 这里是模板的位置</span>
-      context<span class="token operator">:</span> <span class="token punctuation">{</span> id<span class="token operator">:</span> node<span class="token punctuation">.</span>id <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token comment">// 这里是传递给模板的参数</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span>
-
-    <span class="token function">createPage</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-      path<span class="token operator">:</span> node<span class="token punctuation">.</span>fields<span class="token punctuation">.</span>slug_without_date<span class="token punctuation">,</span> <span class="token comment">// 生成另外一个路由</span>
-      component<span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">./src/templates/blog.js</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-      context<span class="token operator">:</span> <span class="token punctuation">{</span> id<span class="token operator">:</span> node<span class="token punctuation">.</span>id <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p>首先，通过 <code>onCreateNode</code> 的 hook 通过文件名解析出来了 slug。举个例子，文件名是 <code>2021-07-17-blog-migrate-from-jekylly-to-gatsby.md</code> 那么就会解析出两个 slug：</p>
-<ul>
-<li>/2021/07/17/blog-migrate-from-jekylly-to-gatsby</li>
-<li>/blog-migrate-from-jekylly-to-gatsby</li>
-</ul>
-<p>之后通过 <code>createNodeField</code> 方法把 slug 再次塞回 <code>MarkdownRemark</code> 类型的 <code>fields</code> 属性里，后面就可以通过 <code>fields.slug</code> 访问这些属性了。</p>
-<p>之所以创建 /2021/07/17/xxx 的路由（而不仅仅有 /xxx 的路由）是因为这时 jekyll 的默认路由样式，算是做一个兼容保证原来的链接不会失效。</p>
-<p>到目前为止，blog 的主要功能算是建立好了。</p>
-<h2 id="处理-blog-中的代码高亮" style="position:relative;">处理 blog 中的代码高亮<a href="#%E5%A4%84%E7%90%86-blog-%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE" aria-label="处理 blog 中的代码高亮 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>remark 这个插件自己也可以使用插件，使用 <a href="https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/">prismjs</a> 就可以实现代码的高亮了。</p>
-<p>简单罗列下配置：</p>
-<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token punctuation">{</span>
-      resolve<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">gatsby-transformer-remark</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
-      options<span class="token operator">:</span> <span class="token punctuation">{</span>
-        <span class="token comment">// Plugins configs</span>
-        plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
-          <span class="token punctuation">{</span>
-            resolve<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">gatsby-remark-prismjs</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
-            options<span class="token operator">:</span> <span class="token punctuation">{</span>
-              aliases<span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token comment">// 这里仅仅是多了两个语言的 alias</span>
-                sh<span class="token operator">:</span> <span class="token string">"bash"</span><span class="token punctuation">,</span>
-                gql<span class="token operator">:</span> <span class="token string">"graphql"</span>
-              <span class="token punctuation">}</span><span class="token punctuation">,</span>
-            <span class="token punctuation">}</span><span class="token punctuation">,</span>
-          <span class="token punctuation">}</span><span class="token punctuation">,</span>
-        <span class="token punctuation">]</span><span class="token punctuation">,</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span></code></pre></div>
-<p>最后记得按照文档把 css 文件添加进来。</p>
-<h2 id="优化-blog-中的-image" style="position:relative;">优化 blog 中的 image<a href="#%E4%BC%98%E5%8C%96-blog-%E4%B8%AD%E7%9A%84-image" aria-label="优化 blog 中的 image permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>这部分工作也算是 gatsby 的一个亮点。这个插件通过对 img 的 srcset 的支持可以实现在不同宽度的页面上去加载不同宽度的图片。并且这些不同宽度的图片也都由插件自动生成，称得上是开箱即用了。更多的信息去 <a href="https://www.gatsbyjs.com/plugins/gatsby-remark-images/?=image#gatsby-remark-images">gatsby remark images</a> 一看就晓得了。</p>
-<h2 id="在-github-pages-部署" style="position:relative;">在 github pages 部署<a href="#%E5%9C%A8-github-pages-%E9%83%A8%E7%BD%B2" aria-label="在 github pages 部署 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>这部分 gatsby 已经给准备好了，跟着 <a href="https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/how-gatsby-works-with-github-pages/">How Gatsby Works with GitHub Pages</a> 基本就能解决。最后通过一个 github action 实现了自动部署（而不是每次都自己 yarn run deploy）：</p>
-<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">name</span><span class="token punctuation">:</span> build<span class="token punctuation">-</span>and<span class="token punctuation">-</span>deploy
-
-<span class="token key atrule">on</span><span class="token punctuation">:</span>
-  <span class="token key atrule">push</span><span class="token punctuation">:</span>
-    <span class="token key atrule">branches</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> <span class="token string">'**'</span>
-
-<span class="token key atrule">jobs</span><span class="token punctuation">:</span>
-  <span class="token key atrule">build</span><span class="token punctuation">:</span>
-    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest
-    <span class="token key atrule">name</span><span class="token punctuation">:</span> Git Repo Sync
-    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
-    <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v2
-    <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/setup<span class="token punctuation">-</span>node@v2
-      <span class="token key atrule">with</span><span class="token punctuation">:</span>
-        <span class="token key atrule">node-version</span><span class="token punctuation">:</span> <span class="token string">'14'</span>
-    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> install deps
-      <span class="token key atrule">run</span><span class="token punctuation">:</span> yarn install <span class="token punctuation">-</span><span class="token punctuation">-</span>frozen<span class="token punctuation">-</span>lockfile
-    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> build
-      <span class="token key atrule">run</span><span class="token punctuation">:</span> yarn run build
-    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> deploy
-      <span class="token key atrule">uses</span><span class="token punctuation">:</span> peaceiris/actions<span class="token punctuation">-</span>gh<span class="token punctuation">-</span>pages@v3
-      <span class="token key atrule">with</span><span class="token punctuation">:</span>
-        <span class="token key atrule">github_token</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> secrets.GITHUB_TOKEN <span class="token punctuation">}</span><span class="token punctuation">}</span>
-        <span class="token key atrule">publish_branch</span><span class="token punctuation">:</span> main
-        <span class="token key atrule">publish_dir</span><span class="token punctuation">:</span> ./public</code></pre></div>
-<p>这里我的主分支是 master 并采用 main 作为了发布分支，直接使用 action  <code>actions-gh-pages</code> 把 public 目录提交到 main 就可以了。</p>
-<h2 id="小结" style="position:relative;">小结<a href="#%E5%B0%8F%E7%BB%93" aria-label="小结 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>gatsby 并不像 jekyll 那么开箱即用，但其功能确实强大不少，灵活性和扩展性不是一个数量级的了。不过这也要求使用者对前端的技术栈足够了解。</p>
-<p>另一方面，gatsby 把 graphql 作为默认的数据查询语言，对于熟悉 graphql 的人来说自然是非常便利，但也一定程度上提升了使用门槛。</p>
-<h2 id="后续工作" style="position:relative;">后续工作<a href="#%E5%90%8E%E7%BB%AD%E5%B7%A5%E4%BD%9C" aria-label="后续工作 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<ol>
-<li>增加样式，目前是 plain html，只有代码块是花花绿绿的</li>
-<li>SEO 优化</li>
-<li>首页，这部分在 jekyll 的时候是个分页，现在想要做类似的实现</li>
-<li>tags 的展示和按照 tags 罗列文章，这也是之前 jekyll 的功能，也希望做成类似的样子</li>
-</ol>
-<h2 id="相关资源" style="position:relative;">相关资源<a href="#%E7%9B%B8%E5%85%B3%E8%B5%84%E6%BA%90" aria-label="相关资源 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>把几个用到但是没有提及的链接放到这里：</p>
-<ul>
-<li><a href="https://deborah-digges.github.io/2020/09/16/Jekyll-to-Gatsby/">From Jekyll to Gatsby: 7 Simple Steps</a></li>
-<li><a href="https://www.gatsbyjs.com/docs/how-to/routing/adding-markdown-pages/">Adding Markdown Pages</a></li>
-<li><a href="https://www.gatsbyjs.com/docs/reference/routing/creating-routes/#using-gatsby-nodejs">Create routing</a></li>
-</ul></div></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/2">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/4">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
+<p>tailwindcss 似乎在尝试将 css 乐高化以进一步降低前端工程师的门槛。但我觉得这个乐高依然是有门槛的，如果你甚至不晓得 <code>flex</code> <code>display</code> <code>position</code> <code>float</code> 这些基本的概念，那么你依然没办法去使用这些工具类。</p></div></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/2">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/4">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       
       if(true) {

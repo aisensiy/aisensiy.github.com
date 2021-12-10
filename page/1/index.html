@@ -55,7 +55,152 @@
   </script><link rel="preconnect" href="https://plausible.io"/><script async="" defer="" data-domain="aisensiy.me" src="https://plausible.io/js/plausible.js"></script><script>
           window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) };
           
-          </script><link as="script" rel="preload" href="/webpack-runtime-d97e025b97033c7e2335.js"/><link as="script" rel="preload" href="/framework-45ca7a0c983b0b7a000c.js"/><link as="script" rel="preload" href="/app-301092c0672bcce1568f.js"/><link as="script" rel="preload" href="/75ce8a9e25edca21eb9c1a1dab0250d3ee550bef-e9b300a9f21137291b3a.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-57b56258f6f79ef8dfb6.js"/><link as="fetch" rel="preload" href="/page-data/page/1/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2021<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div><h1><a href="/checkout-latest-commit-in-github-action">在 Github Actions 中获取最最最新的 commit</a></h1><h2>2021 December-09</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>有 helm charts 管理经验的人都晓得helm charts 发布后需要打包一个 tar 放到目录里面。helm 会要求一个特定的目录结构获取不同版本的 tar 包。在 openbayes 就有这么一个 helm charts 项目里面存放了一系列的 tar 包。目前来看这些 tar 包都很小（只有几百 K）为了方便部署，就直接把这些文件和 nginx 打包到镜像里了，部署起来就能直接提供服务了，没有其他对象存储之类的外部依赖。</p>
+          </script><link as="script" rel="preload" href="/webpack-runtime-d97e025b97033c7e2335.js"/><link as="script" rel="preload" href="/framework-45ca7a0c983b0b7a000c.js"/><link as="script" rel="preload" href="/app-301092c0672bcce1568f.js"/><link as="script" rel="preload" href="/75ce8a9e25edca21eb9c1a1dab0250d3ee550bef-e9b300a9f21137291b3a.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-57b56258f6f79ef8dfb6.js"/><link as="fetch" rel="preload" href="/page-data/page/1/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2021<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div><h1><a href="/kubeconfig-management">维护一大堆 kubeconfig 的一些实践</a></h1><h2>2021 December-10</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>如果需要维护很多 kubernetes 集群，每个集群都有一个 kubeconfig 的 yaml 那么在 <code>~/.kube</code> 目录下就会有一大堆的 yaml 。在频繁切换和修改不同的集群的内容的时候，一个不小心就可能把 A 集群的东西部署到 B 集群造成运维事故。这里介绍下到目前为止维护对多个集群环境的一些痛点和实践。</p>
+<p>首先先总结下痛点吧：</p>
+<ol>
+<li>多个集群以及集群的 namespace 切换不方便</li>
+<li>不晓得自己当前处于哪个集群下</li>
+<li>在使用 kustomize 或者 helm 对集群做更新的时候需要确保自己切换了 kubeconfig 没什么办法阻止出现错误</li>
+</ol>
+<h2 id="kubectx-快速切换上下文和-namespace" style="position:relative;"><a href="https://github.com/ahmetb/kubectx">kubectx</a> 快速切换上下文和 namespace<a href="#kubectx-%E5%BF%AB%E9%80%9F%E5%88%87%E6%8D%A2%E4%B8%8A%E4%B8%8B%E6%96%87%E5%92%8C-namespace" aria-label="kubectx 快速切换上下文和 namespace permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>这个主要解决了第一个痛点的一部分，<code>kubectx</code> 可以切换 <code>~/.kube/config</code> 文件中的多个 <code>context</code> 然后可以通过 <code>kubens</code> 命令对一个集群切换不同的 <code>namespace</code> 。但如果我有一堆 kubeconfig yaml 的话还需要额外的一步，将它们合并到 <code>~/.kube/config</code> 文件里。这个步骤用 kubectl 就能搞定：</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token assign-left variable">KUBECONFIG</span><span class="token operator">=~</span>/.kube/config:~/.kube/other.yaml kubectl config view <span class="token punctuation">\</span>
+    --merge --flatten <span class="token operator">></span> out.txt</code></pre></div>
+<p>不过依然是多了一步，而且既然有添加就有删除，什么时候发现其中一个集群的配置文件发现了变化就需要把这个集群剃掉：</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">kubectl config <span class="token builtin class-name">unset</span> users.gke_project_zone_name
+kubectl config <span class="token builtin class-name">unset</span> contexts.aws_cluster1-kubernetes
+kubectl config <span class="token builtin class-name">unset</span> clusters.foobar-baz</code></pre></div>
+<h2 id="zsh--bash--fish-集成展示当前-context" style="position:relative;">zsh / bash / fish 集成展示当前 context<a href="#zsh--bash--fish-%E9%9B%86%E6%88%90%E5%B1%95%E7%A4%BA%E5%BD%93%E5%89%8D-context" aria-label="zsh  bash  fish 集成展示当前 context permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>既然 <code>kubectl config current-context</code> 可以获取当前的上下文，那么可以在 shell 里面展示出来基本就可以保证自己知道当前在什么上下文了。对不同的 shell 可以用不同的方式实现类似的效果。</p>
+<h3 id="kube-ps1-for-zsh--bash" style="position:relative;"><a href="https://github.com/jonmosco/kube-ps1">kube-ps1</a> for zsh / bash<a href="#kube-ps1-for-zsh--bash" aria-label="kube ps1 for zsh  bash permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>安装成功后按照项目 README 提示就可以了。</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/b93b2ea1056f9352a88ca91ac0371715/191e2/kube-ps1-screenshot-from-readme.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 14.500000000000002%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAv0lEQVQI103MUUvCUACG4SMxlMgiypK1QqJ0LlSGx7WdbTo9rpludrFE6P//jzc4CHXx8sB38Qkn/0GqgiRYMQvXPFZH7ouaQV4z3Bxwi2/6eU1v+UU33hqdtMROdiZnXvGQljxle67kGtFRW3rJJ8/xhq7U2IsSO6toS03DVVhvCWdeTGOoEIMI0Q/NLl7eTwV/voaIpp9zO0q58yKuPUVrqrGkxvKXnE8yLqea1nhhvPBXppvgA+FG5tic//MX9zVbvxXO5hkAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="kube ps1 screenshot from readme"
+        title="kube ps1 screenshot from readme"
+        src="/static/b93b2ea1056f9352a88ca91ac0371715/5a190/kube-ps1-screenshot-from-readme.png"
+        srcset="/static/b93b2ea1056f9352a88ca91ac0371715/772e8/kube-ps1-screenshot-from-readme.png 200w,
+/static/b93b2ea1056f9352a88ca91ac0371715/e17e5/kube-ps1-screenshot-from-readme.png 400w,
+/static/b93b2ea1056f9352a88ca91ac0371715/5a190/kube-ps1-screenshot-from-readme.png 800w,
+/static/b93b2ea1056f9352a88ca91ac0371715/c1b63/kube-ps1-screenshot-from-readme.png 1200w,
+/static/b93b2ea1056f9352a88ca91ac0371715/29007/kube-ps1-screenshot-from-readme.png 1600w,
+/static/b93b2ea1056f9352a88ca91ac0371715/191e2/kube-ps1-screenshot-from-readme.png 1836w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<h3 id="custom-function-for-fish" style="position:relative;">custom function for fish<a href="#custom-function-for-fish" aria-label="custom function for fish permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>很遗憾 fish 里不能用 <code>kube-ps1</code> 不过自己写一个也可以的：</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token keyword">function</span> kubectl_status
+  <span class="token punctuation">[</span> -z <span class="token string">"<span class="token variable">$KUBECTL_PROMPT_ICON</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> and <span class="token builtin class-name">set</span> -l KUBECTL_PROMPT_ICON <span class="token string">"⎈"</span>
+  <span class="token punctuation">[</span> -z <span class="token string">"<span class="token variable">$KUBECTL_PROMPT_SEPARATOR</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> and <span class="token builtin class-name">set</span> -l KUBECTL_PROMPT_SEPARATOR <span class="token string">"/"</span>
+  <span class="token builtin class-name">set</span> -l config <span class="token variable">$KUBECONFIG</span>
+  <span class="token punctuation">[</span> -z <span class="token string">"<span class="token variable">$config</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> and <span class="token builtin class-name">set</span> -l config <span class="token string">"<span class="token environment constant">$HOME</span>/.kube/config"</span>
+  <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token operator">!</span> -f <span class="token variable">$config</span> <span class="token punctuation">]</span>
+    <span class="token builtin class-name">echo</span> <span class="token punctuation">(</span>set_color red<span class="token punctuation">)</span><span class="token variable">$KUBECTL_PROMPT_ICON</span><span class="token string">" "</span><span class="token punctuation">(</span>set_color white<span class="token punctuation">)</span><span class="token string">"no config"</span>
+    <span class="token builtin class-name">return</span>
+  end
+
+  <span class="token builtin class-name">set</span> -l ctx <span class="token punctuation">(</span>kubectl config current-context <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null<span class="token punctuation">)</span>
+  <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$status</span> -ne <span class="token number">0</span> <span class="token punctuation">]</span>
+    <span class="token builtin class-name">echo</span> <span class="token punctuation">(</span>set_color red<span class="token punctuation">)</span><span class="token variable">$KUBECTL_PROMPT_ICON</span><span class="token string">" "</span><span class="token punctuation">(</span>set_color white<span class="token punctuation">)</span><span class="token string">"no context"</span>
+    <span class="token builtin class-name">return</span>
+  end
+
+  <span class="token builtin class-name">set</span> -l ns <span class="token punctuation">(</span>kubectl config view -o <span class="token string">"jsonpath={.contexts[?(@.name==<span class="token entity" title="\&quot;">\"</span><span class="token variable">$ctx</span><span class="token entity" title="\&quot;">\"</span>)].context.namespace}"</span><span class="token punctuation">)</span>
+  <span class="token punctuation">[</span> -z <span class="token variable">$ns</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> and <span class="token builtin class-name">set</span> -l ns <span class="token string">'default'</span>
+
+  <span class="token builtin class-name">echo</span> <span class="token punctuation">(</span>set_color cyan<span class="token punctuation">)</span><span class="token variable">$KUBECTL_PROMPT_ICON</span><span class="token string">" "</span><span class="token punctuation">(</span>set_color white<span class="token punctuation">)</span><span class="token string">"(<span class="token variable">$ctx</span><span class="token variable">$KUBECTL_PROMPT_SEPARATOR</span><span class="token variable">$ns</span>)"</span>
+end
+
+<span class="token keyword">function</span> fish_right_prompt
+    string unescape <span class="token variable">$$</span>_tide_prompt_var<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+    <span class="token builtin class-name">echo</span> <span class="token punctuation">(</span>kubectl_status<span class="token punctuation">)</span>
+end</code></pre></div>
+<p>其实这个代码不是我原创的，我只是做了写魔改，很遗憾忘记了出处...具体的代码在 <a href="https://github.com/aisensiy/dotfiles/blob/master/fish/functions/fish_prompt.fish">fish_prompt</a> 里，这里同时包含了我公开的 dotfiles 信息。效果如下：</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/d4d4986fa57e3d4539586c7d7c271217/58a91/terminal-with-kube-context-in-fish.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 24.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAtklEQVQY022O3QqDMAxG6w8IwjBtUhlVEUQ3dqG72F5i7/9A30ihzo1dHJKm4eQzwzBgHEd0XYcQAqZpwrZtkXVdsSwX3K4XzOsD7fMFP9/he4YP57iv9H2/96YsSxhjdqqqAhGhaZpYrbUgsrBEcHSCowbcClgYIhLx3u+9yfMcRVFAa5ZlqOs6fjDz16KIB7PAORePJPR9JAoTmvAo/MhknyWh1jQ7YjSVchRqsn8kYeJXpsI3rWh5X3QOJ7EAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="terminal with kube context in fish"
+        title="terminal with kube context in fish"
+        src="/static/d4d4986fa57e3d4539586c7d7c271217/5a190/terminal-with-kube-context-in-fish.png"
+        srcset="/static/d4d4986fa57e3d4539586c7d7c271217/772e8/terminal-with-kube-context-in-fish.png 200w,
+/static/d4d4986fa57e3d4539586c7d7c271217/e17e5/terminal-with-kube-context-in-fish.png 400w,
+/static/d4d4986fa57e3d4539586c7d7c271217/5a190/terminal-with-kube-context-in-fish.png 800w,
+/static/d4d4986fa57e3d4539586c7d7c271217/c1b63/terminal-with-kube-context-in-fish.png 1200w,
+/static/d4d4986fa57e3d4539586c7d7c271217/29007/terminal-with-kube-context-in-fish.png 1600w,
+/static/d4d4986fa57e3d4539586c7d7c271217/58a91/terminal-with-kube-context-in-fish.png 1990w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<p><strong>注意</strong> 这个最终效果是建立在我的 fish 主题之上的，单独使用效果如何不得而知。</p>
+<h2 id="kubie-一站式解决方案" style="position:relative;">kubie 一站式解决方案<a href="#kubie-%E4%B8%80%E7%AB%99%E5%BC%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88" aria-label="kubie 一站式解决方案 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>除了 kubectx 外我还发现了一个更完善的解决方案：<a href="https://github.com/sbstp/kubie">kubie</a> 它有三个优势：</p>
+<ol>
+<li>包含了 kubectx 的功能</li>
+<li>不用合并 config 文件，可以通过配置读取文件列表</li>
+<li>自带 shell 的 prompt 提示</li>
+</ol>
+<p>当然，也有坏处，你不能自定义你的 prompt 样式了，不过它支持关掉自己的 prompt 提示。我目前就逐渐从 kubectx 切换到了 kubie 但依然保持我自己的 fish 的 prompt 。</p>
+<p>另外一个小问题就是它默认的 prompt 不会在你新建一个 terminal 的时候就展示，事实上在这个时候 kubectl 的 context 已经指向了 <code>~/.kube/config</code> 的上下文了。你需要做一次切换后才会弹出。当然你可以通过在 shell 初始化的时候随便跑一个 <code>kubie</code> 命令来解决。</p>
+<h2 id="direnv-当切换目录后自动注入环境变量" style="position:relative;"><a href="https://direnv.net/">direnv</a> 当切换目录后自动注入环境变量<a href="#direnv-%E5%BD%93%E5%88%87%E6%8D%A2%E7%9B%AE%E5%BD%95%E5%90%8E%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F" aria-label="direnv 当切换目录后自动注入环境变量 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>最后一个痛点以上的东西都没有解决。虽然增加了提示很大概率可以避免用错环境了，但还是挡不住有手比眼快的时候。这总是后就需要 <code>direnv</code> 出场了。它可以在切换到某一个目录的之后触发一个 shell 执行，比如我可以强制在切换到维护 dev 集群的目录时候将 <code>KUBECONFIG</code> 环境变量切换成对应集群的 kubeconfig 文件，这样就可以保证了上下文随着我操纵的 kustomize / helm charts 文件目录自动切换了。</p>
+<p>最后上 demo：</p>
+<p>
+		<video
+			src=/videos/kube-context-management-practices.mp4
+			width="1200"
+			height="auto"
+			preload="auto"
+			muted="false"
+			title="/videos/kube-context-management-practices.mp4"
+			
+			playsinline
+			controls
+			
+		></video>
+	</p>
+<h2 id="参考资料" style="position:relative;">参考资料<a href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99" aria-label="参考资料 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ul>
+<li><a href="https://medium.com/@ahmetb/mastering-kubeconfig-4e447aa32c75">Mastering the KUBECONFIG file</a></li>
+<li>[Kubernetes: How do I delete clusters and contexts from kubectl config?](<a href="https://stackoverflow.com/questions/37016546/kubernetes-how-do-i-delete-clusters-and-contexts-from-kubectl-config">https://stackoverflow.com/questions/37016546/kubernetes-how-do-i-delete-clusters-and-contexts-from-kubectl-config</a>_</li>
+</ul></div></div><div><h1><a href="/checkout-latest-commit-in-github-action">在 Github Actions 中获取最最最新的 commit</a></h1><h2>2021 December-09</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>有 helm charts 管理经验的人都晓得helm charts 发布后需要打包一个 tar 放到目录里面。helm 会要求一个特定的目录结构获取不同版本的 tar 包。在 openbayes 就有这么一个 helm charts 项目里面存放了一系列的 tar 包。目前来看这些 tar 包都很小（只有几百 K）为了方便部署，就直接把这些文件和 nginx 打包到镜像里了，部署起来就能直接提供服务了，没有其他对象存储之类的外部依赖。</p>
 <p>我们也希望把打包部署的流程通过 github workflow 实现自动化。按照上面的描述，可以分成两个步骤：</p>
 <ol>
 <li>release: 提交一个新 tag 触发 release 流程，将特定目录的文件达成 tar 包并以特定的名字保存到 packages 目录下，然后提交这个 tar 包</li>
@@ -236,194 +381,7 @@
 			controls
 			
 		></video>
-	</p></div></div><div><h1><a href="/k3s-ha-in-cloud">ucloud 下部署高可用 k3s</a></h1><h2>2021 November-07</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>之所以要尝试 k3s 是因为它相对于标准的 k8s 所用的内存资源要减半，非常适合比较小型的设备，尤其是自己买来的小机器（树莓派？）。而对于标准的虚拟机环境，我们大可不必这么折腾了，毕竟越来越多的云厂商已经可以点点点就创建一个 k8s 集群了。</p>
-<p>其实相关的主题已经非常多了，不过这里还会希望记录一下在国内环境部署高可用 k3s 一些不太一样的地方，也尝试了 k3s 的 config file 参数。</p>
-<h2 id="前提知识" style="position:relative;">前提知识<a href="#%E5%89%8D%E6%8F%90%E7%9F%A5%E8%AF%86" aria-label="前提知识 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>首先，这里安装的是内嵌 etcd 的高可用版本，不是使用外部数据库的版本。不过为了让 worker 节点高可用，<strong>需要在 worker 和 master 节点之间增加一层负载均衡</strong>。虽然刚刚在说折腾 k3s 是针对非云环境的，不过考虑 bare-metal 的负载均衡还是需要一些稍微复杂的技术，这里就先不考虑了，后续会准备一个完全体。</p>
-<p>那么整个架构就像 rancher <a href="https://rancher.com/docs/k3s/latest/en/architecture/">官方</a> 提供的那样：</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 799px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/12e687436668ab6895f174e4d32e6645/76cea/2021-11-08-00-32-05.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 94%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAATCAYAAACQjC21AAAACXBIWXMAAAsTAAALEwEAmpwYAAADfUlEQVQ4y3WU+0/bVhiG849v6qZpmrTf1mqrVCatHaxZ1dJ1aDQXIKGQCyRxHCA34sRxHDu+Js6NS6E8k0+AwugivbHP+Xwef+f7Xp9Irm2SavZJNXSh9PX91rXSd2I38Xx7wF7ny4qkWwOe7ylEyxovpS6/Fzo8S1f4eT3HL7E8Sx+OWCmpt/EX+wrZjk3F8Cn3Hyqy2TSp6B6aMUAzLBR3TNP0aWt9eoZF3QpQTI92z8CwXIo9j5zmCaCkew8U2WiaKHZA4HkEvoc9OcEcTvAdh8lwiD6a4wwDbMvifDYlcaTxdKNEzRohmyNkY3gfmGwYdLwpNz8zmOPMzm7Hqjdhen55O84oA1Z2KuSaGrsNjXyrf3/LiYZB159ydXXFxeUn3Okp/uyMs4tLMdcbzjg5v2B29lEAa9aY7WOD7YMWaxmJDblJSfco9txFhtutARsNg1itz5+ljrimjgesyl3+qeok6ovYSqFN2MB43WCrplFoG6RVj+ViR8Re7LdFLBJSCz1XdC5cEJbgfa0vFLtWWOdtZUBOdURTSj2XrUqLJ0mJn2IFfogmeJyQWK/qIdAXD4XA3Y4lFi+AOvH6ApxqDdhpW+RVZ7G9rk1SPubRqxTf/PaOr55G+T4aXwBvsoo3TKJSV0wmGyZvD3XWawbvq7rIMtxaWrHEc+mGTrFjsqE4PNut8+tOjaVMU7w8Ei5uOwHBKMAfBVjjOVYwxfWHjMcTtOGM0XSO5fqczudIXZt3e1XR5f2eR6Zjk+u6ZFWbfc1d+LDlBIxCHw6HwjaDYIbnukwnE1R3jG576D0d33EpqhZrhTqZRpeDQYDc95D7vpCwTbhd1f/swxBm+OPbcbPvYDoenz6ec3F6Qq6h8fd+jb1W/4Gpb43dcid0nRGFjknXG6MMPLK1DpKiU9UdNHdEXGqi2z65lkHyqIscAvqLz++esUPPLRdVHiclvvsry8uyJg6Fr5djfBtN8jxTE3OPXn9gabfOHyVV1Kxynd2DwyF0+G7HJtO22DxsEysfEyu3iBWqJKQGcVkRc6mqKhoQqiRAn7d5Dxj+hSdHKNlYFPfIHvMqX2NNbnNgDkXhpZ5L+VriPgR8CfjfoobAjOrwY0ziSeqQ1e0CbzazvE3vsbqV5/VmlvSBQvlOQx5keKO7wbWjhaFLmk2ha1NQLYqaI7KT/6d+IfBfWmpDoA8J6xAAAAAASUVORK5CYII='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="2021 11 08 00 32 05"
-        title="2021 11 08 00 32 05"
-        src="/static/12e687436668ab6895f174e4d32e6645/76cea/2021-11-08-00-32-05.png"
-        srcset="/static/12e687436668ab6895f174e4d32e6645/772e8/2021-11-08-00-32-05.png 200w,
-/static/12e687436668ab6895f174e4d32e6645/e17e5/2021-11-08-00-32-05.png 400w,
-/static/12e687436668ab6895f174e4d32e6645/76cea/2021-11-08-00-32-05.png 799w"
-        sizes="(max-width: 799px) 100vw, 799px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span></p>
-<p>不过很显然，这里的 etcd 已经不是一个外部的东西了，而是内嵌在每一个 server（master）节点里了。</p>
-<h2 id="预备环境" style="position:relative;">预备环境<a href="#%E9%A2%84%E5%A4%87%E7%8E%AF%E5%A2%83" aria-label="预备环境 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>这里的测试环境用的 ucloud 。这里主要测试 master 的高可用，我准备了三台 master 以及一个 worker 节点。然后准备了一个内网的 ulb。</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/1478e0657f14d08efb44b2f71663a10d/a3bed/2021-11-08-00-36-20.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 21.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAtklEQVQY0z2PQW4DMQgA9//P7KFJpSbZmMUGjD2VHakHxMgMYI6vmyGXk5mMMXeec27u/cMrMsd+m5Pt5Bj/zoqIjnvn0NpRNdwHrXXOUzHLzd+3X0qpeExqKejViJg8X8L7XWnW0epclyFSMescoh23IGIQkbxOwSM3338eW8wBXl6oKJnsJWvI8prF5vOU3XOYJ7UFK68Nq7h+uPjxFEQaHgNTpdXPJctR9e2sS2oNijQuNf4A1SI3/XpOEBEAAAAASUVORK5CYII='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="2021 11 08 00 36 20"
-        title="2021 11 08 00 36 20"
-        src="/static/1478e0657f14d08efb44b2f71663a10d/5a190/2021-11-08-00-36-20.png"
-        srcset="/static/1478e0657f14d08efb44b2f71663a10d/772e8/2021-11-08-00-36-20.png 200w,
-/static/1478e0657f14d08efb44b2f71663a10d/e17e5/2021-11-08-00-36-20.png 400w,
-/static/1478e0657f14d08efb44b2f71663a10d/5a190/2021-11-08-00-36-20.png 800w,
-/static/1478e0657f14d08efb44b2f71663a10d/c1b63/2021-11-08-00-36-20.png 1200w,
-/static/1478e0657f14d08efb44b2f71663a10d/29007/2021-11-08-00-36-20.png 1600w,
-/static/1478e0657f14d08efb44b2f71663a10d/a3bed/2021-11-08-00-36-20.png 1721w"
-        sizes="(max-width: 800px) 100vw, 800px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span></p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/b61713b1022f0659c988c9058617406b/aaf7f/2021-11-08-00-36-51.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 13%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAhUlEQVQI12WNSQ7DMAwD8/+Pts3iLE1t2bI0hZ3m1ANBCkNCg6qQi+LuXdDcuq7smNnF/Gb+x1QrpShDkkoS4zgzMVVygfNT2N/tkSPZWPfYO+0+o/56TpTKdiQke1fbDctmrIfxmoUx5J7nVXlOiWWrhN14TLHni1XuTdgr4yLdQ2NB+ALnAeoQA7SROAAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="2021 11 08 00 36 51"
-        title="2021 11 08 00 36 51"
-        src="/static/b61713b1022f0659c988c9058617406b/5a190/2021-11-08-00-36-51.png"
-        srcset="/static/b61713b1022f0659c988c9058617406b/772e8/2021-11-08-00-36-51.png 200w,
-/static/b61713b1022f0659c988c9058617406b/e17e5/2021-11-08-00-36-51.png 400w,
-/static/b61713b1022f0659c988c9058617406b/5a190/2021-11-08-00-36-51.png 800w,
-/static/b61713b1022f0659c988c9058617406b/c1b63/2021-11-08-00-36-51.png 1200w,
-/static/b61713b1022f0659c988c9058617406b/29007/2021-11-08-00-36-51.png 1600w,
-/static/b61713b1022f0659c988c9058617406b/aaf7f/2021-11-08-00-36-51.png 1668w"
-        sizes="(max-width: 800px) 100vw, 800px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span></p>
-<p>这里另外一个值得一提的是 ucloud 的内网 ulb 是需要在每台 master 做额外的设置的，参见<a href="https://docs.ucloud.cn/ulb/guide/realserver/editrealserver">官方文档</a>：</p>
-<ol>
-<li>需要在每台机器下增加文件 <code>/etc/netplan/lo-cloud-init.yaml</code>，其中 <code>$VIP</code> 为 ulb 的内网 IP</li>
-</ol>
-<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">network</span><span class="token punctuation">:</span>
-    <span class="token key atrule">ethernets</span><span class="token punctuation">:</span>
-        <span class="token key atrule">lo</span><span class="token punctuation">:</span>
-            <span class="token key atrule">addresses</span><span class="token punctuation">:</span>
-            <span class="token punctuation">-</span> $VIP/32</code></pre></div>
-<ol start="2">
-<li>执行命令 <code>sudo netplan apply</code></li>
-</ol>
-<p>通过命令 <code>ip a</code> 可以看到 <code>lo</code> 的网卡已经增加了 <code>$VIP</code>。</p>
-<p>由于我目前安装的 k3s 没用其内置的 <code>containerd</code> 而是用了 <code>docker</code> 所以需要为每台机器首先安装：</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> update <span class="token operator">&amp;&amp;</span> <span class="token function">sudo</span> <span class="token function">install</span> docker.io -y</code></pre></div>
-<h2 id="安装过程" style="position:relative;">安装过程<a href="#%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B" aria-label="安装过程 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<iframe src="//player.bilibili.com/player.html?aid=721551407&bvid=BV1WS4y1d775&cid=438565927&page=1" width="800" height="640" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-<p>整个过程是这样的：</p>
-<ol>
-<li>创建第一个种子 master 节点 master0</li>
-<li>陆续将另外两个 masetr 加入到集群</li>
-<li>创建 worker 节点，不过在加入的时候采用的就是内网的 ulb 的 ip 了</li>
-</ol>
-<p>首先在 master0 执行如下命令：</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">curl</span> -sfL http://rancher-mirror.cnrancher.com/k3s/k3s-install.sh <span class="token operator">|</span> <span class="token punctuation">\</span>
-    <span class="token assign-left variable">INSTALL_K3S_MIRROR</span><span class="token operator">=</span>cn <span class="token function">sh</span> -s - server -c /home/ubuntu/master0-config.yaml</code></pre></div>
-<ol>
-<li>这里采用了国内镜像，直接使用 k3s 的镜像在国内应该会各种下载失败的。</li>
-<li>采用了 <code>k3s server</code> 下一个 <code>-c</code> 的参数，这个参数可以将命令参数以 <code>yaml</code> 的形式传进来，这个就是看喜好了，传一系列 --xxx 形式的参数也应该没什么问题。</li>
-</ol>
-<p>其中 <code>master0-config.yaml</code> 内容如下：</p>
-<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">write-kubeconfig-mode</span><span class="token punctuation">:</span> <span class="token string">"0644"</span>
-<span class="token key atrule">tls-san</span><span class="token punctuation">:</span>
-<span class="token punctuation">-</span> 10.60.210.147     <span class="token comment"># ulb ip</span>
-<span class="token punctuation">-</span> 10.60.172.234     <span class="token comment"># master0</span>
-<span class="token punctuation">-</span> 10.60.227.248     <span class="token comment"># master1</span>
-<span class="token punctuation">-</span> 10.60.82.205      <span class="token comment"># master 2</span>
-<span class="token punctuation">-</span> 117.50.162.155    <span class="token comment"># master0 external ip</span>
-<span class="token punctuation">-</span> 117.50.172.65     <span class="token comment"># master1 external ip</span>
-<span class="token punctuation">-</span> 117.50.172.104    <span class="token comment"># master2 external ip</span>
-<span class="token key atrule">docker</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
-<span class="token key atrule">cluster-init</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
-<span class="token key atrule">token</span><span class="token punctuation">:</span> VNVIyKGNPtSKTfhi
-<span class="token key atrule">disable</span><span class="token punctuation">:</span> servicelb</code></pre></div>
-<ol>
-<li>把所有 master 的内网和外网 ip 都放进了 <code>tls-san</code> 同时把内网负载均衡节点 ip 也放了进来。</li>
-<li>k3s 默认使用 containerd 作为容器运行环境，不过我还是用惯了 docker 所以添加了参数 <code>docker: true</code>。</li>
-<li>第一台 master 采用 <code>cluster-init</code> 的方式启动。</li>
-<li>token 就是一个随机字符串，后面添加 master 节点和 worker 节点只要保持一致就好。</li>
-<li>disable 参数关掉了 k3s 默认添加的 <code>servicelb</code> 如果想要同时关掉 <code>traefik</code> 就可以写成 <code>disable: servicelb,traefik</code>；<strong>注意</strong> 像配置 <code>tls-san</code> 那样用 <code>yaml</code> 的数组的语法是不行的，这也是让我多花了点时间的地方。</li>
-</ol>
-<p>等 master0 的命令执行成功后输入命令 <code>k3s kubectl get nodes -w</code> 等待第一个节点准备完毕后在第二台 master 执行如下命令：</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">curl</span> -sfL http://rancher-mirror.cnrancher.com/k3s/k3s-install.sh <span class="token operator">|</span> <span class="token punctuation">\</span>
-    <span class="token assign-left variable">INSTALL_K3S_MIRROR</span><span class="token operator">=</span>cn <span class="token function">sh</span> -s - server -c /home/ubuntu/master-others.config.yaml</code></pre></div>
-<p>其中 <code>master-others.config.yaml</code> 内容如下：</p>
-<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">write-kubeconfig-mode</span><span class="token punctuation">:</span> <span class="token string">"0644"</span>
-<span class="token key atrule">tls-san</span><span class="token punctuation">:</span>
-<span class="token punctuation">-</span> 10.60.210.147     <span class="token comment"># ulb ip</span>
-<span class="token punctuation">-</span> 10.60.172.234     <span class="token comment"># master0</span>
-<span class="token punctuation">-</span> 10.60.227.248     <span class="token comment"># master1</span>
-<span class="token punctuation">-</span> 10.60.82.205      <span class="token comment"># master 2</span>
-<span class="token punctuation">-</span> 117.50.162.155    <span class="token comment"># master0 external ip</span>
-<span class="token punctuation">-</span> 117.50.172.65     <span class="token comment"># master1 external ip</span>
-<span class="token punctuation">-</span> 117.50.172.104    <span class="token comment"># master2 external ip</span>
-<span class="token key atrule">docker</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
-<span class="token key atrule">server</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//10.60.172.234<span class="token punctuation">:</span><span class="token number">6443</span> <span class="token comment"># master0 kubernetes api server address</span>
-<span class="token key atrule">token</span><span class="token punctuation">:</span> VNVIyKGNPtSKTfhi
-<span class="token key atrule">disable</span><span class="token punctuation">:</span> servicelb</code></pre></div>
-<p><strong>注意</strong> 两台 master 要陆续添加，必须等第一个结束了再去添加第二台。</p>
-<p>三台 master 都加入集群后，集群的核心安装过程就结束了。</p>
-<p>下面就尝试添加一台 worker：</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">curl</span> -sfL http://rancher-mirror.cnrancher.com/k3s/k3s-install.sh <span class="token operator">|</span> <span class="token punctuation">\</span>
-    <span class="token assign-left variable">INSTALL_K3S_MIRROR</span><span class="token operator">=</span>cn <span class="token assign-left variable">K3S_TOKEN</span><span class="token operator">=</span>VNVIyKGNPtSKTfhi  <span class="token function">sh</span> -s - agent --docker --server<span class="token operator">=</span><span class="token string">"https://10.60.210.147:6443"</span></code></pre></div>
-<p>等 worker 变为 <code>Ready</code> 后集群的构建就算是完成了。这时候去任意一台 master 将 <code>/etc/rancher/k3s/k3s.yaml</code> 拷贝到自己的电脑上并修改里面 server 的 ip 为任意一台 master 的外网 ip 就可以作为 kubeconfig 文件使用了。</p>
-<h2 id="其他补充" style="position:relative;">其他补充<a href="#%E5%85%B6%E4%BB%96%E8%A1%A5%E5%85%85" aria-label="其他补充 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>还有个安装工具 <a href="https://github.com/alexellis/k3sup">k3sup</a> 可以帮助快速安装集群，不过看起来更新的频率不高了，以及国内环境显然也不能直接用。</p>
-<p>rancher cn 的团队也做了个 <a href="https://docs.rancher.cn/docs/k3s/autok3s/_index">autok3s</a> 在官网上就有介绍，不过看起来更新频率也不太高，并且 k3s 本身的安装成本真的很低了，所以就没去了解了。</p>
-<p>除了安装之外，其实集群后续的维护工作也是挺重要的，毕竟你不希望集群慢慢老去不得不兼容各种奇怪问题，后面希望记录如何升级，如何集群数据备份和恢复两部分内容。</p>
-<p>k3s 本身有一些局限性，比如它的 CNI 插件默认是 flannel 如果想要其他的就要自己去安装了，这个我并没有做更多的尝试了。</p>
-<h2 id="参考资料" style="position:relative;">参考资料<a href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99" aria-label="参考资料 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<ol>
-<li><a href="https://docs.rancher.cn/docs/k3s/installation/install-options/_index">rancher k3s cn 的文档</a></li>
-<li><a href="https://rancher.com/docs/k3s/latest/en/installation/">rancher k3s 官方文档</a></li>
-</ol></div></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/2">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
+	</p></div></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/2">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       
       if(true) {
