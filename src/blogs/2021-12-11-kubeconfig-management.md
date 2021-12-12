@@ -10,20 +10,22 @@ tags:       [kubernetes, kubectx, kubie, direnv]
 
 首先先总结下痛点吧：
 
-1. 多个集群以及集群的 namespace 切换不方便
+1. 多个集群以及集群的 namespace 切换比较繁琐，通常需要 KUBECONFIG 环境变量的切换
 2. 不晓得自己当前处于哪个集群下
-3. 在使用 kustomize 或者 helm 对集群做更新的时候需要确保自己切换了 kubeconfig 没什么办法阻止出现错误
+3. 在使用 kustomize 或者 helm 对集群做更新的时候需要确保自己切换了 kubeconfig，除了小心之外没什么办法阻止错位的环境部署
+
+下面记录下自己在试图解决这些痛点过程中找到的还不错的方案。
 
 ## [kubectx](https://github.com/ahmetb/kubectx) 快速切换上下文和 namespace
 
-这个主要解决了第一个痛点的一部分，`kubectx` 可以切换 `~/.kube/config` 文件中的多个 `context` 然后可以通过 `kubens` 命令对一个集群切换不同的 `namespace` 。但如果我有一堆 kubeconfig yaml 的话还需要额外的一步，将它们合并到 `~/.kube/config` 文件里。这个步骤用 kubectl 就能搞定：
+`kubectx` 可以切换 `~/.kube/config` 文件中的多个 `context`，然后可以通过 `kubens` 命令切换不同的 `namespace` 。但如果我有一堆 kubeconfig yaml 的话还需要额外的一步，将它们合并到 `~/.kube/config` 文件里。这个步骤用 kubectl 就能搞定：
 
 ```sh
 KUBECONFIG=~/.kube/config:~/.kube/other.yaml kubectl config view \
     --merge --flatten > out.txt
 ```
 
-不过依然是多了一步，而且既然有添加就有删除，什么时候发现其中一个集群的配置文件发现了变化就需要把这个集群剃掉：
+不过依然是多了一步，而且既然有添加就有删除，如果其中一个集群的配置文件变化了或者废弃了就需要把这个集群剃掉：
 
 ```sh
 kubectl config unset users.gke_project_zone_name
@@ -33,7 +35,7 @@ kubectl config unset clusters.foobar-baz
 
 ## zsh / bash / fish 集成展示当前 context
 
-既然 `kubectl config current-context` 可以获取当前的上下文，那么可以在 shell 里面展示出来基本就可以保证自己知道当前在什么上下文了。对不同的 shell 可以用不同的方式实现类似的效果。
+既然 `kubectl config current-context` 可以获取当前的上下文，那么如果可以在 shell 里面展示这些信息基本就可以保证自己知道当前在什么上下文了。对不同的 shell 可以用不同的方式实现类似的效果。
 
 ### [kube-ps1](https://github.com/jonmosco/kube-ps1) for zsh / bash
 
@@ -43,7 +45,7 @@ kubectl config unset clusters.foobar-baz
 
 ### custom function for fish
 
-很遗憾 fish 里不能用 `kube-ps1` 不过自己写一个也可以的：
+很遗憾 fish 里不能用 `kube-ps1` 不过找一个 shell 函数做的类似的效果也可以的：
 
 ```sh
 function kubectl_status
@@ -74,7 +76,7 @@ function fish_right_prompt
 end
 ```
 
-其实这个代码不是我原创的，我只是做了写魔改，很遗憾忘记了出处...具体的代码在 [fish_prompt](https://github.com/aisensiy/dotfiles/blob/master/fish/functions/fish_prompt.fish) 里，这里同时包含了我公开的 dotfiles 信息。效果如下：
+这个代码不是我原创的，我只是做了魔改，很遗憾忘记了出处...具体的代码在 [fish_prompt](https://github.com/aisensiy/dotfiles/blob/master/fish/functions/fish_prompt.fish) 里，这里同时包含了我公开的 dotfiles 信息。效果如下：
 
 ![](../img/in-post/terminal-with-kube-context-in-fish.png)
 
@@ -82,21 +84,22 @@ end
 
 ## kubie 一站式解决方案
 
-除了 kubectx 外我还发现了一个更完善的解决方案：[kubie](https://github.com/sbstp/kubie) 它有三个优势：
+除了 kubectx 外我在最近装机的时候还发现了一个更完善的解决方案：[kubie](https://github.com/sbstp/kubie)。它有三个优势：
 
 1. 包含了 kubectx 的功能
-2. 不用合并 config 文件，可以通过配置读取文件列表
-3. 自带 shell 的 prompt 提示
+2. 不用合并 config 文件，可以通过配置读取文件列表，甚至支持 `~/.kube/*.yaml` 这样的通配符匹配
+3. 自带 shell 的 prompt 提示，类似于上文 `kube-ps1` 的功能
 
-当然，也有坏处，你不能自定义你的 prompt 样式了，不过它支持关掉自己的 prompt 提示。我目前就逐渐从 kubectx 切换到了 kubie 但依然保持我自己的 fish 的 prompt 。
+当然，也有坏处:
 
-另外一个小问题就是它默认的 prompt 不会在你新建一个 terminal 的时候就展示，事实上在这个时候 kubectl 的 context 已经指向了 `~/.kube/config` 的上下文了。你需要做一次切换后才会弹出。当然你可以通过在 shell 初始化的时候随便跑一个 `kubie` 命令来解决。
+1. 你不能自定义你的 prompt 样式了，不过它支持关掉自己的 prompt 提示。我目前就逐渐从 kubectx 切换到了 kubie 但依然保持我自己的 fish 的 prompt 。
+2. 存在一个小问题（我觉得是 bug），它默认不把 `~/.kube/config` 下当前的上下文认为是默认的上下文，它的 prompt 不会在你新建一个 terminal 的时候假设是没有上下文的，然而事实上在这个时候 kubectl 的 context 已经指向了 `~/.kube/config` 的上下文了。你需要做一次切换后才会弹出。
 
 ## [direnv](https://direnv.net/) 当切换目录后自动注入环境变量
 
-最后一个痛点以上的东西都没有解决。虽然增加了提示很大概率可以避免用错环境了，但还是挡不住有手比眼快的时候。这总是后就需要 `direnv` 出场了。它可以在切换到某一个目录的之后触发一个 shell 执行，比如我可以强制在切换到维护 dev 集群的目录时候将 `KUBECONFIG` 环境变量切换成对应集群的 kubeconfig 文件，这样就可以保证了上下文随着我操纵的 kustomize / helm charts 文件目录自动切换了。
+最后一个痛点以上的东西都没有解决。虽然增加了提示很大概率可以避免用错环境了，但还是挡不住有手比眼快的时候。这时候就需要 `direnv` 救场了。它可以在切换到某一个目录的之后触发一个 shell 执行，比如我可以强制在切换到维护 dev 集群的目录时将 `KUBECONFIG` 环境变量切换成对应集群的 kubeconfig 文件，这样就可以保证了上下文随着我操纵的 kustomize / helm charts 文件目录自动切换了。
 
-最后上 demo：
+最后上 demo，这里包含了上述介绍的一些演示，顺序通过内部的标题组织的，和上述顺序不一致。
 
 `video: /videos/kube-context-management-practices.mp4`
 
