@@ -6,6 +6,16 @@ author:     "Eisen"
 tags:       [kubernetes, kubectx, kubie, direnv]
 ---
 
+## 2021-12-20 更新
+
+由于 `kubie` 是开一个子 shell 它会导致 `direnv` 失效，也就是说 `kubie` 和 `direnv` 无法共同使用。因此我就很自然的淘汰了它，虽然它有很多的有点。但是如果换回 `kubectx` 就依然有维护 kubeconfig 的烦恼，这里找到一个新的工具 [kubecm](https://github.com/sunny0826/kubecm) 可以帮助做 kubeconfig 的合并。
+
+![](../img/in-post/kubecm-list.png)
+
+不过其实它也包含了 kubectx 的功能，但我的 kubectx 还提供了自动补全等东西，就这么一直用着了。
+
+## 开始
+
 如果需要维护很多 kubernetes 集群，每个集群都有一个 kubeconfig 的 yaml 那么在 `~/.kube` 目录下就会有一大堆的 yaml 。在频繁切换和修改不同的集群的内容的时候，一个不小心就可能把 A 集群的东西部署到 B 集群造成运维事故。这里介绍下到目前为止维护对多个集群环境的一些痛点和实践。
 
 首先先总结下痛点吧：
@@ -82,7 +92,7 @@ end
 
 **注意** 这个最终效果是建立在我的 fish 主题之上的，单独使用效果如何不得而知。
 
-## kubie 一站式解决方案
+## ~kubie 一站式解决方案~
 
 除了 kubectx 外我在最近装机的时候还发现了一个更完善的解决方案：[kubie](https://github.com/sbstp/kubie)。它有三个优势：
 
