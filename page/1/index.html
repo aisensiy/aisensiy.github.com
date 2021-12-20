@@ -55,7 +55,44 @@
   </script><link rel="preconnect" href="https://plausible.io"/><script async="" defer="" data-domain="aisensiy.me" src="https://plausible.io/js/plausible.js"></script><script>
           window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) };
           
-          </script><link as="script" rel="preload" href="/webpack-runtime-d97e025b97033c7e2335.js"/><link as="script" rel="preload" href="/framework-45ca7a0c983b0b7a000c.js"/><link as="script" rel="preload" href="/app-301092c0672bcce1568f.js"/><link as="script" rel="preload" href="/75ce8a9e25edca21eb9c1a1dab0250d3ee550bef-e9b300a9f21137291b3a.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-57b56258f6f79ef8dfb6.js"/><link as="fetch" rel="preload" href="/page-data/page/1/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2021<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div><h1><a href="/kubeconfig-management">维护一大堆 kubeconfig 的一些实践</a></h1><h2>2021 December-10</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>如果需要维护很多 kubernetes 集群，每个集群都有一个 kubeconfig 的 yaml 那么在 <code>~/.kube</code> 目录下就会有一大堆的 yaml 。在频繁切换和修改不同的集群的内容的时候，一个不小心就可能把 A 集群的东西部署到 B 集群造成运维事故。这里介绍下到目前为止维护对多个集群环境的一些痛点和实践。</p>
+          </script><link as="script" rel="preload" href="/webpack-runtime-d97e025b97033c7e2335.js"/><link as="script" rel="preload" href="/framework-45ca7a0c983b0b7a000c.js"/><link as="script" rel="preload" href="/app-301092c0672bcce1568f.js"/><link as="script" rel="preload" href="/75ce8a9e25edca21eb9c1a1dab0250d3ee550bef-e9b300a9f21137291b3a.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-57b56258f6f79ef8dfb6.js"/><link as="fetch" rel="preload" href="/page-data/page/1/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2021<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div><h1><a href="/kubeconfig-management">维护一大堆 kubeconfig 的一些实践</a></h1><h2>2021 December-10</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><h2 id="2021-12-20-更新" style="position:relative;">2021-12-20 更新<a href="#2021-12-20-%E6%9B%B4%E6%96%B0" aria-label="2021 12 20 更新 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>由于 <code>kubie</code> 是开一个子 shell 它会导致 <code>direnv</code> 失效，也就是说 <code>kubie</code> 和 <code>direnv</code> 无法共同使用。因此我就很自然的淘汰了它，虽然它有很多的有点。但是如果换回 <code>kubectx</code> 就依然有维护 kubeconfig 的烦恼，这里找到一个新的工具 <a href="https://github.com/sunny0826/kubecm">kubecm</a> 可以帮助做 kubeconfig 的合并。</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/4cbacc66c4399ebc5d2825e5fe038c12/0b569/kubecm-list.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 35.50000000000001%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAAsTAAALEwEAmpwYAAABXElEQVQozz2Ry2ocMRBF5y9mWo9uPVpSv2cICQR7wDgGZ+GVmZW9CwTjZfId2eSPTyhNkkWhKql177nqXSyFXApN0+BiwViHUoq2bXHOobWus/R1vzi6GJjXD6RhJfaZGCMhxHq+s9ZirUFrw3T/RpdPWKMYx5Ft2wghVLHj8UjOCWtayucL8+NPpscf+NNXWn1gXhasMexEVUprhQ8RrZpKJa45Z8TQe89QCiF4TBdJH58Ybl+Zzi/4+UzbWvq+x4igRJXa7/d0XVd7MRAR+Uiiy9yndO21ZfjyzvT8i/nym3j+hja2pmgkstBISbRpHOoqF4VunudKKvOyLKSUMFrR+5YUHUPJ+M7UqKWUqrO7xjU1qtse0G3AmquBiIqzRJFe9uSSTwv9ekM+3dH1M+YvUBW8EhqawwE3fqJRpv4kcRSqf4TrulZCedO83TLdXNgevpNO91it/hP+Ab+Gx0wwAGwzAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="kubecm list"
+        title="kubecm list"
+        src="/static/4cbacc66c4399ebc5d2825e5fe038c12/5a190/kubecm-list.png"
+        srcset="/static/4cbacc66c4399ebc5d2825e5fe038c12/772e8/kubecm-list.png 200w,
+/static/4cbacc66c4399ebc5d2825e5fe038c12/e17e5/kubecm-list.png 400w,
+/static/4cbacc66c4399ebc5d2825e5fe038c12/5a190/kubecm-list.png 800w,
+/static/4cbacc66c4399ebc5d2825e5fe038c12/c1b63/kubecm-list.png 1200w,
+/static/4cbacc66c4399ebc5d2825e5fe038c12/29007/kubecm-list.png 1600w,
+/static/4cbacc66c4399ebc5d2825e5fe038c12/0b569/kubecm-list.png 2878w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<p>不过其实它也包含了 kubectx 的功能，但我的 kubectx 还提供了自动补全等东西，就这么一直用着了。</p>
+<h2 id="开始" style="position:relative;">开始<a href="#%E5%BC%80%E5%A7%8B" aria-label="开始 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>如果需要维护很多 kubernetes 集群，每个集群都有一个 kubeconfig 的 yaml 那么在 <code>~/.kube</code> 目录下就会有一大堆的 yaml 。在频繁切换和修改不同的集群的内容的时候，一个不小心就可能把 A 集群的东西部署到 B 集群造成运维事故。这里介绍下到目前为止维护对多个集群环境的一些痛点和实践。</p>
 <p>首先先总结下痛点吧：</p>
 <ol>
 <li>多个集群以及集群的 namespace 切换比较繁琐，通常需要 KUBECONFIG 环境变量的切换</li>
@@ -171,7 +208,7 @@ end</code></pre></div>
   </a>
     </span></p>
 <p><strong>注意</strong> 这个最终效果是建立在我的 fish 主题之上的，单独使用效果如何不得而知。</p>
-<h2 id="kubie-一站式解决方案" style="position:relative;">kubie 一站式解决方案<a href="#kubie-%E4%B8%80%E7%AB%99%E5%BC%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88" aria-label="kubie 一站式解决方案 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<h2 id="kubie-一站式解决方案" style="position:relative;"><del>kubie 一站式解决方案</del><a href="#kubie-%E4%B8%80%E7%AB%99%E5%BC%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88" aria-label="kubie 一站式解决方案 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <p>除了 kubectx 外我在最近装机的时候还发现了一个更完善的解决方案：<a href="https://github.com/sbstp/kubie">kubie</a>。它有三个优势：</p>
 <ol>
 <li>包含了 kubectx 的功能</li>
