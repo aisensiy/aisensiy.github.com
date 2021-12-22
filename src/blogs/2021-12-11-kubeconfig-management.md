@@ -8,7 +8,7 @@ tags:       [kubernetes, kubectx, kubie, direnv]
 
 ## 2021-12-20 更新
 
-由于 `kubie` 是开一个子 shell 它会导致 `direnv` 失效，也就是说 `kubie` 和 `direnv` 无法共同使用。因此我就很自然的淘汰了它，虽然它有很多的有点。但是如果换回 `kubectx` 就依然有维护 kubeconfig 的烦恼，这里找到一个新的工具 [kubecm](https://github.com/sunny0826/kubecm) 可以帮助做 kubeconfig 的合并。
+由于 `kubie` 是开一个子 shell 它会导致 `direnv` 失效，也就是说 `kubie` 和 `direnv` 无法共同使用，我只好再去尝试其他兼容的方案，毕竟如果换回 `kubectx` 就依然有维护 kubeconfig 的烦恼。这里找到一个新的工具 [kubecm](https://github.com/sunny0826/kubecm) 可以帮助做 kubeconfig 的合并。
 
 ![](../img/in-post/kubecm-list.png)
 
