@@ -1,5 +1,5 @@
 module.exports = {
-  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./src/**/*.css"],
+  content: ["./src/**/*.{js,jsx,ts,tsx}", "./src/**/*.css"],
   darkMode: "class", // or 'media' or 'class'
   theme: {
     extend: {
@@ -36,12 +36,6 @@ module.exports = {
           },
         };
       },
-    },
-  },
-  variants: {
-    extend: {
-      backgroundColor: ["active"],
-      typography: ["dark"]
     },
   },
   plugins: [require("@tailwindcss/typography")],
