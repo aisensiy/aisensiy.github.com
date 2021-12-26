@@ -68,7 +68,7 @@ public class MyApplication {
 
 修改为 
 
-```{r}
+```java
 @Configuration(proxyBeanMethods = false)
 @EnableBatchProcessing
 public class MyBatchConfiguration {
