@@ -55,7 +55,247 @@
   </script><link rel="preconnect" href="https://plausible.io"/><script async="" defer="" data-domain="aisensiy.me" src="https://plausible.io/js/plausible.js"></script><script>
           window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) };
           
-          </script><link as="script" rel="preload" href="/webpack-runtime-18a31e4fa83bf1e38b67.js"/><link as="script" rel="preload" href="/framework-45ca7a0c983b0b7a000c.js"/><link as="script" rel="preload" href="/app-301092c0672bcce1568f.js"/><link as="script" rel="preload" href="/75ce8a9e25edca21eb9c1a1dab0250d3ee550bef-e9b300a9f21137291b3a.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-57b56258f6f79ef8dfb6.js"/><link as="fetch" rel="preload" href="/page-data/page/7/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2021<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div><h1><a href="/rest-vs-graphql">REST vs GraphQL</a></h1><h2>2021 February-20</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>考虑到目前 REST API 层和前端对接起来不是那么顺滑，于是有去找解决方案了，找来找去感觉也就是切 GraphQL 了，这次又来看 GraphQL 感觉它比上次看要香了。好好总觉了一些东西出来。</p>
+          </script><link as="script" rel="preload" href="/webpack-runtime-18a31e4fa83bf1e38b67.js"/><link as="script" rel="preload" href="/framework-45ca7a0c983b0b7a000c.js"/><link as="script" rel="preload" href="/app-301092c0672bcce1568f.js"/><link as="script" rel="preload" href="/75ce8a9e25edca21eb9c1a1dab0250d3ee550bef-e9b300a9f21137291b3a.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-57b56258f6f79ef8dfb6.js"/><link as="fetch" rel="preload" href="/page-data/page/7/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div><h1><a href="/kuberheathy">Kuberhealthy 一个还不错的健康检查 operator</a></h1><h2>2021 March-01</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>几年前 k8s 就是 openbayes 部署的基础平台了，它算是一个相当不错的 PaaS 了。这里介绍一个最近发现的做 healthcheck 的 operator（我不知道这东西用中文怎么说）。</p>
+<h2 id="需求" style="position:relative;">需求<a href="#%E9%9C%80%E6%B1%82" aria-label="需求 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>当我们的子系统越来越多的时候，我们希望每个系统有一些监控用于检测其核心的功能是否跑起来了，并希望知晓每个服务的宕机事件。<a href="https://uptimerobot.com/">uptimerobot</a> 就是在做类似的事情。我们可以给它一个 http 访问地址，当访问成功的之后就标记为「健康」，当访问失败的时候就标记为「不健康」。这个检测在指定的周期执行，日积月累就能知道一个服务的稳定情况了。</p>
+<p>不过以上所述的健康检查就像是一个 <code>curl https://targeturl</code> 似乎在假设所有的子系统都需要有一个可以方便访问的 http path。不过有些时候，我们会需要一些稍微复杂的健康检查：</p>
+<ul>
+<li>希望知道一些非 http 请求访问的服务是否健康</li>
+<li>希望知道一些以灵活的请求内容访问的服务是否健康</li>
+<li>希望有一些端到端的健康检查，以联通多个系统</li>
+</ul>
+<p>这里就推荐一下 <a href="https://comcast.github.io/kuberhealthy/">kuberhealthy</a> 这个项目。首先它是一个 kubernetes 的 operator 那么只有你在使用 k8s 的时候这个东西才算是有意义的。它有两个我很看中的地方：</p>
+<ol>
+<li>kuberhealthy 提供了一个健康检查的框架，用于让你构建任意形式的健康检查，并且这个框架我觉得很清晰，构建起来也很容易，理解起来一点都不晦涩</li>
+<li>它已经包含了不少预置健康检查了，尤其是与 k8s 集成的健康检查，算是做到了一定程度的开箱即用</li>
+</ol>
+<h2 id="几个不错的预置健康检查" style="position:relative;">几个不错的预置健康检查<a href="#%E5%87%A0%E4%B8%AA%E4%B8%8D%E9%94%99%E7%9A%84%E9%A2%84%E7%BD%AE%E5%81%A5%E5%BA%B7%E6%A3%80%E6%9F%A5" aria-label="几个不错的预置健康检查 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ol>
+<li><a href="https://comcast.github.io/kuberhealthy/cmd/pod-restarts-check/">pod-restarts-check</a> 用于检查是否存在 pod 在不断的重启，可以快速的发现是不是有服务出现了些导致其不断重启的行为。</li>
+<li><a href="https://comcast.github.io/kuberhealthy/cmd/pod-status-check/">pod-status-check</a> 用于检查是否存在 pod 一直处于失败的状态。</li>
+<li><a href="https://github.com/ChrisHirsch/kuberhealthy-storage-check">storage-check</a> 用于判断是否可以使用某一个 storageclass 成功创建 pvc。每个集群的分布式存储的健康基本就是各种服务不出问题的基石，即使发现存储出现问题太重要了。</li>
+</ol>
+<p>更多的可以在<a href="https://comcast.github.io/kuberhealthy/docs/EXTERNAL_CHECKS_REGISTRY.html">这里</a>找到。</p>
+<h2 id="自定义-healthcheck" style="position:relative;">自定义 healthcheck<a href="#%E8%87%AA%E5%AE%9A%E4%B9%89-healthcheck" aria-label="自定义 healthcheck permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>在 <a href="https://github.com/Comcast/kuberhealthy/blob/master/docs/EXTERNAL_CHECK_CREATION.md">文档</a> 里做了介绍，简单的说就是这样一个东西：</p>
+<ul>
+<li>做一件事情去检查你想要测试的东西是否「健康」，总之这个行为可以很灵活，你想怎么测试就怎么测试</li>
+<li>如果健康就把 <code>{"OK": true}</code> 以 POST 发送到 <code>http://$KH_REPORTING_URL</code></li>
+<li>如果不健康就发以下的内容，其中 <code>Errors</code> 自然就是具体的出错原因了。</li>
+</ul>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">{
+  "Errors": [
+    "Error 1 here",
+    "Error 2 here"
+  ],
+  "OK": false
+}</code></pre></div>
+<p>这里我写了一个用来测试 openbayes 的服务是否可用的端到端的健康检查，它主要做如下的事情：</p>
+<ol>
+<li>用 openbayes 的命令行工具登录到预置的账号</li>
+<li>创建一个脚步任务提交到 openbayes</li>
+<li>如果任务提交成功则是「健康」的</li>
+<li>否则系统就是「不健康」的</li>
+</ol>
+<p>具体的 crd 定义如下：</p>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> comcast.github.io/v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> KuberhealthyCheck
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> openbayes<span class="token punctuation">-</span>gear<span class="token punctuation">-</span>check
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">runInterval</span><span class="token punctuation">:</span> 6h <span class="token comment"># 指定多久时间跑一次</span>
+  <span class="token key atrule">timeout</span><span class="token punctuation">:</span> 5m <span class="token comment"># 指定执行的最长时间</span>
+  <span class="token key atrule">podSpec</span><span class="token punctuation">:</span>
+    <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">env</span><span class="token punctuation">:</span> <span class="token comment"># 自定义的环境变量</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> OPENBAYES_TOKEN
+          <span class="token key atrule">value</span><span class="token punctuation">:</span> &lt;THE TOKEN<span class="token punctuation">></span>
+        <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> ENTRYPOINT
+          <span class="token key atrule">value</span><span class="token punctuation">:</span> &lt;THE ENTRYPOINT<span class="token punctuation">></span>
+        <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> RUNTIME
+          <span class="token key atrule">value</span><span class="token punctuation">:</span> pytorch<span class="token punctuation">-</span>1.7.0
+        <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> RESOURCE
+          <span class="token key atrule">value</span><span class="token punctuation">:</span> titan_rtx
+      <span class="token key atrule">image</span><span class="token punctuation">:</span> xxxx <span class="token comment"># 镜像</span>
+      <span class="token key atrule">name</span><span class="token punctuation">:</span> main</code></pre></div>
+<p>容器的 Dockerfile 如下：</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">FROM ubuntu
+
+RUN apt update
+RUN apt install wget curl git -y
+RUN wget https://gitee.com/openbayes/bayes-releases/attach_files/606636/download/bayes_amd64.deb
+RUN dpkg -i bayes_amd64.deb
+WORKDIR /empty
+COPY run.sh .
+CMD ["/bin/bash", "run.sh"]</code></pre></div>
+<p>只做了两件事：</p>
+<ol>
+<li>下载 bayes 命令行工具</li>
+<li>执行 <code>run.sh</code> 脚本</li>
+</ol>
+<p>其中 <code>run.sh</code> 如下：</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token builtin class-name">set</span> -e <span class="token comment"># 任意一行错了就不再继续执行了</span>
+
+bayes upgrade <span class="token comment"># 更新命令行工具到最新</span>
+bayes switch <span class="token builtin class-name">test</span> -e <span class="token variable">$ENTRYPOINT</span> <span class="token comment"># 切换 bayes 命令行的上下文</span>
+bayes login <span class="token variable">$OPENBAYES_TOKEN</span> <span class="token comment"># 登录</span>
+bayes gear init healthcheck -m <span class="token string">'自动测试项目'</span> <span class="token comment"># 创建项目</span>
+bayes gear run task --env <span class="token variable">$RUNTIME</span> --resource <span class="token variable">$RESOURCE</span> -f -- <span class="token builtin class-name">echo</span> <span class="token number">123</span> <span class="token comment"># 提交 Python 脚本</span>
+<span class="token function">curl</span> --location --request POST <span class="token variable">$KH_REPORTING_URL</span> <span class="token punctuation">\</span>
+--header <span class="token string">'Content-Type: application/json'</span> <span class="token punctuation">\</span>
+--data-raw <span class="token string">'{ "OK": true }'</span> <span class="token comment"># 提交成功就告知 kuberhealthy 这次检查是成功的</span></code></pre></div>
+<p>下面是执行的样子，可以看到这个任务就像是 crd 设置的那个样子，每 6 个小时跑一次。</p>
+<p><figure class="gatsby-resp-image-figure" style="">
+    <span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/110b3181022997cbc48206f77e7dafba/681f1/2021-03-01-14-07-25.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 18.999999999999996%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAvUlEQVQY0z2OQW7DMAwE8/9H9tACaZzYluzIlCiJnMJy0D0NlsAsb3zSe8d6G2xm/9xqA/dxz7lcXWuo1tFpUVrroztz0/iipUhW45WMIE6uF6cCW3kz5w0phWUJ7HtCJBPjPgbWdaOrYr3j7tx0fVDjk1yd392ZkyPVeezOliHqmymHIZznMEQihRA2Sj5HIlYVN7uEcv9Cnz8c6nyHSzQ4OkFgyZG7LBwiTNM8BCkdQ35+Oj0XTAtu54fwB6PVNriy5jptAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="openbayes healthcheck 的执行记录"
+        title="openbayes healthcheck 的执行记录"
+        src="/static/110b3181022997cbc48206f77e7dafba/5a190/2021-03-01-14-07-25.png"
+        srcset="/static/110b3181022997cbc48206f77e7dafba/772e8/2021-03-01-14-07-25.png 200w,
+/static/110b3181022997cbc48206f77e7dafba/e17e5/2021-03-01-14-07-25.png 400w,
+/static/110b3181022997cbc48206f77e7dafba/5a190/2021-03-01-14-07-25.png 800w,
+/static/110b3181022997cbc48206f77e7dafba/681f1/2021-03-01-14-07-25.png 899w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span>
+    <figcaption class="gatsby-resp-image-figcaption">openbayes healthcheck 的执行记录</figcaption>
+  </figure></p>
+<h2 id="与-prometheus--grafana-集成" style="position:relative;">与 prometheus / grafana 集成<a href="#%E4%B8%8E-prometheus--grafana-%E9%9B%86%E6%88%90" aria-label="与 prometheus  grafana 集成 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>首先 kuberhealthy 自己有一个汇总页面，可以通过 <code>kubectl port-forward svc/kuberhealthy 8888:80</code> 类似的方式去访问：</p>
+<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"OK"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token property">"Errors"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">"CheckDetails"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"kuberhealthy/dns-status-internal"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"OK"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token property">"Errors"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token property">"RunDuration"</span><span class="token operator">:</span> <span class="token string">"3.359431829s"</span><span class="token punctuation">,</span>
+      <span class="token property">"Namespace"</span><span class="token operator">:</span> <span class="token string">"kuberhealthy"</span><span class="token punctuation">,</span>
+      <span class="token property">"LastRun"</span><span class="token operator">:</span> <span class="token string">"2021-03-01T06:08:09.35793049Z"</span><span class="token punctuation">,</span>
+      <span class="token property">"AuthoritativePod"</span><span class="token operator">:</span> <span class="token string">"kuberhealthy-84bf9fd647-2x72f"</span><span class="token punctuation">,</span>
+      <span class="token property">"uuid"</span><span class="token operator">:</span> <span class="token string">"1d309ed7-4b7a-4fd5-9706-d04f53c9ed30"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"kuberhealthy/namespace-pod-check"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"OK"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token property">"Errors"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token property">"RunDuration"</span><span class="token operator">:</span> <span class="token string">"13.589526741s"</span><span class="token punctuation">,</span>
+      <span class="token property">"Namespace"</span><span class="token operator">:</span> <span class="token string">"kuberhealthy"</span><span class="token punctuation">,</span>
+      <span class="token property">"LastRun"</span><span class="token operator">:</span> <span class="token string">"2021-03-01T05:50:19.584075218Z"</span><span class="token punctuation">,</span>
+      <span class="token property">"AuthoritativePod"</span><span class="token operator">:</span> <span class="token string">"kuberhealthy-84bf9fd647-2x72f"</span><span class="token punctuation">,</span>
+      <span class="token property">"uuid"</span><span class="token operator">:</span> <span class="token string">"49f7bef3-f5d4-4e25-bf06-acd260d52e27"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"kuberhealthy/openbayes-gear-check"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"OK"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token property">"Errors"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+      <span class="token property">"RunDuration"</span><span class="token operator">:</span> <span class="token string">"1m8.486351014s"</span><span class="token punctuation">,</span>
+      <span class="token property">"Namespace"</span><span class="token operator">:</span> <span class="token string">"kuberhealthy"</span><span class="token punctuation">,</span>
+      <span class="token property">"LastRun"</span><span class="token operator">:</span> <span class="token string">"2021-03-01T00:51:14.477191396Z"</span><span class="token punctuation">,</span>
+      <span class="token property">"AuthoritativePod"</span><span class="token operator">:</span> <span class="token string">"kuberhealthy-84bf9fd647-2x72f"</span><span class="token punctuation">,</span>
+      <span class="token property">"uuid"</span><span class="token operator">:</span> <span class="token string">"c13aea0d-52ca-4777-a6e0-551d0c59962a"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"kuberhealthy/openbayes-random-image-serving-check"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"OK"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token property">"Errors"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+      <span class="token property">"RunDuration"</span><span class="token operator">:</span> <span class="token string">"9.008124976s"</span><span class="token punctuation">,</span>
+      <span class="token property">"Namespace"</span><span class="token operator">:</span> <span class="token string">"kuberhealthy"</span><span class="token punctuation">,</span>
+      <span class="token property">"LastRun"</span><span class="token operator">:</span> <span class="token string">"2021-03-01T06:08:15.000563842Z"</span><span class="token punctuation">,</span>
+      <span class="token property">"AuthoritativePod"</span><span class="token operator">:</span> <span class="token string">"kuberhealthy-84bf9fd647-2x72f"</span><span class="token punctuation">,</span>
+      <span class="token property">"uuid"</span><span class="token operator">:</span> <span class="token string">"eb1341d3-9bbf-44ab-9348-76715464df6b"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"kuberhealthy/pod-restarts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"OK"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token property">"Errors"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+      <span class="token property">"RunDuration"</span><span class="token operator">:</span> <span class="token string">"2.903617967s"</span><span class="token punctuation">,</span>
+      <span class="token property">"Namespace"</span><span class="token operator">:</span> <span class="token string">"kuberhealthy"</span><span class="token punctuation">,</span>
+      <span class="token property">"LastRun"</span><span class="token operator">:</span> <span class="token string">"2021-03-01T06:05:09.40445213Z"</span><span class="token punctuation">,</span>
+      <span class="token property">"AuthoritativePod"</span><span class="token operator">:</span> <span class="token string">"kuberhealthy-84bf9fd647-2x72f"</span><span class="token punctuation">,</span>
+      <span class="token property">"uuid"</span><span class="token operator">:</span> <span class="token string">"4cf2c122-95ac-4902-8ecf-ee484a54c475"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"kuberhealthy/pod-status"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"OK"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token property">"Errors"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token property">"RunDuration"</span><span class="token operator">:</span> <span class="token string">"2.845955825s"</span><span class="token punctuation">,</span>
+      <span class="token property">"Namespace"</span><span class="token operator">:</span> <span class="token string">"kuberhealthy"</span><span class="token punctuation">,</span>
+      <span class="token property">"LastRun"</span><span class="token operator">:</span> <span class="token string">"2021-03-01T06:05:08.84049994Z"</span><span class="token punctuation">,</span>
+      <span class="token property">"AuthoritativePod"</span><span class="token operator">:</span> <span class="token string">"kuberhealthy-84bf9fd647-2x72f"</span><span class="token punctuation">,</span>
+      <span class="token property">"uuid"</span><span class="token operator">:</span> <span class="token string">"77af9108-720b-4ad4-b8cc-2fe81e751d8d"</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"JobDetails"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"CurrentMaster"</span><span class="token operator">:</span> <span class="token string">"kuberhealthy-84bf9fd647-2x72f"</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>但是谁也没空去看这么个 json 的，还是需要和 prometheus 这样的东西集成才行：</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">    scrape_configs:
+      ...
+      - job_name: kuberhealthy
+        scrape_interval: 1m
+        honor_labels: true
+        metrics_path: /metrics
+        static_configs:
+          - targets:
+            - kuberhealthy.kuberhealthy
+</code></pre></div>
+<p>然后就可以在 grafana 那边去设置具体的展示了，这里我有一个比较简单的：</p>
+<p><figure class="gatsby-resp-image-figure" style="">
+    <span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/0a78967408a2ebd5ab5262c5b295bd72/c45c7/2021-03-01-14-13-46.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 43%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAAsTAAALEwEAmpwYAAACNElEQVQoz0WPS08TARSFZ4W8als603l1OjPtdKaPKVPaaWsJ1VRhATECViQajYAGSRDREB8scCEbQ4xLE40bVrpzocZEE//aZ2YkcXFycu8999xzBUMzkTIKifEUEyMJJkYTjI1MMDmWZHL0PONR71yC8XOTsSbqi6ksUlohnRSRMiqqbCCmZTJJGUFfqFJb61FYDcgu2iiXHIwFn8K1BvZKgHrVQR4U0AdVvGGHys0u5qqPOG+i9j1KyyHuMMRda5FdshFufNrh6McJr/+8o/9+Cf1RwOHXE+6c7vH82zF7Pw/JH0yz8eGA7c8v2P7yjJe/jmm8ucjc0QpH39+y+nGLV79PWDpdR3DutQl3B3SfXiHY76EPy5TudnA3Q/ydHvUnFzDWy9hrM7ibbbwHIY39WcoPm5jDgMpWD/d+C3+3R+1xF0HMqqREibSUxXJcavUZim4FPW8hyirJKRExqyEbNllFQ9JNdLuE41UoOGWyao7IQ9LyyI4fGWrxQkZUyeVtGs02zbBDq93Fq9RQdQNZzVGuNXDcKlbRww9alKvTyEouhqIZiJKKYRYR5i/3mR/M0Z/tYBUcwk6P7uwc041mXJsFB1nV8ap1HK+KaTuxYYSK38AquOh5m4ykxIGEjdsrbNxaZv36Iop2Fl/RYo5EESRZo+IHlMo1rKJLvRFSC5rxkWg2Jcqx3rCKCJpuoOcMIk5PSSTTGZJpkVSEqf+s5cz49cggSqIb1pn+3zzai0z/As6tFJrmBIMIAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="grafana 的示例"
+        title="grafana 的示例"
+        src="/static/0a78967408a2ebd5ab5262c5b295bd72/5a190/2021-03-01-14-13-46.png"
+        srcset="/static/0a78967408a2ebd5ab5262c5b295bd72/772e8/2021-03-01-14-13-46.png 200w,
+/static/0a78967408a2ebd5ab5262c5b295bd72/e17e5/2021-03-01-14-13-46.png 400w,
+/static/0a78967408a2ebd5ab5262c5b295bd72/5a190/2021-03-01-14-13-46.png 800w,
+/static/0a78967408a2ebd5ab5262c5b295bd72/c1b63/2021-03-01-14-13-46.png 1200w,
+/static/0a78967408a2ebd5ab5262c5b295bd72/c45c7/2021-03-01-14-13-46.png 1346w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span>
+    <figcaption class="gatsby-resp-image-figcaption">grafana 的示例</figcaption>
+  </figure></p>
+<p>具体的集成文档见<a href="https://github.com/Comcast/kuberhealthy/blob/master/docs/K8s-KPIs-with-Kuberhealthy.md">K8s-KPIs-with-Kuberhealthy.md</a>。</p>
+<h2 id="遇到的坑" style="position:relative;">遇到的坑<a href="#%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91" aria-label="遇到的坑 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ol>
+<li>kuberhealthy 的 service account 需要好好制定，对于跨 namespace 的东西，需要给 <a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/#clusterrole-example">clusterRole</a> 才可以</li>
+<li>kuberhealthy 在每次有新的 KuberhealthyCheck 创建的时候似乎都会刷新它自己的周期计时，导致一些数个小时才需要跑一次的检查会立即跑一次，这个行为对于某些场景可能无法接受</li>
+</ol></div></div><div><h1><a href="/rest-vs-graphql">REST vs GraphQL</a></h1><h2>2021 February-20</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>考虑到目前 REST API 层和前端对接起来不是那么顺滑，于是有去找解决方案了，找来找去感觉也就是切 GraphQL 了，这次又来看 GraphQL 感觉它比上次看要香了。好好总觉了一些东西出来。</p>
 <h2 id="为什么之前对-graphql-不感兴趣" style="position:relative;">为什么之前对 GraphQL 不感兴趣<a href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B9%8B%E5%89%8D%E5%AF%B9-graphql-%E4%B8%8D%E6%84%9F%E5%85%B4%E8%B6%A3" aria-label="为什么之前对 graphql 不感兴趣 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <p>之前有注意到 GraphQL，毕竟也都好几年了呢，但当时一方面是没有对它有比较充分的理解，没有真切的感受到它的好处，另一方面是其存在诸多对于 REST 的一些误解。</p>
 <h3 id="认为-rest-的资源是独立的" style="position:relative;">认为 REST 的资源是独立的<a href="#%E8%AE%A4%E4%B8%BA-rest-%E7%9A%84%E8%B5%84%E6%BA%90%E6%98%AF%E7%8B%AC%E7%AB%8B%E7%9A%84" aria-label="认为 rest 的资源是独立的 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
@@ -345,420 +585,7 @@
     <span class="token number">1550</span>    <span class="token number">2696</span>   <span class="token number">37413</span> users.yml
    <span class="token number">13948</span>   <span class="token number">24696</span>  <span class="token number">354305</span> total</code></pre></div>
 <p>redoc 并不支持完整的 openapi 语法，很多时候校验全凭效果，比如 <code>allOf</code> <code>oneOf</code> 这些继承语法。正如上文所说，「<strong>如果展示的对就是正确的了</strong>」。类似的问题在 <code>openapi-generator-cli</code> 也会出现，具体的问题也是千奇百怪。最终结果导致我们只能使用一个 openapi 语法的子集，并且我觉得如果 openapi 没有能力让下面的工具链与自己的标准协同更新，openapi 也就慢慢成了一纸空文。以及 <code>openapi2schema</code> 就更没谱了，就是个完完全全的个人作品，已经一年多没有更新了，后面还能不能用都不知道。</p>
-<p>总的来说，上面的工具链有点像是纸糊的，摇摇欲坠，这也是我寻求 GraphQL 破局的重要原因之一吧。</p></div></div><div><h1><a href="/spring-boot-validation">spring boot validation</a></h1><h2>2021 February-07</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>之前在 <a href="/spring-boot-current-status">当前的校验异常处理</a> 提到了目前校验和异常处理的一些问题。最近找到了一些看起来更专业化的方案，这里对这几种校验方案做罗列。文中大量的内容都是从 <a href="https://www.naturalprogrammer.com/">naturalprogrammer</a> 学习到，后文应该还会再去引用里面的内容。</p>
-<p>有关预定义的 Bean Validation 注解（<code>@Email</code>, <code>@NotBlank</code> 等）就不再赘述。</p>
-<h2 id="bean-validation-的异常处理时机" style="position:relative;">Bean Validation 的异常处理时机<a href="#bean-validation-%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E6%97%B6%E6%9C%BA" aria-label="bean validation 的异常处理时机 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>在 Spring Controller 中的方法里，标记有 <code>@Valid</code> 注解的字段会触发 Bean Validation。在 <a href="/spring-boot-exception-handler">spring boot 异常处理</a> 也介绍了，如果出现校验报错，会抛出异常 <code>MethodArgumentNotValidException</code>。</p>
-<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@SpringBootApplication</span>
-<span class="token annotation punctuation">@RestController</span>
-<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ExceptionApplication</span> <span class="token punctuation">{</span>
-
-  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token class-name">SpringApplication</span><span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token class-name">ExceptionApplication</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token annotation punctuation">@PostMapping</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span>
-  <span class="token keyword">public</span> <span class="token class-name">Hello</span> <span class="token function">postHello</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestBody</span> <span class="token annotation punctuation">@Valid</span> <span class="token class-name">Hello</span> hello<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> hello<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">class</span> <span class="token class-name">Hello</span> <span class="token punctuation">{</span>
-
-  <span class="token annotation punctuation">@NotBlank</span>
-  <span class="token keyword">private</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span>
-  <span class="token keyword">private</span> <span class="token keyword">int</span> value<span class="token punctuation">;</span>
-
-  <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> name<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> value<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p>不过除了在 <code>Controller</code> 层级做校验外，可能在 <code>Application Service</code> 层级也经常有校验的需求。这部分的校验可以通过 <code>@Validated</code> 注解配合实现：</p>
-<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@SpringBootApplication</span>
-<span class="token annotation punctuation">@RestController</span>
-<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ExceptionApplication</span> <span class="token punctuation">{</span>
-
-  <span class="token annotation punctuation">@Autowired</span>
-  <span class="token keyword">private</span> <span class="token class-name">HelloService</span> helloService<span class="token punctuation">;</span>
-
-  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token class-name">SpringApplication</span><span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token class-name">ExceptionApplication</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token annotation punctuation">@PostMapping</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span>
-  <span class="token keyword">public</span> <span class="token class-name">Hello</span> <span class="token function">postHello</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestBody</span> <span class="token class-name">Hello</span> hello<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    helloService<span class="token punctuation">.</span><span class="token function">processHello</span><span class="token punctuation">(</span>hello<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> hello<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-<span class="token punctuation">}</span>
-
-<span class="token annotation punctuation">@Validated</span>
-<span class="token annotation punctuation">@Service</span>
-<span class="token keyword">class</span> <span class="token class-name">HelloService</span> <span class="token punctuation">{</span>
-  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">processHello</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Valid</span> <span class="token class-name">Hello</span> hello<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p>如上述代码所示，在 <code>HelloService</code> 上添加注解 <code>Validated</code> 并给其参数 <code>Hello</code> 增加注解 <code>@Valid</code> 在该参数传递时也会触发校验逻辑。如果报错就抛出异常 <code>ConstraintViolationException</code>。</p>
-<h2 id="bean-validation-自定义注解" style="position:relative;">Bean Validation 自定义注解<a href="#bean-validation-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3" aria-label="bean validation 自定义注解 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<h3 id="包含自定义校验" style="position:relative;">包含自定义校验<a href="#%E5%8C%85%E5%90%AB%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A0%A1%E9%AA%8C" aria-label="包含自定义校验 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>除了预定义的注解外，还可以创建自定义注解并提供相应的校验逻辑，下面就直接给出这么一个例子：</p>
-<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@NotBlank</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token annotation punctuation">@Size</span><span class="token punctuation">(</span>min<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">,</span> max<span class="token operator">=</span><span class="token number">255</span><span class="token punctuation">)</span>
-<span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span><span class="token class-name">RetentionPolicy</span><span class="token punctuation">.</span>RUNTIME<span class="token punctuation">)</span>
-<span class="token annotation punctuation">@Constraint</span><span class="token punctuation">(</span>validatedBy<span class="token operator">=</span><span class="token class-name">NameValidator</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token annotation punctuation">@interface</span> <span class="token class-name">Name</span> <span class="token punctuation">{</span>
-  <span class="token class-name">String</span> <span class="token function">message</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token string">"Invalid name"</span><span class="token punctuation">;</span>
-  <span class="token class-name">Class</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">groups</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-  <span class="token class-name">Class</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">payload</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token annotation punctuation">@Component</span>
-<span class="token keyword">class</span> <span class="token class-name">NameValidator</span> <span class="token keyword">implements</span> <span class="token class-name">ConstraintValidator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Name</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span></span> <span class="token punctuation">{</span>
-  <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> RESERVED_NAMES <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashSet</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">{</span>
-    <span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"admin"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"administration"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"public"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"private"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isValid</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">,</span> <span class="token class-name">ConstraintValidatorContext</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> name <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>RESERVED_NAMES<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span>name<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p>可以看到 <code>@Name</code> 上面首先包含了两个预定义的校验注解 <code>@NotBlank</code> 和 <code>@Size</code> 然后引入一个自定义的 <code>NameValidator</code> 用于校验所名字是否为保留字段，如果是就报错。</p>
-<p><figure class="gatsby-resp-image-figure" style="">
-    <span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 775px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/ef1fe8689f9cc403dc804d4347755d16/0098c/20210208184451.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 116.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAXCAYAAAALHW+jAAAACXBIWXMAAAsTAAALEwEAmpwYAAACbUlEQVQ4y6VUCW7bMBDU/39YBGlg1E1sy6LEe3lpil0dgA0ncVADay4pcjjDPbrWGkIImKYJWmv8769LKWEYBpxOJyilcL1exd/mxhgYreUy8Y0R/9GcrSOinZ1zTkA24ElPsM5hskbGDcRaK3sXQAvvvczZOv5jycw0xiibSq3y0VOAvZ6hL0fkGPZDOSWEGJFiRKZ4K5nBGIhvkZHBifZbrTGIziF6B1rXiS+2FoUiGgXU2tBqRa0VHdMvpcKGgOwcyFgom5BLBTBjnoF5nsU4gJsPmW/WdhPJpRTkUvbF2ub94FeGze4l19ZkIhsX5ynAR9Z57zD1Zzi7REuiTV6iygESxrXJpe0J62IMuP79g/PHu+TjoBQufQ81DOj7C5w1UOOIqBVqcFilfJ7YLDlzmoSAQoRkraSDpwwbElxIMhpPCJQ/BdolRwbMGbnNSOMIezjgcDrjOHgMhmBDho0Fk8/i1zVopW5PsUR6AxXAlDNSayCujpcXDMrgrAnKErRndguY9lnW2EabMLqE0RJSrveABalWlBAQlEIJHpjrj5rCvL5rx9URU4KntC9qpfF6VPhQQRi2dpvgD3NyZxgjAtdmypg5H+cGTRW/3i36KYq8yaWbd/qyfbHkuAIyDa4ar0ZE6x5KAr4B5M4RU14YrvWavEfmprB2noXdrbRPAVuriDnvbygZz4daw2lw6A0hl3aTa18y5LbD7ByltYMsJUTc+64DovOS2HXtNN8y5DdjyfcMOcnN4YD+eII1XpL7R4AbQ5lzj/QOJUa41JAKW33yDVfJfgWsOcO8vWF4/Y3LxxVqLT9PzzH8ByBQCjjg1AYAAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="name validation"
-        title="name validation"
-        src="/static/ef1fe8689f9cc403dc804d4347755d16/0098c/20210208184451.png"
-        srcset="/static/ef1fe8689f9cc403dc804d4347755d16/772e8/20210208184451.png 200w,
-/static/ef1fe8689f9cc403dc804d4347755d16/e17e5/20210208184451.png 400w,
-/static/ef1fe8689f9cc403dc804d4347755d16/0098c/20210208184451.png 775w"
-        sizes="(max-width: 775px) 100vw, 775px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span>
-    <figcaption class="gatsby-resp-image-figcaption">name validation</figcaption>
-  </figure></p>
-<p>这里有一个没有解决的细节：</p>
-<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java">  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isValid</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">,</span> <span class="token class-name">ConstraintValidatorContext</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token comment">// 虽然明明有额外的 @NotBlank 字段，但是依然不能保证这里传递的 name 是非空，</span>
-    <span class="token comment">// 感觉是这个 Validator 的优先级要高于其他预定义的校验</span>
-    <span class="token keyword">return</span> name <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>RESERVED_NAMES<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span>name<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span></code></pre></div>
-<h3 id="不包含自定义校验" style="position:relative;">不包含自定义校验<a href="#%E4%B8%8D%E5%8C%85%E5%90%AB%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A0%A1%E9%AA%8C" aria-label="不包含自定义校验 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>当然，也可以给一个不包含额外 Validator 的注解：</p>
-<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@NotBlank</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token annotation punctuation">@Size</span><span class="token punctuation">(</span>min <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">,</span> max <span class="token operator">=</span> <span class="token number">255</span><span class="token punctuation">)</span>
-<span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span><span class="token class-name">RetentionPolicy</span><span class="token punctuation">.</span>RUNTIME<span class="token punctuation">)</span>
-<span class="token annotation punctuation">@Constraint</span><span class="token punctuation">(</span>validatedBy <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment">// validator 为空</span>
-<span class="token keyword">public</span> <span class="token annotation punctuation">@interface</span> <span class="token class-name">Name</span> <span class="token punctuation">{</span>
-  <span class="token class-name">String</span> <span class="token function">message</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token string">"Invalid name"</span><span class="token punctuation">;</span>
-  <span class="token class-name">Class</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">groups</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-  <span class="token class-name">Class</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">payload</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p>这样的好处是可以把一些公共的校验逻辑抽取出来作为一个整体，方便理解和复用。</p>
-<h3 id="跨字段校验" style="position:relative;">跨字段校验<a href="#%E8%B7%A8%E5%AD%97%E6%AE%B5%E6%A0%A1%E9%AA%8C" aria-label="跨字段校验 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>上面提到的是单个字段的校验，如果涉及到多个字段一起的校验，就需要用到类级别的标注了：</p>
-<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span><span class="token class-name">RetentionPolicy</span><span class="token punctuation">.</span>RUNTIME<span class="token punctuation">)</span>
-<span class="token annotation punctuation">@Constraint</span><span class="token punctuation">(</span>validatedBy<span class="token operator">=</span><span class="token class-name">ConfirmValueValidator</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token annotation punctuation">@interface</span> <span class="token class-name">ConfirmValue</span> <span class="token punctuation">{</span>
-  <span class="token class-name">String</span> <span class="token function">message</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token string">"Can not confirm value"</span><span class="token punctuation">;</span>
-  <span class="token class-name">Class</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">groups</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-  <span class="token class-name">Class</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">payload</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token annotation punctuation">@Component</span>
-<span class="token keyword">class</span> <span class="token class-name">ConfirmValueValidator</span> <span class="token keyword">implements</span> <span class="token class-name">ConstraintValidator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">ConfirmValue</span><span class="token punctuation">,</span> <span class="token class-name">Hello</span><span class="token punctuation">></span></span> <span class="token punctuation">{</span>
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isValid</span><span class="token punctuation">(</span><span class="token class-name">Hello</span> value<span class="token punctuation">,</span> <span class="token class-name">ConstraintValidatorContext</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> value<span class="token punctuation">.</span><span class="token function">getConfirmValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> value<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">// Hello</span>
-<span class="token annotation punctuation">@ConfirmValue</span>
-<span class="token keyword">class</span> <span class="token class-name">Hello</span> <span class="token punctuation">{</span>
-  <span class="token annotation punctuation">@Name</span>
-  <span class="token keyword">private</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span>
-  <span class="token keyword">private</span> <span class="token keyword">int</span> value<span class="token punctuation">;</span>
-  <span class="token keyword">private</span> <span class="token keyword">int</span> confirmValue<span class="token punctuation">;</span>
-  <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> name<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> value<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getConfirmValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> confirmValue<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p>报错信息如下：</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 775px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/5ba20f5841a4949996f25de1457fc66e/0098c/20210208185553.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 116.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAXCAYAAAALHW+jAAAACXBIWXMAAAsTAAALEwEAmpwYAAAChUlEQVQ4y5VVi27bMAz0/3/iCqxA13SJnehpiXr6BtKul6bpshogqNjK6cg72kMpBd57TNMEpRTmeUYIQXKMETknpJSQ05rvRc55j4EBz+ezADrnMI4jDoeDBK+NsTDWQmsNY4zk67i9NzALZsPARCRsW+ugGEE1I1kFc3pBzVmeMXvey2wSkezja1kWyTsgZw5rrZTnnIV1DtYYeGtA3gkYV8EHM+scA2qc0ZdFADkEMKWMyL2giEKEQBmUMnpraK2h9/5FXtfXMfCplBJiqUjck+efOL2NsH6WE/fN23q5yZ8AmX6uVaKWgl4KsPS9L98NAZy1kqaXUpG54a3sNnhvNqf+BasPDFmA6fUF0+mIi1KrhS5n8eQ0jqIiq5uCR6WAHf2La2AWfg5QWsM7h9l7eGPg/AylLZwPUMbB+xkxxIetGMTppaD0BZXtc3jDeLngZBNMqPDE0WDjugbus1tJb4Cscm4dmVV+esLxeMbrOWDUEdonmDnDhgw9Z1xcgvJJMv/mNeW6MxfAxIK0jhoC/OGAvLn/7+kLWmdBPkbbYhVuEZYiCpuYcuFbYMOQsVDaSYkzVZTa8OjaS2bASAkhldWsrYFSwVFFKZtLre2xL3eGXDKPXchFjuGRIqWQjQZa/VD2df7SNiWvczynLIDvY1ZTgp40Zsq7so/ABJABuH+ergB7lzGMxBNTRTAp7YbpvQOGZQN0lHZA3kZioR+wv09Qyomq/1P+wCKkUtbSth5Wfm3lLDZaWsMirDe7POjlUGtdGcYkN1qtcL9+wT4/w5wmHHWEDfx8jUBlV/Tu6IlNth4yEz4g8cfKelwsYbKE1vsno/9TlMIgpQrY7Z+/+178Ax3dCh9tNjsTAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="20210208185553"
-        title="20210208185553"
-        src="/static/5ba20f5841a4949996f25de1457fc66e/0098c/20210208185553.png"
-        srcset="/static/5ba20f5841a4949996f25de1457fc66e/772e8/20210208185553.png 200w,
-/static/5ba20f5841a4949996f25de1457fc66e/e17e5/20210208185553.png 400w,
-/static/5ba20f5841a4949996f25de1457fc66e/0098c/20210208185553.png 775w"
-        sizes="(max-width: 775px) 100vw, 775px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span></p>
-<p>在上面的报错信息可以看到一个细节，报错信息无法下达到具体一个字段，而是落在了 <code>hello</code> 这个对象上。如果我们希望校验信息是落在具体的 <code>hello.value</code> 上可以有如下的修改：</p>
-<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
-<span class="token keyword">class</span> <span class="token class-name">ConfirmValueValidator</span> <span class="token keyword">implements</span> <span class="token class-name">ConstraintValidator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">ConfirmValue</span><span class="token punctuation">,</span> <span class="token class-name">Hello</span><span class="token punctuation">></span></span> <span class="token punctuation">{</span>
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isValid</span><span class="token punctuation">(</span><span class="token class-name">Hello</span> value<span class="token punctuation">,</span> <span class="token class-name">ConstraintValidatorContext</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">boolean</span> isValid <span class="token operator">=</span> value<span class="token punctuation">.</span><span class="token function">getConfirmValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> value<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>isValid<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      context<span class="token punctuation">.</span><span class="token function">disableDefaultConstraintViolation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      context
-        <span class="token punctuation">.</span><span class="token function">buildConstraintViolationWithTemplate</span><span class="token punctuation">(</span> <span class="token string">"{my.custom.template}"</span> <span class="token punctuation">)</span>
-        <span class="token punctuation">.</span><span class="token function">addPropertyNode</span><span class="token punctuation">(</span><span class="token string">"value"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addConstraintViolation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">return</span> isValid<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p><code>ConstraintValidatorContext</code> 允许设置具体如何覆盖默认的报错行为，以便展示想要的报错内容。这部分内容在 <a href="https://docs.jboss.org/hibernate/stable/validator/reference/en-US/html_single/#example-custom-error">6.2.1. Custom property paths</a> 有详尽的介绍。</p>
-<h3 id="validator-中的依赖注入" style="position:relative;">Validator 中的依赖注入<a href="#validator-%E4%B8%AD%E7%9A%84%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5" aria-label="validator 中的依赖注入 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>最后，Validator 是可以像其他类一样做依赖注入的：</p>
-<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java">
-<span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span><span class="token class-name">RetentionPolicy</span><span class="token punctuation">.</span>RUNTIME<span class="token punctuation">)</span>
-<span class="token annotation punctuation">@Constraint</span><span class="token punctuation">(</span>validatedBy<span class="token operator">=</span><span class="token class-name">UniqueEmailValidator</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token annotation punctuation">@interface</span> <span class="token class-name">UniqueEmail</span> <span class="token punctuation">{</span>
-  <span class="token class-name">String</span> <span class="token function">message</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token string">"duplicated email"</span><span class="token punctuation">;</span>
-  <span class="token class-name">Class</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">groups</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-  <span class="token class-name">Class</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">payload</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token annotation punctuation">@Component</span>
-<span class="token keyword">class</span> <span class="token class-name">UniqueEmailValidator</span> <span class="token keyword">implements</span> <span class="token class-name">ConstraintValidator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">UniqueEmail</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span></span> <span class="token punctuation">{</span>
-  <span class="token annotation punctuation">@Autowired</span> <span class="token class-name">EmailService</span> emailService<span class="token punctuation">;</span>
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isValid</span><span class="token punctuation">(</span><span class="token class-name">String</span> email<span class="token punctuation">,</span> <span class="token class-name">ConstraintValidatorContext</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token operator">!</span>emailService<span class="token punctuation">.</span><span class="token function">containsEmail</span><span class="token punctuation">(</span>email<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token annotation punctuation">@Component</span>
-<span class="token keyword">class</span> <span class="token class-name">EmailService</span> <span class="token punctuation">{</span>
-  <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">containsEmail</span><span class="token punctuation">(</span><span class="token class-name">String</span> email<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> email<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"a@b.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p>也就是说，与数据库通讯的东西也是可以做校验的，把与数据链接相关的对象注入就可以使用了。</p>
-<h2 id="error-message-的处理" style="position:relative;">Error Message 的处理<a href="#error-message-%E7%9A%84%E5%A4%84%E7%90%86" aria-label="error message 的处理 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>另外 validation 的报错信息也是需要做自定义的。这里给一个还不错的方案，不过没有深究一些细节。</p>
-<h3 id="国际化" style="position:relative;">国际化<a href="#%E5%9B%BD%E9%99%85%E5%8C%96" aria-label="国际化 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>首先，error message 是按照国际化的思路处理的：给一个 <code>ValidationMessages_&#x3C;LANG>.properties</code> 文件。然后在注解的 <code>message</code> 字段通过 <code>{&#x3C;KEY_NAME>}</code> 的方式给传递过来，这里给一些例子看就明白：</p>
-<p>首先修改前面的 <code>@Name</code> 注解里面的 <code>message</code>:</p>
-<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token annotation punctuation">@interface</span> <span class="token class-name">Name</span> <span class="token punctuation">{</span>
-  <span class="token class-name">String</span> <span class="token function">message</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token string">"{validation.name.default}"</span><span class="token punctuation">;</span> <span class="token comment">// &lt;----- 修改了这里</span>
-  <span class="token class-name">Class</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">groups</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-  <span class="token class-name">Class</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">payload</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p>然后给两个新的 <code>properties</code> 文件，放在 src/main/resources 目录下（就是默认的放资源文件的地方，懂的都懂）：</p>
-<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token comment">// ValidationMessages_en.properties</span>
-validation<span class="token punctuation">.</span>name<span class="token punctuation">.</span><span class="token keyword">default</span><span class="token operator">=</span><span class="token class-name">Invalid</span> name
-
-<span class="token comment">// ValidationMessages_zh_CN.properties</span>
-validation<span class="token punctuation">.</span>name<span class="token punctuation">.</span><span class="token keyword">default</span><span class="token operator">=</span>错误的名字格式</code></pre></div>
-<p>发个请求试试看，报错信息已经成了中文：</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 775px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/097fdb698a6efe6d11f183c638858f7c/0098c/20210208194218.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 116.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAXCAYAAAALHW+jAAAACXBIWXMAAAsTAAALEwEAmpwYAAACXElEQVQ4y51Ua28bIRD0//+B/dCqjerGcc7cA47HssAx1WL7aieNcy3SaK0zmp2dAXYpJVhroZTCOI5wzsF732oIAcwRMUZwPNe/gZlX7ISw7/tGOM8zTqcTDodDg/zW2kAbg2maoLVu9RZvv+1EhagRYiJqakspoBBAmRHNCN3tkZnbf6Je9oqaSNT2yaq1troSShUYY9p482xg5hlGa1ijQXZuZDKFNBbVHDxKcBAuIRQ0whgZQfwIHiwNAoMio+SMnHNT/FF9i510pRhBKSNqDf30BHVUcF5GqWvnrdiJfM65oaSEJSWgLriu/yJ009BMT0Ishpe0HoOr2VeflmV5iJ0EoA57qO4VwzCgVwr92ENPE5Q6tRQlHHIWKXis7B+snajQs8UwaThnG9ThBa+dgho1zOzaNwksEX2qsimURCmVtYunjC97jV+9x2gjiAvqnacfe9sIA0X4yKjSpRQ4YryMAZEzAmd4Sq37OXU8XHeEsrvdknEE6wm15LvNfwKqnyiMEZ4Tar16UZGJYNQI7QjxYsct4UOFniIsXRSuBhcMlqFDQirLO5WfE15GXsrSAqBpwvzjO/SxwzBauObjBoWJz/fY3XgoKmXkOE0w2oEjt7E3jSzjESdYii1FufSu6+CPR3htMFrGSUdox9sI64VwDvEycoHb7zF8/YbuucPL4GADryluUFhuFAIlF/jDM/qfz9CnHkoHzJ7vjsvDUHJOiCm3YyOvTb68galU5PrmDG55bWTENnJkpNnAdx0Og0dvaLOqd6GkLNeNmn9Lzu3oZDk+9d8f2N8YsArNInu0XwAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="20210208194218"
-        title="20210208194218"
-        src="/static/097fdb698a6efe6d11f183c638858f7c/0098c/20210208194218.png"
-        srcset="/static/097fdb698a6efe6d11f183c638858f7c/772e8/20210208194218.png 200w,
-/static/097fdb698a6efe6d11f183c638858f7c/e17e5/20210208194218.png 400w,
-/static/097fdb698a6efe6d11f183c638858f7c/0098c/20210208194218.png 775w"
-        sizes="(max-width: 775px) 100vw, 775px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span></p>
-<p>当然，如果强行给一个 <code>Accept-Language: en</code> 的 http 头就可以返回对应的英文信息：</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 775px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/b99615746b99f5c685a5e5e9517a9103/0098c/20210208194626.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 116.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAXCAYAAAALHW+jAAAACXBIWXMAAAsTAAALEwEAmpwYAAACZUlEQVQ4y5VTi26jMBDM//9fG+miOzWvEgIEGxt7/WJOu0lQ2qY9ztIIDPbszHi9ijHCGIOmaXC5XGCtxTiO8nTOIYQAIloEXrtiwq7r0LbtTHw8HnF8r3BuWiiloPoefd9f35WS92dzxsp7j2EYpAIr08OATB5DdYBp3xGdhXEWFAnWWCl6V817eV5KmbHin+v1Grvdbq5C3sNZCz9aEHl48jMBg/fwuqqqUNe1uDqfzxKRWH59fcV+v5fceHGIEfGGECJiiPL9Or8+2erpdBIyjovnXEwUbjYbbLdbyfIe7r/ABBwVg6O6F1ullPDy8iIKZ8sLSJmQ1bErJptPmQnZ8tvbm+ShtZ7t/gRuMS5+j+AOyfBUn9H3SkJlPI5pmp6CFT37Lm3jdI9IHinnaxY5ztY+kD8UYGfcJl8IAxGa4x7nU4WWG7xp0LSNHBBHwBkpreGMRhjtrPo7B3LK2lhclJ6vHNvvlJGmlebldvIOibxsemzkzxCFngJcTHNFUgpBKaAUfB6P6p4NIXSeMFLAdKuSS0HyHrq5QFkPkmLTTPYTqRCOnmB84JVCdpWf0ZkA5SJiLv+nUAjpSlhykdP0fY/hz2+oqkZ3MbA+opQFCmMIcESwN8Kc82yZ+h5aWUQKoFSWWWZ7PkQYT5IT95eta4xVBdtrDD7BMNxChdONcHB0s5xhdzt0vzaoDzWqboRxYe6zBQrzg0Igp4zxeEC3PUCfWzTKYRjDhyb+8VBSitIWY4jIMYplRsgFafrUf9/c6w83hS2KZQqIg8ZY13jvnGS2VNWXQ4kpw3ov+ZVvLv1S/AUF+AN8fUaD0gAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="20210208194626"
-        title="20210208194626"
-        src="/static/b99615746b99f5c685a5e5e9517a9103/0098c/20210208194626.png"
-        srcset="/static/b99615746b99f5c685a5e5e9517a9103/772e8/20210208194626.png 200w,
-/static/b99615746b99f5c685a5e5e9517a9103/e17e5/20210208194626.png 400w,
-/static/b99615746b99f5c685a5e5e9517a9103/0098c/20210208194626.png 775w"
-        sizes="(max-width: 775px) 100vw, 775px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span></p>
-<p>再介绍下 message 中两种可以传递的参数：</p>
-<ol>
-<li>注解中的参数可以直接用 <code>{xx}</code> 的形式传递，例如对于 <code>@Size</code> 注解有两个参数 <code>min</code> 和 <code>max</code> 可以将 message 写成以下的样子：</li>
-</ol>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">// ValidationMessages_en.properties
-validation.name.size=name long shound between {min} and {max}
-
-// ValidationMessages_zh_CN.properties
-validation.name.size=名字的长度要在 {min} 和 {max} 之间</code></pre></div>
-<ol start="2">
-<li>还有一个 <code>${}</code> 可以做特殊的表达式解析，具体的文章可以看 <a href="https://www.baeldung.com/spring-validation-message-interpolation">Spring Validation Message Interpolation</a>。最常用的是 <code>${validatedValue}</code>， <code>validatedValue</code> 是用户的输入。这个规则甚至是在类级别的校验注解里也是工作的：</li>
-</ol>
-<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token comment">// ValidationMessages_en.properties</span>
-validation<span class="token punctuation">.</span>name<span class="token punctuation">.</span><span class="token keyword">default</span><span class="token operator">=</span><span class="token class-name">Invalid</span> name
-validation<span class="token punctuation">.</span>name<span class="token punctuation">.</span>size<span class="token operator">=</span>name <span class="token keyword">long</span> shound between <span class="token punctuation">{</span>min<span class="token punctuation">}</span> and <span class="token punctuation">{</span>max<span class="token punctuation">}</span>
-validation<span class="token punctuation">.</span>confirm<span class="token operator">=</span>value not equal<span class="token operator">:</span> $<span class="token punctuation">{</span>validatedValue<span class="token punctuation">.</span>value<span class="token punctuation">}</span> <span class="token operator">!=</span> $<span class="token punctuation">{</span>validatedValue<span class="token punctuation">.</span>confirmValue<span class="token punctuation">}</span></code></pre></div>
-<blockquote>
-<p><strong>注意</strong> 这里遇到一个小坑，如果 <code>validatedValue</code> 所在的类不是 <code>public</code> 的，那么反射会出问题，导致解析失败。目前我测试的就是必须要把上文中 <code>Hello.class</code> 移动到一个独立的文件并且标记为 <code>public</code> 才可以工作。</p>
-</blockquote>
-<h3 id="中文处理" style="position:relative;">中文处理<a href="#%E4%B8%AD%E6%96%87%E5%A4%84%E7%90%86" aria-label="中文处理 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>既然用到了 <code>.properties</code> 文件自然就遇到了这个 java 中臭名昭著的编码问题，中文显示乱码。这里按照如下对 Intellj 的配置做修改可以解决问题。</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/b756b28b6fcfe776e6e96f321cff311c/45662/2021-07-26-15-23-56.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 51%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAAAsTAAALEwEAmpwYAAABjUlEQVQoz3WSiYrbQBBE9f//kkAgnxAIbAjJZnN4LXsleQ4dcx+S7PioMBOvWXuTgcfQ1UNRTU/REIIN4+iFgtQWdV2jLEsQQqGUgtYaUsqMMSaTtP9R/FrVWKwbcGEwmICu7yGFgPceIQRM05SZ5xkxxivtlnEcUdB2QENbaD9CGIftboeX53Q6XTgcDtjv91fabb/4WjJ8vF/iRyOwoArzdvfK6LlOZonj8XjRXt5JL959avDmwwJv7xq8/8IQpu3Vo0vSrJ0517cnG25Yh8dVBaFdHnm3+/0q4enidM0/R34iLR6fNujTQpTHMAg0TQNCCDjnaNsWhHEsCceatlizDiXhIN0Ac7PhtLCiph0eFmXecq89OG9RVRUopdDGwBkNojzumMd3JvHAFD5TjZWKmGOA9yEbJXwyTAm//VyCS5sNhZToui4zCAEXIrS1aLUDkwa9DRhchPERMSajmElfaowRhVAaSlsYF6Dt37+XmtbanFBbl0dLSRMxeEwxIJ5TOecQvAMdDO4rhT/F4fsPa+rhrQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="2021 07 26 15 23 56"
-        title="2021 07 26 15 23 56"
-        src="/static/b756b28b6fcfe776e6e96f321cff311c/5a190/2021-07-26-15-23-56.png"
-        srcset="/static/b756b28b6fcfe776e6e96f321cff311c/772e8/2021-07-26-15-23-56.png 200w,
-/static/b756b28b6fcfe776e6e96f321cff311c/e17e5/2021-07-26-15-23-56.png 400w,
-/static/b756b28b6fcfe776e6e96f321cff311c/5a190/2021-07-26-15-23-56.png 800w,
-/static/b756b28b6fcfe776e6e96f321cff311c/c1b63/2021-07-26-15-23-56.png 1200w,
-/static/b756b28b6fcfe776e6e96f321cff311c/45662/2021-07-26-15-23-56.png 1410w"
-        sizes="(max-width: 800px) 100vw, 800px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span></p>
-<p>顺便提一句，Intellij 里面的 <a href="https://www.jetbrains.com/help/idea/resource-bundle.html">Resource bundles</a> 也挺好用的：</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/bb3ef8a32c33b95abfc6f32cf7e7896b/e4ee8/20210208212752.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 18.999999999999996%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAtElEQVQY033O0W6CQBCFYd7/nZroRV/Aeqe22soCCjtEAzu7C/sboGlNmvQkXzJnrk622x85m5qmdVxtRy39k6k7ysuFszlgyiN58U4jBdKW1Daf70nfCbapyF7fLOvNndVWWW8dqydTf9k49nnHEB2qiqrDaY8Pive/0jjQipDxk8TfLL/bzXL62pEXH7Oy+kTaiqs1WJmWmnmlKU5kKSX+ByEG4uC/hUX0hKiLoIxjRKThAQGEMVRLH0E2AAAAAElFTkSuQmCC'); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="20210208212752"
-        title="20210208212752"
-        src="/static/bb3ef8a32c33b95abfc6f32cf7e7896b/5a190/20210208212752.png"
-        srcset="/static/bb3ef8a32c33b95abfc6f32cf7e7896b/772e8/20210208212752.png 200w,
-/static/bb3ef8a32c33b95abfc6f32cf7e7896b/e17e5/20210208212752.png 400w,
-/static/bb3ef8a32c33b95abfc6f32cf7e7896b/5a190/20210208212752.png 800w,
-/static/bb3ef8a32c33b95abfc6f32cf7e7896b/c1b63/20210208212752.png 1200w,
-/static/bb3ef8a32c33b95abfc6f32cf7e7896b/e4ee8/20210208212752.png 1496w"
-        sizes="(max-width: 800px) 100vw, 800px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span></p>
-<p>这部分介绍就到这里了，后文会继续介绍如何建立自定义 exception handler 体系以捕捉各种层级的报错并统一返回格式。</p></div></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/6">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/8">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
+<p>总的来说，上面的工具链有点像是纸糊的，摇摇欲坠，这也是我寻求 GraphQL 破局的重要原因之一吧。</p></div></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/6">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/8">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       
       if(true) {
