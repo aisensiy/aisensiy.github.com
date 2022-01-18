@@ -55,7 +55,94 @@
   </script><link rel="preconnect" href="https://plausible.io"/><script async="" defer="" data-domain="aisensiy.me" src="https://plausible.io/js/plausible.js"></script><script>
           window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) };
           
-          </script><link as="script" rel="preload" href="/webpack-runtime-18a31e4fa83bf1e38b67.js"/><link as="script" rel="preload" href="/framework-45ca7a0c983b0b7a000c.js"/><link as="script" rel="preload" href="/app-301092c0672bcce1568f.js"/><link as="script" rel="preload" href="/75ce8a9e25edca21eb9c1a1dab0250d3ee550bef-e9b300a9f21137291b3a.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-57b56258f6f79ef8dfb6.js"/><link as="fetch" rel="preload" href="/page-data/page/23/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div><h1><a href="/ddd-repository">DDD Repository</a></h1><h2>2016 May-17</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>标题是 <code>Repository</code>，但是内容是我如何从错用的 <code>Repository</code> 变成了感觉还算对的 <code>Repository</code> 的过程。</p>
+          </script><link as="script" rel="preload" href="/webpack-runtime-18a31e4fa83bf1e38b67.js"/><link as="script" rel="preload" href="/framework-45ca7a0c983b0b7a000c.js"/><link as="script" rel="preload" href="/app-301092c0672bcce1568f.js"/><link as="script" rel="preload" href="/75ce8a9e25edca21eb9c1a1dab0250d3ee550bef-e9b300a9f21137291b3a.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-57b56258f6f79ef8dfb6.js"/><link as="fetch" rel="preload" href="/page-data/page/23/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div><h1><a href="/webpack-with-bootstrap">Webpack with Bootstrap</a></h1><h2>2016 May-20</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>最近开始利用业余时间采用 <code>react + redux</code> 的前端架构山寨一个金数据（或者说是 WuFoo，毕竟两个东西看起来真的很像）以增加自己对这些框架的熟练度。在这个过程中记录下一些自己遇到的坑。今天就是一个 <code>webpack</code> 如何和 <code>bootstrap</code> 结合的坑。</p>
+<p>为了在项目之初就一个不是那么丑的界面，都会选择一些比较成熟的前端 css 框架。<code>bootstrap</code> 是比较流行的一个。<code>bootstrap</code> 一方面是基本的 <code>css</code> 另一方面还有一些 <code>jQuery</code> 的插件形式的类库支持其中的一些组件，当然还有一些它所需要的字体文件。那么这里问题就来了：</p>
+<ol>
+<li>如何在 <code>webpack</code> 中引入 <code>jQuery</code> 以及它的插件</li>
+<li>如何在 <code>webpack</code> 引入一些其他类型的文件，例如字体</li>
+</ol>
+<h2 id="引入-bootstrap" style="position:relative;">引入 bootstrap<a href="#%E5%BC%95%E5%85%A5-bootstrap" aria-label="引入 bootstrap permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>首先，我们还是要安装 <code>bootstrap</code> 以及它所依赖的 <code>jquery</code>。</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">npm install --save bootstrap-sass jquery</code></pre></div>
+<p>这里顺便说一句，虽然 <code>jquery</code> 看似过时了，但是它所构建的生态是非常庞大的，尤其是像 <code>jquery-ui</code> 这样的东西可以说是一些富交互应用所必须的。那么如何将 <code>react</code> 的 <code>component</code> 和 <code>jquery</code> 的一些组件很好的结合是在选择 <code>react</code> 这样的框架之初就考虑进去的。后面在涉及到一些复杂的交互的时候会出现 <code>jquery-ui</code> 与 <code>react</code> 一起使用的例子。</p>
+<p>然后，我们可以在 <code>webpack.config.js</code> 中以 entry 的形式引入 <code>bootstrap-loader</code></p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">var path = require("path");
+
+module.exports = {
+  devtool: 'cheap-module-source-map',
+  entry: [
+    'bootstrap-loader',
+    './index.js'
+  ],
+  output: {
+    path: path.join(__dirname, "dist"),
+    filename: "bundle.js"
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "babel-loader"
+      },
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        loader: "style!css!sass"
+      }
+    ]
+  }
+};</code></pre></div>
+<p>注意看 <code>entry</code> 本来就是一个数组，我们可以在这里引入多个入口。</p>
+<h2 id="use-bootstrap-loader" style="position:relative;">Use bootstrap-loader<a href="#use-bootstrap-loader" aria-label="use bootstrap loader permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>做了一番调研之后发现其实没必要自己把所有的事情都做了，有这么一个 <code>bootstrap-loader</code> 可以帮助在 <code>webpack</code> 的项目中引入 <code>bootstrap</code>。</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">npm install --save-dev bootstrap-loader</code></pre></div>
+<p>不过单单是安装它是不过的，其实 <code>bootstrap-loader</code> 所做的事情就是帮助我们把各种样子的文件引入到我们的项目中，那么为了处理不同类型的文件需要一些其他的 <code>loader</code> 的支持（前面的博客有提及 <code>webpack</code> 只能处理 <code>js</code> 如果需要处理其他类型的东西就需要 <code>loader</code> 的帮助）。这里，我们还要引入一大堆的 <code>loader</code>。</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">npm install --save-dev resolve-url-loader url-loader file-loader imports-loader</code></pre></div>
+<p>其中 <code>file-loader</code> 用于加载其他类型的文件，<code>url-loader</code> 和 <code>file-loader</code> 类似，只是在文件比较小的时候返回 Data Url 的形式。<code>resolve-url-loader</code> 和之前提到的 <code>sass-loader</code> 一起使用，用于处理 <code>sass</code> 中 <code>url()</code> 的路径。这些 <code>loader</code> 都要和 <code>webpack.config.js</code> 中的 <code>loaders</code> 配置项配合使用:</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">var path = require("path");
+
+module.exports = {
+  ...
+  module: {
+    loaders: [
+      ...
+      {
+        test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: "url?limit=10000"
+      },
+      {
+        test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
+        loader: 'file'
+      }
+    ]
+  }
+};</code></pre></div>
+<h2 id="use-imports-loader-to-support-jquery" style="position:relative;">Use imports-loader to support jQuery<a href="#use-imports-loader-to-support-jquery" aria-label="use imports loader to support jquery permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p><code>imports-loader</code> 是个很有意思的 <code>loader</code> 它定义了一个简单的格式用于引入使用它的类库所需要的依赖。</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">module.exports = {
+  ...
+  module: {
+    loaders: [
+      ...
+      {
+        test: /bootstrap-sass\/assets\/javascripts\//,
+        loader: 'imports?jQuery=jquery'
+      }
+    ]
+  }
+};</code></pre></div>
+<p>如上所示，在 <code>webpack.config.js</code> 中加入这样一个 <code>loader</code>。其中说明在引入 <code>bootstrap</code> 下的 <code>javascripts</code> 时，为他们提供 <code>jQuery</code> 这样的变量。那么 <code>imports-loader</code> 会在引入 <code>bootstrap</code> 的 <code>js</code> 之前为他们提供如下的代码:</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">  var jQuery = require('jquery');</code></pre></div>
+<p>估计在后续使用 <code>jquery</code> 的其他东西的时候还会用到它的。</p>
+<h2 id="参考" style="position:relative;">参考<a href="#%E5%8F%82%E8%80%83" aria-label="参考 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ol>
+<li><a href="https://github.com/shakacode/bootstrap-loader">bootstrap-loader</a></li>
+<li><a href="https://github.com/webpack/imports-loader">imports-loader</a></li>
+<li><a href="https://github.com/webpack/file-loader">file-loader</a></li>
+<li><a href="https://github.com/webpack/url-loader">url-loader</a></li>
+<li><a href="https://github.com/bholloway/resolve-url-loader">resolve-url-loader</a></li>
+</ol></div></div><div><h1><a href="/ddd-repository">DDD Repository</a></h1><h2>2016 May-17</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>标题是 <code>Repository</code>，但是内容是我如何从错用的 <code>Repository</code> 变成了感觉还算对的 <code>Repository</code> 的过程。</p>
 <h2 id="之前的做法" style="position:relative;">之前的做法<a href="#%E4%B9%8B%E5%89%8D%E7%9A%84%E5%81%9A%E6%B3%95" aria-label="之前的做法 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <p>DDD 里面的 <code>Repository</code> 是一个处理数据存储或者说是数据持久化的单元。通常一个 <code>Aggregate</code> 对应一个 <code>Repository</code>。对于通常的 web 服务，很多时候我们都是在与数据存储打交道，以至于很多时候存储就成为了真个应用最关键的逻辑了。那么刚刚接触 DDD 的时候，我就觉得 Repository 就是以前经常使用的类似 DAO 的东西。下面这样的代码经常出现在我们的应用里面。</p>
 <div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token keyword">final</span> <span class="token class-name">Application</span> app <span class="token operator">=</span> applicationRepository<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> user<span class="token punctuation">,</span> stack<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -265,179 +352,6 @@ store.subscribe(render);</code></pre></div>
 <li><a href="https://github.com/reactjs/redux/tree/master/examples/counter">redux counter example</a></li>
 <li><a href="https://redux.js.org/docs/basics/UsageWithReact.html">use with react</a></li>
 <li><a href="https://babeljs.io/docs/usage/babelrc/">babelrc</a></li>
-</ol></div></div><div><h1><a href="/redux-with-react-router">Redux with react router</a></h1><h2>2016 May-12</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>沿着上一部分 <a href="/redux-with-react">Redux With React</a>，在利用 <code>redux</code> 与 <code>react</code> 构建了单个视图的 WebApp，这部分介绍 <code>redux</code> 与 <code>react-router</code> 结合实现多个视图的 WebApp，代码也是在上一部分的基础上做修改。</p>
-<h2 id="prepare-package-for-react-router" style="position:relative;">prepare package for react-router<a href="#prepare-package-for-react-router" aria-label="prepare package for react router permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p><code>react-router</code> 提供了 <code>react</code> 的路由机制，除了这个库之外还有另外一个库 <code>react-router-redux</code> 用官方文档的话来说，首先 <code>redux</code> 可以和 <code>react-router</code> 两个一起使用就可以解决路由的问题，但是如果考虑到一些辅助的功能（例如和 Redux DevTool 等一起使用），就很有必要使用 <code>react-router-redux</code> 了。而且其实两者的结合非常的简单，我这里就先把它加上了。</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">$ npm install --save react-router react-router-redux</code></pre></div>
-<h2 id="更新代码支持-router" style="position:relative;">更新代码支持 Router<a href="#%E6%9B%B4%E6%96%B0%E4%BB%A3%E7%A0%81%E6%94%AF%E6%8C%81-router" aria-label="更新代码支持 router permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>在不改变之前单个 <code>VisibleCounter</code> 的视图的前提下引入 <code>router</code>。首先看一下代码的目录结构。</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">.
-├── actions
-│   └── index.js
-├── components
-│   ├── App.js
-│   └── Counter.js
-├── containers
-│   └── VisibleCounter.js ++
-├── dist
-│   ├── bundle.js
-│   ├── index.html
-│   └── styles.css
-├── entry.js ++
-├── package.json
-├── reducers
-│   ├── counter.js
-│   └── index.js ++
-├── routes.js ++
-├── styles
-│   ├── index.scss
-│   └── theme.scss
-└── webpack.config.js</code></pre></div>
-<p>其中新添加或者是有修改的文件都用 <code>++</code> 做了标记，可以看到作为 components(presentational) 在引入其他的组件的时候并没有收到影响，而 containers 则会因为 <code>store</code> 的变化而变化。</p>
-<p>为了支持 <code>router</code> 需要做这么几件事情：</p>
-<ol>
-<li>
-<p>用 <code>react-router</code> 提供的 <code>Route</code> 标签声明路由结构
-这里就是一个路由 <code>/</code> 对应组件 <code>App</code>，而 <code>App</code> 里面包含一个 <code>VisibleCounter</code></p>
-<p><code>routes.js</code>:</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
- <span class="token keyword">import</span> <span class="token punctuation">{</span> Route <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-router'</span><span class="token punctuation">;</span>
- <span class="token keyword">import</span> App <span class="token keyword">from</span> <span class="token string">'./components/App'</span><span class="token punctuation">;</span>
- 
- <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">(</span>
-     <span class="token operator">&lt;</span>Route path<span class="token operator">=</span><span class="token string">"/"</span> component<span class="token operator">=</span><span class="token punctuation">{</span>App<span class="token punctuation">}</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>Route<span class="token operator">></span>
- <span class="token punctuation">)</span></code></pre></div>
-</li>
-<li>
-<p>在原有的 <code>reducer</code> 中添加 <code>react-router-redux</code> 所提供的路由的 <code>reducer</code>，这里通过 <code>redux</code> 所提供的 <code>combineReducers</code> 实现。</p>
-<p><code>reducers/index.js</code>:</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> counter <span class="token keyword">from</span> <span class="token string">'./counter'</span><span class="token punctuation">;</span>
- <span class="token keyword">import</span> <span class="token punctuation">{</span> routerReducer <span class="token keyword">as</span> routing <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-router-redux'</span><span class="token punctuation">;</span>
- <span class="token keyword">import</span> <span class="token punctuation">{</span> combineReducers <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux'</span><span class="token punctuation">;</span>
- 
- <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">combineReducers</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-   counter<span class="token punctuation">,</span>
-   routing
- <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
-<p>由于 <code>reducer</code> 做了调整，那么在 <code>VisibleCounter</code> 与 <code>store</code> 链接时也会有改变，在下面的代码中我用 <code>++</code> 标识修改的部分</p>
-<p><code>containers/VisibleCounter.js</code>:</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> connect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-redux'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> Counter <span class="token keyword">from</span> <span class="token string">"../components/Counter"</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span> increment<span class="token punctuation">,</span> decrement <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'../actions/index'</span><span class="token punctuation">;</span>
- 
- <span class="token keyword">function</span> <span class="token function">mapStatToProps</span><span class="token punctuation">(</span><span class="token parameter">state</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-   <span class="token keyword">return</span> <span class="token punctuation">{</span>
-     value<span class="token operator">:</span> state<span class="token punctuation">.</span>counter <span class="token comment">//++</span>
-   <span class="token punctuation">}</span>
- <span class="token punctuation">}</span>
- 	
- <span class="token keyword">function</span> <span class="token function">mapDispatchToProps</span><span class="token punctuation">(</span><span class="token parameter">dispatch</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-   <span class="token keyword">return</span> <span class="token punctuation">{</span>
-     <span class="token function-variable function">onIncrement</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-       <span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token function">increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-     <span class="token punctuation">}</span><span class="token punctuation">,</span>
-     <span class="token function-variable function">onDecrement</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-       <span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token function">decrement</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-     <span class="token punctuation">}</span>
-   <span class="token punctuation">}</span>
- <span class="token punctuation">}</span>
- 	
- <span class="token keyword">const</span> VisibleCounter <span class="token operator">=</span> <span class="token function">connect</span><span class="token punctuation">(</span>
-     mapStatToProps<span class="token punctuation">,</span>
-     mapDispatchToProps
- <span class="token punctuation">)</span><span class="token punctuation">(</span>Counter<span class="token punctuation">)</span><span class="token punctuation">;</span>
- 	
- <span class="token keyword">export</span> <span class="token keyword">default</span> VisibleCounter<span class="token punctuation">;</span></code></pre></div>
-</li>
-<li>
-<p>修改入口，用 <code>react-router</code> 所提供的 <code>&#x3C;Router></code> 标签包装整个应用，并以属性的方式传递路由结构(<code>routes</code>)和所需要的浏览器历史(<code>history</code>)支持（<code>hash</code> 或者是 <code>browser</code>）</p>
-<p><code>entry.js</code>:</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text"> require('./styles/index.scss');
-
- import React from "react";
- import ReactDOM from 'react-dom';
- import { Provider } from 'react-redux';
- import { hashHistory, Router } from 'react-router';
- import { syncHistoryWithStore } from 'react-router-redux';
- import { createStore } from 'redux';
- 
- import reducer from './reducers/index';
- import routes from './routes';
- 
- const store = createStore(reducer);
- const history = syncHistoryWithStore(hashHistory, store);
- const rootEl = document.querySelector("#root");
- 
- function render() {
-   ReactDOM.render(
-       &lt;Provider store={store}>
-         &lt;Router routes={routes} history={history}/>
-       &lt;/Provider>,
-       rootEl
-   )
- }
- 
- render();
- store.subscribe(render);</code></pre></div>
-</li>
-</ol>
-<h2 id="添加一个新的视图" style="position:relative;">添加一个新的视图<a href="#%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%E8%A7%86%E5%9B%BE" aria-label="添加一个新的视图 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>现在添加一个新的视图 <code>About</code></p>
-<p><code>containers/About.js</code>:</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">import React, { Component, PropTypes } from 'react';
-
-class About extends Component {
-  render() {
-    return (
-        &lt;p>
-          This is about page.
-        &lt;/p>
-    )
-  }
-}
-
-export default About;</code></pre></div>
-<p>拆分 <code>App</code> 和 <code>VisibleCounter</code> 使得 <code>App</code> 作为支持所有子视图的框架</p>
-<p><code>containres/App.js</code>:</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">import React, { Component } from 'react';
-
-class App extends Component {
-  render() {
-    const { children } = this.props.children;
-    return (
-        &lt;div>
-          { children }
-        &lt;/div>
-    )
-  }
-}
-
-export default App;</code></pre></div>
-<p>更新路由，添加 <code>/</code> 下的两个子路由 <code>counter</code> 和 <code>about</code></p>
-<p><code>routes.js</code>:</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">import React from 'react';
-import { Route, IndexRoute } from 'react-router';
-import App from './components/App';
-import VisibleCounter from './containers/VisibleCounter';
-import About from './components/About';
-
-export default (
-    &lt;Route path="/" component={App}>
-      &lt;IndexRoute component={VisibleCounter}/>
-      &lt;Route path="/counter" component={VisibleCounter}/>
-      &lt;Route path="/about" component={About}/>
-    &lt;/Route>
-)</code></pre></div>
-<p>其中 <code>IndexRoute</code> 表明 <code>VisibleCounter</code> 为在 <code>/</code> 时的默认路由。</p>
-<p>在执行 <code>npm start</code> 之后看看 <code>http://localhost:8080/</code> 是不是计数器？<code>http://localhost:8080/#/about</code> 是不是我们的 <code>About</code> 页面？</p>
-<h2 id="其他内容" style="position:relative;">其他内容<a href="#%E5%85%B6%E4%BB%96%E5%86%85%E5%AE%B9" aria-label="其他内容 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>这里讲解了基本的路由的构建，当然路由还不仅仅有这些内容啦，还有 <code>&#x3C;Link></code> <code>pushState</code> 等等内容，其中 <code>&#x3C;Link></code> 的内容可以到 <a href="https://github.com/reactjs/react-router-tutorial">https://github.com/reactjs/react-router-tutorial</a>
-来看，然后其他部分在以后遇到的时候再解释。</p>
-<h2 id="参考" style="position:relative;">参考<a href="#%E5%8F%82%E8%80%83" aria-label="参考 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<ol>
-<li><a href="https://github.com/reactjs/react-router-redux">react-router-redux</a></li>
-<li><a href="https://github.com/reactjs/react-router">react-router</a></li>
-<li><a href="https://github.com/reactjs/react-router-tutorial">react-router-tutorial</a></li>
 </ol></div></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/22">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/24">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       
