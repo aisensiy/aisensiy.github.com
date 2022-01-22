@@ -55,7 +55,63 @@
   </script><link rel="preconnect" href="https://plausible.io"/><script async="" defer="" data-domain="aisensiy.me" src="https://plausible.io/js/plausible.js"></script><script>
           window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) };
           
-          </script><link as="script" rel="preload" href="/webpack-runtime-18a31e4fa83bf1e38b67.js"/><link as="script" rel="preload" href="/framework-45ca7a0c983b0b7a000c.js"/><link as="script" rel="preload" href="/app-301092c0672bcce1568f.js"/><link as="script" rel="preload" href="/75ce8a9e25edca21eb9c1a1dab0250d3ee550bef-e9b300a9f21137291b3a.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-57b56258f6f79ef8dfb6.js"/><link as="fetch" rel="preload" href="/page-data/page/1/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div><h1><a href="/kubernetes-certs-renew">处理 k8s 证书过期</a></h1><h2>2022 January-18</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><h2 id="简单记录" style="position:relative;">简单记录<a href="#%E7%AE%80%E5%8D%95%E8%AE%B0%E5%BD%95" aria-label="简单记录 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+          </script><link as="script" rel="preload" href="/webpack-runtime-18a31e4fa83bf1e38b67.js"/><link as="script" rel="preload" href="/framework-45ca7a0c983b0b7a000c.js"/><link as="script" rel="preload" href="/app-301092c0672bcce1568f.js"/><link as="script" rel="preload" href="/75ce8a9e25edca21eb9c1a1dab0250d3ee550bef-e9b300a9f21137291b3a.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-57b56258f6f79ef8dfb6.js"/><link as="fetch" rel="preload" href="/page-data/page/1/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div><h1><a href="/auto-update-content-in-markdown">vim 里自动更新 markdown 格式</a></h1><h2>2022 January-22</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><h2 id="问题" style="position:relative;">问题<a href="#%E9%97%AE%E9%A2%98" aria-label="问题 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>写 blog 的时候经常需要做中英文混排，然后这个混排为了美观需要在中和英文之间添加空格。现在形成习惯了，看到别人没有在中英文混排里添加空格都觉得有点难受。不过之前这个格式要求都靠自己敲空格敲出来的，感觉效率有点低下，恰巧发现了 <a href="https://github.com/huacnlee/autocorrect">autocorrect</a> 这个工具，可以实现这个功能，这里尝试把它和我写 blog 用的 neovim 集成下实现自动格式化的功能。</p>
+<h2 id="思路" style="position:relative;">思路<a href="#%E6%80%9D%E8%B7%AF" aria-label="思路 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>首先 <code>autocorrect</code> 本身已经是一个二进制文件了，通过如下命令可以实现对文件的处理：</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ autocorrect --fix <span class="token operator">&lt;</span>filepath<span class="token operator">></span></code></pre></div>
+<p>因为 vim 有一些插件可以实现在保存的时候对文件进行格式化而 autocorrect 的处理也可以认为是一种格式化因此思路就很一致了。不过相较于很多格式化工具可以以文本内容的方式传递，autocorrect 只能对文件做修改，流程上会稍微有一点区别。这里我列一下集成思路：</p>
+<ol>
+<li>确定内容更新的时机，由于 autocorrect 只能对文件做处理（而不是传递一段文本）因此必须要在文件更新后再次执行该命令对文件做二次刷新，vim 有一个 <code>autocmd</code> 的命令，可以某些重要的事件发生时（或者发生前后）执行一系列命令，这里就需要监听 <code>BufWritePost</code> 即当 Buf 写成功后执行一个命令</li>
+<li>文件被 autocorrect 更新后需要重新读取，否则当前看到的内容就不是已经做过格式化的内容了，vim 中通过命令 edit 可以将文件重新读取，redraw 命令则可刷新视图</li>
+<li>目前只考虑对 markdown 文件做上述处理，需要首先判别文件类别，只有符合的类别才能做上述处理</li>
+</ol>
+<h2 id="具体实现方式" style="position:relative;">具体实现方式<a href="#%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F" aria-label="具体实现方式 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>我使用的是 neovim 这里就按照它的配置结果做了实现，vim 的实现也是类似的，只是具体的目录结构会有略微区别而已。</p>
+<p><a href="https://github.com/aisensiy/dotfiles/blob/master/nvim/after/ftplugin/markdown.vim"><code>.config/nvim/after/ftplugin/markdown.vim</code></a>:</p>
+<div class="gatsby-highlight" data-language="vim"><pre class="language-vim"><code class="language-vim"><span class="token keyword">function</span><span class="token operator">!</span> <span class="token function">MarkdownFormat</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">silent</span> <span class="token operator">!</span>autocorrect <span class="token operator">-</span><span class="token operator">-</span><span class="token keyword">fix</span> <span class="token string">'%:p'</span> <span class="token comment">"3</span>
+  <span class="token keyword">let</span> <span class="token keyword">view</span> <span class="token operator">=</span> <span class="token function">winsaveview</span><span class="token punctuation">(</span><span class="token punctuation">)</span>        <span class="token comment">"4 </span>
+  <span class="token keyword">silent</span> <span class="token keyword">edit</span>                     <span class="token comment">"5</span>
+  <span class="token keyword">call</span> <span class="token function">winrestview</span><span class="token punctuation">(</span><span class="token keyword">view</span><span class="token punctuation">)</span>
+  <span class="token keyword">redraw</span><span class="token operator">!</span>                         <span class="token comment">"6</span>
+<span class="token keyword">endfunction</span>
+
+augroup markdownFormat            <span class="token comment">"1</span>
+  <span class="token builtin">autocmd</span><span class="token operator">!</span>                        <span class="token comment">"2</span>
+  <span class="token builtin">autocmd</span> BufWritePost <span class="token operator">*</span> <span class="token keyword">if</span> &amp;<span class="token keyword">filetype</span> <span class="token operator">==#</span> <span class="token string">'markdown'</span> | <span class="token keyword">call</span> <span class="token function">MarkdownFormat</span><span class="token punctuation">(</span><span class="token punctuation">)</span> | <span class="token keyword">endif</span> <span class="token comment">"7</span>
+augroup END</code></pre></div>
+<p>具体做一些解释：</p>
+<ol>
+<li><code>augroup</code> 相当于设置命名空间保证这个 autocmd 不影响其他的 autocmd</li>
+<li><code>autocmd!</code> 是清理当前 <code>augroup</code> 下的所有 <code>autocmd</code> 没有这命令会发现不知不觉每次保存的时候 autocorrect 会执行多次，具体什么原因我尚不清楚，毕这也是我第一次折腾这些命令，后续如果有更多了解会做更多记录</li>
+<li><code>slient !autocorrent --fix '%:p'</code>
+<ol>
+<li>执行外部的命令要加 <code>!</code></li>
+<li>添加 <code>slient</code> 是为了不要展示其执行的结果，我们只关心它执行了，不想看到它的返回内容</li>
+<li><code>'%:p'</code> 就是当前文件的绝对路径</li>
+</ol>
+</li>
+<li><code>winsaveview</code> 是保当前视图的一些信息，并且在重新加载文件后恢复，为的是不要让正在编辑的文件的视图位置、光标位置发生跳动提升体验</li>
+<li><code>slient edit</code> 是重新加载文件</li>
+<li><code>redraw!</code> 是刷当前视图</li>
+<li><code>if &#x26;filetype ==# 'markdown'</code> 是判断当前文件格式是否为 markdown 只有是 markdown 的时候才这行这个 autocmd</li>
+</ol>
+<h2 id="效果" style="position:relative;">效果<a href="#%E6%95%88%E6%9E%9C" aria-label="效果 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>
+		<video
+			src=/videos/vim-autocorrect-integration.mp4
+			width="1200"
+			height="auto"
+			preload="auto"
+			muted="false"
+			title="/videos/vim-autocorrect-integration.mp4"
+			
+			playsinline
+			controls
+			
+		></video>
+	</p></div></div><div><h1><a href="/kubernetes-certs-renew">处理 k8s 证书过期</a></h1><h2>2022 January-18</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><h2 id="简单记录" style="position:relative;">简单记录<a href="#%E7%AE%80%E5%8D%95%E8%AE%B0%E5%BD%95" aria-label="简单记录 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <p>k8s 为了鼓励大家更新，其 kubeadm 默认的证书有效期为 1 年，任何 k8s 版本的更新都会触发证书的更新。如果证书过期了可以按照如下方式处理：</p>
 <ol>
 <li>如果发现自己本地 kubectl 无法访问集群并报错就很有可能是证书过期了，登陆任意一台 master 执行命令 <code>kubeadm certs check-expiration</code> 可以查看证书的有效期，如果报错没有命令 <code>certs</code> 那么可以尝试命令 <code>kubeadm alpha certs ...</code></li>
@@ -74,7 +130,7 @@
 <h2 id="资料" style="position:relative;">资料<a href="#%E8%B5%84%E6%96%99" aria-label="资料 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <ol>
 <li><a href="https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-certs/">Certificate Management with kubeadm</a></li>
-<li><a href="https://cloud.tencent.com/developer/article/1650657">kubeadm集群修改证书时间到99年</a></li>
+<li><a href="https://cloud.tencent.com/developer/article/1650657">kubeadm 集群修改证书时间到 99 年</a></li>
 </ol></div></div><div><h1><a href="/proxy-setup-for-ubuntu-with-ansible">使用 ansible 为 ubuntu 设置代理</a></h1><h2>2021 December-30</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>最近为一些藏在防火墙里的存储节点做 provision 由于是非常受限的外网访问，必须要通过代理访问网络，因此需要对原来的 ansible 脚本做修改，这里做一个记录。</p>
 <p>看了看 ansible 里面的内容以及后续的 k8s 的流程，无非是如下几个方面需要访问外网：</p>
 <ol>
@@ -166,62 +222,7 @@ Environment="HTTPS_PROXY=http://proxy:1234"</code></pre></div>
   <span class="token key atrule">roles</span><span class="token punctuation">:</span>
   <span class="token punctuation">-</span> <span class="token key atrule">role</span><span class="token punctuation">:</span> proxy</code></pre></div>
 <h2 id="更好的方案" style="position:relative;">更好的方案<a href="#%E6%9B%B4%E5%A5%BD%E7%9A%84%E6%96%B9%E6%A1%88" aria-label="更好的方案 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>有没有更好的方案？我觉得有，就是用 <a href="https://github.com/xjasonlyu/tun2socks/">tun2socks</a> 的方案，可以实现以上三个方面的代理设置。不过还没很仔细的折腾，等搞定了再做记录。</p></div></div><div><h1><a href="/spring-boot-test">spring boot 整理 SpringBootApplication</a></h1><h2>2021 December-23</h2><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>早在 2017 年有写过一些 spring boot 测试相关的内容，比如 <a href="/spring-mvc-and-test">在 Spring Boot 1.5.3 中进行 Spring MVC 测试</a>，再比如 <a href="/spring-mvc-and-mybatis">把 Spring Boot 1.5.3 与 MyBatis 集成</a>。现在都 2021 年马上 2022 年了，spring boot 的最新版本已经来到了 2.6，其所依赖的一系列东西也发生了不少变化。同时随着我们项目变得越来越大，测试用例越来越多，对测试的性能、标准化的要求也越来越迫切。从这篇开始记录一些自己最近翻看 spring test 以及 spring boot test 了解到的有关 spring 测试体系的内容。</p>
-<p>spring 以及 spring boot 测试相关的内容简单 google 一下就能看到很多，但我个人感觉非常不成体系，这个应该也和 spring 不断的更迭关系很大，很多新旧知识掺杂在一起，有点摸不清楚。这里我参考的核心资料是如下两个:</p>
-<ol>
-<li><a href="https://docs.spring.io/spring-framework/docs/current/reference/html/testing.html">Spring Testing</a></li>
-<li><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.testing">Spring Boot Testing</a></li>
-</ol>
-<p>翻看了这两部分内容后感觉 Spring 的文档写的还是比较全面的，不过很遗憾 Spring Testing 的内容写的还是不够细致，可能需要自己去结合源码和其他资料才能更好的消化吸收。但我觉得确实比直接在其他地方要系统一些。</p>
-<p>今天先介绍最近消化的第一个 Tips 什么不应该放进 <code>@SpringBootApplication</code>。</p>
-<h2 id="springbootapplication-简单介绍" style="position:relative;">@SpringBootApplication 简单介绍<a href="#springbootapplication-%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D" aria-label="springbootapplication 简单介绍 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p><code>@SpringBootApplication</code> 是一个集成注解，翻看源码可以看到它包含了额外三个注解：</p>
-<ul>
-<li><code>@SpringBootConfiguration</code>: 作为 SpringBoot 默认的 Configuration Class</li>
-<li><code>@EnableAutoConfiguration</code>: 允许 Auto Configuration</li>
-<li><code>@ComponentScan</code>: 支持 Component Scan 的方式提供各种 <code>Bean</code></li>
-</ul>
-<p>添加这个注解的 Class 也通常就是整个应用的入口了。在这里可能会放一些全局初始化的东西，不过根据 Spring Boot Testing 的 <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.testing.spring-boot-applications.user-configuration-and-slicing">User Configuration and Slicing</a> 介绍，这里反而不是那种什么都可以放的地方，随便放各种东西会影响你的测试依赖。</p>
-<h2 id="为什么-springbootapplication-不能添加各种依赖" style="position:relative;">为什么 SpringBootApplication 不能添加各种依赖<a href="#%E4%B8%BA%E4%BB%80%E4%B9%88-springbootapplication-%E4%B8%8D%E8%83%BD%E6%B7%BB%E5%8A%A0%E5%90%84%E7%A7%8D%E4%BE%9D%E8%B5%96" aria-label="为什么 springbootapplication 不能添加各种依赖 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>这样从 Spring Boot 写测试通常使用的 <code>@SpringBootTest</code> 和 <code>@WebMvcTest</code> 注解的行为做解释了。</p>
-<p>通常来说，如果我们的依赖链条都是靠我们自己去切断，不依赖 Spring 的 ApplicationContext 那么这种测试就算是 Unit Test 。反之任何需要依赖 ApplicationContext 的都可以称为 Integration Test。面向 WebMvc 或者需要和数据库接触的测试都需要 ApplicationContext 而这个 ApplicationContext 如何建立就是靠的 <code>@SpringBootTest</code> 或者 <code>@WebMvcTest</code> 这样的注解了。</p>
-<p>标记 <code>@SpringBootTest</code> 或者其他 Spring Boot 提供的 <code>@*Test</code> 注解的测试会尝试寻找从根目录开始寻找标记了 <code>@SpringBootApplication</code> 或者 <code>@SpringBootConfiguration</code> 的类，并以它为起点加载完整的 ApplicationContext 。在 Spring Boot 的 <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.testing.spring-boot-applications.detecting-configuration">Detecting Test Configuration</a> 文档里也做了说明：</p>
-<blockquote>
-<p>When testing Spring Boot applications, this is often not required. Spring Boot’s @*Test annotations search for your primary configuration automatically whenever you do not explicitly define one.</p>
-<p>The search algorithm works up from the package that contains the test until it finds a class annotated with @SpringBootApplication or @SpringBootConfiguration. As long as you structured your code in a sensible way, your main configuration is usually found.</p>
-</blockquote>
-<p>当然也可以通过增加 <code>classes</code> 参数 explicitly define 一个 Configuration 修改其默认搜索的行为：</p>
-<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@SpringBootTest</span><span class="token punctuation">(</span>classes <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token class-name">GraphQLTestConfiguration</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token class-name">DgsAutoConfiguration</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span class="token annotation punctuation">@Import</span><span class="token punctuation">(</span><span class="token class-name">CustomDataFetchingExceptionHandler</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
-<span class="token annotation punctuation">@RunWith</span><span class="token punctuation">(</span><span class="token class-name">SpringRunner</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">GraphQLTestBase</span> <span class="token keyword">extends</span> <span class="token class-name">TestBase</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></code></pre></div>
-<h2 id="应该如何修改" style="position:relative;">应该如何修改<a href="#%E5%BA%94%E8%AF%A5%E5%A6%82%E4%BD%95%E4%BF%AE%E6%94%B9" aria-label="应该如何修改 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>在文档的 <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.testing.spring-boot-applications.user-configuration-and-slicing">User Configuration and Slicing</a> 部分有做介绍:</p>
-<blockquote>
-<p>Test slices exclude @Configuration classes from scanning.</p>
-</blockquote>
-<p>但是 <code>@SpringBootApplication</code> 默认的 <code>@ComponentScan</code> 可不会跳过任何 <code>@Configuration</code> 因此，为了让全局的依赖注入不要污染不必要的 <code>Test Slices</code> 可以把额外的依赖注入放在单独的 <code>@Configuration</code> 下，这里我直接超文档的内容：</p>
-<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@SpringBootApplication</span>
-<span class="token annotation punctuation">@EnableBatchProcessing</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyApplication</span> <span class="token punctuation">{</span>
-
-    <span class="token comment">// ...</span>
-
-<span class="token punctuation">}</span></code></pre></div>
-<p>修改为</p>
-<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span><span class="token punctuation">(</span>proxyBeanMethods <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
-<span class="token annotation punctuation">@EnableBatchProcessing</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyBatchConfiguration</span> <span class="token punctuation">{</span>
-
-    <span class="token comment">// ...</span>
-
-<span class="token punctuation">}</span></code></pre></div>
-<h2 id="总结" style="position:relative;">总结<a href="#%E6%80%BB%E7%BB%93" aria-label="总结 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<ol>
-<li><code>@SpringBootApplication</code> 自带 <code>ComponentScan</code> 会收集自己 package 下所有的 Beans 和 Configurations</li>
-<li>Spring Boot 提供的 <code>@*Test</code> 会自己搜索 <code>@SpringBootApplication</code> 或者 <code>@SpringBootConfiguration</code> 作为默认的 <code>Configuration</code>，除非你主动做覆盖</li>
-<li>为了让 2 的行为不要导致过量的 <code>ApplicationContext</code> 在测试阶段被创建，可以把一些只有在生成环境才需要的额外的 Bean 放在独立的 <code>@Configuration</code> 类下，因为 Spring Boot 的 Testing slices 不会扫其他的 <code>@Configuration</code></li>
-</ol></div></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/2">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
+<p>有没有更好的方案？我觉得有，就是用 <a href="https://github.com/xjasonlyu/tun2socks/">tun2socks</a> 的方案，可以实现以上三个方面的代理设置。不过还没很仔细的折腾，等搞定了再做记录。</p></div></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/2">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       
       if(true) {

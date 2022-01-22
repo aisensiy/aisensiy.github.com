@@ -61,7 +61,7 @@
 <li><a href="#%E5%BA%94%E8%AF%A5%E5%A6%82%E4%BD%95%E4%BF%AE%E6%94%B9">应该如何修改</a></li>
 <li><a href="#%E6%80%BB%E7%BB%93">总结</a></li>
 </ul></div></div><div class="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"><p>早在 2017 年有写过一些 spring boot 测试相关的内容，比如 <a href="/spring-mvc-and-test">在 Spring Boot 1.5.3 中进行 Spring MVC 测试</a>，再比如 <a href="/spring-mvc-and-mybatis">把 Spring Boot 1.5.3 与 MyBatis 集成</a>。现在都 2021 年马上 2022 年了，spring boot 的最新版本已经来到了 2.6，其所依赖的一系列东西也发生了不少变化。同时随着我们项目变得越来越大，测试用例越来越多，对测试的性能、标准化的要求也越来越迫切。从这篇开始记录一些自己最近翻看 spring test 以及 spring boot test 了解到的有关 spring 测试体系的内容。</p>
-<p>spring 以及 spring boot 测试相关的内容简单 google 一下就能看到很多，但我个人感觉非常不成体系，这个应该也和 spring 不断的更迭关系很大，很多新旧知识掺杂在一起，有点摸不清楚。这里我参考的核心资料是如下两个:</p>
+<p>spring 以及 spring boot 测试相关的内容简单 google 一下就能看到很多，但我个人感觉非常不成体系，这个应该也和 spring 不断的更迭关系很大，很多新旧知识掺杂在一起，有点摸不清楚。这里我参考的核心资料是如下两个：</p>
 <ol>
 <li><a href="https://docs.spring.io/spring-framework/docs/current/reference/html/testing.html">Spring Testing</a></li>
 <li><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.testing">Spring Boot Testing</a></li>
@@ -81,7 +81,7 @@
 <p>通常来说，如果我们的依赖链条都是靠我们自己去切断，不依赖 Spring 的 ApplicationContext 那么这种测试就算是 Unit Test 。反之任何需要依赖 ApplicationContext 的都可以称为 Integration Test。面向 WebMvc 或者需要和数据库接触的测试都需要 ApplicationContext 而这个 ApplicationContext 如何建立就是靠的 <code>@SpringBootTest</code> 或者 <code>@WebMvcTest</code> 这样的注解了。</p>
 <p>标记 <code>@SpringBootTest</code> 或者其他 Spring Boot 提供的 <code>@*Test</code> 注解的测试会尝试寻找从根目录开始寻找标记了 <code>@SpringBootApplication</code> 或者 <code>@SpringBootConfiguration</code> 的类，并以它为起点加载完整的 ApplicationContext 。在 Spring Boot 的 <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.testing.spring-boot-applications.detecting-configuration">Detecting Test Configuration</a> 文档里也做了说明：</p>
 <blockquote>
-<p>When testing Spring Boot applications, this is often not required. Spring Boot’s @*Test annotations search for your primary configuration automatically whenever you do not explicitly define one.</p>
+<p>When testing Spring Boot applications, this is often not required. Spring Boot’s @Test annotations search for your primary configuration automatically whenever you do not explicitly define one.</p>
 <p>The search algorithm works up from the package that contains the test until it finds a class annotated with @SpringBootApplication or @SpringBootConfiguration. As long as you structured your code in a sensible way, your main configuration is usually found.</p>
 </blockquote>
 <p>当然也可以通过增加 <code>classes</code> 参数 explicitly define 一个 Configuration 修改其默认搜索的行为：</p>
@@ -90,7 +90,7 @@
 <span class="token annotation punctuation">@RunWith</span><span class="token punctuation">(</span><span class="token class-name">SpringRunner</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
 <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">GraphQLTestBase</span> <span class="token keyword">extends</span> <span class="token class-name">TestBase</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></code></pre></div>
 <h2 id="应该如何修改" style="position:relative;">应该如何修改<a href="#%E5%BA%94%E8%AF%A5%E5%A6%82%E4%BD%95%E4%BF%AE%E6%94%B9" aria-label="应该如何修改 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>在文档的 <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.testing.spring-boot-applications.user-configuration-and-slicing">User Configuration and Slicing</a> 部分有做介绍:</p>
+<p>在文档的 <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.testing.spring-boot-applications.user-configuration-and-slicing">User Configuration and Slicing</a> 部分有做介绍：</p>
 <blockquote>
 <p>Test slices exclude @Configuration classes from scanning.</p>
 </blockquote>
