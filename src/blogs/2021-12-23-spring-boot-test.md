@@ -8,7 +8,7 @@ tags:       [springboot, spring, test]
 
 早在 2017 年有写过一些 spring boot 测试相关的内容，比如 [在 Spring Boot 1.5.3 中进行 Spring MVC 测试](/spring-mvc-and-test)，再比如 [把 Spring Boot 1.5.3 与 MyBatis 集成](/spring-mvc-and-mybatis)。现在都 2021 年马上 2022 年了，spring boot 的最新版本已经来到了 2.6，其所依赖的一系列东西也发生了不少变化。同时随着我们项目变得越来越大，测试用例越来越多，对测试的性能、标准化的要求也越来越迫切。从这篇开始记录一些自己最近翻看 spring test 以及 spring boot test 了解到的有关 spring 测试体系的内容。
 
-spring 以及 spring boot 测试相关的内容简单 google 一下就能看到很多，但我个人感觉非常不成体系，这个应该也和 spring 不断的更迭关系很大，很多新旧知识掺杂在一起，有点摸不清楚。这里我参考的核心资料是如下两个:
+spring 以及 spring boot 测试相关的内容简单 google 一下就能看到很多，但我个人感觉非常不成体系，这个应该也和 spring 不断的更迭关系很大，很多新旧知识掺杂在一起，有点摸不清楚。这里我参考的核心资料是如下两个：
 
 1. [Spring Testing](https://docs.spring.io/spring-framework/docs/current/reference/html/testing.html)
 2. [Spring Boot Testing](https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.testing)
@@ -35,7 +35,7 @@ spring 以及 spring boot 测试相关的内容简单 google 一下就能看到�
 
 标记 `@SpringBootTest` 或者其他 Spring Boot 提供的 `@*Test` 注解的测试会尝试寻找从根目录开始寻找标记了 `@SpringBootApplication` 或者 `@SpringBootConfiguration` 的类，并以它为起点加载完整的 ApplicationContext 。在 Spring Boot 的 [Detecting Test Configuration](https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.testing.spring-boot-applications.detecting-configuration) 文档里也做了说明：
 
-> When testing Spring Boot applications, this is often not required. Spring Boot’s @*Test annotations search for your primary configuration automatically whenever you do not explicitly define one.
+> When testing Spring Boot applications, this is often not required. Spring Boot’s @Test annotations search for your primary configuration automatically whenever you do not explicitly define one.
 >
 > The search algorithm works up from the package that contains the test until it finds a class annotated with @SpringBootApplication or @SpringBootConfiguration. As long as you structured your code in a sensible way, your main configuration is usually found.
 
@@ -50,7 +50,7 @@ public abstract class GraphQLTestBase extends TestBase {}
 
 ## 应该如何修改
 
-在文档的 [User Configuration and Slicing](https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.testing.spring-boot-applications.user-configuration-and-slicing) 部分有做介绍:
+在文档的 [User Configuration and Slicing](https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.testing.spring-boot-applications.user-configuration-and-slicing) 部分有做介绍：
 
 > Test slices exclude @Configuration classes from scanning. 
 

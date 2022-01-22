@@ -27,4 +27,4 @@ k8s 为了鼓励大家更新，其 kubeadm 默认的证书有效期为 1 年，�
 ## 资料
 
 1. [Certificate Management with kubeadm](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-certs/)
-2. [kubeadm集群修改证书时间到99年](https://cloud.tencent.com/developer/article/1650657)
+2. [kubeadm 集群修改证书时间到 99 年](https://cloud.tencent.com/developer/article/1650657)

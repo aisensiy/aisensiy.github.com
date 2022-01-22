@@ -92,7 +92,7 @@ end
 
 **注意** 这个最终效果是建立在我的 fish 主题之上的，单独使用效果如何不得而知。
 
-## ~kubie 一站式解决方案~
+## ~~kubie 一站式解决方案~~
 
 除了 kubectx 外我在最近装机的时候还发现了一个更完善的解决方案：[kubie](https://github.com/sbstp/kubie)。它有三个优势：
 
@@ -100,7 +100,7 @@ end
 2. 不用合并 config 文件，可以通过配置读取文件列表，甚至支持 `~/.kube/*.yaml` 这样的通配符匹配
 3. 自带 shell 的 prompt 提示，类似于上文 `kube-ps1` 的功能
 
-当然，也有坏处:
+当然，也有坏处：
 
 1. 你不能自定义你的 prompt 样式了，不过它支持关掉自己的 prompt 提示。我目前就逐渐从 kubectx 切换到了 kubie 但依然保持我自己的 fish 的 prompt 。
 2. 存在一个小问题（我觉得是 bug），它默认不把 `~/.kube/config` 下当前的上下文认为是默认的上下文，它的 prompt 不会在你新建一个 terminal 的时候假设是没有上下文的，然而事实上在这个时候 kubectl 的 context 已经指向了 `~/.kube/config` 的上下文了。你需要做一次切换后才会弹出。
