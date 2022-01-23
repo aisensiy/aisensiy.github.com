@@ -23,7 +23,7 @@ export default function Blog({ data }) {
       <h2>{frontmatter.date}</h2>
       {tableOfContents && <TableOfContent html={tableOfContents} />}
       <div
-        className="prose dark:prose-dark max-w-none lg:prose-lg xl:prose-xl"
+        className="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"
         dangerouslySetInnerHTML={{ __html: html }}
       />
     </div>
