@@ -55,7 +55,123 @@
   </script><link rel="preconnect" href="https://plausible.io"/><script async="" defer="" data-domain="aisensiy.me" src="https://plausible.io/js/plausible.js"></script><script>
           window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) };
           
-          </script><link as="script" rel="preload" href="/webpack-runtime-255013ebfa22a83135bb.js"/><link as="script" rel="preload" href="/framework-45ca7a0c983b0b7a000c.js"/><link as="script" rel="preload" href="/app-301092c0672bcce1568f.js"/><link as="script" rel="preload" href="/75ce8a9e25edca21eb9c1a1dab0250d3ee550bef-e9b300a9f21137291b3a.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-d1fe9c3b8fc92545aa66.js"/><link as="fetch" rel="preload" href="/page-data/page/1/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div><h1><a href="/auto-update-content-in-markdown">vim 里自动更新 markdown 格式</a></h1><h2>2022 January-22</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><h2 id="问题" style="position:relative;">问题<a href="#%E9%97%AE%E9%A2%98" aria-label="问题 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+          </script><link as="script" rel="preload" href="/webpack-runtime-255013ebfa22a83135bb.js"/><link as="script" rel="preload" href="/framework-45ca7a0c983b0b7a000c.js"/><link as="script" rel="preload" href="/app-301092c0672bcce1568f.js"/><link as="script" rel="preload" href="/75ce8a9e25edca21eb9c1a1dab0250d3ee550bef-e9b300a9f21137291b3a.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-d1fe9c3b8fc92545aa66.js"/><link as="fetch" rel="preload" href="/page-data/page/1/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div><h1><a href="/clickhouse-operator-get-started">尝试 clickhouse operator</a></h1><h2>2022 January-26</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p>Production 级别的 clickhouse 不是随便就能搞出来的，需要对其有更深入的理解。这篇主题只是针对如何在 k8s 里快速搭建一还行的 clickhouse。主要是为了实现整个系统不对外有额外的依赖，所有的依赖服务都包含在 k8s 集群中。和 <a href="/mysql-operator">将 MySQL 通过 presslabs/mysql-operator 部署到 k8s 内部</a> 这篇对于 mysql 的处理非常类似。</p>
+<h2 id="诉求" style="position:relative;">诉求<a href="#%E8%AF%89%E6%B1%82" aria-label="诉求 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>之前用于测试的 clickhouse 是一非常随便的 deployment 实现，其主要缺点有如下几个：</p>
+<ol>
+<li>没有考虑如何修改配置，如果需要额外的配置只好自己想办法 mount 一个文件到指定路径</li>
+<li>没有初始化数据库的流程，只能自己手动去创建数据库</li>
+<li>不支持高可用，也无法扩容</li>
+</ol>
+<p>其中 3 的诉求并不强烈，毕竟在测试阶段对这部分的要求没有那么高，而且如果真的想要高可用可能甚至都不应该将 clickhouse 放进 k8s 里。不过 1 2 的诉求还是很强烈的。那么我这里的工作也都是针对 1 2 两项进行的。</p>
+<h2 id="方案" style="position:relative;">方案<a href="#%E6%96%B9%E6%A1%88" aria-label="方案 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>这里采用了 <a href="https://github.com/Altinity/clickhouse-operator">Altinity/clickhouse-operator</a> 这个方案。该方案不仅仅是完美解决了 1 2 两项问题，甚至是 3 也有做了还不错的处理。不过我这里就没有测试扩容和高可用了，主要测试的是 1 2 两部分。</p>
+<h3 id="安装-operator" style="position:relative;">安装 operator<a href="#%E5%AE%89%E8%A3%85-operator" aria-label="安装 operator permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>按照<a href="https://github.com/Altinity/clickhouse-operator/blob/master/docs/quick_start.md">文档</a>安装 operator:</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">curl</span> -s https://raw.githubusercontent.com/Altinity/clickhouse-operator/master/deploy/operator-web-installer/clickhouse-operator-install.sh <span class="token operator">|</span> <span class="token assign-left variable">OPERATOR_NAMESPACE</span><span class="token operator">=</span>infra <span class="token function">bash</span></code></pre></div>
+<p>这里我把 operator 安装的 namespace 放到了 infra。</p>
+<h3 id="提供部署-clickhouse-的-crd" style="position:relative;">提供部署 clickhouse 的 crd<a href="#%E6%8F%90%E4%BE%9B%E9%83%A8%E7%BD%B2-clickhouse-%E7%9A%84-crd" aria-label="提供部署 clickhouse 的 crd permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> <span class="token string">"ConfigMap"</span>
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">"serving-db-mounted-configmap"</span>             <span class="token comment"># [5]</span>
+<span class="token key atrule">data</span><span class="token punctuation">:</span>
+  <span class="token key atrule">01_create_databases.sh</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+    #!/bin/bash
+    set -e
+    clickhouse client -n &lt;&lt;-EOSQL
+      CREATE DATABASE IF NOT EXISTS serving;
+    EOSQL</span>
+<span class="token punctuation">---</span>
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> <span class="token string">"clickhouse.altinity.com/v1"</span>
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> <span class="token string">"ClickHouseInstallation"</span>
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">"serving-db"</span>
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">configuration</span><span class="token punctuation">:</span>
+    <span class="token key atrule">settings</span><span class="token punctuation">:</span>                                      <span class="token comment"># [5]</span>
+      <span class="token key atrule">max_concurrent_queries</span><span class="token punctuation">:</span> <span class="token number">400</span>
+    <span class="token key atrule">clusters</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">"serving-db"</span>
+        <span class="token key atrule">layout</span><span class="token punctuation">:</span>
+          <span class="token key atrule">shardsCount</span><span class="token punctuation">:</span> <span class="token number">1</span>
+          <span class="token key atrule">replicasCount</span><span class="token punctuation">:</span> <span class="token number">1</span>
+  <span class="token key atrule">defaults</span><span class="token punctuation">:</span>                                       <span class="token comment"># [1]</span>
+    <span class="token key atrule">templates</span><span class="token punctuation">:</span>
+      <span class="token key atrule">podTemplate</span><span class="token punctuation">:</span> pod<span class="token punctuation">-</span>template
+      <span class="token key atrule">dataVolumeClaimTemplate</span><span class="token punctuation">:</span> data<span class="token punctuation">-</span>volume<span class="token punctuation">-</span>template
+      <span class="token key atrule">logVolumeClaimTemplate</span><span class="token punctuation">:</span> log<span class="token punctuation">-</span>volume<span class="token punctuation">-</span>template
+      <span class="token key atrule">serviceTemplate</span><span class="token punctuation">:</span> svc<span class="token punctuation">-</span>template
+  <span class="token key atrule">templates</span><span class="token punctuation">:</span>
+    <span class="token key atrule">serviceTemplates</span><span class="token punctuation">:</span>                             <span class="token comment"># [2]</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> svc<span class="token punctuation">-</span>template
+        <span class="token key atrule">generateName</span><span class="token punctuation">:</span> clickhouse<span class="token punctuation">-</span><span class="token punctuation">{</span>chi<span class="token punctuation">}</span>
+        <span class="token key atrule">spec</span><span class="token punctuation">:</span>
+          <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> http
+              <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8123</span>
+            <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> tcp
+              <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">9000</span>
+          <span class="token key atrule">type</span><span class="token punctuation">:</span> ClusterIP
+    <span class="token key atrule">podTemplates</span><span class="token punctuation">:</span>                                 <span class="token comment"># [3]</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> pod<span class="token punctuation">-</span>template
+        <span class="token key atrule">spec</span><span class="token punctuation">:</span>
+          <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> clickhouse
+              <span class="token key atrule">image</span><span class="token punctuation">:</span> yandex/clickhouse<span class="token punctuation">-</span>server<span class="token punctuation">:</span>22.1.3
+              <span class="token key atrule">volumeMounts</span><span class="token punctuation">:</span>
+                <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> serving<span class="token punctuation">-</span>db<span class="token punctuation">-</span>configmap<span class="token punctuation">-</span>volume
+                  <span class="token key atrule">mountPath</span><span class="token punctuation">:</span> /docker<span class="token punctuation">-</span>entrypoint<span class="token punctuation">-</span>initdb.d
+          <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> serving<span class="token punctuation">-</span>db<span class="token punctuation">-</span>configmap<span class="token punctuation">-</span>volume
+              <span class="token key atrule">configMap</span><span class="token punctuation">:</span>
+                <span class="token key atrule">name</span><span class="token punctuation">:</span> serving<span class="token punctuation">-</span>db<span class="token punctuation">-</span>mounted<span class="token punctuation">-</span>configmap
+
+    <span class="token key atrule">volumeClaimTemplates</span><span class="token punctuation">:</span>                         <span class="token comment"># [4]</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> data<span class="token punctuation">-</span>volume<span class="token punctuation">-</span>template
+        <span class="token key atrule">reclaimPolicy</span><span class="token punctuation">:</span> Retain
+        <span class="token key atrule">spec</span><span class="token punctuation">:</span>
+          <span class="token key atrule">storageClassName</span><span class="token punctuation">:</span> local
+          <span class="token key atrule">accessModes</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> ReadWriteOnce
+          <span class="token key atrule">resources</span><span class="token punctuation">:</span>
+            <span class="token key atrule">requests</span><span class="token punctuation">:</span>
+              <span class="token key atrule">storage</span><span class="token punctuation">:</span> 50Gi
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> log<span class="token punctuation">-</span>volume<span class="token punctuation">-</span>template
+        <span class="token key atrule">reclaimPolicy</span><span class="token punctuation">:</span> Retain
+        <span class="token key atrule">spec</span><span class="token punctuation">:</span>
+          <span class="token key atrule">storageClassName</span><span class="token punctuation">:</span> local
+          <span class="token key atrule">accessModes</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> ReadWriteOnce
+          <span class="token key atrule">resources</span><span class="token punctuation">:</span>
+            <span class="token key atrule">requests</span><span class="token punctuation">:</span>
+              <span class="token key atrule">storage</span><span class="token punctuation">:</span> 10Gi</code></pre></div>
+<p>这个 yaml 是我集成了自己的所有诉求的最终版本，可以看到它主要包含两个部分：</p>
+<ol>
+<li><code>serving-db-mounted-configmap</code> 其中包含了初始化数据库的内容，这部分不是必须要，只有需要初始化数据库的时候才有</li>
+<li><code>ClickHouseInstallation</code> 这个是 clickhouse operator 所提供的 crd 顾名思义，就用于创建 clickhouse 核心 crd。具体每一个东西什么意思还是看文档吧，我这里主要介绍下目前实现了上述诉求相关的内容</li>
+</ol>
+<p>我在上面做了注释标记（[1] 这样子），下面我一个个做介绍。</p>
+<ol>
+<li>可以看到 <code>defaults.templates</code> 下定义了一系列的模板（Template）其包含了
+<ol>
+<li><code>serviceTemplate</code>: 暴露 clickhouse 的 service 的结构</li>
+<li><code>podTemplate</code>: 创建 clickhouse 自身的 pod 的结构</li>
+<li><code>dataVolumeClaimTemplate</code>: 提供给 clickhouse 的存储的结构</li>
+</ol>
+</li>
+<li><code>serviceTemplate</code> 其默认的类型为 <code>LoadBalancer</code> 由于我们的集群里不支持也不希望使用这个类型，因此这里做了自定义将其修改为了 <code>ClusterIP</code></li>
+<li><code>podTemplate</code> 中首先选择 image 版本为 22.1.3 其次增加了一个额外的 volumeMounts 到路径 /docker-entrypoint-initdb.d 这样做是为了利用该 operator 所提供的钩子，实现数据库的初始，具体文档参见 <a href="https://github.com/Altinity/clickhouse-operator/blob/master/docs/chi-examples/02-templates-07-bootstrap-schema.yaml">02-templates-07-bootstrap-schema.yaml</a></li>
+<li><code>volumeClaimTemplates</code> 分别定义了 clikchouse 的日志和数据的 PV</li>
+<li><code>configuration.settings</code> 可以自定义 clickhouse 的配置，这里我仅仅是修改了 <code>max_concurrent_queries</code> 这个配置，这里所写的配置最终会被合并到 clickhouse 的配置中</li>
+</ol>
+<h2 id="遇到的问题" style="position:relative;">遇到的问题<a href="#%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98" aria-label="遇到的问题 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>clickhouse operator 很好的解决了我目前的两大诉求，不过在使用过程中也遇到了一个额外的问题：clickhouse 默认用户 default 无法通过 kubernete dns 去访问 clickhouse。仔细查看了下配置，发现其配置只支持 <code>&#x3C;service-name>.&#x3C;namespace>.svc.cluster.local</code> 的域名访问。这样做有两个明显的问题：</p>
+<ol>
+<li>无法使用类似于 <code>&#x3C;service-name>.&#x3C;namespace></code> 这样的 k8s 内支持的短域名访问</li>
+<li>如果我在创建 k8s 集群时就修改了默认的域名配置（即不采用 cluster.local），那么这域名是一定不起作用的，甚至可以认为这个配置是一个 bug</li>
+</ol>
+<p>解决的办法也很简单，就是不要用这个 <code>default</code> 用户，去创建一个新的用户并且设置可以访问的 ip 即可。</p></div></div><div><h1><a href="/auto-update-content-in-markdown">vim 里自动更新 markdown 格式</a></h1><h2>2022 January-22</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><h2 id="问题" style="position:relative;">问题<a href="#%E9%97%AE%E9%A2%98" aria-label="问题 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <p>写 blog 的时候经常需要做中英文混排，然后这个混排为了美观需要在中和英文之间添加空格。现在形成习惯了，看到别人没有在中英文混排里添加空格都觉得有点难受。不过之前这个格式要求都靠自己敲空格敲出来的，感觉效率有点低下，恰巧发现了 <a href="https://github.com/huacnlee/autocorrect">autocorrect</a> 这个工具，可以实现这个功能，这里尝试把它和我写 blog 用的 neovim 集成下实现自动格式化的功能。</p>
 <h2 id="思路" style="position:relative;">思路<a href="#%E6%80%9D%E8%B7%AF" aria-label="思路 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <p>首先 <code>autocorrect</code> 本身已经是一个二进制文件了，通过如下命令可以实现对文件的处理：</p>
@@ -131,98 +247,7 @@ augroup END</code></pre></div>
 <ol>
 <li><a href="https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-certs/">Certificate Management with kubeadm</a></li>
 <li><a href="https://cloud.tencent.com/developer/article/1650657">kubeadm 集群修改证书时间到 99 年</a></li>
-</ol></div></div><div><h1><a href="/proxy-setup-for-ubuntu-with-ansible">使用 ansible 为 ubuntu 设置代理</a></h1><h2>2021 December-30</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p>最近为一些藏在防火墙里的存储节点做 provision 由于是非常受限的外网访问，必须要通过代理访问网络，因此需要对原来的 ansible 脚本做修改，这里做一个记录。</p>
-<p>看了看 ansible 里面的内容以及后续的 k8s 的流程，无非是如下几个方面需要访问外网：</p>
-<ol>
-<li>curl 一些 github 上的一些公钥</li>
-<li>apt install</li>
-<li>k8s 拉镜像</li>
-</ol>
-<p>那么，对应的就是以下三个方面的代理配置：</p>
-<ol>
-<li>http_proxy / https_proxy 环境变量配置</li>
-<li>apt 不走环境变量的代理，需要单独配置下</li>
-<li>我这里依然使用的 docker 拉镜像的时候也要做独立的配置，不过在一篇 <a href="/docker-accelerate">旧文- 国内环境下更好的 docker 镜像获取</a> 已经介绍过了</li>
-</ol>
-<h2 id="设置全局环境变量" style="position:relative;">设置全局环境变量<a href="#%E8%AE%BE%E7%BD%AE%E5%85%A8%E5%B1%80%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F" aria-label="设置全局环境变量 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>根据 ansible 的文档 <a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_environment.html">Setting remote env</a> ansible 提供了 <code>environment</code> 的关键词，可以在 <code>task</code> <code>play</code> 等不同层级添加环境变量：</p>
-<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token punctuation">-</span> <span class="token key atrule">hosts</span><span class="token punctuation">:</span> all
-  <span class="token key atrule">remote_user</span><span class="token punctuation">:</span> root
-
-  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
-
-    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Install cobbler
-      <span class="token key atrule">ansible.builtin.package</span><span class="token punctuation">:</span>
-        <span class="token key atrule">name</span><span class="token punctuation">:</span> cobbler
-        <span class="token key atrule">state</span><span class="token punctuation">:</span> present
-      <span class="token key atrule">environment</span><span class="token punctuation">:</span>
-        <span class="token key atrule">http_proxy</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//proxy.example.com<span class="token punctuation">:</span><span class="token number">8080</span></code></pre></div>
-<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token punctuation">-</span> <span class="token key atrule">hosts</span><span class="token punctuation">:</span> testing
-
-  <span class="token key atrule">roles</span><span class="token punctuation">:</span>
-     <span class="token punctuation">-</span> php
-     <span class="token punctuation">-</span> nginx
-
-  <span class="token key atrule">environment</span><span class="token punctuation">:</span>
-    <span class="token key atrule">http_proxy</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//proxy.example.com<span class="token punctuation">:</span><span class="token number">8080</span></code></pre></div>
-<p>当然，我们这里就没什么外网，那自然就走一个全局的。</p>
-<h2 id="添加-apt-的-proxy-配置" style="position:relative;">添加 apt 的 proxy 配置<a href="#%E6%B7%BB%E5%8A%A0-apt-%E7%9A%84-proxy-%E9%85%8D%E7%BD%AE" aria-label="添加 apt 的 proxy 配置 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>apt 的 proxy 需要放到 <code>/etc/apt/apt.conf.d</code> 下，格式如下:</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">Acuire::http { Proxy "http://proxy:1234" }
-Acuire::https { Proxy "http://proxy:1234" }</code></pre></div>
-<p>写成一个 ansible task 就是下面这个样子：</p>
-<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> add proxy for apt
-  <span class="token key atrule">copy</span><span class="token punctuation">:</span>
-    <span class="token key atrule">dest</span><span class="token punctuation">:</span> /etc/apt/apt.conf.d/02proxy
-    <span class="token key atrule">content</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
-      Acquire::http { Proxy "{{ http_proxy }}" }
-      Acquire::https { Proxy "{{ https_proxy }}" }</span></code></pre></div>
-<p>其中 <code>http_proxy</code> 和 <code>https_proxy</code> 抽出来做为变量后面填写进来。</p>
-<h2 id="添加-docker-的-proxy" style="position:relative;">添加 docker 的 proxy<a href="#%E6%B7%BB%E5%8A%A0-docker-%E7%9A%84-proxy" aria-label="添加 docker 的 proxy permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>在上面提到的旧闻中讲过了，启动 docker 的时候需要配置环境变量，放到 systemd 的配置 <code>/etc/systemd/system/docker.service.d/http-proxy.conf</code> 中：</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">[Service]
-Environment="HTTP_PROXY=http://proxy:1234"
-Environment="HTTPS_PROXY=http://proxy:1234"</code></pre></div>
-<p>然后需要执行命令 <code>systemctl daemon-reload</code>。</p>
-<h2 id="放在一起" style="position:relative;">放在一起<a href="#%E6%94%BE%E5%9C%A8%E4%B8%80%E8%B5%B7" aria-label="放在一起 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>放在一起差不多就是这个样子：</p>
-<p><code>roles/proxy/tasks/main.yml</code>:</p>
-<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token punctuation">---</span>
-<span class="token punctuation">-</span> <span class="token key atrule">file</span><span class="token punctuation">:</span>
-    <span class="token key atrule">dest</span><span class="token punctuation">:</span> /etc/systemd/system/docker.service.d
-    <span class="token key atrule">state</span><span class="token punctuation">:</span> directory
-<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> add docker proxy settings
-  <span class="token key atrule">copy</span><span class="token punctuation">:</span>
-    <span class="token key atrule">directory_mode</span><span class="token punctuation">:</span> yes
-    <span class="token key atrule">dest</span><span class="token punctuation">:</span> /etc/systemd/system/docker.service.d/http<span class="token punctuation">-</span>proxy.conf
-    <span class="token key atrule">content</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
-      [Service]
-      Environment="HTTP_PROXY={{ http_proxy }}"
-      Environment="HTTPS_PROXY={{ https_proxy }}"</span>
-<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> reload docker
-  <span class="token key atrule">service</span><span class="token punctuation">:</span>
-    <span class="token key atrule">name</span><span class="token punctuation">:</span> docker
-    <span class="token key atrule">state</span><span class="token punctuation">:</span> restarted
-    <span class="token key atrule">daemon_reload</span><span class="token punctuation">:</span> yes
-<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> add proxy for apt
-  <span class="token key atrule">copy</span><span class="token punctuation">:</span>
-    <span class="token key atrule">dest</span><span class="token punctuation">:</span> /etc/apt/apt.conf.d/02proxy
-    <span class="token key atrule">content</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
-      Acquire::http { Proxy "{{ http_proxy }}" }
-      Acquire::https { Proxy "{{ https_proxy }}" }</span></code></pre></div>
-<p><code>entry.yml</code>:</p>
-<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token punctuation">---</span>
-<span class="token punctuation">-</span> <span class="token key atrule">hosts</span><span class="token punctuation">:</span> nodes
-  <span class="token key atrule">vars</span><span class="token punctuation">:</span>
-    <span class="token key atrule">http_proxy</span><span class="token punctuation">:</span> <span class="token string">"http://proxy:7890"</span>
-    <span class="token key atrule">https_proxy</span><span class="token punctuation">:</span> <span class="token string">"http://proxy:7890"</span>
-  <span class="token key atrule">environment</span><span class="token punctuation">:</span>
-    <span class="token key atrule">http_proxy</span><span class="token punctuation">:</span> <span class="token string">"http://proxy:7890"</span>
-    <span class="token key atrule">https_proxy</span><span class="token punctuation">:</span> <span class="token string">"http://proxy:7890"</span>
-  <span class="token key atrule">roles</span><span class="token punctuation">:</span>
-  <span class="token punctuation">-</span> <span class="token key atrule">role</span><span class="token punctuation">:</span> proxy</code></pre></div>
-<h2 id="更好的方案" style="position:relative;">更好的方案<a href="#%E6%9B%B4%E5%A5%BD%E7%9A%84%E6%96%B9%E6%A1%88" aria-label="更好的方案 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>有没有更好的方案？我觉得有，就是用 <a href="https://github.com/xjasonlyu/tun2socks/">tun2socks</a> 的方案，可以实现以上三个方面的代理设置。不过还没很仔细的折腾，等搞定了再做记录。</p></div></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/2">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
+</ol></div></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/2">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       
       if(true) {
