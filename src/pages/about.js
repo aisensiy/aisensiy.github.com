@@ -6,17 +6,17 @@ export default function Archive({ data }) {
   return (
     <Base>
       <Seo title="About" />
-      <div>
+      <div className="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl">
         <h1>
           About
         </h1>
         <p>
           为了再次更新一下自己的前端技能，时隔多年之后又拿博客做了个测试。完成了从
-          jekyll 到 gatsby 的转换。
+          <code>jekyll</code> 到 <code>gatsby</code> 的转换。
         </p>
         <p>
-          从样式上差不多就是用 tailwindcss
-          对之前样式的复制，当然目的也是为了体验下 tailwindcss 的风格。
+          从样式上差不多就是用 <code>tailwindcss</code>
+          对之前样式的复制，当然目的也是为了体验下 <code>tailwindcss</code> 的风格。
         </p>
         <p>
           写 blog
