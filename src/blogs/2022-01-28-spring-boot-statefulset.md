@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "构建 spring boot 的 statefulset"
+title:      "使用 statefulset 实现 spring boot 项目的主从区分"
 date:       2022-01-28 16:44:11 +08:00
 author:     "Eisen"
 tags:       [statefulset, kubernetes, java, spring-boot]
@@ -68,6 +68,8 @@ spec:
 
 `SERVER_ROLE` 也不是随便来的，它对应了 spring boot 项目下 [`application.yml`](https://github.com/aisensiy/springboot-scheduler-example/blob/master/src/main/resources/application.yml) 的 `server.role` 字段。而这部分就为后面动态加载做了准备。
 
+**注意** 从 `Deployment` 切换到 `StatefulSet` 后，默认的 `Rolling Update` 策略会发生变化，如果 `replica=1` 是无法实现无缝部署的，也就是说 `main-server-0` 会先关掉然后再启动，所以最好还是让 `replica>=2`。
+ 
 ## 动态加载 Spring Configuration
 
 事实上这部分是 spring boot 的看家本领，它就是通过各种 autoconfiguration 让 spring 的使用变得非常的容易的。这里使用了 `@ConditionalOnProperty` 注解实现了配置的动态加载。
