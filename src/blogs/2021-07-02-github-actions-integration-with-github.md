@@ -4,6 +4,7 @@ title:      "Github Actions 与 Github 自身 API 集成生成周报"
 date:       2021-07-02 00:33:00 +08:00
 author:     "Eisen"
 tags:       [github, ci/cd, pipelineascode]
+categories: ["GitHub 小技巧"]
 ---
 
 最近又用 Github Actions 玩出了花样。这里记录一下通过 Github Api 和 Github Actions 怎么去做组织内的 commits 统计。

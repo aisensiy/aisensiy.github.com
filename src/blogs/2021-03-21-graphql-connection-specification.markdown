@@ -4,6 +4,7 @@ title:      "GraphQL Cursor 分页"
 date:       2021-03-21 22:50:11 +08:00
 author:     "Eisen"
 tags:       [web, graphql]
+categories: ["GraphQL 从入门到放弃"]
 ---
 
 GraphQL 之前已经夸了不少了，见 [REST vs GraphQL](/rest-vs-graphql)，确实在**标准化**方面远超 REST 了，这也是我想要切换到 GraphQL 的一大原因。不过 GraphQL 甚至连分页也提了一个标准，挺有意思的，看了看他们的 [GraphQL Cursor Connections Specification](https://relay.dev/graphql/connections.htm) ，想做一些自己理解的记录。
@@ -43,7 +44,7 @@ GraphQL 定义凡事以 `Connection` 结尾的结构都遵循 `Cursor Connection
 
 ### 查询参数
 
-`first after` 与 `last before` 必须分组出现，也就是说可以是以下几种形式:
+`first after` 与 `last before` 必须分组出现，也就是说可以是以下几种形式：
 
 1. `articles(first: Int!, after: String!)`
 1. `articles(last: Int!, before: String!)`

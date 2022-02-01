@@ -4,6 +4,7 @@ title:      "GraphQL 测试工具梳理"
 date:       2021-10-21 16:59:00 +08:00
 author:     "Eisen"
 tags:       [graphql, web]
+categories: ["GraphQL 从入门到放弃"]
 ---
 
 ## 目前 Postman 在我们团队的使用情况

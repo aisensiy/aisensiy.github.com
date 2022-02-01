@@ -10,7 +10,7 @@ categories:
 - 学习笔记
 tags:
 - mysql
-- Python
+- python
 ---
 
 最近又写 python 了，感觉好久不写又手生了。用 mysql 导数据，记下点东西吧。
@@ -25,7 +25,7 @@ tags:
 
 ### table creation
 
-要想让 mysql 很好的支持中文，在创建 table 的时候就要小心了。看了一下 ruby migration 生成的 sql table 是这个样子的:
+要想让 mysql 很好的支持中文，在创建 table 的时候就要小心了。看了一下 ruby migration 生成的 sql table 是这个样子的：
 
 ```sql
 CREATE TABLE `projects` (
@@ -122,7 +122,7 @@ net_write_timeout       = 30
 `connect_timeout` 在很多地方都存在，就是连接 mysql 时候的超时时间。应该不是这个。
 `wait_timeout` 在连接建立之后 mysql 等待一个连接有动作的时间。也就是说如果连接在这个时间之内没有动作就会断开连接了。
 
-即使连接没有处于sleep状态，即客户端忙于计算或者存储数据，MySQL也选择了有条件的等待。在数据包的分发过程中，客户端可能来不及响应（发送、接收、或者处理数据包太慢）。为了保证连接不被浪费在无尽的等待中，MySQL也会选择有条件（net_read_timeout和net_write_timeout）地主动断开连接。
+即使连接没有处于 sleep 状态，即客户端忙于计算或者存储数据，MySQL 也选择了有条件的等待。在数据包的分发过程中，客户端可能来不及响应（发送、接收、或者处理数据包太慢）。为了保证连接不被浪费在无尽的等待中，MySQL 也会选择有条件（net_read_timeout 和 net_write_timeout）地主动断开连接。
 
 这就让我纠结了，我尝试了修改以上的参数却没有从根本上解决这个问题。最后我就采用了比较暴力的方式。
 
@@ -149,7 +149,7 @@ select url from taobao limit 1 offset 2000000;
 ```
 
 这条语句在我有 300w 的表里要跑个十几秒...
-explain 如下:
+explain 如下：
 
 ```
 mysql> explain select url from taobao limit 1 offset 2000000;

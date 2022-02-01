@@ -7,7 +7,10 @@ import { Helmet } from 'react-helmet'
 export default function BlogPage({ data }) {
   const { nodes: blogs, pageInfo } = data.blogs
   const pages = blogs.map(blog => (
-    <Blog data={blog} key={blog.id}/>
+    <div className="">
+      <Blog data={blog} key={blog.id}/>
+      <hr className="mt-8" />
+    </div>
   ))
   const { pageCount, hasPreviousPage, currentPage } = pageInfo
   const hasNextPage = currentPage < pageCount

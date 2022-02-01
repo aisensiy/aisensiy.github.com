@@ -3,7 +3,7 @@ layout:     post
 title:      "让 Intellij 一直显示参数提示"
 date:       2021-12-08 17:16:00 +08:00
 author:     "Eisen"
-tags:       [java, intellij, jetbrains, machine-init]
+tags:       [java, intellij, machine-init]
 ---
 
 

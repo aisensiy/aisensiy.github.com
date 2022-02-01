@@ -4,6 +4,7 @@ title:      "Github Actions tips 更新"
 date:       2021-11-02 00:16:00 +08:00
 author:     "Eisen"
 tags:       [github, pipelineascode]
+categories: ["GitHub 小技巧"]
 ---
 
 ## workflow 的重用

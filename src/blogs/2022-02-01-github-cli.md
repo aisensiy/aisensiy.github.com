@@ -4,6 +4,7 @@ title:      "使用 github cli 加速与 github 的交互"
 date:       2022-02-01 16:02:44 +08:00
 author:     "Eisen"
 tags:       [github, cli]
+categories: ["GitHub 小技巧"]
 ---
 
 由于我目前的所有开发流程一方面和 github 有密切的关联，另一方面又大量的使用 `vim` `iTerm` 这样的工具，因此有很强烈的诉求希望可以更好的集成这些工具，最近刚刚尝试了下 [github 官方的 cli 工具](https://cli.github.com) 感觉确实可以满足我这方面的需求。这里记录下我自己常用的一些命令。

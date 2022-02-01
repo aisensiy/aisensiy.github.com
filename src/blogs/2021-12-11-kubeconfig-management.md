@@ -4,6 +4,7 @@ title:      "维护一大堆 kubeconfig 的一些实践"
 date:       2021-12-11 00:16:00 +08:00
 author:     "Eisen"
 tags:       [kubernetes, kubectx, kubie, direnv]
+categories: ["kubernetes 运维"]
 ---
 
 ## 2021-12-20 更新

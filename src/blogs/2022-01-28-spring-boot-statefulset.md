@@ -3,7 +3,7 @@ layout:     post
 title:      "使用 statefulset 实现 spring boot 项目的主从区分"
 date:       2022-01-28 16:44:11 +08:00
 author:     "Eisen"
-tags:       [statefulset, kubernetes, java, spring-boot]
+tags:       [statefulset, kubernetes, java, springboot]
 ---
 
 最近在做几个小服务的重构，希望把拆出来的小服务放回主服务里面，有这么几个方面的考虑：

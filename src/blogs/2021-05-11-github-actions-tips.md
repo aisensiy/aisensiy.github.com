@@ -4,6 +4,7 @@ title:      "Github Actions 的一些使用体会"
 date:       2021-05-11 18:33:00 +08:00
 author:     "Eisen"
 tags:       [github, ci/cd, pipelineascode]
+categories: ["GitHub 小技巧"]
 ---
 
 ## 2021 年 7 月更新

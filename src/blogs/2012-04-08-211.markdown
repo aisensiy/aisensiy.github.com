@@ -26,15 +26,15 @@ categories:
  * https://poj.org/problem?id=1002
  * 
  * 题简单的没什么可说的 重点是更快的输入处理能力
- * AC的耗时很长，肯定有优化的余地，我只是个菜鸟，
+ * AC 的耗时很长，肯定有优化的余地，我只是个菜鸟，
  * 仅供参考
  *
  * @author: aisensiy(https://weibo.com/alistapart)
  */
 using namespace std;
-// 这是A-Z与数字的映射表
+// 这是 A-Z 与数字的映射表
 int charmap[26] = {2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 7, 8, 8, 8, 9, 9, 9, 9};
-// 这就是带我AC的函数 如果用C++的getline的话 是过不了的！
+// 这就是带我 AC 的函数 如果用 C++ 的 getline 的话 是过不了的！
 void _getline(char *line, int lim) {
 	int c, i;
 	for(i=0; i<lim-1 && (c=getchar())!='n' && c != EOF; i++)

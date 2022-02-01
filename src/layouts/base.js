@@ -30,6 +30,16 @@ export default function Base({ children }) {
                 </Link>
               </li>
               <li>
+                <Link to="/tags" className="leading-7 block hover:underline">
+                  Tags
+                </Link>
+              </li>
+              <li>
+                <Link to="/serials" className="leading-7 block hover:underline">
+                  Serials
+                </Link>
+              </li>
+              <li>
                 <a
                   href="https://github.com/aisensiy"
                   target="_blank"

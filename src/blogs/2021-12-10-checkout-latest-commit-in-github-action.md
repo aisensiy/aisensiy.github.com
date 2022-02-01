@@ -4,9 +4,10 @@ title:      "在 Github Actions 中获取最最最新的 commit"
 date:       2021-12-10 00:46:00 +08:00
 author:     "Eisen"
 tags:       [github-action, tricks]
+categories: ["GitHub 小技巧"]
 ---
 
-有 helm charts 管理经验的人都晓得helm charts 发布后需要打包一个 tar 放到目录里面。helm 会要求一个特定的目录结构获取不同版本的 tar 包。在 openbayes 就有这么一个 helm charts 项目里面存放了一系列的 tar 包。目前来看这些 tar 包都很小（只有几百 K）为了方便部署，就直接把这些文件和 nginx 打包到镜像里了，部署起来就能直接提供服务了，没有其他对象存储之类的外部依赖。
+有 helm charts 管理经验的人都晓得 helm charts 发布后需要打包一个 tar 放到目录里面。helm 会要求一个特定的目录结构获取不同版本的 tar 包。在 openbayes 就有这么一个 helm charts 项目里面存放了一系列的 tar 包。目前来看这些 tar 包都很小（只有几百 K）为了方便部署，就直接把这些文件和 nginx 打包到镜像里了，部署起来就能直接提供服务了，没有其他对象存储之类的外部依赖。
 
 我们也希望把打包部署的流程通过 github workflow 实现自动化。按照上面的描述，可以分成两个步骤：
 
@@ -33,7 +34,7 @@ jobs:
 
 但遇到一个很奇怪的问题，**在 release 中明明提交了新的内容，在 build-and-push 中却拿不到**。我的第一感觉就怀疑是 github 的 `actions/checkout@v2` action 的行为有点问题。简单搜索了下，发现 `actions/checkout@v2` 默认会获取触发这次 github workflow 的 commit。也就是说，虽然我在 release 有新的提交，但是我在下一步 build-and-push 的 job 里还是 checkout 了上一个 commit 而已。
 
-查看 `actions/checkout@v2` 的 README 发现，如果想要修改上述的行为，需要修改其 `ref` 参数。修改成想要获取最新 commit 的 branch 名称即可。而具体在 github action 里则可以使用 `github.ref_name` （在 https://docs.github.com/en/actions/learn-github-actions/contexts#github-context 可以看到相关文档） 这个变量获取当前的 branch。这里我提供一个例子：
+查看 `actions/checkout@v2` 的 README 发现，如果想要修改上述的行为，需要修改其 `ref` 参数。修改成想要获取最新 commit 的 branch 名称即可。而具体在 github action 里则可以使用 `github.ref_name`（在 https://docs.github.com/en/actions/learn-github-actions/contexts#github-context 可以看到相关文档）这个变量获取当前的 branch。这里我提供一个例子：
 
 ```yaml
 name: test commit

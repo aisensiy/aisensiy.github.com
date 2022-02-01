@@ -4,6 +4,7 @@ title:      "将 MySQL 通过 presslabs/mysql-operator 部署到 k8s 内部"
 date:       2020-10-19 18:16:00 +08:00
 author:     "Eisen"
 tags:       [mysql, kubernetes]
+categories: ["kubernetes 运维"]
 ---
 
 目前 openbayes 的几乎所有组件都部署在 k8s 内部，但 mysql 作为核心的数据存储节点对其要求都蛮高的，对于目前的业务场景，其要求主要包含以下几点：
@@ -117,4 +118,4 @@ spec:
 
 ## 独立 io
 
-在使用的过程中遇到一个特殊的情况，mysql 如果和其他的服务共用一个 storageClass 可能会出现 io 抢占的情况，导致 mysql 的延迟非常巨大。目前 k8s 还没有一个很好的办法解决这个问题。唯一想到的就是为 mysql 分配一套单独的 storageClass （比如 [local storage path](https://github.com/rancher/local-path-provisioner) 的方案）。
+在使用的过程中遇到一个特殊的情况，mysql 如果和其他的服务共用一个 storageClass 可能会出现 io 抢占的情况，导致 mysql 的延迟非常巨大。目前 k8s 还没有一个很好的办法解决这个问题。唯一想到的就是为 mysql 分配一套单独的 storageClass（比如 [local storage path](https://github.com/rancher/local-path-provisioner) 的方案）。

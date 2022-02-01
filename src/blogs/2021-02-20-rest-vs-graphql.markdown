@@ -4,6 +4,7 @@ title:      "REST vs GraphQL"
 date:       2021-02-20 19:36:00 +08:00
 author:     "Eisen"
 tags:       [web, rest, graphql]
+categories: ["GraphQL 从入门到放弃"]
 ---
 
 考虑到目前 REST API 层和前端对接起来不是那么顺滑，于是有去找解决方案了，找来找去感觉也就是切 GraphQL 了，这次又来看 GraphQL 感觉它比上次看要香了。好好总觉了一些东西出来。

@@ -4,6 +4,7 @@ title:      "Real World 的 GraphQL 版本"
 date:       2021-06-16 18:33:00 +08:00
 author:     "Eisen"
 tags:       [java, graphql, springboot, mybatis, realworld]
+categories: ["GraphQL 从入门到放弃"]
 ---
 
 在很久之前的一篇 [文章](/real-world-spring-boot-and-mybatis) 介绍了我做的一个 [RealWorld 的 SpringBoot + MyBatis](https://github.com/gothinkster/spring-boot-realworld-example-app) 的实现。这个项目我也一直在维护，一方面是因为这是一个很好的 demo 项目，可以很好的体现一些设计思路 [文章](/real-world-spring-boot-and-mybatis) 也都说了不再重复。另一方面，我觉得也是一个新人练手不错的选择，可以让大家可以通过这个项目来入门。

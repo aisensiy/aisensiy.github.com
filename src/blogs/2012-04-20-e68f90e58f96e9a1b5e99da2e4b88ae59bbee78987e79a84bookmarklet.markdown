@@ -7,7 +7,7 @@ slug: 'picture-bookmarklet'
 title: 提取页面上图片的 bookmarklet
 wordpress_id: 217
 categories:
-- 关注web
+- 关注 web
 - 我的项目
 tags:
 - bookmarklet
@@ -15,16 +15,16 @@ tags:
 - linkedin
 ---
 
-不多说，这个bookmarklet([](https://en.wikipedia.org/wiki/Bookmarklet))就是用来抽取当前页面上指定大小的图片的工具。点击这个bookmarklet之后，就可以生成一个只有图片的页面。
+不多说，这个 bookmarklet([](https://en.wikipedia.org/wiki/Bookmarklet)) 就是用来抽取当前页面上指定大小的图片的工具。点击这个 bookmarklet 之后，就可以生成一个只有图片的页面。
 
-那么如果我ctrl+s保存[网页，全部]，当前页面的图片就会随着页面保存到本地了。
+那么如果我 ctrl+s 保存 [网页，全部]，当前页面的图片就会随着页面保存到本地了。
 
 代码放在这里
 
 ```js
 void (function() {
-	var minWidth = parseInt(prompt("请输入最小宽度，默认为200"), 10) || 200;
-	var minHeight = parseInt(prompt("请输入最小高度，默认为200"), 10) || 200;
+	var minWidth = parseInt(prompt("请输入最小宽度，默认为 200"), 10) || 200;
+	var minHeight = parseInt(prompt("请输入最小高度，默认为 200"), 10) || 200;
 	var imgs = [];
 	var common = minWidth;
 

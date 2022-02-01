@@ -35,7 +35,7 @@ export default function Blog({ data }) {
           `${frontmatter.title}`}
       </h1>
       <h2>{frontmatter.date}</h2>
-      <TagList tags={frontmatter.tags} />
+      { frontmatter.tags && <TagList tags={frontmatter.tags} /> }
       {tableOfContents && <TableOfContent html={tableOfContents} />}
       <div
         className="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"

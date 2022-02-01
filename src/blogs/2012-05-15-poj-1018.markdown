@@ -23,7 +23,7 @@ using namespace std;
 /*
  * http://poj.org/problem?id=1012
  * 思路：
- * 遍历所有可能的带宽，在每种带宽下计算price
+ * 遍历所有可能的带宽，在每种带宽下计算 price
  */
 struct Device {
     int mi;

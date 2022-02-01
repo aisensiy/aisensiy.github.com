@@ -4,6 +4,7 @@ title:      "尝试 clickhouse operator"
 date:       2022-01-26 16:06:11 +08:00
 author:     "Eisen"
 tags:       [clickhouse, kubernetes, devops]
+categories: ["kubernetes 运维"]
 ---
 
 

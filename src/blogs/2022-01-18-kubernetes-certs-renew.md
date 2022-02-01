@@ -4,6 +4,7 @@ title:      "处理 k8s 证书过期"
 date:       2022-01-18 09:38:11 +08:00
 author:     "Eisen"
 tags:       [devops, kubernetes, kubeadm]
+categories: ["kubernetes 运维"]
 ---
 
 ## 简单记录

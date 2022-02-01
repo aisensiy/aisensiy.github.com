@@ -3,6 +3,7 @@ layout:     post
 title:      "初步尝试 Github Actions"
 date:       2020-07-18 10:33:00 +08:00
 author:     "Eisen"
+categories: ["GitHub 小技巧"]
 tags:       [github, ci/cd, pipelineascode]
 ---
 
@@ -14,7 +15,7 @@ tags:       [github, ci/cd, pipelineascode]
 
 最最初什么都没有的时候自然就是 [gocd](https://www.gocd.org/) 和 [jenkins](https://www.jenkins.io/) 的统治时期，那个时候我基本就是用 CI 自己基本没配置过。那个时候的 CI 特别难用，没有现在的一些重要功能。每次跑 CI 都像是在重新 provision 一个环境似的，由于我自己没什么经验就带过吧。
 
-之后（17年）尝试过 [drone ci](https://drone.io/) 在 [文章](/drone-best-ci/) 中做了介绍，提到了 `pipeline as code`、`原生支持 docker` 以及 `简单易用的插件扩展` 这些功能，不过当时 droneci 并不是一个类似于 saas 的产品，而是需要自己部署的，不是那么开箱即用，但我也觉得很方便了。几年之后越来越多的 CI 在这些方面都支持的越来越好了。在 [openbayes](https://openbayes.com) 项目之初（18年初），出于集中力量办正事的考虑，就直接使用了 [circleci](https://circleci.com/)（之前在 [travisci](https://travis-ci.org/) 和它之间做过纠结，但考虑到其 `pipelineascode` 更友好就采用它了）。可能这不是一个最优的策略，但既然都 `pipeline as code` 了，其实切换成本并不大，处于有问题立即跑路的想法就这么用了。后续来看问题不大，
+之后（17 年）尝试过 [drone ci](https://drone.io/) 在 [文章](/drone-best-ci/) 中做了介绍，提到了 `pipeline as code`、`原生支持 docker` 以及 `简单易用的插件扩展` 这些功能，不过当时 droneci 并不是一个类似于 saas 的产品，而是需要自己部署的，不是那么开箱即用，但我也觉得很方便了。几年之后越来越多的 CI 在这些方面都支持的越来越好了。在 [openbayes](https://openbayes.com) 项目之初（18 年初），出于集中力量办正事的考虑，就直接使用了 [circleci](https://circleci.com/)（之前在 [travisci](https://travis-ci.org/) 和它之间做过纠结，但考虑到其 `pipelineascode` 更友好就采用它了）。可能这不是一个最优的策略，但既然都 `pipeline as code` 了，其实切换成本并不大，处于有问题立即跑路的想法就这么用了。后续来看问题不大，
 
 我们背后的技术栈还是比较散的，按照语言区分的话基本有这么几个：
 

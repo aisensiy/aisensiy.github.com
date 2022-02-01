@@ -4,6 +4,7 @@ title:      "采用 ingress-nginx 将服务暴露到外部"
 date:       2018-08-26 00:11:11 +08:00
 author:     "Eisen"
 tags:       [docker, devops, kubernetes, ingress]
+categories: ["kubernetes 运维"]
 ---
 
 
