@@ -55,7 +55,58 @@
   </script><link rel="preconnect" href="https://plausible.io"/><script async="" defer="" data-domain="aisensiy.me" src="https://plausible.io/js/plausible.js"></script><script>
           window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) };
           
-          </script><link as="script" rel="preload" href="/webpack-runtime-ff02cfd775d7d5fd5e84.js"/><link as="script" rel="preload" href="/framework-45ca7a0c983b0b7a000c.js"/><link as="script" rel="preload" href="/app-d20a25ec668cba21fae0.js"/><link as="script" rel="preload" href="/d1724f9828659101216d9c2ff846a60d90e64274-aac16f39fe217ccc37e4.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-b81aa84e3c777d2f77e7.js"/><link as="fetch" rel="preload" href="/page-data/page/29/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/mysql-tips">mysql and python tips</a></h1><h2>2013 September-28</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p>最近又写 python 了，感觉好久不写又手生了。用 mysql 导数据，记下点东西吧。</p>
+          </script><link as="script" rel="preload" href="/webpack-runtime-ff02cfd775d7d5fd5e84.js"/><link as="script" rel="preload" href="/framework-45ca7a0c983b0b7a000c.js"/><link as="script" rel="preload" href="/app-d20a25ec668cba21fae0.js"/><link as="script" rel="preload" href="/d1724f9828659101216d9c2ff846a60d90e64274-aac16f39fe217ccc37e4.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-b81aa84e3c777d2f77e7.js"/><link as="fetch" rel="preload" href="/page-data/page/29/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/rspec">rspec get started</a></h1><h2>2013 October-04</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><h1 id="rspec" style="position:relative;">rspec<a href="#rspec" aria-label="rspec permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h1>
+<h2 id="init" style="position:relative;">init<a href="#init" aria-label="init permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">gem install rspec
+rspec --init</code></pre></div>
+<h2 id="rspec-1" style="position:relative;">.rspec<a href="#rspec-1" aria-label="rspec 1 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>我们可以用 <code>.rspec</code> 文件做 rspec 的配置。</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">--color
+--format documentation</code></pre></div>
+<p>这里的 <code>documentation</code> 可以让 rspec 显示出具体的信息，而默认的是
+<code>--format progress</code> 只会显示类似 <code>testunit</code> 的显示形式。</p>
+<h2 id="rspec-with-rails" style="position:relative;">rspec with rails<a href="#rspec-with-rails" aria-label="rspec with rails permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">rails new *application* --skip-test-unit</code></pre></div>
+<p>可以让 rails 不要给予 test-unit 的任何内容。
+然后在 Gemfile 添加</p>
+<div class="gatsby-highlight" data-language="ruby"><pre class="language-ruby"><code class="language-ruby">group <span class="token symbol">:development</span><span class="token punctuation">,</span> <span class="token symbol">:test</span> <span class="token keyword">do</span>
+  gem <span class="token string">'rspec-rails'</span>
+<span class="token keyword">end</span></code></pre></div>
+<p>然后</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">rails generate rspec:install</code></pre></div>
+<p>之后如果执行<code>rails g scaffold</code>那么就会在<code>spec</code>目录下建立相应的测试。</p>
+<h2 id="rspec-with-guard" style="position:relative;">rspec with guard<a href="#rspec-with-guard" aria-label="rspec with guard permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<div class="gatsby-highlight" data-language="ruby"><pre class="language-ruby"><code class="language-ruby">group <span class="token symbol">:development</span><span class="token punctuation">,</span> <span class="token symbol">:test</span> <span class="token keyword">do</span>
+  gem <span class="token string">'rspec-rails'</span>
+  gem <span class="token string">'rb-fsevent'</span><span class="token punctuation">,</span> <span class="token symbol">:require</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token boolean">false</span> <span class="token keyword">if</span> <span class="token constant">RUBY_PLATFORM</span> <span class="token operator">=</span><span class="token operator">~</span> <span class="token regex">/darwin/i</span>
+  gem <span class="token string">'guard-rspec'</span>
+  gem <span class="token string">'guard-livereload'</span>
+<span class="token keyword">end</span></code></pre></div>
+<p>安装 guard 的支持非常的简单。然后</p>
+<div class="gatsby-highlight" data-language="ruby"><pre class="language-ruby"><code class="language-ruby">guard init rspec
+guard init livereload
+guard</code></pre></div>
+<p>详情可见 <a href="https://railscasts.com/episodes/264-guard">railscasts #264 Guard</a></p>
+<h2 id="pending" style="position:relative;">pending<a href="#pending" aria-label="pending permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>对于还没有想好测试内容的情况这个就是超级有用了。</p>
+<p>首先可以这样做</p>
+<div class="gatsby-highlight" data-language="ruby"><pre class="language-ruby"><code class="language-ruby">describe <span class="token constant">Hotel</span> <span class="token keyword">do</span>
+  it <span class="token string">"should have method price"</span>
+<span class="token keyword">end</span></code></pre></div>
+<p>或者这样</p>
+<div class="gatsby-highlight" data-language="ruby"><pre class="language-ruby"><code class="language-ruby">describe <span class="token constant">Hotel</span> <span class="token keyword">do</span>
+  it <span class="token string">"should have method price"</span> <span class="token keyword">do</span>
+    pending
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span></code></pre></div>
+<h2 id="一大堆的-matcher" style="position:relative;">一大堆的 matcher<a href="#%E4%B8%80%E5%A4%A7%E5%A0%86%E7%9A%84-matcher" aria-label="一大堆的 matcher permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<div class="gatsby-highlight" data-language="ruby"><pre class="language-ruby"><code class="language-ruby">zombie <span class="token operator">=</span> <span class="token constant">Zombie</span><span class="token punctuation">.</span><span class="token keyword">new</span> <span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token string">'Ash'</span><span class="token punctuation">)</span>
+
+zombie<span class="token punctuation">.</span>name<span class="token punctuation">.</span>should <span class="token operator">==</span> <span class="token string">'Ash'</span>
+zombie<span class="token punctuation">.</span>should respond_to<span class="token punctuation">(</span><span class="token symbol">:name</span><span class="token punctuation">)</span>
+zombie<span class="token punctuation">.</span>weapons<span class="token punctuation">.</span>should <span class="token keyword">include</span><span class="token punctuation">(</span>weapon<span class="token punctuation">)</span>
+zombie<span class="token punctuation">.</span>weapon<span class="token punctuation">.</span>should_not be_nil
+</code></pre></div></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/mysql-tips">mysql and python tips</a></h1><h2>2013 September-28</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p>最近又写 python 了，感觉好久不写又手生了。用 mysql 导数据，记下点东西吧。</p>
 <h2 id="python-mysqldb-的安装" style="position:relative;">python-MySQLdb 的安装<a href="#python-mysqldb-%E7%9A%84%E5%AE%89%E8%A3%85" aria-label="python mysqldb 的安装 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <p>在安装 pip 之前需要执行</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">apt-get install libmysqlclient-dev python-dev</code></pre></div>
@@ -186,110 +237,7 @@ explain 如下：</p>
 <div class="gatsby-highlight" data-language="sql"><pre class="language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> word_relations <span class="token keyword">where</span> <span class="token punctuation">[</span>one <span class="token keyword">column</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'[this word id]'</span></code></pre></div>
 <p>要找父亲节点，那么 where 中就是找 <em>哪个节点的子节点是这个 word</em>。所以就应当是反着的才对的。</p>
 <hr>
-<p>做了上述的工作之后，一个图状的 word 关系就可以搞定了。</p></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/angluar-resource-rails-integration">angluar-resource rails integration</a></h1><h2>2013 July-31</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p>最近本来是在折腾 parse angular rails 的一个项目。一直想把 parse 封装成和 rails 自带的 activerecord 那样的的 api 但是最终由于各种原因还是放弃了。整体来说还是因为 parse 的社区不够大，需求量不够大，导致周边做的不是很给力。要啥啥没有也就罢了，关键是 parse 目前处于高不成低不就的地步：要啥有啥，但是，做的不好，不完善。</p>
-<p>浪费了一天在 <code>parse-resource</code> 上无果很是伤心。总想做点东西去弥补下损失，起码找到个可以用于目前项目的，简化项目开发的东西吧？那就从这个的周边入手吧。我一直都在想如果 backend restful 的这个接口搞定了，那前面就可以尝试 <code>angular-resource</code> 了。虽说目前后端没有搞定，但是我们依然可以去尝试它。</p>
-<p><code>angular-resource</code> 就是一个可以简化 <code>angular</code> 写 restful 接口的工具。之前不使用它是因为有这样一个疑问：我并不是仅仅有 restful CRUD 的接口。当我有其他的自定义的动作的时候 <code>angular-resource</code> 能支持吗？今天我终于把这个问题弄清楚了。</p>
-<p>首先，要给 <code>angular-resource</code> 提供一个完整的 restful 的 backend。这里我就用 rails 做了一个。</p>
-<div class="gatsby-highlight" data-language="ruby"><pre class="language-ruby"><code class="language-ruby"><span class="token keyword">class</span> <span class="token class-name">PostsController</span> <span class="token operator">&lt;</span> <span class="token constant">ApplicationController</span>
-  respond_to <span class="token symbol">:json</span>
-
-  <span class="token keyword">def</span> <span class="token method-definition"><span class="token function">index</span></span>
-    <span class="token variable">@posts</span> <span class="token operator">=</span> <span class="token constant">Post</span><span class="token punctuation">.</span>all
-
-    respond_with <span class="token variable">@posts</span>
-  <span class="token keyword">end</span>
-
-  <span class="token keyword">def</span> <span class="token method-definition"><span class="token function">show</span></span>
-    <span class="token variable">@post</span> <span class="token operator">=</span> <span class="token constant">Post</span><span class="token punctuation">.</span>find_by_id<span class="token punctuation">(</span>params<span class="token punctuation">[</span><span class="token symbol">:id</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-
-    respond_with <span class="token variable">@post</span><span class="token punctuation">,</span> status<span class="token punctuation">:</span> <span class="token keyword">if</span> <span class="token variable">@post</span><span class="token punctuation">.</span><span class="token keyword">nil</span><span class="token operator">?</span> <span class="token keyword">then</span> <span class="token symbol">:not_found</span> <span class="token keyword">else</span> <span class="token number">200</span> <span class="token keyword">end</span>
-  <span class="token keyword">end</span>
-
-  <span class="token keyword">def</span> <span class="token method-definition"><span class="token function">create</span></span>
-    <span class="token variable">@post</span> <span class="token operator">=</span> <span class="token constant">Post</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>params<span class="token punctuation">[</span><span class="token symbol">:post</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-    <span class="token variable">@post</span><span class="token punctuation">.</span>save
-
-    respond_with <span class="token variable">@post</span>
-  <span class="token keyword">end</span>
-
-  <span class="token keyword">def</span> <span class="token method-definition"><span class="token function">update</span></span>
-    <span class="token variable">@post</span> <span class="token operator">=</span> <span class="token constant">Post</span><span class="token punctuation">.</span>find_by_id<span class="token punctuation">(</span>params<span class="token punctuation">[</span><span class="token symbol">:id</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-    <span class="token variable">@post</span><span class="token punctuation">.</span>update_attributes<span class="token punctuation">(</span>params<span class="token punctuation">[</span><span class="token symbol">:post</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">if</span> <span class="token variable">@post</span>
-
-    respond_with <span class="token variable">@post</span><span class="token punctuation">,</span> status<span class="token punctuation">:</span> <span class="token keyword">if</span> <span class="token variable">@post</span><span class="token punctuation">.</span><span class="token keyword">nil</span><span class="token operator">?</span> <span class="token keyword">then</span> <span class="token symbol">:not_found</span> <span class="token keyword">else</span> <span class="token number">200</span> <span class="token keyword">end</span>
-  <span class="token keyword">end</span>
-
-  <span class="token keyword">def</span> <span class="token method-definition"><span class="token function">destroy</span></span>
-    <span class="token variable">@post</span> <span class="token operator">=</span> <span class="token constant">Post</span><span class="token punctuation">.</span>find_by_id<span class="token punctuation">(</span>params<span class="token punctuation">[</span><span class="token symbol">:id</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-    <span class="token variable">@post</span><span class="token punctuation">.</span>destroy <span class="token keyword">if</span> <span class="token variable">@post</span>
-
-    respond_with <span class="token variable">@post</span><span class="token punctuation">,</span> status<span class="token punctuation">:</span> <span class="token keyword">if</span> <span class="token variable">@post</span><span class="token punctuation">.</span><span class="token keyword">nil</span><span class="token operator">?</span> <span class="token keyword">then</span> <span class="token symbol">:not_found</span> <span class="token keyword">else</span> <span class="token number">200</span> <span class="token keyword">end</span>
-  <span class="token keyword">end</span>
-
-  <span class="token keyword">def</span> <span class="token method-definition"><span class="token function">reset</span></span>
-    <span class="token variable">@post</span> <span class="token operator">=</span> <span class="token constant">Post</span><span class="token punctuation">.</span>find_by_id<span class="token punctuation">(</span>params<span class="token punctuation">[</span><span class="token symbol">:id</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-    <span class="token keyword">if</span> <span class="token variable">@post</span>
-      <span class="token variable">@post</span><span class="token punctuation">.</span>body <span class="token operator">=</span> <span class="token string">'reset as default content'</span>
-      <span class="token variable">@post</span><span class="token punctuation">.</span>save
-    <span class="token keyword">end</span>
-
-    respond_with <span class="token variable">@post</span><span class="token punctuation">,</span> status<span class="token punctuation">:</span> <span class="token keyword">if</span> <span class="token variable">@post</span><span class="token punctuation">.</span><span class="token keyword">nil</span><span class="token operator">?</span> <span class="token keyword">then</span> <span class="token symbol">:not_found</span> <span class="token keyword">else</span> <span class="token number">200</span> <span class="token keyword">end</span>
-  <span class="token keyword">end</span>
-
-  <span class="token keyword">def</span> <span class="token method-definition"><span class="token function">top2</span></span>
-    <span class="token variable">@posts</span> <span class="token operator">=</span> <span class="token constant">Post</span><span class="token punctuation">.</span>limit<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
-    respond_with <span class="token variable">@posts</span>
-  <span class="token keyword">end</span>
-<span class="token keyword">end</span>
-</code></pre></div>
-<p>这个 controller 在错误的处理以及 http code 的返回上可能还有一些问题，但是我们先忽略这些。关键的提供一个如下的 routes。</p>
-<div class="gatsby-highlight" data-language="ruby"><pre class="language-ruby"><code class="language-ruby">resources <span class="token symbol">:posts</span> <span class="token keyword">do</span>
-  member <span class="token keyword">do</span>
-    post <span class="token symbol">:reset</span>
-  <span class="token keyword">end</span>
-  collection <span class="token keyword">do</span>
-    get <span class="token symbol">:top2</span>
-  <span class="token keyword">end</span>
-<span class="token keyword">end</span></code></pre></div>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">$: rake routes
-
-reset_post POST   /posts/:id/reset(.:format) posts#reset
-top2_posts GET    /posts/top2(.:format)      posts#top2
-     posts GET    /posts(.:format)           posts#index
-           POST   /posts(.:format)           posts#create
-  new_post GET    /posts/new(.:format)       posts#new
- edit_post GET    /posts/:id/edit(.:format)  posts#edit
-      post GET    /posts/:id(.:format)       posts#show
-           PUT    /posts/:id(.:format)       posts#update
-           DELETE /posts/:id(.:format)       posts#destroy</code></pre></div>
-<p>好，有了这些之后，我们就可以用 <code>angular-resource</code> 构建一个 <code>Post</code> 的 module 来处理 restful 的请求啦。</p>
-<p>首先 ngResource 的文档在这里 <a href="https://docs.angularjs.org/api/ngResource.$resource">https://docs.angularjs.org/api/ngResource.$resource</a> 虽然大家都吐槽 angular 的文档很糟糕，但是没有别的办法，这个就是最官方的出处了。而且起码我觉得这篇讲的还算说的过去。</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">App <span class="token operator">=</span> angular<span class="token punctuation">.</span>module <span class="token string">'App'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'ngResource'</span><span class="token punctuation">]</span>
-
-App<span class="token punctuation">.</span>factory <span class="token string">'Post'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>$resource<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span>
-  <span class="token function">$resource</span><span class="token punctuation">(</span><span class="token string">'/posts/:id/:verb'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>id<span class="token operator">:</span> <span class="token string">'@id'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
-    reset<span class="token operator">:</span> <span class="token punctuation">{</span> method<span class="token operator">:</span> <span class="token string">'POST'</span><span class="token punctuation">,</span> params<span class="token operator">:</span> <span class="token punctuation">{</span>verb<span class="token operator">:</span> <span class="token string">'reset'</span><span class="token punctuation">}</span> <span class="token punctuation">}</span>
-    top2<span class="token operator">:</span> <span class="token punctuation">{</span> method<span class="token operator">:</span> <span class="token string">'GET'</span><span class="token punctuation">,</span> params<span class="token operator">:</span> <span class="token punctuation">{</span>verb<span class="token operator">:</span> <span class="token string">'top2'</span><span class="token punctuation">}</span><span class="token punctuation">,</span> isArray<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span>
-  <span class="token punctuation">)</span></code></pre></div>
-<p>如上所示，对于有自定义的 restful 接口的情况，我提供了一个额外的参数 <code>verb</code>。对默认的 restful 接口 <code>angular-resource</code> 可以帮我们处理了，我们只需要处理额外的自定义的即可。</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">reset: { method: 'POST', params: {verb: 'reset'} }</code></pre></div>
-<p>设置 verb: reset 就可以将这个动作和 url 绑定了。</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">    post <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Post</span><span class="token punctuation">(</span>$scope<span class="token punctuation">.</span>post<span class="token punctuation">)</span>
-    post<span class="token punctuation">.</span><span class="token function">$reset</span><span class="token punctuation">(</span>
-      <span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span>
-        <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'success!!'</span><span class="token punctuation">)</span>
-        $scope<span class="token punctuation">.</span>post <span class="token operator">=</span> data
-    <span class="token punctuation">)</span>
-</code></pre></div>
-<p>同理，</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">top2: { method: 'GET', params: {verb: 'top2'}, isArray: true }</code></pre></div>
-<p>verb: top2 就对应 posts/top2 的 url。不过这里有一个额外的参数 <code>isArray</code> 这个就好像 rails routes 里面声明的 <code>collection</code> 一样，说明不是针对单个元素的。</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">App.controller 'IndexController', ($scope, Post) ->
-  $scope.posts = Post.top2()</code></pre></div>
-<hr>
-<p>虽然这里还没有涉及嵌套的情况，但是整体来说应该是类似的。</p>
-<p>顺便说一句，项目用到了一个 gem <code>bower-rails</code> 把 bower 整合进来。可以更简单的安装 各种 css js 资源。<a href="https://pete-hamilton.co.uk/2013/07/13/angularjs-and-rails-with-bower/">https://pete-hamilton.co.uk/2013/07/13/angularjs-and-rails-with-bower/</a> 的讲解推荐一看。</p>
-<p>再多说一句，前面有一篇讲述 webapps 的文章，这篇其实和它也有一点关系。目前我比较看好 angularjs 希望用它作为 webapp 的开发框架。</p></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/28">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/30">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
+<p>做了上述的工作之后，一个图状的 word 关系就可以搞定了。</p></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/28">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/30">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       
       if(true) {

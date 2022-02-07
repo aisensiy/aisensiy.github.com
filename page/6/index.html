@@ -55,7 +55,194 @@
   </script><link rel="preconnect" href="https://plausible.io"/><script async="" defer="" data-domain="aisensiy.me" src="https://plausible.io/js/plausible.js"></script><script>
           window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) };
           
-          </script><link as="script" rel="preload" href="/webpack-runtime-ff02cfd775d7d5fd5e84.js"/><link as="script" rel="preload" href="/framework-45ca7a0c983b0b7a000c.js"/><link as="script" rel="preload" href="/app-d20a25ec668cba21fae0.js"/><link as="script" rel="preload" href="/d1724f9828659101216d9c2ff846a60d90e64274-aac16f39fe217ccc37e4.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-b81aa84e3c777d2f77e7.js"/><link as="fetch" rel="preload" href="/page-data/page/6/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/tailwindcss-get-started">初识 tailwindcss</a></h1><h2>2021 July-27</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p>在 <a href="/blog-migrate-from-jekyll-to-gatsby">上一篇文章</a> 中提到了已经在自己的新博客中集成了 tailwindcss 。这篇对这个思路不太一样的 css 框架做一些介绍。</p>
+          </script><link as="script" rel="preload" href="/webpack-runtime-ff02cfd775d7d5fd5e84.js"/><link as="script" rel="preload" href="/framework-45ca7a0c983b0b7a000c.js"/><link as="script" rel="preload" href="/app-d20a25ec668cba21fae0.js"/><link as="script" rel="preload" href="/d1724f9828659101216d9c2ff846a60d90e64274-aac16f39fe217ccc37e4.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-b81aa84e3c777d2f77e7.js"/><link as="fetch" rel="preload" href="/page-data/page/6/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/gatsby-plugins-for-blog">gatsby 一些插件的运用</a></h1><h2>2021 August-14</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p><a href="/blog-migrate-from-jekyll-to-gatsby">上一篇文章</a> 介绍了 gatsby 迁移 blog 的主要内容，针对 markdown 渲染、路由生成 gatsby 都做了足够多的工作可以快速构建这么一个博客系统。这一部分介绍通过额外的插件提升 blog 体验。</p>
+<h2 id="目录--标题锚点" style="position:relative;">目录 &#x26; 标题锚点<a href="#%E7%9B%AE%E5%BD%95--%E6%A0%87%E9%A2%98%E9%94%9A%E7%82%B9" aria-label="目录  标题锚点 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>通过 remark 获取的 markdown 内容本身一个名为 <code>tableOfContents</code> 的部分，它已经从 markdown 中提取了标题并生成了目录。额外的工作就只剩下对目录的样式做一些修改，并且添加锚点链接。</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/676aa689526b675fb1b9febeb5cc2609/6bff2/2021-08-14-15-17-25.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 32%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAIAAABM9SnKAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABAklEQVQY023L3U6DMACGYe7/hkwmWaZkuvGzJZDRguKGLAz6A6O0trQyFo0HavbkS76j1yqKY1mWVXXCGCOEMcYEE4QQIeRUVQhhShtCv/0cpQ2talTVyGLn7tx2ctDamM9fxnFUSvVCMCEY/+AdF0xwxnn3NSFkx3pLSdl24q2oacumv7Q2tEQ53Md+nATgECb5Bh6iNE+y933OWG9JKbUxpOVK6X+x0fp1HcZ3T2C2AnMX2GtwvwaPPlwG4HlLSWNxzsdxnG4xWmerEMxdaHtw5ia2Bxc+dALgBC9uWBRHaxjUNE2Xy63YmCzYgYUHnU3yECTLbeqGqR+lEUh3sKHtFaEOSgr4uB6QAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="2021 08 14 15 17 25"
+        title="2021 08 14 15 17 25"
+        src="/static/676aa689526b675fb1b9febeb5cc2609/5a190/2021-08-14-15-17-25.png"
+        srcset="/static/676aa689526b675fb1b9febeb5cc2609/772e8/2021-08-14-15-17-25.png 200w,
+/static/676aa689526b675fb1b9febeb5cc2609/e17e5/2021-08-14-15-17-25.png 400w,
+/static/676aa689526b675fb1b9febeb5cc2609/5a190/2021-08-14-15-17-25.png 800w,
+/static/676aa689526b675fb1b9febeb5cc2609/6bff2/2021-08-14-15-17-25.png 957w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<p>锚点部分同样有另外一个插件 <a href="https://www.gatsbyjs.com/plugins/gatsby-remark-autolink-headers/">gatsby-remark-autolink-headers
+</a> 完成了相应的工作。它本身就是 <code>gatsby-transformer-remark</code> 的一个插件。通过做如下配置即可：</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token punctuation">{</span> 
+    resolve<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">gatsby-remark-autolink-headers</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+    options<span class="token operator">:</span> <span class="token punctuation">{</span>
+        offsetY<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">100</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+        icon<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20">&lt;path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">&lt;/path>&lt;/svg></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+        className<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">custom-class</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+        maintainCase<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        removeAccents<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        isIconAfterHeader<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span></code></pre></div>
+<p>注意要把 <code>maintainCase</code> 设置为 <code>false</code> 否则会因为锚点的大小写问题导致链接失效，完整的配置在 <a href="https://github.com/aisensiy/aisensiy.github.com/blob/master/gatsby-config.js">gatsby-config.js</a> 可以看到。</p>
+<p>插件生效后目录以及 markdown 的标题（<code>#</code> 开始的内容）就会增加链接并支持从目录跳转了。</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/36ec595f991d81b6848ac7b6e973873c/e8e04/2021-08-14-15-25-00.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 32%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAIAAABM9SnKAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABAUlEQVQY022O20rDQBBA8///oT9QUXzUD7AqKKI1TdOmZpNNupvO3mayM1K8gODhvB44Ra/HZt+2qt+3nZ2O8sPBmFEPWls7BQAfHHgHiIh0kohiSsV2u1ut3pVS+6ax1vzGxlo4WKvNZFMKIUX0Hr0nopyz5Mycuegmfuvmtc614fUoxn/HAEBEzk7WAkzROXQOU5oRM9HJmebirgrnt81iaa6f4tVzrkcWEWYhIhYBe9T9YA6QM8tfmLm436Szm+ZiOV0+wuIh1GP+ihFRRDCedkWy/AMXyuDLDkqVShVfP0JvAmIiIh9Re+5hXqtQDbka5mqYS+XKFjY61kNqDH0CdZ9VdbtXyGgAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="2021 08 14 15 25 00"
+        title="2021 08 14 15 25 00"
+        src="/static/36ec595f991d81b6848ac7b6e973873c/5a190/2021-08-14-15-25-00.png"
+        srcset="/static/36ec595f991d81b6848ac7b6e973873c/772e8/2021-08-14-15-25-00.png 200w,
+/static/36ec595f991d81b6848ac7b6e973873c/e17e5/2021-08-14-15-25-00.png 400w,
+/static/36ec595f991d81b6848ac7b6e973873c/5a190/2021-08-14-15-25-00.png 800w,
+/static/36ec595f991d81b6848ac7b6e973873c/c1b63/2021-08-14-15-25-00.png 1200w,
+/static/36ec595f991d81b6848ac7b6e973873c/e8e04/2021-08-14-15-25-00.png 1270w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<h2 id="seo-优化" style="position:relative;">SEO 优化<a href="#seo-%E4%BC%98%E5%8C%96" aria-label="seo 优化 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>这部分在国内似乎略微鸡肋，毕竟整个体系是 Google 提供的，不过我相信这部分的工作还是有必要的，因为众所周知，靠谱的程序员还是会倾向于使用英语环境并使用 Google 搜索资料。还有一个让我很震惊的地方，就是 Google Analytics 其实并没有被墙，域名是可以访问的，只是查看的 dashboard 无法直接访问。</p>
+<p>这部分基本就是照抄 <a href="https://www.gatsbyjs.com/docs/add-seo-component/">Add SEO Component</a> 了，用到的插件就是 <code>gatsby-plugin-react-helmet</code>。组件的代码就直接贴在这里了：</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">"react"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> PropTypes <span class="token keyword">from</span> <span class="token string">"prop-types"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Helmet <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"react-helmet"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> useLocation <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@reach/router"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> useStaticQuery<span class="token punctuation">,</span> graphql <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"gatsby"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">SEO</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> title<span class="token punctuation">,</span> description<span class="token punctuation">,</span> image<span class="token punctuation">,</span> article <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> pathname <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">useLocation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> site <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">useStaticQuery</span><span class="token punctuation">(</span>query<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span>
+    defaultTitle<span class="token punctuation">,</span>
+    titleTemplate<span class="token punctuation">,</span>
+    defaultDescription<span class="token punctuation">,</span>
+    siteUrl<span class="token punctuation">,</span>
+    defaultImage<span class="token punctuation">,</span>
+    twitterUsername<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span> <span class="token operator">=</span> site<span class="token punctuation">.</span>siteMetadata<span class="token punctuation">;</span>
+  <span class="token keyword">const</span> seo <span class="token operator">=</span> <span class="token punctuation">{</span>
+    title<span class="token operator">:</span> title <span class="token operator">||</span> defaultTitle<span class="token punctuation">,</span>
+    description<span class="token operator">:</span> description <span class="token operator">||</span> defaultDescription<span class="token punctuation">,</span>
+    image<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>siteUrl<span class="token interpolation-punctuation punctuation">}</span></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>image <span class="token operator">||</span> defaultImage<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+    url<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>siteUrl<span class="token interpolation-punctuation punctuation">}</span></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>pathname<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>Helmet title<span class="token operator">=</span><span class="token punctuation">{</span>seo<span class="token punctuation">.</span>title<span class="token punctuation">}</span> titleTemplate<span class="token operator">=</span><span class="token punctuation">{</span>titleTemplate<span class="token punctuation">}</span><span class="token operator">></span>
+      <span class="token operator">&lt;</span>meta name<span class="token operator">=</span><span class="token string">"description"</span> content<span class="token operator">=</span><span class="token punctuation">{</span>seo<span class="token punctuation">.</span>description<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
+      <span class="token operator">&lt;</span>meta name<span class="token operator">=</span><span class="token string">"image"</span> content<span class="token operator">=</span><span class="token punctuation">{</span>seo<span class="token punctuation">.</span>image<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
+      <span class="token punctuation">{</span>seo<span class="token punctuation">.</span>url <span class="token operator">&amp;&amp;</span> <span class="token operator">&lt;</span>meta property<span class="token operator">=</span><span class="token string">"og:url"</span> content<span class="token operator">=</span><span class="token punctuation">{</span>seo<span class="token punctuation">.</span>url<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span><span class="token punctuation">}</span>
+      <span class="token punctuation">{</span><span class="token punctuation">(</span>article <span class="token operator">?</span> <span class="token boolean">true</span> <span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">&lt;</span>meta property<span class="token operator">=</span><span class="token string">"og:type"</span> content<span class="token operator">=</span><span class="token string">"article"</span> <span class="token operator">/</span><span class="token operator">></span><span class="token punctuation">}</span>
+      <span class="token punctuation">{</span>seo<span class="token punctuation">.</span>title <span class="token operator">&amp;&amp;</span> <span class="token operator">&lt;</span>meta property<span class="token operator">=</span><span class="token string">"og:title"</span> content<span class="token operator">=</span><span class="token punctuation">{</span>seo<span class="token punctuation">.</span>title<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span><span class="token punctuation">}</span>
+      <span class="token punctuation">{</span>seo<span class="token punctuation">.</span>description <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>
+        <span class="token operator">&lt;</span>meta property<span class="token operator">=</span><span class="token string">"og:description"</span> content<span class="token operator">=</span><span class="token punctuation">{</span>seo<span class="token punctuation">.</span>description<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
+      <span class="token punctuation">)</span><span class="token punctuation">}</span>
+      <span class="token punctuation">{</span>seo<span class="token punctuation">.</span>image <span class="token operator">&amp;&amp;</span> <span class="token operator">&lt;</span>meta property<span class="token operator">=</span><span class="token string">"og:image"</span> content<span class="token operator">=</span><span class="token punctuation">{</span>seo<span class="token punctuation">.</span>image<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span><span class="token punctuation">}</span>
+      <span class="token operator">&lt;</span>meta name<span class="token operator">=</span><span class="token string">"twitter:card"</span> content<span class="token operator">=</span><span class="token string">"summary_large_image"</span> <span class="token operator">/</span><span class="token operator">></span>
+      <span class="token punctuation">{</span>twitterUsername <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>
+        <span class="token operator">&lt;</span>meta name<span class="token operator">=</span><span class="token string">"twitter:creator"</span> content<span class="token operator">=</span><span class="token punctuation">{</span>twitterUsername<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
+      <span class="token punctuation">)</span><span class="token punctuation">}</span>
+      <span class="token punctuation">{</span>seo<span class="token punctuation">.</span>title <span class="token operator">&amp;&amp;</span> <span class="token operator">&lt;</span>meta name<span class="token operator">=</span><span class="token string">"twitter:title"</span> content<span class="token operator">=</span><span class="token punctuation">{</span>seo<span class="token punctuation">.</span>title<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span><span class="token punctuation">}</span>
+      <span class="token punctuation">{</span>seo<span class="token punctuation">.</span>description <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>
+        <span class="token operator">&lt;</span>meta name<span class="token operator">=</span><span class="token string">"twitter:description"</span> content<span class="token operator">=</span><span class="token punctuation">{</span>seo<span class="token punctuation">.</span>description<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
+      <span class="token punctuation">)</span><span class="token punctuation">}</span>
+      <span class="token punctuation">{</span>seo<span class="token punctuation">.</span>image <span class="token operator">&amp;&amp;</span> <span class="token operator">&lt;</span>meta name<span class="token operator">=</span><span class="token string">"twitter:image"</span> content<span class="token operator">=</span><span class="token punctuation">{</span>seo<span class="token punctuation">.</span>image<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span><span class="token punctuation">}</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>Helmet<span class="token operator">></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token constant">SEO</span><span class="token punctuation">;</span>
+
+<span class="token constant">SEO</span><span class="token punctuation">.</span>propTypes <span class="token operator">=</span> <span class="token punctuation">{</span>
+  title<span class="token operator">:</span> PropTypes<span class="token punctuation">.</span>string<span class="token punctuation">,</span>
+  description<span class="token operator">:</span> PropTypes<span class="token punctuation">.</span>string<span class="token punctuation">,</span>
+  image<span class="token operator">:</span> PropTypes<span class="token punctuation">.</span>string<span class="token punctuation">,</span>
+  article<span class="token operator">:</span> PropTypes<span class="token punctuation">.</span>bool<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token constant">SEO</span><span class="token punctuation">.</span>defaultProps <span class="token operator">=</span> <span class="token punctuation">{</span>
+  title<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+  description<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+  image<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+  article<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> query <span class="token operator">=</span> graphql<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+  query SEO {
+    site {
+      siteMetadata {
+        defaultTitle: title
+        titleTemplate
+        defaultDescription: description
+        siteUrl: url
+        defaultImage: image
+        twitterUsername
+      }
+    }
+  }
+</span><span class="token template-punctuation string">`</span></span></code></pre></div>
+<p>然后在 <code>blog</code> 的模板这里做一些修改：</p>
+<div class="gatsby-highlight has-highlighted-lines" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">"react"</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> graphql <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"gatsby"</span>
+<span class="token keyword">import</span> Blog <span class="token keyword">from</span> <span class="token string">"../components/Blog"</span>
+<span class="token keyword">import</span> Base <span class="token keyword">from</span> <span class="token string">"../layouts/base"</span>
+<span class="gatsby-highlight-code-line"><span class="token keyword">import</span> Seo <span class="token keyword">from</span> <span class="token string">"../components/seo"</span></span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">BlogTemplate</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> data <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>Base<span class="token operator">></span>
+<span class="gatsby-highlight-code-line">      <span class="token operator">&lt;</span>Seo title<span class="token operator">=</span><span class="token punctuation">{</span>data<span class="token punctuation">.</span>blog<span class="token punctuation">.</span>frontmatter<span class="token punctuation">.</span>title<span class="token punctuation">}</span> article<span class="token operator">=</span><span class="token punctuation">{</span><span class="token boolean">true</span><span class="token punctuation">}</span> description<span class="token operator">=</span><span class="token punctuation">{</span>data<span class="token punctuation">.</span>blog<span class="token punctuation">.</span>excerpt<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span></span>      <span class="token operator">&lt;</span>Blog data<span class="token operator">=</span><span class="token punctuation">{</span>data<span class="token punctuation">.</span>blog<span class="token punctuation">}</span><span class="token operator">/</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>Base<span class="token operator">></span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>这里使用了 <code>excerpt</code> 字段，当然在 graphql 里面也要增加相应的内容：</p>
+<div class="gatsby-highlight has-highlighted-lines" data-language="graphql"><pre class="language-graphql"><code class="language-graphql"><span class="token property">export</span> <span class="token property">const</span> <span class="token property">pageQuery</span> <span class="token operator">=</span> <span class="token property">graphql</span>`
+  <span class="token keyword">query</span> <span class="token definition-query function">BlogPostQuery</span><span class="token punctuation">(</span><span class="token variable">$id</span><span class="token punctuation">:</span> <span class="token scalar">String</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token attr-name">blog</span><span class="token punctuation">:</span> <span class="token property-query">markdownRemark</span><span class="token punctuation">(</span><span class="token attr-name">id</span><span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token attr-name">eq</span><span class="token punctuation">:</span> <span class="token variable">$id</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token property">id</span>
+      <span class="token property">html</span>
+      <span class="token property">tableOfContents</span>
+      <span class="token object">frontmatter</span> <span class="token punctuation">{</span>
+        <span class="token property">title</span>
+        <span class="token property-query">date</span><span class="token punctuation">(</span><span class="token attr-name">formatString</span><span class="token punctuation">:</span> <span class="token string">"MMMM DD, YYYY"</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+<span class="gatsby-highlight-code-line">      <span class="token property-query">excerpt</span><span class="token punctuation">(</span><span class="token attr-name">format</span><span class="token punctuation">:</span> <span class="token constant">PLAIN</span><span class="token punctuation">,</span> <span class="token attr-name">truncate</span><span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token attr-name">pruneLength</span><span class="token punctuation">:</span> <span class="token number">50</span><span class="token punctuation">)</span></span>    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+`</code></pre></div></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/tailwindcss-get-started">初识 tailwindcss</a></h1><h2>2021 July-27</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p>在 <a href="/blog-migrate-from-jekyll-to-gatsby">上一篇文章</a> 中提到了已经在自己的新博客中集成了 tailwindcss 。这篇对这个思路不太一样的 css 框架做一些介绍。</p>
 <h2 id="核心思想" style="position:relative;">核心思想<a href="#%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3" aria-label="核心思想 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <p>用过 bootstrap 的人都晓得，bootstrap 提供了如下内容：</p>
 <ol>
@@ -608,296 +795,6 @@ exports<span class="token punctuation">.</span><span class="token function-varia
 <li><a href="https://deborah-digges.github.io/2020/09/16/Jekyll-to-Gatsby/">From Jekyll to Gatsby: 7 Simple Steps</a></li>
 <li><a href="https://www.gatsbyjs.com/docs/how-to/routing/adding-markdown-pages/">Adding Markdown Pages</a></li>
 <li><a href="https://www.gatsbyjs.com/docs/reference/routing/creating-routes/#using-gatsby-nodejs">Create routing</a></li>
-</ul></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/github-actions-integration-with-github">Github Actions 与 Github 自身 API 集成生成周报</a></h1><h2>2021 July-01</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p>最近又用 Github Actions 玩出了花样。这里记录一下通过 Github Api 和 Github Actions 怎么去做组织内的 commits 统计。</p>
-<h2 id="为啥要自己做统计" style="position:relative;">为啥要自己做统计<a href="#%E4%B8%BA%E5%95%A5%E8%A6%81%E8%87%AA%E5%B7%B1%E5%81%9A%E7%BB%9F%E8%AE%A1" aria-label="为啥要自己做统计 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>之前一直有一个想法，能不能通过 github 的 api 去将组织内的工作量做成报表以方便查看每个人工作的进度以及各个 issue 的进展。做了简单的调研，发现现有的东西都不太能满足具体的需求：</p>
-<ol>
-<li>我希望统计 org 下所有仓库的数据，而不是单个仓库（目前所在组织里有 100+ 个仓库）</li>
-<li>目前 org 内以 issue 作为工作的一个最小单位，希望提交的 commit 都与 issue 做关联，那么势必需要统计每个周期内 issue 的进展以及关联的 commit 做统计，显然现有的 <a href="https://docs.github.com/en/github/visualizing-repository-data-with-graphs/accessing-basic-repository-data/viewing-a-summary-of-repository-activity">insights</a> 也是不太够的</li>
-</ol>
-<p>然后就去评估了下自己做统计的工作量。github 早已经发布了 GraphQL 的 API 并且通过 <a href="https://docs.github.com/en/graphql/overview/explorer">explorer</a> 去测试和使用其 API 的体验是相当好于是就心动了，决定自己做这个统计。</p>
-<h2 id="先看看最终效果" style="position:relative;">先看看最终效果<a href="#%E5%85%88%E7%9C%8B%E7%9C%8B%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C" aria-label="先看看最终效果 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>报表数据主要包括每个人的活跃数据以及每个人所涉及的 issue。</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 669px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/c3806d03a6c11981ad9fe6ac95454325/99272/2021-07-02-01-00-14.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 65.49999999999999%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABNElEQVQoz5WSu07EQAxF8/+fwCdQUFIgIdFQQMWjAaFlYTebZGY8Hs8rz3mgBJGW7JULy9LxvbJcaGPqshR11TTN4XBUivJmFdM4fkr/IVttndbaeR8WbYJzjLcsXlUZSSNKRQQAfd+nLXAM4bqKD2LkgAIJEbuuizFtdA6X3+FiF26OHcPZVhvb+jal//kixfBY+5dKAWeAUgAQmXGaNsXOOd/z6UmOVhMZY50bhmHrwZz3QiIqEgBam3yOZhhR0gIrovSnTfCrzXeYnxfLlPNKrTt+h3Ot/Qqbtj9wBNsu7xHPix1jUCiN1qiUAPDO+9Yb51AwqyzYoF0o5cBpJB+VC19sAN1574dxKlJKnPOaMcZ5eTpxARyAquZtJ/elfT91u3quPes5ekBNdhimOE0hxvQDyRL0FtUprv0AAAAASUVORK5CYII='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="2021 07 02 01 00 14"
-        title="2021 07 02 01 00 14"
-        src="/static/c3806d03a6c11981ad9fe6ac95454325/99272/2021-07-02-01-00-14.png"
-        srcset="/static/c3806d03a6c11981ad9fe6ac95454325/772e8/2021-07-02-01-00-14.png 200w,
-/static/c3806d03a6c11981ad9fe6ac95454325/e17e5/2021-07-02-01-00-14.png 400w,
-/static/c3806d03a6c11981ad9fe6ac95454325/99272/2021-07-02-01-00-14.png 669w"
-        sizes="(max-width: 669px) 100vw, 669px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span></p>
-<h2 id="具体怎么做" style="position:relative;">具体怎么做<a href="#%E5%85%B7%E4%BD%93%E6%80%8E%E4%B9%88%E5%81%9A" aria-label="具体怎么做 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<h3 id="用到的-graphql-api" style="position:relative;">用到的 GraphQL API<a href="#%E7%94%A8%E5%88%B0%E7%9A%84-graphql-api" aria-label="用到的 graphql api permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>首先，我集成的是 Github 的 GraphQL API 主要用到了以下几个接口：</p>
-<h4 id="1-获取组织内的-repositories" style="position:relative;">1. 获取组织内的 repositories<a href="#1-%E8%8E%B7%E5%8F%96%E7%BB%84%E7%BB%87%E5%86%85%E7%9A%84-repositories" aria-label="1 获取组织内的 repositories permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h4>
-<div class="gatsby-highlight" data-language="graphql"><pre class="language-graphql"><code class="language-graphql"><span class="token keyword">query</span> <span class="token definition-query function">Repositories</span><span class="token punctuation">(</span><span class="token variable">$username</span><span class="token punctuation">:</span> <span class="token scalar">String</span><span class="token operator">!</span><span class="token punctuation">,</span> <span class="token variable">$cursor</span><span class="token punctuation">:</span> <span class="token scalar">String</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token property-query">organization</span><span class="token punctuation">(</span><span class="token attr-name">login</span><span class="token punctuation">:</span> <span class="token variable">$username</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token property-query">repositories</span><span class="token punctuation">(</span>
-      <span class="token attr-name">first</span><span class="token punctuation">:</span> <span class="token number">100</span>
-      <span class="token attr-name">isLocked</span><span class="token punctuation">:</span> <span class="token boolean">false</span>
-      <span class="token attr-name">orderBy</span><span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token attr-name">field</span><span class="token punctuation">:</span> <span class="token constant">PUSHED_AT</span><span class="token punctuation">,</span> <span class="token attr-name">direction</span><span class="token punctuation">:</span> <span class="token constant">DESC</span> <span class="token punctuation">}</span>
-      <span class="token attr-name">after</span><span class="token punctuation">:</span> <span class="token variable">$cursor</span>
-    <span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token object">pageInfo</span> <span class="token punctuation">{</span>
-        <span class="token property">hasNextPage</span>
-        <span class="token property">endCursor</span>
-      <span class="token punctuation">}</span>
-      <span class="token object">edges</span> <span class="token punctuation">{</span>
-        <span class="token object">node</span> <span class="token punctuation">{</span>
-          <span class="token property">pushedAt</span>
-          <span class="token property">name</span>
-        <span class="token punctuation">}</span>
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre></div>
-<h4 id="2-获取-repository-下的-commits" style="position:relative;">2. 获取 repository 下的 commits<a href="#2-%E8%8E%B7%E5%8F%96-repository-%E4%B8%8B%E7%9A%84-commits" aria-label="2 获取 repository 下的 commits permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h4>
-<div class="gatsby-highlight" data-language="graphql"><pre class="language-graphql"><code class="language-graphql"><span class="token keyword">query</span> <span class="token definition-query function">Commits</span><span class="token punctuation">(</span><span class="token variable">$owner</span><span class="token punctuation">:</span> <span class="token scalar">String</span><span class="token operator">!</span><span class="token punctuation">,</span> <span class="token variable">$name</span><span class="token punctuation">:</span> <span class="token scalar">String</span><span class="token operator">!</span><span class="token punctuation">,</span> <span class="token variable">$cursor</span><span class="token punctuation">:</span> <span class="token scalar">String</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token property-query">repository</span><span class="token punctuation">(</span><span class="token attr-name">owner</span><span class="token punctuation">:</span> <span class="token variable">$owner</span><span class="token punctuation">,</span> <span class="token attr-name">name</span><span class="token punctuation">:</span> <span class="token variable">$name</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token object">defaultBranchRef</span> <span class="token punctuation">{</span>
-      <span class="token object">target</span> <span class="token punctuation">{</span>
-        <span class="token operator">...</span> <span class="token keyword">on</span> <span class="token class-name">Commit</span> <span class="token punctuation">{</span>
-          <span class="token property-query">history</span><span class="token punctuation">(</span><span class="token attr-name">first</span><span class="token punctuation">:</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token attr-name">after</span><span class="token punctuation">:</span> <span class="token variable">$cursor</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token object">pageInfo</span> <span class="token punctuation">{</span>
-              <span class="token property">hasNextPage</span>
-              <span class="token property">endCursor</span>
-            <span class="token punctuation">}</span>
-            <span class="token object">edges</span> <span class="token punctuation">{</span>
-              <span class="token object">node</span> <span class="token punctuation">{</span>
-                <span class="token object">author</span> <span class="token punctuation">{</span>
-                  <span class="token object">user</span> <span class="token punctuation">{</span>
-                    <span class="token property">name</span>
-                    <span class="token property">login</span>
-                  <span class="token punctuation">}</span>
-                <span class="token punctuation">}</span>
-                <span class="token property">commitUrl</span>
-                <span class="token property">abbreviatedOid</span>
-                <span class="token property">pushedDate</span>
-                <span class="token property">additions</span>
-                <span class="token property">deletions</span>
-                <span class="token property">message</span>
-              <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span>
-          <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre></div>
-<h4 id="3-获取-issue" style="position:relative;">3. 获取 issue<a href="#3-%E8%8E%B7%E5%8F%96-issue" aria-label="3 获取 issue permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h4>
-<div class="gatsby-highlight" data-language="graphql"><pre class="language-graphql"><code class="language-graphql"><span class="token keyword">query</span> <span class="token definition-query function">Issue</span><span class="token punctuation">(</span><span class="token variable">$owner</span><span class="token punctuation">:</span> <span class="token scalar">String</span><span class="token operator">!</span><span class="token punctuation">,</span> <span class="token variable">$name</span><span class="token punctuation">:</span> <span class="token scalar">String</span><span class="token operator">!</span><span class="token punctuation">,</span> <span class="token variable">$number</span><span class="token punctuation">:</span> <span class="token scalar">Int</span><span class="token operator">!</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token property-query">repository</span><span class="token punctuation">(</span><span class="token attr-name">owner</span><span class="token punctuation">:</span> <span class="token variable">$owner</span><span class="token punctuation">,</span> <span class="token attr-name">name</span><span class="token punctuation">:</span> <span class="token variable">$name</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token property-query">issue</span><span class="token punctuation">(</span><span class="token attr-name">number</span><span class="token punctuation">:</span> <span class="token variable">$number</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token property">title</span>
-      <span class="token property">url</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p>使用的 Client 就是 Apollo GraphQL Client。</p>
-<h3 id="对每个人的活动量做细节处理" style="position:relative;">对每个人的活动量做细节处理<a href="#%E5%AF%B9%E6%AF%8F%E4%B8%AA%E4%BA%BA%E7%9A%84%E6%B4%BB%E5%8A%A8%E9%87%8F%E5%81%9A%E7%BB%86%E8%8A%82%E5%A4%84%E7%90%86" aria-label="对每个人的活动量做细节处理 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>原始的 Commit 包含行的增加和删减，但这里有个问题：</p>
-<ol>
-<li>很多代码其实是自动生成的，这部分并不能算是个人的工作量，并且这种生成代码的规模对于不同编程语言也有很大差异，希望在统计时忽略这些自动生成的代码</li>
-<li>有一些 Merge commit 其实也不能算是个人工作量，也应该剔除</li>
-<li>不同编程语言的工作规模有差异，比如前端 js 通常生产出来的代码规模就比写 python 的要大不少，纯粹按照行数统计没有可比性</li>
-</ol>
-<p>这里我处理了前两个，第三个感觉有点复杂，并且我也觉得没必要如此仔细的量化。</p>
-<h4 id="通过-node-ignore-去过滤掉那些生成代码" style="position:relative;">通过 <code>node-ignore</code> 去过滤掉那些生成代码<a href="#%E9%80%9A%E8%BF%87-node-ignore-%E5%8E%BB%E8%BF%87%E6%BB%A4%E6%8E%89%E9%82%A3%E4%BA%9B%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81" aria-label="通过 node ignore 去过滤掉那些生成代码 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h4>
-<p><a href="https://github.com/kaelzhang/node-ignore">node-ignore</a> 是一个很不错的库，实现了 gitignore 的标准，用这个我们就可以将每个 commit 的每个文件扫一遍，过滤掉那些模板的文件后重新统计删减就好了。</p>
-<p>这里吐槽 Github GraphQL API 发现其并没有实现具体一个 commit 下文件修改的接口，还需要我去调用 REST 的接口。</p>
-<h4 id="通过-commit-message-过滤掉-merge-的-commit" style="position:relative;">通过 commit message 过滤掉 Merge 的 commit<a href="#%E9%80%9A%E8%BF%87-commit-message-%E8%BF%87%E6%BB%A4%E6%8E%89-merge-%E7%9A%84-commit" aria-label="通过 commit message 过滤掉 merge 的 commit permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h4>
-<p>这里似乎有点不太严谨，但是似乎问题不大吧...</p>
-<h3 id="用-ejs-做模板生成-markdown" style="position:relative;">用 ejs 做模板生成 markdown<a href="#%E7%94%A8-ejs-%E5%81%9A%E6%A8%A1%E6%9D%BF%E7%94%9F%E6%88%90-markdown" aria-label="用 ejs 做模板生成 markdown permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>自从用了 react 似乎很少和各种模板引擎打交道了。上次使用类似的东西还是用 freemarker 做简单的文本内容模板。这次我也做了简单的调研，看了 mustache handlebars 和 ejs 最后还是觉得 ejs 这种可以直接写 js 的比较舒服。尤其是我在尝试 mustache 的时候没找到去迭代 Object 的方法...</p>
-<p>写出来就是这个样子，实在是好久没写 nodejs 以及对 ejs 也是现学现用...</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">## Commit Summary
-
-&lt;% Object.keys(userCommitSummary).forEach(function(username) { -%>
-- &lt;%= username %>: &lt;%= userCommitSummary[username].commitCount %> commits +&lt;%= userCommitSummary[username].additions %> -&lt;%= userCommitSummary[username].deletions %>
-&lt;% }); -%>
-
-## Issue Summary
-
-&lt;% Object.keys(userIssueSummary).forEach(function(username) { -%>
-### &lt;%= username %>
-
-工作涉及 &lt;%= userIssueSummary[username].issueCount %> 个 issue：
-&lt;% userIssueSummary[username].issues.forEach(function(issue) { %>
-- &lt;%= issue -%>
-&lt;% }); %>
-
-&lt;% }); -%>
-
-## Commit Details
-
-&lt;% Object.keys(userRepositoryCommitsDetails).forEach(function(username) { -%>
-### &lt;%= username %>
-  &lt;% Object.keys(userRepositoryCommitsDetails[username]).forEach(function(repo) { %>
-####  &lt;%= repo %>
-
-    &lt;%_ userRepositoryCommitsDetails[username][repo].forEach(function(commit) { -%>
-- &lt;%= commit.url %> - &lt;%= commit.message %> &lt;&lt;%= commit.pushedDate %>>
-    &lt;%_ }); -%>
-  &lt;% }); -%>
-
-&lt;% }); -%></code></pre></div>
-<h3 id="用-github-actions-去跑任务做周期性统计" style="position:relative;">用 github actions 去跑任务做周期性统计<a href="#%E7%94%A8-github-actions-%E5%8E%BB%E8%B7%91%E4%BB%BB%E5%8A%A1%E5%81%9A%E5%91%A8%E6%9C%9F%E6%80%A7%E7%BB%9F%E8%AE%A1" aria-label="用 github actions 去跑任务做周期性统计 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">name</span><span class="token punctuation">:</span> statistics of github org
-
-<span class="token key atrule">on</span><span class="token punctuation">:</span>
-  <span class="token key atrule">workflow_dispatch</span><span class="token punctuation">:</span>
-    <span class="token key atrule">inputs</span><span class="token punctuation">:</span>
-      <span class="token key atrule">timezone</span><span class="token punctuation">:</span>
-        <span class="token key atrule">description</span><span class="token punctuation">:</span> <span class="token string">"TimeZone default is +8"</span>
-        <span class="token key atrule">required</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
-        <span class="token key atrule">default</span><span class="token punctuation">:</span> <span class="token string">"Asia/Shanghai"</span>
-      <span class="token key atrule">date</span><span class="token punctuation">:</span>
-        <span class="token key atrule">description</span><span class="token punctuation">:</span> <span class="token string">"Any date in the week, default is now"</span>
-        <span class="token key atrule">required</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
-  <span class="token key atrule">schedule</span><span class="token punctuation">:</span>
-    <span class="token comment"># https://crontab.guru</span>
-    <span class="token punctuation">-</span> <span class="token key atrule">cron</span><span class="token punctuation">:</span> 0 18 * * *
-
-<span class="token key atrule">jobs</span><span class="token punctuation">:</span>
-  <span class="token key atrule">report</span><span class="token punctuation">:</span>
-    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest
-    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v2
-      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Setup node
-        <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/setup<span class="token punctuation">-</span>node@v2
-        <span class="token key atrule">with</span><span class="token punctuation">:</span>
-          <span class="token key atrule">node-version</span><span class="token punctuation">:</span> <span class="token string">"14"</span>
-          <span class="token key atrule">check-latest</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
-      <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> yarn
-      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> generate report
-        <span class="token key atrule">env</span><span class="token punctuation">:</span>
-          <span class="token key atrule">GITHUB_TOKEN</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> secrets.GH_PAT <span class="token punctuation">}</span><span class="token punctuation">}</span>
-        <span class="token key atrule">run</span><span class="token punctuation">:</span> TZ=$<span class="token punctuation">{</span><span class="token punctuation">{</span>github.event.inputs.timezone<span class="token punctuation">}</span><span class="token punctuation">}</span> DATE=$<span class="token punctuation">{</span><span class="token punctuation">{</span>github.event.inputs.date<span class="token punctuation">}</span><span class="token punctuation">}</span> node main.js
-      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Upload results
-        <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/upload<span class="token punctuation">-</span>artifact@v2
-        <span class="token key atrule">with</span><span class="token punctuation">:</span>
-          <span class="token key atrule">name</span><span class="token punctuation">:</span> reports
-          <span class="token key atrule">path</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
-            rawdata.json
-            report.md</span>
-      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Prepare Issue Title
-        <span class="token key atrule">id</span><span class="token punctuation">:</span> issue_title
-        <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
-          export TZ=${{github.event.inputs.timezone}}
-          export DATE=${{github.event.inputs.date}}
-          echo ::set-output name=ISSUE_TITLE::$(node week.js)</span>
-      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Create Issue From File
-        <span class="token key atrule">uses</span><span class="token punctuation">:</span> aisensiy/create<span class="token punctuation">-</span>issue<span class="token punctuation">-</span>from<span class="token punctuation">-</span>file@af97df85a971093700b62d1bde8339c4fabb35ff
-        <span class="token key atrule">with</span><span class="token punctuation">:</span>
-          <span class="token key atrule">title</span><span class="token punctuation">:</span> Weekly Statistics $<span class="token punctuation">{</span><span class="token punctuation">{</span>steps.issue_title.outputs.ISSUE_TITLE<span class="token punctuation">}</span><span class="token punctuation">}</span>
-          <span class="token key atrule">token</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> secrets.GH_PAT <span class="token punctuation">}</span><span class="token punctuation">}</span>
-          <span class="token key atrule">update-existing</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
-          <span class="token key atrule">content-filepath</span><span class="token punctuation">:</span> ./report.md
-          <span class="token key atrule">labels</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
-            report</span>
-</code></pre></div>
-<p>首先，这里使用了两个 github workflow 的 trigger：</p>
-<ul>
-<li>schedule 也就是 cron 用于周期性跑任务</li>
-<li>workflow_dispatch 可以提供个简单的表单，用来主动去创建一个 workflow</li>
-</ul>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/85118802a9232dab272a6133372e6368/a0b80/2021-07-02-01-23-57.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 41.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAA7DAAAOwwHHb6hkAAABMElEQVQY01WNy27cMAxF/f+f0l323XVfZDNtgklmMHl5MrYkUg9KFkWqsYPmcXAgEAIO7uDAj6+zhUClUuG8ud2f+kgYEviEgZxPPhUIJKrD/VR3z+nmXG4v9eZc/o5l95z2E98b/aIc7PreGTle0vHFnqZUWx+eID5M4XGKp0s4Q5mjXAKbJJb6f9XFOmMG4lR7KpyohMwsOviMzllnV0rJjbkx9+8E78dxRIQu8v4jIio6WMLJGGPdbCxRrpVrrar9Q5GeKBmwkVKtS5MmIq01WZdLdIiIHgBLWXjj66x2DWGxU/K4GIizC54qLU11jYNzAIDOAeVcNz5L1d7775fDj92v6/MpLd0XxdJD3mLIiN4HHxH9mqm+Bx+zvfc/0/5q//PWHLS1TMS1MvNb/A+KTsqL7RVgYQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="2021 07 02 01 23 57"
-        title="2021 07 02 01 23 57"
-        src="/static/85118802a9232dab272a6133372e6368/5a190/2021-07-02-01-23-57.png"
-        srcset="/static/85118802a9232dab272a6133372e6368/772e8/2021-07-02-01-23-57.png 200w,
-/static/85118802a9232dab272a6133372e6368/e17e5/2021-07-02-01-23-57.png 400w,
-/static/85118802a9232dab272a6133372e6368/5a190/2021-07-02-01-23-57.png 800w,
-/static/85118802a9232dab272a6133372e6368/a0b80/2021-07-02-01-23-57.png 955w"
-        sizes="(max-width: 800px) 100vw, 800px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span></p>
-<p>然后，这里在完成统计后（就是 generate report 这个步骤）将所有的数据做成了 artifact 保存了下来，方便后续的数据的追溯。</p>
-<p><figure class="gatsby-resp-image-figure" style="">
-    <span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/183db6a9d17a90648b97b5707fd332e1/ef916/2021-07-02-01-25-25.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 68%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAIAAACgpqunAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABBklEQVQoz5VTa2vDMAz0//+RgzFWykicxvJDb42kK4OuK81xH4zk0wkhJSQqpUCtrfU+hkf0MUQ1IpAJAERNREoBEfWI1rqaeYRHpGmeTqcT1LqWlYgiYl1XAIiI0fuyLBHBzDln3Ssyc9yQRM09zHxzUGVRFmEWFpWde0Rvqd8Hi6Zlhbf3j/PX3AZ15ENMtWO+lHwpK/SG3A6JOzHgQNr6JBZiOSAGGp/LufdtzuauZog0SF5zRu5j67YN+uHrzvsAjUhwIx9iIqI8ZxGJ40iIOE1TrQ3HcPeHn9zjYSbJthL83MFUr8t3L66tTfPcWnsmNoMK5vbHea8qIv4/zLbbMLO7+Dcw0TR6psAb7gAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="Artifact 可以直接下载下来"
-        title="Artifact 可以直接下载下来"
-        src="/static/183db6a9d17a90648b97b5707fd332e1/5a190/2021-07-02-01-25-25.png"
-        srcset="/static/183db6a9d17a90648b97b5707fd332e1/772e8/2021-07-02-01-25-25.png 200w,
-/static/183db6a9d17a90648b97b5707fd332e1/e17e5/2021-07-02-01-25-25.png 400w,
-/static/183db6a9d17a90648b97b5707fd332e1/5a190/2021-07-02-01-25-25.png 800w,
-/static/183db6a9d17a90648b97b5707fd332e1/ef916/2021-07-02-01-25-25.png 815w"
-        sizes="(max-width: 800px) 100vw, 800px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span>
-    <figcaption class="gatsby-resp-image-figcaption">Artifact 可以直接下载下来</figcaption>
-  </figure></p>
-<p>最后，通过一个 create-issue-from-file 的 github action 将 report 的内容创建成一个 issue 展示出来，展示出来就是上文的截图的效果了。</p>
-<blockquote>
-<p>这里我为了避免每次执行都创建重复性的内容还特意把原来的 action 做了修改，提交了 PR <a href="https://github.com/aisensiy/create-issue-from-file">https://github.com/aisensiy/create-issue-from-file</a> 。</p>
-</blockquote>
-<h2 id="总结" style="position:relative;">总结<a href="#%E6%80%BB%E7%BB%93" aria-label="总结 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<ul>
-<li>GraphQL 的 API 相对于 REST 更容易上手</li>
-<li>了解了 Github Actions 除了 CI/CD 的功能外还能做很多奇奇怪怪的东西，甚至让我觉得它是一个 serverless 平台，这里还看到另外一个新奇的使用方式 <a href="https://github.blog/2020-06-17-using-github-actions-for-mlops-data-science/">https://github.blog/2020-06-17-using-github-actions-for-mlops-data-science/</a></li>
-<li>自己撰写 Github Actions 似乎挺简单的，文档还算是比较清楚，不过那个 <a href="https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idoutputs">outputs</a> 确实是花了些时间</li>
 </ul></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/5">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/7">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       
