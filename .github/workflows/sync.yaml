@@ -16,8 +16,9 @@ jobs:
         fetch-depth: 0
         token: ${{ secrets.GH_PAT }}
         
-    - uses: wangchucheng/git-repo-sync@v0.1.0
+    - uses: aisensiy/git-repo-sync@master
       with:
         target-url: ${{ secrets.REMOTE_GIT }}
         target-username: aisensiy
         target-token: ${{ secrets.ACCESS_TOKEN }}
+        target-branch: ${{ github.ref_name }}
