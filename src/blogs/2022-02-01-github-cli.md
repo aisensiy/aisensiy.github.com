@@ -21,6 +21,12 @@ categories: ["GitHub 小技巧"]
 
 针对这些场景，github cli 都有对应的功能点，下面一一罗列。
 
+## 快速打开 github 仓库页面
+
+```shell
+gh browse
+```
+
 ## 为当前目录的仓库创建 github repo
 
 ```shell
