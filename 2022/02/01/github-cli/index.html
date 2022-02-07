@@ -60,6 +60,9 @@
 <p><a href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B">常用的工作流程</a></p>
 </li>
 <li>
+<p><a href="#%E5%BF%AB%E9%80%9F%E6%89%93%E5%BC%80-github-%E4%BB%93%E5%BA%93%E9%A1%B5%E9%9D%A2">快速打开 github 仓库页面</a></p>
+</li>
+<li>
 <p><a href="#%E4%B8%BA%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95%E7%9A%84%E4%BB%93%E5%BA%93%E5%88%9B%E5%BB%BA-github-repo">为当前目录的仓库创建 github repo</a></p>
 </li>
 <li>
@@ -114,6 +117,8 @@
 <li>使用 github actions 去执行 ci 流程、构建镜像、打 tag、 做 release</li>
 </ol>
 <p>针对这些场景，github cli 都有对应的功能点，下面一一罗列。</p>
+<h2 id="快速打开-github-仓库页面" style="position:relative;">快速打开 github 仓库页面<a href="#%E5%BF%AB%E9%80%9F%E6%89%93%E5%BC%80-github-%E4%BB%93%E5%BA%93%E9%A1%B5%E9%9D%A2" aria-label="快速打开 github 仓库页面 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<div class="gatsby-highlight" data-language="shell"><pre class="language-shell"><code class="language-shell">gh browse</code></pre></div>
 <h2 id="为当前目录的仓库创建-github-repo" style="position:relative;">为当前目录的仓库创建 github repo<a href="#%E4%B8%BA%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95%E7%9A%84%E4%BB%93%E5%BA%93%E5%88%9B%E5%BB%BA-github-repo" aria-label="为当前目录的仓库创建 github repo permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <div class="gatsby-highlight" data-language="shell"><pre class="language-shell"><code class="language-shell">gh repo create <span class="token operator">&lt;</span>org<span class="token operator">></span>/<span class="token operator">&lt;</span>repo-name<span class="token operator">></span> --source <span class="token builtin class-name">.</span> --private</code></pre></div>
 <h2 id="快速创建-issue" style="position:relative;">快速创建 issue<a href="#%E5%BF%AB%E9%80%9F%E5%88%9B%E5%BB%BA-issue" aria-label="快速创建 issue permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
