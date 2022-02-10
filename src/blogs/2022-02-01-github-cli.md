@@ -53,7 +53,7 @@ gh issue create --title "xxx"
 
 ![](../img/in-post/issue-template.png)
 
-这里我默认的编辑器是 `newovim` 在这里编辑可以用到 `autopilot` 在内的全套 vim 插件，也会大大提升我编辑 issue 的速度。
+这里我默认的编辑器是 `newovim` 在这里编辑可以用到 `autopilot` 在内的全套 vim 插件，也会很大提升我编辑 issue 的速度。
 
 ## github actions 的快捷流程
 
