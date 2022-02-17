@@ -17,9 +17,9 @@ categories: ["GraphQL 从入门到放弃"]
 
 ## 确认 GraphQL 的 schema
 
-然后就需要按照 REST api 提供一个对等的 GraphQL 的 schema 了。这里参考的是 https://github.com/thebergamo/realworld-graphql/blob/master/data/schema.graphql 这里。
+然后就需要按照 REST api 提供一个对等的 GraphQL 的 schema 了。这里参考的是 https://github.com/thebergamo/realworld-graphql/blob/master/data/schema.graphql 。
 
-> Real World 似乎对 GraphQL 这部分的工作不太伤心，这个东西已经挺久的了，但是官方并没有很好的支持。
+> Real World 似乎对 GraphQL 这部分的工作不太上心，这个东西已经挺久的了，但是官方并没有很好的支持。
 
 不过它这个 schema 明显有两个问题：
 
