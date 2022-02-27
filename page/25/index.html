@@ -55,7 +55,130 @@
   </script><link rel="preconnect" href="https://plausible.io"/><script async="" defer="" data-domain="aisensiy.me" src="https://plausible.io/js/plausible.js"></script><script>
           window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) };
           
-          </script><link as="script" rel="preload" href="/webpack-runtime-ff02cfd775d7d5fd5e84.js"/><link as="script" rel="preload" href="/framework-45ca7a0c983b0b7a000c.js"/><link as="script" rel="preload" href="/app-d20a25ec668cba21fae0.js"/><link as="script" rel="preload" href="/d1724f9828659101216d9c2ff846a60d90e64274-aac16f39fe217ccc37e4.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-b81aa84e3c777d2f77e7.js"/><link as="fetch" rel="preload" href="/page-data/page/25/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/webpack-with-bootstrap">Webpack with Bootstrap</a></h1><h2>2016 May-20</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p>最近开始利用业余时间采用 <code>react + redux</code> 的前端架构山寨一个金数据（或者说是 WuFoo，毕竟两个东西看起来真的很像）以增加自己对这些框架的熟练度。在这个过程中记录下一些自己遇到的坑。今天就是一个 <code>webpack</code> 如何和 <code>bootstrap</code> 结合的坑。</p>
+          </script><link as="script" rel="preload" href="/webpack-runtime-ff02cfd775d7d5fd5e84.js"/><link as="script" rel="preload" href="/framework-45ca7a0c983b0b7a000c.js"/><link as="script" rel="preload" href="/app-d20a25ec668cba21fae0.js"/><link as="script" rel="preload" href="/d1724f9828659101216d9c2ff846a60d90e64274-aac16f39fe217ccc37e4.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-b81aa84e3c777d2f77e7.js"/><link as="fetch" rel="preload" href="/page-data/page/25/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/webpack-redux-minify">Webpack and Redux, minify the output bundle</a></h1><h2>2016 May-29</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p>webpack + redux + react 开发前端最终会将所有的 js 依赖打包成为一个（或者几个，因配置不同而不同）js 文件。虽然 <code>webpack</code> 很好的帮助我们解决了依赖的问题，避免了一大堆分散的 js 文件出现在页面里，但是最终打包出来的 js 文件依然会变成所有依赖的 js 的 size 的总和，成为前端页面响应速度的巨大负担。不过通过一些调优可以最大化的减少最终的打包文件的大小并提升运行性能。</p>
+<h2 id="dev--production-env" style="position:relative;"><code>dev</code> &#x26; <code>production</code> env<a href="#dev--production-env" aria-label="dev  production env permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>首先，我们可以通过设定不同的 <code>NODE_ENV</code> 环境变量去控制在不同的环境下引入的配置。通过在 <code>webpack.config.js</code> 中读取 <code>process.env.NODE_ENV</code> 可以为 <code>webpack</code> 提供不同的 <code>plugin</code> 用于控制 <code>webpack</code> 的打包机制。下面是一个例子：</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">var</span> plugins <span class="token operator">=</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">===</span> <span class="token string">'production'</span> <span class="token operator">?</span> <span class="token punctuation">[</span>
+  <span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>DefinePlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token constant">API_PREFIX</span><span class="token operator">:</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">API_PREFIX</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token string">'"{{API_PREFIX}}"'</span><span class="token punctuation">,</span>
+    <span class="token string">'process.env.NODE_ENV'</span><span class="token operator">:</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">||</span> <span class="token string">'development'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>optimize<span class="token punctuation">.</span>DedupePlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>optimize<span class="token punctuation">.</span>OccurenceOrderPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>optimize<span class="token punctuation">.</span>UglifyJsPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    compress<span class="token operator">:</span> <span class="token punctuation">{</span>
+      warnings<span class="token operator">:</span> <span class="token boolean">false</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">]</span> <span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>DefinePlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token constant">API_PREFIX</span><span class="token operator">:</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">API_PREFIX</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token string">'"{{API_PREFIX}}"'</span><span class="token punctuation">,</span>
+    <span class="token string">'process.env.NODE_ENV'</span><span class="token operator">:</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">||</span> <span class="token string">'development'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span></code></pre></div>
+<p>其中 <code>DefinePlugin</code> 可以为 <code>webpack</code> 提供全局变量，这里我们利用它将 <code>node</code> 中的 <code>process.env.NODE_ENV</code> 转换为 <code>webpack</code> 构建最终的 <code>js</code> 时用到的全局变量。如果直接在 <code>webpack</code> 构建时处理的 <code>js</code> 文件中直接引用 <code>nodejs</code> 才能读取的 <code>process.env</code> 是不会有任何效果的。</p>
+<p>然后，我们通过这个 <code>process.env.NODE_ENV</code> 的不同加载不同的 <code>configureStore.js</code>，将在 <code>production</code> 环境下用不到的 <code>redux</code> 中间件清理掉。</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">===</span> <span class="token string">'production'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./configureStore.prod'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+  module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./configureStore.dev'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p><code>configureStore.prod.js</code>:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> createStore<span class="token punctuation">,</span> applyMiddleware <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux'</span>
+<span class="token keyword">import</span> thunk <span class="token keyword">from</span> <span class="token string">'redux-thunk'</span>
+<span class="token keyword">import</span> rootReducer <span class="token keyword">from</span> <span class="token string">'../reducers/index'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">configureStore</span><span class="token punctuation">(</span><span class="token parameter">initialState</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> store <span class="token operator">=</span> <span class="token function">createStore</span><span class="token punctuation">(</span>rootReducer<span class="token punctuation">,</span> initialState<span class="token punctuation">,</span> <span class="token function">applyMiddleware</span><span class="token punctuation">(</span>thunk<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> store<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p><code>configureStore.dev.js</code>:</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> createStore<span class="token punctuation">,</span> applyMiddleware <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux'</span>
+<span class="token keyword">import</span> thunk <span class="token keyword">from</span> <span class="token string">'redux-thunk'</span>
+<span class="token keyword">import</span> createLogger <span class="token keyword">from</span> <span class="token string">'redux-logger'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> rootReducer <span class="token keyword">from</span> <span class="token string">'../reducers/index'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">configureStore</span><span class="token punctuation">(</span><span class="token parameter">initialState</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> store <span class="token operator">=</span> <span class="token function">createStore</span><span class="token punctuation">(</span>rootReducer<span class="token punctuation">,</span> initialState<span class="token punctuation">,</span> <span class="token function">applyMiddleware</span><span class="token punctuation">(</span>thunk<span class="token punctuation">,</span> <span class="token function">createLogger</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> store<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<h2 id="利用-webpack-插件压缩输出文件" style="position:relative;">利用 <code>webpack</code> 插件压缩输出文件<a href="#%E5%88%A9%E7%94%A8-webpack-%E6%8F%92%E4%BB%B6%E5%8E%8B%E7%BC%A9%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6" aria-label="利用 webpack 插件压缩输出文件 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>在各种前端构建工具中都受不了 <code>uglify</code> 的过程，<code>webpack</code> 也不例外。在上文 <code>webpack.config.js</code> 的例子中对 <code>production</code> 环境下的 <code>webpack</code> 就提供了各种插件用于压缩文件。</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>optimize<span class="token punctuation">.</span>UglifyJsPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  compress<span class="token operator">:</span> <span class="token punctuation">{</span>
+    warnings<span class="token operator">:</span> <span class="token boolean">false</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div>
+<h2 id="采用-webpack-bundle-size-analyzer-分析依赖大小" style="position:relative;">采用 <code>webpack-bundle-size-analyzer</code> 分析依赖大小<a href="#%E9%87%87%E7%94%A8-webpack-bundle-size-analyzer-%E5%88%86%E6%9E%90%E4%BE%9D%E8%B5%96%E5%A4%A7%E5%B0%8F" aria-label="采用 webpack bundle size analyzer 分析依赖大小 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>如果以上两种优化都做了（尤其是 uglify）那么恭喜你，你的 js 输出文件已经是处理前的三分之一了。我在自己的一个项目中最终的 <code>bundle.js</code> 文件从 <code>2.2MB</code> 降到了 <code>800KB</code> 效果还是非常好的。</p>
+<p>但是 <code>800KB</code> 还是好大的一个文件，如果还想继续优化呢？那就需要有针对性的进行优化了。我们在开发的过场中依赖了乱七八糟的 <code>package</code> 那么是不是能通过减少依赖或者是更换依赖的方式来进一步的减少最终输出文件的大小呢？那么，首先需要知道每个依赖占据的比例了。这里我们采用一个工具 <code>webpack-bundle-size-analyzer</code> 分析所有依赖的大小。</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> -g webpack-bundle-size-analyzer</code></pre></div>
+<p>然后</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">webpack --json <span class="token operator">|</span> webpack-bundle-size-analyzer</code></pre></div>
+<p>就可以看到所有依赖的大小占比了：</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">react: 667.34 KB (28.9%)
+  fbjs: 33.59 KB (5.03%)
+  &lt;self>: 633.74 KB (95.0%)
+moment: 454.54 KB (19.7%)
+bootstrap: 273.93 KB (11.9%)
+jquery: 251.51 KB (10.9%)
+react-router: 159.31 KB (6.91%)
+  history: 52.69 KB (33.1%)
+    deep-equal: 3.8 KB (7.22%)
+    query-string: 1.62 KB (3.08%)
+      strict-uri-encode: 182 B (10.9%)
+      &lt;self>: 1.45 KB (89.1%)
+    &lt;self>: 47.26 KB (89.7%)
+  warning: 1.76 KB (1.11%)
+  invariant: 1.48 KB (0.929%)
+  hoist-non-react-statics: 1.35 KB (0.850%)
+  &lt;self>: 102.03 KB (64.0%)
+formsy-react-components: 36.24 KB (1.57%)
+  classnames: 2.58 KB (7.11%)
+  &lt;self>: 33.66 KB (92.9%)
+superagent: 30.57 KB (1.32%)
+  component-emitter: 3.11 KB (10.2%)
+  reduce-component: 405 B (1.29%)
+  &lt;self>: 27.06 KB (88.5%)
+formsy-react: 30.55 KB (1.32%)
+  form-data-to-object: 1.19 KB (3.91%)
+  &lt;self>: 29.36 KB (96.1%)
+axios: 29.18 KB (1.26%)
+redux: 25.8 KB (1.12%)
+  lodash: 3.34 KB (12.9%)
+  symbol-observable: 451 B (1.71%)
+  &lt;self>: 22.02 KB (85.4%)
+react-redux: 25.54 KB (1.11%)
+  lodash: 3.34 KB (13.1%)
+  invariant: 1.48 KB (5.80%)
+  hoist-non-react-statics: 1.35 KB (5.30%)
+  &lt;self>: 19.37 KB (75.8%)
+redux-logger: 8.29 KB (0.359%)
+style-loader: 6.99 KB (0.303%)
+webpack: 3 KB (0.130%)
+  node-libs-browser: 2.76 KB (91.8%)
+    process: 2.76 KB (100%)
+    &lt;self>: 0 B (0.00%)
+  &lt;self>: 251 B (8.17%)
+object-assign: 1.95 KB (0.0844%)
+css-loader: 1.47 KB (0.0638%)
+redux-thunk: 306 B (0.0130%)
+superagent-prefix: 198 B (0.00838%)
+react-dom: 63 B (0.00267%)
+&lt;self>: 300.1 KB (13.0%)</code></pre></div>
+<p>这里在优化前的输出情况，其中 <code>react</code> 最大，占整个输出的 <code>28.9%</code>，未压缩前 <code>bundle.js</code> 为 <code>2.24MB</code>。<code>react</code> 是我们的核心依赖，是没什么办法做优化了，但是占比第二高的 <code>moment</code> 仅仅是一个用于日期格式化的工具，占比如此之高实在是可疑。通过搜索其他的可选方案，我将 <code>moment</code> 替换为 <code>date-fns</code>，bundle 文件减小为 <code>1.7MB</code> 压缩后文件减小为 <code>558KB</code>。</p>
+<h2 id="最后的最后" style="position:relative;">最后的最后<a href="#%E6%9C%80%E5%90%8E%E7%9A%84%E6%9C%80%E5%90%8E" aria-label="最后的最后 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>如果你真的还觉得太大了...那，就只有靠 nginx 那边做 <code>gzip</code> 优化了...</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">gzip  on;
+gzip_types      text/plain application/xml text/css text/html application/javascript;</code></pre></div>
+<h2 id="参考" style="position:relative;">参考<a href="#%E5%8F%82%E8%80%83" aria-label="参考 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ol>
+<li><a href="https://webpack.github.io/docs/optimization.html">webpack optimization</a></li>
+<li><a href="https://moduscreate.com/optimizing-react-es6-webpack-production-build/">Optimizing React + ES6 + Webpack Production Build</a></li>
+<li><a href="https://stackoverflow.com/questions/17093796/date-formatting-with-without-moment-js">date-format-without-moment</a></li>
+<li><a href="https://stackoverflow.com/questions/30030031/passing-environment-dependent-variables-in-webpack">passing-environment-dependent-variables-in-webpack</a></li>
+<li><a href="https://nginx.org/en/docs/http/ngx_http_gzip_module.html">nginx gzip</a></li>
+</ol></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/webpack-with-bootstrap">Webpack with Bootstrap</a></h1><h2>2016 May-20</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p>最近开始利用业余时间采用 <code>react + redux</code> 的前端架构山寨一个金数据（或者说是 WuFoo，毕竟两个东西看起来真的很像）以增加自己对这些框架的熟练度。在这个过程中记录下一些自己遇到的坑。今天就是一个 <code>webpack</code> 如何和 <code>bootstrap</code> 结合的坑。</p>
 <p>为了在项目之初就一个不是那么丑的界面，都会选择一些比较成熟的前端 css 框架。<code>bootstrap</code> 是比较流行的一个。<code>bootstrap</code> 一方面是基本的 <code>css</code> 另一方面还有一些 <code>jQuery</code> 的插件形式的类库支持其中的一些组件，当然还有一些它所需要的字体文件。那么这里问题就来了：</p>
 <ol>
 <li>如何在 <code>webpack</code> 中引入 <code>jQuery</code> 以及它的插件</li>
@@ -190,169 +313,7 @@ applicationRepository<span class="token punctuation">.</span><span class="token 
 <div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token class-name">Application</span> app <span class="token operator">=</span> applicationRepository<span class="token punctuation">.</span><span class="token function">ofId</span><span class="token punctuation">(</span>appId<span class="token punctuation">)</span><span class="token punctuation">;</span>
 app<span class="token punctuation">.</span><span class="token function">removeEnv</span><span class="token punctuation">(</span>envName<span class="token punctuation">)</span><span class="token punctuation">;</span>
 applicationRepository<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span>app<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
-<p>这样的话持久化就和业务逻辑完全的分离开了，所有的 <code>POJO</code> 保证即使没有持久化也都可以正常的运转。领域对象是 <code>class</code> 而不是 <code>interface</code> 保证了内部的逻辑都是包含在业务层的。</p></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/redux-with-react">Redux with react</a></h1><h2>2016 May-12</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p>沿着上一部分 <a href="/redux-get-started">Get Started Redux</a>，在利用 <code>redux</code> 构建了 <code>store</code> <code>reducer</code> 之后，现在需要给应用提供个 <code>view</code> 了。我们用当下最流行的 <code>react</code>。</p>
-<h2 id="prepare-package-for-react-with-redux" style="position:relative;">prepare package for react with redux<a href="#prepare-package-for-react-with-redux" aria-label="prepare package for react with redux permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>安装 <code>react</code></p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">$ npm install --save react react-dom react-redux</code></pre></div>
-<p>其中 <code>react</code> <code>react-dom</code> 是 <code>react</code> 的原生包，<code>react-redux</code> 提供了一些方便的方法用来将 <code>redux</code> 和 <code>react</code> 一起使用。后面的代码示例会着重讲解。</p>
-<p>添加 <code>babel</code> 对 <code>jsx</code> 的支持。</p>
-<p><code>jsx</code> 是 <code>react</code> 支持的一种特殊的语法，这种语法用于将 <code>html</code> 写到 <code>js</code> 中，例如</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token operator">&lt;</span>p<span class="token operator">></span>
-      Click <span class="token punctuation">{</span>value<span class="token punctuation">}</span> times<span class="token punctuation">.</span>
-      <span class="token punctuation">{</span> <span class="token string">' '</span> <span class="token punctuation">}</span>
-      <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span>onIncrement<span class="token punctuation">}</span><span class="token operator">></span><span class="token operator">+</span><span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
-      <span class="token punctuation">{</span> <span class="token string">' '</span> <span class="token punctuation">}</span>
-      <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span>onDecrement<span class="token punctuation">}</span><span class="token operator">></span><span class="token operator">-</span><span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
-    <span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">></span>
-<span class="token punctuation">)</span></code></pre></div>
-<p>目前可以认为 <code>jsx</code> 是写 <code>react</code> 的标配，那么就需要在 <code>babel</code> 中添加一个新的 <code>react</code> 翻译器。</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">$ npm install --save-dev babel-preset-react</code></pre></div>
-<p>然后修改 <code>.babelrc</code></p>
-<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
-  <span class="token property">"presets"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"es2015"</span><span class="token punctuation">,</span> <span class="token string">"react"</span><span class="token punctuation">]</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p>这样，我们就可以开始写 <code>react</code> 了。</p>
-<h2 id="presentational-and-container-components" style="position:relative;">Presentational and Container Components<a href="#presentational-and-container-components" aria-label="presentational and container components permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>在 <code>redux</code> 的官方文档 <a href="https://redux.js.org/docs/basics/UsageWithReact.html">Use With React</a> 解释了一种 <code>redux</code> 和 <code>react</code> 结合的模式：将 <code>react</code> 的组件分为两种，一种是不与 <code>redux</code> 交互的 <code>presentational</code> 组件，它是一种通用的组件，任何提供给它所需要的 <code>func</code> 或者是 <code>prop</code> 的框架都可以使用它。另一种是 <code>container</code> 组件，是和 <code>redux</code> 的 <code>action</code> 以及 <code>store</code> 绑定的组件。通常都是会先写一个 <code>presentational</code> 组件，然后再创建一个 <code>container</code> 组件对 <code>presentational</code> 组件进行包装后使用。后面的 <em>full example</em> 展示了 <code>Counter</code> 与 <code>Visible Counter</code> 两个不同类型的组件。当然在<a href="https://redux.js.org/docs/basics/UsageWithReact.html">官方</a>也提供了非常好的例子。</p>
-<h2 id="full-example" style="position:relative;">full example<a href="#full-example" aria-label="full example permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>首先展示一下目录结构</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">.
-├── actions
-│   └── index.js
-├── components
-│   ├── App.js
-│   └── Counter.js
-├── containers
-│   └── VisibleCounter.js
-├── dist
-│   ├── bundle.js
-│   ├── index.html
-│   └── styles.css
-├── entry.js
-├── package.json
-├── reducers
-│   └── counter.js
-├── styles
-│   ├── index.scss
-│   └── theme.scss
-├── test
-│   └── reducers
-│       └── counter.spec.js
-└── webpack.config.js</code></pre></div>
-<p>相对于之前的目录结构多了两个目录 <code>containers</code> <code>components</code> 分别对应了 <code>container</code> 和 <code>presentational</code> 的组件。</p>
-<p>首先我们定义一个 <code>presentational</code> 的组件 <code>Counter</code></p>
-<p><code>components/Counter.js</code>:</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> Component<span class="token punctuation">,</span> PropTypes <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
-
-<span class="token keyword">class</span> <span class="token class-name">Counter</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
-  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> <span class="token punctuation">{</span> value<span class="token punctuation">,</span> onIncrement<span class="token punctuation">,</span> onDecrement <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">;</span>
-
-    <span class="token keyword">return</span> <span class="token punctuation">(</span>
-        <span class="token operator">&lt;</span>p<span class="token operator">></span>
-          Click <span class="token punctuation">{</span>value<span class="token punctuation">}</span> times<span class="token punctuation">.</span>
-          <span class="token punctuation">{</span> <span class="token string">' '</span> <span class="token punctuation">}</span>
-          <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span>onIncrement<span class="token punctuation">}</span><span class="token operator">></span><span class="token operator">+</span><span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
-          <span class="token punctuation">{</span> <span class="token string">' '</span> <span class="token punctuation">}</span>
-          <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span>onDecrement<span class="token punctuation">}</span><span class="token operator">></span><span class="token operator">-</span><span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
-        <span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">></span>
-    <span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-Counter<span class="token punctuation">.</span>PropTypes <span class="token operator">=</span> <span class="token punctuation">{</span>
-  value<span class="token operator">:</span> PropTypes<span class="token punctuation">.</span>number<span class="token punctuation">.</span>isRequired<span class="token punctuation">,</span>
-  onIncrement<span class="token operator">:</span> PropTypes<span class="token punctuation">.</span>func<span class="token punctuation">.</span>isRequired<span class="token punctuation">,</span>
-  onDecrement<span class="token operator">:</span> PropTypes<span class="token punctuation">.</span>func<span class="token punctuation">.</span>isRequired
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-
-<span class="token keyword">export</span> <span class="token keyword">default</span> Counter<span class="token punctuation">;</span></code></pre></div>
-<p>注意 <code>PropTypes</code> 有点像是一个函数的参数说明，它明确的定义了在使用这个组件时需要提供什么样子的东西，<code>react</code> 官方建议一定要对每一个组件都明确的定义这样的参数说明，它也起到了文档的作用，方便与其他人协作。这里我们需要三个东西：</p>
-<ol>
-<li><code>value</code> 当前的计数</li>
-<li><code>onIncrement</code> 当点击 <code>+</code> 时的动作</li>
-<li><code>onDecrement</code> 当点击 <code>-</code> 时的动作</li>
-</ol>
-<p>然后对 <code>Counter</code> 进行包装</p>
-<p><code>containers/VisibleCounter.js</code>:</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> connect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-redux'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> Counter <span class="token keyword">from</span> <span class="token string">"../components/Counter"</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span> increment<span class="token punctuation">,</span> decrement <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'../actions/index'</span><span class="token punctuation">;</span>
-
-<span class="token keyword">function</span> <span class="token function">mapStatToProps</span><span class="token punctuation">(</span><span class="token parameter">state</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token punctuation">{</span>
-    value<span class="token operator">:</span> state
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">function</span> <span class="token function">mapDispatchToProps</span><span class="token punctuation">(</span><span class="token parameter">dispatch</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token punctuation">{</span>
-    <span class="token function-variable function">onIncrement</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-      <span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token function">increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token function-variable function">onDecrement</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-      <span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token function">decrement</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">const</span> VisibleCounter <span class="token operator">=</span> <span class="token function">connect</span><span class="token punctuation">(</span>
-    mapStatToProps<span class="token punctuation">,</span>
-    mapDispatchToProps
-<span class="token punctuation">)</span><span class="token punctuation">(</span>Counter<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">export</span> <span class="token keyword">default</span> VisibleCounter<span class="token punctuation">;</span></code></pre></div>
-<p>这里用到了一个 <code>react-redux</code> 提供的方法 <code>connect</code> 它和下文提到的 <code>Provider</code> 配合使用，用于为 <code>react</code> 传递全局的 <code>store</code>。<code>connect</code> 需要两个函数 <code>mapStatToProps</code> 与 <code>mapDispatchToProps</code> 分别将 <code>store</code> 里的属性和 <code>store</code> 的 <code>dispatch</code> 动作传递给 <code>presentational</code> 组件。上面的代码就分别将 <code>store</code> 的 <code>state</code> 对应给组件的 <code>value</code> 属性，将两个 <code>action</code> 的 <code>dispatch</code> 对应到 <code>onIncrement</code> 与 <code>onDecrement</code>。</p>
-<p>然后还有一个 <code>App</code> 组件，用于包装 <code>VisibleCounter</code>，它没有任何依赖的属性。</p>
-<p><code>components/App.js</code>:</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">import React, { Component } from 'react';
-import VisibleCounter from '../containers/VisibleCounter';
-
-class App extends Component {
-  render() {
-    return (
-        &lt;div>
-          &lt;VisibleCounter />
-        &lt;/div>
-    )
-  }
-}
-
-export default App;</code></pre></div>
-<p>最后我们修改 <code>entry.js</code> 将 <code>store</code> 与我们的视图绑定起来。</p>
-<p><code>entry.js</code>:</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">require('./styles/index.scss');
-
-import React from "react";
-import ReactDOM from 'react-dom';
-import counter from './reducers/counter';
-import { Provider } from 'react-redux';
-import App from './components/App';
-import { createStore } from 'redux';
-
-const store = createStore(counter);
-const rootEl = document.querySelector("#root");
-
-function render() {
-  ReactDOM.render(
-      &lt;Provider store={store}>
-        &lt;App />
-      &lt;/Provider>,
-      rootEl
-  )
-}
-
-render();
-store.subscribe(render);</code></pre></div>
-<p>这里就用到了 <code>Provider</code> 方法，将 <code>store</code> 传递给 <code>App</code>，然后用 <code>ReactDOM</code> 在页面上生成 <code>react</code> 组件。</p>
-<h2 id="参考" style="position:relative;">参考<a href="#%E5%8F%82%E8%80%83" aria-label="参考 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<ol>
-<li><a href="https://redux.js.org">redux</a></li>
-<li><a href="https://github.com/reactjs/redux/tree/master/examples/counter">redux counter example</a></li>
-<li><a href="https://redux.js.org/docs/basics/UsageWithReact.html">use with react</a></li>
-<li><a href="https://babeljs.io/docs/usage/babelrc/">babelrc</a></li>
-</ol></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/24">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/26">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
+<p>这样的话持久化就和业务逻辑完全的分离开了，所有的 <code>POJO</code> 保证即使没有持久化也都可以正常的运转。领域对象是 <code>class</code> 而不是 <code>interface</code> 保证了内部的逻辑都是包含在业务层的。</p></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/24">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/26">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       
       if(true) {

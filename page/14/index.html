@@ -55,7 +55,102 @@
   </script><link rel="preconnect" href="https://plausible.io"/><script async="" defer="" data-domain="aisensiy.me" src="https://plausible.io/js/plausible.js"></script><script>
           window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) };
           
-          </script><link as="script" rel="preload" href="/webpack-runtime-ff02cfd775d7d5fd5e84.js"/><link as="script" rel="preload" href="/framework-45ca7a0c983b0b7a000c.js"/><link as="script" rel="preload" href="/app-d20a25ec668cba21fae0.js"/><link as="script" rel="preload" href="/d1724f9828659101216d9c2ff846a60d90e64274-aac16f39fe217ccc37e4.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-b81aa84e3c777d2f77e7.js"/><link as="fetch" rel="preload" href="/page-data/page/14/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/use-ss-proxy-in-ubuntu">在 ubuntu server 下使用代理</a></h1><h2>2018 June-10</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p>我们在自己的办公电脑上需要一些方式访问 google.com 等一些网站。在使用 ubuntu server 的时候同样也需要安装一些被 block 的依赖，因此对于很多 server 也需要做类似的配置。这里记录一下自己配置的过程。</p>
+          </script><link as="script" rel="preload" href="/webpack-runtime-ff02cfd775d7d5fd5e84.js"/><link as="script" rel="preload" href="/framework-45ca7a0c983b0b7a000c.js"/><link as="script" rel="preload" href="/app-d20a25ec668cba21fae0.js"/><link as="script" rel="preload" href="/d1724f9828659101216d9c2ff846a60d90e64274-aac16f39fe217ccc37e4.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-b81aa84e3c777d2f77e7.js"/><link as="fetch" rel="preload" href="/page-data/page/14/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/ingress-nginx-in-k8s">采用 ingress-nginx 将服务暴露到外部</a></h1><h2>2018 August-25</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p>记录在采用 ingress-nginx 暴露内部服务的过程</p>
+<h2 id="安装" style="position:relative;">安装<a href="#%E5%AE%89%E8%A3%85" aria-label="安装 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>ingress-nginx 是 ingress 的一个实现，目前它已经被放在 <code>kubernetes</code> 项目下面了，可见算是亲儿子了，可更新频率也非常高，再加上之前在别的环境用 nginx 的场景也很多，没想太多就觉得用它了。</p>
+<p>在我安装 ingress-nginx 的时候，其最新的版本是 <code>0.16.2</code>。首先遵循文档先安装 <a href="https://github.com/kubernetes/ingress-nginx/blob/nginx-0.16.2/deploy/mandatory.yaml"><code>mandatory.yaml</code></a>：</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">kubectl apply -f <span class="token punctuation">\</span>
+    https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.16.2/deploy/mandatory.yaml</code></pre></div>
+<p>这一步里面做了如下的事情：</p>
+<ol>
+<li>创建 <code>ingress-nginx</code> namespace</li>
+<li>部署默认的 backend</li>
+<li>创建相应的 ConfigMap</li>
+<li>创建 ServiceAccount 并授权</li>
+<li>部署 nginx-ingress-controller</li>
+</ol>
+<h2 id="创建-service-暴露到集群外部" style="position:relative;">创建 service 暴露到集群外部<a href="#%E5%88%9B%E5%BB%BA-service-%E6%9A%B4%E9%9C%B2%E5%88%B0%E9%9B%86%E7%BE%A4%E5%A4%96%E9%83%A8" aria-label="创建 service 暴露到集群外部 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>这也是一个神奇的操作，虽说 ingress 才是真正将服务暴露到外面的资源，但是实际上反而是一个 <code>service</code> 完成了最终将服务暴露出去的任务。这里我们可以有多种选择：</p>
+<p>要么采用 <code>NodePort</code> 将 service 通过某一个特定的端口：</p>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Service
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> ingress<span class="token punctuation">-</span>nginx
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> ingress<span class="token punctuation">-</span>nginx
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">type</span><span class="token punctuation">:</span> NodePort
+  <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> http
+    <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">80</span>
+    <span class="token key atrule">targetPort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+    <span class="token key atrule">protocol</span><span class="token punctuation">:</span> TCP
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> https
+    <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">443</span>
+    <span class="token key atrule">targetPort</span><span class="token punctuation">:</span> <span class="token number">443</span>
+    <span class="token key atrule">protocol</span><span class="token punctuation">:</span> TCP
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">app</span><span class="token punctuation">:</span> ingress<span class="token punctuation">-</span>nginx</code></pre></div>
+<p>要么采用 <code>externalIPS</code> 直接将 <code>service</code> 通过特定的 IP 暴露出去：</p>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Service
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> ingress<span class="token punctuation">-</span>nginx
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> ingress<span class="token punctuation">-</span>nginx
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">externalIPs</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> &lt;external<span class="token punctuation">-</span>ips<span class="token punctuation">></span>
+  <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> http
+    <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">80</span>
+    <span class="token key atrule">targetPort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+    <span class="token key atrule">protocol</span><span class="token punctuation">:</span> TCP
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> https
+    <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">443</span>
+    <span class="token key atrule">targetPort</span><span class="token punctuation">:</span> <span class="token number">443</span>
+    <span class="token key atrule">protocol</span><span class="token punctuation">:</span> TCP
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">app</span><span class="token punctuation">:</span> ingress<span class="token punctuation">-</span>nginx</code></pre></div>
+<p>这里我采用的是第二种，这样暴露出来的服务更干净。</p>
+<p>然后测试一下看看是否工作：</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">curl http://&lt;external-ip></code></pre></div>
+<p>如果返回 404 说明已经链接到了默认的 backend 了。</p>
+<h2 id="暴露服务到外部" style="position:relative;">暴露服务到外部<a href="#%E6%9A%B4%E9%9C%B2%E6%9C%8D%E5%8A%A1%E5%88%B0%E5%A4%96%E9%83%A8" aria-label="暴露服务到外部 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>然后我们再创建一个 <code>ingress</code> 将我们的 java service 暴露到路径 <code>/api</code> 下：</p>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> extensions/v1beta1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Ingress
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> openbayes<span class="token punctuation">-</span>server<span class="token punctuation">-</span>ing
+  <span class="token key atrule">annotations</span><span class="token punctuation">:</span>
+    <span class="token key atrule">nginx.ingress.kubernetes.io/ssl-redirect</span><span class="token punctuation">:</span> <span class="token string">"false"</span>
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">rules</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">http</span><span class="token punctuation">:</span>
+      <span class="token key atrule">paths</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">path</span><span class="token punctuation">:</span> /api
+        <span class="token key atrule">backend</span><span class="token punctuation">:</span>
+          <span class="token key atrule">serviceName</span><span class="token punctuation">:</span> openbayes<span class="token punctuation">-</span>server<span class="token punctuation">-</span>svc
+          <span class="token key atrule">servicePort</span><span class="token punctuation">:</span> <span class="token number">80</span></code></pre></div>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">kubectl apply -f ingress.yaml</code></pre></div>
+<p>然后再尝试一下 <code>curl http://&#x3C;external-ip>/api</code> 看看是不是可以正常的访问这个 api。</p>
+<h2 id="采用-annotation-对特定服务做配置" style="position:relative;">采用 annotation 对特定服务做配置<a href="#%E9%87%87%E7%94%A8-annotation-%E5%AF%B9%E7%89%B9%E5%AE%9A%E6%9C%8D%E5%8A%A1%E5%81%9A%E9%85%8D%E7%BD%AE" aria-label="采用 annotation 对特定服务做配置 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>默认的 nginx 配置未必适合我们的服务，访问 <a href="https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/">Nginx Configuration</a> 可以看到 ingress-nginx 所提供的三种 nginx 配置方式。其中 <a href="https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/">ConfigMaps</a> 可以实现对 nginx 默认配置的修改；而 <a href="https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/">ingress annotation</a> 则可以实现对特定 ingress 进行配置。</p>
+<p>比如我们的 <code>/api</code> 有上传文件的需求，而默认的请求尺寸最大为 <code>1m</code> 会导致文件上传报错 <code>413</code>，通过添加注解 <code>nginx.ingress.kubernetes.io/proxy-body-size</code> 可以指定请求大小限制：</p>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> extensions/v1beta1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Ingress
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> openbayes<span class="token punctuation">-</span>server<span class="token punctuation">-</span>ing
+  <span class="token key atrule">annotations</span><span class="token punctuation">:</span>
+    <span class="token key atrule">nginx.ingress.kubernetes.io/proxy-body-size</span><span class="token punctuation">:</span> <span class="token string">"1024m"</span>
+    <span class="token key atrule">nginx.ingress.kubernetes.io/ssl-redirect</span><span class="token punctuation">:</span> <span class="token string">"false"</span>
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">rules</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">http</span><span class="token punctuation">:</span>
+      <span class="token key atrule">paths</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">path</span><span class="token punctuation">:</span> /api
+        <span class="token key atrule">backend</span><span class="token punctuation">:</span>
+          <span class="token key atrule">serviceName</span><span class="token punctuation">:</span> openbayes<span class="token punctuation">-</span>server<span class="token punctuation">-</span>svc
+          <span class="token key atrule">servicePort</span><span class="token punctuation">:</span> <span class="token number">80</span></code></pre></div>
+<p>每次修改 ingress 后，nginx-ingress-controller 会默认更新 nginx.conf，立即生效。</p></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/use-ss-proxy-in-ubuntu">在 ubuntu server 下使用代理</a></h1><h2>2018 June-10</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p>我们在自己的办公电脑上需要一些方式访问 google.com 等一些网站。在使用 ubuntu server 的时候同样也需要安装一些被 block 的依赖，因此对于很多 server 也需要做类似的配置。这里记录一下自己配置的过程。</p>
 <h2 id="前提条件" style="position:relative;">前提条件<a href="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6" aria-label="前提条件 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <p>首先，这里所有的配置是建立在我已经有了一个 ss 的 server 的前提之下。</p>
 <h2 id="1-安装-libev-版本" style="position:relative;">1. 安装 libev 版本<a href="#1-%E5%AE%89%E8%A3%85-libev-%E7%89%88%E6%9C%AC" aria-label="1 安装 libev 版本 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
@@ -149,62 +244,7 @@ $ systemctl restart docker</code></pre></div>
 <p>之后可以用以下镜像测试一下：</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ docker pull k8s.gcr.io/kube-scheduler-amd64:v1.10.2</code></pre></div>
 <h4 id="注意" style="position:relative;">注意<a href="#%E6%B3%A8%E6%84%8F" aria-label="注意 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h4>
-<p>在查找有关 docker proxy 内容时会发现有两种搜索结果，一种是我上述讲的 docker pull 时采用代理的方法；另一种是<strong>如何在 docker container 中</strong>配置代理：<a href="https://docs.docker.com/network/proxy/">Configure Docker to use a proxy server</a> 这个迷惑性还是有的...不过第二种情况以后也可能会用得上。</p></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/docker-storage">docker 存储</a></h1><h2>2018 May-25</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p>由于自己接触 docker 的时候和现在的 docker 不少的 api 已经有所变化，还是需要更新一下自己的知识。这篇文章大部分源自 docker 的官方文档，然后还有部分自己添油加醋。</p>
-<p>在 docker 中所有的文件是存储在容器的 <code>writable container layer</code>。存在以下的问题：</p>
-<ul>
-<li>容器里的数据不好拿出来</li>
-<li>在容器里写依赖于 <code>storage driver</code> 采用了 <code>union filesystem</code> 效率低下</li>
-</ul>
-<p>然而 docker 提供了可以直接往 host 机器写内容的方式：</p>
-<ol>
-<li>volumes</li>
-<li>bind mounts</li>
-<li>tmpfs</li>
-</ol>
-<p>采用这些方式，即使容器关了甚至删除了数据依然不会丢失。</p>
-<h2 id="选择适合的数据绑定方式" style="position:relative;">选择适合的数据绑定方式<a href="#%E9%80%89%E6%8B%A9%E9%80%82%E5%90%88%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E6%96%B9%E5%BC%8F" aria-label="选择适合的数据绑定方式 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>首先不论是采用哪种方式，在容器里看起来都是一样的。</p>
-<ul>
-<li>Volume 将数据存储在 host 但是其实是由 docker 管理的 <code>/var/lib/docker/volumes</code> 非 docker 无法使用</li>
-<li>Bind mounts 是可以将数据随意存储在任意 host system 文件系统中，任何非 docker 应用也有权利对其进行使用</li>
-<li>tmpfs mounts 将文件存储在内存中</li>
-</ul>
-<h2 id="更多详情" style="position:relative;">更多详情<a href="#%E6%9B%B4%E5%A4%9A%E8%AF%A6%E6%83%85" aria-label="更多详情 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<h3 id="volume" style="position:relative;">Volume<a href="#volume" aria-label="volume permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>Volume 可以通过 <code>docker volume create</code> 显式创建，当然 docker 也可以在运行的时候创建 volume（比如在 <code>Dockerfile</code> 里面有 <code>VOLUME</code> 语法时如果没有没有显式绑定 volume 那么就会默认创建一个新的 volume）。</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">docker volume create data
-docker run -v data:/data ...</code></pre></div>
-<p><strong>注意</strong> <code>docker volume inspect xxx</code> 会得到如下的结果：</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">[
-    {
-        "CreatedAt": "2018-05-22T07:53:58Z",
-        "Driver": "local",
-        "Labels": null,
-        "Mountpoint": "/var/lib/docker/volumes/test/_data",
-        "Name": "test",
-        "Options": {},
-        "Scope": "local"
-    }
-]</code></pre></div>
-<p>其存储的位置为 <code>/var/lib/docker/volumes/test/_data</code> 但是在 Mac OS 下你会发现根本没有这个目录，那是因为 Mac 下的 docker 还是以 linux 虚拟机的形式运行的，你所看到的是其虚拟机下的目录而不是 Mac 下的目录。</p>
-<h3 id="bind-mounts" style="position:relative;">Bind mounts<a href="#bind-mounts" aria-label="bind mounts permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>其功能相对 volume 比较有限。但是其好处是可以绑定任意的外部目录给 docker，尤其是在做一些外部数据共享给 docker 的时候非常适合。</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">docker run -v /tmp/data:/data:ro ...</code></pre></div>
-<h3 id="tmpfs" style="position:relative;">Tmpfs<a href="#tmpfs" aria-label="tmpfs permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>我自己是没有直接使用过。基本就是用于沙盒环境吧。</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">docker run --tmpfs /data ...</code></pre></div>
-<h2 id="注意" style="position:relative;">注意<a href="#%E6%B3%A8%E6%84%8F" aria-label="注意 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>两个特殊的场景：</p>
-<ol>
-<li>如果你 mount 一个 empty volume 到一个 container 中已经存在的文件夹，那么 container 会将容器目录中的内容拷贝到这个空的 volume 里面</li>
-<li>如果你使用 bind mount 或者一个非空的 volume 绑定到容器中某一个目录，那么目录里面的东西就会隐藏而只能看到 bind mount 或者 volume 里面的内容。注意，原有的内容不是被删除了而仅仅是被隐藏了</li>
-</ol>
-<h2 id="相关文献" style="position:relative;">相关文献<a href="#%E7%9B%B8%E5%85%B3%E6%96%87%E7%8C%AE" aria-label="相关文献 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<ol>
-<li><a href="https://docs.docker.com/storage/volumes/">Docker Volumes</a></li>
-<li><a href="https://docs.docker.com/storage/bind-mounts/">Use bind mounts</a></li>
-<li><a href="https://docs.docker.com/storage/volumes/">Use Volumes</a></li>
-</ol></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/13">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/15">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
+<p>在查找有关 docker proxy 内容时会发现有两种搜索结果，一种是我上述讲的 docker pull 时采用代理的方法；另一种是<strong>如何在 docker container 中</strong>配置代理：<a href="https://docs.docker.com/network/proxy/">Configure Docker to use a proxy server</a> 这个迷惑性还是有的...不过第二种情况以后也可能会用得上。</p></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/13">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/15">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       
       if(true) {
