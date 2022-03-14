@@ -55,7 +55,89 @@
   </script><link rel="preconnect" href="https://plausible.io"/><script async="" defer="" data-domain="aisensiy.me" src="https://plausible.io/js/plausible.js"></script><script>
           window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) };
           
-          </script><link as="script" rel="preload" href="/webpack-runtime-ff02cfd775d7d5fd5e84.js"/><link as="script" rel="preload" href="/framework-45ca7a0c983b0b7a000c.js"/><link as="script" rel="preload" href="/app-d20a25ec668cba21fae0.js"/><link as="script" rel="preload" href="/d1724f9828659101216d9c2ff846a60d90e64274-aac16f39fe217ccc37e4.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-b81aa84e3c777d2f77e7.js"/><link as="fetch" rel="preload" href="/page-data/page/12/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/mysql-operator">将 MySQL 通过 presslabs/mysql-operator 部署到 k8s 内部</a></h1><h2>2020 October-19</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p>目前 openbayes 的几乎所有组件都部署在 k8s 内部，但 mysql 作为核心的数据存储节点对其要求都蛮高的，对于目前的业务场景，其要求主要包含以下几点：</p>
+          </script><link as="script" rel="preload" href="/webpack-runtime-ff02cfd775d7d5fd5e84.js"/><link as="script" rel="preload" href="/framework-45ca7a0c983b0b7a000c.js"/><link as="script" rel="preload" href="/app-d20a25ec668cba21fae0.js"/><link as="script" rel="preload" href="/d1724f9828659101216d9c2ff846a60d90e64274-aac16f39fe217ccc37e4.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-b81aa84e3c777d2f77e7.js"/><link as="fetch" rel="preload" href="/page-data/page/12/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/spring-boot-current-status">对目前校验与异常处理的总结</a></h1><h2>2020 November-22</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><h2 id="目前的问题" style="position:relative;">目前的问题<a href="#%E7%9B%AE%E5%89%8D%E7%9A%84%E9%97%AE%E9%A2%98" aria-label="目前的问题 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>很久之前记录的一篇文章<a href="/spring-mvc-error-handler">在用 Spring MVC 构建 RESTful API 时进行验证和异常处理</a>，讨论了基本的 rest 的校验思路：</p>
+<ol>
+<li>区分 <code>FormObject</code> 和 <code>Domain Entity</code> 尽量以 user-case 的场景为每一个 input 做独立的校验；</li>
+<li>基本结构校验（Bean Validation）和业务校验（Service Business Logic）分别处理；</li>
+<li>基本结构校验在 MVC 层，通过 <code>ControllerAdvice</code> 和 <code>BindingResult</code> 对其校验内容做转换暴露给客户端；</li>
+</ol>
+<p>在最近几年的项目里，基本还是依照这个思路来的。但是有以下几个痛点没有解决：</p>
+<ol>
+<li>业务逻辑和基本校验的逻辑很多时候边界很模糊，对于客户端来说，其实没什么区别，强行区分显得不是那么优雅；</li>
+<li>随着业务逻辑的越发复杂，大量的校验逻辑肯定是会放在 <code>application</code> 层的，那么关注点分离的需求愈发明显，将校验逻辑和正常流程区分才能让代码变得更清晰易懂；</li>
+<li><code>Exception</code> 的类别越来越多，报错信息五花八门，需要对其进行统一的梳理，并整理出一套规则，方便后续的维护开发套用；</li>
+</ol>
+<h2 id="目前的尝试" style="position:relative;">目前的尝试<a href="#%E7%9B%AE%E5%89%8D%E7%9A%84%E5%B0%9D%E8%AF%95" aria-label="目前的尝试 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>为了解决以上问题，曾经做过以下的改进：</p>
+<p>对于第一条，并没有做处理，依然让业务逻辑和基本校验做了分离，尤其是对于那种需要触碰数据库的业务（比如查重）还是把它当作是业务逻辑的，仅仅是说通过 <code>BindingResult</code> 返回一致的报错结果了。这部分还是很希望能够把一些更复杂的校验也放到 Bean Validation 中去的。</p>
+<p>对于第二条，首先在 <code>application</code> 层也提供了一个 <code>ValidationResult</code> 它实现了 <code>org.springframework.validation.Errors</code> 可是说是在 <code>application</code> 层 <code>BindingResult</code> 的同类了，这样子就可以在 <code>application</code> 层返回和 <code>web</code> 层一样的报错结果了。然后提出了一个 <code>Validator</code> 的概念，专门用来做校验工作。举一个例子，下面是一个创建 <code>AutoML</code> 的方法，可以看到第一步就是做校验：</p>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java">  <span class="token keyword">public</span> <span class="token class-name">AutoML</span> <span class="token function">createAutoML</span><span class="token punctuation">(</span><span class="token class-name">CreateModelCommand</span> command<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    autoMLValidator<span class="token punctuation">.</span><span class="token function">validate</span><span class="token punctuation">(</span>command<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+  <span class="token punctuation">}</span></code></pre></div>
+<p>而 <code>AutoMLValidator</code> 内容如下：</p>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AutoMLValidator</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+  <span class="token keyword">void</span> <span class="token function">validate</span><span class="token punctuation">(</span><span class="token class-name">CreateModelCommand</span> command<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token class-name">ValidationResult</span> result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ValidationResult</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    modelTemplateValidator<span class="token punctuation">.</span><span class="token function">validate</span><span class="token punctuation">(</span>command<span class="token punctuation">,</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    autoMLNameValidator<span class="token punctuation">.</span><span class="token function">validate</span><span class="token punctuation">(</span>command<span class="token punctuation">,</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    resourceValidator<span class="token punctuation">.</span><span class="token function">validate</span><span class="token punctuation">(</span>command<span class="token punctuation">,</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">hasErrors</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">InvalidRequestException</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    autoMLDataBindingsValidator<span class="token punctuation">.</span><span class="token function">validate</span><span class="token punctuation">(</span>command<span class="token punctuation">,</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">hasErrors</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">InvalidRequestException</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    parallelRunningCountValidator<span class="token punctuation">.</span><span class="token function">validate</span><span class="token punctuation">(</span>command<span class="token punctuation">,</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">ClusterResource</span> clusterResource <span class="token operator">=</span> <span class="token function">getResource</span><span class="token punctuation">(</span>command<span class="token punctuation">.</span><span class="token function">getResource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    resourceRelatedValidator<span class="token punctuation">.</span><span class="token function">validateJobLimitationAndComputationAndStorage</span><span class="token punctuation">(</span>
+        command<span class="token punctuation">.</span><span class="token function">getOwner</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> clusterResource<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">hasErrors</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">InvalidRequestException</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>可以看到，这里面使用了 <code>web</code> 层类似的逻辑：</p>
+<ol>
+<li>有一个和 <code>BindingResult</code> 等价的 <code>ValidationResult</code> 用于收集校验结果;</li>
+<li>当校验不通过时，抛出异常 <code>InvalidRequestException(validationResult)</code>;</li>
+</ol>
+<p>这个方法很好的将业务逻辑异常拆出来了，还是很能解决问题的，也没太多副作用。硬要说的话就是 <code>ValidationResult</code> 有点难看，<code>InvalidRequestException</code> 有点像是 web 层漏到 application 层了，应该用个更好的类替代。</p>
+<p>对于第三点，整理出了一个类 <code>ErrorCode</code> 用来安放 <code>ErrorCode</code> 与 <code>ErrorMessage</code>：</p>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">enum</span> <span class="token class-name">ErrorCode</span> <span class="token punctuation">{</span>
+  <span class="token function">TRANSFER_REQUEST_TARGET_USER_EXISTED</span><span class="token punctuation">(</span><span class="token string">"资源已经有目标用户，请先将之前请求撤销"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token function">RESOURCE_NAME_NOTMATCH</span><span class="token punctuation">(</span><span class="token string">" 资源名称不匹配"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token function">RESOURCE_TRANSFER_TO_SELF</span><span class="token punctuation">(</span><span class="token string">" 不许与资源拥有者将资源传递给自己"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+  <span class="token function">RESET_PASSWORD_MISMATCH</span><span class="token punctuation">(</span><span class="token string">"无效的验证码"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token function">CODE_MISMATCH</span><span class="token punctuation">(</span><span class="token string">"无效的验证码"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+  
+
+  <span class="token keyword">private</span> <span class="token class-name">String</span> message<span class="token punctuation">;</span>
+
+  <span class="token class-name">ErrorCode</span><span class="token punctuation">(</span><span class="token class-name">String</span> message<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>message <span class="token operator">=</span> message<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>在具体的报错的时候将 ad-hoc 的报错替换成这样的 KV 对即可。很显然这个写法有点像一个低配版本的国际化方案，显得有点拙劣，干嘛不直接换成 i18n 的 messages 呢？并且这个报错的格式也没有做统一，依然显得有点混乱。</p>
+<p>为了进一步的解决以上依然存在的问题，最近也开始重新看了 spring / springmvc / springboot 异常处理和校验的一些内容，后面应该会做以下事情：</p>
+<ol>
+<li>梳理目前 spring exception 的方式</li>
+<li>提出适合当前项目的最佳实践</li>
+<li>对目前的校验做改进，提出校验方面的最佳实践</li>
+</ol></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/mysql-operator">将 MySQL 通过 presslabs/mysql-operator 部署到 k8s 内部</a></h1><h2>2020 October-19</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p>目前 openbayes 的几乎所有组件都部署在 k8s 内部，但 mysql 作为核心的数据存储节点对其要求都蛮高的，对于目前的业务场景，其要求主要包含以下几点：</p>
 <ol>
 <li>需要持久化存储，一旦数据丢失问题非常严重</li>
 <li>对性能有要求，不然会拖垮依赖它的一切服务</li>
@@ -314,193 +396,7 @@ format code  extension  resolution note
 			
 		></video>
 	 的格式 22 和 18 都不是最优解。默认是选取了 251 和 137 （最好声音 + 最好画质）做了合并（也就是 <code>--merge-output-format</code> 的作用）。如果需要其他组合可以通过命令 <code>-f &#x3C;video>+&#x3C;audio></code> 形式：</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">youtube-dl https://www.youtube.com/watch\?v\=_QUEXsHfsA0\&amp;t\=4s -f 137+140 --merge-output-format mp4 --write-sub --sub-lang zh-Hans --sub-format vtt --convert-subs srt</code></pre></div></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/lxcfs-in-kubernetes">在 Kubernetes 中使用最新的 LXCFS</a></h1><h2>2020 September-21</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p>在 k8s 中启动的 pod 下的 container 虽然在资源上做了隔离，但是这种隔离对用户通常是不可见的，具体的表现就是使用 <code>top</code> <code>cat /proc/cpuinfo</code> 或者 <code>free -m</code> 等这样的命令的时候看到的依然是宿主机的资源。这种行为在 openbayes 这种为外部用户分配资源的场景会有很强的迷惑性，用户不知道自己到底有多少资源，因为从里面看到的资源和在外面的声明的是不一样的。为了达到容器内外的一致性，我们引入了 lxcfs。</p>
-<h2 id="工作原理" style="position:relative;">工作原理<a href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86" aria-label="工作原理 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>在 <a href="https://linuxcontainers.org/lxcfs/introduction/">lxcfs 官方</a>的定义里提到它是一个用户空间的文件系统。它主要提供了一系列文件可以覆盖 <code>/proc</code> 用以覆盖系统的这些目录。也就是说，如果想要让容器里看到的资源是已经做了隔离之后的资源，其实就是将系统默认的一些文件通过 mount 的方式进行覆盖。当容器中进程读取相应文件内容时，lxcfs 会从容器对应的 cgroup 中读取正确的资源限制。</p>
-<h2 id="lxcfs-的方案调研" style="position:relative;">lxcfs 的方案调研<a href="#lxcfs-%E7%9A%84%E6%96%B9%E6%A1%88%E8%B0%83%E7%A0%94" aria-label="lxcfs 的方案调研 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>目前通过搜索引擎可以找到一篇<a href="https://developer.aliyun.com/article/566208">文章</a>介绍了如何在 k8s 中通过 daemonset 安装 lxcfs 以及如何通过 k8s 的 <a href="https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#admission-webhooks">admission-webhook</a> 为 k8s 里的容器默认做这个隔离的绑定，介绍的很清楚，但有一些小问题：</p>
-<ol>
-<li>其使用的 lxcfs 有点老了（3.0.4），直接拿过来用会发现其实 <code>/cpu/online</code> 这个没有解决，会导致在 python 下 <code>os.cpu_count()</code> 依然是错误的，需要升级 lxcfs 才能解决这个<a href="https://github.com/lxc/lxcfs/issues/401">问题</a>。</li>
-<li>通过 hooks 的方式有点像是 meta programming 太随意的修改了 k8s 容器的流程，这可能在后期带来维护的问题，并且我们只有对用户的容器才有做隔离的需求，所以不如就是在容器启动的时候直接处理就好</li>
-</ol>
-<p>因此最终的方案如下：</p>
-<ol>
-<li>依然使用 daemonset 方式安装和启动 lxcfs，但是对其脚本做了升级改造</li>
-<li>在模板中增加绑定即可，不实用 hook 的方式</li>
-</ol>
-<h2 id="安装" style="position:relative;">安装<a href="#%E5%AE%89%E8%A3%85" aria-label="安装 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>对 <a href="https://github.com/denverdino/lxcfs-admission-webhook/tree/master/lxcfs-image">https://github.com/denverdino/lxcfs-admission-webhook/tree/master/lxcfs-image</a> 的两个文件做了修改：</p>
-<p><code>Dockerfile:</code></p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">FROM ubuntu:18.04
-RUN apt update -y
-RUN apt-get --purge remove lxcfs
-RUN apt install -y wget git libtool m4 autotools-dev automake pkg-config build-essential libfuse-dev libcurl4-openssl-dev libxml2-dev mime-support
-ENV LXCFS_VERSION 4.0.5
-
-RUN wget https://github.com/lxc/lxcfs/archive/lxcfs-$LXCFS_VERSION.tar.gz &amp;&amp; \
-    mkdir /lxcfs &amp;&amp; tar xzvf lxcfs-$LXCFS_VERSION.tar.gz -C /lxcfs --strip-components=1 &amp;&amp; \
-    cd /lxcfs  &amp;&amp; ./bootstrap.sh &amp;&amp; ./configure &amp;&amp; make
-
-COPY start.sh /
-CMD ["/start.sh"]</code></pre></div>
-<p>主要修改了以下几个方面：</p>
-<ol>
-<li>基础镜像用了 <code>ubuntu</code> 当然相应的依赖也做了对应的修改</li>
-<li>从 github 下载了 4.0.5 版本的 lxcfs 并按照新的编译流程生成执行文件和库，其中在 <code>make</code> 之后会在目录下生成 <code>src/lxcfs</code> <code>src/.libs/liblxcfs.so</code> <code>src/liblxcfs.la</code> 三个文件</li>
-<li>没做 build 阶段，因为产出的镜像并不是很大，就算了...要求更高的同学可以继续修改哦</li>
-</ol>
-<p><code>start.sh:</code></p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
-
-<span class="token comment"># Cleanup</span>
-nsenter -m/proc/1/ns/mnt fusermount -u /var/lib/lxcfs <span class="token operator"><span class="token file-descriptor important">2</span>></span> /dev/null <span class="token operator">||</span> <span class="token boolean">true</span>
-nsenter -m/proc/1/ns/mnt <span class="token punctuation">[</span> -L /etc/mtab <span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token punctuation">\</span>
-        <span class="token function">sed</span> -i <span class="token string">"/^lxcfs \/var\/lib\/lxcfs fuse.lxcfs/d"</span> /etc/mtab
-
-<span class="token comment"># Prepare</span>
-<span class="token function">mkdir</span> -p /usr/local/lib/lxcfs /var/lib/lxcfs
-
-<span class="token comment"># Update lxcfs</span>
-<span class="token function">cp</span> -f /lxcfs/src/lxcfs /usr/local/bin/lxcfs
-<span class="token function">cp</span> -f /lxcfs/src/.libs/liblxcfs.so /usr/local/lib/lxcfs/liblxcfs.so
-<span class="token function">cp</span> -f /lxcfs/src/liblxcfs.la /usr/local/lib/lxcfs/liblxcfs.la
-
-
-<span class="token comment"># Mount</span>
-<span class="token builtin class-name">exec</span> nsenter -m/proc/1/ns/mnt /usr/local/bin/lxcfs /var/lib/lxcfs/ --enable-cfs -l</code></pre></div>
-<p>主要修改如下：</p>
-<ol>
-<li><code>src/lxcfs</code> <code>src/.libs/liblxcfs.so</code> <code>src/liblxcfs.la</code> 这三个输出文件，按照编辑的目标文件做对应的修改</li>
-<li>启动的之后增加了两个参数 <code>--enable-cfs -l</code> 不然 <code>cpu/online</code> 依然不起作用</li>
-</ol>
-<p>Daemonset 就没做什么修改了，仅仅是更改了镜像而已。</p>
-<h2 id="绑定" style="position:relative;">绑定<a href="#%E7%BB%91%E5%AE%9A" aria-label="绑定 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>绑定这里提到了是在 openbayes 的构建流程中做了修改：</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">volumes:
-  - name: lxcfs-proc-cpuinfo
-    hostPath:
-      path: /var/lib/lxcfs/proc/cpuinfo
-      type: File
-  - name: system-cpu-online
-    hostPath:
-      path: /var/lib/lxcfs/sys/devices/system/cpu/online
-      type: File
-  - name: lxcfs-proc-diskstats
-    hostPath:
-      path: /var/lib/lxcfs/proc/diskstats
-      type: File
-  - name: lxcfs-proc-meminfo
-    hostPath:
-      path: /var/lib/lxcfs/proc/meminfo
-      type: File 
-  - name: lxcfs-proc-stat
-    hostPath:
-      path: /var/lib/lxcfs/proc/stat
-      type: File    
-  - name: lxcfs-proc-swaps
-    hostPath:
-      path: /var/lib/lxcfs/proc/swaps
-      type: File
-  - name: lxcfs-proc-uptime
-    hostPath:
-      path: /var/lib/lxcfs/proc/uptime
-      type: File
-  ...</code></pre></div>
-<h2 id="测试" style="position:relative;">测试<a href="#%E6%B5%8B%E8%AF%95" aria-label="测试 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>如下所示，在一个分配了 4 个 cpu 20g 内存的容器里以下命令已经可以显示实际分配的资源数目了：</p>
-<h3 id="1-top" style="position:relative;">1. top<a href="#1-top" aria-label="1 top permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 732px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/bf117148e9b63ba5a702af12da48fdd5/d0cc0/2020-09-21-14-44-44.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 64.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB1klEQVQ4y52S18oqQRCE9/0fQ34VFEQRvFNR8UpBEXNcc85Z0Tp8A7OccHcGmpkOU10dnPPppMXE1cB15bqu9vu9TqeTuVerlRbzhe73u16vl97vtw6Hg1qtlgaDgUajkfnD24ozn89Vrzc0mUxUr9fN3el0jJO7VqsZAG7rRyfh7XYzSX4/jgXa7Xbq9XqaTqdqt9vq9/seIODoxHa7XQ2HQ81mM+NfLpf6fD5eBQ6ZCAIQJ8GLxcK8AdputzoejwYQG2XyHo/HRv/7OARHIhEj4XBYwWBQPz8/isViCoVC8vv9SiQS5o3N5/OZmGg0qng8bvyBQMAT53K5qNFoKJPJqFqtqlwuq1KpKJlMKpvNKp/PK5VKGXupVFKxWFQ6nVYul1OhUDCxtIoqEYfGXq9XA8o0mTD9sCUxVVqAHZ0W0LtmsykG+k/JANI/0AG206PprA0t4aNdIwDtimDjMJTv92vEA2SasOCD3TV2DKaUhJ0ksMTHZuDnWDCPIQCUACBvPtMCWDNR1gg2gK3Xa2Mnnpjz+eyBGkDK3Gw25hNvSkSHMb2CHZ+xA4jPJmEvLTsPEDb0xg7DCjoJEDYBG0N7PB6GFYyfz+cf7AwgTuv4n2PBLMNfDM++tFZX4+IAAAAASUVORK5CYII='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="2020 09 21 14 44 44"
-        title="2020 09 21 14 44 44"
-        src="/static/bf117148e9b63ba5a702af12da48fdd5/d0cc0/2020-09-21-14-44-44.png"
-        srcset="/static/bf117148e9b63ba5a702af12da48fdd5/772e8/2020-09-21-14-44-44.png 200w,
-/static/bf117148e9b63ba5a702af12da48fdd5/e17e5/2020-09-21-14-44-44.png 400w,
-/static/bf117148e9b63ba5a702af12da48fdd5/d0cc0/2020-09-21-14-44-44.png 732w"
-        sizes="(max-width: 732px) 100vw, 732px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span></p>
-<h3 id="2-free" style="position:relative;">2. free<a href="#2-free" aria-label="2 free permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 621px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/9be510ceb4736d793df03cd64d5d895e/3075e/2020-09-21-14-45-18.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 16%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAjElEQVQI121OwQ6FIAzz/3/QaIgicEABQyAoB2JfuvNrsozRde3knEOKCSEEGGOwbRvO88RxHNj3HTFG6Vpr4ZdlkZm6Wiue58F933jfF9/3YZrnGd57EKUUrOsqRGtNRARNcs4YY+C6LtnjnFJC710MeJSYlFKShiQPMx07hXwzOctaK38sGv4DE/4AZ3ziNT2+1LAAAAAASUVORK5CYII='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="2020 09 21 14 45 18"
-        title="2020 09 21 14 45 18"
-        src="/static/9be510ceb4736d793df03cd64d5d895e/3075e/2020-09-21-14-45-18.png"
-        srcset="/static/9be510ceb4736d793df03cd64d5d895e/772e8/2020-09-21-14-45-18.png 200w,
-/static/9be510ceb4736d793df03cd64d5d895e/e17e5/2020-09-21-14-45-18.png 400w,
-/static/9be510ceb4736d793df03cd64d5d895e/3075e/2020-09-21-14-45-18.png 621w"
-        sizes="(max-width: 621px) 100vw, 621px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span></p>
-<h3 id="3-oscpu_count" style="position:relative;">3. os.cpu_count<a href="#3-oscpu_count" aria-label="3 oscpu_count permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 572px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/13883d15bf7aa0bcdf38151061cbb854/a805e/2020-09-21-14-45-37.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 27.500000000000004%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAzUlEQVQY062QUYvDIBCE/f+/rm+ltASvSVoNusYkNjFpnGMFSyH3eMLHDLvrOij29w4KBEkSNDjM84y4RqzrmokxZoovynPLshwQaU+QD4nT7YRbdcWPlOi6Dm3bomkaaK2hlEJd15+6tRYhBIzjeECklPAKL3g/wfkR1nl47zFNUx5gLZ6XsGflhH8htm2D1gqX6o6LfOJctXg8FYwxGSLKsHfO5XR93+cHhmE4kBPygCOCswZkTW6Uy5yW+7y01Dnl9/9+I7jBKf/r/AL69M3cB/XEqAAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="2020 09 21 14 45 37"
-        title="2020 09 21 14 45 37"
-        src="/static/13883d15bf7aa0bcdf38151061cbb854/a805e/2020-09-21-14-45-37.png"
-        srcset="/static/13883d15bf7aa0bcdf38151061cbb854/772e8/2020-09-21-14-45-37.png 200w,
-/static/13883d15bf7aa0bcdf38151061cbb854/e17e5/2020-09-21-14-45-37.png 400w,
-/static/13883d15bf7aa0bcdf38151061cbb854/a805e/2020-09-21-14-45-37.png 572w"
-        sizes="(max-width: 572px) 100vw, 572px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span></p></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/11">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/13">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">youtube-dl https://www.youtube.com/watch\?v\=_QUEXsHfsA0\&amp;t\=4s -f 137+140 --merge-output-format mp4 --write-sub --sub-lang zh-Hans --sub-format vtt --convert-subs srt</code></pre></div></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/11">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/13">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       
       if(true) {
