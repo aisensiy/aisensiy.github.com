@@ -21,7 +21,6 @@
     "gatsby": "^4.3.0",
     "gatsby-plugin-catch-links": "^4.3.0",
     "gatsby-plugin-google-gtag": "^4.3.0",
-    "gatsby-plugin-plausible": "^0.0.7",
     "gatsby-plugin-react-helmet": "^5.3.0",
     "gatsby-plugin-sharp": "^4.3.0",
     "gatsby-plugin-umami": "^0.1.3",
