@@ -153,8 +153,8 @@ module.exports = {
       resolve: `gatsby-plugin-umami`,
       options: {
         websiteId: '443212e9-fd0b-411e-a523-0d0ec604ee8a',
-        srcUrl: 'https://umami.aisensiy.me/umami.js',
-        includeInDevelopment: false,
+        srcUrl: 'https://get.aisensiy.me/myscript.js',
+        includeInDevelopment: true,
         autoTrack: true,
         respectDoNotTrack: true
       },
