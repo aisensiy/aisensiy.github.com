@@ -52,7 +52,83 @@
         }
       }
     })
-  </script><link as="script" rel="preload" href="/webpack-runtime-ff02cfd775d7d5fd5e84.js"/><link as="script" rel="preload" href="/framework-45ca7a0c983b0b7a000c.js"/><link as="script" rel="preload" href="/app-047a4a65c3f9a3c0ed82.js"/><link as="script" rel="preload" href="/d1724f9828659101216d9c2ff846a60d90e64274-aac16f39fe217ccc37e4.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-b81aa84e3c777d2f77e7.js"/><link as="fetch" rel="preload" href="/page-data/page/11/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/><script async="" defer="" data-website-id="443212e9-fd0b-411e-a523-0d0ec604ee8a" src="https://get.aisensiy.me/umami.js"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/rest-practice">REST 的一些实践心得</a></h1><h2>2021 February-16</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p>这篇文章是强行插播过来的，本来是在做 GraphQL 的调研，但是发现其实 REST 这边的很多进展根本就没有说啊，那后面比较的时候很多东西就有点说不清楚了呢。所以就介绍下目前 REST API 开发过程中引入的一些不错的实践，重点是如何 OpenAPI 以及其工具链完善开发流程，降低沟通成本。</p>
+  </script><link as="script" rel="preload" href="/webpack-runtime-ff02cfd775d7d5fd5e84.js"/><link as="script" rel="preload" href="/framework-45ca7a0c983b0b7a000c.js"/><link as="script" rel="preload" href="/app-047a4a65c3f9a3c0ed82.js"/><link as="script" rel="preload" href="/d1724f9828659101216d9c2ff846a60d90e64274-aac16f39fe217ccc37e4.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-b81aa84e3c777d2f77e7.js"/><link as="fetch" rel="preload" href="/page-data/page/11/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/><script async="" defer="" data-website-id="443212e9-fd0b-411e-a523-0d0ec604ee8a" src="https://get.aisensiy.me/umami.js"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/rest-vs-graphql">REST vs GraphQL</a></h1><h2>2021 February-20</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p>考虑到目前 REST API 层和前端对接起来不是那么顺滑，于是有去找解决方案了，找来找去感觉也就是切 GraphQL 了，这次又来看 GraphQL 感觉它比上次看要香了。好好总觉了一些东西出来。</p>
+<h2 id="为什么之前对-graphql-不感兴趣" style="position:relative;">为什么之前对 GraphQL 不感兴趣<a href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B9%8B%E5%89%8D%E5%AF%B9-graphql-%E4%B8%8D%E6%84%9F%E5%85%B4%E8%B6%A3" aria-label="为什么之前对 graphql 不感兴趣 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>之前有注意到 GraphQL，毕竟也都好几年了呢，但当时一方面是没有对它有比较充分的理解，没有真切的感受到它的好处，另一方面是其存在诸多对于 REST 的一些误解。</p>
+<h3 id="认为-rest-的资源是独立的" style="position:relative;">认为 REST 的资源是独立的<a href="#%E8%AE%A4%E4%B8%BA-rest-%E7%9A%84%E8%B5%84%E6%BA%90%E6%98%AF%E7%8B%AC%E7%AB%8B%E7%9A%84" aria-label="认为 rest 的资源是独立的 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p><img src="https://images-1300693298.cos.ap-beijing.myqcloud.com/20210216231615.png" alt=""></p>
+<p>这是我从一个介绍 GraphQL 的材料里找到的例子，例子中提到如果用户想要获取一个 book 列表，每个 book 中还要包含 author 的信息，就很容易出现 N+1 个请求的问题，效率非常低下。如果这也是为什么要有 GraphQL 的原因之一的话，那其实没必要有 GraphQL...</p>
+<p>REST 也没有这么死板吧。实际上在返回的每一个 book 中包含 author 信息是非常自然的事情：</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">GET /books
+
+{
+  "data": [
+    {
+      "id": "1",
+      "title": "how to graphql",
+      "description": "bla",
+      "author": {
+        "id": "x",
+        "name": "abc",
+        "avatar": "http://avatar.com"
+      }
+    }
+    ...
+  ]
+}</code></pre></div>
+<p>自我一篇很古老的<a href="/some-tips-for-ddd">文章</a>里就提到了，<code>GET</code> 请求获取的是「读模型」，应该按照调用方的需求合理的展示相关的数据，以方便调用方的使用。如果像这里说的方法就是大家使用 REST 的方式的话，我觉得前端早就疯了。实际上，这种灵活的聚合展示早就是家常便饭了呢，当然，从标准化的角度来说，这却是也是一个巨大的问题。</p>
+<h3 id="过度担忧-overfetching" style="position:relative;">过度担忧 overfetching<a href="#%E8%BF%87%E5%BA%A6%E6%8B%85%E5%BF%A7-overfetching" aria-label="过度担忧 overfetching permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p><a href="https://martinfowler.com/bliki/TolerantReader.html">TolerantReader</a> 有提到，如果你对于一个请求只关心其一部分信息，那就只处理那部分就好，至于其他的字段，请自行忽略。对于这些额外的字段所带来的额外的数据其实是完全不需要担心的：</p>
+<ol>
+<li>REST 请求所获取的资源通常都是区分 data 和 data-item 的。
+<ul>
+<li>data 是一个全量的信息，比如上午提到的一个完整的 book 信息，包含其详细的描述、目录、甚至热门评论，其所拥有的具体字段完全是和调用方探讨确认的，通常用于详情页面的展示</li>
+<li>data-item 通常是一个资源的 summary 通常用于列表的展示</li>
+</ul>
+这两种类型的区分本来就考虑了 overfetching 的问题：有些字段字段获取成本比较高，在列表里获取很容易产生 N+1 的问题，因此就只在 data 中出现，而不会出现在 data-item 中。在有了这个原则之后，额外那些字段其实不会对性能有什么非常大的影响。</li>
+<li>每次返回的结构一致更容易做缓存，一次获取长期拥有，其实没那么大成本</li>
+</ol>
+<h2 id="目前-rest-的一些问题" style="position:relative;">目前 REST 的一些问题<a href="#%E7%9B%AE%E5%89%8D-rest-%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98" aria-label="目前 rest 的一些问题 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>不过 REST 也不是没有问题，在 <a href="/rest-practice">REST 的一些实践心得</a> 也做了一些吐槽。总结来说就是这么几点：</p>
+<ol>
+<li>也有类似于 <a href="https://jsonapi.org/">jsonapi</a> 的东西出现，但不算公认的标准，也没有形成什么很好的支持</li>
+<li>没有大厂支持，依靠社区进展比较缓慢，OpenAPI 的众多工具都有奇奇怪怪的小问题</li>
+<li>对 websocket 没有很好的支持</li>
+<li>没有考虑 HATEOAS 的弊端，这里我直接意译 <a href="https://hasura.io/blog/rest-view-of-graphql/">A REST View of GraphQL</a> 的观点，讲的太好了：</li>
+</ol>
+<blockquote>
+<p>HATEOAS 在用户是最终用户的时候比较有意义，可以支持用户像是在浏览器里面做探索，每个页面有链接指引用户。即使页面发生了变化，只要链接都在就能够支持用户。</p>
+</blockquote>
+<blockquote>
+<p>可惜对于 API Client 来说，只需要一次性去调用具体某一个接口的，如果每次都从根源去探索 API 效率是非常低下的。这种情况下类似于 OpenAPI 所生成的 SDK 是更方便的。</p>
+</blockquote>
+<blockquote>
+<p>从目前的交互模式来看，前端就是这么一个 API Client 而已，HATEOAS 对其并没有什么意义。任何 API schema 的修改都可能导致 API Client 的崩溃。</p>
+</blockquote>
+<h2 id="采用-graphql-的一些好处" style="position:relative;">采用 GraphQL 的一些好处<a href="#%E9%87%87%E7%94%A8-graphql-%E7%9A%84%E4%B8%80%E4%BA%9B%E5%A5%BD%E5%A4%84" aria-label="采用 graphql 的一些好处 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ol>
+<li>Graph 的 metal model 非常适合做「读」模型的标准化</li>
+<li>强大的生态，首先是 facebook 提出的，后面相当多的公司都有跟进（Github、Airbnb、Netflix）</li>
+<li>工具链比较健全：
+<ol>
+<li>GraphiQL, GraphQL Playground 这样类似于 postman 的测试调用工具</li>
+<li>Apollo 这样做前后端继承框架开发的公司，在前后端都做的不错</li>
+<li>对微服务的支持，<a href="https://www.apollographql.com/docs/federation/federation-spec/">Apollo Federation</a></li>
+<li><a href="https://github.com/pipedrive/graphql-schema-registry">schema-registry</a> 甚至有这种 schema 变更追溯的东西，REST 这边想都不敢想</li>
+</ol>
+</li>
+<li>有 <code>subscription</code> 的概念，将长链接的情况也考虑在内了</li>
+</ol>
+<p>整体来说，我觉得 GraphQL 是一个工具更健全，规范更完善，生命力更持久的体系。却是克服了 rest 中的一些问题，后面会开始尝试用 GraphQL 对原有 API 做一层封装看看效果。</p>
+<h2 id="参考资料" style="position:relative;">参考资料<a href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99" aria-label="参考资料 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ol>
+<li><a href="https://hasura.io/blog/rest-view-of-graphql/">A REST View of GraphQL</a></li>
+<li><a href="https://www.youtube.com/watch?v=JsvElHDuqoA">Shipping 'Belonging' with GraphQL &#x26; Apollo at Airbnb (Adam Neary)</a></li>
+<li><a href="https://www.youtube.com/watch?v=zWhVAN4Tg6M">GraphQL: The Mental Model — Dhaivat Pandya</a></li>
+<li><a href="https://apollographql.com/">Apollo GraphQL</a></li>
+<li><a href="https://www.apollographql.com/docs/federation/federation-spec/">Apollo Federation</a></li>
+<li><a href="https://github.com/pipedrive/graphql-schema-registry">schema-registry</a></li>
+</ol></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/rest-practice">REST 的一些实践心得</a></h1><h2>2021 February-16</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p>这篇文章是强行插播过来的，本来是在做 GraphQL 的调研，但是发现其实 REST 这边的很多进展根本就没有说啊，那后面比较的时候很多东西就有点说不清楚了呢。所以就介绍下目前 REST API 开发过程中引入的一些不错的实践，重点是如何 OpenAPI 以及其工具链完善开发流程，降低沟通成本。</p>
 <h2 id="tldr" style="position:relative;">TL;DR<a href="#tldr" aria-label="tldr permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <p>就是标题了呢，绝大部分是围绕 openapi 以及其工具链介绍具体解决了什么问题。</p>
 <h2 id="cqrs-读写分离读数据结构要标准写数据结构要简单" style="position:relative;">CQRS 读写分离，读数据结构要标准，写数据结构要简单<a href="#cqrs-%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB%E8%AF%BB%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%A6%81%E6%A0%87%E5%87%86%E5%86%99%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%A6%81%E7%AE%80%E5%8D%95" aria-label="cqrs 读写分离读数据结构要标准写数据结构要简单 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
@@ -679,51 +755,7 @@ validation<span class="token punctuation">.</span>confirm<span class="token oper
       />
   </a>
     </span></p>
-<p>这部分介绍就到这里了，后文会继续介绍如何建立自定义 exception handler 体系以捕捉各种层级的报错并统一返回格式。</p></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/pytorch-tensors">pytorch tensors</a></h1><h2>2021 January-18</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p>最近在都 Deep Learning with Pytorch 这本书，目前为止感觉还是不错。尤其是它里面的手绘风插图，真的是印象深刻，好感顿生。</p>
-<p><img src="https://images-1300693298.cos.ap-beijing.myqcloud.com/%7B7AD75AC9-FD58-48DE-977A-7AD6503FED3A%7D.png" alt=""></p>
-<p>第三章介绍了 tensor 的数据结构，感觉讲的挺好的，做一个笔记，加深下印象。</p>
-<h2 id="本质" style="position:relative;">本质<a href="#%E6%9C%AC%E8%B4%A8" aria-label="本质 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>首先，tensor 感觉就和 numpy array 非常非常像，简单的讲就是多维矩阵。但是和 python 的 list 相比，tensor / numpy array 是被分配的连续内存空间。</p>
-<p><img src="https://images-1300693298.cos.ap-beijing.myqcloud.com/%7B8F87E9BF-4E5C-4128-9066-5610D2CB4326%7D.png" alt=""></p>
-<h2 id="数据类型" style="position:relative;">数据类型<a href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" aria-label="数据类型 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>通过 <code>dtype</code> 参数可以指定 tensor 的数据类型。其名字和 numpy 里面的类型几乎一致：</p>
-<ul>
-<li>torch.float32 / torch.float</li>
-<li>torch.float64 / torch.double</li>
-<li>torch.float16 / torch.half</li>
-<li>torch.int8</li>
-<li>torch.unint8</li>
-<li>torch.int16 / torch.short</li>
-<li>torch.int32 / torch.int</li>
-<li>torch.int64 / torch.long</li>
-<li>torch.bool</li>
-</ul>
-<p>默认都是用 float 类型，double 也不会增加什么好处。然后 tensor 可以作为其他 tensor 的索引，但是必须是 long 类型。<code>torch.tensor([2, 2])</code> 会给类型为 long 。需要注意的是 numpy 默认的浮点类型是 float64，而 tensor 默认的是 float32：</p>
-<p><img src="https://images-1300693298.cos.ap-beijing.myqcloud.com/%7B495D4F3D-FC9C-4F62-A9BA-25413B7B6A02%7D.png" alt=""></p>
-<h2 id="storage" style="position:relative;">Storage<a href="#storage" aria-label="storage permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>每一个 tensor 的真是数据是由 <code>torch.Storage</code> 来维护的，它本质上就是一段连续的内存空间而已。Tensor 仅仅是为 storage 提供了 offset 和 stride 之后的视图而已。</p>
-<p><img src="https://images-1300693298.cos.ap-beijing.myqcloud.com/%7B4F5DC8FC-E908-408E-88C3-6FC09B95AF5E%7D.png" alt=""></p>
-<p>对于不同的 tensor 虽然它的 shape 不一样，但也可能指向了同一个的 storage。通过 tensor.storage() 可以直接访问它的内容：</p>
-<p><img src="https://images-1300693298.cos.ap-beijing.myqcloud.com/%7BFD54249D-DCFA-4437-905D-13F548279E5F%7D.png" alt=""></p>
-<p>不论 tensor 本身维度如何，其下的 storage 永远是一个一维数组。当然，修改 storage 的数据后，其 tensor 的数据也一定会发生变化。</p>
-<h2 id="size-offset-stride" style="position:relative;">size offset stride<a href="#size-offset-stride" aria-label="size offset stride permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<ul>
-<li>offset 是 tensor 在 storage 的位置</li>
-<li>size 是当前 tensor 的维度</li>
-<li>stride 是这个 tensor 各个维度 +1 所需要跨越的 storage 索引个数</li>
-</ul>
-<p><img src="https://images-1300693298.cos.ap-beijing.myqcloud.com/%7B919B7731-CC39-45B5-897A-3A46180412C4%7D.png" alt=""></p>
-<p>那么当 tensor 本身发生了 transpose 之后，其实就是 size stride 发生了变化，其 storage 并没有变化的。</p>
-<h2 id="device-属性" style="position:relative;">device 属性<a href="#device-%E5%B1%9E%E6%80%A7" aria-label="device 属性 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>tensor 创建时可以指定其属于什么设备：</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">points_gpu = torch.tensor([[4.0, 1.0], [5.0, 3.0], [2.0, 1.0]], device='cuda')</code></pre></div>
-<p>默认是 cpu。</p>
-<p>当然也可以把 cpu 的 tensor 拷贝到 gpu：</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">points_gpu = points.to(device='cuda')</code></pre></div>
-<h2 id="和-numpy-相互转换" style="position:relative;">和 numpy 相互转换<a href="#%E5%92%8C-numpy-%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2" aria-label="和 numpy 相互转换 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>只要都在主内存里，numpy array 和 tensor 之间的转换是非常高效的。那么这个好处就是可以享受 numpy 生态的各种类库。</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">points = torch.from_numpy(points_np)
-points_np = points.numpy()</code></pre></div></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/10">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/12">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
+<p>这部分介绍就到这里了，后文会继续介绍如何建立自定义 exception handler 体系以捕捉各种层级的报错并统一返回格式。</p></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/10">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/12">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       
       if(true) {

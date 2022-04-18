@@ -52,7 +52,282 @@
         }
       }
     })
-  </script><link as="script" rel="preload" href="/webpack-runtime-ff02cfd775d7d5fd5e84.js"/><link as="script" rel="preload" href="/framework-45ca7a0c983b0b7a000c.js"/><link as="script" rel="preload" href="/app-047a4a65c3f9a3c0ed82.js"/><link as="script" rel="preload" href="/d1724f9828659101216d9c2ff846a60d90e64274-aac16f39fe217ccc37e4.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-b81aa84e3c777d2f77e7.js"/><link as="fetch" rel="preload" href="/page-data/page/1/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/><script async="" defer="" data-website-id="443212e9-fd0b-411e-a523-0d0ec604ee8a" src="https://get.aisensiy.me/umami.js"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/jpa-subclass-association">JPA 处理子类关联</a></h1><h2>2022 April-03</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p>最近陷入了 JPA 的泥坑，在遇到今天提及的这个问题上折腾了很久，一度怀疑人生打算重新用 MyBatis 算了。不过幸好昨天有了一些还能接受的解决方案，这里做一个记录。</p>
+  </script><link as="script" rel="preload" href="/webpack-runtime-ff02cfd775d7d5fd5e84.js"/><link as="script" rel="preload" href="/framework-45ca7a0c983b0b7a000c.js"/><link as="script" rel="preload" href="/app-047a4a65c3f9a3c0ed82.js"/><link as="script" rel="preload" href="/d1724f9828659101216d9c2ff846a60d90e64274-aac16f39fe217ccc37e4.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-b81aa84e3c777d2f77e7.js"/><link as="fetch" rel="preload" href="/page-data/page/1/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/><script async="" defer="" data-website-id="443212e9-fd0b-411e-a523-0d0ec604ee8a" src="https://get.aisensiy.me/umami.js"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/crawl-weibo-with-automa">使用 Automa 抓取少量微博数据</a></h1><h2>2022 April-14</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p>最近需要抓一点点微博的数据，于是又开始做爬虫的老行当了。不过这次抓的数据相对比较少，本来是觉得会很快，可惜还是因为种种原因多折腾了两个小时。这里对这部分工作做一个记录。</p>
+<p>我个人一直觉得爬虫是个很重要的东西，尤其是目前这种机器学习的场景，好的数据、新的数据、源源不断的新的数据是好的模型的前提。甚至不用做什么模型，如果能很快速的获取和统计这些数据获取的一些规则都很有帮助。所以，可以快速的抓数据，快速的抓各种个样的数据是一个很重要的能力。这里就不展开讲了，还是控制篇幅，以这次任务为主。</p>
+<h2 id="任务" style="position:relative;">任务<a href="#%E4%BB%BB%E5%8A%A1" aria-label="任务 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>从自己的微博首页或者随便一个主题下面抓点纯文本的微博数据，用于测试命名实体识别模型。</p>
+<h2 id="以前的方案" style="position:relative;">以前的方案<a href="#%E4%BB%A5%E5%89%8D%E7%9A%84%E6%96%B9%E6%A1%88" aria-label="以前的方案 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>很久以前（大约还在读研究生的时候）那个时候的微博有一个移动版本，这个版本里面各种静态 html 非常好爬，所以难度基本就是在于发现 <code>m.weibo.com</code> 的存在就好了。</p>
+<p>不过很遗憾，现在不论是 <code>weibo.com</code> 还是 <code>m.weibo.com</code> 都不再是纯 html 了，都会动态获取数据了。</p>
+<h3 id="headless-chrome" style="position:relative;">Headless Chrome<a href="#headless-chrome" aria-label="headless chrome permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>对于动态获取数据的页面来说，可以采用 headless browwser 配合 puppeteer 来模拟页面的操作，并获取数据。不过我觉得这样做很明显有这么几个缺点：</p>
+<ol>
+<li>puppeteer 需要用 nodejs 编写，本身难度会比较大</li>
+<li>这种 headless 的脚本相对来说都挺脆弱的，页面展示稍微慢一点，或者元素稍微做了点变化，整个脚本就凉凉了，这个问题不是在有 puppeteer 之后采用的，在以前用 selenium 或者 casperjs 的年代也同样发生</li>
+</ol>
+<p>针对这个问题，我觉得有两个思路可以大大缓解：</p>
+<ol>
+<li>建立一个组件库，包含在浏览器实现各种行为的最佳实践，尽量规避自己写代码所引入的缺陷</li>
+<li>有一些类似于工作流的可视化界面，可以快速的建立一套爬取流程，虽然页面经常会发生变化，但由于我每次建立爬虫的成本大大降低了，所以我就不会那么在乎了</li>
+</ol>
+<p>而 webscraper 则恰恰提供了以上两个东西。</p>
+<h2 id="webscraper" style="position:relative;">webscraper<a href="#webscraper" aria-label="webscraper permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p><a href="https://webscraper.io/">webscraper</a> 是一个 chrome 扩展，其实它的内部依然是类似与 puppeteer 的东西，不过它做成了一个扩展，并提供了一些非常强大的封装，可以让你通过点点点就能实现一个数据爬虫的流程。</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/4d9649aee2db25721942a1ede588d6f1/c3611/webscraper-screenshot.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 27%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAvklEQVQY052NXUvDQBBF8/9/mT6UvggFW1soaqOZzbb7vclujmQFEcEHvXCYe2HmTvcuikEEUYpR6+aVGjHWYsyKwTr3hfO+oa8G5xxTjuTgGLTh4Sx0OXooE1prQgjEEPDeE2NknmdKKS1b+1m+7okIU05chiunXnMZHbvnkfvtE91m33Psb4RWkkgptZlzptbKsizNt2cxNtbypRb2r5q7xzc2R2F7UpjDgW73cuMsnt+0Fv5F3ffD/1B/5A/IEIOA4eAsRAAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="webscraper screenshot"
+        title="webscraper screenshot"
+        src="/static/4d9649aee2db25721942a1ede588d6f1/5a190/webscraper-screenshot.png"
+        srcset="/static/4d9649aee2db25721942a1ede588d6f1/772e8/webscraper-screenshot.png 200w,
+/static/4d9649aee2db25721942a1ede588d6f1/e17e5/webscraper-screenshot.png 400w,
+/static/4d9649aee2db25721942a1ede588d6f1/5a190/webscraper-screenshot.png 800w,
+/static/4d9649aee2db25721942a1ede588d6f1/c1b63/webscraper-screenshot.png 1200w,
+/static/4d9649aee2db25721942a1ede588d6f1/29007/webscraper-screenshot.png 1600w,
+/static/4d9649aee2db25721942a1ede588d6f1/c3611/webscraper-screenshot.png 2992w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<p>封装程度高到如下的样子：</p>
+<h3 id="1-提供丰富的组件对应不同的抓取模式" style="position:relative;">1. 提供丰富的组件，对应不同的抓取模式<a href="#1-%E6%8F%90%E4%BE%9B%E4%B8%B0%E5%AF%8C%E7%9A%84%E7%BB%84%E4%BB%B6%E5%AF%B9%E5%BA%94%E4%B8%8D%E5%90%8C%E7%9A%84%E6%8A%93%E5%8F%96%E6%A8%A1%E5%BC%8F" aria-label="1 提供丰富的组件对应不同的抓取模式 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/664504027740f16a14fc23fa13769482/55681/webscraper-element-type.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 58.50000000000001%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAABYlAAAWJQFJUiTwAAABkUlEQVQoz53OS2/aQBSGYf//39BV1dAuu+wmLcpNXdSk0EtCfMOXsRkbBoztYsDmrcagNFU3UEuPfM6ZmU/HKMuSaSwYDkwif8JSzVFZhspS5lp6KslikWPoQM+2sB8fyJKYNBb/R0RImWFUVdUF/hgNScKgO9TB59KBVVliFEWBa1n8HA0JPBcpohebxifR9/W7VZ5jpNkMazxmdD/oNhW+T3pmoCaFIEmmGHmeE3oO5uc7JtaYeRKxkPGJBGoqjv8InWVUxZLLe8mrDx69fsTrvqR3o3hzNePiek7v+lgf+4urAz17e6N4d7c8uF0QpOVhw1SVTGKFnyieJhIvWfLkp7hC4cVLrCDDCmY4kcIOZx09C+SKRK2J578663qLIdOUZrelKgvaZst+V9Puava6bja0zeZY/6vdbWh29bNNXWNkWUZV5Hz/ahL6Hq6IcXwf27axbefIftHbf/fOH47jYACMxYLLbwLzUVAOvrAOA1qgbRratj1LFzhwZ7w3BZ9Mj1X/I2vL0mP2+z3nfr8BD6d7qysS9AoAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="webscraper element type"
+        title="webscraper element type"
+        src="/static/664504027740f16a14fc23fa13769482/5a190/webscraper-element-type.png"
+        srcset="/static/664504027740f16a14fc23fa13769482/772e8/webscraper-element-type.png 200w,
+/static/664504027740f16a14fc23fa13769482/e17e5/webscraper-element-type.png 400w,
+/static/664504027740f16a14fc23fa13769482/5a190/webscraper-element-type.png 800w,
+/static/664504027740f16a14fc23fa13769482/c1b63/webscraper-element-type.png 1200w,
+/static/664504027740f16a14fc23fa13769482/29007/webscraper-element-type.png 1600w,
+/static/664504027740f16a14fc23fa13769482/55681/webscraper-element-type.png 2062w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<p>包括：</p>
+<ol>
+<li>滚动到底部的瀑布加载</li>
+<li>各种类型的分页</li>
+<li>表格</li>
+</ol>
+<h3 id="2-内置-element-selector-可以在可视化界面完成页面元素的筛选" style="position:relative;">2. 内置 element selector 可以在可视化界面完成页面元素的筛选<a href="#2-%E5%86%85%E7%BD%AE-element-selector-%E5%8F%AF%E4%BB%A5%E5%9C%A8%E5%8F%AF%E8%A7%86%E5%8C%96%E7%95%8C%E9%9D%A2%E5%AE%8C%E6%88%90%E9%A1%B5%E9%9D%A2%E5%85%83%E7%B4%A0%E7%9A%84%E7%AD%9B%E9%80%89" aria-label="2 内置 element selector 可以在可视化界面完成页面元素的筛选 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/89ff37cb4b5f872602736ec3f3ff5c6b/36909/element-selector.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 59.00000000000001%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAABYlAAAWJQFJUiTwAAADI0lEQVQozyWR3U9bZRzHD4wqXeLrhYZkcSqwMB3TXRiNV97ohcmWzOx+czo3IG7EyIKZ2YQGZ4OzQOx7Syl9AQuUQimsr+fQnnPanpaWuFLAxMR4YUyM/gsf09OLb37P8/0mv3ye7yM8Di8Sj8dR1SIVTaNaq1FObFEKBymvrlD22ajMmhF9PuSgn6zXjRIOIc3NIgcW0SLLSAs+cl4PuUgEQc4XkCSJRGKbvVqdyt4exa1NtOUwkWkz/gfjzI5cxTZ2m5k7Q5iufcKjkatYx+9g+uwKtrujuL79Bs+9cXKRXxBkRaGoyKhikko+SbW1ML5JORxE9HnJeN0kHVbSLgdpt4Md2wwpxxxpl5WkfbaduZ3kPE4K61GEQqFAqVgkvyuS2tnSCeXYOgXfPErATym0qNOWl0KUwyF9akvte8tvVaMr4KcQXUOQZRlVVRFFiUwmq3eoxDeRF9ykrD8hzjuR/K3+FlFCQeSWwkGUcOsc0D1lKYTSyjfW24TFYlGXXChQrdUpbsUphwNk3E52HDZSLgcpp538ghfJbUfx2BE9DtJOm/7UtMuO6HYgx6JtQkVRSKVStJZXVRE1tkp1JYJ17Gsmr1/DPHQL880bzHw5jO/eXTxjo1hujzA7fAPL8Bc8unmduVufk11eahHmKZVK5HJZdiWJvb2qjr4fXeXi+XP0CAK9Jzp5vbODUwYjH54d4IP+ft58uYeBk0ZOCwKnOwTOPGUg6nIi5GWVklZFLWkUFJVqvY68EaO+tsKl84OcEgQGup+mt7ODCy/1MPrxR3z6/ru889qrDD73DH1dJ+gzdHHO2M2a04FQ//1vfv3jHxp//stvf/1H4+gYbTtBc2uTyxfe4hVB4KyxmzOGLt54/kW+unKZoYuXeK+vl7dfeFb3+w1dDJ40sjnvRRClXbI5kUw2RzKVIp3Nkt7eIZdIYLdYeHj/AdMmE9OTk3z/3STun614bDZ+fGhm6v4EP0yYsExNYTFNEFvbQEgmk4iiSKVS0aVpGpVqVf/txkGT5tFRW4eteUjj4IAnjQYHzSZPmoccHB5xeHysZ7X9ff4HYt+e7MYIsPwAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="element selector"
+        title="element selector"
+        src="/static/89ff37cb4b5f872602736ec3f3ff5c6b/5a190/element-selector.png"
+        srcset="/static/89ff37cb4b5f872602736ec3f3ff5c6b/772e8/element-selector.png 200w,
+/static/89ff37cb4b5f872602736ec3f3ff5c6b/e17e5/element-selector.png 400w,
+/static/89ff37cb4b5f872602736ec3f3ff5c6b/5a190/element-selector.png 800w,
+/static/89ff37cb4b5f872602736ec3f3ff5c6b/c1b63/element-selector.png 1200w,
+/static/89ff37cb4b5f872602736ec3f3ff5c6b/29007/element-selector.png 1600w,
+/static/89ff37cb4b5f872602736ec3f3ff5c6b/36909/element-selector.png 2772w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<p>通过点点点，就能简历一个 css selector 来定位所要抓取的 html 元素路径。</p>
+<h3 id="3-建立层级数据结构" style="position:relative;">3. 建立层级数据结构<a href="#3-%E5%BB%BA%E7%AB%8B%E5%B1%82%E7%BA%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84" aria-label="3 建立层级数据结构 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>在步骤 2 定位了想要抓取的具体数据后，可以在该数据上建立层级结构，标记具体想要抓取的数据结构，非常方便数据的结构化。</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/f2ca49df475a10844e372ff6e61f8ff7/45662/webscraper-structure.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 17%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAIAAAAcOLh5AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAtUlEQVQI12XLvw7BQBwA4L6aickTSLyFzSsYDSJpQiIsYrLYnCaXSiVV9HfaOkUYyLUueukf58Ts2z9NAhRBMND12agf3Wy6Mh7OhiB0NE1GSIAxxRgQgvl8v1hcLOvqOHeMP66rlNKE54vwVCtXGtVSv1mftlvJ+cLdHQcifI/Z6/hAnwApYyKK0jjKOC8YU4z9shSJyrJhpzubjIxxz0KosG1Jab7d5AB5GKbm8v1KlJTqzxe0T5jEECMYUQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="webscraper structure"
+        title="webscraper structure"
+        src="/static/f2ca49df475a10844e372ff6e61f8ff7/5a190/webscraper-structure.png"
+        srcset="/static/f2ca49df475a10844e372ff6e61f8ff7/772e8/webscraper-structure.png 200w,
+/static/f2ca49df475a10844e372ff6e61f8ff7/e17e5/webscraper-structure.png 400w,
+/static/f2ca49df475a10844e372ff6e61f8ff7/5a190/webscraper-structure.png 800w,
+/static/f2ca49df475a10844e372ff6e61f8ff7/c1b63/webscraper-structure.png 1200w,
+/static/f2ca49df475a10844e372ff6e61f8ff7/45662/webscraper-structure.png 1410w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<p>有关这个东西有一个 <a href="https://www.cnblogs.com/web-scraper/">卤蛋工作室</a> 很详细的对它做了系列教程，感兴趣的话推荐一看，我这里就简单说说。不过很遗憾，这个东西在如今的微博也不太能用了。虽然现在的微博很符合它所提供的「滚动到底部」的抓取模式，但目前的微博出于性能的考虑，对自己的这个微博列表做了元素重用，导致不论怎么滚动，最多就只有这么多个元素了。那么套用 webscraper 的「滚动到底部」就只能获取这么多个微博而已了。</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/f1de1475dcdda46d6c56cffd55fd3180/7f2ab/dynamic-content-refresh.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 66%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABYlAAAWJQFJUiTwAAACl0lEQVQ4y22Ty44cNRSG60lYwgMhseIBoijXGSZ7UFiw4iki1iwgu4AQQ4gEMz0X+jp9rXvXrW2X7arq7vpQV4uJIPzSL8s+9ucjn2NnNr0jTRMOavd79i0U7hiZhhhbYa2hrmuklNC25HnezQ9n2nZ/PNe293bYWVABFHNajhrd9Lm4vSMtNni+jx8EJGmKkBKpFNoYSmNRZUllLbvd7t6OtZY4ivBct4Ntt1v+UVtbGq26cWtKdpWhKSV7U9KIgkoU/FcdMEkS4ji+Bx4yPdx88+6c3vnP9N7+Su+3X7h6d07/9or+7TWD6z+YDfsMRxMuLv6k1+txeXmJ0zQ1WZYhhOiATdN043Q6xXGcD/zZo085e/mQp19+zstvT/n4k4/+vacQEqEUGykpte7eqKprVq7L2YsXPHr8mGfPn/HkyVO+ODvlh9ff8fvb73n90yt+fPOKr7/5igcPHvL85IST01McVVoyb00ex8SxIggVYSAwpub/tNu22GrPtoH97sO4c2iBIinIk5BNJkkzTZZp8lwTRYIwFKTrnGRdEMeSPBVkiUQKSVVZDjUw2qC17uzUddWB1ncLgsmU4TBnPM6YTI4eDFKS+ZjpwKM/yBiNMm6u11xdRbiLlHCZIQqFzEQHdw5p1nZLGWeIKMIPLGFoOgeBwfcNeh0QeZsuFkWG+aJkPJakkaaINU21Y2uOxeyApqwQbki2cpnPS5ZLde/5TCH8Je40ZTYvWa0Uw8GG278KEneDCjbv+7b7KYA1DSpck3s+q5XG80pct8T1DoASGbr4i4zF8hibTASDwYa1ryhC1WXYmOYIrHctRWZYzyKSIGax0rjeex/mRRjirQoW7nFtOleMJpIg0ISBZlNYRKqx9Z6/AXawq3FHW9qGAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="dynamic content refresh"
+        title="dynamic content refresh"
+        src="/static/f1de1475dcdda46d6c56cffd55fd3180/5a190/dynamic-content-refresh.png"
+        srcset="/static/f1de1475dcdda46d6c56cffd55fd3180/772e8/dynamic-content-refresh.png 200w,
+/static/f1de1475dcdda46d6c56cffd55fd3180/e17e5/dynamic-content-refresh.png 400w,
+/static/f1de1475dcdda46d6c56cffd55fd3180/5a190/dynamic-content-refresh.png 800w,
+/static/f1de1475dcdda46d6c56cffd55fd3180/c1b63/dynamic-content-refresh.png 1200w,
+/static/f1de1475dcdda46d6c56cffd55fd3180/29007/dynamic-content-refresh.png 1600w,
+/static/f1de1475dcdda46d6c56cffd55fd3180/7f2ab/dynamic-content-refresh.png 2236w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<h2 id="automa" style="position:relative;">Automa<a href="#automa" aria-label="automa permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>Automa 也是一个 chrome 的扩展，相对于 webscraper 只用来做爬虫，automa 可以用来做各种流程自动化的东西，比 webscraper 灵活不少。除此之外，很多思路和 webscraper 一脉相承。简单看了看教程我就做出来如下一个流程：</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/7539ef465eb1bc02d46ac6cfd52d617b/4b7ac/weibo-scrape-in-automa.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 40.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAABYlAAAWJQFJUiTwAAAA/ElEQVQoz52SXY6DMAyEuf9dutfpPrNCggTIr5OQIGZlq0Uq6vZhkUYmIf48sen6vodzDq01HMeBbdvgvUdKCaUUWV9Va5XvfM4YA37u92/cbl/ovHdw1iJGEsBfkE/iApyXc2agx7IsWNcVWmupzAf+A2V1RIR5ngU4juMD+Cm5XuKrOu7dNE3ijiMDea+2JlHea0V7ONi2gsrJJUrhWvcXAwIchkEcKqWREyGRhber9Hb13N8IGxwCEaIfQdEjuB9YoxDCipzLCe32fRdnfO2nw1IyckogilBay19grIG19pRzQXqfKL6/MgOVUkgpnw1+Tu+deKIcrwP8BUVcaus1wUQgAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="weibo scrape in automa"
+        title="weibo scrape in automa"
+        src="/static/7539ef465eb1bc02d46ac6cfd52d617b/5a190/weibo-scrape-in-automa.png"
+        srcset="/static/7539ef465eb1bc02d46ac6cfd52d617b/772e8/weibo-scrape-in-automa.png 200w,
+/static/7539ef465eb1bc02d46ac6cfd52d617b/e17e5/weibo-scrape-in-automa.png 400w,
+/static/7539ef465eb1bc02d46ac6cfd52d617b/5a190/weibo-scrape-in-automa.png 800w,
+/static/7539ef465eb1bc02d46ac6cfd52d617b/c1b63/weibo-scrape-in-automa.png 1200w,
+/static/7539ef465eb1bc02d46ac6cfd52d617b/29007/weibo-scrape-in-automa.png 1600w,
+/static/7539ef465eb1bc02d46ac6cfd52d617b/4b7ac/weibo-scrape-in-automa.png 3444w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<p>其中的 <code>javascript code</code> 内容如下：</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">inViewport</span> <span class="token punctuation">(</span><span class="token parameter">element</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>element<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">!==</span> element<span class="token punctuation">.</span>nodeType<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">var</span> html <span class="token operator">=</span> document<span class="token punctuation">.</span>documentElement<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> rect <span class="token operator">=</span> element<span class="token punctuation">.</span><span class="token function">getBoundingClientRect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> <span class="token operator">!</span><span class="token operator">!</span>rect <span class="token operator">&amp;&amp;</span>
+    rect<span class="token punctuation">.</span>bottom <span class="token operator">>=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span>
+    rect<span class="token punctuation">.</span>right <span class="token operator">>=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> 
+    rect<span class="token punctuation">.</span>left <span class="token operator">&lt;=</span> html<span class="token punctuation">.</span>clientWidth <span class="token operator">&amp;&amp;</span>
+    rect<span class="token punctuation">.</span>top <span class="token operator">&lt;=</span> html<span class="token punctuation">.</span>clientHeight<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> elements <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">"article"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  elements<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">e</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">inViewport</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> text <span class="token operator">=</span> e<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'.detail_wbtext_4CRf9'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>innerText<span class="token punctuation">;</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">automaNextBlock</span><span class="token punctuation">(</span><span class="token punctuation">{</span> text<span class="token operator">:</span> text <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>和 webscraper 一直滚动到满意的个数的元素后再开始解析数据不同，我做的 automa 的流程是每次滚动一点点页面，然后就获取当前视图中的微博元素并把其内容存下来。而获取当前视图的元素就是用的上面的 <code>javascript code</code> 了。</p>
+<p>
+		<video
+			src=/videos/automa-scrape-weibo.mp4
+			width="1200"
+			height="auto"
+			preload="auto"
+			muted="false"
+			title="/videos/automa-scrape-weibo.mp4"
+			
+			playsinline
+			controls
+			
+		></video>
+	</p>
+<h2 id="小结" style="position:relative;">小结<a href="#%E5%B0%8F%E7%BB%93" aria-label="小结 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>Automa 相对 webscraper 来说更加灵活，可以更加灵活的定制自己的抓取流程，后续可能还会有其他场景的使用吧。</p></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/jpa-subclass-association">JPA 处理子类关联</a></h1><h2>2022 April-03</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p>最近陷入了 JPA 的泥坑，在遇到今天提及的这个问题上折腾了很久，一度怀疑人生打算重新用 MyBatis 算了。不过幸好昨天有了一些还能接受的解决方案，这里做一个记录。</p>
 <h2 id="问题阐述" style="position:relative;">问题阐述<a href="#%E9%97%AE%E9%A2%98%E9%98%90%E8%BF%B0" aria-label="问题阐述 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <p>标题说就是让 JPA 处理子类的关联，这里我先贴一下示例代码：</p>
 <div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Entity</span>
@@ -317,91 +592,7 @@ logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE</code></pre></
 2022-03-14 23:16:50.547 TRACE 71555 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [DECIMAL] - [222.00]
 2022-03-14 23:16:50.548 TRACE 71555 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [aisensiy]
 2022-03-14 23:16:50.548 TRACE 71555 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [INTEGER] - [111]
-2022-03-14 23:16:50.548 TRACE 71555 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [13123]</code></pre></div></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/macos-auto-capture-screen-for-time-tracking-2">Mac 下通过自动周期截图来追溯每天的屏幕使用-2</a></h1><h2>2022 February-27</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p>在上一篇文章 <a href="/macos-auto-capture-screen-for-time-tracking">Mac 下通过自动周期截图来追溯每天的屏幕使用</a> 介绍了下一个简单的录屏脚本。这里做一个跟进，主要是以下两方面的内容：</p>
-<ol>
-<li>对原来脚本的修改，支持切换设备屏幕的情况</li>
-<li>提供 ffmpeg 命令可以把截图转换为 mp4 格式的视频</li>
-</ol>
-<h2 id="支持切换屏幕" style="position:relative;">支持切换屏幕<a href="#%E6%94%AF%E6%8C%81%E5%88%87%E6%8D%A2%E5%B1%8F%E5%B9%95" aria-label="支持切换屏幕 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>我的工作电脑是一台 macbook pro ，在不同的场景下会使用不同的屏幕：在办公室会连接一台 LG 外接显示器，开会的时候会直接使用 macbook 的屏幕；而回到家可能会使用一台 Dell 的外接显示器。如果仅仅按照屏幕的序号截屏在图像的连续性上会差一些。不过幸好 mac os api 可以获取目前屏幕的更详细信息，我可以依据显示器型号记录信息。</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
-
-<span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span>/usr/local/bin:/usr/local/sbin:~/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin
-
-<span class="token comment"># use jq to get array length</span>
-<span class="token assign-left variable">result</span><span class="token operator">=</span><span class="token variable"><span class="token variable">`</span>system_profiler SPDisplaysDataType -json<span class="token variable">`</span></span>
-<span class="token assign-left variable">screencount</span><span class="token operator">=</span><span class="token variable"><span class="token variable">`</span><span class="token builtin class-name">echo</span> $result <span class="token operator">|</span> jq <span class="token string">'.SPDisplaysDataType[0].spdisplays_ndrvs | length'</span><span class="token variable">`</span></span>
-
-<span class="token comment"># get current date</span>
-<span class="token assign-left variable">date</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> +%Y-%m-%d<span class="token variable">)</span></span>
-<span class="token comment"># create folder if not exists</span>
-<span class="token function">mkdir</span> -p <span class="token variable">$date</span>
-
-<span class="token comment"># get current date time with well format</span>
-<span class="token assign-left variable">NOW</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> +<span class="token string">"%Y-%m-%d-%H-%M-%S"</span><span class="token variable">)</span></span>
-
-<span class="token comment"># make screenshot</span>
-<span class="token keyword">for</span> <span class="token variable"><span class="token punctuation">((</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span>$screencount<span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">))</span></span> <span class="token keyword">do</span>
-    <span class="token comment"># get screen name</span>
-    <span class="token assign-left variable">screenname</span><span class="token operator">=</span><span class="token variable"><span class="token variable">`</span><span class="token builtin class-name">echo</span> $result <span class="token operator">|</span> jq --raw-output <span class="token string">".SPDisplaysDataType[0].spdisplays_ndrvs[<span class="token variable">$i</span>]._name"</span><span class="token variable">`</span></span>
-    <span class="token comment"># replace space with _</span>
-    <span class="token assign-left variable">screenname</span><span class="token operator">=</span><span class="token variable">${screenname<span class="token operator">/</span><span class="token operator">/</span> <span class="token operator">/</span>_}</span>
-    <span class="token comment"># to lower case</span>
-    <span class="token assign-left variable">screenname</span><span class="token operator">=</span><span class="token variable"><span class="token variable">`</span><span class="token builtin class-name">echo</span> -n $screenname <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[:upper:]"</span> <span class="token string">"[:lower:]"</span><span class="token variable">`</span></span>
-    <span class="token comment"># use screen name to create file name</span>
-    screencapture -C -x -D <span class="token variable"><span class="token variable">$((</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token variable">))</span></span> <span class="token variable">$date</span>/screenshot-<span class="token variable">$NOW</span>-of-<span class="token variable">$screenname</span>.png
-<span class="token keyword">done</span>
-</code></pre></div>
-<p>如上所示，采用 screenname 作为文件名后缀可以保证截图的连续性。生成的文件就像如下这个样子：</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 413px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/fcac1d107758a7442fe4fb4bb0cc29e7/6c1e7/screenshot-with-screenname.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 130.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAaCAYAAAC3g3x9AAAACXBIWXMAAAsTAAALEwEAmpwYAAAEZUlEQVRIx1VV2XLbOBDkT2RzVGRrY8viBYA3cRDgKVmppPL/f9NbM5RV2QcWQBJo9Ez3DCJ5UuiTHjZz6BONJm7hcw+dGp7XccNzelw2oI47lOeK/7X8v0WbaHRJz9+jNm0RZMCsFoxyhBMOW7lhVPvc5BajmuDEAC8DrBjQZz2scNC5hs0tgpqgc4PsLUPka4+t23Drb7h2V57/sX8e72u74qf+yePWbpibGWM9Ym0XntNI36d6gikNIl95XNsrfnY3Hud6xq27PRbR5o/5Ui88+ipgrGb4asRYTbi0F0zVhE51iFzl+PT37p03Ls2C3/r3451Y0JzZ8/8Zpgio5YRSDGhUwNpuCFVAreqdIZ1wuzMkwF/9L1zuc2J8vYN/HEAMQ02hz5jqBVuz8TqtNKI27+DVCCsDQjFiUB5LuWAqZ/gyYCg8lmphkS7VHpovBwQV4JTDoAYWlQRSqSKVO1ZvVDOrSQvfq3dMamIQXwRs9QVruWKtNnjlYXLN66x07ARa16c9VKwQNWkDLz0DBDVikAPbZqBThYNTAzPc6g1TOTEjtouwsLmByToE4dCnLfLXbAfcfTizn5wcMBcrWuEhc4NeOszljLGc+PGFh1UOXjr0Z4n2JYU5KbQvCY5fviGqk5oZkqkp9EF6vFc3TGrm3O45XTEWIwMT4z7v4aSDzjS6uENzaqB+SMTP5z2HFCoDyBE2d1iLjb8RW8rTWEzwKmAs9wOMMPxO1UGA+qxRniq8Pr8iqpIGXe5gRIARA0xOpXdhkYgtgU7FzKpTyMNHyEUAkaneKnTnDvW5xvn4RgypLmnjhF54NFS7xcZs/Z0lhUzCTPccGmlZbRKQGNrUon6rkb1kiKhD6NQygJMBbab30DPHIVEToJBnVvrCDAkwFLv35L8S1Y8K2XOGw5cDoiqueTOp7MXetla1cqvSieZuMxcLlmplQGJm74AmN8ifcshnifSQ4vjliEidCgxiz1Pg9jXgUl7Z5BSSTjULtlYrVxKpTID+A/A5R3EskBwSfP/nO6L0mMEkO4tBBPSZxignuHxAl2o05wYuc6wqlSQbW2gGpJDTp5QZZocMT5+fEBVvBbq4500EYvOdIbEdhOdObBPHqbjW1wcg1TExFM/i/yEbaRjMxhYmoVKyuw/vnuxTzfmkXBJLMvSew5EZEmB5LDnkb5/ulUI5NLFFH/cMMMmZ2dId0yYd3zFkdFKbbETqk0e7rOeQCfTBMHlKUL9UMLHZa7YYsYiVDzCpZZ8FEVgkMjyJRkDEWGfmwZAAWRQCbE4tzNlAxxrVqebw+1ijpTo9NzvDe60TEF1SbOq0Z9uoo2LAw+cDIvkiYDOLkHuYRKN6rTAknhlTr6Or0otxV14MD0AyPAnGgH+L0lAOqV6pH0rPedzUxt1nuG8KYoTPA2a5cJhUwwTeJi0Dkg/j7zG+fvqKqMs6zMW890MRdkaZ56qpzw13EZs6Tgf5ldJA38kNZCUyNoUsngRev73iP6NnS0M4KPksAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="screenshot with screenname"
-        title="screenshot with screenname"
-        src="/static/fcac1d107758a7442fe4fb4bb0cc29e7/6c1e7/screenshot-with-screenname.png"
-        srcset="/static/fcac1d107758a7442fe4fb4bb0cc29e7/772e8/screenshot-with-screenname.png 200w,
-/static/fcac1d107758a7442fe4fb4bb0cc29e7/e17e5/screenshot-with-screenname.png 400w,
-/static/fcac1d107758a7442fe4fb4bb0cc29e7/6c1e7/screenshot-with-screenname.png 413w"
-        sizes="(max-width: 413px) 100vw, 413px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span></p>
-<h2 id="使用-ffmpeg-生成视频" style="position:relative;">使用 ffmpeg 生成视频<a href="#%E4%BD%BF%E7%94%A8-ffmpeg-%E7%94%9F%E6%88%90%E8%A7%86%E9%A2%91" aria-label="使用 ffmpeg 生成视频 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>截图一张张翻有两个坏处：</p>
-<ol>
-<li>需要自己一张张翻</li>
-<li>会占据更多存储空间，我这里一天最大的目录大小是 3G ，这里面很多截图是重复的，而众所周知，将这些图片如果以视频来存储可以充分利用视频的压缩算法，极大的降低所使用的存储空间</li>
-</ol>
-<p>既然只是为了 review 自己的工作，本来就是想要一个跑马灯的效果。这里我就简单搜索了下，可以用 <code>ffmpeg</code> 把截图按照时间顺序做成视频就好了。</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">ffmpeg <span class="token punctuation">\</span>
-    -framerate <span class="token number">15</span> <span class="token punctuation">\</span>                               <span class="token comment"># 每秒 15 帧    </span>
-    -pattern_type glob -i <span class="token string">'*dell_u2417h.png'</span> <span class="token punctuation">\</span>    <span class="token comment"># 指定截图文件的路径，dell_u2417h 是截图的屏幕名称</span>
-    -c:v libx264 <span class="token punctuation">\</span>                                <span class="token comment"># 指定视频编码器</span>
-    -pix_fmt yuv420p <span class="token punctuation">\</span>                            <span class="token comment"># 指定视频的像素格式，没事不用修改</span>
-    dell_u2417h.mp4                               <span class="token comment"># 输出视频文件名，和截图的屏幕名称一直</span></code></pre></div>
-<p>用以上的命令，可以每个屏幕生成一个视频。</p>
-<h2 id="后续工作" style="position:relative;">后续工作<a href="#%E5%90%8E%E7%BB%AD%E5%B7%A5%E4%BD%9C" aria-label="后续工作 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<ol>
-<li>截屏目前做到了自动化，但是拼接视频没有做到自动化，需要手动拼接，可以考虑怎么做</li>
-<li>视频拼接目前是每个屏幕一个视频，如果能把屏幕按照时间线拼接起来会更好</li>
-</ol></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/2">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
+2022-03-14 23:16:50.548 TRACE 71555 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [13123]</code></pre></div></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/2">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       
       if(true) {

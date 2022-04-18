@@ -52,7 +52,105 @@
         }
       }
     })
-  </script><link as="script" rel="preload" href="/webpack-runtime-ff02cfd775d7d5fd5e84.js"/><link as="script" rel="preload" href="/framework-45ca7a0c983b0b7a000c.js"/><link as="script" rel="preload" href="/app-047a4a65c3f9a3c0ed82.js"/><link as="script" rel="preload" href="/d1724f9828659101216d9c2ff846a60d90e64274-aac16f39fe217ccc37e4.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-b81aa84e3c777d2f77e7.js"/><link as="fetch" rel="preload" href="/page-data/page/21/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/><script async="" defer="" data-website-id="443212e9-fd0b-411e-a523-0d0ec604ee8a" src="https://get.aisensiy.me/umami.js"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/styled-components">用 styled-components 在 react 中编写 css</a></h1><h2>2017 July-02</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p>这么久以来，各种各样的框架试图让 web 组件化。到目前为止，react 基本做到了这一点：用一个自定义标签的方式组织 html 在一起。</p>
+  </script><link as="script" rel="preload" href="/webpack-runtime-ff02cfd775d7d5fd5e84.js"/><link as="script" rel="preload" href="/framework-45ca7a0c983b0b7a000c.js"/><link as="script" rel="preload" href="/app-047a4a65c3f9a3c0ed82.js"/><link as="script" rel="preload" href="/d1724f9828659101216d9c2ff846a60d90e64274-aac16f39fe217ccc37e4.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-b81aa84e3c777d2f77e7.js"/><link as="fetch" rel="preload" href="/page-data/page/21/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/><script async="" defer="" data-website-id="443212e9-fd0b-411e-a523-0d0ec604ee8a" src="https://get.aisensiy.me/umami.js"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/runtime-env-for-spa">为 Single Page App 提供运行时环境变量</a></h1><h2>2017 July-07</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p>最近攻克了一个之前部署 single-page-app 的一个痛点：支持在运行时环境变量。这里讲述一下问题以及目前的解决方案。</p>
+<h2 id="spa-没有运行时环境变量的痛点" style="position:relative;">SPA 没有运行时环境变量的痛点<a href="#spa-%E6%B2%A1%E6%9C%89%E8%BF%90%E8%A1%8C%E6%97%B6%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E7%97%9B%E7%82%B9" aria-label="spa 没有运行时环境变量的痛点 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>目前我的绝大部分的项目都是一个前后端分离的方式开发的。其中前端基本都是用 <code>create-react-app</code> 创建出来的标准的 react 的 spa 应用。这种 spa 在部署是将所有的 js 和 css 打包成一个或多个文件然后用 <code>serve</code> 或者其他类似的 http server 以静态文件的形式对外提供服务，但是这种前端静态文件话的应用没有 nodejs 的支持，没办法使用 <code>process.env</code> 这样的运行时注入环境变量的功能。</p>
+<p>目前 <code>create-react-app</code> 提供了一个编译运行时环境变量的方案，因为在 <code>build</code> 的时候是有 <code>nodejs</code> 支持的，通过 <code>REACT_APP_API_URL=http://xxx.com yarn run build</code> 的方式在编译 spa 的时候注入环境变量。那么编译时的环境变量能不能解决问题呢？看情况了...可以做一个简单的对比。</p>
+<ol>
+<li>
+<p>要知道我们通常要把什么样子的环境变量注入到 spa 中。额，我这里的需求很有限，为了让前后端一起运作，我所需要的环境变量就是后端 API 的入口。对于部署流程简单到之后生产环境且生产环境固定（尤其是后端生产环境 IP、域名固定）的情况，直接在编译时将后端的入口写死注入就行了。但如果有多个环境（staging）的需求就不适用了，假如没有运行时环境变量的支持为不同的环境提供不同的入口只能重新编译应用并注入不同的变量。</p>
+</li>
+<li>
+<p>有没有需求在应用运行时修改我们的环境变量。很明显运行时的环境变量支持通过重启就能修改环境变量的功能，如果有这种灵活修改环境变量的情况，编译时环境变量很明显也不能满足。</p>
+</li>
+<li>
+<p>在编译时对代码选择和裁剪。很明显，这个是最应该使用编译时环境变量的地方了。</p>
+</li>
+</ol>
+<p>说白了，其实不同时期的环境变量的作用是不一样的。两者不可能做到相互替代，在 <code>[1]</code> <code>[2]</code> 两个场景都是使用运行时环境变量比较舒服的地方，采用编译时的环境变量实在是不太方便。下面就介绍一下目前让 spa 应用支持运行时环境变量的方法，这里还是以 <code>create-react-app</code> 的模板为示例。</p>
+<h2 id="全局配置--docker-化部署" style="position:relative;">全局配置 + Docker 化部署<a href="#%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE--docker-%E5%8C%96%E9%83%A8%E7%BD%B2" aria-label="全局配置  docker 化部署 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>前端没有 <code>process.env</code> 这样的东西，我们只能用 javascript 的全局变量模拟。在将这个打包好的 spa 运行起来的时候，我们需要利用 shell 脚本生成这个 config.js 文件，让它把必要的环境变量翻译成全局变量。然后让默认的入口 html 文件引入这个全局变量文件。</p>
+<p>首先，我们需要一段 shell 脚本，把环境变量翻译成 <code>config.js</code> 文件：</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$CONFIG_VARS</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+
+  <span class="token assign-left variable">SPLIT</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> $CONFIG_VARS <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">","</span> <span class="token string">"<span class="token entity" title="\n">\n</span>"</span><span class="token variable">)</span></span>
+  <span class="token assign-left variable">ARGS</span><span class="token operator">=</span>
+  <span class="token keyword">for</span> <span class="token for-or-select variable">VAR</span> <span class="token keyword">in</span> <span class="token variable">${SPLIT}</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+      <span class="token assign-left variable">ARGS</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${ARGS}</span> -v <span class="token variable">${VAR}</span> "</span>
+  <span class="token keyword">done</span>
+
+  <span class="token assign-left variable">JSON</span><span class="token operator">=</span><span class="token variable"><span class="token variable">`</span>json_env --json $ARGS<span class="token variable">`</span></span>
+
+  <span class="token builtin class-name">echo</span> <span class="token string">" ==> Writing <span class="token variable">${CONFIG_FILE_PATH}</span>/config.js with <span class="token variable">${JSON}</span>"</span>
+
+  <span class="token builtin class-name">echo</span> <span class="token string">"window.__env = <span class="token variable">${JSON}</span>"</span> <span class="token operator">></span> <span class="token variable">${CONFIG_FILE_PATH}</span>/config.js
+<span class="token keyword">fi</span>
+
+<span class="token builtin class-name">exec</span> <span class="token string">"<span class="token variable">$@</span>"</span></code></pre></div>
+<p>如果我们提供这样的环境变量</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">REACT_APP_API_PREFIX</span><span class="token operator">=</span>http://petstore-backend.example.com
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">CONFIG_VARS</span><span class="token operator">=</span>REACT_APP_API_PREFIX</code></pre></div>
+<p>那么所生成的 <code>config.js</code> 文件是这个样子的：</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript">window<span class="token punctuation">.</span>__env <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token string">'REACT_APP_API_PREFIX'</span><span class="token operator">:</span> <span class="token string">'http://petstore-backend.example.com'</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>然后，我们需要在 原来的 <code>index.html</code> 模板文件中引入这个我们生成的 <code>config.js</code> 文件：</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+  ...
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>noscript</span><span class="token punctuation">></span></span>
+      You need to enable JavaScript to run this app.
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>noscript</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>root<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>config.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre></div>
+<p>这样，我们就拥有了一个 <code>window.__env</code> 的全局对象，它包含了所有的运行时环境变量。我们可以以如下的方式使用它：</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript">axios<span class="token punctuation">.</span>defaults<span class="token punctuation">.</span>adapter <span class="token operator">=</span> httpAdapter<span class="token punctuation">;</span>
+
+<span class="token keyword">let</span> baseUrl<span class="token punctuation">;</span>
+<span class="token keyword">let</span> env <span class="token operator">=</span> window<span class="token punctuation">.</span>__env <span class="token operator">||</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">===</span> <span class="token string">'test'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  baseUrl <span class="token operator">=</span> <span class="token string">'http://example.com'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">===</span> <span class="token string">'development'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  baseUrl <span class="token operator">=</span> env<span class="token punctuation">.</span><span class="token constant">REACT_APP_API_PREFIX</span> <span class="token operator">||</span> <span class="token string">'http://localhost:8080'</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+  baseUrl <span class="token operator">=</span> env<span class="token punctuation">.</span><span class="token constant">REACT_APP_API_PREFIX</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> fetcher <span class="token operator">=</span> axios<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  baseURL<span class="token operator">:</span> baseUrl<span class="token punctuation">,</span>
+  headers<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">'Content-Type'</span><span class="token operator">:</span> <span class="token string">'application/json'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<ol>
+<li>直接在文件中引入 <code>window.__env</code> 全局变量</li>
+<li>在需要的地方引用其中的变量即可</li>
+</ol>
+<p>当然，这种依赖 shell 生成 <code>config.js</code> 的方案只有我们将 spa 打包好的之后才会使用，为了更好的使用这个 shell 我们可以采用 docker 化的方式把其启动流程以 entrypoint 的方式固化在应用的启动流程中。<a href="https://github.com/SocialEngine/docker-nginx-spa">SocialEngine/docker-nginx-spa</a> 就实现了这个方案，是一个很好的用 base image。如果我们需要创建一个支持运行时环境变量的 create-react-app spa 的时候，首先按照上面的步骤修改 <code>public/index.html</code> 并且用 <code>window.__env</code> 作为环境变量使用。然后提供一个继承自 <code>SocialEngine/docker-nginx-spa</code> 的 <code>Dockerfile</code> 即可。</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">FROM socialengine/nginx-spa
+
+COPY build/ /app</code></pre></div>
+<p>其中 <code>build/</code> 是 <code>create-react-app</code> 编译生成静态文件的默认目录。然后打包运行这个应用的方式如下：</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">yarn</span> run build
+$ docker build -t spa-app <span class="token builtin class-name">.</span>
+$ docker run -e <span class="token assign-left variable">CONFIG_VARS</span><span class="token operator">=</span>REACT_APP_API_PREFIX -e <span class="token assign-left variable">REACT_APP_API_PREFIX</span><span class="token operator">=</span>http://petstore-backend.example.com -p <span class="token number">3000</span>:80 spa-app</code></pre></div>
+<p>当然，我们本地开发环境不用这么麻烦。只需要在 <code>public/</code> 目录下自己创建一个 <code>config.js</code> 然后把开发需要的环境变量塞进去就可以了。在 docker 化后，entrypoint 触发的命令会自动覆盖这个 config.js 文件。</p>
+<p><a href="https://github.com/aisensiy/pet-store-front-end">这里</a> 是一个样例项目。</p>
+<h2 id="相关资料" style="position:relative;">相关资料<a href="#%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99" aria-label="相关资料 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ol>
+<li><a href="https://github.com/facebookincubator/create-react-app">create-react-app</a></li>
+<li><a href="https://github.com/mars/create-react-app-buildpack#user-content-compile-time-vs-runtime">compile-time-vs-runtime</a></li>
+<li><a href="https://www.npmjs.com/package/serve">serve</a></li>
+<li><a href="https://github.com/SocialEngine/docker-nginx-spa">SocialEngine/docker-nginx-spa</a></li>
+</ol></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/styled-components">用 styled-components 在 react 中编写 css</a></h1><h2>2017 July-02</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p>这么久以来，各种各样的框架试图让 web 组件化。到目前为止，react 基本做到了这一点：用一个自定义标签的方式组织 html 在一起。</p>
 <div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Wrapper</span><span class="token punctuation">></span></span>
 	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Header</span> <span class="token punctuation">/></span></span>
 	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ProductList</span> <span class="token punctuation">/></span></span>
@@ -436,75 +534,7 @@ dependencies <span class="token punctuation">{</span>
 <li><a href="https://spring.io/understanding/HATEOAS">Understanding HATEOAS</a></li>
 <li><a href="https://spring.io/guides/gs/rest-hateoas/">Building a Hypermedia-Driven RESTful Web Service</a></li>
 <li><a href="https://olivergierke.de/2016/04/benefits-of-hypermedia/">The Benefits of Hypermedia APIs</a></li>
-</ul></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/sonarqube-integration-with-spring-boot-project">将 sonarQube 和 gradle spring boot 项目集成</a></h1><h2>2017 May-16</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p>在联想的项目接触了一下 <a href="https://www.sonarqube.org/">sonarQube</a> 整体来说还是有很多可圈可点之处的，碰巧最近有一个相关产品的选择试用的调研，就尝试了一下下。</p>
-<p>sonarQube 自己说自己用于做 continuous code quality， 从它所生成的默认的报告来看，主要包含了如下几个部分：</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/bcbf88597fa43e6bf0beb5c343bdac0a/098c1/2021-07-27-13-34-04.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 64.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsTAAALEwEAmpwYAAACvUlEQVQ4yz2RS2/cRhCE+Z/9s4LcbCfOJYfkYFmSI0vyeldWxNVySQ45fM2jex4kpwJRjgcoTNXXQB+qMynlx+J8kqYz1fvqff3m/k1939/VkWOtramttbU1P35ra2OpJuKamGtm91OWaJtlbdMU+blE3Ujk5TO+Fgc8ywZkCcYakLWwHGAtwVoNbwtM8gFj/R29eEDfHNCW3+DGI7ytkRmjc2UtjFtW1R2S1zJpnlOMIcUYEzmfonxM0XOK0afZHlLU+3R//iO14lMieZfa9io9dX+mhY4pCyHkABAXrN14xLJY/P+WdYXUhHksAKwAEhLtoPtb3FYfEOgGoB3K5hJ78TsW+4jMOZenlOCI1nEyUBwwzxHzssAYg77rMBnCPC+YY0Cwzxjbb9DtA7zONz82e0xiD1InZMMw5ELUEK1ce2Uws4c2eltmrQUzgclueZN1IPbwbgZThCUP5rAxSw6Z1io3WqEb9XoaezzpJyxxQQgBMQZY56HZIcaIEDw8VVv5xbBDpx6wsIDRZzhbwlODzPBrhz3F9WsrkfPpZ4cJwLHXeJTTa04LwHcQ9TWujr9h1H9hVV9wOH7E0H7CYg/ImkHlZadQyGFtx5drA4P1UBzRa8a56VDJ/pWRA007yOoKY30DP+3QlJdozpdoigvo4YCs77tcVBVKOa7OOQRH8I7BRGBmxOA3vfiXPok0HBswa5BVCM5seWNkkIUQc44BHan1aaB0VpwGDsnPawpLSrV26TTR5l2Myasvadafk2yvUl5epcfiMvH0TwrqOjn1LWWjCcV+HHDTVbh4anBbTsiniNLMqOyC2/OAz0WPyiaUmqGbDzDNOxTP7/B99wv+3f+KoXwLI97CyL+R9cpcNIr7VnMtJyukIiG1E63iV/1g7caMUN2tUN2NEPWNqE8XQhQXQlbXG1P9XvwHcgPRNRIAIxkAAAAASUVORK5CYII='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="2021 07 27 13 34 04"
-        title="2021 07 27 13 34 04"
-        src="/static/bcbf88597fa43e6bf0beb5c343bdac0a/5a190/2021-07-27-13-34-04.png"
-        srcset="/static/bcbf88597fa43e6bf0beb5c343bdac0a/772e8/2021-07-27-13-34-04.png 200w,
-/static/bcbf88597fa43e6bf0beb5c343bdac0a/e17e5/2021-07-27-13-34-04.png 400w,
-/static/bcbf88597fa43e6bf0beb5c343bdac0a/5a190/2021-07-27-13-34-04.png 800w,
-/static/bcbf88597fa43e6bf0beb5c343bdac0a/c1b63/2021-07-27-13-34-04.png 1200w,
-/static/bcbf88597fa43e6bf0beb5c343bdac0a/098c1/2021-07-27-13-34-04.png 1578w"
-        sizes="(max-width: 800px) 100vw, 800px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span></p>
-<p>不过打开一看会发现其实 <code>Bugs &#x26; Vulnerabilities</code> 和 <code>Code Smells</code> 基本上就是 lint 所做的事情，比如代码风格不符合 java 的规约呀，在使用 <code>Optional</code> 之前判断其是否 <code>isPresent</code> 呀等等，不过人家本来就是做静态检查的也无可厚非。</p>
-<p><code>Code Smells</code> 这个名字实在是太唬人了，在 <a href="https://book.douban.com/subject/4262627/">重构</a> 里定义设计的好坏在于有没有代码的坏味道，如果 sonarqube 有能力甄别所有的代码坏味道的话，那还怕神马低质量代码呢。不过起码 sonarqube 有能力甄别一部分低级的代码坏味道，比如过长的方法参数：</p>
-<blockquote>
-<p>Constructor has 9 parameters, which is greater than 7 authorized.</p>
-</blockquote>
-<p>再比如重复的代码呀</p>
-<blockquote>
-<p>1 duplicated blocks of code must be removed.</p>
-</blockquote>
-<p>甚至是提醒我们哪个方法所在的位置不合适</p>
-<blockquote>
-<p>Move this method into "Builder"</p>
-</blockquote>
-<p>这么看来其功能还是可圈可点的，而且我所使用的还仅仅是最基本的配置，没有做任何的自定义。</p>
-<h2 id="集成" style="position:relative;">集成<a href="#%E9%9B%86%E6%88%90" aria-label="集成 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>下面我介绍一下如何把 sonarqube 和 spring boot gradle 的项目做集成的。</p>
-<h3 id="安装-sonarqube" style="position:relative;">安装 sonarqube<a href="#%E5%AE%89%E8%A3%85-sonarqube" aria-label="安装 sonarqube permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>最好的安装办法自然是 <a href="https://store.docker.com/images/sonarqube">docker</a></p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube</code></pre></div>
-<h3 id="修改-gradle" style="position:relative;">修改 gradle<a href="#%E4%BF%AE%E6%94%B9-gradle" aria-label="修改 gradle permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>按照 sonarqube 的<a href="https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner+for+Gradle">文档</a> 添加插件。</p>
-<div class="gatsby-highlight" data-language="groovy"><pre class="language-groovy"><code class="language-groovy">plugins <span class="token punctuation">{</span>
-  id <span class="token string gstring">"org.sonarqube"</span> version <span class="token string gstring">"2.4"</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p>然后 <code>./gradlew clean test sonar</code> 执行命令。之后就可以在 <a href="http://localhost:9000">http://localhost:9000</a> 看到结果了。</p>
-<p>不过这个时候你会发现并没有测试覆盖率的数据。</p>
-<p>这是因为 sonarqube 自己不做测试覆盖的处理，它依赖于其他的测试覆盖工具。比如这里我们使用 <a href="https://www.eclemma.org/jacoco/">jacoco</a>。</p>
-<p>在 <code>build.gradle</code> 中添加 <code>jacoco</code>:</p>
-<div class="gatsby-highlight" data-language="groovy"><pre class="language-groovy"><code class="language-groovy">apply plugin <span class="token string">'jacoco'</span></code></pre></div>
-<p>然后 <code>./gradlew clean test jacoco sonar</code> 再去 <a href="http://localhost:9000">http://localhost:9000</a> 查看就有相应的数据了。</p>
-<h3 id="和-ci-集成" style="position:relative;">和 ci 集成<a href="#%E5%92%8C-ci-%E9%9B%86%E6%88%90" aria-label="和 ci 集成 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>刚才我们只是将我们的项目和一个本地的 sonarqube server 集成了，但是在实际项目中我们通常都是在 ci 中执行 sonar 命令并有一个共有的 sonar server 展现目前主分支代码的质量。那么，我们就需要在 ci 中指定外部的 sonar server 地址以及一些其他自定义的内容。</p>
-<p>由于 sonarqube 支持以命令行的方式传入参数，这样的工作非常的简单：</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">./gradlew sonar -Dsonar.host.url=http://sonar.mycompany.com -Dsonar.verbose=true</code></pre></div>
-<p>最后附上测试<a href="https://github.com/aisensiy/springboot-get-started">项目地址</a>。</p></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/20">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/22">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
+</ul></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/20">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/22">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       
       if(true) {
