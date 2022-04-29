@@ -297,20 +297,7 @@ format code  extension  resolution note
 <li>video only</li>
 <li>video + audio</li>
 </ol>
-<p>这个视频很显然其 
-		<video
-			src=+ audio
-			width="1200"
-			height="auto"
-			preload="auto"
-			muted="false"
-			title="+ audio"
-			
-			playsinline
-			controls
-			
-		></video>
-	 的格式 22 和 18 都不是最优解。默认是选取了 251 和 137 （最好声音 + 最好画质）做了合并（也就是 <code>--merge-output-format</code> 的作用）。如果需要其他组合可以通过命令 <code>-f &#x3C;video>+&#x3C;audio></code> 形式：</p>
+<p>这个视频很显然其 video + audio 的格式 22 和 18 都不是最优解。默认是选取了 251 和 137（最好声音 + 最好画质）做了合并（也就是 <code>--merge-output-format</code> 的作用）。如果需要其他组合可以通过命令 <code>-f &#x3C;video>+&#x3C;audio></code> 形式：</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">youtube-dl https://www.youtube.com/watch\?v\=_QUEXsHfsA0\&amp;t\=4s -f 137+140 --merge-output-format mp4 --write-sub --sub-lang zh-Hans --sub-format vtt --convert-subs srt</code></pre></div></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/lxcfs-in-kubernetes">在 Kubernetes 中使用最新的 LXCFS</a></h1><h2>2020 September-21</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p>在 k8s 中启动的 pod 下的 container 虽然在资源上做了隔离，但是这种隔离对用户通常是不可见的，具体的表现就是使用 <code>top</code> <code>cat /proc/cpuinfo</code> 或者 <code>free -m</code> 等这样的命令的时候看到的依然是宿主机的资源。这种行为在 openbayes 这种为外部用户分配资源的场景会有很强的迷惑性，用户不知道自己到底有多少资源，因为从里面看到的资源和在外面的声明的是不一样的。为了达到容器内外的一致性，我们引入了 lxcfs。</p>
 <h2 id="工作原理" style="position:relative;">工作原理<a href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86" aria-label="工作原理 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <p>在 <a href="https://linuxcontainers.org/lxcfs/introduction/">lxcfs 官方</a>的定义里提到它是一个用户空间的文件系统。它主要提供了一系列文件可以覆盖 <code>/proc</code> 用以覆盖系统的这些目录。也就是说，如果想要让容器里看到的资源是已经做了隔离之后的资源，其实就是将系统默认的一些文件通过 mount 的方式进行覆盖。当容器中进程读取相应文件内容时，lxcfs 会从容器对应的 cgroup 中读取正确的资源限制。</p>
