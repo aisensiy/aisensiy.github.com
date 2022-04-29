@@ -145,7 +145,7 @@ format code  extension  resolution note
 2. video only
 3. video + audio
 
-这个视频很显然其 `video + audio` 的格式 22 和 18 都不是最优解。默认是选取了 251 和 137 （最好声音 + 最好画质）做了合并（也就是 `--merge-output-format` 的作用）。如果需要其他组合可以通过命令 `-f <video>+<audio>` 形式：
+这个视频很显然其 video + audio 的格式 22 和 18 都不是最优解。默认是选取了 251 和 137（最好声音 + 最好画质）做了合并（也就是 `--merge-output-format` 的作用）。如果需要其他组合可以通过命令 `-f <video>+<audio>` 形式：
 
 ```
 youtube-dl https://www.youtube.com/watch\?v\=_QUEXsHfsA0\&t\=4s -f 137+140 --merge-output-format mp4 --write-sub --sub-lang zh-Hans --sub-format vtt --convert-subs srt
