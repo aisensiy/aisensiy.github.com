@@ -28,7 +28,7 @@ function YearItems({ blogs }) {
       {blogs.map((blog) => (
         <li className="list-disc list-inside" key={blog.id}>
           <Link to={blog.fields.slug_without_date}>
-            {blog.frontmatter.date} - {blog.frontmatter.title}
+            {blog.frontmatter.title} - {blog.frontmatter.date}
           </Link>
         </li>
       ))}
