@@ -52,7 +52,297 @@
         }
       }
     })
-  </script><link as="script" rel="preload" href="/webpack-runtime-ff02cfd775d7d5fd5e84.js"/><link as="script" rel="preload" href="/framework-45ca7a0c983b0b7a000c.js"/><link as="script" rel="preload" href="/app-047a4a65c3f9a3c0ed82.js"/><link as="script" rel="preload" href="/d1724f9828659101216d9c2ff846a60d90e64274-aac16f39fe217ccc37e4.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-b81aa84e3c777d2f77e7.js"/><link as="fetch" rel="preload" href="/page-data/page/9/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/><script async="" defer="" data-website-id="443212e9-fd0b-411e-a523-0d0ec604ee8a" src="https://get.aisensiy.me/umami.js"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/graphql-example">Real World 的 GraphQL 版本</a></h1><h2>2021 June-16</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p>在很久之前的一篇 <a href="/real-world-spring-boot-and-mybatis">文章</a> 介绍了我做的一个 <a href="https://github.com/gothinkster/spring-boot-realworld-example-app">RealWorld 的 SpringBoot + MyBatis</a> 的实现。这个项目我也一直在维护，一方面是因为这是一个很好的 demo 项目，可以很好的体现一些设计思路 <a href="/real-world-spring-boot-and-mybatis">文章</a> 也都说了不再重复。另一方面，我觉得也是一个新人练手不错的选择，可以让大家可以通过这个项目来入门。</p>
+  </script><link as="script" rel="preload" href="/webpack-runtime-511ecf62e4948377b3e7.js"/><link as="script" rel="preload" href="/framework-45ca7a0c983b0b7a000c.js"/><link as="script" rel="preload" href="/app-047a4a65c3f9a3c0ed82.js"/><link as="script" rel="preload" href="/d1724f9828659101216d9c2ff846a60d90e64274-aac16f39fe217ccc37e4.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-b81aa84e3c777d2f77e7.js"/><link as="fetch" rel="preload" href="/page-data/page/9/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/><script async="" defer="" data-website-id="443212e9-fd0b-411e-a523-0d0ec604ee8a" src="https://get.aisensiy.me/umami.js"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/github-actions-integration-with-github">Github Actions 与 Github 自身 API 集成生成周报</a></h1><h2>2021 July-01</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p>最近又用 Github Actions 玩出了花样。这里记录一下通过 Github Api 和 Github Actions 怎么去做组织内的 commits 统计。</p>
+<h2 id="为啥要自己做统计" style="position:relative;">为啥要自己做统计<a href="#%E4%B8%BA%E5%95%A5%E8%A6%81%E8%87%AA%E5%B7%B1%E5%81%9A%E7%BB%9F%E8%AE%A1" aria-label="为啥要自己做统计 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>之前一直有一个想法，能不能通过 github 的 api 去将组织内的工作量做成报表以方便查看每个人工作的进度以及各个 issue 的进展。做了简单的调研，发现现有的东西都不太能满足具体的需求：</p>
+<ol>
+<li>我希望统计 org 下所有仓库的数据，而不是单个仓库（目前所在组织里有 100+ 个仓库）</li>
+<li>目前 org 内以 issue 作为工作的一个最小单位，希望提交的 commit 都与 issue 做关联，那么势必需要统计每个周期内 issue 的进展以及关联的 commit 做统计，显然现有的 <a href="https://docs.github.com/en/github/visualizing-repository-data-with-graphs/accessing-basic-repository-data/viewing-a-summary-of-repository-activity">insights</a> 也是不太够的</li>
+</ol>
+<p>然后就去评估了下自己做统计的工作量。github 早已经发布了 GraphQL 的 API 并且通过 <a href="https://docs.github.com/en/graphql/overview/explorer">explorer</a> 去测试和使用其 API 的体验是相当好于是就心动了，决定自己做这个统计。</p>
+<h2 id="先看看最终效果" style="position:relative;">先看看最终效果<a href="#%E5%85%88%E7%9C%8B%E7%9C%8B%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C" aria-label="先看看最终效果 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>报表数据主要包括每个人的活跃数据以及每个人所涉及的 issue。</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 669px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/c3806d03a6c11981ad9fe6ac95454325/99272/2021-07-02-01-00-14.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 65.49999999999999%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABNElEQVQoz5WSu07EQAxF8/+fwCdQUFIgIdFQQMWjAaFlYTebZGY8Hs8rz3mgBJGW7JULy9LxvbJcaGPqshR11TTN4XBUivJmFdM4fkr/IVttndbaeR8WbYJzjLcsXlUZSSNKRQQAfd+nLXAM4bqKD2LkgAIJEbuuizFtdA6X3+FiF26OHcPZVhvb+jal//kixfBY+5dKAWeAUgAQmXGaNsXOOd/z6UmOVhMZY50bhmHrwZz3QiIqEgBam3yOZhhR0gIrovSnTfCrzXeYnxfLlPNKrTt+h3Ot/Qqbtj9wBNsu7xHPix1jUCiN1qiUAPDO+9Yb51AwqyzYoF0o5cBpJB+VC19sAN1574dxKlJKnPOaMcZ5eTpxARyAquZtJ/elfT91u3quPes5ekBNdhimOE0hxvQDyRL0FtUprv0AAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="2021 07 02 01 00 14"
+        title="2021 07 02 01 00 14"
+        src="/static/c3806d03a6c11981ad9fe6ac95454325/99272/2021-07-02-01-00-14.png"
+        srcset="/static/c3806d03a6c11981ad9fe6ac95454325/772e8/2021-07-02-01-00-14.png 200w,
+/static/c3806d03a6c11981ad9fe6ac95454325/e17e5/2021-07-02-01-00-14.png 400w,
+/static/c3806d03a6c11981ad9fe6ac95454325/99272/2021-07-02-01-00-14.png 669w"
+        sizes="(max-width: 669px) 100vw, 669px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<h2 id="具体怎么做" style="position:relative;">具体怎么做<a href="#%E5%85%B7%E4%BD%93%E6%80%8E%E4%B9%88%E5%81%9A" aria-label="具体怎么做 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<h3 id="用到的-graphql-api" style="position:relative;">用到的 GraphQL API<a href="#%E7%94%A8%E5%88%B0%E7%9A%84-graphql-api" aria-label="用到的 graphql api permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>首先，我集成的是 Github 的 GraphQL API 主要用到了以下几个接口：</p>
+<h4 id="1-获取组织内的-repositories" style="position:relative;">1. 获取组织内的 repositories<a href="#1-%E8%8E%B7%E5%8F%96%E7%BB%84%E7%BB%87%E5%86%85%E7%9A%84-repositories" aria-label="1 获取组织内的 repositories permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h4>
+<div class="gatsby-highlight" data-language="graphql"><pre class="language-graphql"><code class="language-graphql"><span class="token keyword">query</span> <span class="token definition-query function">Repositories</span><span class="token punctuation">(</span><span class="token variable">$username</span><span class="token punctuation">:</span> <span class="token scalar">String</span><span class="token operator">!</span><span class="token punctuation">,</span> <span class="token variable">$cursor</span><span class="token punctuation">:</span> <span class="token scalar">String</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token property-query">organization</span><span class="token punctuation">(</span><span class="token attr-name">login</span><span class="token punctuation">:</span> <span class="token variable">$username</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token property-query">repositories</span><span class="token punctuation">(</span>
+      <span class="token attr-name">first</span><span class="token punctuation">:</span> <span class="token number">100</span>
+      <span class="token attr-name">isLocked</span><span class="token punctuation">:</span> <span class="token boolean">false</span>
+      <span class="token attr-name">orderBy</span><span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token attr-name">field</span><span class="token punctuation">:</span> <span class="token constant">PUSHED_AT</span><span class="token punctuation">,</span> <span class="token attr-name">direction</span><span class="token punctuation">:</span> <span class="token constant">DESC</span> <span class="token punctuation">}</span>
+      <span class="token attr-name">after</span><span class="token punctuation">:</span> <span class="token variable">$cursor</span>
+    <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token object">pageInfo</span> <span class="token punctuation">{</span>
+        <span class="token property">hasNextPage</span>
+        <span class="token property">endCursor</span>
+      <span class="token punctuation">}</span>
+      <span class="token object">edges</span> <span class="token punctuation">{</span>
+        <span class="token object">node</span> <span class="token punctuation">{</span>
+          <span class="token property">pushedAt</span>
+          <span class="token property">name</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<h4 id="2-获取-repository-下的-commits" style="position:relative;">2. 获取 repository 下的 commits<a href="#2-%E8%8E%B7%E5%8F%96-repository-%E4%B8%8B%E7%9A%84-commits" aria-label="2 获取 repository 下的 commits permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h4>
+<div class="gatsby-highlight" data-language="graphql"><pre class="language-graphql"><code class="language-graphql"><span class="token keyword">query</span> <span class="token definition-query function">Commits</span><span class="token punctuation">(</span><span class="token variable">$owner</span><span class="token punctuation">:</span> <span class="token scalar">String</span><span class="token operator">!</span><span class="token punctuation">,</span> <span class="token variable">$name</span><span class="token punctuation">:</span> <span class="token scalar">String</span><span class="token operator">!</span><span class="token punctuation">,</span> <span class="token variable">$cursor</span><span class="token punctuation">:</span> <span class="token scalar">String</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token property-query">repository</span><span class="token punctuation">(</span><span class="token attr-name">owner</span><span class="token punctuation">:</span> <span class="token variable">$owner</span><span class="token punctuation">,</span> <span class="token attr-name">name</span><span class="token punctuation">:</span> <span class="token variable">$name</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token object">defaultBranchRef</span> <span class="token punctuation">{</span>
+      <span class="token object">target</span> <span class="token punctuation">{</span>
+        <span class="token operator">...</span> <span class="token keyword">on</span> <span class="token class-name">Commit</span> <span class="token punctuation">{</span>
+          <span class="token property-query">history</span><span class="token punctuation">(</span><span class="token attr-name">first</span><span class="token punctuation">:</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token attr-name">after</span><span class="token punctuation">:</span> <span class="token variable">$cursor</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token object">pageInfo</span> <span class="token punctuation">{</span>
+              <span class="token property">hasNextPage</span>
+              <span class="token property">endCursor</span>
+            <span class="token punctuation">}</span>
+            <span class="token object">edges</span> <span class="token punctuation">{</span>
+              <span class="token object">node</span> <span class="token punctuation">{</span>
+                <span class="token object">author</span> <span class="token punctuation">{</span>
+                  <span class="token object">user</span> <span class="token punctuation">{</span>
+                    <span class="token property">name</span>
+                    <span class="token property">login</span>
+                  <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+                <span class="token property">commitUrl</span>
+                <span class="token property">abbreviatedOid</span>
+                <span class="token property">pushedDate</span>
+                <span class="token property">additions</span>
+                <span class="token property">deletions</span>
+                <span class="token property">message</span>
+              <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<h4 id="3-获取-issue" style="position:relative;">3. 获取 issue<a href="#3-%E8%8E%B7%E5%8F%96-issue" aria-label="3 获取 issue permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h4>
+<div class="gatsby-highlight" data-language="graphql"><pre class="language-graphql"><code class="language-graphql"><span class="token keyword">query</span> <span class="token definition-query function">Issue</span><span class="token punctuation">(</span><span class="token variable">$owner</span><span class="token punctuation">:</span> <span class="token scalar">String</span><span class="token operator">!</span><span class="token punctuation">,</span> <span class="token variable">$name</span><span class="token punctuation">:</span> <span class="token scalar">String</span><span class="token operator">!</span><span class="token punctuation">,</span> <span class="token variable">$number</span><span class="token punctuation">:</span> <span class="token scalar">Int</span><span class="token operator">!</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token property-query">repository</span><span class="token punctuation">(</span><span class="token attr-name">owner</span><span class="token punctuation">:</span> <span class="token variable">$owner</span><span class="token punctuation">,</span> <span class="token attr-name">name</span><span class="token punctuation">:</span> <span class="token variable">$name</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token property-query">issue</span><span class="token punctuation">(</span><span class="token attr-name">number</span><span class="token punctuation">:</span> <span class="token variable">$number</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token property">title</span>
+      <span class="token property">url</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>使用的 Client 就是 Apollo GraphQL Client。</p>
+<h3 id="对每个人的活动量做细节处理" style="position:relative;">对每个人的活动量做细节处理<a href="#%E5%AF%B9%E6%AF%8F%E4%B8%AA%E4%BA%BA%E7%9A%84%E6%B4%BB%E5%8A%A8%E9%87%8F%E5%81%9A%E7%BB%86%E8%8A%82%E5%A4%84%E7%90%86" aria-label="对每个人的活动量做细节处理 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>原始的 Commit 包含行的增加和删减，但这里有个问题：</p>
+<ol>
+<li>很多代码其实是自动生成的，这部分并不能算是个人的工作量，并且这种生成代码的规模对于不同编程语言也有很大差异，希望在统计时忽略这些自动生成的代码</li>
+<li>有一些 Merge commit 其实也不能算是个人工作量，也应该剔除</li>
+<li>不同编程语言的工作规模有差异，比如前端 js 通常生产出来的代码规模就比写 python 的要大不少，纯粹按照行数统计没有可比性</li>
+</ol>
+<p>这里我处理了前两个，第三个感觉有点复杂，并且我也觉得没必要如此仔细的量化。</p>
+<h4 id="通过-node-ignore-去过滤掉那些生成代码" style="position:relative;">通过 <code>node-ignore</code> 去过滤掉那些生成代码<a href="#%E9%80%9A%E8%BF%87-node-ignore-%E5%8E%BB%E8%BF%87%E6%BB%A4%E6%8E%89%E9%82%A3%E4%BA%9B%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81" aria-label="通过 node ignore 去过滤掉那些生成代码 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h4>
+<p><a href="https://github.com/kaelzhang/node-ignore">node-ignore</a> 是一个很不错的库，实现了 gitignore 的标准，用这个我们就可以将每个 commit 的每个文件扫一遍，过滤掉那些模板的文件后重新统计删减就好了。</p>
+<p>这里吐槽 Github GraphQL API 发现其并没有实现具体一个 commit 下文件修改的接口，还需要我去调用 REST 的接口。</p>
+<h4 id="通过-commit-message-过滤掉-merge-的-commit" style="position:relative;">通过 commit message 过滤掉 Merge 的 commit<a href="#%E9%80%9A%E8%BF%87-commit-message-%E8%BF%87%E6%BB%A4%E6%8E%89-merge-%E7%9A%84-commit" aria-label="通过 commit message 过滤掉 merge 的 commit permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h4>
+<p>这里似乎有点不太严谨，但是似乎问题不大吧...</p>
+<h3 id="用-ejs-做模板生成-markdown" style="position:relative;">用 ejs 做模板生成 markdown<a href="#%E7%94%A8-ejs-%E5%81%9A%E6%A8%A1%E6%9D%BF%E7%94%9F%E6%88%90-markdown" aria-label="用 ejs 做模板生成 markdown permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>自从用了 react 似乎很少和各种模板引擎打交道了。上次使用类似的东西还是用 freemarker 做简单的文本内容模板。这次我也做了简单的调研，看了 mustache handlebars 和 ejs 最后还是觉得 ejs 这种可以直接写 js 的比较舒服。尤其是我在尝试 mustache 的时候没找到去迭代 Object 的方法...</p>
+<p>写出来就是这个样子，实在是好久没写 nodejs 以及对 ejs 也是现学现用...</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">## Commit Summary
+
+&lt;% Object.keys(userCommitSummary).forEach(function(username) { -%>
+- &lt;%= username %>: &lt;%= userCommitSummary[username].commitCount %> commits +&lt;%= userCommitSummary[username].additions %> -&lt;%= userCommitSummary[username].deletions %>
+&lt;% }); -%>
+
+## Issue Summary
+
+&lt;% Object.keys(userIssueSummary).forEach(function(username) { -%>
+### &lt;%= username %>
+
+工作涉及 &lt;%= userIssueSummary[username].issueCount %> 个 issue：
+&lt;% userIssueSummary[username].issues.forEach(function(issue) { %>
+- &lt;%= issue -%>
+&lt;% }); %>
+
+&lt;% }); -%>
+
+## Commit Details
+
+&lt;% Object.keys(userRepositoryCommitsDetails).forEach(function(username) { -%>
+### &lt;%= username %>
+  &lt;% Object.keys(userRepositoryCommitsDetails[username]).forEach(function(repo) { %>
+####  &lt;%= repo %>
+
+    &lt;%_ userRepositoryCommitsDetails[username][repo].forEach(function(commit) { -%>
+- &lt;%= commit.url %> - &lt;%= commit.message %> &lt;&lt;%= commit.pushedDate %>>
+    &lt;%_ }); -%>
+  &lt;% }); -%>
+
+&lt;% }); -%></code></pre></div>
+<h3 id="用-github-actions-去跑任务做周期性统计" style="position:relative;">用 github actions 去跑任务做周期性统计<a href="#%E7%94%A8-github-actions-%E5%8E%BB%E8%B7%91%E4%BB%BB%E5%8A%A1%E5%81%9A%E5%91%A8%E6%9C%9F%E6%80%A7%E7%BB%9F%E8%AE%A1" aria-label="用 github actions 去跑任务做周期性统计 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">name</span><span class="token punctuation">:</span> statistics of github org
+
+<span class="token key atrule">on</span><span class="token punctuation">:</span>
+  <span class="token key atrule">workflow_dispatch</span><span class="token punctuation">:</span>
+    <span class="token key atrule">inputs</span><span class="token punctuation">:</span>
+      <span class="token key atrule">timezone</span><span class="token punctuation">:</span>
+        <span class="token key atrule">description</span><span class="token punctuation">:</span> <span class="token string">"TimeZone default is +8"</span>
+        <span class="token key atrule">required</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+        <span class="token key atrule">default</span><span class="token punctuation">:</span> <span class="token string">"Asia/Shanghai"</span>
+      <span class="token key atrule">date</span><span class="token punctuation">:</span>
+        <span class="token key atrule">description</span><span class="token punctuation">:</span> <span class="token string">"Any date in the week, default is now"</span>
+        <span class="token key atrule">required</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+  <span class="token key atrule">schedule</span><span class="token punctuation">:</span>
+    <span class="token comment"># https://crontab.guru</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">cron</span><span class="token punctuation">:</span> 0 18 * * *
+
+<span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+  <span class="token key atrule">report</span><span class="token punctuation">:</span>
+    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest
+    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v2
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Setup node
+        <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/setup<span class="token punctuation">-</span>node@v2
+        <span class="token key atrule">with</span><span class="token punctuation">:</span>
+          <span class="token key atrule">node-version</span><span class="token punctuation">:</span> <span class="token string">"14"</span>
+          <span class="token key atrule">check-latest</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> yarn
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> generate report
+        <span class="token key atrule">env</span><span class="token punctuation">:</span>
+          <span class="token key atrule">GITHUB_TOKEN</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> secrets.GH_PAT <span class="token punctuation">}</span><span class="token punctuation">}</span>
+        <span class="token key atrule">run</span><span class="token punctuation">:</span> TZ=$<span class="token punctuation">{</span><span class="token punctuation">{</span>github.event.inputs.timezone<span class="token punctuation">}</span><span class="token punctuation">}</span> DATE=$<span class="token punctuation">{</span><span class="token punctuation">{</span>github.event.inputs.date<span class="token punctuation">}</span><span class="token punctuation">}</span> node main.js
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Upload results
+        <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/upload<span class="token punctuation">-</span>artifact@v2
+        <span class="token key atrule">with</span><span class="token punctuation">:</span>
+          <span class="token key atrule">name</span><span class="token punctuation">:</span> reports
+          <span class="token key atrule">path</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+            rawdata.json
+            report.md</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Prepare Issue Title
+        <span class="token key atrule">id</span><span class="token punctuation">:</span> issue_title
+        <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+          export TZ=${{github.event.inputs.timezone}}
+          export DATE=${{github.event.inputs.date}}
+          echo ::set-output name=ISSUE_TITLE::$(node week.js)</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Create Issue From File
+        <span class="token key atrule">uses</span><span class="token punctuation">:</span> aisensiy/create<span class="token punctuation">-</span>issue<span class="token punctuation">-</span>from<span class="token punctuation">-</span>file@af97df85a971093700b62d1bde8339c4fabb35ff
+        <span class="token key atrule">with</span><span class="token punctuation">:</span>
+          <span class="token key atrule">title</span><span class="token punctuation">:</span> Weekly Statistics $<span class="token punctuation">{</span><span class="token punctuation">{</span>steps.issue_title.outputs.ISSUE_TITLE<span class="token punctuation">}</span><span class="token punctuation">}</span>
+          <span class="token key atrule">token</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> secrets.GH_PAT <span class="token punctuation">}</span><span class="token punctuation">}</span>
+          <span class="token key atrule">update-existing</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+          <span class="token key atrule">content-filepath</span><span class="token punctuation">:</span> ./report.md
+          <span class="token key atrule">labels</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+            report</span>
+</code></pre></div>
+<p>首先，这里使用了两个 github workflow 的 trigger：</p>
+<ul>
+<li>schedule 也就是 cron 用于周期性跑任务</li>
+<li>workflow_dispatch 可以提供个简单的表单，用来主动去创建一个 workflow</li>
+</ul>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/85118802a9232dab272a6133372e6368/a0b80/2021-07-02-01-23-57.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 41.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAA7DAAAOwwHHb6hkAAABMElEQVQY01WNy27cMAxF/f+f0l323XVfZDNtgklmMHl5MrYkUg9KFkWqsYPmcXAgEAIO7uDAj6+zhUClUuG8ud2f+kgYEviEgZxPPhUIJKrD/VR3z+nmXG4v9eZc/o5l95z2E98b/aIc7PreGTle0vHFnqZUWx+eID5M4XGKp0s4Q5mjXAKbJJb6f9XFOmMG4lR7KpyohMwsOviMzllnV0rJjbkx9+8E78dxRIQu8v4jIio6WMLJGGPdbCxRrpVrrar9Q5GeKBmwkVKtS5MmIq01WZdLdIiIHgBLWXjj66x2DWGxU/K4GIizC54qLU11jYNzAIDOAeVcNz5L1d7775fDj92v6/MpLd0XxdJD3mLIiN4HHxH9mqm+Bx+zvfc/0/5q//PWHLS1TMS1MvNb/A+KTsqL7RVgYQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="2021 07 02 01 23 57"
+        title="2021 07 02 01 23 57"
+        src="/static/85118802a9232dab272a6133372e6368/5a190/2021-07-02-01-23-57.png"
+        srcset="/static/85118802a9232dab272a6133372e6368/772e8/2021-07-02-01-23-57.png 200w,
+/static/85118802a9232dab272a6133372e6368/e17e5/2021-07-02-01-23-57.png 400w,
+/static/85118802a9232dab272a6133372e6368/5a190/2021-07-02-01-23-57.png 800w,
+/static/85118802a9232dab272a6133372e6368/a0b80/2021-07-02-01-23-57.png 955w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<p>然后，这里在完成统计后（就是 generate report 这个步骤）将所有的数据做成了 artifact 保存了下来，方便后续的数据的追溯。</p>
+<p><figure class="gatsby-resp-image-figure" style="">
+    <span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/183db6a9d17a90648b97b5707fd332e1/ef916/2021-07-02-01-25-25.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 68%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAIAAACgpqunAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABBklEQVQoz5VTa2vDMAz0//+RgzFWykicxvJDb42kK4OuK81xH4zk0wkhJSQqpUCtrfU+hkf0MUQ1IpAJAERNREoBEfWI1rqaeYRHpGmeTqcT1LqWlYgiYl1XAIiI0fuyLBHBzDln3Ssyc9yQRM09zHxzUGVRFmEWFpWde0Rvqd8Hi6Zlhbf3j/PX3AZ15ENMtWO+lHwpK/SG3A6JOzHgQNr6JBZiOSAGGp/LufdtzuauZog0SF5zRu5j67YN+uHrzvsAjUhwIx9iIqI8ZxGJ40iIOE1TrQ3HcPeHn9zjYSbJthL83MFUr8t3L66tTfPcWnsmNoMK5vbHea8qIv4/zLbbMLO7+Dcw0TR6psAb7gAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Artifact 可以直接下载下来"
+        title="Artifact 可以直接下载下来"
+        src="/static/183db6a9d17a90648b97b5707fd332e1/5a190/2021-07-02-01-25-25.png"
+        srcset="/static/183db6a9d17a90648b97b5707fd332e1/772e8/2021-07-02-01-25-25.png 200w,
+/static/183db6a9d17a90648b97b5707fd332e1/e17e5/2021-07-02-01-25-25.png 400w,
+/static/183db6a9d17a90648b97b5707fd332e1/5a190/2021-07-02-01-25-25.png 800w,
+/static/183db6a9d17a90648b97b5707fd332e1/ef916/2021-07-02-01-25-25.png 815w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span>
+    <figcaption class="gatsby-resp-image-figcaption">Artifact 可以直接下载下来</figcaption>
+  </figure></p>
+<p>最后，通过一个 create-issue-from-file 的 github action 将 report 的内容创建成一个 issue 展示出来，展示出来就是上文的截图的效果了。</p>
+<blockquote>
+<p>这里我为了避免每次执行都创建重复性的内容还特意把原来的 action 做了修改，提交了 PR <a href="https://github.com/aisensiy/create-issue-from-file">https://github.com/aisensiy/create-issue-from-file</a> 。</p>
+</blockquote>
+<h2 id="总结" style="position:relative;">总结<a href="#%E6%80%BB%E7%BB%93" aria-label="总结 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ul>
+<li>GraphQL 的 API 相对于 REST 更容易上手</li>
+<li>了解了 Github Actions 除了 CI/CD 的功能外还能做很多奇奇怪怪的东西，甚至让我觉得它是一个 serverless 平台，这里还看到另外一个新奇的使用方式 <a href="https://github.blog/2020-06-17-using-github-actions-for-mlops-data-science/">https://github.blog/2020-06-17-using-github-actions-for-mlops-data-science/</a></li>
+<li>自己撰写 Github Actions 似乎挺简单的，文档还算是比较清楚，不过那个 <a href="https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idoutputs">outputs</a> 确实是花了些时间</li>
+</ul></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/graphql-example">Real World 的 GraphQL 版本</a></h1><h2>2021 June-16</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p>在很久之前的一篇 <a href="/real-world-spring-boot-and-mybatis">文章</a> 介绍了我做的一个 <a href="https://github.com/gothinkster/spring-boot-realworld-example-app">RealWorld 的 SpringBoot + MyBatis</a> 的实现。这个项目我也一直在维护，一方面是因为这是一个很好的 demo 项目，可以很好的体现一些设计思路 <a href="/real-world-spring-boot-and-mybatis">文章</a> 也都说了不再重复。另一方面，我觉得也是一个新人练手不错的选择，可以让大家可以通过这个项目来入门。</p>
 <p>最近在做 GraphQL 的调研和测试，我第一个想到的就是把这个项目添加上 GraphQL 的接口，一方面可以熟悉 GraphQL 的体系，另一方面也是个很好的机会去验证下是不是 REST 层是按照 <a href="https://alistair.cockburn.us/Hexagonal+architecture">六边形架构</a> 或者说是 <a href="https://www.infoq.com/news/2014/10/ddd-onion-architecture">洋葱架构</a> 那样子做成的是薄薄的一层，可以轻易的被替换掉。</p>
 <h2 id="对-api-层与-application-层做重构" style="position:relative;">对 api 层与 application 层做重构<a href="#%E5%AF%B9-api-%E5%B1%82%E4%B8%8E-application-%E5%B1%82%E5%81%9A%E9%87%8D%E6%9E%84" aria-label="对 api 层与 application 层做重构 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <p>当然，api 层和 application 层一点都不修改就能添加 GraphQL 是不可能的。主要是因为之前有不少的逻辑写在了 SpringBoot 的 Controller 里面了。那么这一部分的工作基本就是把大量放在 Controller 的代码挪动到 application 层。</p>
@@ -443,291 +733,7 @@
 <p><strong>更新</strong> 目前并没有很系统的去了解撰写 github action 的方法，最近接触到的是 <a href="https://docs.github.com/en/actions/creating-actions/about-actions#javascript-actions">JS Action</a> 的流程。其文档也提到</p>
 <p>"To ensure your JavaScript actions are compatible with all GitHub-hosted runners (Ubuntu, Windows, and macOS), the packaged JavaScript code you write should be pure JavaScript and not rely on other binaries. JavaScript actions run directly on the runner and use binaries that already exist in the virtual environment."</p>
 <p>也就是说其平台兼容性是建立在你自己的 nodejs 依赖是可以跨平台的前提下的。</p>
-</blockquote></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/spring-security-with-jwt">Spring Security Jwt 的实现</a></h1><h2>2021 April-12</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p>突然发现除了<a href="/spring-cors-and-security">跨域问题</a>之外从来没有好好记录过 Spring Security 的其他内容。最近也是比较系统的看了些资料，这里就算是做一个总结吧，方便后面忘记了回看。</p>
-<p>这里只介绍怎么把 jwt 的流程跑通以及对关键的代码做解释，不涉及 Authorization 部分，同时也只有 username password 单一的 authentication 流程，不涉及其他。</p>
-<h2 id="关键概念解释" style="position:relative;">关键概念解释<a href="#%E5%85%B3%E9%94%AE%E6%A6%82%E5%BF%B5%E8%A7%A3%E9%87%8A" aria-label="关键概念解释 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>首先要明白 spring security 主要通过 filter 拦截请求并做处理的，在 <a href="/servlet-and-filter-with-web-framework">有关 servlet 和 filter 的基础知识</a> 已经做了介绍。</p>
-<p>在 Spring Security 有一个概念 <code>Authentication</code> 它同时记录了一个用户授权的凭证（Credentials）以及验证通过后的产物（Principal）。而负责这个凭据验证并基于 Principal 的东西就是 <code>AuthenticationProvider</code>。</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/e1d64627c81bf20bc5344f3d928d8257/6029f/2021-04-12-23-24-37.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 70.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAAsTAAALEwEAmpwYAAACFklEQVQ4y5VSiW7aQBD1b7ff1kRR2lShgCtSQwg2GJ/r9XoNNr45XjRLjEKVSulIT571zr55c2hFUcAwppjNnmH8mSqwMIJMJOiO7HQ6/RPH01HF7Nodvn7/Ak3KFAtrDo+vIPIQ4caBrCKkeYzdbof/MZ5xaEVeICkZvHyOdTqDvzUR5BaCxEae5yqwrmtUVaUUbzYbSCmvkKYpRCxQFRW0tu3gMhuBWENsIvCEIYx9BJGHtm1RNzXiOFbkpHi/3+N4POJwOFxApVPSRCbQ6EAPGWO4+XYLfayjbVrkWa4el2WpcLGTauo1AEVMSjVyqIw0lWAsvKihLynq2hZZnn2qh4mUZ4VUAqH33xvlF1GEmnFUAUPNBVq5QSMk6jBCEycXX8QxtH4t/rY+Ad4IGy5QBREqP1SkKoHPzklYjCYSZ8L+EU1xsVjANE1st9srUiqFbF+UKEwb5dJBHXKUaw/FysGhrNQ9TVzrFdFQJpMJxuMxooipPmbZuXfUbHxQxXvbd50SovUrYBgG5vMXTI0ZxiMdS2uFJEnQdR2EEGriCl13Bbqn/1QhxWm0rKSElOmTEUz7GS/2FCzx4XqOWh/XdeC67hs8eJ6n/P5r2zYcxzkTcs4R+gz6bIDfqwcY9giD+S2ezF/Qn4bgUaxW6ENwfnUmLm25XKpB3D/c4f7xBj8Gd3gc/sRg+IjReAS6tyzrU6DYV6dSJI+QJX2yAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="2021 04 12 23 24 37"
-        title="2021 04 12 23 24 37"
-        src="/static/e1d64627c81bf20bc5344f3d928d8257/5a190/2021-04-12-23-24-37.png"
-        srcset="/static/e1d64627c81bf20bc5344f3d928d8257/772e8/2021-04-12-23-24-37.png 200w,
-/static/e1d64627c81bf20bc5344f3d928d8257/e17e5/2021-04-12-23-24-37.png 400w,
-/static/e1d64627c81bf20bc5344f3d928d8257/5a190/2021-04-12-23-24-37.png 800w,
-/static/e1d64627c81bf20bc5344f3d928d8257/6029f/2021-04-12-23-24-37.png 906w"
-        sizes="(max-width: 800px) 100vw, 800px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span></p>
-<p>然后一个系统可能会支持多种凭据，比如最典型的 UsernamePasswordAuthentication 也可以是通过 OAuth 的 Authentication。为了处理不同的授权流程，Spring Security 有另外一个概念 <code>AuthenticationManager</code> 用于管理多个 <code>AuthenticationProvider</code>：</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/395e312f669700efde6155bce5e7b201/a0730/2021-04-12-23-32-28.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 66%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsTAAALEwEAmpwYAAACEUlEQVQ4y4VTaW/aQBD1//87nAFUlQ/QNuFMyEEVsCkE3PjC62Pt9cKrZsAoKZW60tPMzs4+vZmdNbTWWCwWWK/X2G63bB8fn7BcLmGaJjzPw8PDA8fTNEUkIiRJwn4JKSWDfMN1XaxWK+x2O74URRHCMEQcx2xpv9/vEQoBQX64RxAETEo5JYhss9nAcBwH/1s6V1BhBC1iFCLCQet/5pEAQwiBPM85cDwer5LiPIRI95BugHhjQ8UJikJd8kvQItVMmGXZSYnWKIqCoQsNqRIkSkAVBZfFZSbJlYDS+r7/WSE1Vh809OHApDKTHFdKQRXqFNea8z+SlT6170R4VpiKCCoIkXkBcn/PpVHJQeQgcwPIdxe56yNP5Ynkr5LpgQ16xVJhJiU3n8hUFCNXGY44sDoZCoi3HTKOq6t+055e36C6qT/FuU/UoySlkUgQRgGyXCKTGY+M+DBS3IYz6C4J4x6WM0gbklzCcz04zjus7Ss2b7/w27Z5yF3HhW3bn3J9z2cOy7JgzGYzzOdzWKbJv6P8Iaa5hGVaWCxf8TJ/xstwjKfvd5iPJvj5/IIl55zuEFHJY/T7fQyHQw7c398zptMpJpMJg/zhaITbfh/fvnzF3Y9bDAaDyxmB7vZ6PYzHYxitVgvNZhOdTgftdptB+3q9jkajwSC/WquhSrZaRa1Wu5zd3NywrVQq6Ha7+AORis91ptOV0wAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="2021 04 12 23 32 28"
-        title="2021 04 12 23 32 28"
-        src="/static/395e312f669700efde6155bce5e7b201/5a190/2021-04-12-23-32-28.png"
-        srcset="/static/395e312f669700efde6155bce5e7b201/772e8/2021-04-12-23-32-28.png 200w,
-/static/395e312f669700efde6155bce5e7b201/e17e5/2021-04-12-23-32-28.png 400w,
-/static/395e312f669700efde6155bce5e7b201/5a190/2021-04-12-23-32-28.png 800w,
-/static/395e312f669700efde6155bce5e7b201/a0730/2021-04-12-23-32-28.png 1131w"
-        sizes="(max-width: 800px) 100vw, 800px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span></p>
-<p>而具体到我们这次要构建的 JwtUsernamePassword 的流程，当我们登录的时候需要拿着登录信息（username + password）去数据库（或者其他地方）校验有没有这样子的组合，而这个地方 Spring Security 也抽取了概念叫做 <code>UserDetailsService</code>:</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/02d0ffa1cbb85e4e5ecafb8addf28a32/302a4/2021-04-12-23-37-33.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 31%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA/0lEQVQY021QW5KEIAz0/lfzAjt/lliuOgoCyht7Klmdr01VoBJCp7sbALiuC6UU1FJRS+H6v6A+5XEcMMbAWMuptUYIgWcaGkgpIeWMVDJiSogx8mOtlT/SB0oKWqykQkkZKUbknOGcw77vNyAuROcRtUUyB6I2SPc2YtL3PcZxxDzP2LYNlhgphTC94X4XhGXDuazfhQ0dxCjuBuEt/wBvhuu6Msg0TZBSMgvvPYzWSLuBXxXCqnBKxUoYkGQRoA+BfXDe8019suI8T7Rti5/Xi2uafeQ9kWvhHtnXEFUqlFLfpPrxjSQSQ5JsjeV3skEIAdH3GIRA13UYhoFnPyMwz0KaAT2oAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="2021 04 12 23 37 33"
-        title="2021 04 12 23 37 33"
-        src="/static/02d0ffa1cbb85e4e5ecafb8addf28a32/5a190/2021-04-12-23-37-33.png"
-        srcset="/static/02d0ffa1cbb85e4e5ecafb8addf28a32/772e8/2021-04-12-23-37-33.png 200w,
-/static/02d0ffa1cbb85e4e5ecafb8addf28a32/e17e5/2021-04-12-23-37-33.png 400w,
-/static/02d0ffa1cbb85e4e5ecafb8addf28a32/5a190/2021-04-12-23-37-33.png 800w,
-/static/02d0ffa1cbb85e4e5ecafb8addf28a32/302a4/2021-04-12-23-37-33.png 1080w"
-        sizes="(max-width: 800px) 100vw, 800px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span></p>
-<p>Spring Security 有提供一个名为 <code>WebSecurityConfigurerAdapter</code> 的基类，它已经提供了基本的框架，我们通常只需要对需要自定义的地方做覆盖即可。</p>
-<p>那么总结下具体要做什么：</p>
-<ol>
-<li>增加一个 InMemoryUserDetailsManager 假装是个数据库。</li>
-<li>完成两个 Filter：
-<ol>
-<li><code>JwtUsernameAndPasswordAuthenticationFilter</code> 覆盖默认的 <code>UsernamePasswordAuthenticationFilter</code> 支持依据请求生成 jwt token</li>
-<li><code>JwtTokenVerifier</code> 检查请求的 header <code>Authorization</code> 获取并验证所附带的 token 判断这个 token 是否合法并返回对应的 Principle</li>
-</ol>
-</li>
-<li>覆盖 <code>WebSecurityConfigurerAdapter.configure</code> 把以上配置传起来</li>
-</ol>
-<h2 id="基本依赖" style="position:relative;">基本依赖<a href="#%E5%9F%BA%E6%9C%AC%E4%BE%9D%E8%B5%96" aria-label="基本依赖 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>首先 gradle 依赖如下：</p>
-<div class="gatsby-highlight" data-language="gradle"><pre class="language-gradle"><code class="language-gradle">dependencies {
-    implementation &#39;org.springframework.boot:spring-boot-starter-security&#39;
-    implementation &#39;org.springframework.boot:spring-boot-starter-validation&#39;
-    implementation &#39;org.springframework.boot:spring-boot-starter-web&#39;
-    compileOnly &#39;org.projectlombok:lombok&#39;
-
-    compile &#39;io.jsonwebtoken:jjwt-api:0.11.2&#39;
-    runtime &#39;io.jsonwebtoken:jjwt-impl:0.11.2&#39;,
-            // Uncomment the next line if you want to use RSASSA-PSS (PS256, PS384, PS512) algorithms:
-            //&#39;org.bouncycastle:bcprov-jdk15on:1.60&#39;,
-            &#39;io.jsonwebtoken:jjwt-jackson:0.11.2&#39; // or &#39;io.jsonwebtoken:jjwt-gson:0.11.2&#39; for gson
-
-    annotationProcessor &#39;org.springframework.boot:spring-boot-configuration-processor&#39;
-    annotationProcessor &#39;org.projectlombok:lombok&#39;
-    testImplementation &#39;org.springframework.boot:spring-boot-starter-test&#39;
-    testImplementation &#39;org.springframework.security:spring-security-test&#39;
-}</code></pre></div>
-<p>通过 <a href="https://start.spring.io">start.spring.io</a> 创建的项目，添加了以下依赖：</p>
-<ul>
-<li>web</li>
-<li>validation</li>
-<li>lombok</li>
-<li>spring security</li>
-</ul>
-<p>同时增加了一个 jwt 解析的类库 <a href="https://github.com/jwtk/jjwt">jjwt</a>。</p>
-<h2 id="websecurityconfig" style="position:relative;">WebSecurityConfig<a href="#websecurityconfig" aria-label="websecurityconfig permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>增加一个 <code>InMemoryUserDetailsManager</code>，只有一个用户：</p>
-<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">WebSecurityConfig</span> <span class="token keyword">extends</span> <span class="token class-name">WebSecurityConfigurerAdapter</span> <span class="token punctuation">{</span>
-  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-  
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token annotation punctuation">@Bean</span>
-  <span class="token keyword">protected</span> <span class="token class-name">UserDetailsService</span> <span class="token function">userDetailsService</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">InMemoryUserDetailsManager</span><span class="token punctuation">(</span>
-        <span class="token keyword">new</span> <span class="token class-name">User</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">,</span> passwordEncoder<span class="token punctuation">.</span><span class="token function">encode</span><span class="token punctuation">(</span><span class="token string">"password"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token string">"NORMAL"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p>覆盖 <code>configure</code>，增加上述提及的 Filter:</p>
-<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">WebSecurityConfig</span> <span class="token keyword">extends</span> <span class="token class-name">WebSecurityConfigurerAdapter</span> <span class="token punctuation">{</span>
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">configure</span><span class="token punctuation">(</span><span class="token class-name">HttpSecurity</span> http<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
-    http<span class="token punctuation">.</span><span class="token function">csrf</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">disable</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// disable csrf</span>
-        <span class="token punctuation">.</span><span class="token function">sessionManagement</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">sessionCreationPolicy</span><span class="token punctuation">(</span><span class="token class-name">SessionCreationPolicy</span><span class="token punctuation">.</span>STATELESS<span class="token punctuation">)</span> <span class="token comment">// 不再使用 cookie 管理 session</span>
-        <span class="token punctuation">.</span><span class="token function">and</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token punctuation">.</span><span class="token function">addFilter</span><span class="token punctuation">(</span>
-            <span class="token keyword">new</span> <span class="token class-name">JwtUsernameAndPasswordAuthenticationFilter</span><span class="token punctuation">(</span>
-                <span class="token function">authenticationManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> jwtConfig<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 增加用户密码校验的 Filter</span>
-        <span class="token punctuation">.</span><span class="token function">addFilterAfter</span><span class="token punctuation">(</span>
-            <span class="token keyword">new</span> <span class="token class-name">JwtTokenVerifier</span><span class="token punctuation">(</span>jwtConfig<span class="token punctuation">)</span><span class="token punctuation">,</span>
-            <span class="token class-name">JwtUsernameAndPasswordAuthenticationFilter</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span> <span class="token comment">// 增加 token 校验的 Filter</span>
-        <span class="token punctuation">.</span><span class="token function">authorizeRequests</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token punctuation">.</span><span class="token function">anyRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">authenticated</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre></div>
-<h2 id="jwtusernameandpasswordauthenticationfilter" style="position:relative;">JwtUsernameAndPasswordAuthenticationFilter<a href="#jwtusernameandpasswordauthenticationfilter" aria-label="jwtusernameandpasswordauthenticationfilter permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JwtUsernameAndPasswordAuthenticationFilter</span> <span class="token keyword">extends</span>
-    <span class="token class-name">UsernamePasswordAuthenticationFilter</span> <span class="token punctuation">{</span>
-  <span class="token keyword">private</span> <span class="token class-name">AuthenticationManager</span> authenticationManager<span class="token punctuation">;</span>
-  <span class="token keyword">private</span> <span class="token class-name">JwtConfig</span> jwtConfig<span class="token punctuation">;</span>
-
-  <span class="token keyword">public</span> <span class="token class-name">JwtUsernameAndPasswordAuthenticationFilter</span><span class="token punctuation">(</span>
-      <span class="token class-name">AuthenticationManager</span> authenticationManager<span class="token punctuation">,</span> <span class="token comment">// 1</span>
-      <span class="token class-name">JwtConfig</span> jwtConfig<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>authenticationManager <span class="token operator">=</span> authenticationManager<span class="token punctuation">;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>jwtConfig <span class="token operator">=</span> jwtConfig<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token class-name">Authentication</span> <span class="token function">attemptAuthentication</span><span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span> request<span class="token punctuation">,</span>
-      <span class="token class-name">HttpServletResponse</span> response<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">AuthenticationException</span> <span class="token punctuation">{</span> <span class="token comment">// 2</span>
-    <span class="token keyword">try</span> <span class="token punctuation">{</span>
-      <span class="token class-name">UsernamePasswordRequest</span> param <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ObjectMapper</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-          <span class="token punctuation">.</span><span class="token function">readValue</span><span class="token punctuation">(</span>request<span class="token punctuation">.</span><span class="token function">getInputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token class-name">UsernamePasswordRequest</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-      <span class="token class-name">Authentication</span> authentication <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">UsernamePasswordAuthenticationToken</span><span class="token punctuation">(</span>
-          param<span class="token punctuation">.</span><span class="token function">getUsername</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-          param<span class="token punctuation">.</span><span class="token function">getPassword</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-      <span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token keyword">return</span> authenticationManager<span class="token punctuation">.</span><span class="token function">authenticate</span><span class="token punctuation">(</span>authentication<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> io<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">RuntimeException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">successfulAuthentication</span><span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span> request<span class="token punctuation">,</span> <span class="token class-name">HttpServletResponse</span> response<span class="token punctuation">,</span>
-      <span class="token class-name">FilterChain</span> chain<span class="token punctuation">,</span> <span class="token class-name">Authentication</span> authResult<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span><span class="token punctuation">,</span> <span class="token class-name">ServletException</span> <span class="token punctuation">{</span> <span class="token comment">// 3</span>
-    <span class="token class-name">String</span> token <span class="token operator">=</span> <span class="token class-name">Jwts</span><span class="token punctuation">.</span><span class="token function">builder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token punctuation">.</span><span class="token function">setSubject</span><span class="token punctuation">(</span>authResult<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        <span class="token punctuation">.</span><span class="token function">claim</span><span class="token punctuation">(</span><span class="token string">"authorities"</span><span class="token punctuation">,</span> authResult<span class="token punctuation">.</span><span class="token function">getAuthorities</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>
-            <span class="token class-name">GrantedAuthority</span><span class="token operator">::</span><span class="token function">getAuthority</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span><span class="token function">toList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        <span class="token punctuation">.</span><span class="token function">setIssuedAt</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        <span class="token punctuation">.</span><span class="token function">setExpiration</span><span class="token punctuation">(</span><span class="token class-name"><span class="token namespace">java<span class="token punctuation">.</span>sql<span class="token punctuation">.</span></span>Date</span><span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span><span class="token class-name">LocalDate</span><span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">plusDays</span><span class="token punctuation">(</span>jwtConfig<span class="token punctuation">.</span><span class="token function">getDays</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        <span class="token punctuation">.</span><span class="token function">signWith</span><span class="token punctuation">(</span>jwtConfig<span class="token punctuation">.</span><span class="token function">getSecretKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        <span class="token punctuation">.</span><span class="token function">compact</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    response<span class="token punctuation">.</span><span class="token function">addHeader</span><span class="token punctuation">(</span><span class="token string">"Authorization"</span><span class="token punctuation">,</span> <span class="token string">"Bearer "</span> <span class="token operator">+</span> token<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre></div>
-<ol>
-<li>从 <code>WebSecurityConfig</code> 那边获取的 <code>AuthenticationManager</code> 里面其实就是一个默认的 <code>UsernamePasswordProvider</code> 里面用的就是我们上文配置的 <code>InMemoryUserDetailsManager</code>。</li>
-<li>尝试验证，可以看到就是把 <code>{"username": "username", "password": "password"}</code> 这种格式的 request body 做解析，然后让给 <code>AuthenticationManager</code>。</li>
-<li>生成 token，懂 jwt 的话就知道就是那么几个东西：
-<ol>
-<li>subject 里面是 username</li>
-<li>claim 一些 key-value，这里塞了权限列表</li>
-<li>issueAt 创建时间</li>
-<li>expiration 过期时间</li>
-</ol>
-</li>
-</ol>
-<blockquote>
-<p><strong>注意</strong> 其实很多时候这个 Filter 可能是一个独立的 Controller 会比较舒服一些吧，相比下文的 JwtVerifier 这个 Filter 基本就是强行复用了 Spring Security 的逻辑。</p>
-</blockquote>
-<h2 id="jwttokenverifier" style="position:relative;">JwtTokenVerifier<a href="#jwttokenverifier" aria-label="jwttokenverifier permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JwtTokenVerifier</span> <span class="token keyword">extends</span> <span class="token class-name">OncePerRequestFilter</span> <span class="token punctuation">{</span>
-
-  <span class="token keyword">private</span> <span class="token class-name">JwtConfig</span> jwtConfig<span class="token punctuation">;</span>
-
-  <span class="token keyword">public</span> <span class="token class-name">JwtTokenVerifier</span><span class="token punctuation">(</span><span class="token class-name">JwtConfig</span> jwtConfig<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>jwtConfig <span class="token operator">=</span> jwtConfig<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isNullOrEmpty</span><span class="token punctuation">(</span><span class="token class-name">String</span> str<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> str <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> str<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">doFilterInternal</span><span class="token punctuation">(</span>
-      <span class="token class-name">HttpServletRequest</span> request<span class="token punctuation">,</span> <span class="token class-name">HttpServletResponse</span> response<span class="token punctuation">,</span> <span class="token class-name">FilterChain</span> filterChain<span class="token punctuation">)</span>
-      <span class="token keyword">throws</span> <span class="token class-name">ServletException</span><span class="token punctuation">,</span> <span class="token class-name">IOException</span> <span class="token punctuation">{</span>
-    <span class="token class-name">String</span> authorizationHeader <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getHeader</span><span class="token punctuation">(</span><span class="token string">"Authorization"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isNullOrEmpty</span><span class="token punctuation">(</span>authorizationHeader<span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token operator">!</span>authorizationHeader<span class="token punctuation">.</span><span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token string">"Bearer "</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      filterChain<span class="token punctuation">.</span><span class="token function">doFilter</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token keyword">return</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token class-name">String</span> token <span class="token operator">=</span> authorizationHeader<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">"Bearer "</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">try</span> <span class="token punctuation">{</span>
-      <span class="token class-name">Jws</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Claims</span><span class="token punctuation">></span></span> claimsJws <span class="token operator">=</span>
-          <span class="token class-name">Jwts</span><span class="token punctuation">.</span><span class="token function">parserBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-              <span class="token punctuation">.</span><span class="token function">setSigningKey</span><span class="token punctuation">(</span>jwtConfig<span class="token punctuation">.</span><span class="token function">getSecretKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-              <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-              <span class="token punctuation">.</span><span class="token function">parseClaimsJws</span><span class="token punctuation">(</span>token<span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token class-name">Claims</span> body <span class="token operator">=</span> claimsJws<span class="token punctuation">.</span><span class="token function">getBody</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token class-name">String</span> username <span class="token operator">=</span> body<span class="token punctuation">.</span><span class="token function">getSubject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> authorities <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span><span class="token punctuation">)</span> body<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"authorities"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">SimpleGrantedAuthority</span><span class="token punctuation">></span></span> simpleGrantedAuthorities <span class="token operator">=</span>
-          authorities<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token class-name">SimpleGrantedAuthority</span><span class="token operator">::</span><span class="token keyword">new</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span><span class="token class-name">Collectors</span><span class="token punctuation">.</span><span class="token function">toSet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token class-name">Authentication</span> authentication <span class="token operator">=</span> 
-          <span class="token keyword">new</span> <span class="token class-name">UsernamePasswordAuthenticationToken</span><span class="token punctuation">(</span>username<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> simpleGrantedAuthorities<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>
-      <span class="token class-name">SecurityContextHolder</span><span class="token punctuation">.</span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setAuthentication</span><span class="token punctuation">(</span>authentication<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
-    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">JwtException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalStateException</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"Token %s cannot be trusted"</span><span class="token punctuation">,</span> token<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    filterChain<span class="token punctuation">.</span><span class="token function">doFilter</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre></div>
-<ol>
-<li>创建一个 <code>UsernamePasswordAuthenticationToken</code> 注意，这里的第一个参数未必要 String 的，可以是任意类型的，这里只是一个 String 为例了</li>
-<li>把 <code>Authentication</code> 传递给 <code>SecurityContextHolder</code> 之后同一线程下就可以获取它并做进一步的权限验证了</li>
-</ol>
-<h2 id="参考资料" style="position:relative;">参考资料<a href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99" aria-label="参考资料 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>感觉最有用的就是这里的视频呢...</p>
-<ol>
-<li><a href="https://www.youtube.com/watch?v=caCJAJC41Rk">How Spring Security Authentication works - Java Brains</a></li>
-<li><a href="https://www.youtube.com/watch?v=her_7pa0vrg">Spring Security - FULL COURSE</a></li>
-</ol></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/8">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/10">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
+</blockquote></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/8">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/10">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       
       if(true) {
@@ -737,4 +743,4 @@
 
         gtag('config', 'UA-31932181-2', {"send_page_view":false});
       }
-      </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/page/9";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-a5c447d830ba27eaafd9.js"],"app":["/app-047a4a65c3f9a3c0ed82.js"],"component---src-pages-404-js":["/component---src-pages-404-js-905556e6cc2f6ac9ed64.js"],"component---src-pages-about-js":["/component---src-pages-about-js-ced62beb724502ca4b05.js"],"component---src-pages-archive-js":["/component---src-pages-archive-js-5445ee8c0a296a4bd4fe.js"],"component---src-pages-index-js":["/component---src-pages-index-js-19efc7568c2cc85d6708.js"],"component---src-pages-serials-js":["/component---src-pages-serials-js-09f14bfd6f6113f5263b.js"],"component---src-pages-tags-js":["/component---src-pages-tags-js-9a68944c1e744e5bf32b.js"],"component---src-templates-blog-js":["/component---src-templates-blog-js-307bf879db28f34d199c.js"],"component---src-templates-blogs-js":["/component---src-templates-blogs-js-b81aa84e3c777d2f77e7.js"]};/*]]>*/</script><script src="/polyfill-a5c447d830ba27eaafd9.js" nomodule=""></script><script src="/component---src-templates-blogs-js-b81aa84e3c777d2f77e7.js" async=""></script><script src="/d1724f9828659101216d9c2ff846a60d90e64274-aac16f39fe217ccc37e4.js" async=""></script><script src="/app-047a4a65c3f9a3c0ed82.js" async=""></script><script src="/framework-45ca7a0c983b0b7a000c.js" async=""></script><script src="/webpack-runtime-ff02cfd775d7d5fd5e84.js" async=""></script></body></html>
+      </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/page/9";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-a5c447d830ba27eaafd9.js"],"app":["/app-047a4a65c3f9a3c0ed82.js"],"component---src-pages-404-js":["/component---src-pages-404-js-905556e6cc2f6ac9ed64.js"],"component---src-pages-about-js":["/component---src-pages-about-js-ced62beb724502ca4b05.js"],"component---src-pages-archive-js":["/component---src-pages-archive-js-891fee35c506ff32842b.js"],"component---src-pages-index-js":["/component---src-pages-index-js-19efc7568c2cc85d6708.js"],"component---src-pages-serials-js":["/component---src-pages-serials-js-2224e61d63826a8f9864.js"],"component---src-pages-tags-js":["/component---src-pages-tags-js-cd36ee116c69a923055d.js"],"component---src-templates-blog-js":["/component---src-templates-blog-js-307bf879db28f34d199c.js"],"component---src-templates-blogs-js":["/component---src-templates-blogs-js-b81aa84e3c777d2f77e7.js"]};/*]]>*/</script><script src="/polyfill-a5c447d830ba27eaafd9.js" nomodule=""></script><script src="/component---src-templates-blogs-js-b81aa84e3c777d2f77e7.js" async=""></script><script src="/d1724f9828659101216d9c2ff846a60d90e64274-aac16f39fe217ccc37e4.js" async=""></script><script src="/app-047a4a65c3f9a3c0ed82.js" async=""></script><script src="/framework-45ca7a0c983b0b7a000c.js" async=""></script><script src="/webpack-runtime-511ecf62e4948377b3e7.js" async=""></script></body></html>
