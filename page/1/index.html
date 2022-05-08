@@ -100,7 +100,7 @@
 <li>Lombok 生成的很多代码</li>
 <li>引入 QueryDSL 后其和对应的 <code>Entity</code> 生成的 <code>Q + Entity</code> 的名称的代码</li>
 </ol>
-<p>那问题就显而易见了，尤其是后者，每次我迁移了一个 JPA 的 Entity 类型就会对应生成一段 <code>Q + Entity</code> 的代码，而这部分代码统统成了测试覆盖率的分母，测试覆盖率能不低么。</p>
+<p>那问题就显而易见了，尤其是后者，每次迁移一个 JPA 的 Entity 类型就会对应生成一段 <code>Q + Entity</code> 的代码，这部分代码统统成了测试覆盖率的分母，覆盖率能不低么。</p>
 <p><figure class="gatsby-resp-image-figure" style="">
     <span
       class="gatsby-resp-image-wrapper"
@@ -140,23 +140,23 @@
 <h2 id="如何改进" style="position:relative;">如何改进<a href="#%E5%A6%82%E4%BD%95%E6%94%B9%E8%BF%9B" aria-label="如何改进 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <p>这部分的很多信息在 <a href="https://www.baeldung.com/jacoco-report-exclude">Exclusions from Jacoco Report</a> 可以找到。</p>
 <h3 id="修改-jacoco-配置保证代码覆盖率统计的合理性" style="position:relative;">修改 JaCoCo 配置，保证代码覆盖率统计的合理性<a href="#%E4%BF%AE%E6%94%B9-jacoco-%E9%85%8D%E7%BD%AE%E4%BF%9D%E8%AF%81%E4%BB%A3%E7%A0%81%E8%A6%86%E7%9B%96%E7%8E%87%E7%BB%9F%E8%AE%A1%E7%9A%84%E5%90%88%E7%90%86%E6%80%A7" aria-label="修改 jacoco 配置保证代码覆盖率统计的合理性 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>很显然，我们只测试自己写的代码，对于生成的代码不应纳入统计范围。这里直接粘贴下 <code>gradle</code> 里面 <code>jacocoTestReport</code> 的配置：</p>
+<p>我们只需要测试自己写的代码，生成的代码不应纳入统计范围。这里直接粘贴下 <code>gradle</code> 里面 <code>jacocoTestReport</code> 的配置：</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">jacocoTestReport {
     // rule from https://bottom-to-top.tistory.com/36
+    // 过滤 QA-QZ 开头的所有类，对应了 querydsl 生成的 Q + Entity 的格式
     def Qdomains = []
     for(qPattern in "**/QA" .. "**/QZ"){
         Qdomains.add(qPattern + "*")
     }
-    // dependsOn test // tests are required to run before generating the report
     afterEvaluate {
         classDirectories.setFrom(files(classDirectories.files.collect {
             fileTree(dir: it, exclude: [
-                    'com/openbayes/graphql/**',
-                    'com/openbayes/application/data/**',
-                    'db/migration/**',
-                    '**/*Exception*',
-                    '**/*Mixin*',
-                    '**/*Command',
+                    'com/openbayes/graphql/**',          // 所有 graphql 生成的代码
+                    'com/openbayes/application/data/**', // 所有的 DTO 所在的包
+                    'db/migration/**',                   // 所有的数据库 migration 代码
+                    '**/*Exception*',                    // 所有包含 Exception 的异常类
+                    '**/*Mixin*',                        // 所有 Jackson Mixin 
+                    '**/*Command',                       // 所有带 Command 的类，也是 DTO
             ] + Qdomains)
         }))
     }
@@ -170,7 +170,10 @@
 <li>各种 DTO 和 Exception：<code>*Command</code> <code>data/**</code> 等</li>
 <li>实在不太好测试的东西，比如 migration 脚本、比如 Jackson 的 Mixin</li>
 </ol>
-<p>对 querydsl 这部分的过滤比较 tricky ，因为其默认生成的名字是 <code>Q + Entity</code>，本身过滤就有点难，采用的是 <a href="https://bottom-to-top.tistory.com/36">https://bottom-to-top.tistory.com/36</a> 的方法，过滤掉由 <code>QA-QZ</code> 开头的所有的类。</p>
+<p>对 querydsl 这部分的过滤比较 tricky ，因为其默认生成的名字是 <code>Q + Entity</code>，本身过滤就有点难，如果采用 <code>**/Q*</code> 的形式会导致个别以 <code>Q</code> 开头但不是 querydsl 生成的类也被纳入过滤的范围，这里我采用的是 <a href="https://bottom-to-top.tistory.com/36">https://bottom-to-top.tistory.com/36</a> 的方法，过滤掉由 <code>QA-QZ</code> 开头的所有的类。</p>
+<blockquote>
+<p>这里过滤 querydsl 的方法其实官方还有其他方案，但目前 <code>gradle</code> 这边支持不是很好，我目前用的 <code>querydsl</code> 版本为 5.0 有一些 PR 还没有纳入进来，后续如果官方有了更好支持会考虑做相应的调整。</p>
+</blockquote>
 <h3 id="通过注解过滤-lombok-的代码" style="position:relative;">通过注解过滤 Lombok 的代码<a href="#%E9%80%9A%E8%BF%87%E6%B3%A8%E8%A7%A3%E8%BF%87%E6%BB%A4-lombok-%E7%9A%84%E4%BB%A3%E7%A0%81" aria-label="通过注解过滤 lombok 的代码 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
 <p>JaCoCo 本身是考虑了要过滤掉生成的代码的，它提供了一个规则：</p>
 <blockquote>
@@ -180,10 +183,11 @@
 <li>The retention policy of annotation should be runtime or class.</li>
 </ul>
 </blockquote>
+<p>简单的翻一下，就是在 JaCoCo 0.8.2 后，通过提供一个带有 <code>Generated</code> 名称的 <code>RetentionPolicy</code> 为 <code>CLASS</code> 或者 <code>RUNTIME</code> 的注解，JaCoCo 会帮你自动过滤这些类。</p>
 <p>Lombok 也对这部分做了支持，只要提供一个配置 <code>lombok.config</code> 就能让 Lombok 给自己生成的代码添加上相应的注解了：</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">lombok.addLombokGeneratedAnnotation = true</code></pre></div>
 <h2 id="最后" style="position:relative;">最后<a href="#%E6%9C%80%E5%90%8E" aria-label="最后 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>在做了如上修改后，测试覆盖率重回 70% 了。</p>
+<p>在做了上述两方面的修改后，测试覆盖率重回 70% 了。</p>
 <p><span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 686px; "
