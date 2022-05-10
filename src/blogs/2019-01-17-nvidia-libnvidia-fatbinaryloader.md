@@ -3,7 +3,7 @@ layout:     post
 title:      "记一次 nvidia docker 错误追查"
 date:       2019-01-17 23:55:12 +08:00
 author:     "Eisen"
-tags:       [docker, devops, kubernetes, gpu]
+tags:       [docker, devops, kubernetes, gpu, nvidia]
 ---
 
 最近搞装机的事情很是烦躁，非常理解做运维的同学的辛苦了。尤其是当出现一些不知所云的错误的时候，真的是头都炸了。而且如果不能保持冷静还可能把原先做的工作因为一两个失误毁于一旦。
@@ -32,7 +32,7 @@ E0117 08:51:20.843706 12905 driver.c:197] could not start driver service: load l
 
 `384` 这个驱动版本我明明已经删了，为什么还要找这个库呢？是不是因为新的 `410` 安装的不全呢？再往后看，提到
 
-> 安装驱动的时候会自动安装这个libcuda1-384包的，估计是什么历史遗留问题，或者是purge 又install把包的依赖关系搞坏了，因此现在需要重新安装。
+> 安装驱动的时候会自动安装这个 libcuda1-384 包的，估计是什么历史遗留问题，或者是 purge 又 install 把包的依赖关系搞坏了，因此现在需要重新安装。
 
 立即想到我的 `410` 是不是也没有安装 `libcuda1-410` 呢？赶紧 `apt search libcuda` 发现果然有这么个依赖，`apt install libcuda1-410` 赶紧安装，再次跑 `nvidia-container-cli -k -d /dev/tty info` 就一切正常了。
 
