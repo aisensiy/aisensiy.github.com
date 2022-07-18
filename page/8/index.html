@@ -52,7 +52,119 @@
         }
       }
     })
-  </script><link as="script" rel="preload" href="/webpack-runtime-511ecf62e4948377b3e7.js"/><link as="script" rel="preload" href="/framework-45ca7a0c983b0b7a000c.js"/><link as="script" rel="preload" href="/app-047a4a65c3f9a3c0ed82.js"/><link as="script" rel="preload" href="/d1724f9828659101216d9c2ff846a60d90e64274-aac16f39fe217ccc37e4.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-b81aa84e3c777d2f77e7.js"/><link as="fetch" rel="preload" href="/page-data/page/8/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/><script async="" defer="" data-website-id="443212e9-fd0b-411e-a523-0d0ec604ee8a" src="https://get.aisensiy.me/umami.js"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/graphql-test-tools">GraphQL 测试工具梳理</a></h1><h2>2021 October-21</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><h2 id="目前-postman-在我们团队的使用情况" style="position:relative;">目前 Postman 在我们团队的使用情况<a href="#%E7%9B%AE%E5%89%8D-postman-%E5%9C%A8%E6%88%91%E4%BB%AC%E5%9B%A2%E9%98%9F%E7%9A%84%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5" aria-label="目前 postman 在我们团队的使用情况 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+  </script><link as="script" rel="preload" href="/webpack-runtime-511ecf62e4948377b3e7.js"/><link as="script" rel="preload" href="/framework-45ca7a0c983b0b7a000c.js"/><link as="script" rel="preload" href="/app-047a4a65c3f9a3c0ed82.js"/><link as="script" rel="preload" href="/d1724f9828659101216d9c2ff846a60d90e64274-aac16f39fe217ccc37e4.js"/><link as="script" rel="preload" href="/component---src-templates-blogs-js-b81aa84e3c777d2f77e7.js"/><link as="fetch" rel="preload" href="/page-data/page/8/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/><script async="" defer="" data-website-id="443212e9-fd0b-411e-a523-0d0ec604ee8a" src="https://get.aisensiy.me/umami.js"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/github-actions-more-tips">Github Actions tips 更新</a></h1><h2>2021 November-01</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><h2 id="workflow-的重用" style="position:relative;">workflow 的重用<a href="#workflow-%E7%9A%84%E9%87%8D%E7%94%A8" aria-label="workflow 的重用 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>分两部分，直接调用和模板。</p>
+<h3 id="直接调用" style="position:relative;">直接调用<a href="#%E7%9B%B4%E6%8E%A5%E8%B0%83%E7%94%A8" aria-label="直接调用 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p><a href="https://docs.github.com/en/actions/learn-github-actions/reusing-workflows">https://docs.github.com/en/actions/learn-github-actions/reusing-workflows</a></p>
+<p>重点如下：</p>
+<ol>
+<li>允许被其他调用的 workflow 必须明确标注可触发事件 workflow_call</li>
+<li>不能套娃，这个 workflow 不能再掉用其他 workflow</li>
+<li>对调用有一定限制，具体看文档</li>
+</ol>
+<p>使用场景我觉得是两个：</p>
+<ol>
+<li>多仓库协同的部署，比如 a 必须依赖 b，那么 a 跑完就跑 b</li>
+<li>有些 workflow 每个地方都用，可以重用，不过感觉这部分更适合模板？</li>
+</ol>
+<h3 id="模板" style="position:relative;">模板<a href="#%E6%A8%A1%E6%9D%BF" aria-label="模板 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p><a href="https://docs.github.com/en/actions/learn-github-actions/creating-workflow-templates">https://docs.github.com/en/actions/learn-github-actions/creating-workflow-templates</a></p>
+<p>只有 org 下能用，必须放到 .github 这个仓库里。放进来的 workflow 在其他仓库创建 workflow 的时候会出现，方便复制。</p>
+<h2 id="github-action-控制日志和关键信息展示" style="position:relative;">github action 控制日志和关键信息展示<a href="#github-action-%E6%8E%A7%E5%88%B6%E6%97%A5%E5%BF%97%E5%92%8C%E5%85%B3%E9%94%AE%E4%BF%A1%E6%81%AF%E5%B1%95%E7%A4%BA" aria-label="github action 控制日志和关键信息展示 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p><a href="https://docs.github.com/en/actions/learn-github-actions/workflow-commands-for-github-actions">https://docs.github.com/en/actions/learn-github-actions/workflow-commands-for-github-actions</a></p>
+<h3 id="分组日志" style="position:relative;">分组日志<a href="#%E5%88%86%E7%BB%84%E6%97%A5%E5%BF%97" aria-label="分组日志 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p><a href="https://docs.github.com/en/actions/learn-github-actions/workflow-commands-for-github-actions#grouping-log-lines">https://docs.github.com/en/actions/learn-github-actions/workflow-commands-for-github-actions#grouping-log-lines</a></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 701px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/64ccfd99e350e4e0e520e8c5df9f8d49/49217/2021-11-02-00-17-16.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 37%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAIAAACHqfpvAAAACXBIWXMAAAsTAAALEwEAmpwYAAABJ0lEQVQY033QyU7DMBQF0PwMTWhjZ7Bdx3Y8ZLCblqRSSkQpUFEEEnwJGzZ8MkojVbBBOou3uFdXet48XgKcR0uJmAmxCBEPkQiRAOMtIMn/4YUpk257d3z9/Pre9IfD6b0/nPbHt4eXj/7+mZqGFeusWGdm0vzmzWMaU0XyStsuZYbKeqQsVRaLchoHeNwBJI+WKqb6wgsA8kHqAzRbJBERRBQREZhpiBhimhtLhKGywkxzXaeZnIXJOT8al5PMIF4iXrp22A6Prhv6/RNVlhfr+manbCfrVpQb5TqqXEx1kpnJVNYpL5AomVm59ta1u2Y7aNeRvAJYQCLP75GQyJiqJNMXXgCxD1AA8XVErhYp5kYUq0xW2m6Yrn2QBhAHEAVjBvngjx/nvmDQOnF0iQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="2021 11 02 00 17 16"
+        title="2021 11 02 00 17 16"
+        src="/static/64ccfd99e350e4e0e520e8c5df9f8d49/49217/2021-11-02-00-17-16.png"
+        srcset="/static/64ccfd99e350e4e0e520e8c5df9f8d49/772e8/2021-11-02-00-17-16.png 200w,
+/static/64ccfd99e350e4e0e520e8c5df9f8d49/e17e5/2021-11-02-00-17-16.png 400w,
+/static/64ccfd99e350e4e0e520e8c5df9f8d49/49217/2021-11-02-00-17-16.png 701w"
+        sizes="(max-width: 701px) 100vw, 701px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<h3 id="重点展示" style="position:relative;">重点展示<a href="#%E9%87%8D%E7%82%B9%E5%B1%95%E7%A4%BA" aria-label="重点展示 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 747px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/7f38842d13c0caae40de4ffc4c7fb97e/d54e4/2021-11-02-00-17-49.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 81.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB4ElEQVQ4y61Ua4+jMAzk///C2z54ttq9QgghgZAHzMkGuu3uVXsfLpI1wXbG48QicT5ASIWu1xCyQ9N2aLuefYT0TfvVr+4xuWEtJMw4YZw8fIhIfAjozYBhtIyq1zDDyHs2vSIV1JuP0IwWqjeQnUKIM+K8IMSI5P39A7/eDiirCnle4HxOcTiekGY5srzA6XTG2+GIoiiRphnK6oIsy3E8ndb8NMPleoUxBrSSVkpOpmB1uaIoK+RFyQfJiLgoS3SdgiFlxmAYR5hhgNYaw0Bd9YxMSAmy6+C9Z8c8z1iWhZMIaW3w46L8hKr12tyJduu1hrUTYoz8TfFPWzabH3DeCIcRo51WdQ+EpLppBNymfFfwkyX0YnZy3NZemQK3ugHdbwgBznkmZiXLpm75Ytu5xE7U1owFuCfud0gP0bYSom3RCMFjsbwi3BXSzN1qwSoe29oJlVL3F/znlmmo75W36nSH1HbdNPj4feORecr5i62E2qCV3TcF1GbdCH4Y78O3KXipMM4zQoj8KI8Bui/yE3Kxly0/z2IihMClqrDMEf9jJeMU0CgLaTyEdmiNx005SOPWb+3Q9I59hEJ/Yt07DJZGKsC6sP5trItM1g0rIe1r5Z4K8GH1XGAn/kr4B7Vd3EY511dFAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="2021 11 02 00 17 49"
+        title="2021 11 02 00 17 49"
+        src="/static/7f38842d13c0caae40de4ffc4c7fb97e/d54e4/2021-11-02-00-17-49.png"
+        srcset="/static/7f38842d13c0caae40de4ffc4c7fb97e/772e8/2021-11-02-00-17-49.png 200w,
+/static/7f38842d13c0caae40de4ffc4c7fb97e/e17e5/2021-11-02-00-17-49.png 400w,
+/static/7f38842d13c0caae40de4ffc4c7fb97e/d54e4/2021-11-02-00-17-49.png 747w"
+        sizes="(max-width: 747px) 100vw, 747px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<p>这个东西非常适合把构建过程中比较重要的东西展示出来，比如我就用它来展示构建生成的镜像的 tag：</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 388px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/367cfa46f8e39de12051addbabeb2404/96c67/2021-11-02-00-18-31.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 106.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAVCAYAAABG1c6oAAAACXBIWXMAAAsTAAALEwEAmpwYAAABw0lEQVQ4y51Ta0/bQBD0//9HfG+F1AqSAAFaSPNwQ0z8TGr7Xns31W3iiBACtk8a3Z69tzu7sxdoQ5DagCwYxjposhBS90LgA8Zpgek8xGS6wGyxRLiMUAnVCwFZh8ksxPfLn7j8cYXB6A5/ZiFqqXshUNqg2FZI8g2iOIPUBE2OszVOnRj6/nlDKMNofrRh0/i99WeGZa1QComylig7sHkf7E1ACTIOxlhW2LOWSn8MbaD8ZOyrOWEolIbRDheLbxiHv/D78QllVeHcKjZbrOMEVV0f9fcQ0GeqhcZrmSL/t0VRbJiJIQtjCIZot+9tIRWqWqCW6rMeSihFR8Kc7eVBkE9E2TmqDgqf9+GSvcp9X8bJHPqnVzMrtdsbW6p+b9laC+fciZr+G5EF2W4IrHMQQiDNMkYUvSJJUkipDoG7IPCX1usYw9Etbm7HGAxHGN8/8Pg0AbusgKmSRV5sGB+tJnsbxtxDIkLTS601tDZ8NsYcMWzDlkvO8gLLVYS78T0Gwxsu/ZpLf8TT84Qdm4RfMvQlNxfiJEW4fMEqWmO2CPGyijAP/2IynSPN8lYsAx4NshzQK26t2+1sWz6T3f9vgf/D+mRqG2FhCAAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="2021 11 02 00 18 31"
+        title="2021 11 02 00 18 31"
+        src="/static/367cfa46f8e39de12051addbabeb2404/96c67/2021-11-02-00-18-31.png"
+        srcset="/static/367cfa46f8e39de12051addbabeb2404/772e8/2021-11-02-00-18-31.png 200w,
+/static/367cfa46f8e39de12051addbabeb2404/96c67/2021-11-02-00-18-31.png 388w"
+        sizes="(max-width: 388px) 100vw, 388px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/graphql-test-tools">GraphQL 测试工具梳理</a></h1><h2>2021 October-21</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><h2 id="目前-postman-在我们团队的使用情况" style="position:relative;">目前 Postman 在我们团队的使用情况<a href="#%E7%9B%AE%E5%89%8D-postman-%E5%9C%A8%E6%88%91%E4%BB%AC%E5%9B%A2%E9%98%9F%E7%9A%84%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5" aria-label="目前 postman 在我们团队的使用情况 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <p>这部分工作主要是对标之前在 REST 场景下使用 Postman 测试的工作。在 REST 的场景下，Postman 是一个很好的工具，简单介绍下我们使用到的一些功能：</p>
 <ol>
 <li>Collections 可以将一系列的 Request 聚合在一起很好的规整起来，当需要测试某个接口的问题时，搜索 Collection 执行具体的 Request 即可。</li>
@@ -466,194 +578,7 @@ class UserDatafetcher {
 <li>如果两边都出现了，那就抽取 Speicification 让两边共享</li>
 <li>对于一些场景，可以让 write model 直接去调用 read model 使用其内容</li>
 </ol>
-<p>打补丁自然是简单不少，不过总感觉不是那么舒服...这部分我也就只能写到这里了，虽然写的不多，可却是花了不少时间去想这坨东西...现在回看目前 openbayes 的代码还是有不少的问题，后续再继续理一理吧。</p></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/gatsby-plugins-for-blog">gatsby 一些插件的运用</a></h1><h2>2021 August-14</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"><p><a href="/blog-migrate-from-jekyll-to-gatsby">上一篇文章</a> 介绍了 gatsby 迁移 blog 的主要内容，针对 markdown 渲染、路由生成 gatsby 都做了足够多的工作可以快速构建这么一个博客系统。这一部分介绍通过额外的插件提升 blog 体验。</p>
-<h2 id="目录--标题锚点" style="position:relative;">目录 &#x26; 标题锚点<a href="#%E7%9B%AE%E5%BD%95--%E6%A0%87%E9%A2%98%E9%94%9A%E7%82%B9" aria-label="目录  标题锚点 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>通过 remark 获取的 markdown 内容本身一个名为 <code>tableOfContents</code> 的部分，它已经从 markdown 中提取了标题并生成了目录。额外的工作就只剩下对目录的样式做一些修改，并且添加锚点链接。</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/676aa689526b675fb1b9febeb5cc2609/6bff2/2021-08-14-15-17-25.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 32%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAIAAABM9SnKAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABAklEQVQY023L3U6DMACGYe7/hkwmWaZkuvGzJZDRguKGLAz6A6O0trQyFo0HavbkS76j1yqKY1mWVXXCGCOEMcYEE4QQIeRUVQhhShtCv/0cpQ2talTVyGLn7tx2ctDamM9fxnFUSvVCMCEY/+AdF0xwxnn3NSFkx3pLSdl24q2oacumv7Q2tEQ53Md+nATgECb5Bh6iNE+y933OWG9JKbUxpOVK6X+x0fp1HcZ3T2C2AnMX2GtwvwaPPlwG4HlLSWNxzsdxnG4xWmerEMxdaHtw5ia2Bxc+dALgBC9uWBRHaxjUNE2Xy63YmCzYgYUHnU3yECTLbeqGqR+lEUh3sKHtFaEOSgr4uB6QAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="2021 08 14 15 17 25"
-        title="2021 08 14 15 17 25"
-        src="/static/676aa689526b675fb1b9febeb5cc2609/5a190/2021-08-14-15-17-25.png"
-        srcset="/static/676aa689526b675fb1b9febeb5cc2609/772e8/2021-08-14-15-17-25.png 200w,
-/static/676aa689526b675fb1b9febeb5cc2609/e17e5/2021-08-14-15-17-25.png 400w,
-/static/676aa689526b675fb1b9febeb5cc2609/5a190/2021-08-14-15-17-25.png 800w,
-/static/676aa689526b675fb1b9febeb5cc2609/6bff2/2021-08-14-15-17-25.png 957w"
-        sizes="(max-width: 800px) 100vw, 800px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span></p>
-<p>锚点部分同样有另外一个插件 <a href="https://www.gatsbyjs.com/plugins/gatsby-remark-autolink-headers/">gatsby-remark-autolink-headers
-</a> 完成了相应的工作。它本身就是 <code>gatsby-transformer-remark</code> 的一个插件。通过做如下配置即可：</p>
-<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token punctuation">{</span> 
-    resolve<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">gatsby-remark-autolink-headers</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
-    options<span class="token operator">:</span> <span class="token punctuation">{</span>
-        offsetY<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">100</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
-        icon<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20">&lt;path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">&lt;/path>&lt;/svg></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
-        className<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">custom-class</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
-        maintainCase<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-        removeAccents<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-        isIconAfterHeader<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span></code></pre></div>
-<p>注意要把 <code>maintainCase</code> 设置为 <code>false</code> 否则会因为锚点的大小写问题导致链接失效，完整的配置在 <a href="https://github.com/aisensiy/aisensiy.github.com/blob/master/gatsby-config.js">gatsby-config.js</a> 可以看到。</p>
-<p>插件生效后目录以及 markdown 的标题（<code>#</code> 开始的内容）就会增加链接并支持从目录跳转了。</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/36ec595f991d81b6848ac7b6e973873c/e8e04/2021-08-14-15-25-00.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 32%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAIAAABM9SnKAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABAUlEQVQY022O20rDQBBA8///oT9QUXzUD7AqKKI1TdOmZpNNupvO3mayM1K8gODhvB44Ra/HZt+2qt+3nZ2O8sPBmFEPWls7BQAfHHgHiIh0kohiSsV2u1ut3pVS+6ax1vzGxlo4WKvNZFMKIUX0Hr0nopyz5Mycuegmfuvmtc614fUoxn/HAEBEzk7WAkzROXQOU5oRM9HJmebirgrnt81iaa6f4tVzrkcWEWYhIhYBe9T9YA6QM8tfmLm436Szm+ZiOV0+wuIh1GP+ihFRRDCedkWy/AMXyuDLDkqVShVfP0JvAmIiIh9Re+5hXqtQDbka5mqYS+XKFjY61kNqDH0CdZ9VdbtXyGgAAAAASUVORK5CYII='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="2021 08 14 15 25 00"
-        title="2021 08 14 15 25 00"
-        src="/static/36ec595f991d81b6848ac7b6e973873c/5a190/2021-08-14-15-25-00.png"
-        srcset="/static/36ec595f991d81b6848ac7b6e973873c/772e8/2021-08-14-15-25-00.png 200w,
-/static/36ec595f991d81b6848ac7b6e973873c/e17e5/2021-08-14-15-25-00.png 400w,
-/static/36ec595f991d81b6848ac7b6e973873c/5a190/2021-08-14-15-25-00.png 800w,
-/static/36ec595f991d81b6848ac7b6e973873c/c1b63/2021-08-14-15-25-00.png 1200w,
-/static/36ec595f991d81b6848ac7b6e973873c/e8e04/2021-08-14-15-25-00.png 1270w"
-        sizes="(max-width: 800px) 100vw, 800px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span></p>
-<h2 id="seo-优化" style="position:relative;">SEO 优化<a href="#seo-%E4%BC%98%E5%8C%96" aria-label="seo 优化 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>这部分在国内似乎略微鸡肋，毕竟整个体系是 Google 提供的，不过我相信这部分的工作还是有必要的，因为众所周知，靠谱的程序员还是会倾向于使用英语环境并使用 Google 搜索资料。还有一个让我很震惊的地方，就是 Google Analytics 其实并没有被墙，域名是可以访问的，只是查看的 dashboard 无法直接访问。</p>
-<p>这部分基本就是照抄 <a href="https://www.gatsbyjs.com/docs/add-seo-component/">Add SEO Component</a> 了，用到的插件就是 <code>gatsby-plugin-react-helmet</code>。组件的代码就直接贴在这里了：</p>
-<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">"react"</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> PropTypes <span class="token keyword">from</span> <span class="token string">"prop-types"</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span> Helmet <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"react-helmet"</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span> useLocation <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@reach/router"</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span> useStaticQuery<span class="token punctuation">,</span> graphql <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"gatsby"</span><span class="token punctuation">;</span>
-
-<span class="token keyword">const</span> <span class="token function-variable function">SEO</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> title<span class="token punctuation">,</span> description<span class="token punctuation">,</span> image<span class="token punctuation">,</span> article <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> <span class="token punctuation">{</span> pathname <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">useLocation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">const</span> <span class="token punctuation">{</span> site <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">useStaticQuery</span><span class="token punctuation">(</span>query<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">const</span> <span class="token punctuation">{</span>
-    defaultTitle<span class="token punctuation">,</span>
-    titleTemplate<span class="token punctuation">,</span>
-    defaultDescription<span class="token punctuation">,</span>
-    siteUrl<span class="token punctuation">,</span>
-    defaultImage<span class="token punctuation">,</span>
-    twitterUsername<span class="token punctuation">,</span>
-  <span class="token punctuation">}</span> <span class="token operator">=</span> site<span class="token punctuation">.</span>siteMetadata<span class="token punctuation">;</span>
-  <span class="token keyword">const</span> seo <span class="token operator">=</span> <span class="token punctuation">{</span>
-    title<span class="token operator">:</span> title <span class="token operator">||</span> defaultTitle<span class="token punctuation">,</span>
-    description<span class="token operator">:</span> description <span class="token operator">||</span> defaultDescription<span class="token punctuation">,</span>
-    image<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>siteUrl<span class="token interpolation-punctuation punctuation">}</span></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>image <span class="token operator">||</span> defaultImage<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
-    url<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>siteUrl<span class="token interpolation-punctuation punctuation">}</span></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>pathname<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">;</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token operator">&lt;</span>Helmet title<span class="token operator">=</span><span class="token punctuation">{</span>seo<span class="token punctuation">.</span>title<span class="token punctuation">}</span> titleTemplate<span class="token operator">=</span><span class="token punctuation">{</span>titleTemplate<span class="token punctuation">}</span><span class="token operator">></span>
-      <span class="token operator">&lt;</span>meta name<span class="token operator">=</span><span class="token string">"description"</span> content<span class="token operator">=</span><span class="token punctuation">{</span>seo<span class="token punctuation">.</span>description<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
-      <span class="token operator">&lt;</span>meta name<span class="token operator">=</span><span class="token string">"image"</span> content<span class="token operator">=</span><span class="token punctuation">{</span>seo<span class="token punctuation">.</span>image<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
-      <span class="token punctuation">{</span>seo<span class="token punctuation">.</span>url <span class="token operator">&amp;&amp;</span> <span class="token operator">&lt;</span>meta property<span class="token operator">=</span><span class="token string">"og:url"</span> content<span class="token operator">=</span><span class="token punctuation">{</span>seo<span class="token punctuation">.</span>url<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span><span class="token punctuation">}</span>
-      <span class="token punctuation">{</span><span class="token punctuation">(</span>article <span class="token operator">?</span> <span class="token boolean">true</span> <span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">&lt;</span>meta property<span class="token operator">=</span><span class="token string">"og:type"</span> content<span class="token operator">=</span><span class="token string">"article"</span> <span class="token operator">/</span><span class="token operator">></span><span class="token punctuation">}</span>
-      <span class="token punctuation">{</span>seo<span class="token punctuation">.</span>title <span class="token operator">&amp;&amp;</span> <span class="token operator">&lt;</span>meta property<span class="token operator">=</span><span class="token string">"og:title"</span> content<span class="token operator">=</span><span class="token punctuation">{</span>seo<span class="token punctuation">.</span>title<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span><span class="token punctuation">}</span>
-      <span class="token punctuation">{</span>seo<span class="token punctuation">.</span>description <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>
-        <span class="token operator">&lt;</span>meta property<span class="token operator">=</span><span class="token string">"og:description"</span> content<span class="token operator">=</span><span class="token punctuation">{</span>seo<span class="token punctuation">.</span>description<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
-      <span class="token punctuation">)</span><span class="token punctuation">}</span>
-      <span class="token punctuation">{</span>seo<span class="token punctuation">.</span>image <span class="token operator">&amp;&amp;</span> <span class="token operator">&lt;</span>meta property<span class="token operator">=</span><span class="token string">"og:image"</span> content<span class="token operator">=</span><span class="token punctuation">{</span>seo<span class="token punctuation">.</span>image<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span><span class="token punctuation">}</span>
-      <span class="token operator">&lt;</span>meta name<span class="token operator">=</span><span class="token string">"twitter:card"</span> content<span class="token operator">=</span><span class="token string">"summary_large_image"</span> <span class="token operator">/</span><span class="token operator">></span>
-      <span class="token punctuation">{</span>twitterUsername <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>
-        <span class="token operator">&lt;</span>meta name<span class="token operator">=</span><span class="token string">"twitter:creator"</span> content<span class="token operator">=</span><span class="token punctuation">{</span>twitterUsername<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
-      <span class="token punctuation">)</span><span class="token punctuation">}</span>
-      <span class="token punctuation">{</span>seo<span class="token punctuation">.</span>title <span class="token operator">&amp;&amp;</span> <span class="token operator">&lt;</span>meta name<span class="token operator">=</span><span class="token string">"twitter:title"</span> content<span class="token operator">=</span><span class="token punctuation">{</span>seo<span class="token punctuation">.</span>title<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span><span class="token punctuation">}</span>
-      <span class="token punctuation">{</span>seo<span class="token punctuation">.</span>description <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>
-        <span class="token operator">&lt;</span>meta name<span class="token operator">=</span><span class="token string">"twitter:description"</span> content<span class="token operator">=</span><span class="token punctuation">{</span>seo<span class="token punctuation">.</span>description<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
-      <span class="token punctuation">)</span><span class="token punctuation">}</span>
-      <span class="token punctuation">{</span>seo<span class="token punctuation">.</span>image <span class="token operator">&amp;&amp;</span> <span class="token operator">&lt;</span>meta name<span class="token operator">=</span><span class="token string">"twitter:image"</span> content<span class="token operator">=</span><span class="token punctuation">{</span>seo<span class="token punctuation">.</span>image<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span><span class="token punctuation">}</span>
-    <span class="token operator">&lt;</span><span class="token operator">/</span>Helmet<span class="token operator">></span>
-  <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token constant">SEO</span><span class="token punctuation">;</span>
-
-<span class="token constant">SEO</span><span class="token punctuation">.</span>propTypes <span class="token operator">=</span> <span class="token punctuation">{</span>
-  title<span class="token operator">:</span> PropTypes<span class="token punctuation">.</span>string<span class="token punctuation">,</span>
-  description<span class="token operator">:</span> PropTypes<span class="token punctuation">.</span>string<span class="token punctuation">,</span>
-  image<span class="token operator">:</span> PropTypes<span class="token punctuation">.</span>string<span class="token punctuation">,</span>
-  article<span class="token operator">:</span> PropTypes<span class="token punctuation">.</span>bool<span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-
-<span class="token constant">SEO</span><span class="token punctuation">.</span>defaultProps <span class="token operator">=</span> <span class="token punctuation">{</span>
-  title<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
-  description<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
-  image<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
-  article<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-
-<span class="token keyword">const</span> query <span class="token operator">=</span> graphql<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
-  query SEO {
-    site {
-      siteMetadata {
-        defaultTitle: title
-        titleTemplate
-        defaultDescription: description
-        siteUrl: url
-        defaultImage: image
-        twitterUsername
-      }
-    }
-  }
-</span><span class="token template-punctuation string">`</span></span></code></pre></div>
-<p>然后在 <code>blog</code> 的模板这里做一些修改：</p>
-<div class="gatsby-highlight has-highlighted-lines" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">"react"</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span> graphql <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"gatsby"</span>
-<span class="token keyword">import</span> Blog <span class="token keyword">from</span> <span class="token string">"../components/Blog"</span>
-<span class="token keyword">import</span> Base <span class="token keyword">from</span> <span class="token string">"../layouts/base"</span>
-<span class="gatsby-highlight-code-line"><span class="token keyword">import</span> Seo <span class="token keyword">from</span> <span class="token string">"../components/seo"</span></span>
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">BlogTemplate</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> data <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token operator">&lt;</span>Base<span class="token operator">></span>
-<span class="gatsby-highlight-code-line">      <span class="token operator">&lt;</span>Seo title<span class="token operator">=</span><span class="token punctuation">{</span>data<span class="token punctuation">.</span>blog<span class="token punctuation">.</span>frontmatter<span class="token punctuation">.</span>title<span class="token punctuation">}</span> article<span class="token operator">=</span><span class="token punctuation">{</span><span class="token boolean">true</span><span class="token punctuation">}</span> description<span class="token operator">=</span><span class="token punctuation">{</span>data<span class="token punctuation">.</span>blog<span class="token punctuation">.</span>excerpt<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span></span>      <span class="token operator">&lt;</span>Blog data<span class="token operator">=</span><span class="token punctuation">{</span>data<span class="token punctuation">.</span>blog<span class="token punctuation">}</span><span class="token operator">/</span><span class="token operator">></span>
-    <span class="token operator">&lt;</span><span class="token operator">/</span>Base<span class="token operator">></span>
-  <span class="token punctuation">)</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p>这里使用了 <code>excerpt</code> 字段，当然在 graphql 里面也要增加相应的内容：</p>
-<div class="gatsby-highlight has-highlighted-lines" data-language="graphql"><pre class="language-graphql"><code class="language-graphql"><span class="token property">export</span> <span class="token property">const</span> <span class="token property">pageQuery</span> <span class="token operator">=</span> <span class="token property">graphql</span>`
-  <span class="token keyword">query</span> <span class="token definition-query function">BlogPostQuery</span><span class="token punctuation">(</span><span class="token variable">$id</span><span class="token punctuation">:</span> <span class="token scalar">String</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token attr-name">blog</span><span class="token punctuation">:</span> <span class="token property-query">markdownRemark</span><span class="token punctuation">(</span><span class="token attr-name">id</span><span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token attr-name">eq</span><span class="token punctuation">:</span> <span class="token variable">$id</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token property">id</span>
-      <span class="token property">html</span>
-      <span class="token property">tableOfContents</span>
-      <span class="token object">frontmatter</span> <span class="token punctuation">{</span>
-        <span class="token property">title</span>
-        <span class="token property-query">date</span><span class="token punctuation">(</span><span class="token attr-name">formatString</span><span class="token punctuation">:</span> <span class="token string">"MMMM DD, YYYY"</span><span class="token punctuation">)</span>
-      <span class="token punctuation">}</span>
-<span class="gatsby-highlight-code-line">      <span class="token property-query">excerpt</span><span class="token punctuation">(</span><span class="token attr-name">format</span><span class="token punctuation">:</span> <span class="token constant">PLAIN</span><span class="token punctuation">,</span> <span class="token attr-name">truncate</span><span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token attr-name">pruneLength</span><span class="token punctuation">:</span> <span class="token number">50</span><span class="token punctuation">)</span></span>    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-`</code></pre></div></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/7">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/9">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
+<p>打补丁自然是简单不少，不过总感觉不是那么舒服...这部分我也就只能写到这里了，虽然写的不多，可却是花了不少时间去想这坨东西...现在回看目前 openbayes 的代码还是有不少的问题，后续再继续理一理吧。</p></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/7">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/9">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       
       if(true) {
