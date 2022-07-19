@@ -226,6 +226,15 @@
     </span></p>
 <p>注意这里要配置到具体的某一个路径的，比如 <code>http://112.118.221.2/pub</code> 而不是只给个域名或者 ip 地址就完事了。</p>
 <h3 id="编写-track-server" style="position:relative;">编写 track server<a href="#%E7%BC%96%E5%86%99-track-server" aria-label="编写 track server permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<blockquote>
+<p>为啥不用官方的？</p>
+<p>OwnTracks 有官方的 track server ，但有这么几个问题：</p>
+<ol>
+<li>代码是 c 的，自己部署有点晦涩难懂，只能用 docker 部署吧，但自己修改的可能性就很小了</li>
+<li>同时支持 MQTT 和 HTTP 而实际上我觉得对个人来说 HTTP 会更简单一些吧，那 MQTT 部分的代码就很没必要了</li>
+<li>有一些和 Google 地图集成的功能，这些东西在国内统统没得用</li>
+</ol>
+</blockquote>
 <p>OwnTracks 会以 json 的格式把所有的信息都上报到服务器，提交的具体结构可以直接 print 出来看看。这里给出我的 server 的一个片段：</p>
 <div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">
 <span class="token keyword">import</span> json
