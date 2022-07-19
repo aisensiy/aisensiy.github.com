@@ -38,7 +38,7 @@ export default function Blog({ data }) {
       { frontmatter.tags && <TagList tags={frontmatter.tags} /> }
       {tableOfContents && <TableOfContent html={tableOfContents} />}
       <div
-        className="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl"
+        className="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"
         dangerouslySetInnerHTML={{ __html: html }}
       />
     </div>
