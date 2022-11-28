@@ -170,5 +170,5 @@ gpus '"device=1"' uhub.service.ucloud.cn/openbayesruntimes/pytorch:1.9.0-py36-cu
 Failed to initialize NVML: Unknown Error
 ```
 
-又是一番查询，发现是刚刚使用的 `cpu-manager-polcy=static` 会和 nvidia-docker 有冲突：容器因为 `static` 的调度规则必须修改容器的运行时，而这种行为是 nvidia docker 所不支持的。目前的解决方式是**让所有调度 gpu 的 Pod 都必须具备 Guaranteed 级别的 QoS，同时所有的容器都必须有整数个的 cpu limitation**。对于这种 Pod kubelet 会特殊对待，跳过对其 cpuset 进行更新（因为它锁定了 cpuset 所以按理说也不用更新）。同时这个支持也是在 k8s 1.22 版本之后才支持的。为此我们的集群也不得不升级到了 1.22 版本。
+又是一番查询，发现是刚刚使用的 `cpu-manager-polcy=static` 会和 nvidia-docker 有冲突：容器因为 `static` 的调度规则必须修改容器的运行时，而这种行为是 nvidia docker 所不支持的。目前的解决方式是**让所有调度 gpu 的 Pod 都必须具备 [Guaranteed 级别的 QoS](https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/)，同时所有的容器都必须有整数个的 cpu limitation**。对于这种 Pod kubelet 会特殊对待，跳过对其 cpuset 进行更新（因为它锁定了 cpuset 所以按理说也不用更新）。同时这个支持也是在 k8s 1.22 版本之后才支持的。为此我们的集群也不得不升级到了 1.22 版本。
 
