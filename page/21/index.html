@@ -52,7 +52,105 @@
         }
       }
     })
-  </script><script async="" defer="" data-website-id="443212e9-fd0b-411e-a523-0d0ec604ee8a" src="https://get.aisensiy.me/umami.js"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/real-world-spring-boot-and-mybatis">Spring Boot + Spring MVC + MyBatis 版本的 Real World 实现</a></h1><h2>2017 August-22</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p><a href="https://github.com/gothinkster/realworld">Real World</a> 是由 <a href="https://thinkster.io/">thinkster</a> 这样一个在线编程教育机构发起的一个前后端分离的项目规范。用以展示并作为教材教大家用 react、angular 等不同的前端框架或者 rails、django、spring boot 等不同的后端框架实现同一个项目时的实践是什么样子的。我觉得这个主意非常的好，它让大家对技术的讨论有了一个共同的主题，在采用不同的技术栈以及设计思路解决这个共同的问题的时候我们可以更确切的看到不同的方案之间的优劣，从而更切实的（而不是零散的代码和想象）了解不同框架、语言、设计思路在实现一个项目时的差异，从而帮助我们更好的选择项目的解决方案。当然，从单个技术栈来看，它提供了一个做出完整项目需要都需要哪些具体的知识点，可以当做某一个技术栈的入门小项目来学习和借鉴。</p>
+  </script><script async="" defer="" data-website-id="443212e9-fd0b-411e-a523-0d0ec604ee8a" src="https://get.aisensiy.me/umami.js"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/spring-boot-configuration-properties-and-value">Spring Boot @ConfigurationProperties 与 @Value</a></h1><h2>2017 August-31</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p><code>@ConfigurationProperties</code> 和 <code>@Value</code> 都是 Spring 提供的用于从配置文件注入配置信息的方式。很显然，<code>@Value</code> 比较适用于配置比较少的场景，而 <code>@ConfigurationProperties</code> 则更适用于有很多配置的情况。之前写项目的时候从来都没有使用过 <code>@ConfigurationProperties</code> 几乎每次都是使用 <code>@Value</code>。这次遇到了一个比较适合它的场景，在使用的时候还真遇到了一些令人讨厌的小问题，导致开发速度受到了一定的影响。这里记录下来他们之间的使用方式和可能出现的坑，加深一下印象。</p>
+<p><strong>注意</strong>，我们这里使用 <code>application.yml</code> 而不是 <code>application.properties</code> 不过他们基本是可以相互替代的。</p>
+<h2 id="demo-for-value" style="position:relative;">Demo for @Value<a href="#demo-for-value" aria-label="demo for value permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">sso</span><span class="token punctuation">:</span>
+  <span class="token key atrule">clientId</span><span class="token punctuation">:</span> clientId
+  <span class="token key atrule">clientSecret</span><span class="token punctuation">:</span> clientSecret</code></pre></div>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
+<span class="token annotation punctuation">@Data</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ValueConfiguration</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> clientId<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> clientSecret<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">public</span> <span class="token class-name">ValueConfiguration</span><span class="token punctuation">(</span>
+        <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${sso.clientId}"</span><span class="token punctuation">)</span> <span class="token class-name">String</span> clientId<span class="token punctuation">,</span>
+        <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${sso.clientSecret}"</span><span class="token punctuation">)</span> <span class="token class-name">String</span> clientSecret<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>clientId <span class="token operator">=</span> clientId<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>clientSecret <span class="token operator">=</span> clientSecret<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>可以看到 <code>@Value</code> 是使用非常的简单，只要将注解添加在参数前即可。</p>
+<h2 id="demo-for-configurationproperties" style="position:relative;">Demo for @ConfigurationProperties<a href="#demo-for-configurationproperties" aria-label="demo for configurationproperties permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>在有大量参数的时候，一个个添加 <code>@Value</code> 就显得麻烦了一点，Spring 提供了另一种方式。</p>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@SpringBootApplication</span>
+<span class="token annotation punctuation">@EnableConfigurationProperties</span> <span class="token comment">// 1</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DemoForSpringBootConfigurationApplication</span> <span class="token punctuation">{</span>
+
+	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">SpringApplication</span><span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token class-name">DemoForSpringBootConfigurationApplication</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token annotation punctuation">@Bean</span>
+	<span class="token class-name">CommandLineRunner</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token class-name">ValueConfiguration</span> valueConfiguration<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> args <span class="token operator">-></span> <span class="token punctuation">{</span>
+			<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>valueConfiguration<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token annotation punctuation">@Bean</span>
+	<span class="token class-name">CommandLineRunner</span> <span class="token function">config</span><span class="token punctuation">(</span><span class="token class-name">PropertiesConfiguration</span> configuration<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	    <span class="token keyword">return</span> args <span class="token operator">-></span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>configuration<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token annotation punctuation">@Component</span>
+<span class="token annotation punctuation">@ConfigurationProperties</span><span class="token punctuation">(</span>prefix <span class="token operator">=</span> <span class="token string">"oauth"</span><span class="token punctuation">)</span> <span class="token comment">// 2</span>
+<span class="token annotation punctuation">@Getter</span>
+<span class="token annotation punctuation">@Setter</span>  <span class="token comment">// 3</span>
+<span class="token annotation punctuation">@ToString</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">PropertiesConfiguration</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> clientId<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> clientSecret<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> redirectUri<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> grantType<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">sso</span><span class="token punctuation">:</span>
+  <span class="token key atrule">clientId</span><span class="token punctuation">:</span> clientId
+  <span class="token key atrule">clientSecret</span><span class="token punctuation">:</span> clientSecret
+
+<span class="token key atrule">oauth</span><span class="token punctuation">:</span>
+  <span class="token key atrule">client_id</span><span class="token punctuation">:</span> id                           // 4
+  <span class="token key atrule">client-secret</span><span class="token punctuation">:</span> secret
+  <span class="token key atrule">redirect_uri</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//aisensiy.github.io
+  <span class="token key atrule">grantType</span><span class="token punctuation">:</span> code</code></pre></div>
+<ol>
+<li>为了使用 <code>@ConfigurationProperties</code> 需要在 spring boot application 上添加 <code>EnableConfigurationProperties</code> 的注解，这里遇到的第一个坑</li>
+<li><code>@ConfigurationProperties</code> 可以添加前缀，然后其属性就会按照变量的名称默认在 <code>application.*</code> 中寻找指定的变量。这里就是去寻找 <code>oauth.clientId</code> 这样的配置。** 如果想要从其他配置文件获取配置内容，可以添加一个额外的注释 <code>@PropertySource("classpath:xxx.yml")</code>**</li>
+<li>这里的 <code>@Setter</code> 是来自 lombok 的注解，它可以自动的帮助添加默认的属性的 setter 方法。注意，<strong>这里的 setter 方法是必须的，如果没有 setter 方法，是无法成功获取配置的</strong>，这也是我在使用它的时候遇到的又一个坑</li>
+<li><code>@ConfigurationProperties</code> 与 <code>@Value</code> 的一个重大区别在于它采用比较灵活的方式寻找配置。可以看到这里的配置可以是驼峰形式，也可以是下划线分割的，还可以是中横线分割的</li>
+</ol>
+<h2 id="添加参数验证" style="position:relative;">添加参数验证<a href="#%E6%B7%BB%E5%8A%A0%E5%8F%82%E6%95%B0%E9%AA%8C%E8%AF%81" aria-label="添加参数验证 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p><code>@ConfigurationProperties</code> 是可以和 validation 注解一起使用的，这样的好处显而易见：对于一些配置是必须的或者是对格式有要求的，在运行开始的时候就能检测到这些问题可以避免上线之后因为配置不符合有找不到头绪而导致的 debug 的痛苦过程。</p>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java">
+<span class="token annotation punctuation">@Component</span>
+<span class="token annotation punctuation">@Getter</span>
+<span class="token annotation punctuation">@Setter</span>
+<span class="token annotation punctuation">@ToString</span>
+<span class="token annotation punctuation">@ConfigurationProperties</span><span class="token punctuation">(</span>prefix <span class="token operator">=</span> <span class="token string">"oauth"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">PropertiesConfiguration</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@NotBlank</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> clientId<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@NotBlank</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> clientSecret<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@URL</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> redirectUri<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@NotBlank</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> grantType<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>直接在成员变量上添加注解就可以了，非常的简单。然后可以去尝试添加一些非法的配置试试效果。</p>
+<p>完整的 demo 项目在<a href="https://github.com/aisensiy/demo-for-spring-boot-configuration">这里</a>。</p>
+<h2 id="相关资料" style="position:relative;">相关资料<a href="#%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99" aria-label="相关资料 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ul>
+<li><a href="https://projectlombok.org/">lombok</a></li>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html#boot-features-external-config-relaxed-binding">relaxed binding</a></li>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html#boot-features-external-config-vs-value">@ConfigurationProperties vs. @Value</a></li>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html">Configuration</a></li>
+</ul></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/real-world-spring-boot-and-mybatis">Spring Boot + Spring MVC + MyBatis 版本的 Real World 实现</a></h1><h2>2017 August-22</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p><a href="https://github.com/gothinkster/realworld">Real World</a> 是由 <a href="https://thinkster.io/">thinkster</a> 这样一个在线编程教育机构发起的一个前后端分离的项目规范。用以展示并作为教材教大家用 react、angular 等不同的前端框架或者 rails、django、spring boot 等不同的后端框架实现同一个项目时的实践是什么样子的。我觉得这个主意非常的好，它让大家对技术的讨论有了一个共同的主题，在采用不同的技术栈以及设计思路解决这个共同的问题的时候我们可以更确切的看到不同的方案之间的优劣，从而更切实的（而不是零散的代码和想象）了解不同框架、语言、设计思路在实现一个项目时的差异，从而帮助我们更好的选择项目的解决方案。当然，从单个技术栈来看，它提供了一个做出完整项目需要都需要哪些具体的知识点，可以当做某一个技术栈的入门小项目来学习和借鉴。</p>
 <p>虽然这个项目叫做 real world，相比 todomvc 这样的 hello world 确实复杂了不少，但是很显然它的复杂度还仅仅是一个人几个小时就能完成的水平，当然不能全面的反映出一个框架的水平，仅做参考。</p>
 <p>本篇对项目做一个整体的介绍，后续会有一些细节的介绍。文章中会涉及到一些 DDD（领域驱动设计） 相关的概念，想要更多的了解建议看看最下面相关材料中的链接。</p>
 <h2 id="项目功能" style="position:relative;">项目功能<a href="#%E9%A1%B9%E7%9B%AE%E5%8A%9F%E8%83%BD" aria-label="项目功能 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
@@ -330,182 +428,7 @@
 <li><a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html">SpringMVC</a></li>
 <li><a href="https://www.oreilly.com/library/view/head-first-servlets/9780596516680/">Head First Servlets and JSP</a></li>
 <li><a href="https://docs.spring.io/spring-security/site/docs/current/reference/htmlsingle/#web-app-security">Spring Security: Web Application Security</a></li>
-</ol></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/drone-best-ci">Drone 一个原生支持 docker 的 CI</a></h1><h2>2017 August-04</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>大概是一年前发现了这样一个叫做 Drone 的开源 ci，在逐渐的尝试过程中发现它的功能非常的强大，其 pipeline as code + docker + backing service 支持的体系基本和我理想中的 ci 一模一样...这里就介绍一下我看到的 drone 的一些非常出彩的地方以及日常使用时一些非常有用的使用方式。</p>
-<h2 id="本地安装" style="position:relative;">本地安装<a href="#%E6%9C%AC%E5%9C%B0%E5%AE%89%E8%A3%85" aria-label="本地安装 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p><img src="https://o8p12ybem.bkt.clouddn.com/15096926244457.jpg?imageView2/2/w/1200/q/75%7Cimageslim" alt=""></p>
-<p>可以看到 drone 的界面非常的简洁，和其他 ci 一样它通过和 github gitlab 或者是 gogs 这样的 git repository 链接并绑定 web hook 在用户提交新的 commit 的时候出发 ci 的执行。drone 作为一个开源的 ci 其支持 docker 方式的安装，非常的简单：</p>
-<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'2'</span>
-
-<span class="token key atrule">services</span><span class="token punctuation">:</span>
-  <span class="token key atrule">drone-server</span><span class="token punctuation">:</span>
-    <span class="token key atrule">image</span><span class="token punctuation">:</span> drone/drone<span class="token punctuation">:</span><span class="token number">0.7</span>
-    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> 80<span class="token punctuation">:</span><span class="token number">8000</span>
-    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> /var/lib/drone<span class="token punctuation">:</span>/var/lib/drone/
-    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
-    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> DRONE_OPEN=true
-      <span class="token punctuation">-</span> DRONE_HOST=$<span class="token punctuation">{</span>DRONE_HOST<span class="token punctuation">}</span>
-      <span class="token punctuation">-</span> DRONE_GITHUB=true
-      <span class="token punctuation">-</span> DRONE_GITHUB_CLIENT=$<span class="token punctuation">{</span>DRONE_GITHUB_CLIENT<span class="token punctuation">}</span>
-      <span class="token punctuation">-</span> DRONE_GITHUB_SECRET=$<span class="token punctuation">{</span>DRONE_GITHUB_SECRET<span class="token punctuation">}</span>
-      <span class="token punctuation">-</span> DRONE_SECRET=$<span class="token punctuation">{</span>DRONE_SECRET<span class="token punctuation">}</span>
-
-  <span class="token key atrule">drone-agent</span><span class="token punctuation">:</span>
-    <span class="token key atrule">image</span><span class="token punctuation">:</span> drone/drone<span class="token punctuation">:</span><span class="token number">0.7</span>
-    <span class="token key atrule">command</span><span class="token punctuation">:</span> agent
-    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
-    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> drone<span class="token punctuation">-</span>server
-    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> /var/run/docker.sock<span class="token punctuation">:</span>/var/run/docker.sock
-    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> DRONE_SERVER=ws<span class="token punctuation">:</span>//drone<span class="token punctuation">-</span>server<span class="token punctuation">:</span>8000/ws/broker
-      <span class="token punctuation">-</span> DRONE_SECRET=$<span class="token punctuation">{</span>DRONE_SECRET<span class="token punctuation">}</span></code></pre></div>
-<p>通过这样的 docker-compose 文件就可以在本地启动一个 droner server 和一个 drone-agent（其概念和 gocd 类似）。</p>
-<h2 id="drone-的亮点" style="position:relative;">drone 的亮点<a href="#drone-%E7%9A%84%E4%BA%AE%E7%82%B9" aria-label="drone 的亮点 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<h3 id="pipeline-as-code" style="position:relative;">pipeline as code<a href="#pipeline-as-code" aria-label="pipeline as code permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>首先 drone 支持 pipeline as code 其通过一个简单的 yaml 文件就包含了一个项目 ci 的所有内容了（当然，到底简不简单要看你构建流程的复杂程度以及你对项目的封装程度）。举一个例子：</p>
-<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">pipeline</span><span class="token punctuation">:</span>
-  <span class="token key atrule">build</span><span class="token punctuation">:</span>
-    <span class="token key atrule">image</span><span class="token punctuation">:</span> node<span class="token punctuation">:</span>6.10.2<span class="token punctuation">-</span>alpine
-    <span class="token key atrule">commands</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> yarn install
-      <span class="token punctuation">-</span> yarn run build
-  <span class="token key atrule">publish</span><span class="token punctuation">:</span>
-    <span class="token key atrule">image</span><span class="token punctuation">:</span> plugins/docker
-    <span class="token key atrule">repo</span><span class="token punctuation">:</span> eisenxu/realtopper<span class="token punctuation">-</span>app
-    <span class="token key atrule">secrets</span><span class="token punctuation">:</span> <span class="token punctuation">[</span> docker_username<span class="token punctuation">,</span> docker_password <span class="token punctuation">]</span>
-    <span class="token key atrule">tags</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> latest
-      <span class="token punctuation">-</span> $<span class="token punctuation">{</span>DRONE_COMMIT_SHA<span class="token punctuation">:</span>0<span class="token punctuation">:</span><span class="token number">8</span><span class="token punctuation">}</span></code></pre></div>
-<p>这是一个采用 <code>create-react-app</code> 创建的一个前端单页应用项目。这里定义了 <code>build</code> 和 <code>publish</code> 两个阶段。第一个阶段 <code>yarn install</code> 和 <code>yarn run build</code> 分别下载依赖和编译但也应用。第二阶段 <code>publish</code> 采用项目中的 <code>Dockerfile</code> 构建一个 docker image 并发布到 <code>hub.docker.com</code>，具体两个步骤如何进行的细节我们在后面会慢慢介绍。</p>
-<h3 id="原生支持-docker" style="position:relative;">原生支持 docker<a href="#%E5%8E%9F%E7%94%9F%E6%94%AF%E6%8C%81-docker" aria-label="原生支持 docker permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>上面的 yaml 中每个阶段都有一个 <code>image</code> 的字段，这个 <code>image</code> 就是指一个 docker image 也就是说 drone 下每一个阶段都是在一个你所指定的 docker container 下执行的。这样当然就集成了 docker 所引入的一系列的好处：环境隔离、标准化镜像。并且，它是后面插件扩展以及 backing service 可以被轻而易举的实现的基础。</p>
-<h3 id="简单易用的插件扩展" style="position:relative;">简单易用的插件扩展<a href="#%E7%AE%80%E5%8D%95%E6%98%93%E7%94%A8%E7%9A%84%E6%8F%92%E4%BB%B6%E6%89%A9%E5%B1%95" aria-label="简单易用的插件扩展 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>还是在看上面的那个例子，第一个阶段我们在 <code>node:6.10.2-alpine</code> 下构建了一个单页应用。然后，我们采用了 <code>plugins/docker</code> 镜像构建并发布了我们的镜像到 <code>hub.docker.com</code>。而这里的 <code>plugins/docker</code> 就是 <code>drone</code> 为我们提供的一个插件了。</p>
-<p>虽说是一个插件，但实际上用起来就和其他的 <code>image</code> 一样，这个插件的功能就是帮我们利用项目中的 <code>Dockerfile</code> 构建一个新的 docker image 并提交。除此之外还有一些其他的官方插件可供使用，详情在<a href="https://plugins.drone.io/">这里</a>。</p>
-<p>当然，自己做一个插件也是非常简单的，在插件被执行的时候，当前目录就是项目的根目录，然后 drone 会暴露一系列的<a href="https://docs.drone.io/environment-reference/">环境变量</a>给用户使用，我们可以采用之前的步骤所产生的数据或者环境变量中的内容实现一个特定功能的插件。</p>
-<h3 id="支持-backing-service" style="position:relative;">支持 backing service<a href="#%E6%94%AF%E6%8C%81-backing-service" aria-label="支持 backing service permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>我们跑 ci 的时候难免会有一些外部的依赖，比如跑单元测试的时候可能会用到外部的数据库。比如跑前端界面测试的时候我们会需要 selenium。drone 对这种场景提供了支持。</p>
-<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">pipeline</span><span class="token punctuation">:</span>
-  <span class="token key atrule">test</span><span class="token punctuation">:</span>
-    <span class="token key atrule">image</span><span class="token punctuation">:</span> golang
-    <span class="token key atrule">commands</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> go get
-      <span class="token punctuation">-</span> go test
-
-<span class="token key atrule">services</span><span class="token punctuation">:</span>
-  <span class="token key atrule">database</span><span class="token punctuation">:</span>
-    <span class="token key atrule">image</span><span class="token punctuation">:</span> postgres
-    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> POSTGRES_USER=postgres
-      <span class="token punctuation">-</span> POSTGRES_DB=test</code></pre></div>
-<p>这是官方所提供的一个数据库的例子。通过定义一个 <code>services</code> 字段，我们可以提供一个或者多个外部服务。</p>
-<h2 id="最佳实践" style="position:relative;">最佳实践<a href="#%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5" aria-label="最佳实践 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<h3 id="对-docker-image-的验收测试" style="position:relative;">对 docker image 的验收测试<a href="#%E5%AF%B9-docker-image-%E7%9A%84%E9%AA%8C%E6%94%B6%E6%B5%8B%E8%AF%95" aria-label="对 docker image 的验收测试 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>我们采用 docker 容器进行部署的时候通常是在 docker 容器中跑单元测试然后打包镜像并推到 registry。但是这样的流程并不能保证我们打包好的镜像是工作的，可能我们的 Dockerfile 写的有问题导致服务没办法被使用。所以，其实还可以最这种最终构件好的镜像做一个验收测试。</p>
-<p>backing service 的机制可以让我们这么做：</p>
-<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">pipeline</span><span class="token punctuation">:</span>
-
-  <span class="token key atrule">build</span><span class="token punctuation">:</span>
-    <span class="token key atrule">image</span><span class="token punctuation">:</span> node<span class="token punctuation">:</span>6.10.2<span class="token punctuation">-</span>alpine
-    <span class="token key atrule">commands</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> npm build
-
-  <span class="token key atrule">publish_for_test</span><span class="token punctuation">:</span>
-    <span class="token key atrule">image</span><span class="token punctuation">:</span> plugins/docker
-    <span class="token key atrule">repo</span><span class="token punctuation">:</span> test/bar
-    <span class="token key atrule">tags</span><span class="token punctuation">:</span> <span class="token punctuation">[</span> 1.0.0<span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> latest <span class="token punctuation">]</span>
-
-  <span class="token key atrule">run_server</span><span class="token punctuation">:</span>
-    <span class="token key atrule">image</span><span class="token punctuation">:</span> test/bar<span class="token punctuation">:</span>latest
-    <span class="token key atrule">detach</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
-  
-  <span class="token key atrule">verify</span><span class="token punctuation">:</span>
-    <span class="token key atrule">image</span><span class="token punctuation">:</span> blueimp/chromedriver
-    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> VNC_ENABLED=true
-      <span class="token punctuation">-</span> EXPOSE_X11=true
-    <span class="token key atrule">commands</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> nightwatch
-
-  <span class="token key atrule">publish</span><span class="token punctuation">:</span>
-    <span class="token key atrule">image</span><span class="token punctuation">:</span> plugins/docker
-    <span class="token key atrule">repo</span><span class="token punctuation">:</span> production/bar
-    <span class="token key atrule">tags</span><span class="token punctuation">:</span> <span class="token punctuation">[</span> 1.0.0<span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> latest <span class="token punctuation">]</span></code></pre></div>
-<ol>
-<li>首先，我们在 <code>publish_for_test</code> 中构建一个 <code>test/bar:latest</code> 的镜像。</li>
-<li>然后我们采用 <code>detach</code> 的字段表明我们在这里把我们刚刚创建好的镜像运行起来。</li>
-<li>在 <code>verify</code> 阶段，我们采用 <code>nightwatch</code> 对已经运行起来的 <code>test/bar:latest</code> 服务执行验收测试，也就是说，这时候我们把刚刚创建的应用当做我们的 <code>backing service</code>。</li>
-<li>如果测试通过了，我们再构建一个新的镜像并 push 到生产环境 registry</li>
-</ol>
-<p>当然，这里的 <code>publish_for_test</code> 其实最好的办法是只构建镜像而不提交镜像，然后在本地启动这个镜像。不过这种使用本地镜像的方式并没有使用过，而且也没有那种只构建不提交或者只提交已经存在的镜像的插件，以后可以自己进一步做一些优化。</p>
-<h3 id="用-drone-部署多个阶段的环境" style="position:relative;">用 drone 部署多个阶段的环境<a href="#%E7%94%A8-drone-%E9%83%A8%E7%BD%B2%E5%A4%9A%E4%B8%AA%E9%98%B6%E6%AE%B5%E7%9A%84%E7%8E%AF%E5%A2%83" aria-label="用 drone 部署多个阶段的环境 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>虽然 drone 没有 GoCD 里的 deployment pipeline 的概念，但是它可以通过指定特殊的 <code>deployment</code> 的事件实现手动激活的多环境部署。</p>
-<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">pipeline</span><span class="token punctuation">:</span>
-  <span class="token key atrule">build</span><span class="token punctuation">:</span>
-    <span class="token key atrule">image</span><span class="token punctuation">:</span> golang
-    <span class="token key atrule">commands</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> go build
-      <span class="token punctuation">-</span> go test
-
-  <span class="token key atrule">publish</span><span class="token punctuation">:</span>
-    <span class="token key atrule">image</span><span class="token punctuation">:</span> plugins/docker
-    <span class="token key atrule">registry</span><span class="token punctuation">:</span> registry.heroku.com
-    <span class="token key atrule">repo</span><span class="token punctuation">:</span> registry.heroku.com/my<span class="token punctuation">-</span>staging<span class="token punctuation">-</span>app/web
-    <span class="token key atrule">when</span><span class="token punctuation">:</span>
-<span class="token key atrule">+     event</span><span class="token punctuation">:</span> deployment
-<span class="token key atrule">+     environment</span><span class="token punctuation">:</span> staging
-
-  <span class="token key atrule">publish_to_prod</span><span class="token punctuation">:</span>
-    <span class="token key atrule">image</span><span class="token punctuation">:</span> plugins/docker
-    <span class="token key atrule">registry</span><span class="token punctuation">:</span> registry.heroku.com
-    <span class="token key atrule">repo</span><span class="token punctuation">:</span> registry.heroku.com/my<span class="token punctuation">-</span>production<span class="token punctuation">-</span>app/web
-    <span class="token key atrule">when</span><span class="token punctuation">:</span>
-<span class="token key atrule">+     event</span><span class="token punctuation">:</span> deployment
-<span class="token key atrule">+     environment</span><span class="token punctuation">:</span> production</code></pre></div>
-<p>可以看到通过指定 <code>event</code> 和 <code>environment</code> 可以指定两个不同的环境：staging 和 production。然后，通过 drone 所提供的命令行可以实现手工部署到不同的环境。</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">drone deploy octocat/hello-world <span class="token number">24</span> staging</code></pre></div>
-<p>这里是将构建 <code>24</code> 号部署到 staging 环境。</p>
-<h3 id="使用插件为构建增加缓存" style="position:relative;">使用插件为构建增加缓存<a href="#%E4%BD%BF%E7%94%A8%E6%8F%92%E4%BB%B6%E4%B8%BA%E6%9E%84%E5%BB%BA%E5%A2%9E%E5%8A%A0%E7%BC%93%E5%AD%98" aria-label="使用插件为构建增加缓存 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>每次构建都从远端获取依赖真是非常费流量费时间，最好可以不要重复下载。drone 就以插件的方式支持了这样的功能。</p>
-<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">pipeline</span><span class="token punctuation">:</span>
-  <span class="token key atrule">restore-cache</span><span class="token punctuation">:</span>
-    <span class="token key atrule">image</span><span class="token punctuation">:</span> drillster/drone<span class="token punctuation">-</span>volume<span class="token punctuation">-</span>cache
-    <span class="token key atrule">restore</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
-    <span class="token key atrule">mount</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> ./node_modules
-    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> /tmp/cache<span class="token punctuation">:</span>/cache
-
-  <span class="token key atrule">build</span><span class="token punctuation">:</span>
-    <span class="token key atrule">image</span><span class="token punctuation">:</span> node
-    <span class="token key atrule">commands</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> npm install
-
-  <span class="token key atrule">rebuild-cache</span><span class="token punctuation">:</span>
-    <span class="token key atrule">image</span><span class="token punctuation">:</span> drillster/drone<span class="token punctuation">-</span>volume<span class="token punctuation">-</span>cache
-    <span class="token key atrule">rebuild</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
-    <span class="token key atrule">mount</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> ./node_modules
-    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> /tmp/cache<span class="token punctuation">:</span>/cache</code></pre></div>
-<p>第一阶段 <code>restore-cache</code> 将 <code>/tmp/cache</code> 下该项目的缓存拷贝到 <code>./node_modules</code>。第三阶段将 <code>./node_modules</code> 的内容拷贝会 <code>/tmp/cache</code> 详细的内容见<a href="https://plugins.drone.io/drillster/drone-volume-cache/">缓存</a>。</p>
-<h2 id="当前的状态" style="position:relative;">当前的状态<a href="#%E5%BD%93%E5%89%8D%E7%9A%84%E7%8A%B6%E6%80%81" aria-label="当前的状态 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>目前 drone 刚刚开始了商业化之路，并且在疯狂的更新中，整体社区非常的活跃 star 也已经过万了，非常期待它未来的发展。</p>
-<h2 id="相关资料" style="position:relative;">相关资料<a href="#%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99" aria-label="相关资料 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<ul>
-<li><a href="https://drone.io">drone 官网</a></li>
-<li><a href="https://docs.drone.io/installation/">drone 安装指南</a></li>
-<li><a href="https://github.com/facebookincubator/create-react-app">create-react-app</a></li>
-<li><a href="https://docs.drone.io/getting-started/">drone basic usage</a></li>
-<li><a href="https://plugins.drone.io/">drone docker 插件</a></li>
-<li><a href="https://plugins.drone.io/drillster/drone-volume-cache/">drone cache 插件</a></li>
-<li><a href="https://docs.drone.io/deployments/">drone 部署</a></li>
-<li><a href="https://plugins.drone.io/drillster/drone-volume-cache/">缓存</a></li>
-</ul></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/20">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/22">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
+</ol></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/20">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/22">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       
       if(true) {

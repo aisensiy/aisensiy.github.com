@@ -52,7 +52,33 @@
         }
       }
     })
-  </script><script async="" defer="" data-website-id="443212e9-fd0b-411e-a523-0d0ec604ee8a" src="https://get.aisensiy.me/umami.js"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/kuberheathy">Kuberhealthy 一个还不错的健康检查 operator</a></h1><h2>2021 March-01</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>几年前 k8s 就是 openbayes 部署的基础平台了，它算是一个相当不错的 PaaS 了。这里介绍一个最近发现的做 healthcheck 的 operator（我不知道这东西用中文怎么说）。</p>
+  </script><script async="" defer="" data-website-id="443212e9-fd0b-411e-a523-0d0ec604ee8a" src="https://get.aisensiy.me/umami.js"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about">About</a></li><li><a class="leading-7 block hover:underline" href="/archive">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/long-live-web">如何让你的 web 站点存在 10 年以上</a></h1><h2>2021 March-07</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>看了一篇博客 <a href="https://jeffhuang.com/designed_to_last/">A Manifesto for Preserving Content on the Web</a> 介绍了如何设计 web 可以让你的信息更好的被存储下来，感觉很受启发，在这里对这篇文章的观点做一个介绍，也回顾一下自己这么多年来遇到的类似的问题，并且结合目前的技术栈说说自己的一些想法。</p>
+<h2 id="什么导致了-web-内容不能长久" style="position:relative;">什么导致了 web 内容不能长久<a href="#%E4%BB%80%E4%B9%88%E5%AF%BC%E8%87%B4%E4%BA%86-web-%E5%86%85%E5%AE%B9%E4%B8%8D%E8%83%BD%E9%95%BF%E4%B9%85" aria-label="什么导致了 web 内容不能长久 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>这篇博客的作者发现自己之前保存的各种 bookmark 都已经失效了，然后回想自己七年前发布的文章里所包含的 demo 链接已经成了奇奇怪怪的广告页面。于是开始考虑在经历了这么多年的 web 发展之后如何设计 web 内容可以让它支撑 10 年之久。</p>
+<p>任何网站都是需要维护的，内容需要更新，域名需要续费，机器节点需要付钱。但是人的兴趣是会慢慢转移的，也许在某一个账单将要失效或者网页因为某个依赖崩掉而无法打开的时候，你就觉得要不算了，这东西打不开也没关系，然后你所维护的网站就消失了。我自己曾经也拥有多个域名，但是相当多内容都已经消失了呢。</p>
+<p>然后 web 的技术栈一直在变化，从 jquery 的出现，到后来 bootstrap 再到后来的 backbone angular react。尤其是后来 Single Page App 的兴起导致真正的数据已经不再是 html 而是其背后的 API 了。一方面越发复杂的技术栈确实大大提升了当下的 web 应用的开发效率和使用体验（在有合理投入的前提下）但是这种形式也让搜索引擎以及类似的爬虫更难帮你把你的网页保存下来了。当然市面上还有一些静态网站生成器，比如目前的博客所用的 <a href="https://jekyllrb.com/">jekyll</a> ，它依然将数据以静态 html 的形式提供。可惜岁月不饶人，随着 ruby 的热度的下降，至少对我来说 ruby 已经不再是我的核心技术栈了，目前我甚至很难让我自己的网站在本地跑起来了。前一阵子我也甚至在尝试如何将它切换到 <a href="https://gohugo.io/">hugo</a> 或者 <a href="https://hexo.io/">hexo</a> 上去。</p>
+<p>第三，不少人的信息都放在了 UGC 社区里，但是这些社区出于商业利益考量，他们的信息不太容易轻易的被倒腾到其他地方，但不少类似的东西也撑不住 10 年，想想开心网、人人网（校内），想想你的 qq 空间。</p>
+<h2 id="一些不错的解决方案" style="position:relative;">一些不错的解决方案<a href="#%E4%B8%80%E4%BA%9B%E4%B8%8D%E9%94%99%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88" aria-label="一些不错的解决方案 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>然后作者从三个角度去强调如何让自己的 web 信息得以更长远的保存：</p>
+<ol>
+<li>降低维护成本：使用最原始的 html css 保证信息的基本可访问；别做什么 minify 把自己的 css 和 js 搞成乱码；每个内容最好放在一个完整的页面里，而不是分成多个子页面。</li>
+<li>排除外部依赖，尽量减少坑队友：自己的图片最好自己维护，别随便就引用外部的；字体用最基本的，用的最多的。</li>
+<li>对爬虫友好：html 可以更好的把爬虫抓取，当然这个爬虫也可以是你自己写的简单的爬虫；图片尽量压缩，不要占据太多空间，让备份的成本尽可能降低。</li>
+</ol>
+<h2 id="基于目前技术栈的解决思路" style="position:relative;">基于目前技术栈的解决思路<a href="#%E5%9F%BA%E4%BA%8E%E7%9B%AE%E5%89%8D%E6%8A%80%E6%9C%AF%E6%A0%88%E7%9A%84%E8%A7%A3%E5%86%B3%E6%80%9D%E8%B7%AF" aria-label="基于目前技术栈的解决思路 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>我觉得需要考虑的一个非常重要的事情就是...你为什么需要考虑 10 年甚至更长的维度的事情？不是说了么，我的兴趣都已经转移了，这东西死活跟我关系不大呀？</p>
+<p>我觉得 10 年是个非常长的维度了，再次强调，技术栈的变迁会导致你的维护成本越来越大，所以最终即使有个东西你依然还算是有兴趣，也不想如何的耗费精力了。但如果维护成本不高，写个 10 年 20 年被博客也没什么兴趣不兴趣的吧？</p>
+<p>然后作者也提到作为一个科研工作者，很多东西的生命周期越长其所产生的影响力也会越大，并且这种稳定可靠的信息会带给使用者信心，让他们更愿意为其添加引用（想象一下看到一个有 10 年历史的博客的时候，你会不会觉得这人挺靠谱的，居然让这个博客持续了这么久），也许最后就是你觉得的一些没有意义的东西被别人挖掘到了金子呢？</p>
+<p>然后这里结合我的经历和目前的技术栈说说我觉得可以做的事情。</p>
+<p>我自己的博客到今年也刚好 10 年了，期间有过一次重大的损失发生在 2014 年。在那个年头国内火过一个东西叫做 云引擎（使用体验和 heroku 很像），但是用的是 svn，这个东西的好处就是建站便宜并且自带个域名（毕竟国内域名备案是个很麻烦的事情）。于是我就把自己的 wordpress 博客放到那里了，但是由于自己的疏忽忘记续费了，14 年的博客丢的干干净净。幸好其他博客还有备份避免了全军覆没。后来自己的博客就用 jekyll host 在了 github。 托它的福一直稳定维护至今，但由于目前国内网络对 github page 已经非常不友好了，访问也是时断时续。考虑我博客的主要受众是我，那也就不必在意这么多了。</p>
+<p>回顾 10 年，wordpress 所使用的 php 已经逐渐活在了段子里，ruby on rails 也逐渐成为了传说。唯有 html 依然屹立不倒...在未来，如何想要更好的维护自己关注的信息，可以从以下几个方向去考虑：</p>
+<ol>
+<li>维护一个自己的域名，即使你所依赖的 heroku github digitalocean 都不再适合做你的内容 host 了，你依然可以换一个更合适的地方，然后依然用之前的域名进行访问。</li>
+<li>使用静态网站生成器生成数据，保证以最原始的方式发布内容。虽然 jekyll 不行了，但是 Gatsby 兴起了，hugo 也还行，迁移成本还算是可以接受。这个思路在其他复杂应用里也会用得到（server-side-render）以提升搜索引擎的抓取效果。</li>
+<li>类似于 <a href="https://getpocket.com/">GetPocket</a> 或者是 <a href="https://www.yinxiang.com/">印象笔记</a> 的工具可以将你的<strong>内容</strong>保存下来（而不只是链接），算是一个备份吧，即使 html 都没了，文字图片本身也还能得以保留，而且排版还不错。</li>
+<li>如作者所属，内容和图片最好放在一起，不要因为很多图床非常方便而直接使用。我之前不少的图片就放到了图床，现在看看应该是丢了不少了。以及非必要不使用图片，比如能贴代码的绝不截图。</li>
+</ol>
+<p>最后，很多事情是要以更长的时间线去回顾才会发现其中的奥妙，如果连 10 年的记忆都留不下怎么才能温故而知新呢。而且，看看 10 年前自己的东西，也挺有意思呢。</p></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/kuberheathy">Kuberhealthy 一个还不错的健康检查 operator</a></h1><h2>2021 March-01</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>几年前 k8s 就是 openbayes 部署的基础平台了，它算是一个相当不错的 PaaS 了。这里介绍一个最近发现的做 healthcheck 的 operator（我不知道这东西用中文怎么说）。</p>
 <h2 id="需求" style="position:relative;">需求<a href="#%E9%9C%80%E6%B1%82" aria-label="需求 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <p>当我们的子系统越来越多的时候，我们希望每个系统有一些监控用于检测其核心的功能是否跑起来了，并希望知晓每个服务的宕机事件。<a href="https://uptimerobot.com/">uptimerobot</a> 就是在做类似的事情。我们可以给它一个 http 访问地址，当访问成功的之后就标记为「健康」，当访问失败的时候就标记为「不健康」。这个检测在指定的周期执行，日积月累就能知道一个服务的稳定情况了。</p>
 <p>不过以上所述的健康检查就像是一个 <code>curl https://targeturl</code> 似乎在假设所有的子系统都需要有一个可以方便访问的 http path。不过有些时候，我们会需要一些稍微复杂的健康检查：</p>
@@ -368,221 +394,7 @@ bayes gear run task --env <span class="token variable">$RUNTIME</span> --resourc
 <li><a href="https://apollographql.com/">Apollo GraphQL</a></li>
 <li><a href="https://www.apollographql.com/docs/federation/federation-spec/">Apollo Federation</a></li>
 <li><a href="https://github.com/pipedrive/graphql-schema-registry">schema-registry</a></li>
-</ol></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/rest-practice">REST 的一些实践心得</a></h1><h2>2021 February-16</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>这篇文章是强行插播过来的，本来是在做 GraphQL 的调研，但是发现其实 REST 这边的很多进展根本就没有说啊，那后面比较的时候很多东西就有点说不清楚了呢。所以就介绍下目前 REST API 开发过程中引入的一些不错的实践，重点是如何 OpenAPI 以及其工具链完善开发流程，降低沟通成本。</p>
-<h2 id="tldr" style="position:relative;">TL;DR<a href="#tldr" aria-label="tldr permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>就是标题了呢，绝大部分是围绕 openapi 以及其工具链介绍具体解决了什么问题。</p>
-<h2 id="cqrs-读写分离读数据结构要标准写数据结构要简单" style="position:relative;">CQRS 读写分离，读数据结构要标准，写数据结构要简单<a href="#cqrs-%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB%E8%AF%BB%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%A6%81%E6%A0%87%E5%87%86%E5%86%99%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%A6%81%E7%AE%80%E5%8D%95" aria-label="cqrs 读写分离读数据结构要标准写数据结构要简单 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>众所周知，REST API 可以按照行为分为「读」和「写」两种：</p>
-<ul>
-<li>读：只获取数据，不对数据造成更改，用 <code>GET</code> 方法</li>
-<li>写：更新数据内容，用 <code>POST</code> <code>PUT</code> <code>DELETE</code> <code>PATCH</code></li>
-</ul>
-<p>自我一篇很古老的<a href="/some-tips-for-ddd">文章</a>里就提到了，<code>GET</code> 请求获取的是「读模型」（区分于文中所陈述的 DDD 的「写」模型），应该按照使用方需求合理展示相应数据。不过当时对「读模型」讲述的不够深入，实际上 <code>GET</code> 所返回的数据不是孤立的，而是相互关联的。例如有这么一个场景，主要包含两个资源 <code>user</code> 和 <code>blog</code>，<code>blog</code> 会有 <code>user</code> 作为其 <code>author</code>。有如下两个 API：</p>
-<ul>
-<li><code>GET /users</code> 返回用户列表</li>
-<li><code>GET /blogs</code> 返回博客列表</li>
-</ul>
-<p>其中 <code>blog</code> 下会包含 <code>author</code> 的信息：</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">{ // blog
-  "id": "xxx",
-  "title": "xxx",
-  "summary": "xxx",
-  "tags": ["spring", "rest"],
-  "author": { // author
-    "name": "xxx",
-    "avatar": "http://images.jpg",
-    "description": "bla bla bla"
-  }
-}</code></pre></div>
-<p>然后可能会有一个用户的列表 <code>GET /users</code>，里面包含了用户的信息：</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">{
-  "name": "xxx",
-  "avatar": "http://images.jpg",
-  "description": "bla bla bla"
-}</code></pre></div>
-<p>blog 下的 author 和 users 下的每个 user 的结构如果没什么特殊原因应该是一致的，否则前端同学肯定一脸懵逼。这就是所谓的「结构标准化」了。<strong>就是 REST <code>GET</code> 的返回结果应该按照 API 服务所提供的资源之间的关系有统一的结构。</strong> 这部分和 GraphQL 的感觉有点异曲同工了。</p>
-<p>而「写模型」数据通常是让前端去提交某种结果，其所需要的结构是在 <code>requestBody</code> 中。如果硬要提交的结构和返回的结构完全一致的话会有三个问题：</p>
-<ol>
-<li>完全做不到，因为很多数据是提交到后端后后端去更新和关联起来的，比如上文提到提 <code>blog</code> 的 <code>author</code> 字段通常都是自动生成的，怎么可能是提交上去的，这就不符合实际业务逻辑</li>
-<li>可能会非常冗余，让 API 适用方觉得比较繁(sha)琐(bi)</li>
-<li>容忍度不太高，使用者稍有不慎就会 400 警告</li>
-</ol>
-<p>比如在 openbayes 创建 job 的 API 里面，需要用户去提交什么样子的资源绑定到什么路径上，如果是规范的提交方式应该是这个样子：</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">POST /jobs
-
-{
-  "data_bindings": [
-    {
-      "path": "/input0",
-      "data": {
-        "id": "abc",
-        "name": "mnist",
-        "type": "DATASET",
-        "owner": {
-          "id": "userid",
-          "name": "username",
-          ...
-        }
-        ...
-      }
-    }
-  ]
-}</code></pre></div>
-<p>其中大部分数据毫无意义，因为绝大部分信息都是在提供了 <code>userid</code> + <code>data-type</code> + <code>data-id</code> 之后后端直接在数据库中就查的出来的，所以合理的提交方式应该是以下的样子：</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">POST /jobs
-
-{
-  "data_bindings": [
-    {
-      "path": "/input0",
-      "data": {
-        "userid": "userid",
-        "type": "DATASET",
-        "id": "xxx"
-      }
-    }
-  ]
-}</code></pre></div>
-<p>再举个容忍度的例子，管理员创建一个新的商品：</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">POST /plans
-
-{
-  "name": "xxx",
-  "description": "xxxx",
-  "price": {
-    "amount": 1.99,
-    "currency": "CNY"
-  }
-}</code></pre></div>
-<p>其中这个 <code>price</code> 部分有点点小冗余了，如果可以<strong>同时</strong>支持以下方式可能会更友好：</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">POST /plans
-
-{
-  "name": "xxx",
-  "description": "xxxx",
-  "price": "CNY 1.99"
-}</code></pre></div>
-<p>这部分我觉得就有点额外发挥的意思了，甚至会画蛇添足。将 API 调用 SDK 化可以极大程度上减少这种额外工作的必要。</p>
-<h2 id="openapi-标准化" style="position:relative;">OpenAPI 标准化<a href="#openapi-%E6%A0%87%E5%87%86%E5%8C%96" aria-label="openapi 标准化 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>API 越写越多，接口越来越复杂，前端调用的时候总要有个文档说说到底每个 API 都返回了啥吧，那么就要用 OpenAPI 了。</p>
-<p><figure class="gatsby-resp-image-figure" style="">
-    <span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/c55e61aacd7d238eff99435aae981a3e/f8836/2021-02-17-13-51-09.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 76.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAAsTAAALEwEAmpwYAAACwUlEQVQ4y3WTS4vbVhiG9Wdiz9iWbF2OJGsCnU5sZya0dNFl/kE2gYkDXbWBTugP6ab/oYtuuy10EyhtZkrp+CrbsmT5Ij3lO/ZkApMeeDggOK/e97sY/lmN07CNp1zq9Rq1Wo16va5ptVocHx8ThiHffveGy1f9PZd9+v3XvHzZ58Xlc958/w1v3/7A1dUVRv3I5HNPcfY4IvAVVrOpRRuNhqZSqdDr9ZjGM+J4QZKkZKs1i8WS7bYE1nx8jGbTouMHtP2Alm3jOI7GsizN0dERnU6HNE351CkL2O0KdrudxnBdl888ReC6+EFAEATINxEzTZNqtaodvr++4XYwYjAYMRyOWKYpZVk+wGg5DoFta5eh8vF9X9dP4oqoCHa7XaaTMVmaEMczFosFm41ELaEs9/cB7dC2LHqR1NCn3mhoZ8Kd4PnTHn/+PeE2LilK2BWw3cFmVx6AzbYk3xQYtm1rkTNf0Y3a+MpDKR/lyS1NavH1V1/yyx+3/PRuzPUw5p9pwmi5ZpJtGWcbxuk9hud5NEyTU9ejE0Uoz/3QZXFYqVb54uk5P1+/48f3v/PXaMj1ZMS/yZxBmjDMlozzlNFqj+G6Hk3LonvSpu24OJ6HuBYk9qNHFc57T/jtJuPXGxjGGYNpyjTZMJ6vmaU7khwWealvw1dKOzxxXJ4opaMGh26Le3F58ewZs3hCsc0Pxee+EeWespTR2d5H9ls252HISRDoDRFkHsXlxcUF02lMslySrVasHpCTZRnr9RpDCi+PHrsup9IM38P1XRzlYLu23hQZ7NlsxlIEs+wBq1WmBz/P833kesPkTCkdOQpDvbtSQ6u53xSZQxGU+UuSRD/+GBGVn2lBiWxbTR25046IolA7vHN5N9giOJ/P/9flB4fS1dC26YYhbSGKMBvmfmzM/WBLZHEmZ3vY2U9RFAX/AdrgJpY2FxYRAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="petstore 的 openapi 3.0 样例"
-        title="petstore 的 openapi 3.0 样例"
-        src="/static/c55e61aacd7d238eff99435aae981a3e/5a190/2021-02-17-13-51-09.png"
-        srcset="/static/c55e61aacd7d238eff99435aae981a3e/772e8/2021-02-17-13-51-09.png 200w,
-/static/c55e61aacd7d238eff99435aae981a3e/e17e5/2021-02-17-13-51-09.png 400w,
-/static/c55e61aacd7d238eff99435aae981a3e/5a190/2021-02-17-13-51-09.png 800w,
-/static/c55e61aacd7d238eff99435aae981a3e/c1b63/2021-02-17-13-51-09.png 1200w,
-/static/c55e61aacd7d238eff99435aae981a3e/f8836/2021-02-17-13-51-09.png 1214w"
-        sizes="(max-width: 800px) 100vw, 800px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span>
-    <figcaption class="gatsby-resp-image-figcaption">petstore 的 openapi 3.0 样例</figcaption>
-  </figure></p>
-<p>OpenAPI 是一套标准，定义了如何用 json schema （的变种）去定义一套 REST API 的接口的。然后围绕这个标准产生了一系列的工具，这一系列的工具的组合一定程度上解决了我们 REST 开发中的诸多痛点。</p>
-<h3 id="redoc-用于生成文档" style="position:relative;"><a href="https://github.com/Redocly/redoc">redoc</a> 用于生成文档<a href="#redoc-%E7%94%A8%E4%BA%8E%E7%94%9F%E6%88%90%E6%96%87%E6%A1%A3" aria-label="redoc 用于生成文档 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>openapi 就是个 yaml 而且其官方提供的 <a href="https://editor.swagger.io">swagger editor</a> 在这个 yaml 比较大的时候会很卡。干脆就用 intellij 去编辑了，但是我总是知道自己的语法写没写对吧。这个时候我就直接用 redoc 这个东西去渲染结果了，<strong>如果展示的对就是正确的了</strong>。</p>
-<p>然后其实随着 api 的规模的增大，单个 yaml 已经承受不了了。最后分化出了多个 yaml 文档，并对 redoc 提供的 html 做了些许魔改形成了下面的这个样子：</p>
-<p><img src="../img/in-post/rest-practice/2021-02-17-13-57-18.gif" alt="openbayes api 文档的样子"></p>
-<p>可以看到按照边界分成了 6 个 yaml 然后 openapi 支持每个之间做了相互的数据引用。</p>
-<p>这个文档在一定程度上解决了前后端沟通的问题。</p>
-<h3 id="openapi-validator-用于文档校验" style="position:relative;"><a href="https://github.com/IBM/openapi-validator">openapi-validator</a> 用于文档校验<a href="#openapi-validator-%E7%94%A8%E4%BA%8E%E6%96%87%E6%A1%A3%E6%A0%A1%E9%AA%8C" aria-label="openapi validator 用于文档校验 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>openapi 文档会又撰写 api 的人同步的更新，为了保证 openapi 上线前不要各种挂，就引入了 <code>openapi-validator</code> 在 ci 那边跑测试，如果校验没过就报错了呢。<code>openapi-validator</code> 相对比较灵活，有点像是 <code>lint</code>（巧了，openapi-validator 的命令行工具就叫 <code>openapi-lint</code>）可以自动的定制一些规则，要求文档的撰写者遵循。</p>
-<h3 id="openapi2schema--restassured-与后端测试集成" style="position:relative;"><a href="https://github.com/mikunn/openapi2schema">openapi2schema</a> + <a href="https://rest-assured.io/">restassured</a> 与后端测试集成<a href="#openapi2schema--restassured-%E4%B8%8E%E5%90%8E%E7%AB%AF%E6%B5%8B%E8%AF%95%E9%9B%86%E6%88%90" aria-label="openapi2schema  restassured 与后端测试集成 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>文档写好了，单毕竟就是个 yaml 而已，如何保证实际的代码和 openapi 一致呢？这里就魔改出来一个还算凑合的方案。</p>
-<p>首先 <code>restassured</code> 是我们之前就广泛使用的 api 测试框架，然后它其实又一个 <code>JsonSchemaValidator</code> 组件，支持用 jsonschema 去校验请求的内容。然后我有找到一个名为 <code>openapi2schema</code> 的东西，可以把 openapi yaml 转换为  json schema 格式。那么我就可以实现用 openapi 文档去测试实际的代码是不是符合规范了，这里就直接截取项目中的一小段代码：</p>
-<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">should_get_a_workspace_with_one_dataset_binding</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token class-name">String</span> schema <span class="token operator">=</span> <span class="token function">getJsonSchema</span><span class="token punctuation">(</span><span class="token string">"api.json"</span><span class="token punctuation">,</span> <span class="token string">"'/users/{userId}/jobs/{jobId}'.get.responses.200"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token comment">// bla bla bla</span>
-
-    <span class="token function">given</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token punctuation">.</span><span class="token function">header</span><span class="token punctuation">(</span><span class="token string">"Authorization"</span><span class="token punctuation">,</span> <span class="token string">"Bearer "</span> <span class="token operator">+</span> token<span class="token punctuation">)</span>
-        <span class="token punctuation">.</span><span class="token function">contentType</span><span class="token punctuation">(</span><span class="token class-name">ContentType</span><span class="token punctuation">.</span>JSON<span class="token punctuation">)</span>
-        <span class="token punctuation">.</span><span class="token function">when</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/users/{uid}/jobs/{jid}"</span><span class="token punctuation">,</span> jobData<span class="token punctuation">.</span><span class="token function">getUserId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> jobId<span class="token punctuation">)</span>
-        <span class="token punctuation">.</span><span class="token function">prettyPeek</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token punctuation">.</span><span class="token function">statusCode</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span>
-        <span class="token punctuation">.</span><span class="token function">body</span><span class="token punctuation">(</span><span class="token class-name">JsonSchemaValidator</span><span class="token punctuation">.</span><span class="token function">matchesJsonSchema</span><span class="token punctuation">(</span>schema<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span></code></pre></div>
-<p>其中 <code>api.json</code> 就是利用 <code>openapi2schema</code> 将 openapi 转换为 <code>jsonschema</code> 的结果了。baeldung 有篇 <a href="https://www.baeldung.com/rest-assured-json-schema">文章</a> 介绍了如何使用 rest assured 的 json schema validator。</p>
-<h3 id="openapi-generator-cli-生成前端-sdk" style="position:relative;"><a href="https://github.com/OpenAPITools/openapi-generator-cli">openapi-generator-cli</a> 生成前端 sdk<a href="#openapi-generator-cli-%E7%94%9F%E6%88%90%E5%89%8D%E7%AB%AF-sdk" aria-label="openapi generator cli 生成前端 sdk permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>最后，也是最重要的一环，为了让 openapi 有灵魂，一定是给前端把它的调用做封装，而不是让前端同学按照文档自己去写调用接口。这里用了 <code>openapi-generator-cli</code> 可以生成众多语言的 sdk，甚至支持 typescript 的 sdk。</p>
-<p><figure class="gatsby-resp-image-figure" style="">
-    <span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 397px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/b7c3c3d78d5118e871dd8a1ce64fa988/4c04a/2021-02-17-14-39-31.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 220.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAsCAYAAABloJjNAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFj0lEQVRIx52X51YjRxCF9Q5exOTYk3NQQEKBYFjWGIf3f5fPp1uLzBokbP+o0zOj0VVV3bpVpYlpWhiGSZr4PO1Kvu0rrsaY26sVf96+8Li653F9z6bfsG7XFHGBYRpYlvWhTQzTwjRNmjolSwJE4BL6DsILScOMXOQkQUoSJkRBhO/66v2TgJbl4Niu8uB2vOPp6htVUTMrZ+zGHatuxXW3JkkzNF0/encKdFKkBUkcYhh/h/H6sm3bb162333+IaCIfLJcMJ1q6Prp3Ly18yHbNm0d0fcpVR0jSZLAmnYwef1q8l4S+Ar6EfDEtGw2y4xv9y1324qxDqnKiNWqYj7PaduE5bJgsSjUsyQJPkzPEdD1XOoqwnMsAs8hjnyE8MnziCwVRFGgcpwmgjyL8H3vbOiTIg24ucromoRqWDKsbmnm17TljPvZz9wMt1zVK3b9ntvhjsfFI13WqRL6qB5VHbqOTdulyHzKXMmQDN3ENCwc2/mBbfsTtidHpaQBWeypwo7igCTxiRIXzbjkUv9u2iVTbYpu6CeJOQLKPP7x0PB8U7FdF9xvF/z+8MiyWagQl/WSRbVg1ayUak7J7wiY5yF1EVJlAXFoEzg+XTow5ANVUlGnNUMxKAWdyp8C1A0T13F5Wj/SVwNBUtDMN1T9nKl2ocLUdE2FLMP9Z8jvSTEOpCxnDb7nYdkOjuvheoEiRZIgSXk1SdJZLZvfu42IZJex8VwLz3MIQhsvsH4gQ9qFdnHewyMpZcSfipSam03N/W7BH48PzKtRkSJzJ02SI0k566GsuyRzaauApvAJA53Q8+mzUZGSRZkipc97RYzsidLrD6VnmKbKy8PVHU3ZkYYFe6mO5oqxHJRH8vpwP6quvek2lGl9DP0fLFu4rsN+tSQWh45cxSW5KEjCVFkRlZRxSSYy6qRWYyAMxGnpSbej2MVxZOUbmLaB5chTw3J0dU71Cy4uL/hp+pMi57XjnFRKVUS83DU8bkv225q73YzHm2tur5c83a+5GkblaZu1iCA6Q4plq19LM4+x9RkbnyyxyKOEZb1iUS0Vy0MxsqwWXNcrIk+cLJ2JbhiqYDfDinV7TZeNNGlHk7ZKu2mSqpzNypGiaknqjqLpcV334zqM/FhJr4gKxmJQX5YEyPsmbUjEYXxKMrKsJM4KsrLBcU4A+l6gWH5Vw6WuoRm6CklqWH97/WqadgR7F3IofMoywnVtBSxP09AxdB3TMP7z9FPNwXFtVrOM33+ZcbMfSLKCKC0IRIRlmf8JdKLppmr9fZsw1B55npCWPUU7I6s6LqdTdF1H07QfTD+xRUxi4bPsI6o8pIn7AyllTt+15FlK17Z0Xcsw9LRtyziOzGYzmqpBeO/VMvE9h7YU7DZrXr6+8Pz1mf3NnmEYma9v2Nw/s/35V65vv5LlBUVxsDRNP1ycJsKXrcjBDwKCMCAUIZ7nqZBs18ORVeALdUpFfRqy63pIL9XofGOHFw3F9Kv9K1LiOFBlM53qx73l/y5KCtB2HKpCkOeCJA0V6GEx0o/22YL0bvvarQpengYebhv6KiTPQsYxZz4vGIZM7TpvQc8CSpHLIR96NlHgkCc+InRVGqoqOqjIs78DfQ46SYTLbpHQVDFFt6Bb7qnHFVXWs2137PsbtTDJPhhIps3zcpzUdU2ahPRdiuv5ai7bjottOXiOT+gFqtu46pn9ecjPv/5GFMeEoYMIHHzXxg9cROThhabaHr5Mv5xdkN41WFl3h7ncqv8pu+uSu+2cl4d7FvWcsRgRvvg03DcjwCTLferSoytDUmET2C5t0rGoDxuXWpCMfwGoliXbYTdu2XQ7QpGQVD3NbE2QJHz5PuXOrR8/AKYiw3M8tV7ITiN1HIQCEWfqtEzzuLV+BiYB/wKu/NRd/KUZEAAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="typescript sdk 的截图"
-        title="typescript sdk 的截图"
-        src="/static/b7c3c3d78d5118e871dd8a1ce64fa988/4c04a/2021-02-17-14-39-31.png"
-        srcset="/static/b7c3c3d78d5118e871dd8a1ce64fa988/772e8/2021-02-17-14-39-31.png 200w,
-/static/b7c3c3d78d5118e871dd8a1ce64fa988/4c04a/2021-02-17-14-39-31.png 397w"
-        sizes="(max-width: 397px) 100vw, 397px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span>
-    <figcaption class="gatsby-resp-image-figcaption">typescript sdk 的截图</figcaption>
-  </figure></p>
-<h2 id="hateoas" style="position:relative;">HATEOAS<a href="#hateoas" aria-label="hateoas permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>这部分在 <a href="/spring-boot-and-hateoas">在 Spring Boot 中使用 HATEOAS</a> 介绍过了。简单的说就是两部分：</p>
-<ul>
-<li>用 link 的有无反应权限</li>
-<li>一定程度上确保 link 像网页那样为用户的 api 探索提供探索，尤其是对于「分页」「列表-详情」这样的关联性极强的 API 之间。</li>
-</ul>
-<h2 id="遇到的问题" style="position:relative;">遇到的问题<a href="#%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98" aria-label="遇到的问题 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>吐槽下目前 REST 生态吧。</p>
-<p>REST 没什么标准（甚至还会时不时为 REST 是什么而争论），唯一看起来像样的就是 OpenAPI 但是 OpenAPI 的问题也挺多的。</p>
-<p>OpenAPI 不是什么大厂，没有很强的运营推广能力，很多东西的贡献也全凭兴趣，持久性和可靠性令人怀疑。比如目前 openbayes 的 API 已经相对比较多了，统计下 openapi 文档的行数已经相当恐怖了。以下几个文件还是自己强行拆分出来的，OpenAPI 自身对于多文件的支持并不是很好，目前的方案也不是很完美，可能需要结合 <a href="https://davidgarcia.dev/posts/how-to-split-open-api-spec-into-multiple-files/">How to split a large OpenAPI Specification into multiple files</a> 这篇文章的方案做更多的尝试了。</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">ls</span> *.yml <span class="token operator">|</span> <span class="token function">xargs</span> <span class="token function">wc</span>
-
-    <span class="token number">8499</span>   <span class="token number">15129</span>  <span class="token number">216144</span> api.yml
-    <span class="token number">1543</span>    <span class="token number">2752</span>   <span class="token number">40366</span> finance.yml
-     <span class="token number">167</span>     <span class="token number">286</span>    <span class="token number">4375</span> notifications.yml
-     <span class="token number">823</span>    <span class="token number">1432</span>   <span class="token number">20210</span> orgs.yml
-    <span class="token number">1366</span>    <span class="token number">2401</span>   <span class="token number">35797</span> servings.yml
-    <span class="token number">1550</span>    <span class="token number">2696</span>   <span class="token number">37413</span> users.yml
-   <span class="token number">13948</span>   <span class="token number">24696</span>  <span class="token number">354305</span> total</code></pre></div>
-<p>redoc 并不支持完整的 openapi 语法，很多时候校验全凭效果，比如 <code>allOf</code> <code>oneOf</code> 这些继承语法。正如上文所说，「<strong>如果展示的对就是正确的了</strong>」。类似的问题在 <code>openapi-generator-cli</code> 也会出现，具体的问题也是千奇百怪。最终结果导致我们只能使用一个 openapi 语法的子集，并且我觉得如果 openapi 没有能力让下面的工具链与自己的标准协同更新，openapi 也就慢慢成了一纸空文。以及 <code>openapi2schema</code> 就更没谱了，就是个完完全全的个人作品，已经一年多没有更新了，后面还能不能用都不知道。</p>
-<p>总的来说，上面的工具链有点像是纸糊的，摇摇欲坠，这也是我寻求 GraphQL 破局的重要原因之一吧。</p></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/11">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/13">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
+</ol></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/11">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/13">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       
       if(true) {
