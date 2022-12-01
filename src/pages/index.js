@@ -16,7 +16,6 @@ export default function BlogPage({ data }) {
   const hasNextPage = currentPage < pageCount
   return (
     <Base>
-      <Seo />
       <div>
         {pages}
         <div className="flex justify-center mt-8">
@@ -28,18 +27,16 @@ export default function BlogPage({ data }) {
   )
 }
 
+export const Head = () => (<Seo />)
+
 export const pageQuery = graphql`
-  query QueryFirstBlogPages { 
+  query QueryFirstBlogPages {
     site(siteMetadata: {title: {}}) {
       siteMetadata {
         title
       }
     }
-    blogs: allMarkdownRemark(
-      sort: { fields: frontmatter___date, order: DESC }
-      limit: 3
-      skip: 0
-    ) {
+    blogs: allMarkdownRemark(sort: {frontmatter: {date: DESC}}, limit: 3, skip: 0) {
       nodes {
         id
         frontmatter {

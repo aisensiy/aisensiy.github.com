@@ -2,7 +2,7 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import Blog from "../components/Blog"
 import Base from "../layouts/base"
-import { Helmet } from 'react-helmet'
+import Seo from "../components/seo"
 
 export default function BlogPage({ data }) {
   const { nodes: blogs, pageInfo } = data.blogs
@@ -16,7 +16,6 @@ export default function BlogPage({ data }) {
   const hasNextPage = currentPage < pageCount
   return (
     <Base>
-      <Helmet title={data.site.siteMetadata.title} />
       <div>
         {pages}
         <div className="flex justify-center mt-8">
@@ -28,6 +27,8 @@ export default function BlogPage({ data }) {
   )
 }
 
+export const Head = () => (<Seo />)
+
 export const pageQuery = graphql`
   query QueryBlogPages($limit: Int! = 5, $skip: Int! = 0) {
     site(siteMetadata: {title: {}}) {
@@ -36,7 +37,7 @@ export const pageQuery = graphql`
       }
     }
     blogs: allMarkdownRemark(
-      sort: { fields: frontmatter___date, order: DESC }
+      sort: {frontmatter: {date: DESC}}
       limit: $limit
       skip: $skip
     ) {

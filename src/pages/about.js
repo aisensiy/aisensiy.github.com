@@ -2,10 +2,9 @@ import React from "react";
 import Base from "../layouts/base";
 import Seo from "../components/seo";
 
-export default function Archive({ data }) {
+export default function Archive() {
   return (
     <Base>
-      <Seo title="About" />
       <div className="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl">
         <h1>
           About
@@ -29,3 +28,5 @@ export default function Archive({ data }) {
     </Base>
   );
 }
+
+export const Head = () => (<Seo title="About" />)

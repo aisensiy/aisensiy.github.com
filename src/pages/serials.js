@@ -8,7 +8,6 @@ export default function Archive({ data }) {
 
   return (
     <Base>
-      <Seo title="Serials" />
       <div>
         <h1>Serials</h1>
         {groupByCategoryResult.map(({ key, value }) => (
@@ -21,6 +20,8 @@ export default function Archive({ data }) {
     </Base>
   );
 }
+
+export const Head = () => <Seo title="Serials" />;
 
 function YearItems({ blogs }) {
   return (
@@ -38,7 +39,7 @@ function YearItems({ blogs }) {
 
 export const query = graphql`
   query QueryBlogTitlesAndCategories {
-    allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }) {
+    allMarkdownRemark(sort: {frontmatter: {date: DESC}}) {
       nodes {
         id
         frontmatter {

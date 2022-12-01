@@ -7,11 +7,12 @@ import Seo from "../components/seo"
 export default function BlogTemplate({ data }) {
   return (
     <Base>
-      <Seo title={data.blog.frontmatter.title} article={true} description={data.blog.excerpt} />
       <Blog data={data.blog}/>
     </Base>
   )
 }
+
+export const Head = ({data}) => (<Seo title={data.blog.frontmatter.title} article={true} description={data.blog.excerpt} />);
 
 export const pageQuery = graphql`
   query BlogPostQuery($id: String) {

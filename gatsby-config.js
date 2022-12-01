@@ -8,7 +8,6 @@ module.exports = {
     image: '/icon.jpg'
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
