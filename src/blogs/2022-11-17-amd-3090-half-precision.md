@@ -4,6 +4,7 @@ title:      "记一次 k8s gpu 集群中半精度性能差异引发的系统调�
 date:       2022-11-17 18:57:00 +08:00
 author:     "Eisen"
 tags:       ["k8s", "gpu", "容器", amd]
+categories: ["kubernetes 运维"]
 ---
 
 最近发现跑 pytorch gpu benchmark 的时候，AMD epyc cpu 下的 rtx 3090 明显要比 intel 下 3090 慢，而且差距挺大的，非常不能理解。折腾了挺长一段时间才最终定位到是因为 cpu 在容器里的调度问题导致的。过程兜兜转转花了不少时间，这里就不说太多了，记录下大体过程和最后调优的措施。
