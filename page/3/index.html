@@ -52,7 +52,172 @@
         }
       }
     })
-  </script><script async="" defer="" data-website-id="443212e9-fd0b-411e-a523-0d0ec604ee8a" src="https://get.aisensiy.me/umami.js"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about/">About</a></li><li><a class="leading-7 block hover:underline" href="/archive/">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags/">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials/">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/crawl-weibo-with-automa/">使用 Automa 抓取少量微博数据</a></h1><h2>2022 April-14</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>最近需要抓一点点微博的数据，于是又开始做爬虫的老行当了。不过这次抓的数据相对比较少，本来是觉得会很快，可惜还是因为种种原因多折腾了两个小时。这里对这部分工作做一个记录。</p>
+  </script><script async="" defer="" data-website-id="443212e9-fd0b-411e-a523-0d0ec604ee8a" src="https://get.aisensiy.me/umami.js"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about/">About</a></li><li><a class="leading-7 block hover:underline" href="/archive/">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags/">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials/">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/play-with-jacoco/">配置 jacoco 以提供更合理的测试覆盖率</a></h1><h2>2022 May-07</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>最近在做一些代码的重构和基础库的迁移，这样的工作绝大部分时候不产生新的功能点，每次更换了类库后也都会将原来对应的测试同步迁移过来，保证新的代码和原来的代码一样工作。不过在迁移的过程中我发现 jacoco 所提示的代码覆盖率越来越低，让我很慌。为了搞明白这是啥原因，做了一些调研，这里把一些结论记录在这里加深印象，也便于后续查看。</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 664px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/69c841087aeaddffca07b2e66e772a58/31493/screenshot-for-openbayes-server-code-converage-before.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 35%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAABYlAAAWJQFJUiTwAAABVklEQVQoz6WQ2UsCARDG/Vd7C3oIKuggKg3EjpcoTdO0zaMyuzYoegmLiAzsoCi0w/siK11BLXf3Fy5WvvvBMPPNMB/fjA4gl88jSRKqqqIoCmVJIl8o8P3d0Lgsy1oulcp8lkoar399oSgq9Xpd400093XVahXvmp8lhwvniptFmwOL1c7cvIV5sxXB7cNsteMP7HByeqb1HU6B7V0Rl+BhZdXLx8fnv2CzyGZz3N7dE316JhaPk0pnSKXTPEYihK9veI3FSSRTFIvv2jyRTPJWLBJPJMlkczQaMqraJtgpmqfLiqK9RSdVKuiNs/QPjzE0aqB3cISe4AR99yYGHmaw+ZeZHNdjmprGZDKwJ3ZzeNTFRcjYElPQ7LWgq9VqeNc3cQoefOt+bMsuhOsAvheRjdgBx+dBtja3EMV9RHGb0KWN8NUCkeju39/ao6OT1TZnvw5/AGgh9S3ToLQFAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="screenshot for openbayes server code converage before"
+        title="screenshot for openbayes server code converage before"
+        src="/static/69c841087aeaddffca07b2e66e772a58/31493/screenshot-for-openbayes-server-code-converage-before.png"
+        srcset="/static/69c841087aeaddffca07b2e66e772a58/772e8/screenshot-for-openbayes-server-code-converage-before.png 200w,
+/static/69c841087aeaddffca07b2e66e772a58/e17e5/screenshot-for-openbayes-server-code-converage-before.png 400w,
+/static/69c841087aeaddffca07b2e66e772a58/31493/screenshot-for-openbayes-server-code-converage-before.png 664w"
+        sizes="(max-width: 664px) 100vw, 664px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<h2 id="代码测试覆盖率是什么意思" style="position:relative;">代码测试覆盖率是什么意思<a href="#%E4%BB%A3%E7%A0%81%E6%B5%8B%E8%AF%95%E8%A6%86%E7%9B%96%E7%8E%87%E6%98%AF%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D" aria-label="代码测试覆盖率是什么意思 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>在 <a href="https://www.baeldung.com/jacoco">Intro to JaCoCo</a> 这里讲的非常明白了，代码测试覆盖率（或者说代码覆盖率）讲的是在跑测试的时候，到底有多少代码被执行了。按照粒度来分可以有以下几种：</p>
+<ol>
+<li><code>Line coverage</code> 按照字节码统计的多少 instruction 被执行了</li>
+<li><code>Branch converage</code> 按照 <code>if/else</code> <code>switch</code> 等分支统计多少分支被执行了</li>
+</ol>
+<p>由于代码确实会有很多防御性的 <code>if/else</code> 导致其实每一个分支并不是很对等，所以我个人感觉 <code>Line coverage</code> 会稍微好一些。</p>
+<p>不过要注意，测试覆盖率只反映你多少代码在测试的时候被执行了，执行了一次就算是执行了，但事实上不同的参数会导致不同的结果，很多边界条件是否被测试到也表现不出来。因此 100% 测试覆盖率不表示所有代码都是对的了。如何写测试本身是一件极其复杂的事情，有些编程思路如 TDD 都是围绕测试进行的，我也讲不明白。</p>
+<h2 id="是什么导致覆盖率越来越低" style="position:relative;">是什么导致覆盖率越来越低<a href="#%E6%98%AF%E4%BB%80%E4%B9%88%E5%AF%BC%E8%87%B4%E8%A6%86%E7%9B%96%E7%8E%87%E8%B6%8A%E6%9D%A5%E8%B6%8A%E4%BD%8E" aria-label="是什么导致覆盖率越来越低 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>为了搞明白为什么我的测试覆盖率一降再降，我需要用 <a href="https://www.eclemma.org/jacoco/">JaCoCo</a> 给我生成一下报告，我去看一下到底哪些地方的哪些代码测试出了问题。</p>
+<p>我的项目是用 <code>gradle</code> 管理的，执行如下命令重新跑一下测试并生成报告：</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">./gradlew cleanTest <span class="token builtin class-name">test</span> jacocoTestReport</code></pre></div>
+<p>然后去项目目录 <code>build/reports/jacoco/test/html</code> 打开 <code>index.html</code> 看看情况，发现核心为题在于<strong>很多生成的代码</strong>被纳入了代码测试覆盖中。具体来讲有两个方面的内容：</p>
+<ol>
+<li>Lombok 生成的很多代码</li>
+<li>引入 QueryDSL 后其和对应的 <code>Entity</code> 生成的 <code>Q + Entity</code> 的名称的代码</li>
+</ol>
+<p>那问题就显而易见了，尤其是后者，每次迁移一个 JPA 的 Entity 类型就会对应生成一段 <code>Q + Entity</code> 的代码，这部分代码统统成了测试覆盖率的分母，覆盖率能不低么。</p>
+<p><figure class="gatsby-resp-image-figure" style="">
+    <span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/14cb1429125421eb08b990822b166896/25e83/querydsl-generated-code-screenshot.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 73.00000000000001%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAABYlAAAWJQFJUiTwAAACHElEQVQ4y42SiWocMRBE5/+/MQchib07o/s+54XROk4CtomgaEGjp66SttYHc56MMel9rDpe6hyT/1nneRJSXpwtOkHOiZQDIVlS8YTsiMWTSqCNQu2Z2gvn7JzneFMw4Rxs99vOvkue5Tdu5ifP+sb34zPf90/8OL7wJL+iwhOxCBiJORLnG5ojrrqlcmLDwLqMjx0bJtFXoo54FSj+mhBChTbOh8UP7G+lTaStKNcxvqNdQWtPFommKkEHlM3st0aOY+GuzN7TlutE2YZyDRMGUju0kkSTcSYhtcBoRVSOlNLrI7wLLO2y3JddFyohJGoojHa9XCGnRMmFNDK553f9XrBXyy52Qr5ytAvWYv/wi7yl370tlbnsXlNKqTjEQTSJvGfSnii24Jxj33eUUjhrcdEhkuQedkSUpJL+BUr7AAohOY6DqBP5yKQjUVzBWLOAWusFt8lxJMERBSppeu9/gKVOjG8rw+uAUpJkEjVWtNUIKbDWEkLAFIvL7p0sXoC1nSvDmMfjdmupvtJ0o5lGt51e+uoZYxY454xvAVU0plpsc5ReHo+S/5rwOnBNaZTBGYfVFiPNK+y67NovJ0bhglsupJZ471d/i3lymIr2jeMQ3Pc7Rhjc4bC7xTwbvPFI+chXKrn20iiEF9zNnZu+I50keM82xkmpg9YnpRRyyYw2mHm+6uwntdZl9aq9ddrs5OtvLhXqqMvyL2A4ji0m2rjOAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="User 对应的 QUser 文件"
+        title="User 对应的 QUser 文件"
+        src="/static/14cb1429125421eb08b990822b166896/5a190/querydsl-generated-code-screenshot.png"
+        srcset="/static/14cb1429125421eb08b990822b166896/772e8/querydsl-generated-code-screenshot.png 200w,
+/static/14cb1429125421eb08b990822b166896/e17e5/querydsl-generated-code-screenshot.png 400w,
+/static/14cb1429125421eb08b990822b166896/5a190/querydsl-generated-code-screenshot.png 800w,
+/static/14cb1429125421eb08b990822b166896/c1b63/querydsl-generated-code-screenshot.png 1200w,
+/static/14cb1429125421eb08b990822b166896/29007/querydsl-generated-code-screenshot.png 1600w,
+/static/14cb1429125421eb08b990822b166896/25e83/querydsl-generated-code-screenshot.png 2302w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span>
+    <figcaption class="gatsby-resp-image-figcaption">User 对应的 QUser 文件</figcaption>
+  </figure></p>
+<h2 id="如何改进" style="position:relative;">如何改进<a href="#%E5%A6%82%E4%BD%95%E6%94%B9%E8%BF%9B" aria-label="如何改进 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>这部分的很多信息在 <a href="https://www.baeldung.com/jacoco-report-exclude">Exclusions from Jacoco Report</a> 可以找到。</p>
+<h3 id="修改-jacoco-配置保证代码覆盖率统计的合理性" style="position:relative;">修改 JaCoCo 配置，保证代码覆盖率统计的合理性<a href="#%E4%BF%AE%E6%94%B9-jacoco-%E9%85%8D%E7%BD%AE%E4%BF%9D%E8%AF%81%E4%BB%A3%E7%A0%81%E8%A6%86%E7%9B%96%E7%8E%87%E7%BB%9F%E8%AE%A1%E7%9A%84%E5%90%88%E7%90%86%E6%80%A7" aria-label="修改 jacoco 配置保证代码覆盖率统计的合理性 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>我们只需要测试自己写的代码，生成的代码不应纳入统计范围。这里直接粘贴下 <code>gradle</code> 里面 <code>jacocoTestReport</code> 的配置：</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">jacocoTestReport {
+    // rule from https://bottom-to-top.tistory.com/36
+    // 过滤 QA-QZ 开头的所有类，对应了 querydsl 生成的 Q + Entity 的格式
+    def Qdomains = []
+    for(qPattern in "**/QA" .. "**/QZ"){
+        Qdomains.add(qPattern + "*")
+    }
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: [
+                    'com/openbayes/graphql/**',          // 所有 graphql 生成的代码
+                    'com/openbayes/application/data/**', // 所有的 DTO 所在的包
+                    'db/migration/**',                   // 所有的数据库 migration 代码
+                    '**/*Exception*',                    // 所有包含 Exception 的异常类
+                    '**/*Mixin*',                        // 所有 Jackson Mixin 
+                    '**/*Command',                       // 所有带 Command 的类，也是 DTO
+            ] + Qdomains)
+        }))
+    }
+    reports {
+        csv.required = true
+    }
+}</code></pre></div>
+<p>可以看到，我这里主要是按照 <code>classDirectory</code> 对类进行了过滤，包括了以下内容：</p>
+<ol>
+<li>各种生成的代码：graphql 生成代码、querydsl 生成代码</li>
+<li>各种 DTO 和 Exception：<code>*Command</code> <code>data/**</code> 等</li>
+<li>实在不太好测试的东西，比如 migration 脚本、比如 Jackson 的 Mixin</li>
+</ol>
+<p>对 querydsl 这部分的过滤比较 tricky ，因为其默认生成的名字是 <code>Q + Entity</code>，本身过滤就有点难，如果采用 <code>**/Q*</code> 的形式会导致个别以 <code>Q</code> 开头但不是 querydsl 生成的类也被纳入过滤的范围，这里我采用的是 <a href="https://bottom-to-top.tistory.com/36">https://bottom-to-top.tistory.com/36</a> 的方法，过滤掉由 <code>QA-QZ</code> 开头的所有的类。</p>
+<blockquote>
+<p>这里过滤 querydsl 的方法其实官方还有其他方案，但目前 <code>gradle</code> 这边支持不是很好，我目前用的 <code>querydsl</code> 版本为 5.0 有一些 PR 还没有纳入进来，后续如果官方有了更好支持会考虑做相应的调整。</p>
+</blockquote>
+<h3 id="通过注解过滤-lombok-的代码" style="position:relative;">通过注解过滤 Lombok 的代码<a href="#%E9%80%9A%E8%BF%87%E6%B3%A8%E8%A7%A3%E8%BF%87%E6%BB%A4-lombok-%E7%9A%84%E4%BB%A3%E7%A0%81" aria-label="通过注解过滤 lombok 的代码 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>JaCoCo 本身是考虑了要过滤掉生成的代码的，它提供了一个规则：</p>
+<blockquote>
+<p>Starting from JaCoCo 0.8.2, we can exclude classes and methods by annotating them with a custom annotation with the following properties:</p>
+<ul>
+<li>The name of the annotation should include Generated.</li>
+<li>The retention policy of annotation should be runtime or class.</li>
+</ul>
+</blockquote>
+<p>简单的翻一下，就是在 JaCoCo 0.8.2 后，通过提供一个带有 <code>Generated</code> 名称的 <code>RetentionPolicy</code> 为 <code>CLASS</code> 或者 <code>RUNTIME</code> 的注解，JaCoCo 会帮你自动过滤这些类。</p>
+<p>Lombok 也对这部分做了支持，只要提供一个配置 <code>lombok.config</code> 就能让 Lombok 给自己生成的代码添加上相应的注解了：</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">lombok.addLombokGeneratedAnnotation = true</code></pre></div>
+<h2 id="最后" style="position:relative;">最后<a href="#%E6%9C%80%E5%90%8E" aria-label="最后 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>在做了上述两方面的修改后，测试覆盖率重回 70% 了。</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 686px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/2996dcf11e841d2858f3f864fdfebfb5/f6386/openbayes-server-code-coverage-after.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 33.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAABYlAAAWJQFJUiTwAAABRklEQVQoz62RzUsCcRCG97/s0K1LCH1YER3SAkuIDhEUQdAtyMz8WtfVdXVTzE+kCCLt4i2CvjDQENzfPrGL7qVDHRp4mYFhnnmHkQBGoxF/Ccuyfu1J/X6fcCTqKCkrZDWdWEImENwhlzcolsrE4jJ6waBWb3BwdEwqnaHRbJFMpYlE4/R6ny5UGg6H3NzeEQpHiMaTVGp1ytUqMVlGyxc4O79woHmjSLvziKpp6IbBQ6dNwSii5w1shgvkH8IGmabAFAJpMPhCTmvEUyoJWeVSUQh3VSLPGvLrFaXWNVk1i6blyOoZlG6I1NMplZccpmk6EpblQB2Hb+8fzM4t41lYYXFpjRnvPJ6cD29zG//9Prsne2ys+wkEttgM+lgtTrPamuKw7be9/XiWe7IQwtlmCcvRaFw7vfF2e97OwjInLNfZxOE3Gony24nPymoAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="openbayes server code coverage after"
+        title="openbayes server code coverage after"
+        src="/static/2996dcf11e841d2858f3f864fdfebfb5/f6386/openbayes-server-code-coverage-after.png"
+        srcset="/static/2996dcf11e841d2858f3f864fdfebfb5/772e8/openbayes-server-code-coverage-after.png 200w,
+/static/2996dcf11e841d2858f3f864fdfebfb5/e17e5/openbayes-server-code-coverage-after.png 400w,
+/static/2996dcf11e841d2858f3f864fdfebfb5/f6386/openbayes-server-code-coverage-after.png 686w"
+        sizes="(max-width: 686px) 100vw, 686px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/crawl-weibo-with-automa/">使用 Automa 抓取少量微博数据</a></h1><h2>2022 April-14</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>最近需要抓一点点微博的数据，于是又开始做爬虫的老行当了。不过这次抓的数据相对比较少，本来是觉得会很快，可惜还是因为种种原因多折腾了两个小时。这里对这部分工作做一个记录。</p>
 <p>我个人一直觉得爬虫是个很重要的东西，尤其是针对机器学习应用的研发，好的数据、新的数据、源源不断的新的数据是好的模型的前提。甚至不用做什么机器学习模型，仅仅从好的数据发掘的一些规则都很有帮助。所以，可以快速的抓数据、快速的抓各种各样的数据是一个很重要的能力。这里就不展开讲了，还是控制篇幅，以这次任务为主。</p>
 <h2 id="任务" style="position:relative;">任务<a href="#%E4%BB%BB%E5%8A%A1" aria-label="任务 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <p>从自己的微博首页或者随便一个主题下面抓点纯文本的微博数据，用于测试命名实体识别模型。</p>
@@ -443,156 +608,7 @@ LEFT JOIN v.selected s</code></pre></div>
 <span class="token keyword">class</span> <span class="token class-name">Plan</span> <span class="token punctuation">{</span>
   <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 <span class="token punctuation">}</span></code></pre></div>
-<p>使用上述的 <code>NamedEntityGraph</code> 依然会出现 <code>LazyInitializationException</code> 的问题，并且其生成的 <code>SQL</code> 语句也明显没有对 <code>Resource</code> 资源进行 <code>left join</code> 操作。</p></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/hibernate-user-type-for-money/">Hibernate 使用 UserType 存储 joda money</a></h1><h2>2022 March-14</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>虽然一直非常喜欢 mybatis 但从效率的角度来看，hibernate 也是一个值得尝试的工具。最近开始做一些尝试，看看是不是的利用 jpa 来进一步的简化目前很多繁琐无聊的 sql 的编写。这里记录下今天遇到的有关自定义类型的一个知识点。</p>
-<p>在 mybatis 里有 type handler 的概念，用于实现表结构和自定义的 java 对象之间的转换。而 hibernate 也有一个相似的概念，不过这里我只是记录下目前这种一个对象对应多个 column 的场景。</p>
-<h2 id="joda-moeny" style="position:relative;">joda moeny<a href="#joda-moeny" aria-label="joda moeny permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>joda money 是一个轻量级的货币类型，可以用来存储货币，比如人民币，美元，日元等。它有两个关键字段，一个是 amount，一个是 currency。那么很自然的就希望在数据库里对应两个 column 分别是 decimal 类型的 amount 和 varchar 类型的 currency。</p>
-<h2 id="定义-jodamoneytype" style="position:relative;">定义 JodaMoneyType<a href="#%E5%AE%9A%E4%B9%89-jodamoneytype" aria-label="定义 jodamoneytype permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>我在 <a href="https://www.baeldung.com/hibernate-custom-types#2-implementingusertype">这篇文章</a> 找到了自己想要的东西。就是要实现一个 <code>JodaMoneyType</code> 实现 <code>joda money</code> 类型和数据库中两个列的映射。</p>
-<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JodaMoneyType</span> <span class="token keyword">implements</span> <span class="token class-name">UserType</span> <span class="token punctuation">{</span>
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">sqlTypes</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">{</span><span class="token class-name">Types</span><span class="token punctuation">.</span><span class="token constant">VARCHAR</span><span class="token punctuation">,</span> <span class="token class-name">Types</span><span class="token punctuation">.</span><span class="token constant">DECIMAL</span><span class="token punctuation">}</span><span class="token punctuation">;</span>                         <span class="token comment">// [1]</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token class-name">Class</span> <span class="token function">returnedClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token class-name">Money</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">equals</span><span class="token punctuation">(</span><span class="token class-name">Object</span> x<span class="token punctuation">,</span> <span class="token class-name">Object</span> y<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">HibernateException</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">==</span> y<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> y <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-    <span class="token keyword">return</span> x<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token class-name">Object</span> x<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">HibernateException</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-    <span class="token keyword">return</span> x<span class="token punctuation">.</span><span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">nullSafeGet</span><span class="token punctuation">(</span><span class="token class-name">ResultSet</span> rs<span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> names<span class="token punctuation">,</span> <span class="token class-name">SharedSessionContractImplementor</span> session<span class="token punctuation">,</span> <span class="token class-name">Object</span> owner<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">HibernateException</span><span class="token punctuation">,</span> <span class="token class-name">SQLException</span> <span class="token punctuation">{</span>                                                         
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>rs<span class="token punctuation">.</span><span class="token function">wasNull</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>                                                        <span class="token comment">// [2]</span>
-      <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
-    <span class="token class-name">String</span> currency <span class="token operator">=</span> rs<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span>names<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token class-name">BigDecimal</span> amount <span class="token operator">=</span> rs<span class="token punctuation">.</span><span class="token function">getBigDecimal</span><span class="token punctuation">(</span>names<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token class-name">Money</span><span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token class-name">CurrencyUnit</span><span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span>currency<span class="token punctuation">)</span><span class="token punctuation">,</span> amount<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">nullSafeSet</span><span class="token punctuation">(</span><span class="token class-name">PreparedStatement</span> st<span class="token punctuation">,</span> <span class="token class-name">Object</span> value<span class="token punctuation">,</span> <span class="token keyword">int</span> index<span class="token punctuation">,</span> <span class="token class-name">SharedSessionContractImplementor</span> session<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">HibernateException</span><span class="token punctuation">,</span> <span class="token class-name">SQLException</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token class-name">Objects</span><span class="token punctuation">.</span><span class="token function">isNull</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>                                             <span class="token comment">// [3]</span>
-      st<span class="token punctuation">.</span><span class="token function">setNull</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span> <span class="token class-name">Types</span><span class="token punctuation">.</span><span class="token constant">VARCHAR</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      st<span class="token punctuation">.</span><span class="token function">setNull</span><span class="token punctuation">(</span>index <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token class-name">Types</span><span class="token punctuation">.</span><span class="token constant">DECIMAL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-      <span class="token class-name">Money</span> money <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Money</span><span class="token punctuation">)</span> value<span class="token punctuation">;</span>
-      st<span class="token punctuation">.</span><span class="token function">setString</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span>money<span class="token punctuation">.</span><span class="token function">getCurrencyUnit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      st<span class="token punctuation">.</span><span class="token function">setBigDecimal</span><span class="token punctuation">(</span>index<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>money<span class="token punctuation">.</span><span class="token function">getAmount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">deepCopy</span><span class="token punctuation">(</span><span class="token class-name">Object</span> value<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">HibernateException</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>value <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-    <span class="token class-name">Money</span> money <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Money</span><span class="token punctuation">)</span> value<span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token class-name">Money</span><span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span>money<span class="token punctuation">.</span><span class="token function">getCurrencyUnit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> money<span class="token punctuation">.</span><span class="token function">getAmount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isMutable</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>                                               <span class="token comment">// [4]</span>
-    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token class-name">Serializable</span> <span class="token function">disassemble</span><span class="token punctuation">(</span><span class="token class-name">Object</span> value<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">HibernateException</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token class-name">Serializable</span><span class="token punctuation">)</span> value<span class="token punctuation">;</span>                                             <span class="token comment">// [5]</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">assemble</span><span class="token punctuation">(</span><span class="token class-name">Serializable</span> cached<span class="token punctuation">,</span> <span class="token class-name">Object</span> owner<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">HibernateException</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> cached<span class="token punctuation">;</span>                                                           <span class="token comment">// [6]</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">replace</span><span class="token punctuation">(</span><span class="token class-name">Object</span> original<span class="token punctuation">,</span> <span class="token class-name">Object</span> target<span class="token punctuation">,</span> <span class="token class-name">Object</span> owner<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">HibernateException</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> original<span class="token punctuation">;</span>                                                         <span class="token comment">// [7]</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p>按照注释标记做一些解释：</p>
-<ol>
-<li>定义对应的 sql 类型，这里是 varchar 和 decimal。</li>
-<li>这里是根据数据库数据创建 joda money</li>
-<li>这里是将 joda money 保存到数据库</li>
-<li>由于 money 是不可变的，这里就直接返回了 false 后续 6 7 由于不可变做了简单的处理</li>
-<li>将 joda money 返回序列化结果</li>
-<li>直接返回结果</li>
-<li>由于不可变，这里直接返回 original</li>
-</ol>
-<p>然后使用的时候按照如下添加注解即可：</p>
-<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Deposit</span> <span class="token punctuation">{</span>
-  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-  <span class="token annotation punctuation">@Columns</span><span class="token punctuation">(</span>columns <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token annotation punctuation">@Column</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"currency"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token annotation punctuation">@Column</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"amount"</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
-  <span class="token annotation punctuation">@Type</span><span class="token punctuation">(</span>type <span class="token operator">=</span> <span class="token string">"com.example.learnjpa.deposit.JodaMoneyType"</span><span class="token punctuation">)</span>
-  <span class="token keyword">private</span> <span class="token class-name">Money</span> paidMoney<span class="token punctuation">;</span>
-  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token punctuation">}</span></code></pre></div>
-<h2 id="支持日志展示" style="position:relative;">支持日志展示<a href="#%E6%94%AF%E6%8C%81%E6%97%A5%E5%BF%97%E5%B1%95%E7%A4%BA" aria-label="支持日志展示 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>hibernate 可以通过设置日志级别以显示丰富的信息。通常在测试和开发过程中会在 <code>application.properties</code> 设置如下：</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">spring.jpa.show-sql=true
-spring.jpa.properties.hibernate.format_sql=true
-logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE</code></pre></div>
-<p>以上设置分别展示 sql 语句，对 sql 语句做一定个格式化，以及展示每一个 sql 语句的参数。但是在使用 UserType 的时候会出现如下的奇怪问题：</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">Hibernate: 
-    update
-        openbayes_deposits 
-    set
-        currency=?,
-        amount=?,
-        owner_id=?,
-        price=? 
-    where
-        id=?
-2022-03-14 23:16:50.548 TRACE 71555 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [aisensiy]
-2022-03-14 23:16:50.548 TRACE 71555 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [INTEGER] - [111]
-2022-03-14 23:16:50.548 TRACE 71555 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [13123]</code></pre></div>
-<p>明明是 5 个参数，前两个 currency 和 amount 对应的 paramter 居然没有打印出来。这个行为甚让我一开始以为自己写的 UserType 是有问题的。</p>
-<p>做了进一步了解后才了解到 hibernate 有 TypeDescriptor 的概念，而这里展示的参数也需要对应的 TypeDescriptor 支持才能展示出来。</p>
-<div class="gatsby-highlight" data-language="diff"><pre class="language-diff"><code class="language-diff"><span class="token unchanged"><span class="token prefix unchanged"> </span> @Override
-<span class="token prefix unchanged"> </span> public void nullSafeSet(PreparedStatement st, Object value, int index, SharedSessionContractImplementor session) throws HibernateException, SQLException {
-<span class="token prefix unchanged"> </span>   if (Objects.isNull(value)) {
-<span class="token prefix unchanged"> </span>     st.setNull(index, Types.VARCHAR);
-<span class="token prefix unchanged"> </span>     st.setNull(index + 1, Types.DECIMAL);
-<span class="token prefix unchanged"> </span>   } else {
-<span class="token prefix unchanged"> </span>     Money money = (Money) value;
-<span class="token prefix unchanged"> </span>     st.setString(index,money.getCurrencyUnit().getCode());
-<span class="token prefix unchanged"> </span>     st.setBigDecimal(index+1,money.getAmount());
-</span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span>     session.remapSqlTypeDescriptor(new VarcharTypeDescriptor())
-<span class="token prefix inserted">+</span>         .getBinder(StringTypeDescriptor.INSTANCE)
-<span class="token prefix inserted">+</span>         .bind(st, ((Money) value).getCurrencyUnit().getCode(), index, session);
-<span class="token prefix inserted">+</span>     session.remapSqlTypeDescriptor(new DecimalTypeDescriptor())
-<span class="token prefix inserted">+</span>         .getBinder(BigDecimalTypeDescriptor.INSTANCE)
-<span class="token prefix inserted">+</span>         .bind(st, ((Money) value).getAmount(), index + 1, session);
-</span><span class="token unchanged"><span class="token prefix unchanged"> </span>   }
-<span class="token prefix unchanged"> </span> }</span></code></pre></div>
-<p>通过如上代码可以添加 TypeDescriptor 支持，这样就可以展示出来了。</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">Hibernate: 
-    update
-        openbayes_deposits 
-    set
-        currency=?,
-        amount=?,
-        owner_id=?,
-        price=? 
-    where
-        id=?
-2022-03-14 23:16:50.547 TRACE 71555 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [USD]
-2022-03-14 23:16:50.547 TRACE 71555 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [DECIMAL] - [222.00]
-2022-03-14 23:16:50.548 TRACE 71555 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [aisensiy]
-2022-03-14 23:16:50.548 TRACE 71555 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [INTEGER] - [111]
-2022-03-14 23:16:50.548 TRACE 71555 --- [    Test worker] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [13123]</code></pre></div></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/2/">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/4/">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
+<p>使用上述的 <code>NamedEntityGraph</code> 依然会出现 <code>LazyInitializationException</code> 的问题，并且其生成的 <code>SQL</code> 语句也明显没有对 <code>Resource</code> 资源进行 <code>left join</code> 操作。</p></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/2/">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/4/">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       
       if(true) {
