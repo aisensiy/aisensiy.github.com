@@ -52,7 +52,132 @@
         }
       }
     })
-  </script><script async="" defer="" data-website-id="443212e9-fd0b-411e-a523-0d0ec604ee8a" src="https://get.aisensiy.me/umami.js"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about/">About</a></li><li><a class="leading-7 block hover:underline" href="/archive/">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags/">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials/">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/k3s-ha-in-cloud/">ucloud 下部署高可用 k3s</a></h1><h2>2021 November-07</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>之所以要尝试 k3s 是因为它相对于标准的 k8s 所用的内存资源要减半，非常适合比较小型的设备，尤其是自己买来的小机器（树莓派？）。而对于标准的虚拟机环境，我们大可不必这么折腾了，毕竟越来越多的云厂商已经可以点点点就创建一个 k8s 集群了。</p>
+  </script><script async="" defer="" data-website-id="443212e9-fd0b-411e-a523-0d0ec604ee8a" src="https://get.aisensiy.me/umami.js"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about/">About</a></li><li><a class="leading-7 block hover:underline" href="/archive/">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags/">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials/">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/intellij-show-parameter-name-all-the-time/">让 Intellij 一直显示参数提示</a></h1><h2>2021 December-08</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>最近更换了新的 macbook pro 一方面由于架构发生了变化，原来电脑里的一些东西应该不能运行了；另一方面，原来的电脑有太多乱七八糟的东西了，我想要从新做一个干净的环境。所以决定一点点安装东西，后续会有一系列内容介绍这个过程中的查漏补缺。</p>
+<p>众所周知，java 的方法不支持 name parameter 的，也没有默认值之说。在参数比较长的时候，按照顺序传递参数很容易忘记下一个参数到底是什么。</p>
+<p><figure class="gatsby-resp-image-figure" style="">
+    <span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/e6aa9e5b1ac0c2126813f5e9d4807e65/599ea/java-method-with-long-argument-list.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 45.49999999999999%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABYlAAAWJQFJUiTwAAABL0lEQVQoz41RiW6DMBTj//9wHC3ngFwwSqEcwZPfSqVJm9RIlpOAHTsJbrcb6rqGcxbGGHC97zu2bXvxu+M4DgTee/R9j2v2iSRJkKYpLpcLwjAUzvMcWmtM0wTnHOZ5xjAMsNYKU8v9dV3FVAw5WmVEXJalmNKQcwoJpRTu9zv4P8XLskj6c376iCGj5lkqRjyt6zoxYX2K+J31367sjwN1o8XwTMI6BCuyLnHeJ4V/4VdCbb9QVRWKopDqWZa90vKexnGUav+ZnQj8c9I2jSRs2xbOdfIQNCOmeX77pQPvdxzHjrIskMQR8jxDHEcIww/EUfjDcYQ0vcJaHuLQ9w7WGjhn4J7cOYt1XRDs2wjC2RpalTCaqKBVIaza4rku0XcN1mXA8ujxmH+De/T5BrdytB8uHztOAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="一个包含很长参数列表的方法调用"
+        title="一个包含很长参数列表的方法调用"
+        src="/static/e6aa9e5b1ac0c2126813f5e9d4807e65/5a190/java-method-with-long-argument-list.png"
+        srcset="/static/e6aa9e5b1ac0c2126813f5e9d4807e65/772e8/java-method-with-long-argument-list.png 200w,
+/static/e6aa9e5b1ac0c2126813f5e9d4807e65/e17e5/java-method-with-long-argument-list.png 400w,
+/static/e6aa9e5b1ac0c2126813f5e9d4807e65/5a190/java-method-with-long-argument-list.png 800w,
+/static/e6aa9e5b1ac0c2126813f5e9d4807e65/c1b63/java-method-with-long-argument-list.png 1200w,
+/static/e6aa9e5b1ac0c2126813f5e9d4807e65/29007/java-method-with-long-argument-list.png 1600w,
+/static/e6aa9e5b1ac0c2126813f5e9d4807e65/599ea/java-method-with-long-argument-list.png 1926w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span>
+    <figcaption class="gatsby-resp-image-figcaption">一个包含很长参数列表的方法调用</figcaption>
+  </figure></p>
+<p>语言不行 IDE 来凑，Intellij 就在这方面做了加强，会在传递的参数前面显示这个参数的名字（如上图所示）。不过很遗憾，这里默认的配置并没有展示完整的信息，只在一些 Intellij 觉得你容易迷失的地方增加了提示。不过很显然它高估了我的水平，事实上我希望可以提供健全的参数信息。</p>
+<p>幸好 Intellij 可以很容易的做这个修改：</p>
+<ol>
+<li>点开设置 Preference > Editor > Inlay Hint > Java > Parameter hints</li>
+<li>把这里的统统勾选，点击 OK</li>
+</ol>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/8b2f0d4eb9720ea833a92d1dde0ed29b/864a6/intellij-parameter-hints-config.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 46%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABYlAAAWJQFJUiTwAAABsUlEQVQoz3WSS2vbQBRG9dcLpZsUuiv0b7RZhTjdmQa3pG5kS9bTsiRLmtFbIyWQ1KdoSkKfFw7c1eG734xRCEGnFH2v6PqBth8opaStBGWR0ZQCmR9p64q+75/puo62bTWZrGnaFlEUGO4+xQ0TRD0gGkXdKZZWzNvLDe8+2ry53PF64bH0JXVVIqWkLEuapkEppSnqjkEp8jzDCBLBcrVmtbYwnT1hKomLiuXaxs8b5HRCqAcCqViaPua3NeZmg2VZBEGA53mEga/3LMsw9seSL7c2N6ZDXDSkskPKktBzaOsSODHPMN3zyY7YWRa2beP7PofDgSiKNLNMCDELJauvW253If4hJxEdZdWQpilzvw+Pj1pYqztWToznOoRhqE+fmSVFUeheq6rCCFLJ9Y2J6UbMu59IumHkz2nUPSsn0Qkd19WSJ2bpjD65qju2tsvO8YmTI3Gao9RP4el00mjhMOKmkrwQz8me0v0mPFsEvDw3eXG+5ewq4tWFj5e3WvL9F+E4TTRtxzAM/2QcR/36xmKb8/56x4fPPle24MI8ktfDXwmnadJ/73/MHc7JfwDkSJqxeOJrMQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="intellij parameter hints config"
+        title="intellij parameter hints config"
+        src="/static/8b2f0d4eb9720ea833a92d1dde0ed29b/5a190/intellij-parameter-hints-config.png"
+        srcset="/static/8b2f0d4eb9720ea833a92d1dde0ed29b/772e8/intellij-parameter-hints-config.png 200w,
+/static/8b2f0d4eb9720ea833a92d1dde0ed29b/e17e5/intellij-parameter-hints-config.png 400w,
+/static/8b2f0d4eb9720ea833a92d1dde0ed29b/5a190/intellij-parameter-hints-config.png 800w,
+/static/8b2f0d4eb9720ea833a92d1dde0ed29b/c1b63/intellij-parameter-hints-config.png 1200w,
+/static/8b2f0d4eb9720ea833a92d1dde0ed29b/29007/intellij-parameter-hints-config.png 1600w,
+/static/8b2f0d4eb9720ea833a92d1dde0ed29b/864a6/intellij-parameter-hints-config.png 2276w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<p>再回到刚才的方法，就可以看到提供了健全的参数信息了：</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/ae72c88476f4d942fc221b0b82f4f5fe/99e81/java-method-with-all-parameter-hint-in-intellij.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 44.49999999999999%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABYlAAAWJQFJUiTwAAABRklEQVQoz5WS646DIBCFff8X3HYVBMFLARXrGu+ezdBouv+6JidHcTx+MxA1TQNrLZqmRl07LMuCbdsu7fuO/1zROI7Icw3OBRKuEMffkFIiSRKkaYosy+C9R9d1eD6faNsW8zwHJ5hzjWro5xGlEonSGkrniOMYQogQSORU7JwLInoKo3py0rquwendcRyvQFqoqgpFUUCpLIT0fR+cyKj409ZDIH1AgURkjINSKrRNVMMwYJqmi47uTzoioov81EWotYbOc0hVgTGGsizDfGg2NCsSEb/Pjqjfw/4EUru0CVIIMMbDLI2x8J5aXj/fZeDAPE+QUgRKzjnu9xtuty9wzsBYAiFSFEUOa811vJx7HbXzue+fOPYN0b4NWOYeTW3gW4fOW5hHBmMUrFF4PDJYq4NXpQxyNsc0tphGf2meOmzrD34B1cqxmIaQOk4AAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="java method with all parameter hint in intellij"
+        title="java method with all parameter hint in intellij"
+        src="/static/ae72c88476f4d942fc221b0b82f4f5fe/5a190/java-method-with-all-parameter-hint-in-intellij.png"
+        srcset="/static/ae72c88476f4d942fc221b0b82f4f5fe/772e8/java-method-with-all-parameter-hint-in-intellij.png 200w,
+/static/ae72c88476f4d942fc221b0b82f4f5fe/e17e5/java-method-with-all-parameter-hint-in-intellij.png 400w,
+/static/ae72c88476f4d942fc221b0b82f4f5fe/5a190/java-method-with-all-parameter-hint-in-intellij.png 800w,
+/static/ae72c88476f4d942fc221b0b82f4f5fe/c1b63/java-method-with-all-parameter-hint-in-intellij.png 1200w,
+/static/ae72c88476f4d942fc221b0b82f4f5fe/29007/java-method-with-all-parameter-hint-in-intellij.png 1600w,
+/static/ae72c88476f4d942fc221b0b82f4f5fe/99e81/java-method-with-all-parameter-hint-in-intellij.png 1946w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<p>同时我发现视频录制可以更加有表现力，相较于繁琐的文字介绍视频可能会更清晰的展示一些工作流程。这里我就把刚才的设置录制了个视频：</p>
+<p>
+		<video
+			src=/videos/intellij-show-parameter-name.mp4
+			width="1200"
+			height="auto"
+			preload="auto"
+			muted="false"
+			title="/videos/intellij-show-parameter-name.mp4"
+			
+			playsinline
+			controls
+			
+		></video>
+	</p></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/k3s-ha-in-cloud/">ucloud 下部署高可用 k3s</a></h1><h2>2021 November-07</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>之所以要尝试 k3s 是因为它相对于标准的 k8s 所用的内存资源要减半，非常适合比较小型的设备，尤其是自己买来的小机器（树莓派？）。而对于标准的虚拟机环境，我们大可不必这么折腾了，毕竟越来越多的云厂商已经可以点点点就创建一个 k8s 集群了。</p>
 <p>其实相关的主题已经非常多了，不过这里还会希望记录一下在国内环境部署高可用 k3s 一些不太一样的地方，也尝试了 k3s 的 config file 参数。</p>
 <h2 id="前提知识" style="position:relative;">前提知识<a href="#%E5%89%8D%E6%8F%90%E7%9F%A5%E8%AF%86" aria-label="前提知识 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <p>首先，这里安装的是内嵌 etcd 的高可用版本，不是使用外部数据库的版本。不过为了让 worker 节点高可用，<strong>需要在 worker 和 master 节点之间增加一层负载均衡</strong>。虽然刚刚在说折腾 k3s 是针对非云环境的，不过考虑 bare-metal 的负载均衡还是需要一些稍微复杂的技术，这里就先不考虑了，后续会准备一个完全体。</p>
@@ -351,288 +476,7 @@
         decoding="async"
       />
   </a>
-    </span></p></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/graphql-test-tools/">GraphQL 测试工具梳理</a></h1><h2>2021 October-21</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><h2 id="目前-postman-在我们团队的使用情况" style="position:relative;">目前 Postman 在我们团队的使用情况<a href="#%E7%9B%AE%E5%89%8D-postman-%E5%9C%A8%E6%88%91%E4%BB%AC%E5%9B%A2%E9%98%9F%E7%9A%84%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5" aria-label="目前 postman 在我们团队的使用情况 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>这部分工作主要是对标之前在 REST 场景下使用 Postman 测试的工作。在 REST 的场景下，Postman 是一个很好的工具，简单介绍下我们使用到的一些功能：</p>
-<ol>
-<li>Collections 可以将一系列的 Request 聚合在一起很好的规整起来，当需要测试某个接口的问题时，搜索 Collection 执行具体的 Request 即可。</li>
-<li>Environments 维护一系列变量，点击切换可以测试不同的环境。</li>
-</ol>
-<p><figure class="gatsby-resp-image-figure" style="">
-    <span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 220px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/473ed8be7d4e55599f85151ae172e911/c8042/2021-10-21-16-20-40.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 125.50000000000001%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAZCAYAAAAxFw7TAAAACXBIWXMAAAsTAAALEwEAmpwYAAACN0lEQVQ4y5WU6Y7iQAyE8/6vhOAHSIA4RhziFDAM9024rwGvPq+MshlIZiM53Z10u6tctp3v72+53+9iz+PxULOHf+wJM84wOhy6Xq+yWCxktVrJZrNRG4/HMp/P5XK5yG+e/X6vTh1DsV6v1Y7HoxwOB9lut+K6rtxutyfyoOd0OqkfhwOgYDQDMSMU+Gd2Pp/fGmfY44AGiqBjBJWNNrc1qIOMPepwt9tJoVCQj48PyWazOs/lcpLP53VMpVLSbDY1TnbBK3s6NO+I4jVQ25wDYQjZow4xYkDMLH4WW4sRQQ8z/KhDDs5mMxkMBpo+o9FIJpOJuGtXVTfHXoFeGXsdXqDq9XpSKpVkOBxKrVaTz89PWS6XYhcGKWyXPR0C1/+QU5YKYeh+OGQBTSiDEPpeZGFOfzgECY4ajYZ0u11V10/1vxD6KZvavxEikHK73VajKaDwKzH83946JG4oC2VL5DBlA1X2dxPWpjRJbv2Ob94m8laUfr8vxWJR6vW61jK5SP1Op1Md4/G41jpjtVqVTCaj/xDQHP9DmbhBlwpB8a+vr2eTJb78I606nY5WEyGiWVg2hCa2N8G96nspX66XYMpGtVwuK32otlotXUMP4/JQUVhAg3qGChS5gDn1rI3C/dsognJTHRIHDliqWB+0Lm5rixsGUpv7vzl0axChYCQSkUQiIdFoVGKxmCSTSUmn07quVCpamlbvfuM7fhQhE5KaA4zEjfShalCVNaqbM/a/MrLiD6qad6sxJSMMAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="Environments"
-        title="Environments"
-        src="/static/473ed8be7d4e55599f85151ae172e911/c8042/2021-10-21-16-20-40.png"
-        srcset="/static/473ed8be7d4e55599f85151ae172e911/772e8/2021-10-21-16-20-40.png 200w,
-/static/473ed8be7d4e55599f85151ae172e911/c8042/2021-10-21-16-20-40.png 220w"
-        sizes="(max-width: 220px) 100vw, 220px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span>
-    <figcaption class="gatsby-resp-image-figcaption">Environments</figcaption>
-  </figure></p>
-<ol start="3">
-<li>Tests 虽然可以做测试，但实际上就是在跑完一个 request 之后可以执行一段 JS 脚本，这个脚本不一定都是测试的内容，比如我可以在 login 之后把 response 中返回的 token 存储为一个 Postman 的 variable，然后在后面的请求中使用这个 variable 避免重复登录。</li>
-</ol>
-<p><figure class="gatsby-resp-image-figure" style="">
-    <span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 683px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/45d5bd3d804e8d3e0db18bdc3b2ee37e/bca35/2021-10-21-16-24-22.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 24%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAxUlEQVQY05WOW27DMAwEff972mkqK5b1pGTKU1hp0vyWwADkgtjdKcaIiDzJGUmJlPKf9k+meZ4JIeB9IFrD/jVzv38P7ZMr+GLcY09v/fNvqrWiXRHJtFbpnNRaKFo4eyfVTNGKlEJKiSJCK8LmLXJUUoz03rnmPE8mqY3gIsvNMS+Ox+pZlp3lFjDGYtZtmJRSaK1xqKJSqMFx6EFrB6o6TC8m7Sf7nrFbxqwJ9whsVnAPxe0JYyPex9HuavDmt9GLl+EPXI2D8EJgz/AAAAAASUVORK5CYII='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="Login 后的执行脚本"
-        title="Login 后的执行脚本"
-        src="/static/45d5bd3d804e8d3e0db18bdc3b2ee37e/bca35/2021-10-21-16-24-22.png"
-        srcset="/static/45d5bd3d804e8d3e0db18bdc3b2ee37e/772e8/2021-10-21-16-24-22.png 200w,
-/static/45d5bd3d804e8d3e0db18bdc3b2ee37e/e17e5/2021-10-21-16-24-22.png 400w,
-/static/45d5bd3d804e8d3e0db18bdc3b2ee37e/bca35/2021-10-21-16-24-22.png 683w"
-        sizes="(max-width: 683px) 100vw, 683px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span>
-    <figcaption class="gatsby-resp-image-figcaption">Login 后的执行脚本</figcaption>
-  </figure></p>
-<ol start="4">
-<li>组织协作，可以让团队里的人都共享 Collections 避免了很多重复劳动和沟通。</li>
-<li>Monitors 这部分用的不是很多，主要是确定几个环境的服务没什么问题。</li>
-</ol>
-<p>在这个视频 <a href="https://www.youtube.com/watch?v=VywxIQ2ZXw4">Postman Beginner's Course - API Testing</a> 中介绍了很多 Postman 的功能，很有帮助。</p>
-<h2 id="对比-postman-和-graphiql-以及-apollo-studio-的功能" style="position:relative;">对比 Postman 和 GraphiQL 以及 Apollo Studio 的功能<a href="#%E5%AF%B9%E6%AF%94-postman-%E5%92%8C-graphiql-%E4%BB%A5%E5%8F%8A-apollo-studio-%E7%9A%84%E5%8A%9F%E8%83%BD" aria-label="对比 postman 和 graphiql 以及 apollo studio 的功能 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>不过很遗憾 Postman 在 GraphQL 场景的支持似乎不是很积极，目前仅仅做了简单的支持。但考虑到上文中 Postman 的那些功能在 GraphQL 下依然有不可替代的使用价值，这里我先罗列在 GraphQL 下几个我们关心的功能在几个工具里的支持情况。</p>
-<h3 id="请求页面的自动补全" style="position:relative;">请求页面的自动补全<a href="#%E8%AF%B7%E6%B1%82%E9%A1%B5%E9%9D%A2%E7%9A%84%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8" aria-label="请求页面的自动补全 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>如果说 REST API 是散装弱类型 API 那么 GraphQL 就是强类型的 API 了，提交的内容必须要和 schema 兼容。在 GraphiQL（对，多了个 i）这样的工具里，你可以在右侧看到目前的 schema 并且在写 GQL 的时候可以自动提示，可以很方面的查询自己想要的字段和类型。</p>
-<p><figure class="gatsby-resp-image-figure" style="">
-    <span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/8f88b3a16f06429e068ff45ad1984621/3f20e/2021-10-21-19-12-20.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 56.49999999999999%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsTAAALEwEAmpwYAAABF0lEQVQoz6WRaW7DIBCFff+z9X8PkLRyghcMGIZtXgQWlZ2lqdQnjRhg+Hgw3fl0wvXSY5omjOOIYRgghMBViLo2zTOkXKCNrZFSAjPXKOtE9DOPMaIzWkEIBW8dOEeklGFWC+sIq3U1Si6lqoByqAGKWt6iI3K4zBZfgy671UEDblCCK6OeEQM9hRyAzlpYiujFhPNiQCHCWou1AHcOvZP1BW+BxhikxDBS4FP0+BgchHabqx1wMRbeE3KK74GZGUIaeHKIMWDSj3/4PWqIoQc5BeaMTYx7bcDMWBaJ6BcEv2Jtf7gD5pwPgF8dFklDyIx60DwB3ne15Q8OlVKH2w9dfgF8BavA0lHeFfwV+EpdCOFQ+F/gDfTRXjBDksM0AAAAAElFTkSuQmCC'); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="Ctrl / Cmd + 鼠标左键点击类型时右侧会展示对应的类型"
-        title="Ctrl / Cmd + 鼠标左键点击类型时右侧会展示对应的类型"
-        src="/static/8f88b3a16f06429e068ff45ad1984621/5a190/2021-10-21-19-12-20.png"
-        srcset="/static/8f88b3a16f06429e068ff45ad1984621/772e8/2021-10-21-19-12-20.png 200w,
-/static/8f88b3a16f06429e068ff45ad1984621/e17e5/2021-10-21-19-12-20.png 400w,
-/static/8f88b3a16f06429e068ff45ad1984621/5a190/2021-10-21-19-12-20.png 800w,
-/static/8f88b3a16f06429e068ff45ad1984621/c1b63/2021-10-21-19-12-20.png 1200w,
-/static/8f88b3a16f06429e068ff45ad1984621/3f20e/2021-10-21-19-12-20.png 1275w"
-        sizes="(max-width: 800px) 100vw, 800px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span>
-    <figcaption class="gatsby-resp-image-figcaption">Ctrl / Cmd + 鼠标左键点击类型时右侧会展示对应的类型</figcaption>
-  </figure></p>
-<p>而在 Apollo Studio 里则可以像如下图这样直接在文档里点击字段和类型拼接查询请求，也很方便。</p>
-<p><figure class="gatsby-resp-image-figure" style="">
-    <span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/187e3ea9a836b501e6f92823805ca47b/aa08e/2021-10-21-19-15-34.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 116.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAXCAYAAAALHW+jAAAACXBIWXMAAAsTAAALEwEAmpwYAAACRElEQVQ4y52VjZKqMAyFef+HvOMqCgKlhba00MK5kxRZVtT7w0wsw8jxS3ISs7pV+MpLdNpCqB5m8NDWreH5uXUequshRIt5nrEsC+Zl4XMf87wgI5HT+YpfpwuaVrFgbwb0qyjdD25ECBGqNxCdhR483Bjhpwl+Chh8CvqxTCgNIRXaA913WDcywRQCGq3hQ2CaOM/rmYK+k5nB4S4t7o2CsY5F90GCREgvTjHCjiOwAOvH4cp6Y3EpGuRFDW2/U9VbyomQ0okxorMD/Bj45eVFHTPZaTRCYvDTgWxPGGMSpJce1/5+I2xVh9P5gltZQcgOsjM/xL5TnjeBB80r0YwE8muBa1Fyl2uRGvRMuDxR7UUPgreyxjm/8VkLiaZNpD8E/yC0CareskhZNXwK2TMhGXqf8rsUXxJeywq/Tmd85TcWpUZRZ98RfhR8EN7rls8HHYl2ZuDx+3fColprWOHetGi425rHjijt4A81fBcbYdW0bJvUEH3w4yeRl4T5rUTVpKaQ4N42VM9P1xOhYREipCAvEiU963SqITfIWvTawPmRY3CpFOMUEGLkmEJMgmSZC5u7YkpuiLaroIPzEwbnYIxBCIFjnCYOGskfhJW0KGqFVna8795tGyqVnzwq2cKP4yHlx5k1yiAvG1yLO8pabKNHDdobm3Yf7cMQ0w6k9fU80yzY9WadYcki9JdA6T4vh+eOflwONClUQzJ3Mnbyn3kzep9MvvpwJVyn5NU+/OvlIHvD9SPCshJold5S/Z9Z/g2a+f70ZO2XFwAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="左侧搜索具体的操作后可以直接勾选属性拼接查询 Query"
-        title="左侧搜索具体的操作后可以直接勾选属性拼接查询 Query"
-        src="/static/187e3ea9a836b501e6f92823805ca47b/5a190/2021-10-21-19-15-34.png"
-        srcset="/static/187e3ea9a836b501e6f92823805ca47b/772e8/2021-10-21-19-15-34.png 200w,
-/static/187e3ea9a836b501e6f92823805ca47b/e17e5/2021-10-21-19-15-34.png 400w,
-/static/187e3ea9a836b501e6f92823805ca47b/5a190/2021-10-21-19-15-34.png 800w,
-/static/187e3ea9a836b501e6f92823805ca47b/aa08e/2021-10-21-19-15-34.png 967w"
-        sizes="(max-width: 800px) 100vw, 800px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span>
-    <figcaption class="gatsby-resp-image-figcaption">左侧搜索具体的操作后可以直接勾选属性拼接查询 Query</figcaption>
-  </figure></p>
-<p>如果你在 GraphQL 里提供了字段或者方法的注释，Apollo Studio 或者是 GraphiQL 也都会在这些页面给你展示出来。</p>
-<p>Postman 目前就只有自动补全，注意这个自动补全的意思是你必须先写点什么，然后我给你不足后面的内容，如果你什么都没写，那不好意思，我也什么不会给你提供的，没有文档，没有提示…</p>
-<p><figure class="gatsby-resp-image-figure" style="">
-    <span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/3a555326282a630a1f6a9fe4bce63328/0f67e/2021-10-21-19-18-02.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 30.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAuElEQVQY052P227EMAhE/f/f2k0amwHHF6bC2Ubbbp+KdARjw2CnWiu3bSNUaVJYHh/c950a2uxnVl05AHDXr6QwFJGrSQpVCo+SqQpmyWuRlLJMi4FQsJpy9M7W2hvpPE9CZIkYXvppjvxJq9frqoKAENb4kE6czjEmf0eKzcdxUPZMU+OYg733izE4vul9EWe1TbY+Oec7KQanO1FAA+j0deHu9GfTyqEX8+ZPw/hqNN7xWv8jvgD0bdaMMjJGhQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="Postman GraphQL 请求"
-        title="Postman GraphQL 请求"
-        src="/static/3a555326282a630a1f6a9fe4bce63328/5a190/2021-10-21-19-18-02.png"
-        srcset="/static/3a555326282a630a1f6a9fe4bce63328/772e8/2021-10-21-19-18-02.png 200w,
-/static/3a555326282a630a1f6a9fe4bce63328/e17e5/2021-10-21-19-18-02.png 400w,
-/static/3a555326282a630a1f6a9fe4bce63328/5a190/2021-10-21-19-18-02.png 800w,
-/static/3a555326282a630a1f6a9fe4bce63328/0f67e/2021-10-21-19-18-02.png 921w"
-        sizes="(max-width: 800px) 100vw, 800px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span>
-    <figcaption class="gatsby-resp-image-figcaption">Postman GraphQL 请求</figcaption>
-  </figure></p>
-<h3 id="schema-更新手段" style="position:relative;">Schema 更新手段<a href="#schema-%E6%9B%B4%E6%96%B0%E6%89%8B%E6%AE%B5" aria-label="schema 更新手段 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>既然是强类型的 schema 那么 schema 的更新就很重要了。我们所使用的 GraphiQL 目前是 DGS framework 自己带的，是通过 GraphQL 的 instropection 获取的，自然就是最新的了。不过这种功能只能在开发环境使用，在生产环境肯定是需要把这个功能关掉的，不然别人随随便便就拿到了你全部的 schema 感觉有点不对劲。GraphiQL 应该也是有那种主动提供 schema 做独立部署的方式的吧，主要是目前 dev 环境开放我们也能接受就没有做更多的调研了。</p>
-<p>Apollo Studio 提供了一个名为 Rover 的工具，可以有多种方式将 schema 提交给 Apollo。可以通过 CI/CD 流程去自动化这个过程，后面会提到。</p>
-<p>Postman 和 Apollo Studio 的方式类似，只是它没有自己的工具，需要通过 Postman 自身的 API 去拼接请求，并且 API 中各种 ID 的查找显得略微晦涩了，麻烦一些，但也能走通。不过在尝试的过程中发现 Postman 中的 GraphQL schema 对 GraphQL 的扩展语法并不支持，无法识别像 <code>extend</code> 这样的关键词，因此不支持那种把 schema 拆分成多个文件通过 <code>cat</code> 到一起提交的简单方式。</p>
-<h3 id="schema-变更日志" style="position:relative;">Schema 变更日志<a href="#schema-%E5%8F%98%E6%9B%B4%E6%97%A5%E5%BF%97" aria-label="schema 变更日志 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>这部分算是 Apollo 的特色了，满分。并且找不到完美的替代方案，我找到的一个开源方案仅仅是支持 schema 以文本形式的 diff 而已，并没有做 schema 解析后的对比。</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/a34879367930773ddb5ae52bbf11343b/aa08e/2021-10-21-19-29-13.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 115.00000000000001%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAXCAYAAAALHW+jAAAACXBIWXMAAAsTAAALEwEAmpwYAAACz0lEQVQ4y5VV224TMRTcf4EicXnhpQghISEh6DMST0jwwSBRitq8NC1JmibNXry2115fd5DPZkNapS21NHKyWY9nzhk72fuDb3j97iv2337B/pvPePnqE/aefcTjpx/w5MUB9p73nx/9J7Lj0SkmswUOfx3j+4+fGI8nmEwvMZstcDI6xel4gov5EvP5FeaX9yM7n84hGw2lNbiQcD4gdh1huRLgssVDRja9WKBkAj5EGOugdItGaTjnEWKEdQHGJnh6lja8juF5P2d5ySBVC+scyrJEUZSoqop2C96hEQWMrqEVQwwBMXaIMW7QdV0vjeYO2TIvwaUiizdH5wWa8jdkeQyeH8E0S2ht0BoD3fbwPhDpgCwva4hGb3brETeEshyBFyPUqxOI4gTWGihtYYzdkA4qiXBVsDsIOUR+hHJxSGBXR5DVGVTDqdYEpdG2htZTU0rGqYapNjs8E2lwCTXN3lSIwVDDdtUyW65SDTV1qa5rakia0wshdGhNhA+A8/dHhiwPCr330FoTlFLUtOgVRHUGySbg5RhGFRStZNGu5xSVa02pRYNGmzstR5dQ0wbJXqD4xN72jXRkjEsiTDmsKkZZLMuKGhNChG4dvI8wxmNHsjZW/ylcE6Y8GWPIhtYt/ZjKIKSk79ZadNEjRo8uXs/eTsKh7dsjLW4aDs4lWi3Riikadg6rFlTDlMWb6xJhlwjDuojDTnT0QiKUkI2CMQreFLDqCt4w+NCf4+1QbyvswnqnbcKkUHCGmgsoJaHlAkpcwrYFnHOkMm6tG5pyq8JEyDkDqzlZV2IGLaawenU7IZcqTzncSRg8alZtFBqVo1UruGSZrqsdhI02l/3R201IClP4RQ3FZ2jqCRwp9LsVStUubid0YFWxviNz8OoPWH5GllNujbUPJIyRFrUpHsEjetlfFL7ZnJTtLt9LmGyl/5uEdGruuhSGHP4FWTfUunjP4/sAAAAASUVORK5CYII='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="2021 10 21 19 29 13"
-        title="2021 10 21 19 29 13"
-        src="/static/a34879367930773ddb5ae52bbf11343b/5a190/2021-10-21-19-29-13.png"
-        srcset="/static/a34879367930773ddb5ae52bbf11343b/772e8/2021-10-21-19-29-13.png 200w,
-/static/a34879367930773ddb5ae52bbf11343b/e17e5/2021-10-21-19-29-13.png 400w,
-/static/a34879367930773ddb5ae52bbf11343b/5a190/2021-10-21-19-29-13.png 800w,
-/static/a34879367930773ddb5ae52bbf11343b/aa08e/2021-10-21-19-29-13.png 967w"
-        sizes="(max-width: 800px) 100vw, 800px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span></p>
-<p>Postman 就别想了。</p>
-<p>还有另外一个工具 <a href="https://github.com/graphql/graphql-playground">GraphQL Playground</a> 虽然很好用，Apollo Server 也做了集成，但未来的发展比较模糊，应该会考虑和 GraphiQL 这个项目做合并，就不讲了。</p>
-<h2 id="目前的方案" style="position:relative;">目前的方案<a href="#%E7%9B%AE%E5%89%8D%E7%9A%84%E6%96%B9%E6%A1%88" aria-label="目前的方案 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>综上所述 Postman 在 GraphQL 的支持只有 schema 以及针对 schema 的自动补全（写 GraphQL 的那个框框甚至连格式化都没有）。但我依然觉得 Collections Environments Tests 这些功能无法被其他平台替代。因此就只好同时使用 Apollo Studio 和 Postman</p>
-<ol>
-<li>Apollo Studio 使用其 Explorer 和 Schema ChangeLog 的功能，每次在 Explorer 写好了 Query 之后就粘贴到 Postman 里，创建一个对应的 Request，方便未来重用。当然，也可以补充一些测试脚本。</li>
-<li>通过 Github Action 将最新的 schema 更新到 Apollo Studio 和 Postman 中，以下是用到的 workflow：</li>
-</ol>
-<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">name</span><span class="token punctuation">:</span> GraphQL workflow
-
-<span class="token key atrule">on</span><span class="token punctuation">:</span>
-  <span class="token key atrule">workflow_dispatch</span><span class="token punctuation">:</span>
-  <span class="token key atrule">push</span><span class="token punctuation">:</span>
-    <span class="token key atrule">branches</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> master
-
-<span class="token key atrule">jobs</span><span class="token punctuation">:</span>
-  <span class="token key atrule">sync</span><span class="token punctuation">:</span>
-    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest
-    <span class="token key atrule">environment</span><span class="token punctuation">:</span> dev
-    <span class="token key atrule">env</span><span class="token punctuation">:</span>
-      <span class="token key atrule">APOLLO_KEY</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> secrets.APOLLO_KEY <span class="token punctuation">}</span><span class="token punctuation">}</span>
-      <span class="token key atrule">GRAPHQL_ENDPOINT</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> secrets.GRAPHQL_ENDPOINT <span class="token punctuation">}</span><span class="token punctuation">}</span>
-    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v2
-      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Install Rover                                                    <span class="token comment"># [1]</span>
-        <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
-          curl -sSL https://rover.apollo.dev/nix/latest | sh
-          echo "$HOME/.rover/bin" >> $GITHUB_PATH</span>
-      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Upload dev schema for apollo                                     <span class="token comment"># [2]</span>
-        <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
-          ls ./src/main/resources/schema/*.graphqls | xargs cat - | rover graph publish openbayes@dev --schema -</span>
-      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Generate schema                                                  <span class="token comment"># [3]</span>
-        <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
-          rover graph introspect $GRAPHQL_ENDPOINT > schema.graphql</span>
-      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Update Schema from File                                          <span class="token comment"># [4]</span>
-        <span class="token key atrule">uses</span><span class="token punctuation">:</span> aisensiy/update<span class="token punctuation">-</span>postman<span class="token punctuation">-</span>schema<span class="token punctuation">-</span>action@master
-        <span class="token key atrule">with</span><span class="token punctuation">:</span>
-          <span class="token key atrule">postman-key</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> secrets.POSTMAN_KEY <span class="token punctuation">}</span><span class="token punctuation">}</span>
-          <span class="token key atrule">postman-api-id</span><span class="token punctuation">:</span> <span class="token string">"xx"</span>
-          <span class="token key atrule">postman-api-version</span><span class="token punctuation">:</span> <span class="token string">"xx"</span>
-          <span class="token key atrule">postman-api-schema-id</span><span class="token punctuation">:</span> <span class="token string">"xxx"</span>
-          <span class="token key atrule">schema-filepath</span><span class="token punctuation">:</span> ./schema.graphql</code></pre></div>
-<p>针对这个 workflow 我针对注释的 4 个点做一些解释：</p>
-<ol>
-<li>我们用到了 Rover 这个工具，按照其<a href="https://www.apollographql.com/docs/rover/ci-cd/#github-actions">文档</a>进行安装</li>
-<li>对于 Apollo Studio 我们可以把所有的 schema <code>cat</code> 一起后提交</li>
-<li>而正如上文所述，对于 Postman 只能提交一个格式比较标准的 schema 这里就直接用了 Rover 的 <code>introspect</code> 功能，不过更好的办法应该是用脚本正则化 schema 然后提交</li>
-<li>Postman 的 API 没有很方便的提交方式，就之后做了一个简单的 Github Actions 功能，把 schema 更新到 Postman 中。</li>
-</ol>
-<h2 id="进一步的工作" style="position:relative;">进一步的工作<a href="#%E8%BF%9B%E4%B8%80%E6%AD%A5%E7%9A%84%E5%B7%A5%E4%BD%9C" aria-label="进一步的工作 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<ol>
-<li>尝试有没有其他工具直接输出一个标准的、合并了的 schema 提交给 Postman 和 Apollo Studio</li>
-<li>Postman 似乎也可以和 GitHub 集成将 Collections 持久化到 GitHub 的一个仓库里</li>
-<li>在 CI 里更新 schema 其实并不是最佳的时机，因为这个时候环境实际上还没有做部署，所以应该考虑如何让 CI 直接控制 CD 流程，保证环境中的 schema 和 Postman / Apollo Studio 中的 schema 同步</li>
-</ol></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/7/">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/9/">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
+    </span></p></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/7/">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/9/">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       
       if(true) {
