@@ -52,7 +52,27 @@
         }
       }
     })
-  </script><script async="" defer="" data-website-id="443212e9-fd0b-411e-a523-0d0ec604ee8a" src="https://get.aisensiy.me/umami.js"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about/">About</a></li><li><a class="leading-7 block hover:underline" href="/archive/">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags/">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials/">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/proxy-setup-for-ubuntu-with-ansible/">使用 ansible 为 ubuntu 设置代理</a></h1><h2>2021 December-30</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>最近为一些藏在防火墙里的存储节点做 provision 由于是非常受限的外网访问，必须要通过代理访问网络，因此需要对原来的 ansible 脚本做修改，这里做一个记录。</p>
+  </script><script async="" defer="" data-website-id="443212e9-fd0b-411e-a523-0d0ec604ee8a" src="https://get.aisensiy.me/umami.js"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about/">About</a></li><li><a class="leading-7 block hover:underline" href="/archive/">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags/">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials/">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/kubernetes-certs-renew/">处理 k8s 证书过期</a></h1><h2>2022 January-18</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><h2 id="简单记录" style="position:relative;">简单记录<a href="#%E7%AE%80%E5%8D%95%E8%AE%B0%E5%BD%95" aria-label="简单记录 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>k8s 为了鼓励大家更新，其 kubeadm 默认的证书有效期为 1 年，任何 k8s 版本的更新都会触发证书的更新。如果证书过期了可以按照如下方式处理：</p>
+<ol>
+<li>如果发现自己本地 kubectl 无法访问集群并报错就很有可能是证书过期了，登陆任意一台 master 执行命令 <code>kubeadm certs check-expiration</code> 可以查看证书的有效期，如果报错没有命令 <code>certs</code> 那么可以尝试命令 <code>kubeadm alpha certs ...</code></li>
+<li>过期后可以用命令 <code>kubeadm certs renew all</code> 更新所有证书</li>
+<li>更新后需要将 <code>/etc/kubernetes/manifests/</code> 挪走，比如重命名为 <code>manifests.1</code> 20 秒以上，等待 static pod 全部都关闭了，然后重命名回来，这个步骤就是强迫所有的 static pod 重启，<a href="https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-certs/#manual-certificate-renewal">官网文档</a> 就是这么建议操作的</li>
+<li>如果是 HA 高可用模式，那么需要将每一台 master 都这么操作一下</li>
+<li>将新的 <code>/etc/kubernetes/admin.conf</code> 拷贝到自己的电脑，并将其其中的 api-server 的访问地址修改成从自己电脑可以访问的地址即可，然后具体的管理可以参考 <a href="/kubeconfig-management">维护一大堆 kubeconfig 的一些实践</a></li>
+</ol>
+<h2 id="更好的办法" style="position:relative;">更好的办法<a href="#%E6%9B%B4%E5%A5%BD%E7%9A%84%E5%8A%9E%E6%B3%95" aria-label="更好的办法 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>这样做现在并不是最好的方法，目前可以改进的方式有如下几个：</p>
+<ol>
+<li>按照官方推荐，更频繁的升级 k8s 避免自己的集群版本掉队到无法维护，这应该是最好的方法，当然听起来成本也高一些</li>
+<li>简单粗暴，修改对应版本的 kubeadm 源码，将 renew 时间改成什么 100 年之类的，然后用这个编译的版本去 renew 就是 100 年有效期了</li>
+<li><a href="https://github.com/fanux/sealos">https://github.com/fanux/sealos</a> <strong>可能是不错的方案，具体还没看</strong></li>
+</ol>
+<h2 id="资料" style="position:relative;">资料<a href="#%E8%B5%84%E6%96%99" aria-label="资料 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ol>
+<li><a href="https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-certs/">Certificate Management with kubeadm</a></li>
+<li><a href="https://cloud.tencent.com/developer/article/1650657">kubeadm 集群修改证书时间到 99 年</a></li>
+</ol></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/proxy-setup-for-ubuntu-with-ansible/">使用 ansible 为 ubuntu 设置代理</a></h1><h2>2021 December-30</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>最近为一些藏在防火墙里的存储节点做 provision 由于是非常受限的外网访问，必须要通过代理访问网络，因此需要对原来的 ansible 脚本做修改，这里做一个记录。</p>
 <p>看了看 ansible 里面的内容以及后续的 k8s 的流程，无非是如下几个方面需要访问外网：</p>
 <ol>
 <li>curl 一些 github 上的一些公钥</li>
@@ -198,193 +218,7 @@ Environment="HTTPS_PROXY=http://proxy:1234"</code></pre></div>
 <li><code>@SpringBootApplication</code> 自带 <code>ComponentScan</code> 会收集自己 package 下所有的 Beans 和 Configurations</li>
 <li>Spring Boot 提供的 <code>@*Test</code> 会自己搜索 <code>@SpringBootApplication</code> 或者 <code>@SpringBootConfiguration</code> 作为默认的 <code>Configuration</code>，除非你主动做覆盖</li>
 <li>为了让 2 的行为不要导致过量的 <code>ApplicationContext</code> 在测试阶段被创建，可以把一些只有在生成环境才需要的额外的 Bean 放在独立的 <code>@Configuration</code> 类下，因为 Spring Boot 的 Testing slices 不会扫其他的 <code>@Configuration</code></li>
-</ol></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/kubeconfig-management/">维护一大堆 kubeconfig 的一些实践</a></h1><h2>2021 December-10</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><h2 id="2021-12-20-更新" style="position:relative;">2021-12-20 更新<a href="#2021-12-20-%E6%9B%B4%E6%96%B0" aria-label="2021 12 20 更新 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>由于 <code>kubie</code> 是开一个子 shell 它会导致 <code>direnv</code> 失效，也就是说 <code>kubie</code> 和 <code>direnv</code> 无法共同使用，我只好再去尝试其他兼容的方案，毕竟如果换回 <code>kubectx</code> 就依然有维护 kubeconfig 的烦恼。这里找到一个新的工具 <a href="https://github.com/sunny0826/kubecm">kubecm</a> 可以帮助做 kubeconfig 的合并。</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/4cbacc66c4399ebc5d2825e5fe038c12/0b569/kubecm-list.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 35.50000000000001%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAAsTAAALEwEAmpwYAAABXElEQVQozz2Ry2ocMRBF5y9mWo9uPVpSv2cICQR7wDgGZ+GVmZW9CwTjZfId2eSPTyhNkkWhKql177nqXSyFXApN0+BiwViHUoq2bXHOobWus/R1vzi6GJjXD6RhJfaZGCMhxHq+s9ZirUFrw3T/RpdPWKMYx5Ft2wghVLHj8UjOCWtayucL8+NPpscf+NNXWn1gXhasMexEVUprhQ8RrZpKJa45Z8TQe89QCiF4TBdJH58Ybl+Zzi/4+UzbWvq+x4igRJXa7/d0XVd7MRAR+Uiiy9yndO21ZfjyzvT8i/nym3j+hja2pmgkstBISbRpHOoqF4VunudKKvOyLKSUMFrR+5YUHUPJ+M7UqKWUqrO7xjU1qtse0G3AmquBiIqzRJFe9uSSTwv9ekM+3dH1M+YvUBW8EhqawwE3fqJRpv4kcRSqf4TrulZCedO83TLdXNgevpNO91it/hP+Ab+Gx0wwAGwzAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="kubecm list"
-        title="kubecm list"
-        src="/static/4cbacc66c4399ebc5d2825e5fe038c12/5a190/kubecm-list.png"
-        srcset="/static/4cbacc66c4399ebc5d2825e5fe038c12/772e8/kubecm-list.png 200w,
-/static/4cbacc66c4399ebc5d2825e5fe038c12/e17e5/kubecm-list.png 400w,
-/static/4cbacc66c4399ebc5d2825e5fe038c12/5a190/kubecm-list.png 800w,
-/static/4cbacc66c4399ebc5d2825e5fe038c12/c1b63/kubecm-list.png 1200w,
-/static/4cbacc66c4399ebc5d2825e5fe038c12/29007/kubecm-list.png 1600w,
-/static/4cbacc66c4399ebc5d2825e5fe038c12/0b569/kubecm-list.png 2878w"
-        sizes="(max-width: 800px) 100vw, 800px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span></p>
-<p>不过其实它也包含了 kubectx 的功能，但我的 kubectx 还提供了自动补全等东西，就这么一直用着了。</p>
-<h2 id="开始" style="position:relative;">开始<a href="#%E5%BC%80%E5%A7%8B" aria-label="开始 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>如果需要维护很多 kubernetes 集群，每个集群都有一个 kubeconfig 的 yaml 那么在 <code>~/.kube</code> 目录下就会有一大堆的 yaml 。在频繁切换和修改不同的集群的内容的时候，一个不小心就可能把 A 集群的东西部署到 B 集群造成运维事故。这里介绍下到目前为止维护对多个集群环境的一些痛点和实践。</p>
-<p>首先先总结下痛点吧：</p>
-<ol>
-<li>多个集群以及集群的 namespace 切换比较繁琐，通常需要 KUBECONFIG 环境变量的切换</li>
-<li>不晓得自己当前处于哪个集群下</li>
-<li>在使用 kustomize 或者 helm 对集群做更新的时候需要确保自己切换了 kubeconfig，除了小心之外没什么办法阻止错位的环境部署</li>
-</ol>
-<p>下面记录下自己在试图解决这些痛点过程中找到的还不错的方案。</p>
-<h2 id="kubectx-快速切换上下文和-namespace" style="position:relative;"><a href="https://github.com/ahmetb/kubectx">kubectx</a> 快速切换上下文和 namespace<a href="#kubectx-%E5%BF%AB%E9%80%9F%E5%88%87%E6%8D%A2%E4%B8%8A%E4%B8%8B%E6%96%87%E5%92%8C-namespace" aria-label="kubectx 快速切换上下文和 namespace permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p><code>kubectx</code> 可以切换 <code>~/.kube/config</code> 文件中的多个 <code>context</code>，然后可以通过 <code>kubens</code> 命令切换不同的 <code>namespace</code> 。但如果我有一堆 kubeconfig yaml 的话还需要额外的一步，将它们合并到 <code>~/.kube/config</code> 文件里。这个步骤用 kubectl 就能搞定：</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token assign-left variable">KUBECONFIG</span><span class="token operator">=~</span>/.kube/config:~/.kube/other.yaml kubectl config view <span class="token punctuation">\</span>
-    <span class="token parameter variable">--merge</span> <span class="token parameter variable">--flatten</span> <span class="token operator">></span> out.txt</code></pre></div>
-<p>不过依然是多了一步，而且既然有添加就有删除，如果其中一个集群的配置文件变化了或者废弃了就需要把这个集群剃掉：</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">kubectl config <span class="token builtin class-name">unset</span> users.gke_project_zone_name
-kubectl config <span class="token builtin class-name">unset</span> contexts.aws_cluster1-kubernetes
-kubectl config <span class="token builtin class-name">unset</span> clusters.foobar-baz</code></pre></div>
-<h2 id="zsh--bash--fish-集成展示当前-context" style="position:relative;">zsh / bash / fish 集成展示当前 context<a href="#zsh--bash--fish-%E9%9B%86%E6%88%90%E5%B1%95%E7%A4%BA%E5%BD%93%E5%89%8D-context" aria-label="zsh  bash  fish 集成展示当前 context permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>既然 <code>kubectl config current-context</code> 可以获取当前的上下文，那么如果可以在 shell 里面展示这些信息基本就可以保证自己知道当前在什么上下文了。对不同的 shell 可以用不同的方式实现类似的效果。</p>
-<h3 id="kube-ps1-for-zsh--bash" style="position:relative;"><a href="https://github.com/jonmosco/kube-ps1">kube-ps1</a> for zsh / bash<a href="#kube-ps1-for-zsh--bash" aria-label="kube ps1 for zsh  bash permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>安装成功后按照项目 README 提示就可以了。</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/b93b2ea1056f9352a88ca91ac0371715/191e2/kube-ps1-screenshot-from-readme.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 14.500000000000002%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAv0lEQVQI103MUUvCUACG4SMxlMgiypK1QqJ0LlSGx7WdbTo9rpludrFE6P//jzc4CHXx8sB38Qkn/0GqgiRYMQvXPFZH7ouaQV4z3Bxwi2/6eU1v+UU33hqdtMROdiZnXvGQljxle67kGtFRW3rJJ8/xhq7U2IsSO6toS03DVVhvCWdeTGOoEIMI0Q/NLl7eTwV/voaIpp9zO0q58yKuPUVrqrGkxvKXnE8yLqea1nhhvPBXppvgA+FG5tic//MX9zVbvxXO5hkAAAAASUVORK5CYII='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="kube ps1 screenshot from readme"
-        title="kube ps1 screenshot from readme"
-        src="/static/b93b2ea1056f9352a88ca91ac0371715/5a190/kube-ps1-screenshot-from-readme.png"
-        srcset="/static/b93b2ea1056f9352a88ca91ac0371715/772e8/kube-ps1-screenshot-from-readme.png 200w,
-/static/b93b2ea1056f9352a88ca91ac0371715/e17e5/kube-ps1-screenshot-from-readme.png 400w,
-/static/b93b2ea1056f9352a88ca91ac0371715/5a190/kube-ps1-screenshot-from-readme.png 800w,
-/static/b93b2ea1056f9352a88ca91ac0371715/c1b63/kube-ps1-screenshot-from-readme.png 1200w,
-/static/b93b2ea1056f9352a88ca91ac0371715/29007/kube-ps1-screenshot-from-readme.png 1600w,
-/static/b93b2ea1056f9352a88ca91ac0371715/191e2/kube-ps1-screenshot-from-readme.png 1836w"
-        sizes="(max-width: 800px) 100vw, 800px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span></p>
-<h3 id="custom-function-for-fish" style="position:relative;">custom function for fish<a href="#custom-function-for-fish" aria-label="custom function for fish permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>很遗憾 fish 里不能用 <code>kube-ps1</code> 不过找一个 shell 函数做的类似的效果也可以的：</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token keyword">function</span> kubectl_status
-  <span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$KUBECTL_PROMPT_ICON</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> and <span class="token builtin class-name">set</span> <span class="token parameter variable">-l</span> KUBECTL_PROMPT_ICON <span class="token string">"⎈"</span>
-  <span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$KUBECTL_PROMPT_SEPARATOR</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> and <span class="token builtin class-name">set</span> <span class="token parameter variable">-l</span> KUBECTL_PROMPT_SEPARATOR <span class="token string">"/"</span>
-  <span class="token builtin class-name">set</span> <span class="token parameter variable">-l</span> config <span class="token variable">$KUBECONFIG</span>
-  <span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$config</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> and <span class="token builtin class-name">set</span> <span class="token parameter variable">-l</span> config <span class="token string">"<span class="token environment constant">$HOME</span>/.kube/config"</span>
-  <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token operator">!</span> <span class="token parameter variable">-f</span> <span class="token variable">$config</span> <span class="token punctuation">]</span>
-    <span class="token builtin class-name">echo</span> <span class="token punctuation">(</span>set_color red<span class="token punctuation">)</span><span class="token variable">$KUBECTL_PROMPT_ICON</span><span class="token string">" "</span><span class="token punctuation">(</span>set_color white<span class="token punctuation">)</span><span class="token string">"no config"</span>
-    <span class="token builtin class-name">return</span>
-  end
-
-  <span class="token builtin class-name">set</span> <span class="token parameter variable">-l</span> ctx <span class="token punctuation">(</span>kubectl config current-context <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null<span class="token punctuation">)</span>
-  <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$status</span> <span class="token parameter variable">-ne</span> <span class="token number">0</span> <span class="token punctuation">]</span>
-    <span class="token builtin class-name">echo</span> <span class="token punctuation">(</span>set_color red<span class="token punctuation">)</span><span class="token variable">$KUBECTL_PROMPT_ICON</span><span class="token string">" "</span><span class="token punctuation">(</span>set_color white<span class="token punctuation">)</span><span class="token string">"no context"</span>
-    <span class="token builtin class-name">return</span>
-  end
-
-  <span class="token builtin class-name">set</span> <span class="token parameter variable">-l</span> ns <span class="token punctuation">(</span>kubectl config view <span class="token parameter variable">-o</span> <span class="token string">"jsonpath={.contexts[?(@.name==<span class="token entity" title="\&quot;">\"</span><span class="token variable">$ctx</span><span class="token entity" title="\&quot;">\"</span>)].context.namespace}"</span><span class="token punctuation">)</span>
-  <span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token variable">$ns</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> and <span class="token builtin class-name">set</span> <span class="token parameter variable">-l</span> ns <span class="token string">'default'</span>
-
-  <span class="token builtin class-name">echo</span> <span class="token punctuation">(</span>set_color cyan<span class="token punctuation">)</span><span class="token variable">$KUBECTL_PROMPT_ICON</span><span class="token string">" "</span><span class="token punctuation">(</span>set_color white<span class="token punctuation">)</span><span class="token string">"(<span class="token variable">$ctx</span><span class="token variable">$KUBECTL_PROMPT_SEPARATOR</span><span class="token variable">$ns</span>)"</span>
-end
-
-<span class="token keyword">function</span> fish_right_prompt
-    string unescape <span class="token variable">$$</span>_tide_prompt_var<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
-    <span class="token builtin class-name">echo</span> <span class="token punctuation">(</span>kubectl_status<span class="token punctuation">)</span>
-end</code></pre></div>
-<p>这个代码不是我原创的，我只是做了魔改，很遗憾忘记了出处...具体的代码在 <a href="https://github.com/aisensiy/dotfiles/blob/master/fish/functions/fish_prompt.fish">fish_prompt</a> 里，这里同时包含了我公开的 dotfiles 信息。效果如下：</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/d4d4986fa57e3d4539586c7d7c271217/58a91/terminal-with-kube-context-in-fish.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 24.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAtklEQVQY022O3QqDMAxG6w8IwjBtUhlVEUQ3dqG72F5i7/9A30ihzo1dHJKm4eQzwzBgHEd0XYcQAqZpwrZtkXVdsSwX3K4XzOsD7fMFP9/he4YP57iv9H2/96YsSxhjdqqqAhGhaZpYrbUgsrBEcHSCowbcClgYIhLx3u+9yfMcRVFAa5ZlqOs6fjDz16KIB7PAORePJPR9JAoTmvAo/MhknyWh1jQ7YjSVchRqsn8kYeJXpsI3rWh5X3QOJ7EAAAAASUVORK5CYII='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="terminal with kube context in fish"
-        title="terminal with kube context in fish"
-        src="/static/d4d4986fa57e3d4539586c7d7c271217/5a190/terminal-with-kube-context-in-fish.png"
-        srcset="/static/d4d4986fa57e3d4539586c7d7c271217/772e8/terminal-with-kube-context-in-fish.png 200w,
-/static/d4d4986fa57e3d4539586c7d7c271217/e17e5/terminal-with-kube-context-in-fish.png 400w,
-/static/d4d4986fa57e3d4539586c7d7c271217/5a190/terminal-with-kube-context-in-fish.png 800w,
-/static/d4d4986fa57e3d4539586c7d7c271217/c1b63/terminal-with-kube-context-in-fish.png 1200w,
-/static/d4d4986fa57e3d4539586c7d7c271217/29007/terminal-with-kube-context-in-fish.png 1600w,
-/static/d4d4986fa57e3d4539586c7d7c271217/58a91/terminal-with-kube-context-in-fish.png 1990w"
-        sizes="(max-width: 800px) 100vw, 800px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span></p>
-<p><strong>注意</strong> 这个最终效果是建立在我的 fish 主题之上的，单独使用效果如何不得而知。</p>
-<h2 id="kubie-一站式解决方案" style="position:relative;"><del>kubie 一站式解决方案</del><a href="#kubie-%E4%B8%80%E7%AB%99%E5%BC%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88" aria-label="kubie 一站式解决方案 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>除了 kubectx 外我在最近装机的时候还发现了一个更完善的解决方案：<a href="https://github.com/sbstp/kubie">kubie</a>。它有三个优势：</p>
-<ol>
-<li>包含了 kubectx 的功能</li>
-<li>不用合并 config 文件，可以通过配置读取文件列表，甚至支持 <code>~/.kube/*.yaml</code> 这样的通配符匹配</li>
-<li>自带 shell 的 prompt 提示，类似于上文 <code>kube-ps1</code> 的功能</li>
-</ol>
-<p>当然，也有坏处：</p>
-<ol>
-<li>你不能自定义你的 prompt 样式了，不过它支持关掉自己的 prompt 提示。我目前就逐渐从 kubectx 切换到了 kubie 但依然保持我自己的 fish 的 prompt 。</li>
-<li>存在一个小问题（我觉得是 bug），它默认不把 <code>~/.kube/config</code> 下当前的上下文认为是默认的上下文，它的 prompt 不会在你新建一个 terminal 的时候假设是没有上下文的，然而事实上在这个时候 kubectl 的 context 已经指向了 <code>~/.kube/config</code> 的上下文了。你需要做一次切换后才会弹出。</li>
-</ol>
-<h2 id="direnv-当切换目录后自动注入环境变量" style="position:relative;"><a href="https://direnv.net/">direnv</a> 当切换目录后自动注入环境变量<a href="#direnv-%E5%BD%93%E5%88%87%E6%8D%A2%E7%9B%AE%E5%BD%95%E5%90%8E%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F" aria-label="direnv 当切换目录后自动注入环境变量 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>最后一个痛点以上的东西都没有解决。虽然增加了提示很大概率可以避免用错环境了，但还是挡不住有手比眼快的时候。这时候就需要 <code>direnv</code> 救场了。它可以在切换到某一个目录的之后触发一个 shell 执行，比如我可以强制在切换到维护 dev 集群的目录时将 <code>KUBECONFIG</code> 环境变量切换成对应集群的 kubeconfig 文件，这样就可以保证了上下文随着我操纵的 kustomize / helm charts 文件目录自动切换了。</p>
-<p>最后上 demo，这里包含了上述介绍的一些演示，顺序通过内部的标题组织的，和上述顺序不一致。</p>
-<p>
-		<video
-			src=/videos/kube-context-management-practices.mp4
-			width="1200"
-			height="auto"
-			preload="auto"
-			muted="false"
-			title="/videos/kube-context-management-practices.mp4"
-			
-			playsinline
-			controls
-			
-		></video>
-	</p>
-<h2 id="参考资料" style="position:relative;">参考资料<a href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99" aria-label="参考资料 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<ul>
-<li><a href="https://medium.com/@ahmetb/mastering-kubeconfig-4e447aa32c75">Mastering the KUBECONFIG file</a></li>
-<li><a href="https://stackoverflow.com/questions/37016546/kubernetes-how-do-i-delete-clusters-and-contexts-from-kubectl-config">Kubernetes: How do I delete clusters and contexts from kubectl config?</a></li>
-</ul></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/6/">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/8/">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
+</ol></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/6/">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/8/">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       
       if(true) {
