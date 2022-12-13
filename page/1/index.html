@@ -52,7 +52,117 @@
         }
       }
     })
-  </script><script async="" defer="" data-website-id="443212e9-fd0b-411e-a523-0d0ec604ee8a" src="https://get.aisensiy.me/umami.js"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about/">About</a></li><li><a class="leading-7 block hover:underline" href="/archive/">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags/">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials/">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/homelab-side-router/">使用 EasePi ARS2 做旁路由</a></h1><h2>2022 December-10</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>最近折腾了下那个一直放在家里的 <a href="https://easepi.linkease.com/">EasePi ARS2</a> ，把它做成了家里的一个旁路由，这里记录一下。</p>
+  </script><script async="" defer="" data-website-id="443212e9-fd0b-411e-a523-0d0ec604ee8a" src="https://get.aisensiy.me/umami.js"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about/">About</a></li><li><a class="leading-7 block hover:underline" href="/archive/">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags/">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials/">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/install-openclash-for-easepi/">在 EasePi ARS2 安装  OpenClash</a></h1><h2>2022 December-13</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><iframe src="//player.bilibili.com/player.html?aid=818673622&bvid=BV1FG4y1G7PB&cid=922888758&page=1" width="100%" height="640" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<p>最近家里的 <a href="https://easepi.linkease.com/">EasePi ARS2</a> 系统盘满了，想了想没什么重要的东西直接做了系统重制，作为旁路由第一步就是重装代理，这里简单记录下。</p>
+<h2 id="下载-openclash" style="position:relative;">下载 openclash<a href="#%E4%B8%8B%E8%BD%BD-openclash" aria-label="下载 openclash permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>去 <a href="https://github.com/vernesong/OpenClash">OpenClash</a> 下载 OpenWrt 的客户端，在 Release 也面也包含了安装的依赖。</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/b29a0bd74b760b048939e9cd43564905/8c833/openclash-release-page.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 64.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsTAAALEwEAmpwYAAABlUlEQVQ4y42S3Y6bMBCFc7dNFoiDAxjj8GNMCCEEpZuuVkit2r7/O53KA82uslqFi6MZ4fHnYeYstGlglZc1dnmFNK8Qqxz18Yx900HIDCK5k8yoRqUlStNg3/Q4dBf0lw6LpcuxdLdYelusPijfd1DFgfLndTgpmDTmq3VA9745PunpmWPhbiLcyxbX7Xf01wFrHsNhIVwWforuJoTnj3c8X1D+JVBmFbLyCLEzEKqkGKkSUaLHqDR9vz043f0SmFcnZKZFIIsRuisJ9D+3MU6r+cA4NahPL6Ty0EPXZxT7Dpk5QpUnZNUJYVLQr84C1u0Fr8NvJJkBD9WoaEcduTQvQXW2/iHQWQdIdIuifUWsO0jdQZkzzYxtJYEcFtxAD4HWKtYy1+Ev+h8/cR3+QNc9uEipQwtlQUJxFtB2UFQtrm+/UDU9mu6FlOoDYrsQpWnGNj4EOpPP7CJS02Ll8tHM7KOx3zVvhiwEj1KwQMHjCTwub2fetBC7GHcj5i5lC5G3kM0AX1ZgUf5+7ovb7Oyj9z78B/BjSkd1qO0wAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="openclash release page"
+        title="openclash release page"
+        src="/static/b29a0bd74b760b048939e9cd43564905/5a190/openclash-release-page.png"
+        srcset="/static/b29a0bd74b760b048939e9cd43564905/772e8/openclash-release-page.png 200w,
+/static/b29a0bd74b760b048939e9cd43564905/e17e5/openclash-release-page.png 400w,
+/static/b29a0bd74b760b048939e9cd43564905/5a190/openclash-release-page.png 800w,
+/static/b29a0bd74b760b048939e9cd43564905/c1b63/openclash-release-page.png 1200w,
+/static/b29a0bd74b760b048939e9cd43564905/29007/openclash-release-page.png 1600w,
+/static/b29a0bd74b760b048939e9cd43564905/8c833/openclash-release-page.png 1609w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<p>下载之后本来打算用 <code>scp</code> 拷贝过去，但感觉 openwrt 里的这个 ssh 有点不太一样，scp 会失败，最终还是要从页面的「系统」-「文件传输」把下载的安装包传过去。</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/bde4a1104b56d5c7c0a4a2039ad49201/8c833/upload-file-in-asr2.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 64.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsTAAALEwEAmpwYAAABn0lEQVQ4y5VSwW4UMQzNr3NoOXJo+RxucAGJA1ohcQS2HNjdThI7iTNJ5iF7hm0LaqGRnhx7PC/vOXGRCyaf8f0H4cWrb7i8vsHL1ze4vN7b/n+h/1xc7eFaFwADuo4ngkhF7wPLsmCMcQ9/5nfoW2x9wH36HLD7kvB1LyBihMAoIpjnZsRjI+692yH/gnv7IeDNO8LHHUPqbEqnySNERp3bmVBELD5Fpi5cawlAW4l8xPHk0cdi6lrrmFsznPO5nWt/YW5wIRJSKkaihETJ7LXeLa4YqLWiKbHZfwwdLoQIZjbJSqyn6FL59+0QkZHqenKG2kgboc7t52E6X8hqebWts9Sa7lW9fmubkzbWXoVbb5asOVDCFBJ81MjgXJFKRZYZh1Owuubaw1lw6xlEGeEYQEnsu2PO8EFvuNlzKUXgA9khOk+p1W7Y22iS2U4po4qAS4EcblHe75BrtWfnImdgWQdKnMCpIGUx6P43AhX4WDAFFbDFLddRRXUaGY5yxbLNQMmJC8jiQ0R6HHc9Cc5PEXWuplALq6L8QN1z8AvHKuWfMv4pPAAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="upload file in asr2"
+        title="upload file in asr2"
+        src="/static/bde4a1104b56d5c7c0a4a2039ad49201/5a190/upload-file-in-asr2.png"
+        srcset="/static/bde4a1104b56d5c7c0a4a2039ad49201/772e8/upload-file-in-asr2.png 200w,
+/static/bde4a1104b56d5c7c0a4a2039ad49201/e17e5/upload-file-in-asr2.png 400w,
+/static/bde4a1104b56d5c7c0a4a2039ad49201/5a190/upload-file-in-asr2.png 800w,
+/static/bde4a1104b56d5c7c0a4a2039ad49201/c1b63/upload-file-in-asr2.png 1200w,
+/static/bde4a1104b56d5c7c0a4a2039ad49201/29007/upload-file-in-asr2.png 1600w,
+/static/bde4a1104b56d5c7c0a4a2039ad49201/8c833/upload-file-in-asr2.png 1609w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<h2 id="安装-openclash" style="position:relative;">安装 openclash<a href="#%E5%AE%89%E8%A3%85-openclash" aria-label="安装 openclash permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>首先安装相应的依赖，然后执行命令 <code>opkg xxx.ipk</code> 就可以了。安装成功之后重新登录 ARS2 的管理页面在左侧导航栏的「服务」下面就会多了「OpenClash」了。下一步按照 <a href="https://github.com/vernesong/OpenClash/wiki/%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0">OpenClash 版本更新</a> 介绍的更新流程，去「OpenClash」-「全局设置」-「版本更新」这个页面（有点难找），点击下面的「更新内核」，自动下载 clash 内核。</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/3a80b1f313cabff1f837010326b20aea/8c833/update-clash-core.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 64.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsTAAALEwEAmpwYAAACYUlEQVQ4y3WTyYtUMRDG3z+uN8UNPbmM4MWLZ08e9CAoDIoILtiOds/YM01Pv33J+vKS95OkR0XQgqKSSlL1peqrbAoz2gSaznH9fs6VuyVX7xbcPMi5eVBw4yDn1sNiv36Q/2VvPSy5dDvn2r2SO48qLj/+StZLxTg63BQQQlHVlrLSSNEjxEDftUgxYIxitBrnLErFNyPzPHF8alHaAzN+hMxZAwSibLYFi6Njvi/XLI5O+LxYsTrJWZ9VNK1CKscgR4x12NFh7Ij3cT2iTfRbsuWy5+RsZFcEPv5Y8PTdM14t3vDqyxveLz+z2ZV0nUJIwyD2KtUfjf5oVdprshevO5483fLysOdsW/Dp63eOVmtWP7asNwWnm/OEPK8aiqpNuitqdmWT7HlRk5c1u2KgrC3ZHCxKtjA7tLEJutIWZWzKOEiNUIay6tjuKvKypR8kIp2ppEIqejHSDRNZ1wsGofF+RmmD955/SfABa0e0tvxPQvBkQgj6fmCeZ6qqwxib1lGV1XS6x3mXAsZgZdmmpPF8nByN7NHOpP00eTKlIhUc3oeLru0vz2EGJgIWN01IoZFS03UC56bIkgt2WFzkywyT92Ram8TDEAJ13aVHIQWDxUpy+LEE9mWI9yLCiCRK3TmeHxbIRD32CNteMU0ubWKNokSEMaWQnkHMCfUwqESNSP6EMCZwgbqJP2JP7Ihw6OTvRvziU0QbJW8kx+cVysnkiwmbpv8dUJqRb5s61TnMYR/wfFfSti1VVbM+3aSxmi+6FsfqyzKWYMJal5oSy/IrYKTJ2w+ScdqPXqzhTxJ623bMPfmVAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="update clash core"
+        title="update clash core"
+        src="/static/3a80b1f313cabff1f837010326b20aea/5a190/update-clash-core.png"
+        srcset="/static/3a80b1f313cabff1f837010326b20aea/772e8/update-clash-core.png 200w,
+/static/3a80b1f313cabff1f837010326b20aea/e17e5/update-clash-core.png 400w,
+/static/3a80b1f313cabff1f837010326b20aea/5a190/update-clash-core.png 800w,
+/static/3a80b1f313cabff1f837010326b20aea/c1b63/update-clash-core.png 1200w,
+/static/3a80b1f313cabff1f837010326b20aea/29007/update-clash-core.png 1600w,
+/static/3a80b1f313cabff1f837010326b20aea/8c833/update-clash-core.png 1609w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<h2 id="添加配置并启动" style="position:relative;">添加配置并启动<a href="#%E6%B7%BB%E5%8A%A0%E9%85%8D%E7%BD%AE%E5%B9%B6%E5%90%AF%E5%8A%A8" aria-label="添加配置并启动 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>下一步就要去「配置文件订阅」更新订阅的代理源了，这里我没办法说的更多了，懂得都懂。最后在「运行状态」标签页滑到最下面点击「启动 OPENCLASH」。</p>
+<h2 id="测试" style="position:relative;">测试<a href="#%E6%B5%8B%E8%AF%95" aria-label="测试 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>ssh 进去，<code>curl google.com</code> 感受下效果。</p>
+<p>后面就可以按照 <a href="/homelab-side-router/">使用 EasePi ARS2 做旁路由</a> 的流程把这个设备设置成旁路由使用了。</p></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/homelab-side-router/">使用 EasePi ARS2 做旁路由</a></h1><h2>2022 December-10</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>最近折腾了下那个一直放在家里的 <a href="https://easepi.linkease.com/">EasePi ARS2</a> ，把它做成了家里的一个旁路由，这里记录一下。</p>
 <p><span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
@@ -251,133 +361,7 @@
 <h2 id="参考资料" style="position:relative;">参考资料<a href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99" aria-label="参考资料 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <ul>
 <li><a href="https://ttl255.com/jinja2-tutorial-part-3-whitespace-control/">Jinja2 template white space control</a></li>
-</ul></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/unbound-get-started/">unbound 的安装与基础应用</a></h1><h2>2022 December-06</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>了解到 unbound 可以用于做本地的 recursive dns server 同时也能支持本地的域名解析，打算用这个东西给内网做域名解析。而用 unbound 有这么两个好处：</p>
-<ol>
-<li>使用 recursive dns server 可以避免把请求都发给上级的缓存服务器，很大程度上保证了个人隐私，也相对会更安全，当然搭配 pi-hole 这样的东西使用效果更佳 <a href="https://docs.pi-hole.net/guides/dns/unbound/">https://docs.pi-hole.net/guides/dns/unbound/</a></li>
-<li>unbound 除了做 recursive dns server 外也能接管内网域名解析，作为一个 authoritative server 使用（当然，它并不是专门做这个的，但是规模比较小的网络是没问题的）</li>
-</ol>
-<h2 id="unbound-的安装" style="position:relative;">unbound 的安装<a href="#unbound-%E7%9A%84%E5%AE%89%E8%A3%85" aria-label="unbound 的安装 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>以下是在 ubuntu 20.04 的安装流程：</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> update <span class="token operator">&amp;&amp;</span> <span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> unbound <span class="token parameter variable">-y</span></code></pre></div>
-<h3 id="基础配置" style="position:relative;">基础配置<a href="#%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE" aria-label="基础配置 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>先来一个简单的配置：</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">server:
-    # can be uncommented if you do not need user privilige protection
-    # username: ""
-
-    # can be uncommented if you do not need file access protection
-    # chroot: ""
-
-    # location of the trust anchor file that enables DNSSEC. note that
-    # the location of this file can be elsewhere
-    auto-trust-anchor-file: "/usr/local/etc/unbound/root.key"
-    # auto-trust-anchor-file: "/var/lib/unbound/root.key"
-
-    # send minimal amount of information to upstream servers to enhance privacy
-    qname-minimisation: yes
-
-    # specify the interface to answer queries from by ip-address.
-    interface: 0.0.0.0
-    # interface: ::0
-
-    # addresses from the IP range that are allowed to connect to the resolver
-    access-control: 192.168.0.0/16 allow
-    # access-control: 2001:DB8/64 allow</code></pre></div>
-<p>把它放到 <code>/etc/unbound/unbound.conf.d/myunbound.conf</code> 这里，然后 <code>systemctl restart unbound</code> 重启服务。</p>
-<h3 id="解决-53-端口冲突的问题" style="position:relative;">解决 53 端口冲突的问题<a href="#%E8%A7%A3%E5%86%B3-53-%E7%AB%AF%E5%8F%A3%E5%86%B2%E7%AA%81%E7%9A%84%E9%97%AE%E9%A2%98" aria-label="解决 53 端口冲突的问题 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>不出意外的话，重启 <code>unbound</code> 服务会报错，大概的报错信息是说 53 端口已经被占用了。这个时候可以通过 <code>netstat -tulpn</code> 来查看端口占用情况，发现是 <code>systemd-resolved</code> 占用了 53 端口，简单搜索会找到 <a href="https://unix.stackexchange.com/questions/304050/how-to-avoid-conflicts-between-dnsmasq-and-systemd-resolved">https://unix.stackexchange.com/questions/304050/how-to-avoid-conflicts-between-dnsmasq-and-systemd-resolved</a> 这么一个问题。按照其中内容修改 <code>/etc/systemd/resolved.conf</code> 设置 <code>DNSStubListener=no</code> 并重启 <code>systemd-resolved</code> 服务就可以了。</p>
-<h2 id="测试-unbound-是否工作" style="position:relative;">测试 unbound 是否工作<a href="#%E6%B5%8B%E8%AF%95-unbound-%E6%98%AF%E5%90%A6%E5%B7%A5%E4%BD%9C" aria-label="测试 unbound 是否工作 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">dig</span> openbayes.com @127.0.0.1
-
-<span class="token punctuation">;</span> <span class="token operator">&lt;&lt;</span><span class="token operator">>></span> DiG <span class="token number">9.16</span>.1-Ubuntu <span class="token operator">&lt;&lt;</span><span class="token operator">>></span> openbayes.com @127.0.0.1
-<span class="token punctuation">;</span><span class="token punctuation">;</span> global options: +cmd
-<span class="token punctuation">;</span><span class="token punctuation">;</span> Got answer:
-<span class="token punctuation">;</span><span class="token punctuation">;</span> -<span class="token operator">>></span>HEADER<span class="token operator">&lt;&lt;-</span> opcode: QUERY, status: NOERROR, id: <span class="token number">52191</span>
-<span class="token punctuation">;</span><span class="token punctuation">;</span> flags: qr rd ra<span class="token punctuation">;</span> QUERY: <span class="token number">1</span>, ANSWER: <span class="token number">1</span>, AUTHORITY: <span class="token number">0</span>, ADDITIONAL: <span class="token number">1</span>
-
-<span class="token punctuation">;</span><span class="token punctuation">;</span> OPT PSEUDOSECTION:
-<span class="token punctuation">;</span> EDNS: version: <span class="token number">0</span>, flags:<span class="token punctuation">;</span> udp: <span class="token number">4096</span>
-<span class="token punctuation">;</span><span class="token punctuation">;</span> QUESTION SECTION:
-<span class="token punctuation">;</span>openbayes.com.			IN	A
-
-<span class="token punctuation">;</span><span class="token punctuation">;</span> ANSWER SECTION:
-openbayes.com.		<span class="token number">600</span>	IN	A	<span class="token number">106.75</span>.109.110
-
-<span class="token punctuation">;</span><span class="token punctuation">;</span> Query time: <span class="token number">1524</span> msec
-<span class="token punctuation">;</span><span class="token punctuation">;</span> SERVER: <span class="token number">127.0</span>.0.1<span class="token comment">#53(127.0.0.1)</span>
-<span class="token punctuation">;</span><span class="token punctuation">;</span> WHEN: Sun Dec 04 <span class="token number">14</span>:59:32 CST <span class="token number">2022</span>
-<span class="token punctuation">;</span><span class="token punctuation">;</span> MSG SIZE  rcvd: <span class="token number">58</span></code></pre></div>
-<p>可以看到第一次很慢，但是第二次由于已经有了缓存，速度会快起来：</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">dig</span> openbayes.com @127.0.0.1
-
-<span class="token punctuation">;</span> <span class="token operator">&lt;&lt;</span><span class="token operator">>></span> DiG <span class="token number">9.16</span>.1-Ubuntu <span class="token operator">&lt;&lt;</span><span class="token operator">>></span> openbayes.com @127.0.0.1
-<span class="token punctuation">;</span><span class="token punctuation">;</span> global options: +cmd
-<span class="token punctuation">;</span><span class="token punctuation">;</span> Got answer:
-<span class="token punctuation">;</span><span class="token punctuation">;</span> -<span class="token operator">>></span>HEADER<span class="token operator">&lt;&lt;-</span> opcode: QUERY, status: NOERROR, id: <span class="token number">26243</span>
-<span class="token punctuation">;</span><span class="token punctuation">;</span> flags: qr rd ra<span class="token punctuation">;</span> QUERY: <span class="token number">1</span>, ANSWER: <span class="token number">1</span>, AUTHORITY: <span class="token number">0</span>, ADDITIONAL: <span class="token number">1</span>
-
-<span class="token punctuation">;</span><span class="token punctuation">;</span> OPT PSEUDOSECTION:
-<span class="token punctuation">;</span> EDNS: version: <span class="token number">0</span>, flags:<span class="token punctuation">;</span> udp: <span class="token number">4096</span>
-<span class="token punctuation">;</span><span class="token punctuation">;</span> QUESTION SECTION:
-<span class="token punctuation">;</span>openbayes.com.			IN	A
-
-<span class="token punctuation">;</span><span class="token punctuation">;</span> ANSWER SECTION:
-openbayes.com.		<span class="token number">535</span>	IN	A	<span class="token number">106.75</span>.109.110
-
-<span class="token punctuation">;</span><span class="token punctuation">;</span> Query time: <span class="token number">0</span> msec
-<span class="token punctuation">;</span><span class="token punctuation">;</span> SERVER: <span class="token number">127.0</span>.0.1<span class="token comment">#53(127.0.0.1)</span>
-<span class="token punctuation">;</span><span class="token punctuation">;</span> WHEN: Sun Dec 04 <span class="token number">15</span>:00:37 CST <span class="token number">2022</span>
-<span class="token punctuation">;</span><span class="token punctuation">;</span> MSG SIZE  rcvd: <span class="token number">58</span></code></pre></div>
-<h2 id="让-unbound-接管本机的域名解析" style="position:relative;">让 unbound 接管本机的域名解析<a href="#%E8%AE%A9-unbound-%E6%8E%A5%E7%AE%A1%E6%9C%AC%E6%9C%BA%E7%9A%84%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90" aria-label="让 unbound 接管本机的域名解析 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>上面的 <code>dig</code> 命令需要主动选择 <code>@127.0.0.1</code> 作为域名解析的服务。我们当然是希望默认就使用 <code>unbound</code> 来做域名解析。这里我参考的 unbound 文旦 <a href="https://unbound.docs.nlnetlabs.nl/en/latest/use-cases/home-resolver.html#setting-up-for-a-single-machine">https://unbound.docs.nlnetlabs.nl/en/latest/use-cases/home-resolver.html#setting-up-for-a-single-machine</a> 进行配置。</p>
-<p>首先继续修改 <code>/etc/systemd/resolved.conf</code>:</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">[Resolve]
-DNS=127.0.0.1
-#FallbackDNS=
-#Domains=
-DNSSEC=yes
-#DNSOverTLS=no
-#MulticastDNS=no
-#LLMNR=no
-#Cache=no-negative
-DNSStubListener=no
-#DNSStubListenerExtra=</code></pre></div>
-<p>然后强制更新下 <code>/etc/resolv.conf</code>:</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">ln</span> <span class="token parameter variable">-fs</span> /run/systemd/resolve/resolv.conf /etc/resolv.conf</code></pre></div>
-<p>最后重启 <code>systemd-resolved</code> 服务：</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">systemctl restart systemd-resolved</code></pre></div>
-<p>执行 <code>dig</code> 的时候，就默认使用 <code>127.0.0.1#53</code> 了呢。</p>
-<p>到此为止，unbound 的基本配置就完成了。</p>
-<h2 id="添加-local-zone" style="position:relative;">添加 local-zone<a href="#%E6%B7%BB%E5%8A%A0-local-zone" aria-label="添加 local zone permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>最后就是利用 <code>unbound</code> 所提供的 <code>local-zone</code> 配置实现内网域名解析了：</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">server:
-    # can be uncommented if you do not need user privilige protection
-    # username: ""
-
-    # can be uncommented if you do not need file access protection
-    # chroot: ""
-
-    # location of the trust anchor file that enables DNSSEC. note that
-    # the location of this file can be elsewhere
-    # auto-trust-anchor-file: "/usr/local/etc/unbound/root.key"
-    # auto-trust-anchor-file: "/var/lib/unbound/root.key"
-
-    # send minimal amount of information to upstream servers to enhance privacy
-    qname-minimisation: yes
-
-    # specify the interface to answer queries from by ip-address.
-    interface: 0.0.0.0
-    # interface: ::0
-
-    # addresses from the IP range that are allowed to connect to the resolver
-    access-control: 192.168.0.0/16 allow
-    access-control: 10.23.0.0/16 allow
-    # access-control: 2001:DB8/64 allow
-
-    local-zone: "home.lan." static
-    local-data: "abc.home.lan. A 127.0.0.1"
-    local-data: "bbc.home.lan. A 127.0.0.1"</code></pre></div>
-<p><code>dig abc.home.lan</code> 就发现域名指向了 <code>127.0.0.1</code> 了。</p></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/2/">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
+</ul></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/2/">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       
       if(true) {
