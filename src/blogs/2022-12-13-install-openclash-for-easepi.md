@@ -16,7 +16,6 @@ tags:       ["homelab", "easepi", "ars2", "软路由"]
 
 ![](../img/in-post/openclash-release-page.png)
 
-
 下载之后本来打算用 `scp` 拷贝过去，但感觉 openwrt 里的这个 ssh 有点不太一样，scp 会失败，最终还是要从页面的「系统」-「文件传输」把下载的安装包传过去。
 
 ![](../img/in-post/upload-file-in-asr2.png)
