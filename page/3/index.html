@@ -52,7 +52,291 @@
         }
       }
     })
-  </script><script async="" defer="" data-website-id="443212e9-fd0b-411e-a523-0d0ec604ee8a" src="https://get.aisensiy.me/umami.js"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about/">About</a></li><li><a class="leading-7 block hover:underline" href="/archive/">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags/">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials/">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/java-migrate-from-11-to-17/">Java 版本从 11 更新到 17</a></h1><h2>2022 May-23</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>最近在实验一个用 GraphQL 支持 REST 接口的方案，需要在 Java 里写大量的 graphql 的内容，如下所示。</p>
+  </script><script async="" defer="" data-website-id="443212e9-fd0b-411e-a523-0d0ec604ee8a" src="https://get.aisensiy.me/umami.js"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about/">About</a></li><li><a class="leading-7 block hover:underline" href="/archive/">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags/">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials/">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/use-owntracks-to-record-my-daily-location-usage/">使用 OwnTracks 记录每天关键地点的停留时间</a></h1><h2>2022 July-18</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>众所周知，手机是可以做定位的。我个人比较喜欢做一些 "自我量化" 来追溯具体的时间都去哪里了，那通勤时间和办公室停留时间这种信息自然也很想记录下来。所以在很久之前我就开始各种搜罗，想要找一个方案。但很遗憾，找了一大圈，也没找到一个让我满意的，非常失望，这里记录下之前踩的坑，然后记录下目前找到的一个还可以的方案。</p>
+<h2 id="使用-ios-的关键指令shortcuts" style="position:relative;">使用 iOS 的关键指令（shortcuts）<a href="#%E4%BD%BF%E7%94%A8-ios-%E7%9A%84%E5%85%B3%E9%94%AE%E6%8C%87%E4%BB%A4shortcuts" aria-label="使用 ios 的关键指令shortcuts permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>shortcuts 这个东西有点像是一个手机版本的 <a href="https://ifttt.com/">IFTTT</a>。它包含一些触发器，可以自动触发某些事件，然后去串联多个应用以实现一些很 fancy 的功能。常见的触发器包括：</p>
+<ol>
+<li>地理位置相关的：离开、到达某个区域</li>
+<li>时间相关：几点几分到了</li>
+<li>wifi 相关：wifi 开启、关闭、自动连接了什么局域网</li>
+</ol>
+<p>等等等，具体就不细说了。</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/9c99f29206cc6642ef1a8f5ec78070e6/8efc2/iphone-short-cuts.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 216.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAArCAYAAAB4pah1AAAACXBIWXMAAAsTAAALEwEAmpwYAAAFCUlEQVRIx5VW3U4bRxQ2ISQ3EW8QpDSkym2aCyTehWeI+hyV+hiVKvUOQWibJiKCGjt2RYDaBrsGDMixjfd3dmd2d9Zfdc56Fxtw7Kz0ecazu2fPN3O+c07uwYN5vHz5Eq9evcLy8jLm5uaQy+VmwsOHD/H8+XMsLS1hdXUVi4uLtJ7DD69f49mz7/Do8WMsLDzCwsJCBnppfn6eQfPR9SdPnuDFi+/x9OlTrKysJB9aW1vD+78+oFQsIb/7Nwr5AnZ3U+yhWPwH5fJnRrFYxs7OXnZ/ZyeP9++3sb29i42N3/HmzY/IyRC47APNDnDWTeZRBIQhMBgA1WodhUKJDTebLV6je/QMQesEcQy+cp2ei+aVwEnLw3FLoHEpYFoCliXgOBKVygny+U/Y2/vExmnNNJP7t2EYLnKu68MTNxCuB9tO4cP3IwTBgEFzWnOcSZDI0cR1JXxPwvPC4csxlNK8fvsFWpsEeiZHExXEcBVgWRZqtRoajQbOz89x+xoMBryHdzFgCKGQC6VE7Urjp/UY/X4fR0dHODs7R7PZhFIBtNbwPA8RncCEK45jhucpoiwRxwPE9CX6GV5kwPclj6MGU29Gka6zh0w5jGH5CeXDw0O4rnuvJ/cZS0FOscFgSPnnzRjX19eoVCps0HUFhPAQBAGmXXcoE1UOzBH3bdtho2Twa56NIqHsSARag/zodDr4+HH7DuXRk5xEN6PsuwptKbFnO+h0uzg8OORDILqWZcNxHD7paZTJcEZZRzHAGo2gdYwo0kyXaDuOy+uJF3HmzW3Qe0IMlWLZCch4Ap/dFyLgkdZIctPASqFJRBuvI/gyhJQBlKLxBvSf19TNPFuTNyOFYC5SEuX/ND5WY5i9KxQKRUgp8W3XgMF76Hs+2iawf9KHbfXRu+7D83xcX/fR7xs80uHcKGIco3HIp2zbcvgFINIxxx3dJKmloFOeOQ6J8qeGxocjjX7nAnuFIoQQ30SYTjkLG1/46NjAYcOAbRmwbJu9pJAxTZO9/SaDo5Qplnzfh1KKMSvVMcpaSRTqGu8OQhi9S2xsvMX+/mccHBzckd+05MAGqY70HKDSNODYJkzTgpSK6RJoP23b/qr8Ug8Tys7oKevsVMMwzBJrKrlJiWGMMunP8WO0bcA0+qhUqiiXy1xX8vk8e5d6MRNl4UoINUDbAqTvcxCTUrrdHmcaSmWGYcIwjNkok6BJi1EYDbUbZFAqGtO1UpOQPMdaJoOUICyL6rPiYi4lFagwK/azgrMNpSbKf3RR7mu322i1LvDlS2dMu+l8Uj6kPXQpH0oh0XI0ti5i3rd/j4648lWrVVZMCgr0SbV5LGMT70APILij0pk35C1lGzoYkiGVWIrP+4J8LGySQk96jTmIqWP4Wj6cKj0lNM69c/zW+RXdbhelUom9IopkmMa0g5ipLlMZVTqAF3sIg5AVQi9T7JEMKbBJgmnBvy++0zI7pJyEi+cGcIXKWjPPCxhpoUrbtantHP1QX6gkOPbS3jBBxGMYDhCGMd8j40RtHAGP3HC6bgAVCVjBGdM7Pj7G6ekp6vU694j1+gnvK4USrd2v65FD8YSGpVo46P0CV7icFKhPJGPUJ15cXPBar9fLEsWUzsFHFCZfDIKIY5EiPwhCbjhZ59FNGaCsPgq6l45DLaddgZd1CLSntVoDGxtb2Np6h7dv/8Tm5h88rq9volTa52esW1qnQ/kf+lqKrtEnw2gAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="iphone short cuts"
+        title="iphone short cuts"
+        src="/static/9c99f29206cc6642ef1a8f5ec78070e6/5a190/iphone-short-cuts.png"
+        srcset="/static/9c99f29206cc6642ef1a8f5ec78070e6/772e8/iphone-short-cuts.png 200w,
+/static/9c99f29206cc6642ef1a8f5ec78070e6/e17e5/iphone-short-cuts.png 400w,
+/static/9c99f29206cc6642ef1a8f5ec78070e6/5a190/iphone-short-cuts.png 800w,
+/static/9c99f29206cc6642ef1a8f5ec78070e6/8efc2/iphone-short-cuts.png 828w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<p>不过很显然，我可以使用那个地理位置的触发器去记录我什么时候离开了哪里、什么时候到达了哪里。比如对于我通勤的记录，那我就设置两个关键地点：家和公司，然后记录离开到达时间就行了。具体就是这么个样子：</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/e2d7bb4f6a7fb526700ad31b9355c5fb/81315/arrive-company-shortcut.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 108%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAWCAYAAADAQbwGAAAACXBIWXMAAAsTAAALEwEAmpwYAAADuElEQVQ4y5VV21LcRhAVt28IYJL8tfOS5CmpisspyjHFxRCwHVO2H+yAXQQDy9502dVKq9toNDPSSHNSM9rFkOKBzNapbc30HnWf7p61VlaWuuvra/Xi4hKzLIuvrKzw5eVlvrCwYPDo0TpfW/uG67Pvv/uWLy8vGXtxcZEvLbW29tvY2OCrq6vc+vHnX0YHh39hf/9P7O7u48mT3/H06SZ2dl6YvaOXx/j1t2d4/MNP2D04xrOtA+y9OMTW1g42N//A/v4h9vYO8OrVGzx/vg2LlnBZCb2UlECn00e/74BxaTYLDkQUqBrAzwDC0e5ThiTJ2x8qoGnafSsn1IuiGEEwVVmWm8O6VhCiAucCBS0MeEHBMh9dN8WXkcJwQnH2+RSMFWgaBSklKC1gMVZ6/iSA63oqjhOUZQUhSpSVhJQ1GOMoCgHOK/QmEv2wgRNK+B0Hx5cc134bWt0AlNewPHfsZWmOqlJKhz2HTp8QhiwrQLICBauQMGCcAuOkQVXVkNqvNkmbj6xrWM449YajDNE0VH+fnOLt2/d49+49Pn48MSlL2Zj085zBcT2EUYJG4d4lSgWLFMoLE47xaKRev36D7e0dg6Ojl4ZQ61OWEmlK4LkulGpmhbjL+k96jmmRwOp1B95g4ILxRtU17lRtnnKec0M4HNpI0hRpktwhK8sSV0EHKc1gBcHUy+IRGlkYDeu6MVVuddRaSXBRgZAcQeBj7LpwXB85b0BZBS5qpFkOqnWmHFZZll4wvobnXCnf9xEEAcbjMVzXhRCirWDdmNaJoxEGFzauvAZnHnAxamDHwND1EYYT42flOfNc14dte0qnpIUfDGz0en3ovtROWsMoypDEU9hTadoDqpll8xXazxDqHuNcKs4l5hCiBqWibRvCDNK0AEkJ8tmzPrsNQgpYhDBPG4QUavZtMCfS7WKKkqSmyrY9xnSaIk3zmxfdxozQPKj7HMwL8go0HcHpneLTpwucnHzG2dkXM8vzSNOsQBQXDyFkZvQmkykuL6/h+6GR5L6U4+SBhIRw0JzAHvbx4cMp+j3byDDXbS7R/yBkyKkwlXacEcIwNoT/9Ukz9jBCXRhCqGkjSls7STJEUXKzr6HtG8I8Z2oeugEpbhHq9Ii+4uB5IziOizCcIooixHGMJEmgr74sy1rCNgKmGCshxLwXq1lkLSFjDKIUZm41bq+6rlHJGmEmv0ZIqVDDoYvz8ytcXHTMX0F7MbQp60tXlBXKqoYe0W63i16/j6HtgIvSEOqZ/xdrCUtn8lzKhQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="arrive company shortcut"
+        title="arrive company shortcut"
+        src="/static/e2d7bb4f6a7fb526700ad31b9355c5fb/5a190/arrive-company-shortcut.png"
+        srcset="/static/e2d7bb4f6a7fb526700ad31b9355c5fb/772e8/arrive-company-shortcut.png 200w,
+/static/e2d7bb4f6a7fb526700ad31b9355c5fb/e17e5/arrive-company-shortcut.png 400w,
+/static/e2d7bb4f6a7fb526700ad31b9355c5fb/5a190/arrive-company-shortcut.png 800w,
+/static/e2d7bb4f6a7fb526700ad31b9355c5fb/c1b63/arrive-company-shortcut.png 1200w,
+/static/e2d7bb4f6a7fb526700ad31b9355c5fb/29007/arrive-company-shortcut.png 1600w,
+/static/e2d7bb4f6a7fb526700ad31b9355c5fb/81315/arrive-company-shortcut.png 1656w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<p>我是每天创建一个笔记本，然后把信息都追加到笔记本里了。</p>
+<p>然后似乎大功告成了，可是很遗憾，实际上完全不生效，网上一搜很多相关问题，但就是没解决方案，我尝试了很多的方法都不成功。只有偶尔会成功那么一下下...我甚至咨询了在 Apple 工作的同学，最终也没有得到解决...</p>
+<h2 id="owntracks" style="position:relative;">owntracks<a href="#owntracks" aria-label="owntracks permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>iOS 自带方案不行，就只好自己写 app 了，不过很遗憾我并没有移动端开发的经验，所以这个事情就搁置了...直到我一天发现了 owntracks 这个东西。</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/ec642d3687bb6e37edd09ee325616e40/56e36/owntracks.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 86.49999999999999%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAYAAADdRIy+AAAACXBIWXMAABYlAAAWJQFJUiTwAAACDklEQVQ4y61RzW8ScRDdvww/oFgMPVS9G+PRkx40VS8ljSJSTEQbkxZi4kGjiy1b2x40Hgye9GZlaaHHAsvH7nLhc3efmSk/uuuC0cRNXub95s28mQFpflXBLFxI5hFJKbi28QlXnu0h/DiPP9UTpFlCZFVBMLGJq+sf8bKgYkX5hlBii/M06J8MRYMwyH2v4Pbbrwg8yPlqphqSKAo4JvMIJ/NYfLqDS+mdycmX07u4mDqt8fRM21AIkdQ2wkkF17OfcfN1geONV19w600Bi+ld1uZT21M39Z0cTrzHXFxmBB++Y4TiOYTGb6ERpp3tMYw8+YAz9zM4v7SGaCyLhVgW55bWELi3jrN3XyC6vIHocgYLsQwCd55j7pHM13gMQ4lNuBGM58abyQjyVvI4J/tw0rPl6ZfUahuEEkOHWtVRqukubjB347TmpNcNCf/5kyzbAcG2HRwfV1FUVVRrNVSOjnBYLuPH/j7KlQrqmsaR9J/FItRSCQcHhzBMEw4Ay7bZQ3IcZ+JOvNfrwbIsDIdD9Pt9DAYD5qPRiDmh2+1yjrht25Ne3lA8qMEt/j5oFqcekaPIhmTWbDbRaDSgaRpzXdf5TWi322i1Wox6vQ7DMJiTRrW0qc+QCkikSAZkSFxEoYkBYqBpmp7LJoZimtjEbUAbEciE8p1Oh41Enn53n6E4Q0wXoMa/+cSf8gvevElJ78MBRAAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="owntracks"
+        title="owntracks"
+        src="/static/ec642d3687bb6e37edd09ee325616e40/5a190/owntracks.png"
+        srcset="/static/ec642d3687bb6e37edd09ee325616e40/772e8/owntracks.png 200w,
+/static/ec642d3687bb6e37edd09ee325616e40/e17e5/owntracks.png 400w,
+/static/ec642d3687bb6e37edd09ee325616e40/5a190/owntracks.png 800w,
+/static/ec642d3687bb6e37edd09ee325616e40/c1b63/owntracks.png 1200w,
+/static/ec642d3687bb6e37edd09ee325616e40/29007/owntracks.png 1600w,
+/static/ec642d3687bb6e37edd09ee325616e40/56e36/owntracks.png 1750w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<p>简单来说，owntracks 就是个不收集你个人信息，只负责将你的信息上报到你指定的服务器的一个工具。所以其实 owntracks 分为两个部分：</p>
+<ol>
+<li>app 使用手机的定位功能获取经纬度</li>
+<li>server 将 app 上报的信息存下来</li>
+</ol>
+<h3 id="安装配置-app" style="position:relative;">安装配置 app<a href="#%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-app" aria-label="安装配置 app permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>我最开始的需求很简单，就是周期性记录我的位置，然后周期性上报就好了，后续的数据处理交给服务端做好了。不过 OwnTracks 除了这个朴实的功能外，也有那种区域触发的功能。这样我就可以和 iOS 快捷指令一样关注几个地点就好了。</p>
+<p>不过相比于 iOS 这边直接把数据记录到笔记本，我需要一个 track server 接受上报的信息。owntracks 支持两种协议：MQTT 和 HTTP，鉴于我只会 HTTP 就自己写了一个简单的 HTTP server 去接收这些信息了。然后在 app 这边配置下服务端信息就可以接收数据了。</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/804202ac9e72326d898a87415ba42d29/8efc2/owntracks-server-config.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 216.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAArCAYAAAB4pah1AAAACXBIWXMAAAsTAAALEwEAmpwYAAAEjElEQVRIx91Xy04jVxBtIbHkL/gQtpMVf8IaVmjYTz6Ax3ZgMxGaQUEziQIJiiISsHgYjME2fmP3+/a73d0nqmq3sQcbG2WXko5u39dx3bpVdcuSsDzc3Nzj8vIGd3dlGIYNy/IghMswzVFk45blQ1FM5HJXuLq6xdevv6LTUSHZlodyqYLi3T0q5SpM04EQGaEH1+3BdUM4TgDPi3iMiIlQlg0mu7+v4OjoBN2uBknTPchGBMWIIesRVN1nDW3bZ21LpUdUq000mx0Ui2WYhs1ztMaxfYRhAt+PkCTgH5VqbQv5ssDfBYF/7gRKDQuKakHVbHS6Bo5//4txdn6N347+RKOpQNMdXkOQFcHoyoL70mNdRb2podFKUW2oqNRS0FzjSTDqLRPNJ4vHKjWFUSZU++AxtqEPTRNQVZMhTBd2/8jUWpbLx6PW0K2+jV2e99wQQRAjDGI+tjAdSDSpKAZDlnVeSLbIbjMDjQ+L5/VYgVKpioeHR7RaXR6XkiRBp9NBu91Gq9VCo9GAEIInaY5A4vs+NjY28O7dD1haWsLi4iIWFhYwNzfHmJ+fx/LyckrYarVRr9fRbDZRLleg6waTxHHCIAnDHj59+olJV1ZWsLa2hg8ffsTHj7vY29vD1tYW3r/fSI9M6pMNyM98Px57ZLLjLCKRk7bbCqrVFprNLkNVBTuvYTh8CQT61jSLo4NsR236LQagvuT7IbpdGbKsot3uMCzLAY17XsDw/QBBEPKxp0EiNavVKmq1Gl+Mqir4L8KEjuMw4fb2NlZXV7G+vo6dnR1sbm5id3cX+/v7uLy8HNz8VELbtiHLMk5PT3FwcIDj42Pk83mcn5/j5OQEuVwO3W53dsJZJY7jgW9OAvvh7e0tH0nTNN4YRRFvHsY0zUY0NE0TruvOvGkqoa7rHFqTJOljZsJnG43aI06SIboU8TQbPuswXvwwQV2J8GREsP3pekrfG3/0ImJ4QYyO0WMIJ+Kx6JU9UvogeS+SwXBScJ0Utp2tnQxODo1Gh18wSqIvF6VJwpjwnA6DxiUKaCEsWJYNx6HM7DBc1+e+5/no9aIXScCh59XrwfHSb2qDLDlUKhXc3OQ5yVKIUdbOQGE5TupqhIYa84U9yhFqSoQo7rsNu0j8nO7TfhodUZwgip5Dbti1su/h9kUsD0j7fd2O8fDUQ1OLoIj4bY49Nkr62mbvS6bJcD/sxYNviXR5fKzg4uKCbXl/X+SEWyqVUCgUBi/ga1LqJDCdiM8lUWoXwoZhCL5t00yRfgu+bbrVIJgMwwrheiHCoJf6IVVSk5BVW6+BqoqBH74WJVlJ9xZIb93wvyJ8zWaz23NC+hpHNhupNFygP6ev0Y3kPuPmLHKpfjtEmPohFUC3tw9DG1KNqBIrl+u4vi6O/N0QfbLriovakwvHTvsjhIVCaeSo5Ki2HSCfL+L0NNdPrLQxzeSa7uKPaxfF+neEaTQ4XGuPHMlKWyrjCMNjlnCh6h5r11Hd8TakxaQF/dEpFB7w5cshDg+/4fDwlwE+f/4ZZ2cXvIZNYqdFfkb4L/XTyxVHq1GLAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="owntracks server config"
+        title="owntracks server config"
+        src="/static/804202ac9e72326d898a87415ba42d29/5a190/owntracks-server-config.png"
+        srcset="/static/804202ac9e72326d898a87415ba42d29/772e8/owntracks-server-config.png 200w,
+/static/804202ac9e72326d898a87415ba42d29/e17e5/owntracks-server-config.png 400w,
+/static/804202ac9e72326d898a87415ba42d29/5a190/owntracks-server-config.png 800w,
+/static/804202ac9e72326d898a87415ba42d29/8efc2/owntracks-server-config.png 828w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<p>注意这里要配置到具体的某一个路径的，比如 <code>http://112.118.221.2/pub</code> 而不是只给个域名或者 ip 地址就完事了。</p>
+<h3 id="编写-track-server" style="position:relative;">编写 track server<a href="#%E7%BC%96%E5%86%99-track-server" aria-label="编写 track server permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<blockquote>
+<p>为啥不用官方的？</p>
+<p>OwnTracks 有官方的 track server ，但有这么几个问题：</p>
+<ol>
+<li>代码是 c 的，自己部署有点晦涩难懂，只能用 docker 部署吧，但自己修改的可能性就很小了</li>
+<li>同时支持 MQTT 和 HTTP 而实际上我觉得对个人来说 HTTP 会更简单一些吧，那 MQTT 部分的代码就很没必要了</li>
+<li>有一些和 Google 地图集成的功能，这些东西在国内统统没得用</li>
+</ol>
+</blockquote>
+<p>OwnTracks 会以 json 的格式把所有的信息都上报到服务器，提交的具体结构可以直接 print 出来看看。这里给出我的 server 的一个片段：</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">
+<span class="token keyword">import</span> json
+
+<span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask<span class="token punctuation">,</span> request
+
+
+FILENAME <span class="token operator">=</span> <span class="token string">"data.jsonl"</span>
+
+app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token string">"hello"</span>
+
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">"/pub"</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">"POST"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">pub</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># print raw request data</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>request<span class="token punctuation">.</span>json<span class="token punctuation">)</span>
+    <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>FILENAME<span class="token punctuation">,</span> <span class="token string">"ab"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+        f<span class="token punctuation">.</span>write<span class="token punctuation">(</span>request<span class="token punctuation">.</span>data<span class="token punctuation">)</span>
+        f<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">b"\n"</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token string">"done"</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Starting server..."</span><span class="token punctuation">)</span>
+    app<span class="token punctuation">.</span>run<span class="token punctuation">(</span>host<span class="token operator">=</span><span class="token string">"0.0.0.0"</span><span class="token punctuation">)</span></code></pre></div>
+<p>可以看到我就是把所有的数据到塞到了一个 <code>data.jsonl</code> 的文件里了，反正就是我自己的数据，没几条，这样就够了。</p>
+<h3 id="展示数据" style="position:relative;">展示数据<a href="#%E5%B1%95%E7%A4%BA%E6%95%B0%E6%8D%AE" aria-label="展示数据 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>有了这些数据，我就可以把每天的通勤给按照时间顺序展示出来了，代码如下：</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">"/report"</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">report</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    data <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>FILENAME<span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+        data <span class="token operator">=</span> f<span class="token punctuation">.</span>readlines<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    data <span class="token operator">=</span> <span class="token punctuation">[</span>json<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>item<span class="token punctuation">)</span> <span class="token keyword">for</span> item <span class="token keyword">in</span> data<span class="token punctuation">]</span>
+    data <span class="token operator">=</span> <span class="token punctuation">[</span>item <span class="token keyword">for</span> item <span class="token keyword">in</span> data <span class="token keyword">if</span> item<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"event"</span><span class="token punctuation">)</span> <span class="token keyword">in</span> <span class="token punctuation">[</span><span class="token string">"leave"</span><span class="token punctuation">,</span> <span class="token string">"enter"</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+    chinaTz <span class="token operator">=</span> pytz<span class="token punctuation">.</span>timezone<span class="token punctuation">(</span><span class="token string">"Asia/Shanghai"</span><span class="token punctuation">)</span>
+    <span class="token comment"># datetime from unix timestamp</span>
+    data <span class="token operator">=</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+            <span class="token string">"desc"</span><span class="token punctuation">:</span> item<span class="token punctuation">[</span><span class="token string">"desc"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token string">"event"</span><span class="token punctuation">:</span> item<span class="token punctuation">[</span><span class="token string">"event"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token string">"date"</span><span class="token punctuation">:</span> datetime<span class="token punctuation">.</span>fromtimestamp<span class="token punctuation">(</span>item<span class="token punctuation">[</span><span class="token string">"tst"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> chinaTz<span class="token punctuation">)</span><span class="token punctuation">.</span>strftime<span class="token punctuation">(</span>
+                <span class="token string">"%m/%d"</span>
+            <span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token string">"time"</span><span class="token punctuation">:</span> datetime<span class="token punctuation">.</span>fromtimestamp<span class="token punctuation">(</span>item<span class="token punctuation">[</span><span class="token string">"tst"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> chinaTz<span class="token punctuation">)</span><span class="token punctuation">.</span>strftime<span class="token punctuation">(</span>
+                <span class="token string">"%H:%M"</span>
+            <span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token string">"datetime"</span><span class="token punctuation">:</span> datetime<span class="token punctuation">.</span>fromtimestamp<span class="token punctuation">(</span>item<span class="token punctuation">[</span><span class="token string">"tst"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> chinaTz<span class="token punctuation">)</span><span class="token punctuation">.</span>strftime<span class="token punctuation">(</span>
+                <span class="token string">"%m/%d %H:%M"</span>
+            <span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token string">"tst"</span><span class="token punctuation">:</span> item<span class="token punctuation">[</span><span class="token string">"tst"</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">for</span> item <span class="token keyword">in</span> data
+    <span class="token punctuation">]</span>
+    <span class="token comment"># remove item with same time</span>
+    masks <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token boolean">False</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token builtin">len</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token builtin">abs</span><span class="token punctuation">(</span>data<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"tst"</span><span class="token punctuation">]</span> <span class="token operator">-</span> data<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"tst"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">120</span> <span class="token keyword">and</span> \
+           data<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"desc"</span><span class="token punctuation">]</span> <span class="token operator">==</span> data<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"desc"</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+            masks<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">True</span>
+            masks<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">True</span> <span class="token keyword">if</span> data<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"event"</span><span class="token punctuation">]</span> <span class="token operator">!=</span> data<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"event"</span><span class="token punctuation">]</span> <span class="token keyword">else</span> <span class="token boolean">False</span>
+    data <span class="token operator">=</span> <span class="token punctuation">[</span>item <span class="token keyword">for</span> i<span class="token punctuation">,</span> item <span class="token keyword">in</span> <span class="token builtin">enumerate</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token keyword">if</span> <span class="token keyword">not</span> masks<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span>
+    <span class="token comment"># group by time</span>
+    grouped <span class="token operator">=</span> OrderedDict<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> item <span class="token keyword">in</span> data<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> item<span class="token punctuation">[</span><span class="token string">"date"</span><span class="token punctuation">]</span> <span class="token keyword">not</span> <span class="token keyword">in</span> grouped<span class="token punctuation">:</span>
+            grouped<span class="token punctuation">[</span>item<span class="token punctuation">[</span><span class="token string">"date"</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        grouped<span class="token punctuation">[</span>item<span class="token punctuation">[</span><span class="token string">"date"</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">.</span>append<span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+
+    result <span class="token operator">=</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">[</span>
+            date<span class="token punctuation">,</span>
+            <span class="token string">"\n"</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>
+                <span class="token punctuation">[</span>
+                    <span class="token string-interpolation"><span class="token string">f"    </span><span class="token interpolation"><span class="token punctuation">{</span>item<span class="token punctuation">[</span><span class="token string">'time'</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span><span class="token string">\t</span><span class="token interpolation"><span class="token punctuation">{</span>item<span class="token punctuation">[</span><span class="token string">'event'</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span><span class="token string">\t</span><span class="token interpolation"><span class="token punctuation">{</span>item<span class="token punctuation">[</span><span class="token string">'desc'</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span><span class="token string">"</span></span>
+                    <span class="token keyword">for</span> item <span class="token keyword">in</span> items
+                <span class="token punctuation">]</span>
+            <span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">]</span>
+        <span class="token keyword">for</span> date<span class="token punctuation">,</span> items <span class="token keyword">in</span> <span class="token builtin">reversed</span><span class="token punctuation">(</span>grouped<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">]</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+        <span class="token string">"\n"</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">[</span>y <span class="token keyword">for</span> x <span class="token keyword">in</span> result <span class="token keyword">for</span> y <span class="token keyword">in</span> x<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token number">200</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span><span class="token string">"Content-Type"</span><span class="token punctuation">:</span> <span class="token string">"text/plain; charset=utf-8"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span></code></pre></div>
+<p>最终展示效果大概就是这样子：</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">07/18
+    09:11	leave	home
+    12:22	enter	gym
+    13:41	leave	gym
+    15:00	enter	office
+07/17
+    09:11	leave	home
+    12:22	enter	gym
+    13:41	leave	gym
+    15:00	enter	office
+    17:00 leave office</code></pre></div>
+<p>这个 server 的代码也放到了 <a href="https://github.com/aisensiy/owntracks-server">owntracks-server</a>。</p>
+<h2 id="遇到的坑" style="position:relative;">遇到的坑<a href="#%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91" aria-label="遇到的坑 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>很久之前就处理过这种坐标数据，还是有不少坑的。趁这次再次接触到也做一个记录。</p>
+<h3 id="ping-pang-问题" style="position:relative;">ping-pang 问题<a href="#ping-pang-%E9%97%AE%E9%A2%98" aria-label="ping pang 问题 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>经纬度坐标貌似并不是非常稳定，会有误差，你在同一个位置可能会有不同的坐标，这就会导致你可能动都没动但是突然你就离开了一个地方然后又回到了这个地方。</p>
+<p>对于这种情况就只能做个简单的过滤，把那些时间戳非常接近的事件直接忽略掉。当然，这种过滤也可以顺便把你路过的那种地点一并清理掉。</p>
+<h3 id="坐标系转换" style="position:relative;">坐标系转换<a href="#%E5%9D%90%E6%A0%87%E7%B3%BB%E8%BD%AC%E6%8D%A2" aria-label="坐标系转换 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>出于一些特殊的考虑，不同的地图给的具体经纬度都是有区别的，就是说你所在的同一个位置对于不同的地图给你标记的经纬度是不同的。目前有三个主流的坐标系：</p>
+<ol>
+<li>WGS84 坐标系	地球坐标系，国际通用坐标系</li>
+<li>GCJ02 坐标系	火星坐标系，WGS84 坐标系加密后的坐标系；Google 国内地图、高德、QQ 地图 使用</li>
+<li>BD09 坐标系	百度坐标系，GCJ02 坐标系加密后的坐标系</li>
+</ol>
+<p>在我 iphone 上我的实际位置和地图标记的位置是有偏差的，我想这应该是苹果没有考虑到中国和国外使用的坐标系是不同的，也就是说 iOS 给我获取的经纬度应该是 WGS84 的，但实际展示却用了 GCJ02 的高德地图，所以展示的位置就不对了。我猜测这也很有可能是快捷指令无法触发的原因所在。</p>
+<p>在目前的情况下，这个问题只是对 app 本身的展示有影响，对事件触发并没有影响。可以先不管。</p>
+<h2 id="后续的工作" style="position:relative;">后续的工作<a href="#%E5%90%8E%E7%BB%AD%E7%9A%84%E5%B7%A5%E4%BD%9C" aria-label="后续的工作 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ol>
+<li>做一些基本的统计，比如通勤时间、比如办公时间</li>
+<li>除了区域事件外也试试其他的数据，比如去自动发现停留区域，比如集成地图 api 展示具体的停留区域等</li>
+<li>把数据直接塞进 <code>data.jsonl</code> 时间久了可能还是不太够，还是需要起码按照月份做个数据拆分</li>
+</ol></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/java-migrate-from-11-to-17/">Java 版本从 11 更新到 17</a></h1><h2>2022 May-23</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>最近在实验一个用 GraphQL 支持 REST 接口的方案，需要在 Java 里写大量的 graphql 的内容，如下所示。</p>
 <div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
 <span class="token annotation punctuation">@AllArgsConstructor</span>
 <span class="token keyword">class</span> <span class="token class-name">GraphQLTest</span> <span class="token punctuation">{</span>
@@ -338,172 +622,7 @@ Unable to determine the device handle <span class="token keyword">for</span> GPU
 <p>看不懂，搜了搜也有点懵逼。这台机器已经运行了挺久了，驱动也在短期内没有出过问题，那么就感觉是硬件出问题了。重启机器后，<code>nvidia-smi</code> 恢复了。不过如果有其他任务使用了 GPU 就又会出现这个问题了。所以考虑使用 <code>nvidia-smi</code> 的命令先屏蔽掉这块报错的 GPU 。</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ nvidia-smi drain  <span class="token parameter variable">-p</span> 0000:89:00.0 <span class="token parameter variable">-m</span> <span class="token number">1</span>
 Successfully <span class="token builtin class-name">set</span> GPU 00000000:89:00.0 drain state to: draining.</code></pre></div>
-<p>然后再执行命令 <code>nvidia-smi</code> 就看不到这块卡了。</p></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/play-with-jacoco/">配置 jacoco 以提供更合理的测试覆盖率</a></h1><h2>2022 May-07</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>最近在做一些代码的重构和基础库的迁移，这样的工作绝大部分时候不产生新的功能点，每次更换了类库后也都会将原来对应的测试同步迁移过来，保证新的代码和原来的代码一样工作。不过在迁移的过程中我发现 jacoco 所提示的代码覆盖率越来越低，让我很慌。为了搞明白这是啥原因，做了一些调研，这里把一些结论记录在这里加深印象，也便于后续查看。</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 664px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/69c841087aeaddffca07b2e66e772a58/31493/screenshot-for-openbayes-server-code-converage-before.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 35%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAABYlAAAWJQFJUiTwAAABVklEQVQoz6WQ2UsCARDG/Vd7C3oIKuggKg3EjpcoTdO0zaMyuzYoegmLiAzsoCi0w/siK11BLXf3Fy5WvvvBMPPNMB/fjA4gl88jSRKqqqIoCmVJIl8o8P3d0Lgsy1oulcp8lkoar399oSgq9Xpd400093XVahXvmp8lhwvniptFmwOL1c7cvIV5sxXB7cNsteMP7HByeqb1HU6B7V0Rl+BhZdXLx8fnv2CzyGZz3N7dE316JhaPk0pnSKXTPEYihK9veI3FSSRTFIvv2jyRTPJWLBJPJMlkczQaMqraJtgpmqfLiqK9RSdVKuiNs/QPjzE0aqB3cISe4AR99yYGHmaw+ZeZHNdjmprGZDKwJ3ZzeNTFRcjYElPQ7LWgq9VqeNc3cQoefOt+bMsuhOsAvheRjdgBx+dBtja3EMV9RHGb0KWN8NUCkeju39/ao6OT1TZnvw5/AGgh9S3ToLQFAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="screenshot for openbayes server code converage before"
-        title="screenshot for openbayes server code converage before"
-        src="/static/69c841087aeaddffca07b2e66e772a58/31493/screenshot-for-openbayes-server-code-converage-before.png"
-        srcset="/static/69c841087aeaddffca07b2e66e772a58/772e8/screenshot-for-openbayes-server-code-converage-before.png 200w,
-/static/69c841087aeaddffca07b2e66e772a58/e17e5/screenshot-for-openbayes-server-code-converage-before.png 400w,
-/static/69c841087aeaddffca07b2e66e772a58/31493/screenshot-for-openbayes-server-code-converage-before.png 664w"
-        sizes="(max-width: 664px) 100vw, 664px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span></p>
-<h2 id="代码测试覆盖率是什么意思" style="position:relative;">代码测试覆盖率是什么意思<a href="#%E4%BB%A3%E7%A0%81%E6%B5%8B%E8%AF%95%E8%A6%86%E7%9B%96%E7%8E%87%E6%98%AF%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D" aria-label="代码测试覆盖率是什么意思 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>在 <a href="https://www.baeldung.com/jacoco">Intro to JaCoCo</a> 这里讲的非常明白了，代码测试覆盖率（或者说代码覆盖率）讲的是在跑测试的时候，到底有多少代码被执行了。按照粒度来分可以有以下几种：</p>
-<ol>
-<li><code>Line coverage</code> 按照字节码统计的多少 instruction 被执行了</li>
-<li><code>Branch converage</code> 按照 <code>if/else</code> <code>switch</code> 等分支统计多少分支被执行了</li>
-</ol>
-<p>由于代码确实会有很多防御性的 <code>if/else</code> 导致其实每一个分支并不是很对等，所以我个人感觉 <code>Line coverage</code> 会稍微好一些。</p>
-<p>不过要注意，测试覆盖率只反映你多少代码在测试的时候被执行了，执行了一次就算是执行了，但事实上不同的参数会导致不同的结果，很多边界条件是否被测试到也表现不出来。因此 100% 测试覆盖率不表示所有代码都是对的了。如何写测试本身是一件极其复杂的事情，有些编程思路如 TDD 都是围绕测试进行的，我也讲不明白。</p>
-<h2 id="是什么导致覆盖率越来越低" style="position:relative;">是什么导致覆盖率越来越低<a href="#%E6%98%AF%E4%BB%80%E4%B9%88%E5%AF%BC%E8%87%B4%E8%A6%86%E7%9B%96%E7%8E%87%E8%B6%8A%E6%9D%A5%E8%B6%8A%E4%BD%8E" aria-label="是什么导致覆盖率越来越低 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>为了搞明白为什么我的测试覆盖率一降再降，我需要用 <a href="https://www.eclemma.org/jacoco/">JaCoCo</a> 给我生成一下报告，我去看一下到底哪些地方的哪些代码测试出了问题。</p>
-<p>我的项目是用 <code>gradle</code> 管理的，执行如下命令重新跑一下测试并生成报告：</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">./gradlew cleanTest <span class="token builtin class-name">test</span> jacocoTestReport</code></pre></div>
-<p>然后去项目目录 <code>build/reports/jacoco/test/html</code> 打开 <code>index.html</code> 看看情况，发现核心为题在于<strong>很多生成的代码</strong>被纳入了代码测试覆盖中。具体来讲有两个方面的内容：</p>
-<ol>
-<li>Lombok 生成的很多代码</li>
-<li>引入 QueryDSL 后其和对应的 <code>Entity</code> 生成的 <code>Q + Entity</code> 的名称的代码</li>
-</ol>
-<p>那问题就显而易见了，尤其是后者，每次迁移一个 JPA 的 Entity 类型就会对应生成一段 <code>Q + Entity</code> 的代码，这部分代码统统成了测试覆盖率的分母，覆盖率能不低么。</p>
-<p><figure class="gatsby-resp-image-figure" style="">
-    <span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/14cb1429125421eb08b990822b166896/25e83/querydsl-generated-code-screenshot.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 73.00000000000001%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAABYlAAAWJQFJUiTwAAACHElEQVQ4y42SiWocMRBE5/+/MQchib07o/s+54XROk4CtomgaEGjp66SttYHc56MMel9rDpe6hyT/1nneRJSXpwtOkHOiZQDIVlS8YTsiMWTSqCNQu2Z2gvn7JzneFMw4Rxs99vOvkue5Tdu5ifP+sb34zPf90/8OL7wJL+iwhOxCBiJORLnG5ojrrqlcmLDwLqMjx0bJtFXoo54FSj+mhBChTbOh8UP7G+lTaStKNcxvqNdQWtPFommKkEHlM3st0aOY+GuzN7TlutE2YZyDRMGUju0kkSTcSYhtcBoRVSOlNLrI7wLLO2y3JddFyohJGoojHa9XCGnRMmFNDK553f9XrBXyy52Qr5ytAvWYv/wi7yl370tlbnsXlNKqTjEQTSJvGfSnii24Jxj33eUUjhrcdEhkuQedkSUpJL+BUr7AAohOY6DqBP5yKQjUVzBWLOAWusFt8lxJMERBSppeu9/gKVOjG8rw+uAUpJkEjVWtNUIKbDWEkLAFIvL7p0sXoC1nSvDmMfjdmupvtJ0o5lGt51e+uoZYxY454xvAVU0plpsc5ReHo+S/5rwOnBNaZTBGYfVFiPNK+y67NovJ0bhglsupJZ471d/i3lymIr2jeMQ3Pc7Rhjc4bC7xTwbvPFI+chXKrn20iiEF9zNnZu+I50keM82xkmpg9YnpRRyyYw2mHm+6uwntdZl9aq9ddrs5OtvLhXqqMvyL2A4ji0m2rjOAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="User 对应的 QUser 文件"
-        title="User 对应的 QUser 文件"
-        src="/static/14cb1429125421eb08b990822b166896/5a190/querydsl-generated-code-screenshot.png"
-        srcset="/static/14cb1429125421eb08b990822b166896/772e8/querydsl-generated-code-screenshot.png 200w,
-/static/14cb1429125421eb08b990822b166896/e17e5/querydsl-generated-code-screenshot.png 400w,
-/static/14cb1429125421eb08b990822b166896/5a190/querydsl-generated-code-screenshot.png 800w,
-/static/14cb1429125421eb08b990822b166896/c1b63/querydsl-generated-code-screenshot.png 1200w,
-/static/14cb1429125421eb08b990822b166896/29007/querydsl-generated-code-screenshot.png 1600w,
-/static/14cb1429125421eb08b990822b166896/25e83/querydsl-generated-code-screenshot.png 2302w"
-        sizes="(max-width: 800px) 100vw, 800px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span>
-    <figcaption class="gatsby-resp-image-figcaption">User 对应的 QUser 文件</figcaption>
-  </figure></p>
-<h2 id="如何改进" style="position:relative;">如何改进<a href="#%E5%A6%82%E4%BD%95%E6%94%B9%E8%BF%9B" aria-label="如何改进 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>这部分的很多信息在 <a href="https://www.baeldung.com/jacoco-report-exclude">Exclusions from Jacoco Report</a> 可以找到。</p>
-<h3 id="修改-jacoco-配置保证代码覆盖率统计的合理性" style="position:relative;">修改 JaCoCo 配置，保证代码覆盖率统计的合理性<a href="#%E4%BF%AE%E6%94%B9-jacoco-%E9%85%8D%E7%BD%AE%E4%BF%9D%E8%AF%81%E4%BB%A3%E7%A0%81%E8%A6%86%E7%9B%96%E7%8E%87%E7%BB%9F%E8%AE%A1%E7%9A%84%E5%90%88%E7%90%86%E6%80%A7" aria-label="修改 jacoco 配置保证代码覆盖率统计的合理性 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>我们只需要测试自己写的代码，生成的代码不应纳入统计范围。这里直接粘贴下 <code>gradle</code> 里面 <code>jacocoTestReport</code> 的配置：</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">jacocoTestReport {
-    // rule from https://bottom-to-top.tistory.com/36
-    // 过滤 QA-QZ 开头的所有类，对应了 querydsl 生成的 Q + Entity 的格式
-    def Qdomains = []
-    for(qPattern in "**/QA" .. "**/QZ"){
-        Qdomains.add(qPattern + "*")
-    }
-    afterEvaluate {
-        classDirectories.setFrom(files(classDirectories.files.collect {
-            fileTree(dir: it, exclude: [
-                    'com/openbayes/graphql/**',          // 所有 graphql 生成的代码
-                    'com/openbayes/application/data/**', // 所有的 DTO 所在的包
-                    'db/migration/**',                   // 所有的数据库 migration 代码
-                    '**/*Exception*',                    // 所有包含 Exception 的异常类
-                    '**/*Mixin*',                        // 所有 Jackson Mixin 
-                    '**/*Command',                       // 所有带 Command 的类，也是 DTO
-            ] + Qdomains)
-        }))
-    }
-    reports {
-        csv.required = true
-    }
-}</code></pre></div>
-<p>可以看到，我这里主要是按照 <code>classDirectory</code> 对类进行了过滤，包括了以下内容：</p>
-<ol>
-<li>各种生成的代码：graphql 生成代码、querydsl 生成代码</li>
-<li>各种 DTO 和 Exception：<code>*Command</code> <code>data/**</code> 等</li>
-<li>实在不太好测试的东西，比如 migration 脚本、比如 Jackson 的 Mixin</li>
-</ol>
-<p>对 querydsl 这部分的过滤比较 tricky ，因为其默认生成的名字是 <code>Q + Entity</code>，本身过滤就有点难，如果采用 <code>**/Q*</code> 的形式会导致个别以 <code>Q</code> 开头但不是 querydsl 生成的类也被纳入过滤的范围，这里我采用的是 <a href="https://bottom-to-top.tistory.com/36">https://bottom-to-top.tistory.com/36</a> 的方法，过滤掉由 <code>QA-QZ</code> 开头的所有的类。</p>
-<blockquote>
-<p>这里过滤 querydsl 的方法其实官方还有其他方案，但目前 <code>gradle</code> 这边支持不是很好，我目前用的 <code>querydsl</code> 版本为 5.0 有一些 PR 还没有纳入进来，后续如果官方有了更好支持会考虑做相应的调整。</p>
-</blockquote>
-<h3 id="通过注解过滤-lombok-的代码" style="position:relative;">通过注解过滤 Lombok 的代码<a href="#%E9%80%9A%E8%BF%87%E6%B3%A8%E8%A7%A3%E8%BF%87%E6%BB%A4-lombok-%E7%9A%84%E4%BB%A3%E7%A0%81" aria-label="通过注解过滤 lombok 的代码 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>JaCoCo 本身是考虑了要过滤掉生成的代码的，它提供了一个规则：</p>
-<blockquote>
-<p>Starting from JaCoCo 0.8.2, we can exclude classes and methods by annotating them with a custom annotation with the following properties:</p>
-<ul>
-<li>The name of the annotation should include Generated.</li>
-<li>The retention policy of annotation should be runtime or class.</li>
-</ul>
-</blockquote>
-<p>简单的翻一下，就是在 JaCoCo 0.8.2 后，通过提供一个带有 <code>Generated</code> 名称的 <code>RetentionPolicy</code> 为 <code>CLASS</code> 或者 <code>RUNTIME</code> 的注解，JaCoCo 会帮你自动过滤这些类。</p>
-<p>Lombok 也对这部分做了支持，只要提供一个配置 <code>lombok.config</code> 就能让 Lombok 给自己生成的代码添加上相应的注解了：</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">lombok.addLombokGeneratedAnnotation = true</code></pre></div>
-<h2 id="最后" style="position:relative;">最后<a href="#%E6%9C%80%E5%90%8E" aria-label="最后 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>在做了上述两方面的修改后，测试覆盖率重回 70% 了。</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 686px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/2996dcf11e841d2858f3f864fdfebfb5/f6386/openbayes-server-code-coverage-after.png"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 33.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAABYlAAAWJQFJUiTwAAABRklEQVQoz62RzUsCcRCG97/s0K1LCH1YER3SAkuIDhEUQdAtyMz8WtfVdXVTzE+kCCLt4i2CvjDQENzfPrGL7qVDHRp4mYFhnnmHkQBGoxF/Ccuyfu1J/X6fcCTqKCkrZDWdWEImENwhlzcolsrE4jJ6waBWb3BwdEwqnaHRbJFMpYlE4/R6ny5UGg6H3NzeEQpHiMaTVGp1ytUqMVlGyxc4O79woHmjSLvziKpp6IbBQ6dNwSii5w1shgvkH8IGmabAFAJpMPhCTmvEUyoJWeVSUQh3VSLPGvLrFaXWNVk1i6blyOoZlG6I1NMplZccpmk6EpblQB2Hb+8fzM4t41lYYXFpjRnvPJ6cD29zG//9Prsne2ys+wkEttgM+lgtTrPamuKw7be9/XiWe7IQwtlmCcvRaFw7vfF2e97OwjInLNfZxOE3Gony24nPymoAAAAASUVORK5CYII='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="openbayes server code coverage after"
-        title="openbayes server code coverage after"
-        src="/static/2996dcf11e841d2858f3f864fdfebfb5/f6386/openbayes-server-code-coverage-after.png"
-        srcset="/static/2996dcf11e841d2858f3f864fdfebfb5/772e8/openbayes-server-code-coverage-after.png 200w,
-/static/2996dcf11e841d2858f3f864fdfebfb5/e17e5/openbayes-server-code-coverage-after.png 400w,
-/static/2996dcf11e841d2858f3f864fdfebfb5/f6386/openbayes-server-code-coverage-after.png 686w"
-        sizes="(max-width: 686px) 100vw, 686px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span></p></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/2/">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/4/">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
+<p>然后再执行命令 <code>nvidia-smi</code> 就看不到这块卡了。</p></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/2/">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/4/">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       
       if(true) {

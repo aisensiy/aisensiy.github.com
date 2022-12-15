@@ -52,7 +52,64 @@
         }
       }
     })
-  </script><script async="" defer="" data-website-id="443212e9-fd0b-411e-a523-0d0ec604ee8a" src="https://get.aisensiy.me/umami.js"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about/">About</a></li><li><a class="leading-7 block hover:underline" href="/archive/">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags/">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials/">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/poj-1018/">POJ 1018</a></h1><h2>2012 May-15</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><div class="gatsby-highlight" data-language="cpp"><pre class="language-cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+  </script><script async="" defer="" data-website-id="443212e9-fd0b-411e-a523-0d0ec604ee8a" src="https://get.aisensiy.me/umami.js"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about/">About</a></li><li><a class="leading-7 block hover:underline" href="/archive/">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags/">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials/">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/e69c80e8bf91e58699-chrome-extension-e79a84e4b880e4ba9be5bf83e5be97/">最近写 chrome extension 的一些心得</a></h1><h2>2012 June-10</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>有幸找到一个可以专门写 chrome extension 的工作，非常开心，可以专心的写 chrome extension 了。看了一些别人的 chrome extension 自己也有了一些新的体会，写在这里，留个未来的自己。</p>
+<p>最近在做的这个扩展是 <a href="https://mei.fm">mei.fm</a> 的一键收藏扩展。整体来说，这个扩展的功能并不是非常复杂。但是，再简单也是有一定工作量的。而且，程序是为变化而生的，最初的架构体系做的比较顺手对以后的工作也是有好处的。</p>
+<h2 id="调研" style="position:relative;">调研<a href="#%E8%B0%83%E7%A0%94" aria-label="调研 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>首先，我做了一些调研的工作。重点查看了 evernote clipper 以及 pocket 两个类似的产品。看了他们之后才知道做一个这样的插件没有表象那么简单。尤其是读了 pocket extension 的源码确实是给我了不少的启发。</p>
+<p>pocket 里面有一个很不错的结构就是让 background page 作为处理事务的中枢。让 content page 以及 popup 的所有请求利用 chrome extension 所提供的 sendRequest 的 api 发送给 background 去处理，然后 bg 将处理的结果以 callback 的形式发送回去。</p>
+<blockquote>
+</blockquote>
+<p>chrome.extension.sendRequest(string extensionId, any request, function responseCallback)</p>
+<p>chrome.extension.onRequest.addListener(function(any request, MessageSender sender, function sendResponse) {...});</p>
+<p>详见<a href="https://code.google.com/chrome/extensions/tabs.html">https://code.google.com/chrome/extensions/tabs.html</a> 以及 <a href="https://code.google.com/chrome/extensions/extension.html">https://code.google.com/chrome/extensions/extension.html</a></p>
+<p>这样做的好处就是可以更好的组织自己的代码，让 content page 以及 popup 去专注于页面的展示，而把逻辑以及 ajax 的东西集中在 bg 去做。比如，在 pocket 中会用到一个 content script 用来显示保存的状态。它每次动作对 bg 发送请求，让 bg 把链接保存到 pocket，然后它根据 bg 返回的信息，进行相应的信息提示的工作。</p>
+<blockquote>
+<p>图丢了</p>
+</blockquote>
+<h2 id="实践" style="position:relative;">实践<a href="#%E5%AE%9E%E8%B7%B5" aria-label="实践 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<h3 id="代码的组织" style="position:relative;">代码的组织<a href="#%E4%BB%A3%E7%A0%81%E7%9A%84%E7%BB%84%E7%BB%87" aria-label="代码的组织 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>我很仔细的看了 pocket 的代码组织并非常的认同它的组织方式，那么我就直接采取了它的结构。把与 mei.fm 请求相关的方法单独做一个命名空间，api。然后所有其他页面的逻辑请求都通过 sendRequest 的方式发送给 bg.js 来处理。但是，chrome extension 的 onRequest 监听器不监听自己页面的 request 事件，那么我只好对 bg 页面的处理单独做了处理（这个很让人伤心）。</p>
+<h3 id="面对频繁改变的-api-接口的办法" style="position:relative;">面对频繁改变的 api 接口的办法<a href="#%E9%9D%A2%E5%AF%B9%E9%A2%91%E7%B9%81%E6%94%B9%E5%8F%98%E7%9A%84-api-%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8A%9E%E6%B3%95" aria-label="面对频繁改变的 api 接口的办法 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>其实我觉得既然已经做到了 chrome extension 的地步了，那么其提供的 api 应当是比较稳定的了。但是，很遗憾，不是这样。甚至是在我把插件做完的时候，有些 api 还是处于无法使用的状态。那么，我自己需要一个模拟 api 的机制了。</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">    <span class="token keyword">if</span><span class="token punctuation">(</span>debug<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">var</span> data <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token string">'{"requestId":"url68a1-9","providerId":"solrs-0.1","object":"url","errCode":0,"dice":0,"items":[{"id":"5c9ccc75421a2acbffa982f5fd123134","score":0.92352885,"provider":"solrs-0.1","detail":{"best_title":"皇马拜仁裁判确定：欧冠奥运决赛主裁 吹拜仁漏 3 点球","url":"http://sports.sina.com.cn/g/2012-04-24/09206035821.shtml"}},{"id":"051e0cd0943d490f51cb7be1a502dbb9","score":0.24958704,"provider":"solrs-0.1","detail":{"best_title":"视频-2011 百大进球 TOP20 梅西 C 罗鲁尼内马尔竞风流","url":"http://sports.sina.com.cn/g/video/2011Top100goal/index.shtml"}}]}'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span>items <span class="token operator">&amp;&amp;</span> data<span class="token punctuation">.</span>items<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          data <span class="token operator">=</span> <span class="token function">_pre_process</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'cmd'</span><span class="token punctuation">,</span> data<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          callback <span class="token operator">&amp;&amp;</span> callback<span class="token punctuation">.</span>success <span class="token operator">&amp;&amp;</span> callback<span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span>items<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+          callback <span class="token operator">&amp;&amp;</span> callback<span class="token punctuation">.</span>failed <span class="token operator">&amp;&amp;</span> callback<span class="token punctuation">.</span><span class="token function">failed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      $<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token literal-property property">url</span><span class="token operator">:</span> request_url<span class="token punctuation">,</span>
+        <span class="token literal-property property">data</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token literal-property property">title</span><span class="token operator">:</span> title<span class="token punctuation">,</span> <span class="token literal-property property">uid</span><span class="token operator">:</span> localStorage<span class="token punctuation">.</span>uid<span class="token punctuation">,</span> <span class="token literal-property property">cnt</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token literal-property property">ts</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token literal-property property">app</span><span class="token operator">:</span> <span class="token string">'mei.fm'</span><span class="token punctuation">,</span> <span class="token literal-property property">url</span><span class="token operator">:</span> url<span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">timeout</span><span class="token operator">:</span> <span class="token number">5000</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">dataType</span><span class="token operator">:</span> <span class="token string">'json'</span><span class="token punctuation">,</span>
+        <span class="token function-variable function">success</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">if</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span>items <span class="token operator">&amp;&amp;</span> data<span class="token punctuation">.</span>items<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            data <span class="token operator">=</span> <span class="token function">_pre_process</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            callback <span class="token operator">&amp;&amp;</span> callback<span class="token punctuation">.</span>success <span class="token operator">&amp;&amp;</span> callback<span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span>items<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            callback <span class="token operator">&amp;&amp;</span> callback<span class="token punctuation">.</span>failed <span class="token operator">&amp;&amp;</span> callback<span class="token punctuation">.</span><span class="token function">failed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token function-variable function">error</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          callback <span class="token operator">&amp;&amp;</span> callback<span class="token punctuation">.</span>failed <span class="token operator">&amp;&amp;</span> callback<span class="token punctuation">.</span><span class="token function">failed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+</code></pre></div>
+<p>用 setTimeout 去模拟一个 ajax 请求真是伤不起唉。然后面对返回的数据结构的不确定，我甚至有做个数据结构验证的东西...</p>
+<h3 id="不要忘了断网的情况" style="position:relative;">不要忘了断网的情况<a href="#%E4%B8%8D%E8%A6%81%E5%BF%98%E4%BA%86%E6%96%AD%E7%BD%91%E7%9A%84%E6%83%85%E5%86%B5" aria-label="不要忘了断网的情况 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>虽说这是个特殊的情况，但是我还是通过设置 ajax 的 timeout 去做了这个断网的处理，所以调用 jquery 的 api 差不多全部都是 $.ajax 而不是 $.post 或者 $.get。</p>
+<h2 id="感想" style="position:relative;">感想<a href="#%E6%84%9F%E6%83%B3" aria-label="感想 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>不管东西是多大多小，想做的完美其实都是要下功夫的。面对频繁的变化，你的代码是否可以让你很容易的扩展，或者是修改功能呢？我自己是不敢保证的。努力去做到这个才能算是不错的设计。我还是需要在这条路上走的更远。</p>
+<p>然后就是单元测试的问题了。代码的修改是不可避免的，尤其是做所谓的重构。但是，目前来看，我很不想去做这个工作。因为我没有想到好的办法去做这个单元测试的工作。如果修改了代码反而让程序跑不起来了确实就让人更揪心了。如何拆分代码，并用更好的办法去测试代码也是个很重要的事情。</p>
+<p>更好的使用 git 有可能很好的减少自己的心理负担。什么时候应该打 tag 怎么撤销自己的一个 commit 怎么去拉一个分支都是我需要做学习的事情。</p></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/poj-1018/">POJ 1018</a></h1><h2>2012 May-15</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><div class="gatsby-highlight" data-language="cpp"><pre class="language-cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;cstdio></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;vector></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;set></span></span>
@@ -171,107 +228,6 @@ Language: G++		Result: Accepted</code></pre></div>
 
         counter<span class="token operator">++</span><span class="token punctuation">;</span>
         sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre></div></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/poj-1012/">POJ 1012</a></h1><h2>2012 May-04</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>又有一阵子不来写报告了，惭愧惭愧。现在赶紧补上。</p>
-<p>首先是经典的约瑟夫问题的解法</p>
-<div class="gatsby-highlight" data-language="cpp"><pre class="language-cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;vector></span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;cstring></span></span>
-
-<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
-
-<span class="token comment">/*
- *
- * 典型的约瑟夫问题
- * 约瑟夫问题是个有名的问题：N 个人围成一圈，从第一个开
- * 始报数，第 M 个将被杀掉，最后剩下一个，其余人都将被杀掉。
- * 例如 N=6，M=5，被杀掉的人的序号为 5，4，6，2，3。最后剩下 1 号。
- *
- * 这里采用一个递归解题 我们按照序号从 0 开始 m-1 个人退出
- * 假定第一个数到 m-1 的人退出后，那么将从下一个人重新计数
- * 我们假定这新的一轮开始的那个人序号为 0，那么在这一轮
- * 的 m-1 个人退出。
- * 那么，反过来，如果我们知道了第 i+1 轮退出的人在 i 轮一定是 j，
- * 我们可以通过 (j+m)%n 得知其在上一轮的位置
- *
- * @author: aisensiy(https://weibo.com/alistapart)
- */</span>
-<span class="token keyword">int</span> <span class="token function">jos</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">,</span> <span class="token keyword">int</span> m<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>n<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token keyword">else</span> <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token function">jos</span><span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> m<span class="token punctuation">)</span> <span class="token operator">+</span> m<span class="token punctuation">)</span> <span class="token operator">%</span> n<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">int</span> n<span class="token punctuation">,</span> m<span class="token punctuation">;</span>
-    cin<span class="token operator">>></span>n<span class="token operator">>></span>m<span class="token punctuation">;</span>
-    cout<span class="token operator">&lt;&lt;</span><span class="token function">jos</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> m<span class="token punctuation">)</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token punctuation">[</span><span class="token operator">/</span>code<span class="token punctuation">]</span>
-
-然后 poj <span class="token number">1012</span> 是约瑟夫问题的一个变种，题目在这里<span class="token punctuation">[</span>poj <span class="token number">1012</span><span class="token punctuation">]</span><span class="token punctuation">(</span>https<span class="token operator">:</span><span class="token comment">//poj.org/problem?id=1012)</span>
-
-<span class="token punctuation">[</span>code lang<span class="token operator">=</span><span class="token string">"cpp"</span><span class="token punctuation">]</span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;vector></span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;cstring></span></span>
-<span class="token comment">/*
- * https://poj.org/problem?id=1012
- *
- * 约瑟夫问题的变种，采用完全的模拟会超时
- * 这里用到的一些技巧在下面的注释中会解答
- * 感谢 mabaochang 同学让我明白了本题最核心
- * 的 trick.
- *
- * @author: aisensiy(https://weibo.com/alistapart)
- */</span>
-<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
-
-<span class="token keyword">int</span> result<span class="token punctuation">[</span><span class="token number">14</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">int</span> killed<span class="token punctuation">[</span><span class="token number">14</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">int</span> <span class="token function">next</span><span class="token punctuation">(</span><span class="token keyword">int</span> cur<span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        cur <span class="token operator">=</span> <span class="token punctuation">(</span>cur <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> n<span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>killed<span class="token punctuation">[</span>cur<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> cur<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">bool</span> <span class="token function">work</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">,</span> <span class="token keyword">int</span> m<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token function">memset</span><span class="token punctuation">(</span>killed<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>killed<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">int</span> cur <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> dead <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token keyword">int</span> count <span class="token operator">=</span> n<span class="token punctuation">;</span>
-    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token comment">// 这里差不多就是最核心的 trick 了正常的约瑟夫问题这样的方式是不</span>
-        <span class="token comment">// 能获取正确的 killed 的人的位置的，但是由于本题要求是后 k 个人</span>
-        <span class="token comment">// 先被 killed，那么前 k 个人的位置是不应该被移动的（一旦移动了则说</span>
-        <span class="token comment">// 明这时的 m 不满足条件，会 break），并且只要满足每次 killed 人在 k 之</span>
-        <span class="token comment">// 后就行了，也不需要知道更具体的位置，采用这个公式就可以达到目的了</span>
-        cur <span class="token operator">=</span> <span class="token punctuation">(</span>cur <span class="token operator">+</span> m <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> count<span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>cur <span class="token operator">&lt;</span> n<span class="token operator">/</span><span class="token number">2</span> <span class="token operator">&amp;&amp;</span> dead <span class="token operator">&lt;</span> n<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>dead <span class="token operator">>=</span> n<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        killed<span class="token punctuation">[</span>cur<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-        dead<span class="token operator">++</span><span class="token punctuation">;</span>
-        count<span class="token operator">--</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">int</span> j<span class="token punctuation">;</span>
-    <span class="token comment">// 由于一共只有这么十几个数据，那么为了避免在线的重复计算</span>
-    <span class="token comment">// 直接把所有结果算出来放到数组里就行了</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">&lt;=</span><span class="token number">14</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span>j<span class="token operator">=</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span> <span class="token number">1</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">work</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">*</span> i<span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
-        result<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> j<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    cin<span class="token operator">>></span>j<span class="token punctuation">;</span>
-    <span class="token keyword">while</span><span class="token punctuation">(</span>j<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        cout<span class="token operator">&lt;&lt;</span>result<span class="token punctuation">[</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
-        cin<span class="token operator">>></span>j<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre></div></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/40/">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/42/">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>

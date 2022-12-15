@@ -52,7 +52,84 @@
         }
       }
     })
-  </script><script async="" defer="" data-website-id="443212e9-fd0b-411e-a523-0d0ec604ee8a" src="https://get.aisensiy.me/umami.js"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about/">About</a></li><li><a class="leading-7 block hover:underline" href="/archive/">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags/">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials/">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/some-tips-for-ddd/">Some tips about DDD</a></h1><h2>2016 April-20</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>DDD 即 Domain Driven Design，领域驱动设计，似乎是一个比较老的东西了，2003 年这本书就出版了。不过这么多年来我是从来都没有知晓过，直到参加了小巨人的培训。在培训的过程中，我自己尝试自己对某个领域进行建模并且以 REST API 的形式实现自己的设计，而整个过程中都要尽量的遵循 DDD 的一些设计原则，可惜培训时间太短了，我需要更多的时间去消化。半年多来我一直都在琢磨这个主题，即使工作任务很重的时候我依然在尝试把以前自己认为不遵循 DDD 设计的一些项目按照我理解的 DDD（对，我理解的，不代表是对的）进行了重写，这虽然花了不少的时间但我认为这是值得的。其中经常出现的几个名词 <code>aggregate</code> <code>value object</code> <code>entity</code> <code>bounded context</code> <code>domain model</code> <code>repository</code> <code>factory</code> 一直以来我总觉得自己没有把它们彻底的搞明白。整个体系对我来说依然没有在我的脑海中建立起来。直到最近，在认认真真的看完了几本 DDD 主题的书籍以及众多有关这个主题的文章和演讲之后，我才觉得我对这方面的理解有了起色，我逐渐的弄明白了 DDD 的真正意图，清楚了 REST 和 DDD 的关系，我才敢写下这篇文章。</p>
+  </script><script async="" defer="" data-website-id="443212e9-fd0b-411e-a523-0d0ec604ee8a" src="https://get.aisensiy.me/umami.js"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about/">About</a></li><li><a class="leading-7 block hover:underline" href="/archive/">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags/">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials/">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/webpack-setup/">Webpack Setup</a></h1><h2>2016 May-05</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>虽然用 <code>webpack</code> 有一阵子了，但是上次构建整个体系的时候手忙脚乱的，仅仅是找了乱七八糟的东西堆叠起来，中间的过程忘的一干二净今天去 review 自己以前写的代码完全不知道自己是怎么搞定的。这次写一个小系列把如何构建 <code>webpack</code> + <code>redux</code> + <code>react</code> 的体系记下来，今天是第一部分，<code>webpack</code> 的准备工作。</p>
+<p><code>webpack</code> 可以认为就是一个 <code>node</code> 版本的 <code>make</code> 吧，不过自然是有 <code>js</code> 特色的 <code>make</code> 了，类似的东西有很多，比如 <code>browserify</code> 以及 <code>gulp</code> 等。<code>webpack</code> 最终的目的就是将我们一个有众多文件的 <code>js</code> 的 project 变成只有一个或者多个文件的 <code>bundles</code>，我在后面会结合例子做展示。并且<code>webpack</code> 可以支持 <code>loader</code> 将各种诡异的 <code>js</code> 方言转换成 <code>js</code> 比如当下比较流行的额 <code>babel</code> <code>jsx</code> 等，所以 <code>webpack</code> 配合 <code>es2015</code> 以及 <code>react</code> 一起使用非常的方便。不过要说明的是对这些方言的支持是 <code>loader</code> 的事情，<code>webpack</code> 本身是只能处理原生态的 <code>js</code> 的。</p>
+<h2 id="basic" style="position:relative;">basic<a href="#basic" aria-label="basic permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>首先自然是安装 <code>webpack</code></p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">npm install -g webpack
+npm install -S webpack</code></pre></div>
+<p>然后我展示一个 <code>webpack</code> 的基本用法。首先看一下我们的目录结构：</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">├── index.html
+├── index.js
+├── module1.js
+├── module2.js
+└── package.json</code></pre></div>
+<p>其中 <code>index.html</code> 基本就是一个空文件</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">&lt;html>
+  &lt;head>
+    &lt;meta charset="utf-8">
+    &lt;title>index&lt;/title>
+  &lt;/head>
+  &lt;body>
+    &lt;script src="bundle.js">&lt;/script>
+  &lt;/body>
+&lt;/html></code></pre></div>
+<p><code>module1.js</code> <code>module2.js</code> 展示如下</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">console.log('module 1');</code></pre></div>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">console.log("module 2");</code></pre></div>
+<p><code>index.js</code> 通过 <code>require</code> 的方式引用两个模块</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">require("./module1");
+require("./module2");</code></pre></div>
+<p>然后通过命令 <code>webpack ./index.js bundle.js</code> 可以将 <code>index.js</code> 以及其所依赖的模块打包生成一个文件 <code>bundle.js</code> 这样在浏览器打开 <code>index.html</code> 就可以看到 <code>console</code> 中的命令了。</p>
+<h2 id="use-webpackconfigjs" style="position:relative;">use webpack.config.js<a href="#use-webpackconfigjs" aria-label="use webpackconfigjs permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>在上述这么简单的情况下我们就仅仅用 <code>webpack</code> 的命令就可以了。不过在处理更复杂的事情的时候需要 <code>webpack.config.js</code> 来帮忙。这里我给出一个最小化的 <code>webpack.config.js</code> 的实例来替代刚才的命令。</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">var path = require("path");
+
+module.exports = {
+  entry: [
+    './index'
+  ],
+  output: {
+    path: path.join(__dirname, "dist"),
+    filename: "bundle.js"
+  }
+};</code></pre></div>
+<p>其中，<code>entry</code> 就是我们整个 <code>project</code> 的 <code>main</code>。就如在前文中 <code>webpack ./index.js bundle.js</code> 的 <code>./index.js</code> 的角色。<code>output</code> 则表示我们要将生成的 <code>js</code> 放在哪里。这里我提供了一个不同的 <code>path</code>: <code>dist</code>，然后依然采用 <code>bundle.js</code> 的名字。这样我们执行 <code>webpack</code> 就可以看到 <code>dist</code> 下出现了 <code>bundle.js</code> 这个文件。</p>
+<h2 id="use-webpack-dev-server" style="position:relative;">use webpack dev server<a href="#use-webpack-dev-server" aria-label="use webpack dev server permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>那么每次改了文件之后都 <code>webpack</code> 是不是很麻烦，应该是有 <code>watch</code> 的办法吧。对的，这就是 <code>webpack-dev-server</code> 了。首先安装它。</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">npm install -g webpack-dev-server
+npm install -S webpack-dev-server</code></pre></div>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">执行 `webpack-dev-server --inline --hot --content-base dist/`，每次修改代码就可以自动 build 了。</code></pre></div>
+<p>既然这里我们把 <code>content-base</code> 设定为了 <code>dist</code> 那么需要把 <code>index.html</code> 放进去啦。最后的目录结构是这样子的：</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">├── dist
+│   ├── bundle.js
+│   └── index.html
+├── index.js
+├── module1.js
+├── module2.js
+├── package.json
+└── webpack.config.js</code></pre></div>
+<p>值得一提是在 <code>package.json</code> 里有一个专门放置这种启动 server 的地方，就是在 <code>scripts</code> 下:</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">{
+  "name": "webpack-setup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" &amp;&amp; exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "webpack": "^1.13.0"
+  }
+}</code></pre></div>
+<p>然后下次执行 <code>npm start</code> 就可以启动这个 dev server 啦。</p>
+<h2 id="一些参考" style="position:relative;">一些参考<a href="#%E4%B8%80%E4%BA%9B%E5%8F%82%E8%80%83" aria-label="一些参考 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<ol>
+<li>webpack.config.js <a href="http://webpack.github.io/docs/configuration.html">https:://webpack.github.io/docs/configuration.html</a></li>
+<li>webpack dev server <a href="http://webpack.github.io/docs/webpack-dev-server.html">https:://webpack.github.io/docs/webpack-dev-server.html</a></li>
+</ol></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/some-tips-for-ddd/">Some tips about DDD</a></h1><h2>2016 April-20</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>DDD 即 Domain Driven Design，领域驱动设计，似乎是一个比较老的东西了，2003 年这本书就出版了。不过这么多年来我是从来都没有知晓过，直到参加了小巨人的培训。在培训的过程中，我自己尝试自己对某个领域进行建模并且以 REST API 的形式实现自己的设计，而整个过程中都要尽量的遵循 DDD 的一些设计原则，可惜培训时间太短了，我需要更多的时间去消化。半年多来我一直都在琢磨这个主题，即使工作任务很重的时候我依然在尝试把以前自己认为不遵循 DDD 设计的一些项目按照我理解的 DDD（对，我理解的，不代表是对的）进行了重写，这虽然花了不少的时间但我认为这是值得的。其中经常出现的几个名词 <code>aggregate</code> <code>value object</code> <code>entity</code> <code>bounded context</code> <code>domain model</code> <code>repository</code> <code>factory</code> 一直以来我总觉得自己没有把它们彻底的搞明白。整个体系对我来说依然没有在我的脑海中建立起来。直到最近，在认认真真的看完了几本 DDD 主题的书籍以及众多有关这个主题的文章和演讲之后，我才觉得我对这方面的理解有了起色，我逐渐的弄明白了 DDD 的真正意图，清楚了 REST 和 DDD 的关系，我才敢写下这篇文章。</p>
 <p>培训中 REST 和 DDD 的主题是被放在一起讲解的，REST 按照 DDD 中 <code>aggregate</code> 的形式被组织在一起。看下面这样一组 REST API:</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">/users
 /users/:user-id
@@ -64,151 +141,7 @@
 <p>DDD 仅仅是一个写模型。在通过 REST API 暴露一个 Domain 的接口的时候要明确每一个方法分别对应了相应资源下的什么操作。虽然很多的数据和演讲中强调 REST 和 DDD 没关系，并且 Rest 的 Resource 也和 DDD 中的 Entity 没有映射关系，但是我个人觉得从 UL 的角度来说，外部所看到的东西和 Domain 所提及的东西应当一致，只是 REST 会隐藏很多细节罢了。当然，这里所谓的隐藏细节也可能隐藏的多到内外的概念是不一致的。其中 <code>GET</code> 和其他操作相比有着质的区别，它可能采用了纯粹的 DTO 而不涉及任何的 Domain，这样在实现模型的时候我们就不必小心翼翼的去让 Domain Model 尽量的和 Rest 所需要获取的数据保持一致了。这也是我自己在整个过程中最困惑的地方了。</p>
 <p>到这里，按照 DDD 设计的思路就清楚多了，我不再担心如何让 GET 方法从 Domain 中拿到它想要的东西了。我可以在设计的时候首先关注更重要的业务流程，然后在需要的时候用最简单的方式提供相应的 Query Service 即可。</p></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/new-blog/">新的博客</a></h1><h2>2016 March-26</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>之前的 blog 是搭在 SAE 的 wordpress，但是由于渣浪没有回复我的账号，我默默的看着我的 SAE 云豆消耗殆尽连个充值的机会都没有，真是不知道新浪这样的状态还能撑多久。不过不管怎么样我应该还是有机会可以把我的博客拿到的，然后赶紧的把乱七八糟的博客都导过来，毕竟那个博客也用了有 5 年了吧。</p>
 <p>之前有尝试用 jekyll 在 github 上部署 blog，那个时候 github 对 jekyll 的支持还没有那么好，我记得是不能够自己主动的部署到 xx.github.io 上的，需要自己拉一个 branch 但是现在似乎不需要了，默认部署，方便多了。而且之前的那个默认的 template 也是太丑了，自己也没有当初调整 wordpress template 的心情了哎（所以我自己对我以前 wordpress 的 template 还是挺满意的，毕竟人家默认的 template 就不错呀）。幸好找到了现在 <a href="huangxuan.me">hux</a> 这套给力的模板，我又有动力用 jekyll 了。好多地方还是人家 hux 的名字，我也在慢慢修改了。</p>
-<p>github 首先应该不会在短期内挂掉吧，然后人家也是给了我一个域名，唯一一点不好就是有些 2b 的学校教育网默认不能访问国外的服务器，这我就没有办法了。</p></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/2015-annual-review/">2015 年终总结</a></h1><h2>2016 March-23</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>我知道今天是 16 年的 3 月下旬，但是如果按照农历来算的话现在做去年的年终总结也不是很过分吧...不过也真是因为自己很忙很忙，或者是说自己觉得自己很忙很忙才会这个样子。不过 15 年发生了很多很多事情，去过很多很多地方，希望把这些记下来。</p>
-<p>15 年的这个时候我在做什么呢？哦，我应该是在实验室里打酱油然后在等台湾通行证的结果了。再往前呢？在小妮妮没有去台湾之前我们在学校里过着好开心的生活，还记得年前去滑雪，我刚刚踩上滑雪板风一吹就倒了。整个过程自己只有一次成功的从山坡上滑下来但偏偏这一次被摄像头记了下来。晚上回来还去吃了一顿烧烤大餐满足的不得了，可是小妮妮居然都忘记了。</p>
-<p>后来小妮妮去了台湾，我分别在三月底和答辩后的六月中去了两次台湾。还记得第一次刚刚到桃园机场见到小妮妮的样子，那时候下着点小雨，空气潮湿闷热但是十分干净没有一丝泥泞。排队等机场大巴的时候工作人员给我的行李箱上贴上了国光字样的行李验证码。（现在想想，从北京出发去台北的那一天正是我飞来飞去的一年的起点，我大黄色亮晶晶的行李箱从那天开始渐渐贴上了各种乱七八糟的条形码。）第一次去台湾去了两个地方，台北和垦丁，先到台北以台大为中心在周边瞎逛，感觉台湾的吃的又好吃又便宜，台大的园子也不比北大差，椰林大道显得很是气派。感觉在这里交流几个月也真是令人羡慕。去垦丁恰好赶在了垦丁的春浪之前，所以人还不多，民宿的价格也还比较便宜，不过就是交通不太方便，先坐高铁到了左营然后租车开了一两个小时才来到垦丁。在垦丁住的地方穿过一条马路就是海边，当天晚上跑去海边走了一下没什么感觉就回来了。但第二天早晨爬起来拉开窗帘的时候就惊呆了。那是一个大晴天，基本无风，太阳把海面照的湛蓝湛蓝的，在别的地方没有见过这样的海面哎！然后只有两个人的卡丁车跑道也真是奢侈，如果还能再去垦丁一定要再跑上几把。</p>
-<p><figure class="gatsby-resp-image-figure" style="">
-    <span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/548ca1fca8e769f34345bd49432efd37/72e01/sea.jpg"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAQBAwX/xAAWAQEBAQAAAAAAAAAAAAAAAAACAAH/2gAMAwEAAhADEAAAAdKhSGGhc2//xAAYEAEAAwEAAAAAAAAAAAAAAAAAAhIUAf/aAAgBAQABBQLsVVWqTTNof//EABURAQEAAAAAAAAAAAAAAAAAAAAR/9oACAEDAQE/AYj/xAAWEQADAAAAAAAAAAAAAAAAAAAAARL/2gAIAQIBAT8BtFo//8QAFxAAAwEAAAAAAAAAAAAAAAAAARAhAP/aAAgBAQAGPwJzUBf/xAAbEAEBAAEFAAAAAAAAAAAAAAABABARMUFRYf/aAAgBAQABPyF5WC/D3UtxRAei/9oADAMBAAIAAwAAABDrD//EABURAQEAAAAAAAAAAAAAAAAAAAAR/9oACAEDAQE/EGn/xAAXEQEAAwAAAAAAAAAAAAAAAAAAETFh/9oACAECAQE/EIraP//EABkQAQEBAQEBAAAAAAAAAAAAAAERACFRcf/aAAgBAQABPxBFg67pqycunfBuXRuASGqKfYd//9k='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="垦丁"
-        title="垦丁"
-        src="/static/548ca1fca8e769f34345bd49432efd37/4b190/sea.jpg"
-        srcset="/static/548ca1fca8e769f34345bd49432efd37/e07e9/sea.jpg 200w,
-/static/548ca1fca8e769f34345bd49432efd37/066f9/sea.jpg 400w,
-/static/548ca1fca8e769f34345bd49432efd37/4b190/sea.jpg 800w,
-/static/548ca1fca8e769f34345bd49432efd37/72e01/sea.jpg 1024w"
-        sizes="(max-width: 800px) 100vw, 800px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span>
-    <figcaption class="gatsby-resp-image-figcaption">垦丁</figcaption>
-  </figure></p>
-<p>第二次去台湾相对于第一次安排的更周密一些，我们去了北投泡温泉，去了澎湖骑机车看落日钓小管，去了台中蓬甲夜市又回到台北吃吃吃。澎湖的一大特色就是没有人，在只有两个人的公路上任意驰骋在大陆真是不敢想。然后最后去的山水沙滩真的是美到爆，后悔没有住在海边了。最后我们还没有直接回北京而是跑去厦门玩了两天。相比台湾干净的海水，厦门的海实在是没什么可看的，但是相比台湾没有滋味的海鲜，厦门的爆炒花蛤真是好吃爆了，我们甚至留下了和两盘花蛤的合影。</p>
-<p><figure class="gatsby-resp-image-figure" style="">
-    <span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/aea693ae836fcd940f57ba1a8ed73e19/212bf/penghu.jpg"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 133.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAbABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAMEAQL/xAAXAQEBAQEAAAAAAAAAAAAAAAAAAwEE/9oADAMBAAIQAxAAAAFiX5eU4w0rjeOa1RKH/8QAGhAAAgMBAQAAAAAAAAAAAAAAAAECEBMSEf/aAAgBAQABBQJxHE5NjT01VpdDv//EABcRAAMBAAAAAAAAAAAAAAAAAAABEhD/2gAIAQMBAT8Blkvf/8QAGBEAAgMAAAAAAAAAAAAAAAAAABMBAhD/2gAIAQIBAT8BZAyu/wD/xAAcEAABBAMBAAAAAAAAAAAAAAABABAyoQIRIDP/2gAIAQEABj8CfztRtQyfYI4//8QAHBABAAMAAgMAAAAAAAAAAAAAAQARIRBRIEHh/9oACAEBAAE/IeYK6HdzRFesPxphrrL2IKTsWt8H/9oADAMBAAIAAwAAABDQz7L/xAAWEQADAAAAAAAAAAAAAAAAAAAAEGH/2gAIAQMBAT8QGL//xAAXEQADAQAAAAAAAAAAAAAAAAAAARBh/9oACAECAQE/EEOl/8QAHRABAAICAwEBAAAAAAAAAAAAAQARITEQUWFBkf/aAAgBAQABPxBc4i9Rd6jwUl6OvMQOA3lrn81BqNvgSbH6Blyw03uHxr0L6rz7xdcf/9k='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="澎湖"
-        title="澎湖"
-        src="/static/aea693ae836fcd940f57ba1a8ed73e19/212bf/penghu.jpg"
-        srcset="/static/aea693ae836fcd940f57ba1a8ed73e19/e07e9/penghu.jpg 200w,
-/static/aea693ae836fcd940f57ba1a8ed73e19/066f9/penghu.jpg 400w,
-/static/aea693ae836fcd940f57ba1a8ed73e19/212bf/penghu.jpg 768w"
-        sizes="(max-width: 768px) 100vw, 768px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span>
-    <figcaption class="gatsby-resp-image-figcaption">澎湖</figcaption>
-  </figure></p>
-<p>然后我就毕业了，终于毕业了。毕业搬家的时候那叫一个匆忙，我好像是突然就把东西打包好送去了邮局。我只记得当时老季过来帮我把一堆东西搬到了他那里，第二天就去了杭州，匆匆到记不清当时宿舍里还有几个人。在杭州闲了没多久就回家继续闲着，但是闲了没几天就又回到北京准备入职工作了。刚到北京那几天特别艰难，由于我马上去印度培训，没有租房子，自己在同学宿舍的地板上借住了一宿又自己跑去公司附近的宾馆住了两天，那两天我拉着行李箱跑来跑去真是怀念有宿舍的日子。可没想到在之后的大半年里都一直保持这种状态...</p>
-<p>8月 10 号我入职 tw，14 号就和几个新入职的同事一起去了印度参加 twu 的培训。为期 5 周的培训课程相当的密集，也相当的辛苦。9 月下旬回到北京暂住公司公寓直到 10 月底开始了小巨人的培训。在成都为期三周的培训让 twu 显得那么的苍白无力。一周 80 个小时的开发时间完全碾压以前任意时段的工作强度。这里培训也把我带入了一个全新的软件设计领域。从此我更注重时间管理，任务拆分，模型设计和单据追朔，DDD 的书籍至今也不离手，反复的阅读希望可以有更深入的理解。</p>
-<p><figure class="gatsby-resp-image-figure" style="">
-    <span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/8221858a98064c7df8e67c2def720997/4b190/chengdu.jpg"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 32.49999999999999%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAHABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAMF/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/2gAMAwEAAhADEAAAAdaolAv/xAAXEAEAAwAAAAAAAAAAAAAAAAABABAT/9oACAEBAAEFAjSFf//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABgQAAIDAAAAAAAAAAAAAAAAAAAhAQIQ/9oACAEBAAY/AnWB5//EABoQAQABBQAAAAAAAAAAAAAAAAEAEBEhUYH/2gAIAQEAAT8h4DcC2cGn/9oADAMBAAIAAwAAABCMD//EABURAQEAAAAAAAAAAAAAAAAAABAR/9oACAEDAQE/EIf/xAAVEQEBAAAAAAAAAAAAAAAAAAAREP/aAAgBAgEBPxBZ/8QAGBABAAMBAAAAAAAAAAAAAAAAAQARIUH/2gAIAQEAAT8QYWnpsbbzsL0poaSp/9k='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="小巨人培训"
-        title="小巨人培训"
-        src="/static/8221858a98064c7df8e67c2def720997/4b190/chengdu.jpg"
-        srcset="/static/8221858a98064c7df8e67c2def720997/e07e9/chengdu.jpg 200w,
-/static/8221858a98064c7df8e67c2def720997/066f9/chengdu.jpg 400w,
-/static/8221858a98064c7df8e67c2def720997/4b190/chengdu.jpg 800w"
-        sizes="(max-width: 800px) 100vw, 800px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span>
-    <figcaption class="gatsby-resp-image-figcaption">小巨人培训</figcaption>
-  </figure></p>
-<p>工作之后只在北京待过一个月，其他的时间都在出差。从北京到成都，从成都到武汉，从武汉到西安从西安到深圳，从深圳去北京再从北京回到西安。相对来说西安是待的时间最长的地方。每天大部分时间都在写程序，看书，有点闷，但是希望可以闷出成绩，做出好的东西。</p>
-<p><figure class="gatsby-resp-image-figure" style="">
-    <span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 320px; "
-    >
-      <a
-    class="gatsby-resp-image-link"
-    href="/static/f7865c4a9cec1de16d5b2cdd8561844a/cb69c/flight.jpg"
-    style="display: block"
-    target="_blank"
-    rel="noopener"
-  >
-    <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 171.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAiABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAIDAQX/xAAWAQEBAQAAAAAAAAAAAAAAAAABAgD/2gAMAwEAAhADEAAAAfVbzBk0OM+2QszFFTAH/8QAGxAAAQUBAQAAAAAAAAAAAAAAAAECEBETMUH/2gAIAQEAAQUCyaZNMmwq0I45FTQh6f/EABkRAAEFAAAAAAAAAAAAAAAAAAABERIgIf/aAAgBAwEBPwFkMJU//8QAGBEAAgMAAAAAAAAAAAAAAAAAABIBESD/2gAIAQIBAT8BqBRcf//EABgQAAIDAAAAAAAAAAAAAAAAABBBESEw/9oACAEBAAY/AmGLE4//xAAcEAACAwADAQAAAAAAAAAAAAAAAREhQTFR8HH/2gAIAQEAAT8h9mNnZ7MXFi1mgiBUxODaeksdfCW4kwl0aMEueT//2gAMAwEAAgADAAAAEEzHM4Av/8QAGhEBAQACAwAAAAAAAAAAAAAAAQAQIRExYf/aAAgBAwEBPxDykOo5squ47x//xAAbEQACAQUAAAAAAAAAAAAAAAAAAUEQESExYf/aAAgBAgEBPxDkWuDASUD1T//EAB8QAQACAQQDAQAAAAAAAAAAAAEAESExQVFhcYGh0f/aAAgBAQABPxAY1hTW+qfk7oZCngJZWhmMKiXkxtEqKsuxKpQu1HyXqgbDKogFMFQFALTh4IgpR7uJS3LD6xBZa8z/2Q=='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="航线"
-        title="航线"
-        src="/static/f7865c4a9cec1de16d5b2cdd8561844a/cb69c/flight.jpg"
-        srcset="/static/f7865c4a9cec1de16d5b2cdd8561844a/e07e9/flight.jpg 200w,
-/static/f7865c4a9cec1de16d5b2cdd8561844a/cb69c/flight.jpg 320w"
-        sizes="(max-width: 320px) 100vw, 320px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-  </a>
-    </span>
-    <figcaption class="gatsby-resp-image-figcaption">航线</figcaption>
-  </figure></p>
-<p>流水账就说道这里吧。</p>
-<p>15 年 8 月份之前我依然主力做有关数据方面的东西，参见了天池的大数据竞赛，其中的资金流入流出比赛做的还可以。深深感慨到现在的这样的数据平台才是推动生产力发展的关键：以前大家辛辛苦苦优化的结果通过高计算能力的集群轻松的突破了，超大规模的 GBDT 这样基本不可能的事情成为了可能。再看单机上 xgboost 这样的工具也让我可以在任何特征都筛选的时候做到非常高的分值。benchmark 相对于从前真是高出了不少。个人认为数据和机器智能的发展可以在很短的时间内达到一个不错的程度，自己在最近也尽量抽空做点点比赛，但是感觉这样的游击战并不能真正的提升自己这方面的能力，还是需要在接下来的一年更系统的去学习相关的知识。</p>
-<p>8月份入职之后似乎进入了一个和数据不沾边的领域。之前想的非常清楚了，之所以来 tw 是因为对自己的系统设计能力不满意。我自己觉得不论是做什么样子的具体的软件和系统，前期的设计和架构能力都是必要的能力。另一方面，生产力是最有说服力的东西，如果我可以把软件做的比比人快很多但是又有很好的设计和架构以支持未来的自由扩展，那具体到做什么样子的东西来说都会游刃有余。半年过去了，我觉得来到这里是非常值得的，在软件设计方面相比从前真的是有了一个不小的提升。一直希望自己可以具备快速的构建一个项目的能力，从设计到编码，从前端到后端都可以用最快的速度完成。现在感觉自己离具备这个能力又进了一步。不过一切都才刚刚开始。也希望自己在今年开始做一些更靠谱的项目。</p>
-<p>上班之后也开始更强烈的感受到了生活的压力，上学的时候吃住的花销不大加上自己的实习和 freelancer 的项目还能有个不错的收入，上班之后发现吃住的花销也还真是惊人，最近开始注意记账追朔自己的花销，在财务上开始培养一些好习惯，真正的效果上还是要靠坚持才行。</p>
-<p>和小妮妮这一年真是聚少离多，四处奔波的日子也是挺让人烦的。小妮妮毕业之前还可以随我一起去各个城市玩玩，自一月份以后就没有这样子的机会了。希望今年可以好好想想，想想以后的规划安排，改变现在的局面。</p>
-<p>最后，博客不能停，多多总结，免得自己忘记了。</p></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/31/">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/33/">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
+<p>github 首先应该不会在短期内挂掉吧，然后人家也是给了我一个域名，唯一一点不好就是有些 2b 的学校教育网默认不能访问国外的服务器，这我就没有办法了。</p></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/31/">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/33/">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       
       if(true) {

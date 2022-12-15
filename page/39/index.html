@@ -52,7 +52,74 @@
         }
       }
     })
-  </script><script async="" defer="" data-website-id="443212e9-fd0b-411e-a523-0d0ec604ee8a" src="https://get.aisensiy.me/umami.js"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about/">About</a></li><li><a class="leading-7 block hover:underline" href="/archive/">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags/">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials/">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/rails-factory_girl-and-faker/">rails -- factory_girl and faker</a></h1><h2>2013 January-29</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>昨晚写 high 了，本来想写写 factory_girl 和 faker 这两个 gem，结果一字未提。这里再写一篇好了。</p>
+  </script><script async="" defer="" data-website-id="443212e9-fd0b-411e-a523-0d0ec604ee8a" src="https://get.aisensiy.me/umami.js"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about/">About</a></li><li><a class="leading-7 block hover:underline" href="/archive/">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags/">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials/">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/css-e5ae9ee78eb0e79a84e5b08fe4b889e8a792/">CSS 实现的小三角</a></h1><h2>2013 February-13</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>在家待了快两周了，又进入了半死的状态。来写篇 blog 振奋下精神吧。</p>
+<p>昨天在做一个类似与 weibo 上评论的东西，在点击评论按钮后会显示评论框。而这个评论框在它的右上角会有一个小三角与评论按钮相呼应。</p>
+<p>之前在一本书里面见过，（这本书似乎是台湾人写的，当时觉得它讲的特别相近，不过有些年头了，都忘记它叫什么了，刚才在豆瓣上用 CSS 的关键词找了下，也没找到。），是采用 0 宽度， 0 高度用厚边框挤压出来的三角形。就是说，当对一个 0 空间的元素给予一个很厚的边框的时候，那么四个方向(top left right bottom)的边框会相互挤压，变成三角形！那么，对三个方向的边框给予透明 transparent，而给予另一个方向的边框一个可见色，那三角形就大功告成了！<!-- more --></p>
+<p>代码：<a href="https://jsbin.com/opahum/5/edit">JS Bin</a></p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>utf-8</span> <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>JS Bin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>arrow-up<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>content<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
+[/code]
+[code lang="css"]
+.arrow-up {
+  position: relative;
+  left: 95%;
+
+  height: 0;
+  width: 0;
+  border-width: 7px;
+  border-color: transparent;
+  border-style: solid;
+  border-bottom-color: #f1f1f1;
+}
+
+.content {
+  height: 100px;
+  background-color: #f1f1f1;
+}</code></pre></div>
+<p>不过这里有个问题，可以看的出来，在微博里面，人家的那个小三角是有边框的！</p>
+<p>加上边框，就瞎了吧。这里，在 bootstrap popover 的代码来看到了它的神方法：用两个小三角叠加出边框的效果！一个三角为边框颜色，另一个三角为背景颜色覆盖在上面。且第二个三角的位置稍微向下，一方面可以显示出三角形的边框，另一方面可以覆盖三角下面矩形的边框部分。</p>
+<p>代码：<a href="https://jsbin.com/opahum/4/edit">JS Bin</a></p>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">.arrow-up, .arrow-up:after</span> <span class="token punctuation">{</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">border-width</span><span class="token punctuation">:</span> 7px<span class="token punctuation">;</span>
+  <span class="token property">border-color</span><span class="token punctuation">:</span> transparent<span class="token punctuation">;</span>
+  <span class="token property">border-style</span><span class="token punctuation">:</span> solid<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.arrow-up</span> <span class="token punctuation">{</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+  <span class="token property">left</span><span class="token punctuation">:</span> 93%<span class="token punctuation">;</span>
+
+  <span class="token property">border-bottom-color</span><span class="token punctuation">:</span> gray<span class="token punctuation">;</span> <span class="token comment">/* border-color */</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.arrow-up:after</span> <span class="token punctuation">{</span>
+  <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">""</span><span class="token punctuation">;</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span>
+  <span class="token comment">/* overlay */</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+  <span class="token property">left</span><span class="token punctuation">:</span> -7px<span class="token punctuation">;</span>
+  <span class="token property">top</span><span class="token punctuation">:</span> -6px<span class="token punctuation">;</span> <span class="token comment">/* and show 1px */</span>
+  <span class="token property">border-bottom-color</span><span class="token punctuation">:</span> #f1f1f1<span class="token punctuation">;</span> <span class="token comment">/* background-color */</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.content</span> <span class="token punctuation">{</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #f1f1f1<span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid gray<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>最后附上一个用 CSS 做小三角的网站 <a href="https://apps.eky.hk/css-triangle-generator/">https://apps.eky.hk/css-triangle-generator/</a></p></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/rails-factory_girl-and-faker/">rails -- factory_girl and faker</a></h1><h2>2013 January-29</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>昨晚写 high 了，本来想写写 factory_girl 和 faker 这两个 gem，结果一字未提。这里再写一篇好了。</p>
 <p>factory_girl 与 faker 都是在那本在线的 rails tutorials 里面看到的。factory_girl 用于替换 fixtures 而 faker 用于生成各种随机的内容，这两个东西一个提供生成东西的框架，一个提供具体生产出来的内容，一起使用就显得非常合理了。刚刚纠结的在写相关的内容，反复的打开这两个 gem 的 github 页面翻来翻去，翻的好烦，决定总结一下！这里结合 rails tutorials 写一下自己感觉比较实用的内容。<!-- more --></p>
 <p>刚接触 rails 时看到 fixture 这个东西，感觉还是挺体贴的。不过，尽管是可以配合 erb 方式嵌入代码，但依然不够灵活。于是就有人（thoughtbot）做了个写 code 生成 fixture 的东西，叫做 factory_girl。用处和 fixture 是一样的，只是把 yaml 换成了 ruby code。既然，它的名字里面有 factory，那么我就把它认为是用于为每个类生成很多实例的。这里先给第一个例子。</p>
 <div class="gatsby-highlight" data-language="ruby"><pre class="language-ruby"><code class="language-ruby">FactoryGirl<span class="token punctuation">.</span>define <span class="token keyword">do</span>
@@ -215,48 +282,7 @@ puts Factory<span class="token punctuation">.</span>generate <span class="token 
 <p>虽说我和一些人有探讨过语言到底是不是障碍的问题。一个观点是说，语言不应该是个障碍。有一定经验的工程师都会实用过好多种的语言，但是不论什么语言，真正重要的东西是那种连伪代码都可以表示的算法或者说是逻辑。我曾经一度比较认同这种观点，因为我也是经历了很多语言过来的。在百度写 php 的时候，我也不会觉得说 php 有什么问题，每种语言该有的东西它都是具备的。基本的 web 开发要做的事情在 python java php ruby 里面其实都会反复出现了，它们只不过是围着 http 协议转罢了。但之后我发现，其实每个人对于语言是有各自的钟爱的。就单拿 web 开发来说，虽然都是围着 http 协议转，但是每个语言转的方式各有区别。尤其是在经历了这些语言做类似的事情之后，我觉得，它们绕的水平还是有区别的，或者说我对于怎么绕比较好是有自己的喜好的。虽然经历了很多语言，但是在用一个不太喜欢的语言的时候总会有一种凑合的想法，就是感觉就用这么一阵子，反正不会一直用的，于是也不会太深入的去研究。现在想想，这种凑合的心态是很危险的，会浪费很多的时间。但是，其实这差不多就是在做自己不喜欢的事情，兴趣和动力都相对小一些，有些时间还是去折腾自己感兴趣的东西去了。更惨的情况就是干不喜欢又不得不去做的事情，心理消耗过大，导致空转，精力白白消耗，白天干不好，晚上不精神干别的。而且，说来说去，到真正做事情的时候，大家不都是还实用自己用的最顺手的语言的时候最有生产效率么。后台之前是 python，后来换做了别的语言是因为人换了吧。他们不会考虑说用之前的 python 代码而是换做了 java。这应该是目前核心人员最顺手的语言是 java 吧。R 和 clojure 大行其道也是因为类似的原因吧。那么，语言不是问题这种说法，就比较扯了。</p>
 <p>在对所了解的语言比较失望同时看到 37-signal 这个奇葩的时候（哦，我喜欢这样的奇葩），我觉得尝试一下这朵奇葩做出来的框架。看了本 agile rails 看了本 rails tutorial 感觉目前绝大多数的框架都是在学 rails 似的（当然，不排除 rails 跟风其他框架的可能）。不过 rails 的 generator 做的确实让人很顺心（对，就是 generator，一开是就觉得这样的设计很棒），同时 ruby 这个语言也确实有胜过 python 的地方，我对其还是有一些好感的。不过在去年 8 9 月份对于 ruby rails 还不是非常的有感觉。同时又有了新的事情要去做，这些东西就搁下了。</p>
 <p>跑来写 java 之后，发现钱师傅对 ruby 很是喜欢，于是多了些对 ruby 的讨论，这才重新开始尝试 rails。果然，做过的事情都是有意义的，虽然八月份干的活当时不太明白，但是起码建立起了索引，这次上手就快了许多。而且，这次聪明了写，开始写些没有意义的项目来加深印象。现在看来，效果还是不错的。</p>
-<p>之前和钱师傅讨论过有关语言的问题，钱师傅说，语言应该掌握两种，一种是非常动态，可以快速写出来的语言，一种是很底层的，可以保证执行效率的语言。那么，现在看来，其中一个是 ruby，另一个是 C 或者 C++。我比较偏爱 C，不过现在的偏爱是没有根据的，因为我没有做过。不过，这个想法是有了的，希望以后也有机会写一些很底层的 C 的 code。不过，目前，我已经走在了 rails 的道路上，现在先是 rails，以后用 ruby 做更多的事情吧。</p></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/all-about-sublime-text-2-sublime-e4bdbfe794a8e79a84e4b880e4ba9be7bb8fe9aa8c/">All about sublime text 2 -- sublime 使用的一些经验</a></h1><h2>2012 September-11</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>最近一直在折腾 sublime text2 这款编辑器，终于是用顺起来了。这里写篇 blog 记下如何快速的配置好一个易用的 sublime text，并分享一些技巧和资源。</p>
-<p>以前有用过 vim ，用过 vim 的人都知道，这，是神奇，难以替代。但是要知道，不是每个人都可以驾驭神器的，而且神器也是有适用场景的。比如在 linux 环境下，配合 terminal 的一些命令使用 vim 真的是酣畅淋漓。但是换了 windows 就没有那么顺了。那么，可否有一个替代品呢，当然有很多，但是 sublime text2 作为 editor 里面的新宠当然有它的过人之处。我今天就主要写一下我使用 sublime 的经验。不过，有篇文章 <a href="https://net.tutsplus.com/tutorials/tools-and-tips/sublime-text-2-tips-and-tricks/">Sublime Text 2 Tips and Tricks</a> 已经算是 sublime 的 get started 了，我想，如果你没有用过 sublime 还是先看那篇比较好，这里会跟多的讲到配置的选择以及插件的推荐。<!-- more --></p>
-<h2 id="使用-sublime-text2-给个理由先" style="position:relative;">使用 sublime text2 给个理由先<a href="#%E4%BD%BF%E7%94%A8-sublime-text2-%E7%BB%99%E4%B8%AA%E7%90%86%E7%94%B1%E5%85%88" aria-label="使用 sublime text2 给个理由先 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>当然，一开始有一个非常重要的问题要谈，那就是为什么要用 sublime text2。额...这个问题吧，其实这是个人爱好问题。每种 editor 或者 ide 都有它们各自的优势和劣势，我不想在这上面吐太多口水。我主要列出来这么几点吧。</p>
-<ul>
-<li>sublime 是一个轻型的文本编辑器，不是 ide，它的各种动作都很快。这种快的好处就是，我不需要每写一小段代码就要兴师动众的建立 project 等等，而是 ctrl_n 就开始写，ctrl_s 完了就去测试。但是，它同时支持项目的概念。可大可小，应用自如。</li>
-<li>其功能足够强大，可以满足大多数需求，如项目中的字符搜索，快速文件查找，快速定位函数等等。</li>
-<li>它可以轻松的进行扩展。可以像 vim 那样安装插件，也可以自己添加所谓的 snippets，一种自定义的 auto-complete 的东西，用过的人都知道，在别的编辑器中也有这个概念（貌似 textmate 是最开始有的？我不清楚，没有用过 textmate）。这种扩展的机制使得各种更高的功能的需求可以得到满足。我在下文中也会提到几个我觉得很赞的功能，它们都可以很好的提升我们的工作效率。</li>
-<li>还有就是它看起来很漂亮...不要忽略这个。我记得当初看过一个讲 sublime 的视频的时候，那货说自己不用 notepad++ 的理由就是，It's ugly. 有好看的干啥要用丑的呢？当然，这条对很多人来说不算是什么重要因素就是了，但是我确实很喜欢它的默认高亮主题的。</li>
-</ul>
-<h2 id="从无到有把它做到让你顺手" style="position:relative;">从无到有，把它做到让你顺手<a href="#%E4%BB%8E%E6%97%A0%E5%88%B0%E6%9C%89%E6%8A%8A%E5%AE%83%E5%81%9A%E5%88%B0%E8%AE%A9%E4%BD%A0%E9%A1%BA%E6%89%8B" aria-label="从无到有把它做到让你顺手 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>好吧，和 vim 类似，虽然安装好了的 sublime 就差不多可以用了，但是作为一个长期使用 editor 混饭吃的人，这当然是不够的。</p>
-<h3 id="从配置文件下手" style="position:relative;">从配置文件下手<a href="#%E4%BB%8E%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B8%8B%E6%89%8B" aria-label="从配置文件下手 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>sublime 有自己的 config 文件，我们可以设定一些喜好，让它更顺手。Preferences - Settings 有两个，一个是 settings - default 一个是 settings - User。我们大可以在 settings - user 里面大做文章。废话不多说，直接附上我觉得还不错的配置。</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">{
-    "color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
-    "detect_slow_plugins": false,
-    "rulers": [80],
-    "tab_size": 4,
-    "translate_tabs_to_spaces": true,
-    "ignored_packages": [],
-    "indent_to_bracket": true,
-    "use_tab_stops": true
-}</code></pre></div>
-<p>对，就是这么简单，这样差不多就够了。这个配置会兼容 vim 模式，按下 esc 就会回到 vim 的普通模式了哦。虽然 sublime 下支持的 vim 的功能比较有限，但是用惯了 vim 的同学应该还是会比较亲切的。这个配置我做了一个 gist 在 <a href="https://gist.github.com/3617664">https://gist.github.com/3617664</a>。</p>
-<p>然后这里要说一点，对于每种编程语言，其实都可以有一个新的配置文件来覆盖默认的配置的。点击 Preferences - Browse Packages 就会看到各种语言的收藏夹。在相应的文件夹下，新建并编辑 *.sublime-settings 文件即可。这里 <a href="https://stackoverflow.com/questions/9712113/can-i-set-tab-with-to-2-spaces-in-ruby-and-4-spaces-in-javascript-with-sublime-t">https://stackoverflow.com/questions/9712113/can-i-set-tab-with-to-2-spaces-in-ruby-and-4-spaces-in-javascript-with-sublime-t</a> 有介绍哦。</p>
-<h3 id="package-control" style="position:relative;">Package Control<a href="#package-control" aria-label="package control permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>sublime 有个 package control 可以让你像 apt-get 那样轻松的安装文件。具体安装这个 package controll 移步这里 ===> <a href="https://wbond.net/sublime_packages/package_control/installation">https://wbond.net/sublime_packages/package_control/installation</a>。安装了这个东西之后，就可以很爽的安装各种插件了啊！！！！下面就列几个我觉得很给力的插件吧！</p>
-<ul>
-<li><a href="https://github.com/victorporof/Sublime-HTMLPrettify">HTMLPrettify</a> 用来格式化 html css 的</li>
-<li><a href="https://github.com/spadgos/sublime-jsdocs">DOCBlockr</a> 更方便的写注释</li>
-<li><a href="https://github.com/SublimeLinter/SublimeLinter">SublimeLinter</a> 多种语言的语法检查</li>
-<li><a href="https://github.com/condemil/Gist">Gist for sublime</a> 可以让你更容易的把某个文件作为 gist 或者是把某个 gist 取回本地来，如果你养成了积累一些常用代码片段的习惯，这样的工具可以让你更快的做这些事情。我的配置文件就是用这种方式去上传和下载的。</li>
-</ul>
-<p>这些插件当然不能满足我们的需求，其实很简单，在 ctrl_shift_p 之后 输入 install package 然后在新框框里面输入个比如 ruby 就看到各种 ruby 相关的包了，找个需要的安装之后立即就可以用了。</p>
-<h2 id="其他的技巧" style="position:relative;">其他的技巧<a href="#%E5%85%B6%E4%BB%96%E7%9A%84%E6%8A%80%E5%B7%A7" aria-label="其他的技巧 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<ul>
-<li>添加一个文件夹到 sublime 然后 ctrl_p 就可以输入文件名来快速的打开文件了，这是最便捷的文件搜索工具了，平时用的频率非常高。</li>
-<li>ctrl_shift_f 全局搜索字符串，当然你也需要有一个文件夹或者是建立了一个项目。</li>
-</ul>
-<p>最后附上一个快捷键的列表，<a href="https://gist.github.com/3618541">https://gist.github.com/3618541</a>。多多使用快捷键确实可以大大简化我们的操作的。比如 ctrl_enter 可以不用走到行尾就可以在当前行下添加新的一行，ctrl_d 选中当前的单词等等。</p>
-<p>整体来说就是这样了，sublime 没那么复杂，很好入手，推荐一试。</p></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/38/">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/40/">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
+<p>之前和钱师傅讨论过有关语言的问题，钱师傅说，语言应该掌握两种，一种是非常动态，可以快速写出来的语言，一种是很底层的，可以保证执行效率的语言。那么，现在看来，其中一个是 ruby，另一个是 C 或者 C++。我比较偏爱 C，不过现在的偏爱是没有根据的，因为我没有做过。不过，这个想法是有了的，希望以后也有机会写一些很底层的 C 的 code。不过，目前，我已经走在了 rails 的道路上，现在先是 rails，以后用 ruby 做更多的事情吧。</p></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/38/">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/40/">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       
       if(true) {

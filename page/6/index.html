@@ -52,7 +52,276 @@
         }
       }
     })
-  </script><script async="" defer="" data-website-id="443212e9-fd0b-411e-a523-0d0ec604ee8a" src="https://get.aisensiy.me/umami.js"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about/">About</a></li><li><a class="leading-7 block hover:underline" href="/archive/">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags/">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials/">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/github-cli/">使用 github cli 加速与 github 的交互</a></h1><h2>2022 February-01</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>由于我目前的所有开发流程一方面和 github 有密切的关联，另一方面又大量的使用 <code>vim</code> <code>iTerm</code> 这样的工具，因此有很强烈的诉求希望可以更好的集成这些工具，最近刚刚尝试了下 <a href="https://cli.github.com">github 官方的 cli 工具</a> 感觉确实可以满足我这方面的需求。这里记录下我自己常用的一些命令。</p>
+  </script><script async="" defer="" data-website-id="443212e9-fd0b-411e-a523-0d0ec604ee8a" src="https://get.aisensiy.me/umami.js"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about/">About</a></li><li><a class="leading-7 block hover:underline" href="/archive/">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags/">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials/">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2022<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/spotless-with-gradle-and-intellij/">集成 spotless gradle intellij</a></h1><h2>2022 February-07</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>之前一直使用 <a href="https://github.com/google/google-java-format#intellij-android-studio-and-other-jetbrains-ides">google-java-format intellij plugin</a> 与 git commit hook <a href="https://github.com/a1exsh/google-java-format-git-pre-commit-hook">google-java-format-git-pre-commit-hook</a> 配合实现 java 代码的格式化。不过最近在处理 spring security 需要一些自定义格式的时候发现 intellij 的 google-java-format 插件<strong>居然不支持 <code>@formatter:off</code> 这样的语法</strong>，让我非常头痛。毕竟 web security 的那种「链式调用」如果没有自己的一些格式化会非常难看：</p>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token comment">// @formatter:off</span>
+http
+    <span class="token punctuation">.</span><span class="token function">authorizeRequests</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">antMatchers</span><span class="token punctuation">(</span><span class="token class-name">HttpMethod</span><span class="token punctuation">.</span><span class="token constant">OPTIONS</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">permitAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">and</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">httpBasic</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">and</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">authorizeRequests</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">antMatchers</span><span class="token punctuation">(</span><span class="token string">"/graphiql"</span><span class="token punctuation">,</span> <span class="token string">"/graphql"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">permitAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 如果不做自定义，这里的 permitAll 会强制换行</span>
+<span class="token comment">// @formatter:on</span></code></pre></div>
+<p>如下所示，这样的设置对 <code>google-java-format</code> 插件无效：</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/3bb72224c8d8cea2fc89ebbf3805e570/f238d/intellij-config-ignore-by-plugin.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 55.49999999999999%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsTAAALEwEAmpwYAAACIElEQVQoz22SzW7TQBSF87gsEDwAGySegIcAIZaoXYDEgi5oVTVFaUIT20n8/zO2x/PjcQKrD9ktLQgWR0dzF+eeuefMmqZGDz3OHeiHA7Z3GOsm7pRGCEFdC8qyQCmFMYau66iq6uH9J2ZJ2bINU7ZRhr+PKRuFNAOtGShryTYICJOS9S7HGM3hcGAYhklMa4219m/B5WbP2cWcqJBsk4qolKRCkwhNLuTkTNSSou7oraXv+wmjy1HwH4dBXHIxX+LHJVU3UHaOQvYU0iGkoZOSMBcESYGx/eTI/iE8LnG9nXicz+pWc7Pa4AV7ojhnFyaEcUaUFOzDmO+rJZ7vY+145wHn3AMG5+jdgDQO6waOxyOzF6cBr07XvDzZ8Pz9gqdv5zx7d82TN9e8/rhicbuZ7lgUOVmakqbJxHmekyYJeVFQSYVU4z0Nsy8bwYfzW04uPT4tEj6vcr7uOs78lmWmKERDlKT42x1pXqK0RSqDMv09W4bD8f4U5u7Li+Utl1ff2EcZpWhpO0stDbLT1HXDNikIoowwE0h7oNUDjR6olUO7nzT2x7RoEoyrjvP5kovrFX5UkFSKrDZTymMotRCsPZ+1F+AFW7xgN2Gc7aOYViqUvkt4CiWpOq4Wa5ZeyD6rSUpJ3hhSoaZOjimP5R8hZUvbjmhomgajNX1/5+x3H2ep6Li6WbPepVSdm8TyRpPWmqpVj/X4Dx5LbR8c/gI56y40ZEB3LQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="intellij config ignore by plugin"
+        title="intellij config ignore by plugin"
+        src="/static/3bb72224c8d8cea2fc89ebbf3805e570/5a190/intellij-config-ignore-by-plugin.png"
+        srcset="/static/3bb72224c8d8cea2fc89ebbf3805e570/772e8/intellij-config-ignore-by-plugin.png 200w,
+/static/3bb72224c8d8cea2fc89ebbf3805e570/e17e5/intellij-config-ignore-by-plugin.png 400w,
+/static/3bb72224c8d8cea2fc89ebbf3805e570/5a190/intellij-config-ignore-by-plugin.png 800w,
+/static/3bb72224c8d8cea2fc89ebbf3805e570/c1b63/intellij-config-ignore-by-plugin.png 1200w,
+/static/3bb72224c8d8cea2fc89ebbf3805e570/29007/intellij-config-ignore-by-plugin.png 1600w,
+/static/3bb72224c8d8cea2fc89ebbf3805e570/f238d/intellij-config-ignore-by-plugin.png 2078w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<p>一方面由于这个问题，另一方面由于上述所说的 <code>git-pre-commit</code> 的工具对高版本 java 不兼容，于是决定更换格式化工具。</p>
+<h2 id="spotless" style="position:relative;">spotless<a href="#spotless" aria-label="spotless permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>经过调研决定使用 <a href="https://github.com/diffplug/spotless">spotless</a> 有如下几个原因：</p>
+<ol>
+<li>和 gradle 有很好的集成，通过其所提供的 spotless 的 gradle 插件直接跑命令就能格式化代码，这样就可以通过在 ci 执行静态检查保证格式的一致性，起到了类似于 git-pre-commit 的效果，并且不用开发者自行设置，反而更省事了</li>
+<li>支持多种格式化标准，包括 google-java-format 并支持其自定义，这会让我之前的代码风格保持固定</li>
+<li>通过配置可以实现对 <code>@formatter:off</code> 语法的支持</li>
+</ol>
+<h2 id="spotless-与-gradle-集成" style="position:relative;">spotless 与 gradle 集成<a href="#spotless-%E4%B8%8E-gradle-%E9%9B%86%E6%88%90" aria-label="spotless 与 gradle 集成 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>增加 gradle 的插件：</p>
+<div class="gatsby-highlight" data-language="diff"><pre class="language-diff"><code class="language-diff"><span class="token unchanged"><span class="token prefix unchanged"> </span> plugins {
+</span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span>       id "com.diffplug.spotless" version "6.2.1"
+</span><span class="token unchanged"><span class="token prefix unchanged"> </span> }
+</span>
+<span class="token inserted-sign inserted"><span class="token prefix inserted">+</span> spotless {
+<span class="token prefix inserted">+</span>     java {
+<span class="token prefix inserted">+</span>         googleJavaFormat()
+<span class="token prefix inserted">+</span>     }
+<span class="token prefix inserted">+</span> }</span></code></pre></div>
+<p>添加后就可以使用以下几个常用命令了：</p>
+<ol>
+<li><code>gradle spotlessJavaCheck</code>: 检查是否有不符合格式的内容，<code>gradle build</code> 也会执行该命令</li>
+<li><code>gradle spotlessJavaApply</code>: 执行格式化修改文件</li>
+</ol>
+<h3 id="设置忽略的文件" style="position:relative;">设置忽略的文件<a href="#%E8%AE%BE%E7%BD%AE%E5%BF%BD%E7%95%A5%E7%9A%84%E6%96%87%E4%BB%B6" aria-label="设置忽略的文件 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<div class="gatsby-highlight" data-language="diff"><pre class="language-diff"><code class="language-diff">spotless {
+<span class="token unchanged"><span class="token prefix unchanged"> </span>   java {
+</span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span>       target project.fileTree(project.rootDir) {
+<span class="token prefix inserted">+</span>           include '**/*.java'
+<span class="token prefix inserted">+</span>           exclude 'build/generated/**/*.*', 'build/generated-examples/**/*.*'
+<span class="token prefix inserted">+</span>       }
+</span><span class="token unchanged"><span class="token prefix unchanged"> </span>       googleJavaFormat()
+<span class="token prefix unchanged"> </span>   }
+</span>}</code></pre></div>
+<p>通过上面的 <code>include</code> <code>exclude</code> 保证那些生成的文件不必进行格式化。</p>
+<h3 id="支持-formatter-语法" style="position:relative;">支持 <code>@formatter</code> 语法<a href="#%E6%94%AF%E6%8C%81-formatter-%E8%AF%AD%E6%B3%95" aria-label="支持 formatter 语法 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<div class="gatsby-highlight" data-language="diff"><pre class="language-diff"><code class="language-diff">spotless {
+<span class="token unchanged"><span class="token prefix unchanged"> </span>   java {
+<span class="token prefix unchanged"> </span>       target project.fileTree(project.rootDir) {
+<span class="token prefix unchanged"> </span>           include '**/*.java'
+<span class="token prefix unchanged"> </span>           exclude 'build/generated/**/*.*', 'build/generated-examples/**/*.*'
+<span class="token prefix unchanged"> </span>       }
+</span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span>       toggleOffOn('@formatter:off', '@formatter:on')
+</span><span class="token unchanged"><span class="token prefix unchanged"> </span>       googleJavaFormat()
+<span class="token prefix unchanged"> </span>   }
+</span>}</code></pre></div>
+<p>通过 <code>toogleOffOn</code> 来支持 <code>@formatter:off</code> 这样的语法，那么通过如下注释包裹的内容将被 <code>spotless</code> 忽略：</p>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token comment">// @formatter:off</span>
+
+code here will not be formatted any more
+
+<span class="token comment">// @formatter:on</span></code></pre></div>
+<h2 id="spotless-与-intellij-集成" style="position:relative;">spotless 与 intellij 集成<a href="#spotless-%E4%B8%8E-intellij-%E9%9B%86%E6%88%90" aria-label="spotless 与 intellij 集成 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>spotless 如果只和 gradle 集成而没有 IDE 的集成，那么在 Intellij 中执行「Reformat」还是会忽略上述的任何格式化设置。不过好在 spotless 也有 Intellij 的插件支持。</p>
+<h3 id="安装插件" style="position:relative;">安装插件<a href="#%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6" aria-label="安装插件 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>在插件市场搜索 spotless:</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/0f81955a4eec689a2968f9503f870d39/09d8d/spotless-plugin-in-intellij.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 48%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAAAsTAAALEwEAmpwYAAACRElEQVQoz32RSU8UURSFa+fSOGKUxImWIYGIRjThp7gSkRgxTSMLBxbuIC7E4Z9IxB0SE0eIRtAgKC1g09VdVFfVezU0NX+mihh23uTkveS9fPfcexRTSExLIG0Xx/XQGwb1eh0hBFJKhJSoqkqtXqemaWh6A9u2cRwnf/+n7H8mZWmlzNpmja1tQbVhozdMXFvieR7NpkcQ+MRxTBj4WE6TbctB0zRM0ySOIpI4JkkSoigiDEOUyemvTM2WeTa3ztPXZd6XDWzPZ6NuYbghwk+Rfsp2M6UZpkRhgCUEOzs7xBkoTghzWJQ3VuY+LTI3/42F5XVWt0xU00O3bH5XVGoNQTMCPwbLB+H5SCGwpcxlCYnTDHJnURjmTpX5L0t8X1ljo6qh6hLDsnEdG89z8zHjOCKOQrwoZXlllTtjYwwXS4yURhkZHePe/XHuPhhncOgmL2deofzarFGuaGyoDf5oFoZ08/1kYWSVJGk+Sgy8+bjAqe4eDp/p4Gh7Fy3t3RwrdNFS6ELZf4iHE49QVMNBbdi5KprAtD0c18UwjBy0C03y893CZzp6+zh/qZ/O/iuc7e3jdM9FChcuc+Bkgcknz1GydPOEdUFlW2BaDr7r7bqK4zy9IAgIUph9+4HWwjlOtHVyvKOTI20dHDxZyB3va2ll4vEUSlWXVDNgBtYlWt1C39IIwiB3laYpaZYmsPjjJ0O3iwyMlLheLHHtVpGB4Uwlrg7e4MXM9B4wc6nqNuVqtk+VMNgDZuXHKVGye/9f/QWv0quckhfOpQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="spotless plugin in intellij"
+        title="spotless plugin in intellij"
+        src="/static/0f81955a4eec689a2968f9503f870d39/5a190/spotless-plugin-in-intellij.png"
+        srcset="/static/0f81955a4eec689a2968f9503f870d39/772e8/spotless-plugin-in-intellij.png 200w,
+/static/0f81955a4eec689a2968f9503f870d39/e17e5/spotless-plugin-in-intellij.png 400w,
+/static/0f81955a4eec689a2968f9503f870d39/5a190/spotless-plugin-in-intellij.png 800w,
+/static/0f81955a4eec689a2968f9503f870d39/c1b63/spotless-plugin-in-intellij.png 1200w,
+/static/0f81955a4eec689a2968f9503f870d39/29007/spotless-plugin-in-intellij.png 1600w,
+/static/0f81955a4eec689a2968f9503f870d39/09d8d/spotless-plugin-in-intellij.png 3012w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<h3 id="修改快捷键映射" style="position:relative;">修改快捷键映射<a href="#%E4%BF%AE%E6%94%B9%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%98%A0%E5%B0%84" aria-label="修改快捷键映射 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>安装插件成功后会在「Code」下会多一个「Reformat Code with Spotless」:</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/dcc3912eccbde34a40b7a5ae96e4217e/0ef7e/reformat-with-spotless.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 70.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAAsTAAALEwEAmpwYAAAC3klEQVQ4y1WTW29bRRSF/Y+RQKgqWAgJJChNifrGGxfxAg+RaBzgoQUJiZAqievYOb6cq30uM3Ouju+O6+MPnXESykhLez99s9beM7Wjz97j6Os6J88/58VBnV+++ogXT+scH9Q5flbn5PAT/vzmC35//ilHXz6icfCYk8M6jWeP+fXwYxoHj2g8/ZDjJ+/TePIBtTQY4AqXNM0QUpLlBWmWoeKYohgzmUwxTZP21RWtN2/whyOyJCWOY5RSWmEQ4g19wkhSM50h/b6FZVkMh0OSCiykhlQ1z3Is08S2LPzRCBFFpHFMrJSGVr038rCdDv6oR+30n1OiPMfzHKSMSFNFGI5IEkVRZCgl6HUNuoaBbdsoKTRMSbmHCoHrewhlESuLWrfbYr1WRM4ZftBkPguZTn02m4TtNmW9jrHMHq1mE2swIEsS7UqrAkrJTZ5zf2oqCWATMxYt5ksfmAITYAzcsN3mDPpdmhcXGlgBojBEhCHJHTBLU8qyZLfbUYtjydvtCscZkMYhsKEs11q73S2bzRLbNDGurzE6HczBgKHr4lgWSgitCljBtMP5fE7V+3FO3/PZ3G5495TlTi9j5Hl4jqPrfeykWo6sFpf9B1yulrrZAkExQUrJbDplPC50zfNcO7xqtRj0enuQUlpVH/q+dvgww+VyD6xuKLdvuY4Ur7sR7b6k1VdcGiHXXVNHDf1Ab3bvTGlJIXSCIAxYLhbvAO9uWAFtOcMNFtjRAk/M6PX62H0D37VwzR5D26SIBTeZIlchWaJYr9d6MQ/A7bZkuZgTJimXToLtTwmTBfPFit/OBd++DPjhVcB3L31+/CPg57MJP53N+f6vG5r25MHU/yJPphNGoxHLxexhJrtdycWVyau/25y3XaygwPJTDDelbaecG4JhlMHu7tlUwPu4i9sVbeOaTqej/2iWZfu/3DO4fH1Kt31JKh3GiUuhPMbJkEx4SOWiJh5i4vIvXgr8yIT7lu0AAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="reformat with spotless"
+        title="reformat with spotless"
+        src="/static/dcc3912eccbde34a40b7a5ae96e4217e/5a190/reformat-with-spotless.png"
+        srcset="/static/dcc3912eccbde34a40b7a5ae96e4217e/772e8/reformat-with-spotless.png 200w,
+/static/dcc3912eccbde34a40b7a5ae96e4217e/e17e5/reformat-with-spotless.png 400w,
+/static/dcc3912eccbde34a40b7a5ae96e4217e/5a190/reformat-with-spotless.png 800w,
+/static/dcc3912eccbde34a40b7a5ae96e4217e/c1b63/reformat-with-spotless.png 1200w,
+/static/dcc3912eccbde34a40b7a5ae96e4217e/0ef7e/reformat-with-spotless.png 1594w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<p>但没有快捷键，用默认快捷键还是不能调用这个功能，需要修改下快捷键：</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/610849330c91b0dda0813f89e97c93d5/d698c/keymap-spotless.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 60.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAABYlAAAWJQFJUiTwAAACI0lEQVQoz42QS2/TQBRG/T/ZIjbskPgx7CoQqIhKSKSl0EqlBRrSplLSV1JShyR24tgeezxju3nbB9WBqqhZcKWje2dGc+bTGG7fZqADlE6ROikIVUwgIwIhUEqhtS56HMcIIbAsizAMi/Xt2X2M6eiGSZIwG6XMbhIWoxQWM5SUNJtNho5DmiQkSUwSx8RaF/32gSiK7rgTPts44/nrQ56sVXj04iuP1454unHF54shWoZ07QFSx6SjMTq9wfUFtuPieX6R1vO8oidJUiQ23hxe8+rLOdvNkM3LkNK5z3q1T63j0/dDOq6k7QT8cgTmQGB5IW1HIKQiUrpARgoRhMVsWNaAcrlCo3FFr2cjpaLvuEQyYqJDPLtDOLRgPoZsUnxHvshgMVmSTcknKSMVAHOMi1aX3YMyO/uH7H0/Yme/TPW0gS0U78893h13+FBz+NKO2b2OqZg2rU6dj82AUkNSaoRsNiVbV1ExG9c9h+PaJWZviGm5dJ0AN0wK4cuqw9p+ndLJCVsNj+1WTNm0aZo1Ns581uuCt6dL/s5G07TY3t3noFxl71uF+mWLesMkkIrbGisb9+cnfNskiSRT1WXk/wByVpVhexHWMMRyZUGn79Pu+wipyfLlpVkGs/mCyXTOeJwyHUkWWcYiyx9gDITmPk4QMxAxQRRDnpMX0tVp8vzhvtH3FfcZCIXtKYJIL4V/Lq5ilfTfhIVQY/sPhf9bvwGJc34pQLnNvwAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="keymap spotless"
+        title="keymap spotless"
+        src="/static/610849330c91b0dda0813f89e97c93d5/5a190/keymap-spotless.png"
+        srcset="/static/610849330c91b0dda0813f89e97c93d5/772e8/keymap-spotless.png 200w,
+/static/610849330c91b0dda0813f89e97c93d5/e17e5/keymap-spotless.png 400w,
+/static/610849330c91b0dda0813f89e97c93d5/5a190/keymap-spotless.png 800w,
+/static/610849330c91b0dda0813f89e97c93d5/c1b63/keymap-spotless.png 1200w,
+/static/610849330c91b0dda0813f89e97c93d5/29007/keymap-spotless.png 1600w,
+/static/610849330c91b0dda0813f89e97c93d5/d698c/keymap-spotless.png 1846w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<p>将默认的 reformat 快捷键给 spotless reformat:</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/b9a3fdd30dac00b2f1868c52bed98f0d/d698c/set-keymap-for-spotless.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 72.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAABYlAAAWJQFJUiTwAAACjklEQVQ4y5WTy27bRhSG9YJdBsiqy75OV1mlCJAn6KqbImkAX+raqhU7dSTL1IXmcERyhpwhxYtulL6Co0bowot2gB+HQxAf/3P+mV5mC6p6RdWsqJu1ey7KGp0ZhBAYYyiKApvn5P/o27vlcnlSt+/Ui7ThOYwIZIwfSMQiwRQ1KjVMJx4yDKmrklVT09QVubXk1pBlmVOapq5++0Hv+/cDfnh3weufbvjuzSWv3t7w6v0DP99J8twyC2NiU5Ata5QtkUnKXMYofQRprV0ty/Lo8OYx4Lf+V57ikomq8ZKSO1/jRyky0QSxxl8khEmKiFO6jkKVYWx+cmWMJY7jo8Px9JkPn845v7phcD9k4oeMPB+d2aPD2QwpAvbtjsO+pW337FvYbrdsNhtXm6Zx8N1uR280FZz9cctl/46r2y98urjmbjhBmwKtFfNnwdibIaUkEJIo+IoNz7Amdc66gDpZa13rvfFccnE9YDgJGE6eEYlFpktS0yW7xBt/Zv7wK0L4xIki0xKrPIrcurl1bVZV5VyuVqsOGPLx7MpBz67+5PbLiMHDEyrL6VZRpPgPv/M0eyRcSGYznydvfjpSnbrRHA4H931P6oLYVERZ5Wq3Fyp3Dru127X4UjMNFiyUQSYZwUIRpTk6L0nMErGI2W42R2Cocv6tE9Aegev1Chlr5rJLOkOZEluuyYqGrKjReY2MFNvtC0D5InCDigJE4ON5E6bTqTvM3eyszd0NSpLEJX5q+aSXgJsNSRRwf/+Zfr/PYDDA8zyCICBTMU2Zk2r9P4DrNUmi3I1Q6liFCBAi5N35nB8/znn0F+x32/8CPNC2rUt0PB6fNBwOGY5GfLj+i18u7/GDkMNh74B/A2eKDqlWf+zNAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="set keymap for spotless"
+        title="set keymap for spotless"
+        src="/static/b9a3fdd30dac00b2f1868c52bed98f0d/5a190/set-keymap-for-spotless.png"
+        srcset="/static/b9a3fdd30dac00b2f1868c52bed98f0d/772e8/set-keymap-for-spotless.png 200w,
+/static/b9a3fdd30dac00b2f1868c52bed98f0d/e17e5/set-keymap-for-spotless.png 400w,
+/static/b9a3fdd30dac00b2f1868c52bed98f0d/5a190/set-keymap-for-spotless.png 800w,
+/static/b9a3fdd30dac00b2f1868c52bed98f0d/c1b63/set-keymap-for-spotless.png 1200w,
+/static/b9a3fdd30dac00b2f1868c52bed98f0d/29007/set-keymap-for-spotless.png 1600w,
+/static/b9a3fdd30dac00b2f1868c52bed98f0d/d698c/set-keymap-for-spotless.png 1846w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<p>提示是否将其他已经使用该快捷键的映射删除，选择「Remove」：</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/240c8fc95249a4503bb2b46ca263bb6a/d698c/overwrite-keymap-for-spotless.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 72.5%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAABYlAAAWJQFJUiTwAAACLklEQVQ4y62RS28TMRRG8wdZIrFiyT9iBUJ0w5Y9olTqQyEpjZK0zaOZ0iQznrft8cwkpWoyB42TRrxUWHClT5+vLZ37cENqQ7m4pVzeslh+s2dTLEikwnVdlFIYY9BZRrbVw12e5zvVea1GkChmXsBchEznAtePUGZBnCqunQnC81iUBbfLBctFSaY1mVZIKa3SNLX+UKDxfK/DizfHPHvd5snLE56+avN074L3XUGWab56IZEySFMS6RwRpdyIkDjZgJIksV4UxabD9mjOp9NLrsICJ14wiQq604RpkCKihHmQMBURfqzwYkWYaus6qzvadKW1JoqiTYfj6xkfD444arbp9AY4U4/hZEoitd2V57komaCkRCtpIWWRW38Ysx47jmNWqxWN4bXL4eczTk67NM/6HBy36A4cUm0Ioxjh3XAnDnAmDt1ejzAMCYIA3/fx/QBP+Eild+M3xjeC41aHgTNn4MxwI41Ic6SuK0s8IVgWmvFoRLvdot/vMRqNGAyHjIeXiKnDXZlhsozlclkDPfYPmxZ62PzCWX9I5+KKRGVARWaMXXicaiYzn1kgyYuS0mjO54q3TY93LReTl9TREIkhVCWBLK3XuRtndmSqirIs0VqhTW4/RsSKVCrSOGLsJnw499m/EJhiC/TijB/1E5CK9XrN/f291Wq1lT2voFoBa6uqWv8OFL8Cq4rHon5dVxvZvKo2I+/0B2DNrKz/XbsdPgrcVv7X+O/A74adGyaUgLdKAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="overwrite keymap for spotless"
+        title="overwrite keymap for spotless"
+        src="/static/240c8fc95249a4503bb2b46ca263bb6a/5a190/overwrite-keymap-for-spotless.png"
+        srcset="/static/240c8fc95249a4503bb2b46ca263bb6a/772e8/overwrite-keymap-for-spotless.png 200w,
+/static/240c8fc95249a4503bb2b46ca263bb6a/e17e5/overwrite-keymap-for-spotless.png 400w,
+/static/240c8fc95249a4503bb2b46ca263bb6a/5a190/overwrite-keymap-for-spotless.png 800w,
+/static/240c8fc95249a4503bb2b46ca263bb6a/c1b63/overwrite-keymap-for-spotless.png 1200w,
+/static/240c8fc95249a4503bb2b46ca263bb6a/29007/overwrite-keymap-for-spotless.png 1600w,
+/static/240c8fc95249a4503bb2b46ca263bb6a/d698c/overwrite-keymap-for-spotless.png 1846w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/github-cli/">使用 github cli 加速与 github 的交互</a></h1><h2>2022 February-01</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>由于我目前的所有开发流程一方面和 github 有密切的关联，另一方面又大量的使用 <code>vim</code> <code>iTerm</code> 这样的工具，因此有很强烈的诉求希望可以更好的集成这些工具，最近刚刚尝试了下 <a href="https://cli.github.com">github 官方的 cli 工具</a> 感觉确实可以满足我这方面的需求。这里记录下我自己常用的一些命令。</p>
 <p><span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
@@ -364,123 +633,7 @@ metadata:
 			
 		></video>
 	</p>
-<p>完整的 demo 内容见 <a href="https://github.com/aisensiy/springboot-scheduler-example">springboot-scheduler-example</a>。</p></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/clickhouse-operator-get-started/">尝试 clickhouse operator</a></h1><h2>2022 January-26</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>Production 级别的 clickhouse 不是随便就能搞出来的，需要对其有更深入的理解。这篇主题只是针对如何在 k8s 里快速搭建一还行的 clickhouse。主要是为了实现整个系统不对外有额外的依赖，所有的依赖服务都包含在 k8s 集群中。和 <a href="/mysql-operator">将 MySQL 通过 presslabs/mysql-operator 部署到 k8s 内部</a> 这篇对于 mysql 的处理非常类似。</p>
-<h2 id="诉求" style="position:relative;">诉求<a href="#%E8%AF%89%E6%B1%82" aria-label="诉求 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>之前用于测试的 clickhouse 是一非常随便的 deployment 实现，其主要缺点有如下几个：</p>
-<ol>
-<li>没有考虑如何修改配置，如果需要额外的配置只好自己想办法 mount 一个文件到指定路径</li>
-<li>没有初始化数据库的流程，只能自己手动去创建数据库</li>
-<li>不支持高可用，也无法扩容</li>
-</ol>
-<p>其中 3 的诉求并不强烈，毕竟在测试阶段对这部分的要求没有那么高，而且如果真的想要高可用可能甚至都不应该将 clickhouse 放进 k8s 里。不过 1 2 的诉求还是很强烈的。那么我这里的工作也都是针对 1 2 两项进行的。</p>
-<h2 id="方案" style="position:relative;">方案<a href="#%E6%96%B9%E6%A1%88" aria-label="方案 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>这里采用了 <a href="https://github.com/Altinity/clickhouse-operator">Altinity/clickhouse-operator</a> 这个方案。该方案不仅仅是完美解决了 1 2 两项问题，甚至是 3 也有做了还不错的处理。不过我这里就没有测试扩容和高可用了，主要测试的是 1 2 两部分。</p>
-<h3 id="安装-operator" style="position:relative;">安装 operator<a href="#%E5%AE%89%E8%A3%85-operator" aria-label="安装 operator permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<p>按照<a href="https://github.com/Altinity/clickhouse-operator/blob/master/docs/quick_start.md">文档</a>安装 operator:</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">curl</span> <span class="token parameter variable">-s</span> https://raw.githubusercontent.com/Altinity/clickhouse-operator/master/deploy/operator-web-installer/clickhouse-operator-install.sh <span class="token operator">|</span> <span class="token assign-left variable">OPERATOR_NAMESPACE</span><span class="token operator">=</span>infra <span class="token function">bash</span></code></pre></div>
-<p>这里我把 operator 安装的 namespace 放到了 infra。</p>
-<h3 id="提供部署-clickhouse-的-crd" style="position:relative;">提供部署 clickhouse 的 crd<a href="#%E6%8F%90%E4%BE%9B%E9%83%A8%E7%BD%B2-clickhouse-%E7%9A%84-crd" aria-label="提供部署 clickhouse 的 crd permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
-<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
-<span class="token key atrule">kind</span><span class="token punctuation">:</span> <span class="token string">"ConfigMap"</span>
-<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
-  <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">"serving-db-mounted-configmap"</span>             <span class="token comment"># [5]</span>
-<span class="token key atrule">data</span><span class="token punctuation">:</span>
-  <span class="token key atrule">01_create_databases.sh</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
-    #!/bin/bash
-    set -e
-    clickhouse client -n &lt;&lt;-EOSQL
-      CREATE DATABASE IF NOT EXISTS serving;
-    EOSQL</span>
-<span class="token punctuation">---</span>
-<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> <span class="token string">"clickhouse.altinity.com/v1"</span>
-<span class="token key atrule">kind</span><span class="token punctuation">:</span> <span class="token string">"ClickHouseInstallation"</span>
-<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
-  <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">"serving-db"</span>
-<span class="token key atrule">spec</span><span class="token punctuation">:</span>
-  <span class="token key atrule">configuration</span><span class="token punctuation">:</span>
-    <span class="token key atrule">settings</span><span class="token punctuation">:</span>                                      <span class="token comment"># [5]</span>
-      <span class="token key atrule">max_concurrent_queries</span><span class="token punctuation">:</span> <span class="token number">400</span>
-    <span class="token key atrule">clusters</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">"serving-db"</span>
-        <span class="token key atrule">layout</span><span class="token punctuation">:</span>
-          <span class="token key atrule">shardsCount</span><span class="token punctuation">:</span> <span class="token number">1</span>
-          <span class="token key atrule">replicasCount</span><span class="token punctuation">:</span> <span class="token number">1</span>
-  <span class="token key atrule">defaults</span><span class="token punctuation">:</span>                                       <span class="token comment"># [1]</span>
-    <span class="token key atrule">templates</span><span class="token punctuation">:</span>
-      <span class="token key atrule">podTemplate</span><span class="token punctuation">:</span> pod<span class="token punctuation">-</span>template
-      <span class="token key atrule">dataVolumeClaimTemplate</span><span class="token punctuation">:</span> data<span class="token punctuation">-</span>volume<span class="token punctuation">-</span>template
-      <span class="token key atrule">logVolumeClaimTemplate</span><span class="token punctuation">:</span> log<span class="token punctuation">-</span>volume<span class="token punctuation">-</span>template
-      <span class="token key atrule">serviceTemplate</span><span class="token punctuation">:</span> svc<span class="token punctuation">-</span>template
-  <span class="token key atrule">templates</span><span class="token punctuation">:</span>
-    <span class="token key atrule">serviceTemplates</span><span class="token punctuation">:</span>                             <span class="token comment"># [2]</span>
-      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> svc<span class="token punctuation">-</span>template
-        <span class="token key atrule">generateName</span><span class="token punctuation">:</span> clickhouse<span class="token punctuation">-</span><span class="token punctuation">{</span>chi<span class="token punctuation">}</span>
-        <span class="token key atrule">spec</span><span class="token punctuation">:</span>
-          <span class="token key atrule">ports</span><span class="token punctuation">:</span>
-            <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> http
-              <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8123</span>
-            <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> tcp
-              <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">9000</span>
-          <span class="token key atrule">type</span><span class="token punctuation">:</span> ClusterIP
-    <span class="token key atrule">podTemplates</span><span class="token punctuation">:</span>                                 <span class="token comment"># [3]</span>
-      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> pod<span class="token punctuation">-</span>template
-        <span class="token key atrule">spec</span><span class="token punctuation">:</span>
-          <span class="token key atrule">containers</span><span class="token punctuation">:</span>
-            <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> clickhouse
-              <span class="token key atrule">image</span><span class="token punctuation">:</span> yandex/clickhouse<span class="token punctuation">-</span>server<span class="token punctuation">:</span>22.1.3
-              <span class="token key atrule">volumeMounts</span><span class="token punctuation">:</span>
-                <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> serving<span class="token punctuation">-</span>db<span class="token punctuation">-</span>configmap<span class="token punctuation">-</span>volume
-                  <span class="token key atrule">mountPath</span><span class="token punctuation">:</span> /docker<span class="token punctuation">-</span>entrypoint<span class="token punctuation">-</span>initdb.d
-          <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
-            <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> serving<span class="token punctuation">-</span>db<span class="token punctuation">-</span>configmap<span class="token punctuation">-</span>volume
-              <span class="token key atrule">configMap</span><span class="token punctuation">:</span>
-                <span class="token key atrule">name</span><span class="token punctuation">:</span> serving<span class="token punctuation">-</span>db<span class="token punctuation">-</span>mounted<span class="token punctuation">-</span>configmap
-
-    <span class="token key atrule">volumeClaimTemplates</span><span class="token punctuation">:</span>                         <span class="token comment"># [4]</span>
-      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> data<span class="token punctuation">-</span>volume<span class="token punctuation">-</span>template
-        <span class="token key atrule">reclaimPolicy</span><span class="token punctuation">:</span> Retain
-        <span class="token key atrule">spec</span><span class="token punctuation">:</span>
-          <span class="token key atrule">storageClassName</span><span class="token punctuation">:</span> local
-          <span class="token key atrule">accessModes</span><span class="token punctuation">:</span>
-            <span class="token punctuation">-</span> ReadWriteOnce
-          <span class="token key atrule">resources</span><span class="token punctuation">:</span>
-            <span class="token key atrule">requests</span><span class="token punctuation">:</span>
-              <span class="token key atrule">storage</span><span class="token punctuation">:</span> 50Gi
-      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> log<span class="token punctuation">-</span>volume<span class="token punctuation">-</span>template
-        <span class="token key atrule">reclaimPolicy</span><span class="token punctuation">:</span> Retain
-        <span class="token key atrule">spec</span><span class="token punctuation">:</span>
-          <span class="token key atrule">storageClassName</span><span class="token punctuation">:</span> local
-          <span class="token key atrule">accessModes</span><span class="token punctuation">:</span>
-            <span class="token punctuation">-</span> ReadWriteOnce
-          <span class="token key atrule">resources</span><span class="token punctuation">:</span>
-            <span class="token key atrule">requests</span><span class="token punctuation">:</span>
-              <span class="token key atrule">storage</span><span class="token punctuation">:</span> 10Gi</code></pre></div>
-<p>这个 yaml 是我集成了自己的所有诉求的最终版本，可以看到它主要包含两个部分：</p>
-<ol>
-<li><code>serving-db-mounted-configmap</code> 其中包含了初始化数据库的内容，这部分不是必须要，只有需要初始化数据库的时候才有</li>
-<li><code>ClickHouseInstallation</code> 这个是 clickhouse operator 所提供的 crd 顾名思义，就用于创建 clickhouse 核心 crd。具体每一个东西什么意思还是看文档吧，我这里主要介绍下目前实现了上述诉求相关的内容</li>
-</ol>
-<p>我在上面做了注释标记（[1] 这样子），下面我一个个做介绍。</p>
-<ol>
-<li>可以看到 <code>defaults.templates</code> 下定义了一系列的模板（Template）其包含了
-<ol>
-<li><code>serviceTemplate</code>: 暴露 clickhouse 的 service 的结构</li>
-<li><code>podTemplate</code>: 创建 clickhouse 自身的 pod 的结构</li>
-<li><code>dataVolumeClaimTemplate</code>: 提供给 clickhouse 的存储的结构</li>
-</ol>
-</li>
-<li><code>serviceTemplate</code> 其默认的类型为 <code>LoadBalancer</code> 由于我们的集群里不支持也不希望使用这个类型，因此这里做了自定义将其修改为了 <code>ClusterIP</code></li>
-<li><code>podTemplate</code> 中首先选择 image 版本为 22.1.3 其次增加了一个额外的 volumeMounts 到路径 /docker-entrypoint-initdb.d 这样做是为了利用该 operator 所提供的钩子，实现数据库的初始，具体文档参见 <a href="https://github.com/Altinity/clickhouse-operator/blob/master/docs/chi-examples/02-templates-07-bootstrap-schema.yaml">02-templates-07-bootstrap-schema.yaml</a></li>
-<li><code>volumeClaimTemplates</code> 分别定义了 clikchouse 的日志和数据的 PV</li>
-<li><code>configuration.settings</code> 可以自定义 clickhouse 的配置，这里我仅仅是修改了 <code>max_concurrent_queries</code> 这个配置，这里所写的配置最终会被合并到 clickhouse 的配置中</li>
-</ol>
-<h2 id="遇到的问题" style="position:relative;">遇到的问题<a href="#%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98" aria-label="遇到的问题 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>clickhouse operator 很好的解决了我目前的两大诉求，不过在使用过程中也遇到了一个额外的问题：clickhouse 默认用户 default 无法通过 kubernete dns 去访问 clickhouse。仔细查看了下配置，发现其配置只支持 <code>&#x3C;service-name>.&#x3C;namespace>.svc.cluster.local</code> 的域名访问。这样做有两个明显的问题：</p>
-<ol>
-<li>无法使用类似于 <code>&#x3C;service-name>.&#x3C;namespace></code> 这样的 k8s 内支持的短域名访问</li>
-<li>如果我在创建 k8s 集群时就修改了默认的域名配置（即不采用 cluster.local），那么这域名是一定不起作用的，甚至可以认为这个配置是一个 bug</li>
-</ol>
-<p>解决的办法也很简单，就是不要用这个 <code>default</code> 用户，去创建一个新的用户并且设置可以访问的 ip 即可。</p></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/5/">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/7/">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
+<p>完整的 demo 内容见 <a href="https://github.com/aisensiy/springboot-scheduler-example">springboot-scheduler-example</a>。</p></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/5/">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/7/">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       
       if(true) {
