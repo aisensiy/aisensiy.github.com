@@ -4,23 +4,39 @@ on:
   push:
     branches:
       - master
+  # Enable manual triggers from GitHub UI
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Git Repo Sync
+    name: Build and Deploy
+    permissions:
+      contents: write  # Required for gh-pages deployment
+      
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
+    - uses: actions/checkout@v4
       with:
-        node-version: '18'
-    - name: install deps
+        fetch-depth: 1  # Shallow clone for faster checkout
+        
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '20'  # Using latest LTS version
+        cache: 'yarn'  # Enable built-in caching
+        
+    - name: Install dependencies
       run: yarn install --frozen-lockfile
-    - name: build
+      
+    - name: Build
       run: yarn run build
-    - name: deploy
+      
+    - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GH_PAT }}
         publish_branch: main
         publish_dir: ./public
+        # Add some useful metadata to commits
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'
+        commit_message: 'Deploy: ${{ github.event.head_commit.message }}'
