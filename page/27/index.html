@@ -52,342 +52,7 @@
         }
       }
     })
-  </script><script async="" defer="" data-website-id="443212e9-fd0b-411e-a523-0d0ec604ee8a" src="https://get.aisensiy.me/umami.js"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about/">About</a></li><li><a class="leading-7 block hover:underline" href="/archive/">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags/">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials/">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2023<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/spring-mvc-and-test/">在 Spring Boot 1.5.3 中进行 Spring MVC 测试</a></h1><h2>2017 May-04</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p><a href="/spring-boot-get-started">上一篇文章</a> 介绍了我从 Jersey 切换到 Spring Boot 的一些原因，虽然伴随着一些无奈，但是还是对 Spring Boot 充满了信心。但是在学习的过程中我也发现了一些问题。</p>
-<p>首先，我发现 Spring Boot 的版本更迭非常的快，而不同的版本的很多语法和支持都有一定的区别，当遇到一个问题去 stackoverflow 搜索的时候经常会发现不同版本的解决方案，弄得我很是苦恼。（真是找到了用 npm 的感觉，每次升级包都会出问题。每到这个时候就念到了 rails 的好，一个成熟的、稳定、合理的生态体系是多么的重要！）。在这里我明确的在标题里提到了我所使用的版本 <code>1.5.3</code> 也希望 Spring Boot 在之后能够尽量的保持各个版本的一致性。</p>
-<p>其次，Spring 官网提供了太多的 Getting Started 比如<a href="https://spring.io/guides/gs/rest-service/">这个</a>或者是 Hello World 的示例。这些示例真的是太太太简单了，完全没办法作为学习的材料（再次强调，能不能看看人家 Rails 官方的 Guide 呀），而去其他地方搜索的内容又大多是过时（因为版本更迭快呀）的内容。所以我这里也希望尽量覆盖更全的场景，使得这里的内容可以作为实际开发中的参考。</p>
-<blockquote>
-<p><strong>注意</strong> 这里所展示的测试的例子是对 RESTful API 的测试，在前后端分离，构建微服务的今天，我们在 Spring MVC 中做模板渲染的情况越来越少了了，我们主要处理的是 JSON 数据：我们的输入不是传统的表单数据而是 JSON，我们的输出不再是 HTML 而是 JSON。</p>
-</blockquote>
-<p>测试的重要性在 ThoughtWorks 是老生常谈了，但实际上并不是所有的团队都会在写代码的同时写测试，在看到大量的 Spring Boot 的文章和代码的时候居然很难找到一个完整的、包含着测试的项目，真是恐怖。不过做了一些 search 之后我发现 Spring Boot 目前的测试真的是非常的简单，和 Jersey 比的话那真是好的太多了。一个基本的、纯粹的 Spring MVC 的测试长如下的样子，这里涉及多个例子，我会一点点做介绍。</p>
-<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@RunWith</span><span class="token punctuation">(</span><span class="token class-name">SpringRunner</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span> <span class="token comment">// [1]</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UsersApiTest</span> <span class="token punctuation">{</span>
-
-    <span class="token keyword">private</span> <span class="token class-name">UserRepository</span> userRepository<span class="token punctuation">;</span>
-
-    <span class="token annotation punctuation">@Before</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setUp</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
-        userRepository <span class="token operator">=</span> <span class="token function">mock</span><span class="token punctuation">(</span><span class="token class-name">UserRepository</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token class-name">MockMvc</span> mockMvc <span class="token operator">=</span> <span class="token class-name">MockMvcBuilders</span>
-                            <span class="token punctuation">.</span><span class="token function">standaloneSetup</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">UsersApi</span><span class="token punctuation">(</span>userRepository<span class="token punctuation">)</span><span class="token punctuation">)</span>
-                            <span class="token punctuation">.</span><span class="token function">setControllerAdvice</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">CustomizeExceptionHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-                            <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [2]</span>
-        <span class="token class-name">RestAssuredMockMvc</span><span class="token punctuation">.</span><span class="token function">mockMvc</span><span class="token punctuation">(</span>mockMvc<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [3]</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token annotation punctuation">@Test</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">should_get_empty_user_lists_success</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
-        <span class="token comment">// [4]</span>
-        <span class="token function">given</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>
-        <span class="token function">when</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>
-            <span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/users"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>
-        <span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>
-            <span class="token function">statusCode</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token annotation punctuation">@Test</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">should_create_user_success</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
-        <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span> createUserParameter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">{</span>
-            <span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"username"</span><span class="token punctuation">,</span> <span class="token string">"aisensiy"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-        
-        <span class="token function">given</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
-            <span class="token punctuation">.</span><span class="token function">contentType</span><span class="token punctuation">(</span><span class="token string">"application/json"</span><span class="token punctuation">)</span>
-            <span class="token punctuation">.</span><span class="token function">body</span><span class="token punctuation">(</span>createUserParameter<span class="token punctuation">)</span>
-            <span class="token punctuation">.</span><span class="token function">when</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">"/users"</span><span class="token punctuation">)</span>
-            <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">statusCode</span><span class="token punctuation">(</span><span class="token number">201</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token function">verify</span><span class="token punctuation">(</span>userRepository<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token function">any</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-    <span class="token punctuation">}</span>
-
-    <span class="token annotation punctuation">@Test</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">should_get_400_error_message_with_wrong_parameter_when_create_user</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
-
-        <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span> wrongParameter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">{</span>
-            <span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token string">"aisensiy"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-
-        <span class="token function">given</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-            <span class="token punctuation">.</span><span class="token function">contentType</span><span class="token punctuation">(</span><span class="token string">"application/json"</span><span class="token punctuation">)</span>
-            <span class="token punctuation">.</span><span class="token function">body</span><span class="token punctuation">(</span>wrongParameter<span class="token punctuation">)</span>
-            <span class="token punctuation">.</span><span class="token function">when</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">"/users"</span><span class="token punctuation">)</span>
-            <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">statusCode</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">)</span>
-            <span class="token punctuation">.</span><span class="token function">body</span><span class="token punctuation">(</span><span class="token string">"fieldErrors[0].field"</span><span class="token punctuation">,</span> <span class="token function">equalTo</span><span class="token punctuation">(</span><span class="token string">"username"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// [5]</span>
-            <span class="token punctuation">.</span><span class="token function">body</span><span class="token punctuation">(</span><span class="token string">"fieldErrors.size()"</span><span class="token punctuation">,</span> <span class="token function">equalTo</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token annotation punctuation">@Test</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">should_get_one_user_success</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
-        <span class="token class-name">User</span> user <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">User</span><span class="token punctuation">(</span><span class="token constant">UUID</span><span class="token punctuation">.</span><span class="token function">randomUUID</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"aisensiy"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">when</span><span class="token punctuation">(</span>userRepository<span class="token punctuation">.</span><span class="token function">findById</span><span class="token punctuation">(</span><span class="token function">eq</span><span class="token punctuation">(</span>user<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token punctuation">.</span><span class="token function">thenReturn</span><span class="token punctuation">(</span><span class="token class-name">Optional</span><span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token function">given</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-            <span class="token punctuation">.</span><span class="token function">standaloneSetup</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">UserApi</span><span class="token punctuation">(</span>userRepository<span class="token punctuation">)</span><span class="token punctuation">)</span> 
-            <span class="token punctuation">.</span><span class="token function">when</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/users/{userId}"</span><span class="token punctuation">,</span> user<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// [6]</span>
-            <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">statusCode</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span>
-            <span class="token punctuation">.</span><span class="token function">body</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">,</span> <span class="token function">equalTo</span><span class="token punctuation">(</span>user<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token punctuation">.</span><span class="token function">body</span><span class="token punctuation">(</span><span class="token string">"username"</span><span class="token punctuation">,</span> <span class="token function">equalTo</span><span class="token punctuation">(</span>user<span class="token punctuation">.</span><span class="token function">getUsername</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token punctuation">.</span><span class="token function">body</span><span class="token punctuation">(</span><span class="token string">"links.self"</span><span class="token punctuation">,</span> <span class="token function">endsWith</span><span class="token punctuation">(</span><span class="token string">"/users/"</span> <span class="token operator">+</span> user<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p>以上的代码包含了四个测试用例，测试内容如下：</p>
-<ol>
-<li><code>GET /users</code> 获取用户列表</li>
-<li><code>POST /users</code> 用合法的参数创建一个用户，返回创建成功</li>
-<li><code>POST /users</code> 用非法的参数创建一个用户，返回参数错误信息</li>
-<li><code>GET /users/{userId}</code> 获取单个用户的信息</li>
-</ol>
-<p>下面我按照对代码中标注的点一个个做解释：</p>
-<ol>
-<li>老版本的 <code>SpringJUnit4ClassRunner</code> 被替换为更容易阅读的 <code>SpringRunner</code>，在 stackoverflow 中会找到大量的 <code>SpringJUnit4ClassRunner</code> 对我这种刚接触的人来说真是带来了很多的困惑。另外，我们在这里并没有使用一个 <code>SpringBootTest</code> 的注解，SpringBootTest 是只有需要一个比较完整的 Spring Boot 环境的时候（比如需要做集成测试，启动 <code>EmbeddedWebApplicationContext</code> 的时候）需要。而我们这里仅仅通过单元测试就可以完成任务了，这样的好处是可以大大提升测试的速度。</li>
-<li><code>MockMvcBuilders</code> 是 Spring MVC 提供的一个 mock 环境，使我们可以不启动 HTTP server 就能进行测试。这里我们通过 <code>standaloneSetup</code> 的方法创建我们要测试的 <code>UsersApi</code> 并且通过 <code>setControllerAdvice</code> 添加错误处理的机制。有关 <code>ControllerAdvice</code> 做异常处理的内容我们会在后面的文章中介绍。</li>
-<li>我们在 <code>build.gradle</code> 引入了 <a href="https://rest-assured.io/">rest assured</a> 的两个包用于 json 的测试，我们通过这个语句将所创建的 mock mvc 提供给 rest assured。</li>
-<li>使用了 rest assured 的测试可读性大大的增强了，这里就是检查了请求所获取的 <code>status code</code>，实际的项目中可能需要做更详细的 json 内容的测试</li>
-<li><code>body("fieldErrors[0].field", equalTo("username"))</code> 这种直接读取 json path 的测试方式相对将 json 转化成 map 再一点点的读取字段来说真是方便的太多，有关这种测试的其他内容详见 <a href="https://github.com/rest-assured/rest-assured/wiki/Usage">rest assured 官方文档</a></li>
-<li>这里是一个包含动态 url 的例子，其使用方式和在 Spring MVC 中使用 <code>PathVariable</code> 类似</li>
-</ol>
-<p>大多数情况下，通过 <code>standaloneSetup</code> 的方式就可以对 <code>Controller</code> 进行有效的单元测试了，当然 <code>MockMvcBuilders</code> 也可以引入外部的 <code>ControllerAdvice</code> 对错误处理进行测试。加上 <em>rest assured</em> 测试 json api 真是简单了太多了。不过这里并没有覆盖 filter 的测试，后面的有关安全的文章会补上。</p>
-<p>最后附上项目所使用的 <code>build.gradle</code>，完整的项目内容可以在 <a href="https://github.com/aisensiy/demo-for-springmvc-and-mybatis">Github</a> 找到。</p>
-<div class="gatsby-highlight" data-language="groovy"><pre class="language-groovy"><code class="language-groovy"><span class="token comment">// build.gradle</span>
-buildscript <span class="token punctuation">{</span>
-    ext <span class="token punctuation">{</span>
-        springBootVersion <span class="token operator">=</span> <span class="token string">'1.5.3.RELEASE'</span>
-    <span class="token punctuation">}</span>
-    repositories <span class="token punctuation">{</span>
-        <span class="token function">mavenCentral</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-    dependencies <span class="token punctuation">{</span>
-        <span class="token function">classpath</span><span class="token punctuation">(</span><span class="token interpolation-string"><span class="token string">"org.springframework.boot:spring-boot-gradle-plugin:</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token expression">springBootVersion</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-apply plugin<span class="token punctuation">:</span> <span class="token string">'java'</span>
-apply plugin<span class="token punctuation">:</span> <span class="token string">'eclipse'</span>
-apply plugin<span class="token punctuation">:</span> <span class="token string">'org.springframework.boot'</span>
-
-version <span class="token operator">=</span> <span class="token string">'0.0.1-SNAPSHOT'</span>
-sourceCompatibility <span class="token operator">=</span> <span class="token number">1.8</span>
-
-repositories <span class="token punctuation">{</span>
-    <span class="token function">mavenCentral</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-
-
-dependencies <span class="token punctuation">{</span>
-    <span class="token function">compile</span><span class="token punctuation">(</span><span class="token string">'org.flywaydb:flyway-core'</span><span class="token punctuation">)</span>
-    <span class="token function">compile</span><span class="token punctuation">(</span><span class="token string">'org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.0'</span><span class="token punctuation">)</span>
-    <span class="token function">compile</span><span class="token punctuation">(</span><span class="token interpolation-string"><span class="token string">"org.springframework.boot:spring-boot-starter-hateoas"</span></span><span class="token punctuation">)</span>
-    <span class="token function">compile</span><span class="token punctuation">(</span><span class="token string">'org.springframework.boot:spring-boot-starter-web'</span><span class="token punctuation">)</span>
-    <span class="token function">runtime</span><span class="token punctuation">(</span><span class="token string">'com.h2database:h2'</span><span class="token punctuation">)</span>
-    <span class="token function">compileOnly</span><span class="token punctuation">(</span><span class="token string">'org.projectlombok:lombok'</span><span class="token punctuation">)</span>
-    <span class="token function">testCompile</span><span class="token punctuation">(</span><span class="token string">'org.springframework.boot:spring-boot-starter-test'</span><span class="token punctuation">)</span>
-    <span class="token function">testCompile</span><span class="token punctuation">(</span><span class="token string">'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:1.3.0'</span><span class="token punctuation">)</span>
-    testCompile <span class="token string">'io.rest-assured:rest-assured:3.0.2'</span>
-    testCompile <span class="token string">'io.rest-assured:spring-mock-mvc:3.0.2'</span>
-<span class="token punctuation">}</span></code></pre></div></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/spring-boot-get-started/">Spring Boot Getting Started</a></h1><h2>2017 May-03</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>前一阵子去了联想的项目去做性能调优，顺便也正儿八经的接触了一下 spring boot 的体系（当然也使用了很多 spring cloud 的内容，这个以后再讲）。这里简单的对比一下它和我之前主要使用的 jersey 体系，讲一下我看到的它们两者之间的差异以及 spring boot 相比 jersey 的一些优势和个别的不足。</p>
-<p>再次回到 <code>spring</code> 的主题也是感慨万千，这让我想起来本科时候刚开始接触 web 开发的情况。那时候 <code>spring + hibernate + structs</code> 是 web 开发的主流框架。不过鉴于当时我自己水平有限，<code>spring</code> 的水平基本上提留在了 <code>Spring in Action</code> 前三章的水平。在经历了 PHP Python（Django），ruby（Rails），Jersey 之后又能回到 Spring 不得不说 Pivotal 旗下的 Spring 团队功不可没。Spring boot 自己的 Reference 所说的，Spring boot 给了开发者一个很好的 getting started 的体验并且并且了大量 xml 配置的实现方式，本来我以为之前我所看到的如此简洁的 <code>main</code> 只是因为是 demo 但是当我看到联想这边的生产代码也依然优雅的时候敬畏之心油然而生。</p>
-<h2 id="spring-拥有完备的生态体系" style="position:relative;">spring 拥有完备的生态体系<a href="#spring-%E6%8B%A5%E6%9C%89%E5%AE%8C%E5%A4%87%E7%9A%84%E7%94%9F%E6%80%81%E4%BD%93%E7%B3%BB" aria-label="spring 拥有完备的生态体系 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>目前来看 Spring 的体系非常的完备，一方面其核心 DI 和 AOP 组件本来就是 java 语言的标配，再加上与各种持久化框架、模板引擎的完美整合已经称得上包罗万象。另一方面，微服务架构逐渐成为主流的今天，spring cloud 体系的构建也非常的及时，大量的组件解决了云环境、微服务的诸多问题。与 spring  强大的生态相比，jersey 作为一个纯粹的 web framework 来说实在是太无力了，并且其与其他模块的组合也显得捉襟见肘。jersey 自己采用一个叫做 <code>hk2</code> 的依赖注入框架，它用起来并不那么方便，在之前的多个项目中，我们甚至需要把 hk2 和 guava 的容器建立一个 bridge 才能让它们一起工作，需要大量的模板代码，我曾经试图把之前遗留的模板代码进行重构但由于担心影响到生产环境的稳定性最终还是放弃了。</p>
-<h2 id="jersey-的-sub-resource" style="position:relative;">Jersey 的 sub resource<a href="#jersey-%E7%9A%84-sub-resource" aria-label="jersey 的 sub resource permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>当时和 Jersey 相比，Spring MVC 绝对是 spring 体系中的一个弱势。Jersey 实现了 <code>JAX-RS</code> 的标准，很明显这套标注的实现比 Spring MVC 的要好用，并且 jersey 中有一个非常重要的概念：sub resource，它允许一个 <code>url</code> 进行链式解析。比如下面的 url:</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">/users/1234/posts/123</code></pre></div>
-<p>可以理解为用户 <code>1234</code> 的 id 为 <code>123</code> 的文章。在 jersey 中，我们可以用一下的方式实现：</p>
-<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java">
-<span class="token comment">//UsersApi.java</span>
-<span class="token annotation punctuation">@Path</span><span class="token punctuation">(</span><span class="token string">"users"</span><span class="token punctuation">)</span> <span class="token comment">// [1]</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UsersApi</span> <span class="token punctuation">{</span>
-
-    <span class="token annotation punctuation">@GET</span>
-    <span class="token annotation punctuation">@Produces</span><span class="token punctuation">(</span><span class="token class-name">MediaType</span><span class="token punctuation">.</span><span class="token constant">APPLICATION_JSON</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">></span></span> <span class="token function">getUsers</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Context</span> <span class="token class-name">UserRepository</span> users<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> users<span class="token punctuation">.</span><span class="token function">getAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    
-    <span class="token annotation punctuation">@GET</span>
-    <span class="token annotation punctuation">@Path</span><span class="token punctuation">(</span><span class="token string">"{userId}"</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getOneUserById</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathParam</span><span class="token punctuation">(</span><span class="token string">"userId"</span><span class="token punctuation">)</span> <span class="token class-name">String</span> userId<span class="token punctuation">,</span> 
-                                 <span class="token annotation punctuation">@Context</span> <span class="token class-name">UserRepository</span> userRepository<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> userRepository<span class="token punctuation">.</span><span class="token function">getUserById</span><span class="token punctuation">(</span>userId<span class="token punctuation">)</span>
-                            <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token class-name">UserApi</span><span class="token operator">::</span><span class="token keyword">new</span><span class="token punctuation">)</span>   <span class="token comment">// [2] </span>
-                            <span class="token punctuation">.</span><span class="token function">orElseThrow</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token keyword">new</span> <span class="token class-name">UserNotFoundException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [3]</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">//UserApi.java</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserApi</span> <span class="token punctuation">{</span> 
-    <span class="token keyword">private</span> <span class="token class-name">User</span> user<span class="token punctuation">;</span>
-
-    <span class="token keyword">public</span> <span class="token class-name">UserApi</span><span class="token punctuation">(</span><span class="token class-name">User</span> user<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>user <span class="token operator">=</span> user<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token annotation punctuation">@GET</span>
-    <span class="token annotation punctuation">@Produces</span><span class="token punctuation">(</span><span class="token class-name">MediaType</span><span class="token punctuation">.</span><span class="token constant">APPLICATION_JSON</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span> <span class="token class-name">User</span> <span class="token function">getUser</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> user<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token annotation punctuation">@Path</span><span class="token punctuation">(</span><span class="token string">"posts"</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span> <span class="token class-name">UserEvaluationsApi</span> <span class="token function">userEvaluationsApi</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">UserPostsApi</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">//UserPostsApi.java</span>
-<span class="token annotation punctuation">@Path</span><span class="token punctuation">(</span><span class="token string">"projects"</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserPostsApi</span><span class="token punctuation">.</span>java <span class="token punctuation">{</span>
-    <span class="token annotation punctuation">@Path</span><span class="token punctuation">(</span><span class="token string">"{postId}"</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span> <span class="token class-name">ProjectApi</span> <span class="token function">getPostApi</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathParam</span><span class="token punctuation">(</span><span class="token string">"postId"</span><span class="token punctuation">)</span> <span class="token class-name">String</span> postId<span class="token punctuation">,</span>
-                                 <span class="token annotation punctuation">@Context</span> <span class="token class-name">PostRepository</span> postRepository<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> postRepository
-                <span class="token punctuation">.</span><span class="token function">findById</span><span class="token punctuation">(</span>postId<span class="token punctuation">)</span>
-                    <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token class-name">UserPostApi</span><span class="token operator">::</span><span class="token keyword">new</span><span class="token punctuation">)</span>
-                    <span class="token punctuation">.</span><span class="token function">orElseThrow</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token keyword">new</span> <span class="token class-name">PostNotFoundException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">//UserPostApi.java</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserPostApi</span><span class="token punctuation">.</span>java <span class="token punctuation">{</span>
-    <span class="token keyword">private</span> <span class="token class-name">Post</span> post<span class="token punctuation">;</span>
-    
-    <span class="token keyword">public</span> <span class="token class-name">UserPostApi</span><span class="token punctuation">(</span><span class="token class-name">Post</span> post<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>post <span class="token operator">=</span> post<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-     
-    <span class="token annotation punctuation">@GET</span>
-    <span class="token annotation punctuation">@Produces</span><span class="token punctuation">(</span><span class="token class-name">MediaType</span><span class="token punctuation">.</span><span class="token constant">APPLICATION_JSON</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span> <span class="token class-name">Post</span> <span class="token function">getPost</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> post<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p>如上所示，四个类 <code>UsersApi</code> <code>UserApi</code> <code>UserPostsApi</code> <code>UserPostApi</code> 将整个流程切分成了四块，每个流程按照 url 逐步解析，其中：</p>
-<ol>
-<li><code>UsersApi</code> 为入口（EntryPoint），只有它拥有类级别的 <code>@Path</code></li>
-<li>当需要进行下一步的 url 处理时，可以主动创建 sub resource</li>
-<li>如果当前层次报错，则可以终止 url 的处理</li>
-</ol>
-<p>而 Spring MVC 则完全不支持这样的方式，和大多数 mvc 框架一样，它只能老老实实的按照 pattern 对整个 url 解析，不论是在处理 <code>/users/123</code> 还是处理 <code>/users/123/posts/1234</code> 都需要捕捉 <code>UserNotFoundException</code> 的异常。</p>
-<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java">
-<span class="token comment">// UsersApi.java</span>
-<span class="token annotation punctuation">@RestController</span>
-<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/users"</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UsersApi</span> <span class="token punctuation">{</span>
-    <span class="token keyword">private</span> <span class="token class-name">UserRepository</span> userRepository<span class="token punctuation">;</span>
-
-    <span class="token annotation punctuation">@Autowired</span>
-    <span class="token keyword">public</span> <span class="token class-name">UsersApi</span><span class="token punctuation">(</span><span class="token class-name">UserRepository</span> userRepository<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>userRepository <span class="token operator">=</span> userRepository<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>method <span class="token operator">=</span> <span class="token constant">GET</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">></span></span> <span class="token function">getUsers</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> userRepository<span class="token punctuation">.</span><span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">// UserApi.java</span>
-<span class="token annotation punctuation">@RestController</span>
-<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/users/{userId}"</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserApi</span> <span class="token punctuation">{</span>
-    <span class="token annotation punctuation">@Autowired</span>
-    <span class="token keyword">private</span> <span class="token class-name">UserRepository</span> userRepository<span class="token punctuation">;</span>
-    
-    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>method <span class="token operator">=</span> <span class="token constant">GET</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span> <span class="token class-name">User</span> <span class="token function">getUser</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span><span class="token punctuation">(</span><span class="token string">"userId"</span><span class="token punctuation">)</span> <span class="token class-name">String</span> userId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> userRepository<span class="token punctuation">.</span><span class="token function">getUserById</span><span class="token punctuation">(</span>userId<span class="token punctuation">)</span>
-                    <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>user <span class="token operator">-></span> user<span class="token punctuation">)</span>
-                    <span class="token punctuation">.</span><span class="token function">orElseThrow</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token keyword">new</span> <span class="token class-name">UserNotFoundException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">// UserPostsApi.java</span>
-<span class="token annotation punctuation">@RestController</span>
-<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/users/{userId}/posts"</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserPostsApi</span> <span class="token punctuation">{</span>
-    <span class="token annotation punctuation">@Autowired</span>
-    <span class="token keyword">private</span> <span class="token class-name">UserRepository</span> userRepository<span class="token punctuation">;</span>
-    
-    <span class="token annotation punctuation">@Autowired</span>
-    <span class="token keyword">private</span> <span class="token class-name">PostRepository</span> postRepository<span class="token punctuation">;</span>
-    
-    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/{postId}"</span><span class="token punctuation">,</span> method <span class="token operator">=</span> <span class="token constant">GET</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span> <span class="token class-name">Post</span> <span class="token function">getPost</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span><span class="token punctuation">(</span><span class="token string">"userId"</span><span class="token punctuation">)</span> <span class="token class-name">String</span> userId<span class="token punctuation">,</span>
-                        <span class="token annotation punctuation">@PathVariable</span><span class="token punctuation">(</span><span class="token string">"postId"</span><span class="token punctuation">)</span> <span class="token class-name">String</span> postId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>userRepository<span class="token punctuation">.</span><span class="token function">getUserById</span><span class="token punctuation">(</span>userId<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">isPresent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">UserNotFoundException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> postRepository
-                <span class="token punctuation">.</span><span class="token function">findById</span><span class="token punctuation">(</span>postId<span class="token punctuation">)</span>
-                    <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>post <span class="token operator">-></span> post<span class="token punctuation">)</span>
-                    <span class="token punctuation">.</span><span class="token function">orElseThrow</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token keyword">new</span> <span class="token class-name">PostNotFoundException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre></div>
-<h2 id="将-jersey-和-spring-boot-整合的尝试" style="position:relative;">将 jersey 和 spring boot 整合的尝试<a href="#%E5%B0%86-jersey-%E5%92%8C-spring-boot-%E6%95%B4%E5%90%88%E7%9A%84%E5%B0%9D%E8%AF%95" aria-label="将 jersey 和 spring boot 整合的尝试 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p>前面已经提到了 spring 可以和很多其他的框架完美的结合，那么能不能让 jersey 和 spring boot 完美的结合在一起呢？这样的话既拥有了 spring boot 又能拥有 jersey 的 sub resource 的构建方式，一举两得呀。但现实给我泼了桶冷水。</p>
-<p>首先，Jersey 自成体系，想要和其他框架结合会产生一定的工程摩擦。Spring mvc 和 spring core 自然是很好的集成了的，但是 jersey 中自己的那个 hk2 依赖注入框架和 spring 就不能那么好的相处了。使用的时候只能将其全部换成 spring 的依赖注入方式。同时 spring mvc 有一个 mock mvc 测试体系，它大大加速的测试的速度，然而它仅仅支持 spring mvc。并且到目前为止，我都没有找到任何一个很好的测试 jersey 的方式，其自身的测试框架在 spring 体系下的结合实例我就没见到过，而其他 mock 的支持也没走通过。</p>
-<p>另一方面，spring 体系中 spring mvc 虽然在我看起来还是有很多的缺点，但是它遵循的是大量 web 框架的模式，比如 django 的 <a href="https://docs.djangoproject.com/en/1.11/topics/http/urls/">url dispatcher</a> 比如 rails 的 <a href="https://guides.rubyonrails.org/routing.html">routes</a> 都是类似的 url 映射模式。Spring MVC 同样是沿着 web 的发展趋势一路走来，作为一个历史悠久的框架自然也继承了大多数 web MVC 的特点，也应该会被更多的人所接受，实在是无可厚非。所以，我不知道我自己坚持使用 jersey 是不是会给项目中其他成员带来伤害。</p>
-<p>如下所示，jersey 的测试需要将整个 server 启动，采用 <code>RANDOM_PORT</code> 的方式进行测试。</p>
-<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@RunWith</span><span class="token punctuation">(</span><span class="token class-name">SpringRunner</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
-<span class="token annotation punctuation">@SpringBootTest</span><span class="token punctuation">(</span>webEnvironment <span class="token operator">=</span> <span class="token class-name">SpringBootTest<span class="token punctuation">.</span>WebEnvironment</span><span class="token punctuation">.</span><span class="token constant">RANDOM_PORT</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UsersApiTest</span> <span class="token punctuation">{</span>
-
-    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${local.server.port}"</span><span class="token punctuation">)</span>
-    <span class="token keyword">int</span> port<span class="token punctuation">;</span>
-
-    <span class="token annotation punctuation">@MockBean</span>
-    <span class="token class-name">UserRepository</span> userRepository<span class="token punctuation">;</span>
-
-    <span class="token annotation punctuation">@Before</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setUp</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
-        <span class="token class-name">RestAssured</span><span class="token punctuation">.</span>port <span class="token operator">=</span> port<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token annotation punctuation">@Test</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">should_get_empty_user_lists</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
-        <span class="token function">when</span><span class="token punctuation">(</span>userRepository<span class="token punctuation">.</span><span class="token function">getAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">thenReturn</span><span class="token punctuation">(</span><span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">User</span><span class="token punctuation">(</span><span class="token string">"123"</span><span class="token punctuation">,</span> <span class="token string">"aisensiy"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token class-name"><span class="token namespace">io<span class="token punctuation">.</span>restassured<span class="token punctuation">.</span></span>RestAssured</span><span class="token punctuation">.</span><span class="token function">when</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-            <span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/users"</span><span class="token punctuation">)</span>
-            <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-            <span class="token punctuation">.</span><span class="token function">statusCode</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre></div>
-<p>而 spring mvc 的测试则可以使用 mock mvc 测试速度快，并且支持 <code>standaloneSetup</code> 模式，对单个 controller 进行测试。</p>
-<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@RunWith</span><span class="token punctuation">(</span><span class="token class-name">SpringRunner</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UsersApiTest</span> <span class="token punctuation">{</span>
-
-    <span class="token keyword">private</span> <span class="token class-name">UserRepository</span> userRepository<span class="token punctuation">;</span>
-
-    <span class="token annotation punctuation">@Before</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setUp</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
-        userRepository <span class="token operator">=</span> <span class="token function">mock</span><span class="token punctuation">(</span><span class="token class-name">UserRepository</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment">// 只对 UsersApi 进行测试</span>
-        <span class="token class-name">MockMvc</span> mockMvc <span class="token operator">=</span> <span class="token class-name">MockMvcBuilders</span>
-                            <span class="token punctuation">.</span><span class="token function">standaloneSetup</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">UsersApi</span><span class="token punctuation">(</span>userRepository<span class="token punctuation">)</span><span class="token punctuation">)</span>
-                            <span class="token punctuation">.</span><span class="token function">setControllerAdvice</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">CustomizeExceptionHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-        <span class="token class-name">RestAssuredMockMvc</span><span class="token punctuation">.</span><span class="token function">mockMvc</span><span class="token punctuation">(</span>mockMvc<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token annotation punctuation">@Test</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">should_get_empty_user_lists_success</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
-        <span class="token function">given</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>
-        <span class="token function">when</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>
-            <span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/users"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>
-        <span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>
-            <span class="token function">statusCode</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p>当然，优雅的测试是重头戏，后面的文章中会介绍一些我自己发觉的测试的模式。</p>
-<h2 id="参考" style="position:relative;">参考<a href="#%E5%8F%82%E8%80%83" aria-label="参考 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<ul>
-<li><a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html">Spring Web MVC framework</a></li>
-<li><a href="https://www.thoughtworks.com/radar">工程摩擦力 engineering friction</a></li>
-<li><a href="https://jersey.java.net/documentation/latest/test-framework.html">Jersey Test Framework</a></li>
-<li><a href="https://jersey.java.net/documentation/latest/jaxrs-resources.html">Jersey Resources and Sub-Resources</a></li>
-<li><a href="https://docs.djangoproject.com/en/1.11/topics/http/urls/">Django url dispatcher</a></li>
-<li><a href="https://guides.rubyonrails.org/routing.html">Rails routes</a></li>
-<li><a href="https://hk2.java.net/">HK2</a></li>
-</ul></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/python-data-science-2/">Python Data Science, NumPy 2</a></h1><h2>2017 March-31</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>这篇文章延续<a href="/python-data-science-1">Python Data Science, NumPy 1</a>，介绍广播、高级索引以及数组排序。</p>
+  </script><script async="" defer="" data-website-id="443212e9-fd0b-411e-a523-0d0ec604ee8a" src="https://get.aisensiy.me/umami.js"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div><div class="md:text-left text-center md:fixed md:w-80 bg-gray-900 md:h-full text-white"><div class="p-4 mx-auto text-center"><button aria-label="Activate Light Mode" title="Activate Light Mode" class="text-center"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></button></div><div class="md:absolute bottom-0 py-12 mx-12 space-y-8"><h1 class="text-6xl font-black font-serif">Eisen&#x27;s Blog</h1><nav><ul class="text-md flex-row"><li><a class="leading-7 block hover:underline" href="/">Home</a></li><li><a class="leading-7 block hover:underline" href="/about/">About</a></li><li><a class="leading-7 block hover:underline" href="/archive/">Archive</a></li><li><a class="leading-7 block hover:underline" href="/tags/">Tags</a></li><li><a class="leading-7 block hover:underline" href="/serials/">Serials</a></li><li><a href="https://github.com/aisensiy" target="_blank" rel="noreferrer" class="leading-7 block hover:underline">GitHub</a></li></ul></nav><footer class="text-gray-400">© <!-- -->2024<!-- -->. All rights reserved.</footer></div></div><div class="md:ml-80 p-4 md:p-8 md:max-w-6xl main"><div><div class=""><div><h1><a href="/python-data-science-2/">Python Data Science, NumPy 2</a></h1><h2>2017 March-31</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>这篇文章延续<a href="/python-data-science-1">Python Data Science, NumPy 1</a>，介绍广播、高级索引以及数组排序。</p>
 <h2 id="广播" style="position:relative;">广播<a href="#%E5%B9%BF%E6%92%AD" aria-label="广播 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <p>广播是在长度不同的数组上执行 ufunc（例如，加法，减法，乘法等）的一组规则。</p>
 <p>对于大小相同的 NumPy 数组是逐个元素执行计算的：</p>
@@ -547,7 +212,511 @@ X<span class="token punctuation">[</span>row<span class="token punctuation">[</s
 <span class="token comment">#        [ 4,  6],</span>
 <span class="token comment">#        [ 8, 10]])</span></code></pre></div>
 <h2 id="排序" style="position:relative;">排序<a href="#%E6%8E%92%E5%BA%8F" aria-label="排序 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
-<p><code>np.sort</code> <code>np.argsort</code> 基本就是数组排序的全部内容了，NumPy 中的 np.sort 比 Python 的 sort sorted 要快的多。如果需要进行局部排序参见 <code>np.partition</code> 的内容，这里不在赘述了。</p></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/26/">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/28/">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
+<p><code>np.sort</code> <code>np.argsort</code> 基本就是数组排序的全部内容了，NumPy 中的 np.sort 比 Python 的 sort sorted 要快的多。如果需要进行局部排序参见 <code>np.partition</code> 的内容，这里不在赘述了。</p></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/python-data-science-1/">Python Data Science, NumPy 1</a></h1><h2>2017 March-18</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>NumPy（Numerical Python 的简称）提供了 Python 中高效计算的数据结构以及丰富的数据处理方法。Numpy 的 array 和 Python 的 list 接口非常相似，但 Numpy 却要比 list 快的多。NumPy 目前几乎是 Python 整个数据科学工具体系的核心，所以无论数据科学的哪个方面对你感兴趣，花费时间来学习使用 NumPy 的是非常值得的。</p>
+<p>我们这里要讲的 NumPy 版本为 <code>1.11.1</code> 可以通过如下的方法在 Python  中查看：</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">import</span> numpy
+numpy<span class="token punctuation">.</span>__version__</code></pre></div>
+<p>然后使用 NumPy 的时候基本都是用 <code>np</code> 作为引入的缩写：</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np</code></pre></div>
+<p>所以后面如果看到 <code>np.xxx</code> 的地方就知道是在用 <code>numpy</code> 了。</p>
+<p>NumPy 这一章节包含两部分内容，一部分讲述其基础数据结构，里面涉及了一些很基础的、大家可能还没有深究的问题，比如为什么它比 Python 的 list 快很多、为什么它用起来和 list 非常相似，这也是这部分重点介绍的部分。另一部分就是介绍 NumPy 中都包含了什么基本的函数，这一部分的很多内容都可以通过文档查询的到，不过这里会讲述一些常用的以及让人迷惑的函数的用法。</p>
+<p>虽然我已经尽量略去了那些额外的示例以及大部分人很少涉及到的犄角旮旯，但是这一部分依然会被分割为两个部分进行讲解，这一部分介绍了 NumPy 的基本数据结构以及其快速运算的原理以及基本的数据操作，下一部分介绍 NumPy 的广播运算、高级索引以及排序。</p>
+<h2 id="python-的数据类型" style="position:relative;">Python 的数据类型<a href="#python-%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" aria-label="python 的数据类型 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<h3 id="python-int-不仅仅是-int" style="position:relative;">Python Int 不仅仅是 Int<a href="#python-int-%E4%B8%8D%E4%BB%85%E4%BB%85%E6%98%AF-int" aria-label="python int 不仅仅是 int permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>Python 属于动态类型语言，其变量在声明时是不需要定义其类型的，并且一个变量也可以被赋值为任意类型。比如：</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">x <span class="token operator">=</span> <span class="token number">4</span>
+x <span class="token operator">=</span> <span class="token string">"four"</span></code></pre></div>
+<p>在 Python 中是合法的，而在 C 这样的静态类型语言中这样就会报错：</p>
+<div class="gatsby-highlight" data-language="c"><pre class="language-c"><code class="language-c"><span class="token keyword">int</span> x <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+x <span class="token operator">=</span> <span class="token string">"four"</span><span class="token punctuation">;</span></code></pre></div>
+<p>动态类型增加了 Python 的易用性，但在实际运算的过程中 Python 的解释器总是要知道当前的这个变量到底存储的是什么类型以便进行相应的计算的，因此 Python 的变量不仅仅包含了数值，也包含了其类型的信息。</p>
+<p>默认的 Python 语言是由 C 语言编写，并且 Python 的变量就是一个 C 的结构体。例如当我们在 Python 中定义一个整型：x = 100000，x 不是一个纯粹的整数，它是一个指向一个 C 语言结构体的指针。如果我们查看 Python 3.4 的源码就可以看到实现 Python 中的整型（实际上是长整型）的代码如下（其中的一些 C 语言宏已经被展开了）：</p>
+<div class="gatsby-highlight" data-language="c"><pre class="language-c"><code class="language-c"><span class="token keyword">struct</span> <span class="token class-name">_longobject</span> <span class="token punctuation">{</span>
+    <span class="token keyword">long</span> ob_refcnt<span class="token punctuation">;</span>
+    PyTypeObject <span class="token operator">*</span>ob_type<span class="token punctuation">;</span>
+    <span class="token class-name">size_t</span> ob_size<span class="token punctuation">;</span>
+    <span class="token keyword">long</span> ob_digit<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div>
+<p>可以看到，除了保存了真正的数据的 <code>ob_digit</code> 之外，Python 还保存了引用计数器、类型、数据长度这三个信息。</p>
+<h3 id="list-也不仅仅是数组" style="position:relative;">List 也不仅仅是数组<a href="#list-%E4%B9%9F%E4%B8%8D%E4%BB%85%E4%BB%85%E6%98%AF%E6%95%B0%E7%BB%84" aria-label="list 也不仅仅是数组 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>Python 的 list 中的每一个元素可以是不同的类型，比如：</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">L3 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token boolean">True</span><span class="token punctuation">,</span> <span class="token string">"2"</span><span class="token punctuation">,</span> <span class="token number">3.0</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span></code></pre></div>
+<p>是合法的。不过在这里灵活性在需要进行大量的数据操作的时候就成为了一种负担：为了允许动态类型，list 中的每一个元素都需要包含它自己的类型信息、引用计数以及其他信息。在这里所有的变量的类型是一样的，每个元素所包含的类型信息是冗余的，如果可以用固定类型数组来保存则会高效的多。</p>
+<h2 id="numpy-数组" style="position:relative;">NumPy 数组<a href="#numpy-%E6%95%B0%E7%BB%84" aria-label="numpy 数组 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>与 Python list 不同，NumPy array 的所有元素类型相同。如果类型不同 NumPy 会进行类型转换（这里，整型被转为浮点类型）：</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> dtype<span class="token operator">=</span><span class="token string">'float32'</span><span class="token punctuation">)</span></code></pre></div>
+<p>如上，我们可以利用 Python 的 list 来创建 Numpy 的数组，也可以利用 NumPy 提供的函数来创建数组：</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> dtype<span class="token operator">=</span><span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token comment"># 创建一个长度为 10，数据类型为整型，数据全为 0 的数组</span>
+np<span class="token punctuation">.</span>ones<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span> dtype<span class="token operator">=</span><span class="token builtin">float</span><span class="token punctuation">)</span> <span class="token comment"># 创建一个 3x5 的二维数组，数据类型为浮点型，数据全为 1</span>
+np<span class="token punctuation">.</span>full<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">3.14</span><span class="token punctuation">)</span> <span class="token comment"># 创建一个 3x5 的数组，数据全为 3.14</span>
+
+<span class="token comment"># 创建一个由线性序列填充的数组</span>
+<span class="token comment"># 从 0 到 20，步长为 2</span>
+<span class="token comment"># 与 Python 内建的 range 方法类似</span>
+np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 创建一个从 0 到 1 均匀分割为 5 个元素的数组</span>
+np<span class="token punctuation">.</span>linspace<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 采用均匀分布创建一个 3x3 的数组</span>
+<span class="token comment"># 默认均匀分布范围从 0 到 1</span>
+np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>random<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 采用高斯分布生成的值填充的 3x3 的数组</span>
+<span class="token comment"># 其中高斯分布的均值为 0 标准差为 1</span>
+np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>normal<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 创建一个采用 [0, 10] 分为的随机数填充的 3x3 的数组</span>
+np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 创建一个 3x3 的单位矩阵</span>
+np<span class="token punctuation">.</span>eye<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 创建一个未初始化的数组，其中的值为所分配的内存的值</span>
+np<span class="token punctuation">.</span>empty<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span></code></pre></div>
+<h2 id="universal-functions" style="position:relative;">Universal Functions<a href="#universal-functions" aria-label="universal functions permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>NumPy 之所以成为了 Python 数据科学的基础在于其提供了一整套高效计算的方案，前面提到了其固定类型数组所带来的好处，这一部分讲述其通过 universal functions 实现的向量化操作。</p>
+<p>默认的 Python 循环是非常缓慢的，虽然有一些其他的 Python 编译方案想要让 Python 的执行速度变得快起来，但是其普及程度都远不如默认的 CPython。例如下面的一个求倒数操作，Python 的执行速度慢的令人发指：</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>seed<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">compute_reciprocals</span><span class="token punctuation">(</span>values<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    output <span class="token operator">=</span> np<span class="token punctuation">.</span>empty<span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>values<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>values<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        output<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1.0</span> <span class="token operator">/</span> values<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+    <span class="token keyword">return</span> output
+
+values <span class="token operator">=</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> size<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">)</span>
+
+big_array <span class="token operator">=</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> size<span class="token operator">=</span><span class="token number">1000000</span><span class="token punctuation">)</span>
+<span class="token operator">%</span>timeit compute_reciprocals<span class="token punctuation">(</span>big_array<span class="token punctuation">)</span>
+<span class="token comment"># 1 loop, best of 3: 205 ms per loop</span></code></pre></div>
+<p>事实证明，这里的瓶颈不是操作本身，而是 CPython 在循环的每个周期必须进行的类型检查和函数调度。每次计算倒数时，Python 首先检查对象的类型并查找适合该类型的函数来执行计算。如果我们是在编译型的语言中，类型在代码执行之前就已知，那么计算速度就会快得多。</p>
+<p>对于许多类型的操作，NumPy 提供了执行这种针对静态类型的编译型的操作，这被称为<em>向量化</em>运算。这可以通过简单地对整个数组执行操作来实现，这相当于对每个元素应用操作。这种向量化方法旨在将循环推入编译层，这是 NumPy 高效运算的基础。看一看对 big_array 的执行速度，与 Python 循环相比，我们看到了数量级的飞跃：</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token operator">%</span>timeit <span class="token punctuation">(</span><span class="token number">1.0</span> <span class="token operator">/</span> big_array<span class="token punctuation">)</span>
+<span class="token comment"># 100 loops, best of 3: 4.14 ms per loop</span></code></pre></div>
+<p>NumPy中的向量化操作通过 ufuncs 实现，其主要目的是加速 NumPy 数组中的重复操作。与等价的 Python 循环相比使用 ufuncs 的向量化运算基本上都是要快一些，在数组规模比较庞大的时情况下更是如此。当你在 Python 中看到了循环你就应当考虑它是否应当替换为一个向量化的操作。</p>
+<p>大多数 Python 的基本运算 NumPy 都对其进行了向量化，即都有对应的 ufuncs：</p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Equivalent ufunc</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>+</code></td>
+<td><code>np.add</code></td>
+<td>Addition (e.g., <code>1 + 1 = 2</code>)</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td><code>np.subtract</code></td>
+<td>Subtraction (e.g., <code>3 - 2 = 1</code>)</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td><code>np.negative</code></td>
+<td>Unary negation (e.g., <code>-2</code>)</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td><code>np.multiply</code></td>
+<td>Multiplication (e.g., <code>2 * 3 = 6</code>)</td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td><code>np.divide</code></td>
+<td>Division (e.g., <code>3 / 2 = 1.5</code>)</td>
+</tr>
+<tr>
+<td><code>//</code></td>
+<td><code>np.floor_divide</code></td>
+<td>Floor division (e.g., <code>3 // 2 = 1</code>)</td>
+</tr>
+<tr>
+<td><code>**</code></td>
+<td><code>np.power</code></td>
+<td>Exponentiation (e.g., <code>2 ** 3 = 8</code>)</td>
+</tr>
+<tr>
+<td><code>%</code></td>
+<td><code>np.mod</code></td>
+<td>Modulus/remainder (e.g., <code>9 % 4 = 1</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>还有一些额外的函数，这里仅仅展示其中的一部分：</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token comment"># 绝对值</span>
+np<span class="token punctuation">.</span><span class="token builtin">abs</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+<span class="token comment"># 三角函数</span>
+np<span class="token punctuation">.</span>sin<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+<span class="token comment"># 指数函数</span>
+np<span class="token punctuation">.</span>exp<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+np<span class="token punctuation">.</span>power<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span>
+
+<span class="token comment"># 聚合操作</span>
+x <span class="token operator">=</span> np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span>
+np<span class="token punctuation">.</span>add<span class="token punctuation">.</span><span class="token builtin">reduce</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+<span class="token comment"># 15</span>
+np<span class="token punctuation">.</span>multiply<span class="token punctuation">.</span><span class="token builtin">reduce</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+<span class="token comment"># 120</span>
+
+<span class="token comment"># 外积操作</span>
+x <span class="token operator">=</span> np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span>
+np<span class="token punctuation">.</span>multiply<span class="token punctuation">.</span>outer<span class="token punctuation">(</span>x<span class="token punctuation">,</span> x<span class="token punctuation">)</span>
+<span class="token comment"># array([[ 1,  2,  3,  4,  5],</span>
+<span class="token comment">#        [ 2,  4,  6,  8, 10],</span>
+<span class="token comment">#        [ 3,  6,  9, 12, 15],</span>
+<span class="token comment">#        [ 4,  8, 12, 16, 20],</span>
+<span class="token comment">#        [ 5, 10, 15, 20, 25]])</span></code></pre></div>
+<h2 id="numpy-数组的基本操作" style="position:relative;">NumPy 数组的基本操作<a href="#numpy-%E6%95%B0%E7%BB%84%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C" aria-label="numpy 数组的基本操作 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>NumPy 的数组操作和 Python 的 list 非常的类似，这里从以下几个方面进行介绍：</p>
+<ul>
+<li><em>数组的属性</em>：长度，维度，内存占用大小，元素的类型</li>
+<li><em>数组的索引</em>：获取或修改数组中的单个元素</li>
+<li><em>数组的切片</em>：获取或修改数组中的子数组内容</li>
+<li><em>数组的重塑（reshape等操作）</em>：更改一个数组的形状</li>
+<li><em>数组的连接与分割</em>：连接多个数组或者将单个数组分割为多个数组</li>
+</ul>
+<h3 id="numpy-的基本属性" style="position:relative;">NumPy 的基本属性<a href="#numpy-%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%B1%9E%E6%80%A7" aria-label="numpy 的基本属性 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<ul>
+<li><code>.ndim</code> 维度</li>
+<li><code>.shape</code> 每个维度的长度</li>
+<li><code>.size</code> 整个数组的长度，等于各个维度长度之积</li>
+<li><code>.dtype</code> 内部数据的类型</li>
+<li><code>.itemsize</code> 每个元素的字节长度</li>
+<li><code>.nbytes</code> 整个数组的字节长度，等于 <code>.itemsize * .size</code></li>
+</ul>
+<p>例子：</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">x <span class="token operator">=</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> size<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span> x<span class="token punctuation">.</span>ndim
+<span class="token keyword">print</span> x<span class="token punctuation">.</span>shape
+<span class="token keyword">print</span> x<span class="token punctuation">.</span>size
+<span class="token keyword">print</span> x<span class="token punctuation">.</span>dtype
+<span class="token keyword">print</span> x<span class="token punctuation">.</span>itemsize
+<span class="token keyword">print</span> x<span class="token punctuation">.</span>nbytes</code></pre></div>
+<p>其结果：</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">2
+(3, 4)
+12
+int64
+8
+96</code></pre></div>
+<h3 id="numpy-的索引" style="position:relative;">NumPy 的索引<a href="#numpy-%E7%9A%84%E7%B4%A2%E5%BC%95" aria-label="numpy 的索引 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>NumPy 数组的索引和 list 基本一致，也是从零开始计数，也支持负数索引，不过在多元数组时采用逗号分隔的 tuple 类型进行索引（list 采用多个方括号的方式，比如 a[1][2]）：</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">x1 <span class="token operator">=</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> size<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+x1<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+x1<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">8</span>
+x1<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+
+x2 <span class="token operator">=</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> size<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+x2<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span>
+x2<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">12</span></code></pre></div>
+<p>当然，NumPy 数组中的类型是一致的，因此赋值其他类型会被强制转换：</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">x1<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">3.14</span> <span class="token comment"># 会被转换为 3</span></code></pre></div>
+<h3 id="numpy-的数组切片" style="position:relative;">NumPy 的数组切片<a href="#numpy-%E7%9A%84%E6%95%B0%E7%BB%84%E5%88%87%E7%89%87" aria-label="numpy 的数组切片 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>NumPy 数组也支持用 <code>:</code> 进行切片操作（slicing），切片的参数格式为</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">[start:stop:step]</code></pre></div>
+<p>其中如果 start 没有提供则为 0，如果 stop 没有提供则为当前维度的长度，如果 step 没有提供则为 1：</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">x <span class="token operator">=</span> np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+<span class="token comment"># [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
+
+x<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">5</span><span class="token punctuation">]</span>
+<span class="token comment"># [0, 1, 2, 3, 4]</span>
+
+x<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">:</span><span class="token number">7</span><span class="token punctuation">]</span>
+<span class="token comment"># [4, 5, 6]</span>
+
+x<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">]</span>
+<span class="token comment"># [0, 2, 4, 6, 8]</span>
+
+x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">]</span>
+<span class="token comment"># [1, 3, 5, 7, 9]</span></code></pre></div>
+<p>当 step 为负数时 start 和 stop 的默认值互换。这也是一种将数组倒序的方式：</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">x<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+<span class="token comment"># [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]</span>
+
+x<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">]</span>
+<span class="token comment"># [5, 3, 1]</span></code></pre></div>
+<p>在对多维数组进行切片时不同维度通过逗号分隔：</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">x2 <span class="token operator">=</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> size<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># array([[9, 2, 7, 6],</span>
+<span class="token comment">#       [2, 6, 1, 1],</span>
+<span class="token comment">#       [9, 0, 0, 8]])</span>
+
+x2<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token number">3</span><span class="token punctuation">]</span>
+
+<span class="token comment"># array([[9, 2, 7],</span>
+<span class="token comment">#       [2, 6, 1]])</span>
+
+x2<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">]</span>
+<span class="token comment"># array([[9, 7],</span>
+<span class="token comment">#       [2, 1],</span>
+<span class="token comment">#       [9, 0]])</span>
+
+x2<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+<span class="token comment"># array([[8, 0, 0, 9],</span>
+<span class="token comment">#       [1, 1, 6, 2],</span>
+<span class="token comment">#       [6, 7, 2, 9]])</span></code></pre></div>
+<p>对二维数组获取其某一行或者某一列可以通过全切片与索引配合使用：</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>x2<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment"># 第一列</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>x2<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment"># 第一行</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>x2<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>     <span class="token comment"># 第一行，后面的全切片可以省略</span></code></pre></div>
+<p><strong>注意</strong> NumPy 的切片是一个引用，而不是像 list 里面的是一个拷贝：</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">x2_sub <span class="token operator">=</span> x2<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">]</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>x2_sub<span class="token punctuation">)</span>
+<span class="token comment"># [[9 2]</span>
+<span class="token comment">#  [2 6]]</span>
+x2_sub<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">99</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>x2<span class="token punctuation">)</span>
+<span class="token comment"># [[99  2  7  6]</span>
+<span class="token comment">#  [ 2  6  1  1]</span>
+<span class="token comment">#  [ 9  0  0  8]]</span></code></pre></div>
+<p>在处理大规模的数组的时候，这种操作不会带来大量额外的内存开销。在需要使用拷贝的时候可以用下面的方式进行：</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">x2_sub_copy <span class="token operator">=</span> x2<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre></div>
+<h3 id="数组的重塑" style="position:relative;">数组的重塑<a href="#%E6%95%B0%E7%BB%84%E7%9A%84%E9%87%8D%E5%A1%91" aria-label="数组的重塑 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>重塑，即修改数组的维度信息。比如把一个长度为 9 的一维数组变为一个 3x3 的二维数组：</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">.</span>reshape<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre></div>
+<p>要注意，在 <code>reshape</code> 时其创建的新的数组的 <code>size</code> 必须和之前的数组一致。reshape 会尽量采用非拷贝的方式来处理初始数组，但是在初始数据没有提供连续的内存空间的时候就无法实施。类似的方法会在处理图像数据时很常见。</p>
+<p>重塑方法另一个常用的情况是将一个一维的数组转换为一个二维的行或者列矩阵。可以通过 reshape 或者 newaxis 方法实现。</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">x <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 用 reshape 创建一个 shape 为 (1, 3) 的二维数组</span>
+x<span class="token punctuation">.</span>reshape<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 用 np.newaxis 创建一个 (1, 3) 的二维数组</span>
+x<span class="token punctuation">[</span>np<span class="token punctuation">.</span>newaxis<span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">]</span>
+
+<span class="token comment"># 用 reshape 创建一个 (3, 1) 的二维数组</span>
+x<span class="token punctuation">.</span>reshape<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 用 newaxis 创建一个 (3, 1) 的二维数组</span>
+x<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> np<span class="token punctuation">.</span>newaxis<span class="token punctuation">]</span></code></pre></div>
+<p>类似的转换比较常见，尤其是在做机器学习算法中需要将数据扩充为多维数组时。</p>
+<h3 id="数组的连接与分割" style="position:relative;">数组的连接与分割<a href="#%E6%95%B0%E7%BB%84%E7%9A%84%E8%BF%9E%E6%8E%A5%E4%B8%8E%E5%88%86%E5%89%B2" aria-label="数组的连接与分割 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3>
+<p>一维数组的连接：</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">x <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+y <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+np<span class="token punctuation">.</span>concatenate<span class="token punctuation">(</span><span class="token punctuation">[</span>x<span class="token punctuation">,</span> y<span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment"># array([1, 2, 3, 3, 2, 1])</span>
+
+z <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">99</span><span class="token punctuation">,</span> <span class="token number">99</span><span class="token punctuation">,</span> <span class="token number">99</span><span class="token punctuation">]</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>np<span class="token punctuation">.</span>concatenate<span class="token punctuation">(</span><span class="token punctuation">[</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> z<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment"># [ 1  2  3  3  2  1 99 99 99]</span></code></pre></div>
+<p>二维数组的连接：</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">grid <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                 <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+np<span class="token punctuation">.</span>concatenate<span class="token punctuation">(</span><span class="token punctuation">[</span>grid<span class="token punctuation">,</span> grid<span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment"># array([[1, 2, 3],</span>
+<span class="token comment">#        [4, 5, 6],</span>
+<span class="token comment">#        [1, 2, 3],</span>
+<span class="token comment">#        [4, 5, 6]])</span>
+
+<span class="token comment"># 按照第二维连接</span>
+np<span class="token punctuation">.</span>concatenate<span class="token punctuation">(</span><span class="token punctuation">[</span>grid<span class="token punctuation">,</span> grid<span class="token punctuation">]</span><span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token comment"># array([[1, 2, 3, 1, 2, 3],</span>
+<span class="token comment">#       [4, 5, 6, 4, 5, 6]])</span></code></pre></div>
+<p>在数组维度不一致的情况下采用 np.vstack 与 np.hstack 更清晰一些：</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">x <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+grid <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                 <span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 按照行连接（垂直连接）</span>
+np<span class="token punctuation">.</span>vstack<span class="token punctuation">(</span><span class="token punctuation">[</span>x<span class="token punctuation">,</span> grid<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token comment"># array([[1, 2, 3],</span>
+<span class="token comment">#        [9, 8, 7],</span>
+<span class="token comment">#        [6, 5, 4]])</span>
+
+y <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">99</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+              <span class="token punctuation">[</span><span class="token number">99</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment"># 按照列连接（水平连接）</span>
+np<span class="token punctuation">.</span>hstack<span class="token punctuation">(</span><span class="token punctuation">[</span>grid<span class="token punctuation">,</span> y<span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment"># array([[ 9,  8,  7, 99],</span>
+<span class="token comment">#        [ 6,  5,  4, 99]])</span></code></pre></div>
+<p>类似地，np.dstack 会按照数组的第三维连接。</p>
+<p>与连接相反的操作是分割，通过 np.split，np.hsplit，np.vsplit 实现。通过传递一个索引数组说明分割的位置：</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">x = [1, 2, 3, 99, 99, 3, 2, 1]
+x1, x2, x3 = np.split(x, [3, 5])
+print(x1, x2, x3)
+# [1 2 3] [99 99] [3 2 1]</code></pre></div>
+<p>N 个分割点会生成 N + 1 个子数组。 np.hsplit 与 np.vsplit 类似：</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">grid <span class="token operator">=</span> np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">.</span>reshape<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+upper<span class="token punctuation">,</span> lower <span class="token operator">=</span> np<span class="token punctuation">.</span>vsplit<span class="token punctuation">(</span>grid<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>upper<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>lower<span class="token punctuation">)</span>
+
+<span class="token comment"># [[0 1 2 3]</span>
+<span class="token comment">#  [4 5 6 7]]</span>
+<span class="token comment"># [[ 8  9 10 11]</span>
+<span class="token comment">#  [12 13 14 15]]</span>
+
+left<span class="token punctuation">,</span> right <span class="token operator">=</span> np<span class="token punctuation">.</span>hsplit<span class="token punctuation">(</span>grid<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>left<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>right<span class="token punctuation">)</span>
+
+<span class="token comment"># [[ 0  1]</span>
+<span class="token comment">#  [ 4  5]</span>
+<span class="token comment">#  [ 8  9]</span>
+<span class="token comment">#  [12 13]]</span>
+<span class="token comment"># [[ 2  3]</span>
+<span class="token comment">#  [ 6  7]</span>
+<span class="token comment">#  [10 11]</span>
+<span class="token comment">#  [14 15]]</span></code></pre></div>
+<p>类似地, np.dsplit 会按照数组的第三维分割。</p>
+<h2 id="聚合操作" style="position:relative;">聚合操作<a href="#%E8%81%9A%E5%90%88%E6%93%8D%E4%BD%9C" aria-label="聚合操作 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>NumPy 支持各种聚合函数，比如 <code>np.max</code> <code>np.min</code> <code>np.sum</code> <code>np.median</code> 这些方法一看就懂，不再一一列举。不过一个比较让人迷惑的点在于如何按照不同的维度进行聚合。</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">M <span class="token operator">=</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>random<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>M<span class="token punctuation">)</span>
+<span class="token comment"># [[ 0.22051857  0.27287109  0.96337129  0.78381157]</span>
+<span class="token comment">#  [ 0.24552893  0.39914065  0.70804662  0.80235189]</span>
+<span class="token comment">#  [ 0.33662843  0.65632293  0.25875078  0.52569568]]</span></code></pre></div>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">M<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre></div>
+<p>默认的 sum 是将所有维度的值加在一起，而聚合函数接受一个额外的参数 axis 用与指定沿着哪一个维度进行计算。例如我们想要按照列去找每一列的最小值就需要指定 axis=0：</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">M<span class="token punctuation">.</span><span class="token builtin">min</span><span class="token punctuation">(</span>axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token comment"># array([ 0.66859307,  0.03783739,  0.19544769,  0.06682827])</span></code></pre></div>
+<p>结果返回四个值，对应四列的最小值。类似的我们可以找到每一行的最大值：</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">M<span class="token punctuation">.</span><span class="token builtin">max</span><span class="token punctuation">(</span>axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token comment"># array([ 0.8967576 ,  0.99196818,  0.6687194 ])</span></code></pre></div>
+<p>axis 是指那个<strong>将要被处理的维度</strong>，而不是将要返回的维度。因此指定 axis=0 意味着第一个维度是要被处理的维度：对于二维数组磊说，这意味着每一列的数据将要被聚合。也就是说指定的 axis 最终会被变成 1，例如这里的一个 3x4 的数组，如果指定 axis=0 那么第一维会变成 1 所以会成为一个 1x4 的数组，那么就是每一列做了聚合。类似地，如果 axis=1 那么数组会变成一个 3x1 的数组，那么数组就是按照行做了聚合。</p>
+<p>大多数聚合函数都能够处理 NaN 数值的情况：计算过程中会忽略这些 NaN 数据，很多对于 NaN 处理的函数是在 NumPy 1.8 之后添加的，旧版本并不支持。</p></div></div><hr class="mt-8"/></div><div class=""><div><h1><a href="/review-for-test/">有关测试的读书笔记</a></h1><h2>2016 December-06</h2><div class="prose prose-blog dark:prose-invert max-w-none lg:prose-lg xl:prose-xl prose-blockquote:leading-tight prose-p:leading-normal prose-li:leading-tight"><p>刚刚培训结束，培训的不少时间是用来看各种乱七八糟的书籍。其中一个重要的领域就是有关测试的部分。这里整理一下前一阵子的笔记。</p>
+<h1 id="tdd-by-example" style="position:relative;">tdd by example<a href="#tdd-by-example" aria-label="tdd by example permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h1>
+<p>首先读了一本非常经典的书籍：tdd by example 也是测试驱动开发的由来了。不是第一次读这本书，但是这次读了之后依然有新的体会。读的时候就觉得书中的第一部分的小步都太小了，很多实现都是显而易见的。然而讽刺的是我自己在走这个例子的时候却因为步子太大而忘记在构造函数中设置 MoneyType 反而拖慢了进度。很小的步子隐含了按着步骤走可以大大减少中间出错而打乱节奏甚至是需要 debug 的风险，而debug 所花费的时间与小步走所花费的时间相比绝不是一个数量级的。在练习的过程中细细的去想为什么要这么写以及为什么是这么一个重构的流程引发了我找到了一些其他的书籍逐渐弄明白了书中很多忽略了的细节。比如第一部分中对 expression 钱包的隐喻其实并不是 tdd 所带来的好处，而是因为作者本身有这个设计思维，所以 tdd 不是所带来的益处。</p>
+<p>另一个被很多人忽略的点在于每次在写一个测试之前是有一个 task 列表的。tdd 要求你每次写测试之前都知道自己想要实现的功能是什么，而让这个测试的通过就代表某一个小的功能的完成。列出系统想要什么样子并且可以有一个测试对应，这就是在做设计了，这就是 tdd 带来的主要好处吧~可是做不出来设计怎么办？那就是 ooad 的能力问题了。在有了测试之后就用最直接最简单的办法去实现，实现的方式有三种：</p>
+<ol>
+<li>fake 用假实现或者是空实现，等到必须要去实现的时候再实现</li>
+<li>obvious implementation 显而易见的实现，功能是实现了，不过采用的是最简单的办法，在未来可能会有性能问题，对其他的测试可能也不友好</li>
+<li>triangle 三角法，在不好实现的时候才使用的技巧，比如对于一个迭代实现，首先是单个元素的实现，然后逐步改为递归。在之前接触的一些 tdd 培训里面有些教练就认为应当用这种方法实现所有的 tdd 现在觉得有点过了。</li>
+</ol>
+<p>实现之后 tdd 讲要做重构。这里的重构和 <strong>重构</strong> 那本书里面讲的很多是一致的。但是我之前在对重构的粒度和范围的理解确实不到位。通过各种形式的消除重复（代码重复、数据重复）把一个 fake 的实现逐渐转化为一个实际的方案才是重构的核心。</p>
+<p>所以 tdd 是对重构的能力有很高的要求的。在之后的读书过程中逐渐的发现，重构是一个非常强大的技术，它不仅仅是在技术层面，在领域层面也是一个很好的工具。仔细想想一个复杂的，需要多年运行和维护的软件如何才能保证代码与架构不腐化堕落呢？唯有坚持重构了吧。</p>
+<h1 id="art-of-unit-test" style="position:relative;">art of unit test<a href="#art-of-unit-test" aria-label="art of unit test permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h1>
+<p>这本书其实主要讲的是单元测试而不是测试驱动开发。开篇它提到了 tdd 所需要的三种核心技能：</p>
+<ol>
+<li>编写好的单元测试的能力，也就是这本书所讲的内容</li>
+<li>通过测试驱动开发的能力，也就是 tdd by example 的内容</li>
+<li>设计的能力，是很多其他设计书籍的内容，这里它推荐了一本书 Growing Object-Oriented Software, Guided by Tests</li>
+</ol>
+<p>这本书还明确的定义了什么是单元测试：不是那种一个函数对应一个测试，而是对一个最小工作单元的测试。小巨人的培训里也是强调每个测试是完成了某个功能，这个测试就是这个功能的文档。它定义了一些好的单元测试的特性：</p>
+<ol>
+<li>自动化</li>
+<li>容易实现，几分钟</li>
+<li>在一定时间内有意义，比如第二天，当然它强调的是单元测试而不是函数测试，不应随着重构而随意变化</li>
+<li>可以一键运行</li>
+<li>速度很快</li>
+<li>结果稳定</li>
+<li>完全隔离，独立于其他测试</li>
+</ol>
+<p>它还强调了单元测试与集成测试的区别：集成测试结果不稳定、速度缓慢、多个真实依赖。比如依赖数据库、依赖文件系统。过多的依赖导致的是不能明确的指导什么导致了测试的失败。这也让我开始反思自己以前写的很多与数据库相关测试了。</p>
+<p>还有它提出了优秀测试的支柱：</p>
+<ul>
+<li>只测试一个关注点
+<ul>
+<li>测试多个方面会导致你的测试命名出现问题</li>
+<li>一旦第一个测试挂了，后面的断言就不再执行</li>
+</ul>
+</li>
+<li>避免在测试中出现逻辑</li>
+<li>不测试内部方法：一个工作单元都是以一个公共 API 开始，最后达到三种结果中的一个或者多个，返回值、系统状态改变或者第三方调用</li>
+<li>不滥用 setup 方法，在保证测试的可读性与过度重构测试之间做权衡</li>
+</ul>
+<h1 id="growing-object-oriented-software-guided-by-test" style="position:relative;">Growing Object-Oriented Software, Guided by Test<a href="#growing-object-oriented-software-guided-by-test" aria-label="growing object oriented software guided by test permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h1>
+<p>这本书的思想正如标题所示，通过测试驱动建立面向对象的软件。它认为好的设计是可以通过测试一步步驱动出来的。但是它依然强调事先要知道一些基本的面向对象设计原则，这也是大家的共识吧。</p>
+<p>书中提到了要将验收测试和单元测试结合起来，通过大循环套小循环来完成测试。</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/0462604f96ac516e6ecf3340a41effc4/fd84e/2016-12-06-review-for-test-04626.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAAAsTAAALEwEAmpwYAAABF0lEQVQoz21SyaqEMBDM/3+aMAd1RBFcEUEPDu7r2I/KoyQjNoSkk+qqXqLO8xQYd9Nwx0V/miYZhkHGcZRt236wMGU667pKFEVSFIV0XfdDDr/v+4tk33ep61ratpVlWS5SRbJ5nrWy53kSBIFUVaWB2BHouq6EYfiT1fv9Ftu2dRIXIQ7HcWj1pmkkjmNxHEd839c+hPBWlqVkWaZ9BkMQLcCO++/3+0+IC5B+Ph9JkkQsy5I8zzURDeC74Q5x5EAbFMtlABTTNL18czAoF1gIYyg4s2WPhPdJm9PlGWSv10tXYGbNKhUnxt48Ed2/z90Qj8r0tzGnTBUAnnpmEnAhDmTEK1MZ/xCknBr6BDAXfWKYgFnZHycNC9Qjo782AAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="2016 12 06 review for test 04626"
+        title="2016 12 06 review for test 04626"
+        src="/static/0462604f96ac516e6ecf3340a41effc4/5a190/2016-12-06-review-for-test-04626.png"
+        srcset="/static/0462604f96ac516e6ecf3340a41effc4/772e8/2016-12-06-review-for-test-04626.png 200w,
+/static/0462604f96ac516e6ecf3340a41effc4/e17e5/2016-12-06-review-for-test-04626.png 400w,
+/static/0462604f96ac516e6ecf3340a41effc4/5a190/2016-12-06-review-for-test-04626.png 800w,
+/static/0462604f96ac516e6ecf3340a41effc4/fd84e/2016-12-06-review-for-test-04626.png 1056w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<p>书中提到了通过 mock 和 stub 来隔离各个对象之间的依赖，这个其他几本书中也有所提及。</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/131de9e038be9b9a4ddaf8eed0c070bb/f53a0/2016-12-06-review-for-test-131de.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 129%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAaCAYAAAC3g3x9AAAACXBIWXMAAAsTAAALEwEAmpwYAAACh0lEQVRIx42VCW/iQAyF8/9/FEKqKlFRqLhabpISjtBy9yAt4NXnrbNDCHRHGs3gyXien5+NJz/jeDyKOw6HQ2L7+PiQ1Wol6WHn7l3PNez3e3l/f5cgCMT3/eSjx8dHtdlDy+VSFotFptMTh9/f3/rheDyW5+dneXt7k+12K/1+X885e3h4kHw+L81mU7Ki8y6FzKhWq9LpdOTl5UUGg4E6u7m5kSiKNBLON5vNOcIs6HB2d3cnYRjKdDqVQqEgxWJRnYB8t9upbTQaXQ756+tLhsOhPD09KU9cMm65DNJWqyW1Wk1pAeXVpMAhaG5vbxPS1+u1lEolqdfr+juOY8nlctLr9fQev6+GbAOeyuWyOgIhHJIokgH6+Xwur6+vOk8csnH5sz3hwh8yMU7hz9UjXELTmcO0M0KfTCYnImfA2Ww2O0uiu/eywsUh3KUHjs3hpapJEIKoXCpLp9OVIPDl8/NT+ULUaJE1HI10HQx8pYM9VRRF/1B7btlRs3ACQtCwYscGp7qP48TOat9eDdnlJuvs15DdaS+z2qC8oMR4RaPI5teksAKfbKIvLuIIvqCDPfb7+3sV9n81B5xReiSiUqnoZYSMQ8qOEuQheCVxLn+ZDgml2+2q00ajoROpUDGUIA/ZoLWdCTvNA+qnudJFWLkEpzQEqgQbbSz+yfbVBgt8XiQJhOn2RZBaSYLUzjMdpom1bMMbiOHKNMqeaRpkXgzZDR20oEn/37gOsJ0lJS0Zcwoa25vdEKUBuEAyK8VezxqX7ClhH6TdbkutVte/y/VmI7NZpBLxg0AFrc0hDJPss2qD6PX0b8Me8ly5LOYLJfxvQ4hVMky445yV5FiybMVuIf8BRybbGE262NsAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="2016 12 06 review for test 131de"
+        title="2016 12 06 review for test 131de"
+        src="/static/131de9e038be9b9a4ddaf8eed0c070bb/5a190/2016-12-06-review-for-test-131de.png"
+        srcset="/static/131de9e038be9b9a4ddaf8eed0c070bb/772e8/2016-12-06-review-for-test-131de.png 200w,
+/static/131de9e038be9b9a4ddaf8eed0c070bb/e17e5/2016-12-06-review-for-test-131de.png 400w,
+/static/131de9e038be9b9a4ddaf8eed0c070bb/5a190/2016-12-06-review-for-test-131de.png 800w,
+/static/131de9e038be9b9a4ddaf8eed0c070bb/f53a0/2016-12-06-review-for-test-131de.png 1062w"
+        sizes="(max-width: 800px) 100vw, 800px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<p>然后提到了一个对象出现的几个方式：</p>
+<ol>
+<li>breaking out: 将一个大对象拆分成几个相互合作的小对象</li>
+<li>budding off: 提出一个目前的对象所需要的服务，然后用一个对象去负责提供这个服务</li>
+<li>bundling up: 提供一个容器对象去隐藏相关对象的细节</li>
+</ol>
+<p>在 TDD 的时候 breaking out 和 budding off 的动作会比较多。</p>
+<h1 id="测试驱动开发的艺术" style="position:relative;">测试驱动开发的艺术<a href="#%E6%B5%8B%E8%AF%95%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E7%9A%84%E8%89%BA%E6%9C%AF" aria-label="测试驱动开发的艺术 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h1>
+<p>这本书有点像是一个 cookbook。很多思想其他的书中都讲到了，我也没有留下非常深的印象。在有关 web 测试与数据库测试方面有一些值得记录的地方。</p>
+<h2 id="tdd-for-web" style="position:relative;">tdd for web<a href="#tdd-for-web" aria-label="tdd for web permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>对于 mvc 来说 m 是不涉及任何 web 框架的，所以不用提。但是 c v 就是具体问题具体分析了。其中 c 的测试主要是依靠 request 与 response 的 mock。但是结合我目前前后端分离，后端都是 rest api 的情况来说更多的是采用类似于集成测试的方式。那什么叫类似呢？</p>
+<ul>
+<li>会启动一个临时的 server 从外面去访问这个 api</li>
+<li>但是所以来的一些东西可能是 fake 的，比如数据库、比如 session、比如外部系统</li>
+</ul>
+<p>然后在测试 controller 的时候 view 就随着一起测试了。毕竟都是 json 而已。</p>
+<h2 id="tdd-for-database" style="position:relative;">tdd for database<a href="#tdd-for-database" aria-label="tdd for database permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
+<p>首先说明了 db 的 tdd 用 unit test 是没有意义的，因为和数据库如此强依赖，把数据库 mock 掉感觉就没再测什么了。但是，如果每次测试都启动一个 mysql 也是听蛋疼的。所以这里人家采用了类似 fake 的方式：引入一个 memory database。这个是我应该学习的。之前都是直接连接 mysql 这也导致在 docker 里面启动 mysql 的情况。</p>
+<p>在 teardown 做清理，采用 <code>tx.rollback()</code></p>
+<h1 id="相关资料" style="position:relative;">相关资料<a href="#%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99" aria-label="相关资料 permalink" class="custom-class after"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h1>
+<ol>
+<li><a href="https://book.douban.com/subject/1771049/">Test Driven Development</a></li>
+<li><a href="https://book.douban.com/subject/25934516/">单元测试的艺术（第2版）</a></li>
+<li><a href="https://book.douban.com/subject/4156589/">Growing Object-Oriented Software, Guided by Tests</a></li>
+<li><a href="https://book.douban.com/subject/5326182/">测试驱动开发的艺术</a></li>
+</ol></div></div><hr class="mt-8"/></div><div class="flex justify-center mt-8"><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/26/">Previous</a><a class="w-32 text-center px-4 py-1 border mx-4 border-gray-800 border-solid" href="/page/28/">Next</a></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-31932181-2"></script><script>
       
       
       if(true) {
