@@ -8,6 +8,7 @@ tags:
 - "时间管理"
 - "mac"
 - "ffmpeg"
+- "archived"
 ---
 
 在上一篇文章 [Mac 下通过自动周期截图来追溯每天的屏幕使用](/macos-auto-capture-screen-for-time-tracking) 介绍了下一个简单的录屏脚本。这里做一个跟进，主要是以下两方面的内容：
